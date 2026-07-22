@@ -1,0 +1,16 @@
+{
+  "code": "G9",
+  "moduleName": "Casemix — Pengelolaan Klaim BPJS (Penerimaan & Rekonsiliasi Klaim / Berita Acara)",
+  "cluster": "Core Integration",
+  "bpmnFile": null,
+  "mode": "authored (manual, template.md)",
+  "hasFlowchart": false,
+  "attachments": [
+    {
+      "name": "data-claim.md",
+      "kind": "md"
+    }
+  ],
+  "createdAt": "2026-07-10T00:00:00.000Z",
+  "updatedAt": "2026-07-16T00:00:00.000Z"
+}

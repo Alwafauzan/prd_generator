@@ -1,0 +1,501 @@
+# PRD — Casemix — Pengelolaan Klaim BPJS: Penerimaan & Rekonsiliasi Klaim (G9)
+
+**Related Document:** List Fitur V2.xlsx (sheet MVP, code G9); PRD G8 Manajemen Dokumen & Data Medis Casemix (hulu — koding ICD & submit klaim ke E-Klaim); Manual Web Service E-Klaim 5.10.x (attachments/Manual Web Service E-Klaim 5.10.x.pdf); Contoh Export Excel BPJS Pending/Dispute (attachments/PENDING JUNI 2025.xlsx) — sumber data operasional G9; API Contract BPJS VClaim Monitoring Klaim (attachments/data-claim.md — Phase 2, belum dipakai operasional); PRD G7 Integrasi E-Klaim (INA-CBG); PRD G2 Tagihan Pasien
+**Versi:** 1.6 - Reframe sumber data & recon_status: absensi di Excel Pending/Dispute = COCOK; SELISIH_NILAI jadi flag informasional dari G8 (bukan recon_status); G10 ditiadakan (resubmit PENDING kembali ke G8)
+**Tanggal:** 2026-07-16
+
+## 1. Metadata Dokumen
+
+**Approval**
+
+| PRD Approved By | Nama / Jabatan | Tanggal |
+|-----------------|----------------|---------|
+| Disiapkan oleh | [PERLU KONFIRMASI] System Analyst | 2026-07-10 |
+| Diperiksa oleh | [PERLU KONFIRMASI] Koordinator Casemix / Verifikator Internal | – |
+| Disetujui oleh | [PERLU KONFIRMASI] Manajer Keuangan / Direktur RS | – |
+
+**Related Documents**
+
+- List Fitur V2.xlsx — sheet MVP, code **G9** (Casemix > Pengelolaan Klaim BPJS > Penerimaan Klaim dan BA).
+- **PRD G8 — Manajemen Dokumen & Data Medis Casemix** (hulu). G8 **melakukan integrasi teknis penuh ke E-Klaim** (web service resmi Kemenkes/BPJS yang di-hosting lokal di server RS): `new_claim` → `set_claim_data` → koding **Grouping iDRG** → **Import iDRG to INACBG** → **Grouping INACBG Stage 1 & 2** → `send_claim_individual`, tervalidasi terhadap master data diagnosis & master data tindakan. G9 menerima **data klaim yang sudah terkirim** dari G8 sebagai acuan rekonsiliasi — lihat `attachments/Manual Web Service E-Klaim 5.10.x.pdf` (katalog method) dan `attachments/PRD iDRG (new template).md` (UI koding & kirim klaim).
+- **Contoh export Excel BPJS Pending/Dispute** → `PENDING JUNI 2025.xlsx` (RS PKU Muhammadiyah Wonosobo, sheet `RI`/`RJ`). **Sumber data operasional G9 (Phase 1 & 2)** — berisi **hanya klaim berstatus `PENDING` atau `DISPUTE`**; klaim yang tidak muncul di file ini dianggap **`COCOK`** (disetujui BPJS sesuai pengajuan). Acuan peta kolom Varian B (§9).
+- **API Contract BPJS — VClaim Monitoring Klaim** → `attachments/data-claim.md`. Referensi skema field bila di masa depan BPJS membuka API tarik-hasil langsung (belum tersedia/dipakai operasional — lihat §4 Scope).
+- PRD **G7** — Integrasi E-Klaim / INA-CBG (referensi tarif grouper).
+- PRD **G2** — Tagihan Pasien (tarif RS / real cost sebagai pembanding).
+
+> **Catatan label (klarifikasi v1.6):** pada List Fitur, G8 tercatat "Managemen Dokumen dan Data Medis". Sesuai klarifikasi langsung pemilik konteks, **dikonfirmasi (bukan lagi asumsi)** bahwa G8 adalah modul yang menjalankan seluruh prosedur teknis pengiriman klaim ke E-Klaim (bukan sekadar "tim lain" yang samar) — lihat detail prosedur di §2 & §6. Kontrak data G8→G9 pada §9 mengikuti alur ini.
+
+**Document Version**
+
+| Tanggal | Versi | Deskripsi Perubahan |
+|---------|-------|---------------------|
+| 2026-07-10 | 1.0 - Draft awal | Draft awal PRD Penerimaan Klaim & Berita Acara (G9). |
+| 2026-07-10 | 1.1 - Rekonsiliasi | Refokus: tujuan inti = **rekonsiliasi klaim yang diajukan G8 ↔ hasil klaim BPJS** yang ditarik via API VClaim Monitoring Klaim (`data-claim.md`). Menambah FR Rekonsiliasi, model data hasil BPJS & rekonsiliasi, dan section Integrasi Eksternal. |
+| 2026-07-10 | 1.2 - Semantik tolak/selisih | Koreksi semantik: **tolak total (dispute) dapat direvisi** (resubmit G10); **selisih nilai bersifat FINAL** (tidak dapat direvisi). Menambah recon_status `DITOLAK`, aturan tindak lanjut final/revisable, dan kontrak data G8→G9 (G8 menyesuaikan G9). |
+| 2026-07-10 | 1.3 - Fase upload dulu | Keputusan sumber data: **Phase 1 = upload Excel/CSV**, **Phase 2 = integrasi API BPJS Monitoring Klaim** (menyatukan arahan lead teknis & lead bisnis). Kolom upload dibakukan = field API agar Phase 2 tinggal ganti adaptor; logika rekonsiliasi identik untuk kedua sumber. |
+| 2026-07-12 | 1.4 - Skema union upload+API | Koreksi berdasar file contoh nyata `PENDING JUNI 2025.xlsx`: file Excel pending **bukan** cerminan response API — API lebih lengkap untuk nilai (`bySetujui`, tarif grouper/RS, topup, noFPK, kelasRawat), sedangkan Excel punya alasan pending/dispute (`jenis_pending`, `jenis_dispute`, `ket_pending`, `ket_jawaban`) yang tak ada di API. **Skema `claim_bpjs_results` dijadikan union kedua sumber** (kolom sumber-spesifik nullable, kolom inti tetap NOT NULL + divalidasi). Menambah aturan recon saat `by_setujui` NULL (file pending tak bisa hasilkan COCOK/SELISIH_NILAI), peta kolom upload nyata (2 varian file), dan koreksi asumsi "logika identik". |
+| 2026-07-15 | 1.5 - Resubmit khusus PENDING, gabung DISPUTE | **Perbaikan alur bisnis nyata (arahan lead bisnis):** RESUBMIT (→ G10) kini **hanya berlaku untuk status `PENDING`**, maksimal **2 kali**; setelah pengajuan ulang ke-2 tetap tidak disetujui, klaim dikunci dan user **wajib menerima hasil akhir**. **Status `DITOLAK` dihapus & digabung ke `DISPUTE`** (tak ada lagi pembedaan "tolak total dapat direvisi" vs "dispute final") — `DISPUTE` bersifat **final**, tidak pernah masuk jalur resubmit. `BELUM_MUNCUL` & `ANOMALI` **dikeluarkan dari mekanisme resubmit** — kini catatan/telaah manual **opsional**, tanpa siklus/counter. Field `revisable` (boolean tersimpan) **dihapus** — status "boleh resubmit" kini **diturunkan (derived)** dari `recon_status = PENDING` dan `resubmit_count < 2`, mencegah desync. Format tampilan **Siklus distandarkan ke `'N/3'`** (N = pending ke-berapa, maks `3/3 [Limit]`) di seluruh dokumen. |
+| 2026-07-16 | 1.6 - Revisi total: sumber data & recon_status direframe | **Klarifikasi prosedur G8→E-Klaim nyata (arahan pemilik konteks) mengubah model rekonsiliasi secara fundamental.** (1) **`recon_status` diringkas jadi 4 nilai: `COCOK`, `PENDING`, `DISPUTE`, `ANOMALI`** (dari 7 nilai di v1.5). (2) **`SELISIH_NILAI` DIHAPUS sebagai recon_status** — bukan lagi hasil rekonsiliasi, melainkan **flag data klaim yang dideteksi G8 sendiri saat koding INACBG** (grouper lokal = grouper resmi BPJS, sehingga selisih nominal antara tarif diajukan vs tarif hasil grouper sudah terlihat **sebelum** klaim dikirim). Field baru `has_nominal_selisih`, `grouper_amount` ditambahkan ke `claim_bpjs_results`/kontrak G8→G9; **tidak tumpang tindih dengan `DISPUTE`** (DISPUTE adalah keputusan BPJS pasca-submit, SELISIH_NILAI adalah temuan G8 pra-submit — klaim ber-flag selisih tetap bisa berakhir `COCOK` atau `DISPUTE`). (3) **`BELUM_MUNCUL` DIHAPUS total** — semantik sumber data berubah: Excel BPJS **hanya berisi klaim `PENDING`/`DISPUTE`**; klaim yang tidak muncul di Excel kini berarti **`COCOK`** (bukan lagi "gap/belum diproses"). (4) **`G10` (modul Resubmit) DITIADAKAN** — tindak lanjut klaim `PENDING` **kembali langsung ke G8** untuk re-koding (`idrg_grouper_reedit` / `inacbg_grouper_reedit` / `reedit_claim` via E-Klaim), bukan ke modul terpisah; siklus maks 2x resubmit **dipertahankan** tapi dieksekusi di G8. (5) **`ANOMALI` dipersempit** — kini murni flag kualitas data (SEP duplikat, SEP tak dikenali, status string tak baku), bukan lagi mekanisme deteksi gap. (6) **Koreksi peran G8**: dari "modul pengajuan klaim ke VClaim/BPJS (tim lain) [PERLU KONFIRMASI]" menjadi **dikonfirmasi** — G8 menjalankan integrasi teknis penuh ke E-Klaim (`new_claim`→`set_claim_data`→grouper iDRG→grouper INACBG stage 1/2→`send_claim_individual`). Dampak: §2, §3, §4, §5, §6, §7 (FR-G9-02, FR-G9-05), §8 (skema `claim_bpjs_results`/`claim_reconciliations`, BR-G9-*), §9, §10, asumsi, dan pertanyaan terbuka direvisi menyeluruh. |
+
+## 2. Overview & Background
+
+**Overview / Brief Summary**
+
+Modul **Penerimaan & Rekonsiliasi Klaim BPJS (G9)** adalah **tahap hilir** siklus klaim Casemix. **Modul G8** menjalankan seluruh prosedur teknis pengiriman klaim ke **E-Klaim** (web service resmi Kemenkes/BPJS yang di-hosting lokal di server RS): `new_claim` (buat klaim + registrasi pasien) → `set_claim_data` (isi data klaim) → koding **Grouping iDRG** (stage 1) → **Import iDRG to INACBG** → koding **Grouping INACBG** (stage 1 & 2) → `send_claim_individual` (kirim per `noSEP`), tervalidasi terhadap master data diagnosis & master data tindakan. Karena grouper INACBG yang dipakai G8 **adalah grouper resmi yang sama** dengan yang dipakai BPJS untuk menghitung reimbursement, **selisih nominal antara tarif diajukan vs tarif hasil grouper sudah terlihat di G8 sendiri, sebelum klaim dikirim** — G9 tidak perlu mendeteksi ini lewat rekonsiliasi (lihat §7 FR-G9-02, §8 field `has_nominal_selisih`).
+
+Setelah klaim terkirim, **BPJS memproses secara asinkron** dan RS menerima **export Excel periodik** (Phase 1 & Phase 2 — lihat §4 Scope) berisi klaim **berstatus `PENDING` atau `DISPUTE`**. G9 **memuat file ini**, menyandingkannya dengan daftar klaim yang dikirim G8 (kunci = `noSEP`), lalu mengklasifikasi setiap klaim ke salah satu dari **4 status rekonsiliasi**:
+
+- **`COCOK`** — `noSEP` **tidak muncul** di export Excel BPJS (Pending/Dispute) → disimpulkan disetujui BPJS sesuai pengajuan. (Klaim ber-flag `has_nominal_selisih` dari G8 tetap bisa berakhir `COCOK` — artinya BPJS menyetujui sesuai nilai grouper G8, bukan nilai awal yang diajukan.)
+- **`PENDING`** — muncul di Excel berstatus pending; butuh perbaikan data/koding lalu **diajukan ulang langsung dari G8** (bukan modul terpisah), maksimal 2× siklus.
+- **`DISPUTE`** — muncul di Excel berstatus dispute; **final**, tidak ada jalur resubmit.
+- **`ANOMALI`** — flag **kualitas data**, bukan hasil klaim: `noSEP` di Excel **tidak cocok** dengan klaim manapun yang tercatat dikirim G8, **duplikasi** baris `noSEP` yang sama, atau nilai status mentah **tak dikenali/tak baku**. Butuh telaah manual (opsional, tanpa siklus/counter).
+
+Hasil rekonsiliasi menjadi dasar: (a) tindak lanjut klaim `PENDING` kembali ke G8 untuk re-koding, (b) penerbitan/penerimaan **Berita Acara (BA)**, dan (c) **pencatatan pembayaran** klaim untuk keuangan.
+
+G9 **tidak** menyusun/mengirim klaim maupun melakukan koding (itu G8) dan **tidak** menangani integrasi teknis E-Klaim (itu G8); G9 **mengonsumsi** daftar klaim terkirim dari G8 dan **hasil** dari export Excel BPJS.
+
+**Business Process (As-Is vs To-Be)**
+
+**As-Is (kondisi saat ini — RS Tipe C & D):** [ASUMSI]
+- Hasil klaim dipantau manual di aplikasi BPJS lalu dicocokkan ke daftar pengajuan RS memakai **spreadsheet terpisah** → rekonsiliasi lambat, rawan selisih & versi ganda.
+- Klaim `PENDING` yang butuh perbaikan sulit dilacak balik ke tahap koding di G8 → berisiko terlewat batas waktu resubmit.
+- Selisih nominal (tarif grouper vs tarif diajukan) baru diketahui belakangan, bukan saat koding → sulit diaudit sejak awal.
+- **Berita Acara** dibuat/di-arsip manual tanpa tautan ke data klaim & hasil rekonsiliasi.
+
+**To-Be (kondisi diharapkan):**
+- G9 **memuat export Excel BPJS** (Pending/Dispute) per periode dan menyandingkannya dengan klaim terkirim G8 dalam satu layar rekonsiliasi.
+- Sistem otomatis mengklasifikasi setiap klaim ke `COCOK` (absen dari Excel) / `PENDING` / `DISPUTE` / `ANOMALI` (kualitas data) — **tanpa** duplikasi deteksi selisih nominal (sudah ditangani G8 pra-submit).
+- Klaim `PENDING` **ter-flag balik ke G8** untuk re-koding; **Berita Acara** & **pembayaran** dibuat dari data rekonsiliasi yang sudah terverifikasi.
+
+## 3. Goals & Metrics
+
+| No | Metrics | Success Criteria |
+|----|---------|------------------|
+| 1 | Cakupan rekonsiliasi | 100% klaim yang dikirim G8 (`send_claim_individual`) pada satu periode ter-rekonsiliasi terhadap export Excel BPJS periode tsb (punya recon_status: `COCOK`/`PENDING`/`DISPUTE`, dan `ANOMALI` bila relevan). |
+| 2 | Ketepatan klasifikasi absensi | 100% klaim yang **tidak muncul** di export Excel BPJS (Pending/Dispute) periode berjalan otomatis diklasifikasi `COCOK`, 0 salah kelola sebagai gap/belum diproses. |
+| 3 | Deteksi anomali kualitas data | 100% baris Excel dengan `noSEP` tak cocok klaim manapun, duplikasi `noSEP`, atau status mentah tak dikenali ter-flag `ANOMALI` otomatis, 0 terlewat. |
+| 4 | Kesegaran data | Hasil klaim ter-*update* per periode aktif ≤ 1 hari kerja setelah export Excel tersedia/di-upload. [ASUMSI target] |
+| 5 | Tindak lanjut | 100% klaim `PENDING` memiliki keputusan (resubmit ke G8 untuk re-koding, maks 2× siklus, / terima hasil akhir) sebelum periode ditutup. Klaim `DISPUTE` (final) dan `ANOMALI` tidak wajib tindak lanjut siklus (catatan opsional). |
+| 6 | Keterlacakan BA & bayar | 100% BA & pembayaran tertaut ke periode + daftar klaim hasil rekonsiliasi. |
+
+## 4. Scope Definition & Phasing
+
+| Fitur/Modul | Phase 1 (MVP: Upload + Rekonsiliasi) | Phase 2 (Otomasi + kemungkinan API) |
+|-------------|---------------------------------------|---------------------------------------------|
+| Sumber hasil klaim | **Upload Excel/CSV export BPJS** (Pending/Dispute, mis. `PENDING JUNI 2025.xlsx` — peta kolom §9) + validasi header/tipe + preview. **Ini sumber data operasional utama** — absen dari file = `COCOK`. | Bila BPJS membuka **API VClaim Monitoring Klaim** untuk tarik-hasil otomatis, jadi sumber tambahan/pengganti upload (skema field union, lihat `attachments/data-claim.md`); saat ini **belum tersedia/dikonfirmasi** — [PERLU KONFIRMASI]. |
+| Data klaim terkirim (dari G8) | Terima daftar `noSEP` + data klaim yang sudah `send_claim_individual` dari G8 (termasuk flag `has_nominal_selisih` dari koding INACBG) sbg acuan pencocokan. | Sinkronisasi near-real-time (event/webhook) dari G8, bukan batch. |
+| Rekonsiliasi G8 ↔ BPJS | Match by `noSEP`; klasifikasi recon_status (`COCOK`/`PENDING`/`DISPUTE`) + flag `ANOMALI` kualitas data. | Auto-rekonsiliasi terjadwal begitu file/`ANOMALI` masuk. |
+| Rekap & dashboard | Rekap per periode & per recon_status (jumlah + nilai) + rasio selisih nominal (flag G8). | Tren lintas periode + drill-down + ekspor terjadwal. |
+| Berita Acara (BA) | Buat BA dari hasil rekonsiliasi (nilai disepakati), unggah file BA bertanda tangan, tautkan ke klaim. | **Approval berjenjang** penerbitan BA + tanda tangan elektronik. |
+| Tindak lanjut klaim | Tandai klaim `PENDING` untuk **dikembalikan ke G8** (re-koding), maks 2× siklus; catat keputusan akhir. | Notifikasi/SLA otomatis ke tim koding G8 saat klaim jatuh `PENDING`. |
+| Pembayaran klaim | Catat pembayaran per BA (tanggal, nilai) + hitung selisih bayar. | Rekonsiliasi mutasi bank + posting jurnal keuangan. |
+
+**Out of Scope**
+- **Koding & pengiriman klaim ke E-Klaim** (Grouping iDRG/INACBG, `set_claim_data`, `send_claim_individual`) → modul **G8** (hulu). G9 hanya menerima daftar klaim yang **sudah terkirim**.
+- **Proses teknis re-koding/resubmit** klaim `PENDING` → dilakukan **di G8** (`idrg_grouper_reedit`/`inacbg_grouper_reedit`/`reedit_claim`); G9 hanya menandai status & memicu.
+- **Autentikasi & transport teknis E-Klaim/VClaim** (encryption key, signature, dekripsi) → modul Integrasi BPJS/G8.
+- **Klaim asuransi swasta** → modul **G11–G14**.
+- **Jurnal akuntansi & pelaporan pajak** pendapatan klaim → di luar MVP. [ASUMSI]
+- **Perhitungan tarif/tagihan RS** (real cost) → modul **G2** (dipakai hanya sebagai pembanding).
+
+## 5. Related Features
+
+| Code | Modul / Menu | Relasi Teknis / Bisnis dengan G9 |
+|------|--------------|----------------------------------|
+| **G8** | **Manajemen Dokumen & Data Medis Casemix** | **Hulu utama.** G8 menjalankan integrasi teknis penuh ke E-Klaim (`new_claim`→`set_claim_data`→Grouping iDRG→Import ke INACBG→Grouping INACBG stage 1/2→`send_claim_individual`). **G8 menyediakan kontrak G9**: daftar klaim terkirim (`sep_no`, `jns_pelayanan`, `tgl_pulang`, `submitted_amount`, `grouper_amount`, `has_nominal_selisih`, `g8_claim_id`, `g8_status`) sebagai acuan pencocokan (lihat §9 Kontrak G8→G9). |
+| Export Excel BPJS (Pending/Dispute) | Sumber operasional G9, lihat §1/§9 | **Sisi hasil** rekonsiliasi (Phase 1 & 2). Berisi hanya klaim `PENDING`/`DISPUTE`; absen = `COCOK`. |
+| API VClaim Monitoring Klaim | `attachments/data-claim.md` | Referensi skema field bila di masa depan BPJS membuka tarik-hasil otomatis. **Belum tersedia/dipakai operasional** — lihat §4 Scope. |
+| G7 | Integrasi E-Klaim (INA-CBG) | Referensi tarif grouper untuk analisis selisih nominal (flag dari G8). |
+| G2 | Tagihan Pasien | Tarif RS / real cost sebagai pembanding terhadap nilai disetujui. |
+
+## 6. Business Process & User Stories
+
+**State Machine — Periode Klaim (batch per bulan pelayanan)**
+
+| Status | Deskripsi | Efek Nilai | Transisi (Phase 1) | Transisi (Phase 2) |
+|--------|-----------|-----------|--------------------|--------------------|
+| OPEN | Periode dibuka; klaim terkirim G8 & export Excel BPJS dikumpulkan. | – | → RECONCILED | idem + sync otomatis |
+| RECONCILED | Seluruh klaim periode ter-rekonsiliasi (punya recon_status). | nilai_disetujui terhitung | → BA_ISSUED | idem |
+| BA_ISSUED | Berita Acara diterbitkan/ditandatangani. | nilai_disepakati terkunci | → PAID | → PAID (butuh approval BA) |
+| PAID | Pembayaran klaim diterima sesuai BA. | nilai_dibayar terisi | → CLOSED | idem + rekonsiliasi bank |
+| CLOSED | Periode selesai; sisa `PENDING` dialihkan ke siklus resubmit (di G8) / periode berikut. | terminal | (terminal) | idem |
+
+**State — Rekonsiliasi Klaim (per `noSEP`)**
+
+| recon_status | Deskripsi | Sifat keputusan | Tindak lanjut |
+|--------------|-----------|-----------------|---------------|
+| COCOK | `noSEP` **tidak muncul** di export Excel BPJS (Pending/Dispute) periode berjalan → disimpulkan disetujui BPJS sesuai pengajuan. | final (dibayar) | masuk BA |
+| PENDING | Muncul di Excel BPJS berstatus "Pending Verifikasi" — berkas/koding perlu diperbaiki. | belum final, **satu-satunya status dgn jalur resubmit** | **RESUBMIT** — kembali ke **G8** untuk re-koding (`idrg_grouper_reedit`/`inacbg_grouper_reedit`/`reedit_claim`), maks **2×** (lihat BR-G9-15/16) / TERIMA hasil akhir |
+| DISPUTE | Muncul di Excel BPJS berstatus dispute/tolak. | **FINAL — tidak dapat direvisi** (proses sengketa di luar SIMRS, mis. jalur formal BPJS) | **TERIMA** (kerugian) / telaah lebih lanjut — **tidak ada RESUBMIT** |
+| ANOMALI | Flag **kualitas data**, bukan hasil klaim: `noSEP` di Excel tak cocok klaim manapun yang tercatat dikirim G8, duplikasi baris `noSEP`, atau nilai status mentah tak baku/tak dikenali. | bukan kandidat resubmit | catatan/telaah manual (**opsional**) — cek data di G8/re-upload |
+
+> **Catatan penting (semantik, v1.6 — revisi total):** absensi `noSEP` dari export Excel BPJS **= `COCOK`**, bukan lagi gap (`BELUM_MUNCUL` dihapus). **Selisih nominal** (tarif diajukan vs tarif hasil grouper INACBG) **bukan lagi recon_status** — itu flag `has_nominal_selisih` yang sudah diketahui **di G8 sendiri**, sebelum klaim dikirim (grouper INACBG G8 = grouper resmi BPJS), lihat §7 FR-G9-02 & §8. Klaim ber-flag `has_nominal_selisih` tetap bisa berakhir `COCOK` (BPJS menyetujui sesuai nilai grouper) atau `DISPUTE` (BPJS menolak) — **tidak tumpang tindih** dengan `DISPUTE`, karena `DISPUTE` adalah keputusan BPJS pasca-submit sedangkan selisih nominal adalah temuan G8 pra-submit. **Resubmit hanya berlaku untuk `PENDING`**, maksimal 2×; setelah gagal 2× berturut-turut, klaim dikunci dan wajib diterima (BR-G9-15) — **eksekusi resubmit dilakukan di G8** (re-koding), G9 hanya menandai & memicu. **`DISPUTE` = FINAL**, tidak pernah bisa di-resubmit. **`ANOMALI`** murni indikasi masalah kualitas data (SEP tak dikenali/duplikat/status tak baku), bukan mekanisme deteksi gap — dan bukan kandidat resubmit. Kunci match = `noSEP`.
+
+**User Stories Utama**
+
+- **US-G9-01** — Sebagai **Petugas Casemix**, saya ingin memuat export Excel BPJS (Pending/Dispute) per periode (**Phase 1 & 2: upload**; API tarik-otomatis **[PERLU KONFIRMASI]**, lihat §4), agar status & alasan pending/dispute tiap klaim tersedia di SIMRS. *(FR-G9-01)*
+- **US-G9-02** — Sebagai **Petugas Casemix**, saya ingin sistem merekonsiliasi klaim terkirim G8 dengan export Excel BPJS dan mengklasifikasikannya (`COCOK`/`PENDING`/`DISPUTE`/`ANOMALI`), agar ketahuan mana yang beres, perlu ditindaklanjuti, atau bermasalah datanya. *(FR-G9-02)*
+- **US-G9-03** — Sebagai **Petugas/Manajemen**, saya ingin melihat rekap per periode & rasio selisih nominal (flag dari G8), agar cepat tahu posisi & kualitas klaim. *(FR-G9-03)*
+- **US-G9-04** — Sebagai **Petugas Casemix**, saya ingin menandai klaim `PENDING` untuk dikembalikan ke G8 (re-koding) atau diterima sebagai hasil akhir, agar tidak ada yang terlewat siklus resubmit-nya. *(FR-G9-05)*
+- **US-G9-05** — Sebagai **Koordinator Casemix**, saya ingin membuat/menerima Berita Acara dari hasil rekonsiliasi & melampirkan file bertanda tangan, agar ada dasar sah pembayaran. *(FR-G9-04)*
+- **US-G9-06** — Sebagai **Keuangan RS**, saya ingin mencatat pembayaran klaim per BA & melihat selisihnya, agar pendapatan klaim terekonsiliasi. *(FR-G9-06)*
+- **US-G9-07** — Sebagai **Koordinator Casemix**, saya ingin penerbitan BA melewati persetujuan berjenjang, agar valid sebelum dipakai. *(FR-G9-07, Phase 2)*
+
+## 7. Functional Requirements
+
+### 7.1 Feature Requirements & Acceptance Criteria
+
+**FR-G9-01 — Impor Hasil Klaim via Upload Excel/CSV** *(sumber data operasional utama)*
+- **User Story**: Sebagai Petugas Casemix, saya ingin mengunggah export Excel BPJS (Pending/Dispute) per periode, agar status & alasan pending/dispute tiap klaim masuk ke SIMRS.
+- **Prioritas**: P0
+- **Fase**: Phase 1 & 2
+- **Acceptance Criteria**:
+  - **AC 1**: Petugas memilih **periode** lalu mengunggah `.xlsx`/`.csv`; sistem menyediakan **peta kolom** karena header file bisa berbeda antar varian (template baku G9 **atau** export RS "Pending/Dispute" — lihat §9). Multi-sheet (mis. `RI`/`RJ`) digabung.
+  - **AC 2**: Validasi **kolom inti wajib** (`noSEP`, `byPengajuan`, `tglSep`, `tglPulang`, `jnsPelayanan`, status pending/dispute) — baris tanpa `noSEP` **ditolak** (bukan disimpan null); validasi tipe (nilai `by*` numerik; tanggal `yyyy-mm-dd` **atau serial Excel** dikonversi; `jnsPelayanan` teks "Rawat Inap/Jalan" atau `1/2` dinormalisasi). Baris invalid ditampilkan dengan alasan & tidak disimpan.
+  - **AC 3**: Menampilkan **preview** (jumlah baris valid/invalid + ringkasan per status pending/dispute) sebelum konfirmasi simpan.
+  - **AC 4**: Simpan bersifat **idempoten** — *upsert* per `noSEP` dalam periode (unggah ulang memperbarui, bukan menduplikasi); mencatat `imported_at`, nama file, jumlah baris.
+  - **AC 5**: Setiap item disimpan ke `claim_bpjs_results` (skema **union** §8.1) dengan `source = import`. Kolom yang **tidak ada** di file (mis. file pending tak punya `bySetujui`/tarif grouper/RS/`byTopup`/`noFPK`/`kelasRawat`) disimpan **NULL** — bukan 0. Kolom khusus file pending (`jenis_pending`, `jenis_dispute`, `ket_pending`, `ket_jawaban`, `no_reg`) diisi bila tersedia.
+  - **AC 6**: `noSEP` yang **tidak ada** di file periode berjalan **bukan** disimpan sebagai baris `claim_bpjs_results` — absennya baris itulah yang menjadi sinyal `COCOK` saat rekonsiliasi (lihat FR-G9-02 AC2).
+
+**FR-G9-02 — Rekonsiliasi Klaim (G8 ↔ Export Excel BPJS)**  *(inti PRD)*
+- **User Story**: Sebagai Petugas Casemix, saya ingin sistem merekonsiliasi klaim yang terkirim dari G8 dengan export Excel BPJS dan mengklasifikasikannya, agar ketahuan mana yang beres (`COCOK`), perlu ditindaklanjuti (`PENDING`), final ditolak (`DISPUTE`), atau bermasalah datanya (`ANOMALI`).
+- **Prioritas**: P0
+- **Fase**: Phase 1
+- **Acceptance Criteria**:
+  - **AC 1**: Sistem mengambil **daftar klaim yang sudah terkirim** (`send_claim_individual`) dari G8 untuk periode yang sama — lihat kontrak data G8→G9 (§9) — dan **menyandingkannya** dengan export Excel BPJS periode itu berdasar `noSEP`.
+  - **AC 2**: Setiap klaim terkirim G8 diberi `recon_status`: **`COCOK`** (`noSEP` **tidak muncul** di export Excel BPJS periode berjalan — disimpulkan disetujui BPJS sesuai pengajuan/hasil grouper), **`PENDING`** (muncul di Excel berstatus pending — **satu-satunya status dgn jalur resubmit**, kembali ke G8), **`DISPUTE`** (muncul di Excel berstatus dispute/tolak — **final, tidak ada resubmit**). Baris Excel yang `noSEP`-nya **tidak cocok klaim manapun** yang tercatat terkirim G8, **duplikasi** `noSEP`, atau nilai status mentah **tak dikenali/tak baku** diberi flag **`ANOMALI`** (kualitas data, bukan hasil klaim).
+  - **AC 3**: Sistem **tidak menghitung/menentukan status berdasarkan selisih nominal** (`bySetujui` vs `byPengajuan`) — selisih nominal sudah diketahui **di G8** saat koding INACBG (flag `has_nominal_selisih`, field `grouper_amount` — lihat §8) dan ditampilkan sebagai **konteks informasional** di layar rekonsiliasi, **tidak memengaruhi** `recon_status`. Klaim ber-flag `has_nominal_selisih` tetap dapat berakhir `COCOK` atau `DISPUTE`.
+  - **AC 4**: Hasil rekonsiliasi ditampilkan sebagai daftar **dua sisi** (terkirim G8 vs baris Excel BPJS bila ada) dengan filter per `recon_status` dan filter tambahan "ada flag selisih nominal"; dapat diekspor (CSV/Excel).
+  - **AC 5**: Rekonsiliasi dapat dijalankan ulang setelah unggah ulang/file baru; recon_status ter-*refresh* tanpa menghapus keputusan tindak lanjut yang sudah ada.
+
+**FR-G9-03 — Rekap & Dashboard per Periode**
+- **User Story**: Sebagai Petugas/Manajemen, saya ingin melihat rekap per periode, agar cepat tahu posisi & kualitas klaim.
+- **Prioritas**: P0
+- **Fase**: Phase 1
+- **Acceptance Criteria**:
+  - **AC 1**: Menampilkan **jumlah klaim & nilai** per `recon_status` (`COCOK`/`PENDING`/`DISPUTE`), jumlah `ANOMALI`, total `byPengajuan`, dan **rasio klaim ber-flag selisih nominal** (`has_nominal_selisih`, informasional dari G8).
+  - **AC 2**: Konsisten: Σ per recon_status = total klaim terkirim G8 pada periode; `ANOMALI` dihitung terpisah (bukan bagian dari total klaim terkirim).
+  - **AC 3**: Drill-down ke daftar klaim per status.
+
+**FR-G9-04 — Pengelolaan Berita Acara (BA)**
+- **User Story**: Sebagai Koordinator Casemix, saya ingin membuat/menerima BA dari hasil rekonsiliasi & melampirkan file bertanda tangan, agar ada dasar sah pembayaran.
+- **Prioritas**: P1
+- **Fase**: Phase 1 (buat + unggah) / Phase 2 (approval + e-sign)
+- **Acceptance Criteria**:
+  - **AC 1**: BA dibuat dari periode `RECONCILED`; `nilai_disepakati` default = Σ `bySetujui`/nilai grouper klaim `COCOK` (+ `DISPUTE` yang diterima), dapat disunting dengan alasan.
+  - **AC 2**: BA punya **nomor unik**, jenis (`Hasil Verifikasi`/`Pembayaran`), tanggal, pihak (RS & BPJS), dan tautan ke daftar klaim tercakup.
+  - **AC 3**: File BA (PDF tanda tangan) dapat diunggah; periode → `BA_ISSUED` saat BA terbit; klaim tercakup terkunci dari perubahan hasil. [PERLU KONFIRMASI kebijakan file wajib]
+  - **AC 4**: Satu periode dapat memiliki >1 BA (BA susulan). [ASUMSI]
+
+**FR-G9-05 — Penandaan & Tindak Lanjut Klaim PENDING (kembali ke G8)**
+- **User Story**: Sebagai Petugas Casemix, saya ingin menandai klaim `PENDING` untuk ditindaklanjuti (kembali ke G8 untuk re-koding, atau diterima sebagai hasil akhir), agar tidak ada klaim terlewat siklus resubmit-nya.
+- **Prioritas**: P0
+- **Fase**: Phase 1 (flag & keputusan)
+- **Acceptance Criteria**:
+  - **AC 1**: **Hanya klaim `PENDING`** yang boleh ditandai `RESUBMIT`, **dengan syarat siklus resubmit belum mencapai batas maksimal (maksimal 2× resubmit, atau `resubmit_count` < 2)**. `PENDING` adalah **satu-satunya** `recon_status` yang punya opsi `RESUBMIT`. Menandai `RESUBMIT` **tidak mengeksekusi teknis apapun di G9** — hanya mencatat keputusan & meneruskan konteks (`noSEP`, alasan) sebagai pemicu bagi tim koding untuk membuka klaim tsb kembali **di G8** (`idrg_grouper_reedit`/`inacbg_grouper_reedit`/`reedit_claim`).
+  - **AC 2**: Klaim `DISPUTE` bersifat **FINAL** — sistem **tidak menyediakan opsi RESUBMIT**; keputusan hanya `TERIMA` (kerugian diterima apa adanya) atau telaah lanjut manual.
+  - **AC 3**: Keputusan (`RESUBMIT` / `TERIMA` / `TOLAK-gagal`) wajib disertai catatan.
+  - **AC 4**: Periode **tidak dapat `CLOSED`** selama masih ada klaim `PENDING` tanpa keputusan. Klaim `DISPUTE` (final) tidak memblok bila sudah ditandai diterima. Klaim `ANOMALI` **tidak memblok penutupan periode** — catatan/telaahnya bersifat opsional (lihat AC 6).
+  - **AC 5**: **Sistem membatasi pengajuan ulang (resubmit) klaim `PENDING` maksimal 2 kali** (pencatatan pending ke-3 bersifat final). Jika `resubmit_count` mencapai nilai 2 (klaim sudah ditandai resubmit 2× dan kembali `PENDING` untuk ke-3 kalinya di export Excel berikutnya), opsi `RESUBMIT` akan **dikunci/dinonaktifkan otomatis** — dihitung langsung dari `resubmit_count` (bukan kolom terpisah, field `revisable` dihapus sejak v1.5). Pengguna dipaksa memilih keputusan akhir: `TERIMA` (menerima nilai grouper/hasil terakhir) atau `TOLAK-gagal` (klaim hangus) tanpa opsi resubmit.
+  - **AC 6**: Klaim ber-flag `ANOMALI` **tidak masuk mekanisme resubmit/siklus** — sistem hanya menyediakan **catatan telaah opsional** (bebas isi, tanpa keputusan wajib, tanpa counter) untuk ditindaklanjuti manual (cek data terkirim di G8 / cek duplikasi Excel / re-upload).
+
+**FR-G9-06 — Pencatatan Pembayaran Klaim & Rekonsiliasi Bayar**
+- **User Story**: Sebagai Keuangan RS, saya ingin mencatat pembayaran klaim per BA & melihat selisihnya, agar pendapatan klaim terekonsiliasi.
+- **Prioritas**: P1
+- **Fase**: Phase 1 (catat manual) / Phase 2 (rekonsiliasi mutasi bank)
+- **Acceptance Criteria**:
+  - **AC 1**: Pembayaran dicatat per BA: `tanggal_bayar`, `nilai_dibayar`, `no_referensi`, `bank_id`.
+  - **AC 2**: Sistem menghitung `variance` = `nilai_dibayar` − `nilai_disepakati`; variance ≠ 0 ditandai untuk ditelaah.
+  - **AC 3**: Setelah pembayaran penuh dicatat, periode → `PAID`, lalu dapat `CLOSED`.
+
+**FR-G9-07 — Approval Berjenjang Penerbitan BA** *(Phase 2)*
+- **User Story**: Sebagai Koordinator Casemix, saya ingin penerbitan BA melewati persetujuan berjenjang, agar valid sebelum dipakai.
+- **Prioritas**: P2
+- **Fase**: Phase 2
+- **Acceptance Criteria**:
+  - **AC 1**: BA `DRAFT` → `PENDING_APPROVAL` → `APPROVED`/`REJECTED` (verifikator internal → koordinator → keuangan). *(kolom `status_approval`/`approver_id` disiapkan sejak Phase 1)*
+  - **AC 2**: Hanya BA `APPROVED` yang boleh menggerakkan periode ke `BA_ISSUED`.
+
+**FR-G9-08 — Integrasi API BPJS Monitoring Klaim (opsional, menunggu ketersediaan)** *(Phase 2, [PERLU KONFIRMASI])*
+- **User Story**: Sebagai Petugas Casemix, saya ingin hasil klaim tertarik otomatis dari API BPJS (bila tersedia), agar tak perlu unggah manual.
+- **Prioritas**: P2
+- **Fase**: Phase 2 — **bergantung pada ketersediaan API tarik-hasil dari BPJS**, yang saat ini **belum dikonfirmasi tersedia/dipakai operasional** (lihat §4 Scope). Upload Excel (FR-G9-01) tetap jadi sumber utama selama API belum ada.
+- **Acceptance Criteria**:
+  - **AC 1**: Bila tersedia, sistem memanggil endpoint monitoring klaim (referensi skema `attachments/data-claim.md`) via lapisan Integrasi BPJS; hasil dipetakan ke `claim_bpjs_results` (`source = api`) dengan **skema sama** seperti hasil upload.
+  - **AC 2**: *Upsert* per `noSEP` (idempoten); bila gagal, pertahankan data existing & tampilkan error; **upload tetap tersedia sebagai fallback permanen**.
+  - **AC 3**: Penarikan dapat dijadwalkan + retry; mencatat `synced_at` + jumlah item per status untuk audit.
+  - **AC 4**: Rekonsiliasi (FR-G9-02) berjalan **identik** apa pun sumbernya (upload/API) — hanya adaptor sumber yang berbeda.
+
+**Validasi — Wording (Frontend), layar Upload/Rekonsiliasi & Buat BA**
+
+| Field | Tipe Input | Rules | Error Message | Helper Text |
+|-------|------------|-------|---------------|-------------|
+| Periode | Dropdown/Month | Required | 'Periode wajib diisi' | 'Bulan pelayanan hasil klaim' |
+| File Hasil Klaim | Upload | Required, .xlsx/.csv, maks 10MB | 'File harus .xlsx/.csv ≤ 10MB' | 'Kolom sesuai template (lihat §9)' |
+| Header/Kolom | Validasi | Sesuai template baku | 'Kolom tidak sesuai template: {kolom}' | 'Unduh contoh template' |
+| Keputusan Tindak Lanjut | Dropdown | Required saat status PENDING | 'Keputusan wajib dipilih' | 'Resubmit ke G8 / Terima' |
+| Catatan Tindak Lanjut | Text | Required jika keputusan diisi, maks 300 | 'Catatan wajib diisi' | 'Alasan keputusan' |
+| No. Berita Acara | Text | Required, unik | 'Nomor BA sudah digunakan' | 'Sesuai kebijakan RS/BPJS' |
+| Nilai Disepakati | Number | Required, ≥ 0 | 'Nilai disepakati wajib diisi' | 'Default = Σ nilai disetujui' |
+| File BA | Upload | PDF, maks 10MB | 'File harus PDF ≤ 10MB' | 'Unggah BA bertanda tangan' |
+
+## 8. Data & Technical Specifications
+
+### 8.1 Database Schema Suggestion
+
+**Table: `claim_periods`** (periode/batch rekonsiliasi per bulan pelayanan)
+- `id`: UUID (PK) · `period`: String (mis. `2026-06`) · `payer`: Enum (bpjs) · `payer_office`: String (kantor cabang, nullable)
+- `status`: Enum (open / reconciled / ba_issued / paid / closed)
+- `total_submitted`: Decimal · `total_approved`: Decimal · `total_variance`: Decimal · `total_paid`: Decimal (default 0)
+- `last_synced_at`: DateTime (nullable) · `is_active`: Boolean (default true) · `created_by`, `created_at`, `updated_at`
+
+**Table: `claim_submissions`** (klaim yang sudah **terkirim dari G8** ke E-Klaim — sisi kiri rekonsiliasi, kontrak G8→G9 lihat §9)
+- `id`: UUID (PK) · `period_id`: UUID (FK claim_periods, NOT NULL) · `sep_no`: String (NOT NULL, unik per periode) — kunci rekonsiliasi
+- `g8_claim_id`: String (NOT NULL, ref klaim di G8) · `jns_pelayanan`: Enum (1_inap / 2_jalan, NOT NULL) · `tgl_pulang`: Date (NOT NULL)
+- `submitted_amount`: Decimal (NOT NULL) — nilai diajukan (`byPengajuan`)
+- `grouper_amount`: Decimal (nullable) — nilai hasil grouper INACBG **di G8**, dihitung **sebelum submit** (grouper lokal = grouper resmi BPJS)
+- `has_nominal_selisih`: Boolean (NOT NULL, default false) — **flag informasional**, `true` bila `grouper_amount` ≠ `submitted_amount` terdeteksi **di G8 saat koding**, sebelum klaim dikirim. **Bukan recon_status** — tidak menentukan `COCOK`/`PENDING`/`DISPUTE`, hanya konteks tampilan (lihat BR-G9-11)
+- `sent_at`: DateTime (waktu `send_claim_individual` sukses) · `g8_status`: String (status klaim di G8 saat pengiriman)
+
+**Table: `claim_bpjs_results`** (baris **export Excel BPJS** Pending/Dispute — sisi kanan rekonsiliasi; **hanya berisi klaim PENDING/DISPUTE**, klaim COCOK tidak pernah muncul di sini)
+
+*Kelompok A — inti, **NOT NULL** (wajib divalidasi saat import — baris tanpa ini ditolak):*
+- `id`: UUID (PK) · `period_id`: UUID (FK claim_periods, NOT NULL) · `source`: Enum (import / api, NOT NULL — `api` disiapkan utk Phase 2 [PERLU KONFIRMASI], lihat §4)
+- `sep_no`: String (NOT NULL) — kunci rekonsiliasi; **tidak dijamin unik** per periode (duplikasi baris `sep_no` sama → flag `ANOMALI`, lihat BR-G9-13)
+- `by_pengajuan`: Decimal (NOT NULL) · `tgl_sep`: Date (NOT NULL) · `tgl_pulang`: Date (NOT NULL)
+- `jns_pelayanan`: Enum (1_inap / 2_jalan, NOT NULL) — dinormalisasi dari "Rawat Inap/Jalan" atau `1/2`
+- `bpjs_status_raw`: String (NOT NULL) — nilai status mentah dari file (mis. "Pending", "Dispute"); nilai di luar kamus dikenal → flag `ANOMALI` (BR-G9-13)
+
+*Kelompok B — **nullable**, hanya dari API Monitoring Klaim bila Phase 2 tersedia (NULL bila `source = import`):*
+- `fpk_no`: String (nullable) · `inacbg_name`: String (nullable)
+- `by_setujui`: Decimal (nullable) · `by_tarif_gruper`: Decimal (nullable) · `by_tarif_rs`: Decimal (nullable) · `by_topup`: Decimal (nullable)
+- `kelas_rawat`: String (nullable) · `peserta_no_mr`: String (nullable)
+
+*Kelompok C — **nullable**, khusus kolom file Excel pending/dispute (NULL bila `source = api`):*
+- `nama_rs`: String (nullable) · `no_reg`: String (nullable, no registrasi internal RS)
+- `jenis_pending`: String (nullable — mis. Kelengkapan Administrasi / Standar Pelayanan / Kaidah Koding)
+- `jenis_dispute`: String (nullable) · `ket_pending`: Text (nullable — narasi alasan verifikator) · `ket_jawaban`: Text (nullable — jawaban/sanggahan RS)
+
+*Umum:*
+- `inacbg_code`: String · `poli`: String (nullable) · `peserta_nama`: String · `peserta_no_kartu`: String
+- `imported_at`: DateTime (nullable, upload) · `synced_at`: DateTime (nullable, Phase 2 API) · `source_file`: String (nullable, nama file/sheet asal)
+
+**Table: `claim_reconciliations`** (hasil rekonsiliasi — per `noSEP`)
+- `id`: UUID (PK) · `period_id`: UUID (FK) · `sep_no`: String
+- `submission_id`: UUID (FK claim_submissions, nullable bila `ANOMALI` — baris Excel tak cocok klaim manapun) · `bpjs_result_id`: UUID (FK claim_bpjs_results, nullable bila `COCOK` — tidak ada baris Excel yang cocok)
+- `recon_status`: Enum (**cocok / pending / dispute**) — **`anomali` disimpan terpisah sbg flag** (lihat `is_anomaly` di bawah), bukan bagian enum recon_status utama, karena `ANOMALI` bisa terjadi tanpa ada `claim_submissions` yang valid untuk dipasangkan
+- `is_anomaly`: Boolean (default false) — `true` bila baris `claim_bpjs_results` tak cocok `sep_no` manapun di `claim_submissions`, duplikasi `sep_no`, atau `bpjs_status_raw` tak dikenal
+- `is_final`: Boolean (true untuk `cocok` & `dispute` — keputusan final, tak dapat direvisi; false untuk `pending`)
+- `resubmit_count`: Integer (NOT NULL, default 0) — melacak jumlah pengajuan ulang **klaim `PENDING`** (maksimal 2; jika bernilai 2, opsi resubmit otomatis dikunci). **Hanya relevan/di-increment untuk `recon_status = pending`**; status lain selalu 0 dan tak pernah dipakai.
+- `revisable` **(dihapus, v1.5)** — **derived**, bukan kolom tersimpan: `revisable = (recon_status = 'pending' AND resubmit_count < 2)`. Dihitung di aplikasi/view saat baca. `cocok` & `dispute` selalu `revisable = false`.
+- `submitted_amount`, `grouper_amount`, `has_nominal_selisih`: disalin/dirujuk dari `claim_submissions` untuk tampilan cepat (read-model)
+- `follow_up`: Enum (none / resubmit / terima / tolak) · `follow_up_note`: String (nullable) — untuk klaim `is_anomaly = true`, `follow_up_note` dipakai sbg **catatan telaah opsional** (bukan keputusan wajib, `follow_up` boleh tetap `none`)
+- `reconciled_at`: DateTime · `created_by`, `updated_at`
+
+**Table: `berita_acara`** (dokumen BA)
+- `id`: UUID (PK) · `period_id`: UUID (FK) · `ba_number`: String (unik) · `ba_type`: Enum (hasil_verifikasi / pembayaran) · `ba_date`: Date
+- `agreed_amount`: Decimal · `note`: String (nullable) · `party_rs`: String · `party_bpjs`: String · `file_ref`: String (nullable)
+- `status`: Enum (draft / issued / signed) · `status_approval`: Enum (none / pending / approved / rejected)  ← **disiapkan sejak Phase 1**
+- `approver_id`: UUID (nullable) · `created_by`, `created_at`, `updated_at`
+
+**Table: `claim_payments`** (realisasi pembayaran per BA)
+- `id`: UUID (PK) · `ba_id`: UUID (FK) · `paid_date`: Date · `paid_amount`: Decimal · `variance`: Decimal (paid − agreed)
+- `bank_id`: UUID (FK master Bank A38, nullable) · `reference_no`: String · `created_by`, `created_at`
+
+**Catatan konsistensi**: `sep_no` = kunci match lintas sisi (`claim_submissions` ⇄ `claim_bpjs_results` ⇄ `claim_reconciliations`). Setiap `sep_no` di `claim_submissions` yang **tidak punya pasangan** di `claim_bpjs_results` periode berjalan otomatis diberi `recon_status = cocok` saat rekonsiliasi dijalankan (BR-G9-02). `bank_id` mengacu master Bank (A38).
+
+### 8.2 API Endpoint Recommendations (internal G9)
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/v1/claim-periods/{id}/results/import` | **Upload Excel/CSV export BPJS Pending/Dispute (sumber data operasional utama)** |
+| POST | `/api/v1/claim-periods/{id}/submissions/sync` | Terima/impor daftar klaim terkirim dari G8 (kontrak §9) |
+| POST | `/api/v1/claim-periods/{id}/sync` | *(Phase 2, [PERLU KONFIRMASI])* Tarik hasil dari API BPJS Monitoring Klaim bila tersedia |
+| POST | `/api/v1/claim-periods/{id}/reconcile` | Jalankan rekonsiliasi `claim_submissions` ↔ `claim_bpjs_results`; absen di Excel → `COCOK` |
+| GET | `/api/v1/claim-periods/{id}/reconciliations` | List hasil rekonsiliasi (filter recon_status, is_anomaly) |
+| GET | `/api/v1/claim-periods/{id}/summary` | Rekap per recon_status (jumlah, nilai) + rasio `has_nominal_selisih` |
+| PATCH | `/api/v1/reconciliations/{reconId}/follow-up` | Set keputusan tindak lanjut (resubmit/terima/tolak). **Bila `follow_up = resubmit`** (hanya valid utk `recon_status = pending`, ditolak selain itu): endpoint ini **juga meng-increment `resubmit_count` +1** dalam transaksi yang sama (BR-G9-16), lalu **memicu notifikasi/status ke G8** agar klaim dibuka kembali untuk re-koding (bukan memanggil modul terpisah); balikan `423`/error bila `resubmit_count` sudah ≥ 2 |
+| POST | `/api/v1/claim-periods/{id}/berita-acara` | Buat Berita Acara dari hasil rekonsiliasi |
+| POST | `/api/v1/berita-acara/{baId}/file` | Unggah file BA |
+| POST | `/api/v1/berita-acara/{baId}/payments` | Catat pembayaran klaim |
+| PATCH | `/api/v1/claim-periods/{id}/close` | Tutup periode |
+
+### 8.3 Data & Business Rules
+
+#### 8.3.1 Spesifikasi Data — Form Keputusan Tindak Lanjut (Layar EDIT per klaim rekonsiliasi)
+
+| Field | Label | Tipe | Wajib | Validasi | Sumber | Catatan |
+|-------|-------|------|-------|----------|--------|---------|
+| sep_no | No. SEP | text | Ya (auto) | – | rekonsiliasi | read-only |
+| recon_status | Status Rekonsiliasi | badge | Ya (auto) | enum | sistem | read-only. `COCOK`/`PENDING`/`DISPUTE` |
+| is_anomaly | Anomali | badge | Tampil hanya jika true | – | sistem | read-only. Indikator kualitas data, independen dari recon_status |
+| has_nominal_selisih | Ada Selisih Nominal (G8) | badge | Tampil bila true | – | claim_submissions | read-only, informasional — **tidak memengaruhi recon_status** |
+| resubmit_count | Siklus | text/badge | Tampil hanya jika `recon_status = pending` | – | rekonsiliasi | read-only. Format **`'N/3'`** — N = pending ke-berapa (`resubmit_count + 1`), maks `'3/3 [Limit]'`. Kosong/tersembunyi untuk status selain `pending` |
+| submitted_amount | Nilai Diajukan (G8) | number | Ya (auto) | – | G8 | read-only |
+| grouper_amount | Nilai Grouper (G8) | number | Tampil bila `has_nominal_selisih` | – | G8 | read-only, konteks pra-submit |
+| follow_up | Keputusan | dropdown | Ya bila `recon_status` = pending/dispute | enum | manual | **`pending`**: resubmit (kembali ke G8)/terima/tolak (opsi `resubmit` disembunyikan otomatis jika `resubmit_count >= 2`, lihat BR-G9-15). **`dispute`**: hanya terima/tolak, **opsi `resubmit` tidak pernah tersedia** |
+| follow_up_note | Catatan | text | Ya bila follow_up diisi; **opsional** untuk klaim `is_anomaly = true` (catatan telaah bebas) | maks 300 | manual | jejak keputusan / catatan telaah |
+
+#### 8.3.2 Spesifikasi Data — Tampilan Rekonsiliasi (List View, dua sisi)
+
+| Kolom | Sumber Data | Format | Filter / Sort | Catatan |
+|-------|-------------|--------|---------------|---------|
+| No. SEP | claim_reconciliations.sep_no | text | filter | kunci match |
+| No. FPK | claim_bpjs_results.fpk_no | text | filter | dari BPJS, nullable |
+| INA-CBG | claim_bpjs_results.inacbg_code+name | text | filter | – |
+| Status Excel BPJS | claim_bpjs_results.bpjs_status_raw | badge | filter | pending/dispute; kosong bila `recon_status = cocok` (tak ada baris Excel) |
+| Recon Status | claim_reconciliations.recon_status | badge | filter | `COCOK`/`PENDING`/`DISPUTE`, warna per status |
+| Anomali | claim_reconciliations.is_anomaly | badge | filter | flag kualitas data, terpisah dari recon_status |
+| Selisih Nominal (G8) | claim_reconciliations.has_nominal_selisih + grouper_amount | badge/Rp | filter | informasional, dari G8 pra-submit — bukan penentu status |
+| Siklus | claim_reconciliations.resubmit_count | badge | filter | Hanya terisi utk klaim `PENDING`; format **`'N/3'`** (`'1/3'`, `'2/3'`, `'3/3 [Limit]'`) = pending ke-berapa, N = `resubmit_count + 1`. Kosong (`—`) utk status lain |
+| Nilai Diajukan | claim_reconciliations.submitted_amount | Rp | sort | sisi G8 |
+| Tarif RS | claim_bpjs_results.by_tarif_rs | Rp | – | pembanding (G2); nullable |
+| Jenis Pending/Dispute | claim_bpjs_results.jenis_pending / jenis_dispute | badge | filter | dari file Excel |
+| Ket. Pending | claim_bpjs_results.ket_pending | text (truncate) | – | narasi alasan verifikator (tooltip penuh) |
+| Tindak Lanjut | claim_reconciliations.follow_up | badge | filter | – |
+
+**Business Rules**
+- **BR-G9-01**: Kunci rekonsiliasi = `sep_no`. Satu `sep_no` di `claim_submissions` **maks satu** baris aktif; `sep_no` di `claim_bpjs_results` **boleh duplikat** — duplikasi memicu `is_anomaly` (BR-G9-13).
+- **BR-G9-02 (v1.6 — direvisi total)**: `recon_status` ditentukan dari **absensi/kehadiran** `sep_no` di `claim_bpjs_results` periode berjalan, **bukan** dari perbandingan nominal: `sep_no` **tidak ada** di Excel → `COCOK`; **ada** dengan `bpjs_status_raw` = pending → `PENDING`; **ada** dengan `bpjs_status_raw` = dispute → `DISPUTE`. Nominal (`by_pengajuan` vs `grouper_amount`/`by_setujui`) **tidak menentukan** recon_status.
+- **BR-G9-03**: `has_nominal_selisih`/`grouper_amount` (dari `claim_submissions`, ditentukan **di G8 sebelum submit**) ditampilkan sbg konteks di semua status — **tidak mengubah** `recon_status`. Klaim ber-flag ini tetap bisa `COCOK` maupun `DISPUTE`.
+- **BR-G9-11 (v1.6 — direvisi total, dulu "SELISIH_NILAI FINAL")**: Selisih nominal **bukan lagi recon_status final tersendiri**. Deteksinya terjadi **di G8**, pra-submit, saat koding INACBG (grouper lokal = grouper resmi BPJS) — disimpan sbg `has_nominal_selisih`/`grouper_amount` pada `claim_submissions`, murni informasional. Klaim ber-flag ini mengikuti alur normal `COCOK`/`PENDING`/`DISPUTE` seperti klaim lain.
+- **BR-G9-12 (v1.6 — direvisi)**: **Resubmit hanya berlaku untuk `PENDING`.** `PENDING` adalah **satu-satunya** `recon_status` yang boleh ditandai `RESUBMIT` (dengan batas maks 2×, lihat BR-G9-15) — eksekusi teknis re-koding dilakukan **di G8** (`idrg_grouper_reedit`/`inacbg_grouper_reedit`/`reedit_claim`), **G10 ditiadakan**. `DISPUTE` **selalu final** (tak pernah direvisi/resubmit). Klaim `is_anomaly = true` **bukan kandidat resubmit** — hanya catatan/telaah manual opsional (BR-G9-17). Opsi resubmit tidak tersedia untuk `COCOK`, `DISPUTE`, atau baris `is_anomaly = true`.
+- **BR-G9-13 (v1.6 — baru, menggantikan bekas "BR-G9-13 deteksi DISPUTE")**: Baris `claim_bpjs_results` diberi `is_anomaly = true` bila: (a) `sep_no` tidak cocok dengan `sep_no` manapun di `claim_submissions` periode yang sama, (b) `sep_no` muncul **lebih dari satu kali** dalam file Excel yang sama, atau (c) `bpjs_status_raw` berisi nilai di luar kamus dikenal ("Pending", "Dispute"). Baris `is_anomaly = true` **tidak** membentuk `claim_reconciliations` dengan `recon_status` definitif — hanya tercatat sbg flag utk telaah manual (BR-G9-17).
+- **BR-G9-14 (v1.6 — disederhanakan)**: Untuk baris `claim_bpjs_results` bersumber upload Excel, `by_setujui` umumnya **NULL** (file Pending/Dispute tidak selalu memuat nilai final disetujui) — ini **tidak menghalangi** penentuan `recon_status` karena BR-G9-02 memakai kehadiran + `bpjs_status_raw`, bukan nilai `by_setujui`. `by_setujui` hanya terisi bila sumbernya API Phase 2 (bila tersedia).
+- **BR-G9-04**: Data sisi BPJS (`claim_bpjs_results`) **read-only** (berasal dari export BPJS); koreksi hanya lewat re-koding di G8 (untuk `PENDING`) atau telaah manual (untuk `is_anomaly`).
+- **BR-G9-05**: Impor Excel bersifat **upsert** per `sep_no` dalam periode (idempoten); keputusan tindak lanjut yang sudah ada dipertahankan saat recon_status di-refresh.
+- **BR-G9-06**: Periode → `RECONCILED` hanya bila seluruh `sep_no` di `claim_submissions` memiliki `recon_status` (baik `COCOK` karena absen, maupun `PENDING`/`DISPUTE` karena ada di Excel).
+- **BR-G9-07 (v1.6 — direvisi)**: Klaim `PENDING` dan `DISPUTE` wajib `follow_up` sebelum periode `CLOSED`. Baris `is_anomaly = true` **tidak wajib** `follow_up` — catatan telaah bersifat opsional dan **tidak memblok** penutupan periode (lihat BR-G9-17).
+- **BR-G9-08**: `agreed_amount` BA default = Σ `submitted_amount`/`grouper_amount` klaim `COCOK` (+ `DISPUTE` yang diterima); perubahan wajib `note`.
+- **BR-G9-09**: `ba_number` unik; BA terbit mengunci klaim tercakup dari perubahan hasil.
+- **BR-G9-10 (dihapus, v1.6)**: ~~`by_setujui` > `by_pengajuan` dianggap anomali data~~ — tergantikan oleh BR-G9-13 (definisi `is_anomaly` baru berbasis kecocokan `sep_no`/duplikasi/status tak baku, bukan perbandingan nominal).
+- **BR-G9-15 (Maksimal 2× Resubmit, khusus PENDING)**: Klaim dengan `recon_status = PENDING` hanya dapat diajukan ulang (`RESUBMIT` — kembali ke **G8** untuk re-koding) maksimal **2 kali**. Jika setelah pengajuan ulang ke-2 klaim kembali berstatus `PENDING` di export Excel berikutnya, `resubmit_count` mencapai nilai maksimal **2** (siklus/pending ke-3). Opsi `RESUBMIT` akan **dinonaktifkan secara otomatis** — dihitung langsung dari kondisi `resubmit_count >= 2` (tidak ada kolom `revisable` terpisah, lihat §8.1). Pengguna **wajib menerima hasil akhirnya** (`TERIMA` atau `TOLAK-gagal` tanpa resubmit). Rule ini **tidak berlaku** untuk `DISPUTE` atau baris `is_anomaly = true` — keduanya tidak punya siklus resubmit sama sekali.
+- **BR-G9-16 (Pencatatan Iterasi Pending)**: Setiap kali tindakan tindak lanjut bernilai `RESUBMIT` disimpan (hanya mungkin utk klaim `PENDING`), sistem menambahkan `resubmit_count` sebanyak **1** dan memicu notifikasi ke tim koding G8 agar klaim dibuka kembali (`idrg_grouper_reedit`/`inacbg_grouper_reedit`/`reedit_claim`). Siklus pending direpresentasikan di UI rekonsiliasi dalam format `Siklus` = **`'N/3'`** (`'1/3'`, `'2/3'`, atau `'3/3 [Limit]'`, N = `resubmit_count + 1`). Kolom ini kosong/tersembunyi untuk status selain `PENDING`.
+- **BR-G9-17 (Catatan Telaah Opsional — Anomali, v1.6 — direvisi cakupan)**: Baris `is_anomaly = true` **tidak masuk mekanisme resubmit/siklus** (tidak ada `resubmit_count`, tidak ada batas, tidak ada penguncian). Sistem hanya menyediakan `follow_up_note` sbg **catatan telaah bebas & opsional** — petugas boleh menambahkan konteks investigasi (mis. "sep_no tidak ditemukan di daftar terkirim G8, cek ulang" atau "duplikasi baris, kemungkinan re-export") tanpa keharusan memilih `follow_up` formal, dan tanpa memblok penutupan periode (BR-G9-07).
+
+## 9. Integrasi Eksternal — API BPJS VClaim (Monitoring Klaim)
+
+> **Sumber data operasional G9 = upload Excel/CSV export BPJS** (Pending/Dispute). Kontrak API BPJS VClaim Monitoring Klaim (`attachments/data-claim.md`) di bawah ini adalah **referensi skema field untuk Phase 2**, dipakai **hanya jika/ketika** BPJS membuka tarik-hasil otomatis — **belum tersedia/dikonfirmasi tersedia secara operasional** [PERLU KONFIRMASI]. Autentikasi/transport VClaim (cons-id, timestamp, HMAC signature, user-key, dekripsi respons LZString) di luar cakupan G9 — ditangani lapisan Integrasi BPJS/G8 bila diaktifkan.
+
+> **Catatan fase:** **Phase 1 & 2 sama-sama memakai upload Excel/CSV** sebagai sumber utama (beda dari model versi sebelumnya yang menjadikan API sbg Phase 2 pengganti upload). Model data hasil (`claim_bpjs_results`) dibuat **union** upload + (potensial) API (§8.1) sehingga adaptor input berbeda **menulis ke skema yang sama**. **Logika rekonsiliasi (BR-G9-02) identik apa pun sumbernya**: ditentukan dari absensi/kehadiran `sep_no` + `bpjs_status_raw`, bukan dari kelengkapan nilai `bySetujui` — jadi file Pending/Dispute (tanpa `bySetujui`) sudah cukup untuk menghasilkan `PENDING`/`DISPUTE`, dan absennya `sep_no` dari file sudah cukup untuk `COCOK`.
+
+**Endpoint (GET, JSON) — Phase 2, referensi skema saja:**
+`{Base URL}/{Service Name}/Monitoring/Klaim/Tanggal/{tglPulang}/JnsPelayanan/{jns}/Status/{status}`
+- `tglPulang` — tanggal pulang, format `yyyy-mm-dd` (per tanggal; periode = iterasi rentang tanggal).
+- `jns` — jenis pelayanan: `1` Inap, `2` Jalan.
+- `status` — status klaim: `1` Proses Verifikasi, `2` Pending Verifikasi, `3` Klaim.
+
+**Pemetaan Field API → Model G9 (`claim_bpjs_results`), bila Phase 2 diaktifkan:**
+
+| Field API (`response.klaim[]`) | Field G9 | Catatan |
+|--------------------------------|----------|---------|
+| `noSEP` | `sep_no` | **kunci rekonsiliasi** ke `claim_submissions` (dari G8) |
+| `noFPK` | `fpk_no` | nomor FPK dari BPJS |
+| `status` | `bpjs_status_raw` | Proses Verifikasi / Pending Verifikasi / Klaim |
+| `Inacbg.kode` / `Inacbg.nama` | `inacbg_code` / `inacbg_name` | – |
+| `biaya.byPengajuan` | `by_pengajuan` | nilai diajukan |
+| `biaya.bySetujui` | `by_setujui` | nilai disetujui (informasional; **tidak menentukan recon_status**, lihat BR-G9-02) |
+| `biaya.byTarifGruper` | `by_tarif_gruper` | tarif grouper INA-CBG (pembanding thd `grouper_amount` milik G8) |
+| `biaya.byTarifRS` | `by_tarif_rs` | tarif RS / real cost (pembanding G2) |
+| `biaya.byTopup` | `by_topup` | top-up |
+| `kelasRawat` | `kelas_rawat` | – |
+| `peserta.nama` / `noKartu` / `noMR` | `peserta_nama` / `peserta_no_kartu` / `peserta_no_mr` | – |
+| `poli` | `poli` | – |
+| `tglSep` / `tglPulang` | `tgl_sep` / `tgl_pulang` | – |
+
+**Catatan & batasan (bila Phase 2 diaktifkan):**
+- Nilai `biaya.*` dikirim sebagai **string** → konversi ke numerik saat simpan.
+- Respons sukses ditandai `metaData.code = "200"`; selain itu = gagal (jangan ubah data existing).
+- Status monitoring terdokumentasi **3 nilai** (Proses/Pending/Klaim) — endpoint ini **tidak dipakai untuk deteksi status final G9**; recon_status G9 tetap ditentukan dari kehadiran `sep_no` di export Excel Pending/Dispute (BR-G9-02), bukan dari status API ini. API hanya melengkapi nilai (`by_setujui`, tarif) sbg konteks tambahan.
+- **Tidak ada endpoint Berita Acara** pada kontrak ini → BA tetap dari E-Klaim/manual (unggah file di G9).
+- Penarikan per-tanggal → untuk 1 periode bulanan, banyak panggilan (tgl × jenis × status). Pertimbangkan caching & rate limit. [PERLU KONFIRMASI batas kuota VClaim]
+
+**Kontrak data internal — G8 → G9 (klaim yang sudah terkirim, tabel `claim_submissions`):**
+
+| Field | Wajib | Asal | Kegunaan di G9 |
+|-------|-------|------|----------------|
+| `sep_no` | Ya | BPJS/SEP | **kunci match** ke export Excel BPJS |
+| `g8_claim_id` | Ya | internal G8 | jejak balik & pemicu resubmit/re-koding |
+| `jns_pelayanan` | Ya | pengajuan | scoping & filter |
+| `tgl_pulang` | Ya | pengajuan | scoping periode |
+| `submitted_amount` | Ya | INA-CBG (tarif diajukan) | dasar tampilan nilai diajukan |
+| `grouper_amount` | Tidak | hasil grouper INACBG **di G8**, dihitung sebelum submit | konteks selisih nominal (`has_nominal_selisih`) |
+| `has_nominal_selisih` | Ya (default false) | dihitung G8: `grouper_amount ≠ submitted_amount` | flag informasional (BR-G9-11) — **bukan penentu recon_status** |
+| `sent_at` | Ya | waktu `send_claim_individual` sukses di G8 | penanda klaim resmi "terkirim", jadi acuan periode |
+| `g8_status` | Opsional | internal G8 | status pengajuan di sisi G8 |
+
+> **G9 memiliki kontrak ini; G8 menyediakan datanya** (view read-only / endpoint / event) setiap kali `send_claim_individual` sukses. Beban G8 minimal — `grouper_amount`/`has_nominal_selisih` sudah tersedia dari proses koding INACBG yang memang dilakukan G8 (§2), tidak perlu hitungan tambahan. Mekanisme transport (view DB bersama / API internal / event) [PERLU KONFIRMASI].
+
+**Upload Excel/CSV — dua varian file & pemetaan ke skema union `claim_bpjs_results`:**
+
+Berdasar file contoh nyata, ada (minimal) **2 bentuk file** yang harus didukung via **peta kolom** saat upload:
+
+**Varian A — Template baku G9 / export Monitoring Klaim (cermin field API, lengkap nilai):** header = field API (`noSEP`, `noFPK`, `status`, `inacbgKode/Nama`, `byPengajuan/bySetujui/byTarifGruper/byTarifRS/byTopup`, `kelasRawat`, `jnsPelayanan`, `poli`, `pesertaNama/noKartu/noMR`, `tglSep/tglPulang`).
+
+**Varian B — Export "Pending/Dispute" RS** (contoh: `PENDING JUNI 2025.xlsx`, sheet `RI` Rawat Inap & `RJ` Rawat Jalan) — **sumber data operasional utama G9**, tanpa `bySetujui` & nilai lain, tetapi kaya alasan pending/dispute:
+
+| Header file (nyata) | Kolom G9 (`claim_bpjs_results`) | Tipe | Catatan |
+|---------------------|----------------------------------|------|---------|
+| `NOSEP` | `sep_no` | text | **kunci** — wajib (baris tanpa ini ditolak) |
+| `Status` | `bpjs_status_raw` | text | "Pending" atau "Dispute"; nilai lain → flag `is_anomaly` (BR-G9-13) |
+| `NOREG` | `no_reg` | text | no registrasi internal RS (khas file ini) |
+| `NAMARS` | `nama_rs` | text | – |
+| `KDINACBG` | `inacbg_code` | text | hanya kode; `inacbg_name` NULL |
+| `BYPENGAJUAN` | `by_pengajuan` | number | wajib |
+| *(tidak ada)* | `by_setujui` | number | **NULL** — file pending tak memuat; informasional saja bila terisi di masa depan |
+| *(tidak ada)* | `by_tarif_gruper/rs/topup`, `no_fpk`, `kelas_rawat`, `peserta_no_mr` | – | **NULL** |
+| `JNSPEL` | `jns_pelayanan` | text | "Rawat Inap"/"Rawat Jalan" → normalisasi `1_inap`/`2_jalan` |
+| `NOKARTU` | `peserta_no_kartu` | text | sebagian ter-masking (`00***…`); **data kotor**: cek baris berisi tanggal |
+| `NMPESERTA` | `peserta_nama` | text | sebagian ter-masking |
+| `POLI` | `poli` | text | sering kosong |
+| `TGLSEP` / `TGLPULANG` | `tgl_sep` / `tgl_pulang` | date | **serial Excel** (mis. `45825`) → konversi ke tanggal |
+| `jenis_pending` | `jenis_pending` | text | Kelengkapan Administrasi / Standar Pelayanan / Kaidah Koding |
+| `jenis_dispute` | `jenis_dispute` | text | – |
+| `ket_pending` | `ket_pending` | text | narasi alasan verifikator |
+| `ket_jawaban` | `ket_jawaban` | text | jawaban/sanggahan RS |
+
+> **Implikasi (v1.6 — direvisi):** file Varian B (pending/dispute) **cukup** untuk menghasilkan recon_status lengkap (`PENDING`/`DISPUTE` dari kehadiran + `bpjs_status_raw`; `COCOK` dari absensi — BR-G9-02) **tanpa butuh `bySetujui`**. Nilai `bySetujui`/tarif grouper dari BPJS (Varian A / API Phase 2) bersifat **pelengkap informasional**, bukan syarat penentuan status. Petugas memilih **tipe file** saat upload agar peta kolom & aturan validasi yang benar diterapkan.
+
+> **Data quality (dari file contoh):** ada baris yang kolom `NOKARTU`/`NMPESERTA`-nya berisi **tanggal** alih-alih kartu/nama (data bergeser) → validator harus menandai baris seperti ini, tidak menyimpannya diam-diam. Multi-sheet `RI`/`RJ` digabung dengan menandai `jns_pelayanan` per sheet.
+
+## 10. Workflow / BPMN Interpretation
+
+> Modul G9 belum memiliki BPMN sendiri. Alur berikut diturunkan dari pola siklus klaim BPJS Casemix (E-Klaim + export Excel BPJS) dan keterkaitan modul (G8 hulu, G2). Ditandai [ASUMSI] pada bagian turunan.
+
+**Alur Utama — Penerimaan & Rekonsiliasi (happy path):**
+1. **G8** melakukan koding & mengirim klaim ke **E-Klaim** untuk periode pelayanan (`new_claim`→`set_claim_data`→Grouping iDRG→Import ke INACBG→Grouping INACBG stage 1/2→`send_claim_individual`). Selisih nominal (bila ada) sudah terdeteksi & tercatat sbg flag `has_nominal_selisih` **di titik ini**. *(hulu — trigger)*
+2. Petugas membuka **periode** di G9 (`OPEN`); sistem menerima daftar klaim terkirim dari G8 (`claim_submissions`) dan petugas **mengunggah export Excel BPJS** (Pending/Dispute) periode berjalan → simpan `claim_bpjs_results`.
+3. G9 menjalankan **Rekonsiliasi**: setiap `sep_no` di `claim_submissions` yang **tidak muncul** di Excel → `COCOK`; yang **muncul** → `PENDING` atau `DISPUTE` sesuai `bpjs_status_raw`. Baris Excel yang tak cocok/duplikat/status tak baku → flag `ANOMALI`. Periode → `RECONCILED`.
+4. Petugas menindaklanjuti klaim `PENDING`: **RESUBMIT** (kembali ke **G8** untuk re-koding, maks 2×), atau **TERIMA** hasil akhir. Klaim `DISPUTE` (final): **TERIMA** saja. Klaim ber-flag `ANOMALI`: catatan telaah **opsional**, tanpa keputusan formal.
+5. Koordinator membuat/menerima **Berita Acara** dari hasil rekonsiliasi (nilai disepakati) + unggah file BA → periode `BA_ISSUED`.
+6. Keuangan mencatat **pembayaran** per BA → hitung selisih bayar → periode `PAID`.
+7. Setelah tuntas → periode `CLOSED`.
+
+**Cabang / skenario alternatif:**
+- **PENDING** → **satu-satunya** status dgn jalur **RESUBMIT** (kembali ke G8, maks 2×, lihat BR-G9-15/16); setelah limit tercapai, wajib TERIMA/TOLAK-gagal.
+- **DISPUTE** → **final**, tidak ada resubmit — tindak lanjut hanya **TERIMA** (kerugian apa adanya) atau telaah lanjut manual.
+- **ANOMALI** (flag, bukan recon_status) → `sep_no` di Excel tak cocok klaim manapun yang terkirim G8, duplikasi, atau status mentah tak baku → **catatan telaah opsional** (cek data terkirim di G8 / re-upload); **bukan** jalur resubmit.
+- **Selisih nominal (`has_nominal_selisih`)** → sudah diketahui **di G8 sebelum submit**; ditampilkan sbg konteks di G9 pada status manapun (`COCOK`/`PENDING`/`DISPUTE`), **tidak membentuk cabang alur tersendiri**.
+- **Upload Excel gagal/tidak lengkap** → tampilkan error validasi per baris, pertahankan data lama, petugas perbaiki & unggah ulang (upsert per `sep_no`).
+
+## Asumsi
+- [ASUMSI] Tujuan inti G9 = rekonsiliasi klaim terkirim (G8) terhadap export Excel BPJS (Pending/Dispute); BA & pembayaran adalah turunan.
+- [ASUMSI] Sumber data operasional G9 (Phase 1 & 2) = **upload Excel/CSV export BPJS Pending/Dispute**. Integrasi API BPJS Monitoring Klaim (data-claim.md) hanya dipakai **jika/ketika tersedia** sbg pelengkap nilai (bySetujui, tarif) — bukan syarat penentuan recon_status (lihat BR-G9-02, §9).
+- [ASUMSI] Absennya sep_no dari export Excel periode berjalan = klaim disetujui BPJS sesuai pengajuan/hasil grouper G8 (recon_status COCOK). Asumsi ini bergantung pada kelengkapan & kesegaran export Excel per periode — bila RS terlambat mengunggah atau file tidak mencakup seluruh klaim periode, klaim yang sebenarnya masih diproses bisa keliru dianggap COCOK. [PERLU KONFIRMASI siklus/jadwal export BPJS]
+- [ASUMSI] Selisih nominal (tarif diajukan vs tarif hasil grouper INACBG) terdeteksi **di G8**, sebelum klaim dikirim, karena grouper INACBG lokal = grouper resmi yang dipakai BPJS untuk reimbursement. Field has_nominal_selisih/grouper_amount bersifat informasional di G9, tidak memengaruhi recon_status.
+- [ASUMSI] Aturan bisnis (v1.6): **hanya PENDING yang dapat direvisi** via resubmit — dieksekusi **langsung di G8** (re-koding/re-edit), bukan modul terpisah, maksimal 2×. **DISPUTE bersifat FINAL** dan tidak dapat direvisi/resubmit. Klaim ber-flag ANOMALI hanya catatan telaah opsional, di luar mekanisme resubmit.
+- [ASUMSI] G8 menjalankan seluruh prosedur teknis pengiriman klaim ke E-Klaim (dikonfirmasi pemilik konteks, lihat §1/§2/§6) dan menyediakan kontrak data ke G9 (sep_no, jns_pelayanan, tgl_pulang, submitted_amount, grouper_amount, has_nominal_selisih, g8_claim_id); mekanisme transport data (view DB bersama/API internal/event) belum final [PERLU KONFIRMASI].
+- [ASUMSI] Alur & tahapan diturunkan dari pola export Excel BPJS RS Tipe C & D karena G9 belum memiliki BPMN sendiri.
+- [ASUMSI] Satu periode = satu bulan pelayanan; satu periode dapat memiliki lebih dari satu Berita Acara (utama + susulan).
+- [ASUMSI] Nilai disetujui (bila tersedia dari API Phase 2) = ekspektasi; pengakuan final saat pembayaran (PAID) — perlu konfirmasi keuangan.
+
+## Pertanyaan Terbuka
+- [PERLU KONFIRMASI] Mekanisme transport kontrak G8 → G9 (view DB bersama / API internal / event) — field-nya sudah disepakati (lihat §9 Kontrak G8→G9).
+- [PERLU KONFIRMASI] Siklus/jadwal export Excel BPJS Pending/Dispute dari RS (harian? mingguan?) — menentukan seberapa andal asumsi "absen dari file = COCOK" pada suatu titik waktu, dan seberapa cepat G9 bisa dianggap up-to-date.
+- [PERLU KONFIRMASI] Apakah recon_status PROSES (klaim masih diverifikasi, belum ada keputusan pending/dispute) masih relevan dipertahankan sbg status transisi, mengingat model v1.6 hanya mengenal 4 nilai (COCOK/PENDING/DISPUTE/ANOMALI) dan sumber data (Excel) tidak mengekspos status "masih proses" secara eksplisit — kemungkinan klaim yang "masih proses" di BPJS namun belum ada di Excel akan sementara tergolong COCOK hingga export berikutnya.
+- [PERLU KONFIRMASI] Format/header file upload — sudah teridentifikasi minimal 2 varian (Varian A cermin field API; Varian B export Pending/Dispute seperti file PENDING JUNI 2025.xlsx, lihat §9). Perlu dipastikan: daftar lengkap varian file yang dipakai RS serta penanganan multi-sheet (RI/RJ) & encoding CSV.
+- [PERLU KONFIRMASI] Definisi "periode" klaim (per bulan tgl pulang? tgl SEP?) dan siklus penutupan periode relatif terhadap siklus export BPJS.
+- [PERLU KONFIRMASI] Jenis Berita Acara yang dipakai RS (Hasil Verifikasi vs Pembayaran) & format penomorannya; apakah file BA wajib sebelum status pembayaran.
+- [PERLU KONFIRMASI] Kebijakan klaim DISPUTE (final, ditolak) — menjadi beban RS atau ditagihkan ke pasien, dan tautannya ke tagihan (G2).
+- [PERLU KONFIRMASI] Mekanisme notifikasi/pemicu ke tim koding G8 saat klaim ditandai RESUBMIT di G9 (otomatis via event/status bersama, atau manual/komunikasi luar sistem) & SLA tindak lanjutnya.
+- [PERLU KONFIRMASI] Apakah rekonsiliasi pembayaran perlu tautan ke mutasi bank/keuangan (G4) pada MVP atau ditunda ke Phase 2.

@@ -1,0 +1,10 @@
+{
+  "code": "A35",
+  "moduleName": "Master Data - Farmaco",
+  "cluster": "Control Panel",
+  "bpmnFile": null,
+  "mode": "knowledge",
+  "hasFlowchart": false,
+  "createdAt": "2026-07-02T00:00:00.000Z",
+  "updatedAt": "2026-07-02T00:00:00.000Z"
+}

@@ -1,0 +1,9 @@
+Fitur G2 — Tagihan Pasien (modul Billing/Kasir).
+
+Arahan scope dari user:
+- Refund, metode pembayaran (multi-metode/split), diskon, dan piutang pasien SEMUANYA masuk ke dalam G2 (Tagihan Pasien), bukan fitur terpisah.
+- Master data tarif & layanan sudah ada di A10 (dan tarif kamar di A43) — G2 hanya mengonsumsi.
+- Rekap/laporan kasir DITUNDA ke fase berikutnya (di luar G2).
+- Klaim BPJS/asuransi dipisah ke modul Casemix (G5-G12); buka/tutup kasir di G1; verifikasi kas di G4; deposit di G3.
+
+Struktur PRD mengikuti template.md (metadata, overview+as-is/to-be, goals, phasing, related features, state machine + user stories, functional req + acceptance criteria + wording validasi, DB schema + API + data/business rules, workflow).

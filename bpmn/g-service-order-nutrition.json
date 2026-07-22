@@ -1,0 +1,1724 @@
+{
+ "id": "73562261-e454-410a-8e4b-8133a20d5551",
+ "title": "g-service-order-nutrition",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "rVt0jh9in_bu",
+  "label": "E08 - Order Gizi"
+ },
+ "pages": [
+  {
+   "id": "ur2JN4oOPYg5",
+   "title": "E08 - Order Gizi",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "lgOXxlIUrM1o",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "xIgZVat5yteI",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menambahkan ke table history order gizi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "y-OXw3~OtZdJ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Data Order Gizi Masuk ke Modul Gizi - Order Makanan Pasien"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "aHNXYTlv~ZmN",
+      "class": "AdvancedSwimLaneBlockRotated",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Primary_0",
+        "text": "Dokter/Perawat"
+       },
+       {
+        "label": "Primary_1",
+        "text": "Sistem"
+       },
+       {
+        "label": "Primary_2",
+        "text": "Gizi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        ".agZnaPpURha",
+        "2OfZBs7NfgdG",
+        "DQfZ2CZxxmk8",
+        "DhOX.26Fm.MR",
+        "E7fZJDSfqWwJ",
+        "EUgZwtgRcw0.",
+        "GzOXTVh911Xt",
+        "HEgZsTZi6V3G",
+        "NfOXlZFRD-UW",
+        "UYgZJmUsS6vV",
+        "UYgZfM1kLoJh",
+        "U~fZl_O~iBfv",
+        "W0fZ.li1qhBQ",
+        "_IOXWJKzSc.y",
+        "_QfZFmXETp~V",
+        "_~fZTVSz8xwW",
+        "aHNX55NWpouu",
+        "aHNXFyGBr~5y",
+        "aHNXHZVAejmW",
+        "aHNXLLWlQ9rT",
+        "aHNXYOodI8GF",
+        "aHNXlHbW2G~O",
+        "bEgZPKwF.vdt",
+        "fOfZRH-cQM6n",
+        "fmOXpc8V5KFV",
+        "ghgZxK8H-cUU",
+        "iagZacuR_Ce9",
+        "lgOXxlIUrM1o",
+        "lqOXi3lDHP9A",
+        "nrOXxvdH74am",
+        "tTgZxh8H9~CI",
+        "vKOXxQ.psJEc",
+        "xIgZVat5yteI",
+        "y-OXw3~OtZdJ",
+        "zlOX9u6kW5Yy"
+       ],
+       "lines": [
+        "0EgZXFdetVPb",
+        "0HgZPg-hawt3",
+        "0fOX44-t22w9",
+        "2RfZtupbsX.a",
+        "8zgZ9kIXuCNH",
+        "9agZqRPkC-Nl",
+        "AAgZnynKIq0B",
+        "BKOX6m2K5JDY",
+        "BiOXwv3LFW0c",
+        "COfZKF4c_9Kg",
+        "CkOX5DdtYVIR",
+        "DAgZmetgZ2~n",
+        "KgOX~x4ezkD_",
+        "NiOXRvV4OW4S",
+        "QVgZGqrgOqn3",
+        "REgZkWdbCWmr",
+        "UEgZ_oD7mEOg",
+        "WbgZHSZ2u-Uz",
+        "_bgZlUyK_irl",
+        "aHNXVvXfy9X~",
+        "aHNXwc.ICQgr",
+        "acgZDVZ_2dXI",
+        "bUgZZ7zp~eU_",
+        "dngZ1yIgUQf-",
+        "k1gZypR98obZ",
+        "kUgZYnAob_Gj",
+        "n1gZ3H7tnLv2",
+        "o0fZ7j9yV8h7",
+        "phgZr0RshjOg",
+        "r8fZSDC.msQ8",
+        "t8fZ_NsX28Jo",
+        "thgZ6DY_k6X.",
+        "uIgZO54p.l9P",
+        "uNfZK2m5hcfr",
+        "wQfZyAtNVqgq",
+        "z8fZNQcaNIlS"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "DhOX.26Fm.MR",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Select filter tanggal"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "_QfZFmXETp~V",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input Data Order Gizi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "cHNXiUPWWEet",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "E08 - ORDER GIZI"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "ROW"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "COLUMN"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "aHNXLLWlQ9rT",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka menu Pelayanan - Rawat Inap - Order Makanan Gizi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "NfOXlZFRD-UW",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "lqOXi3lDHP9A",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan message error"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "fmOXpc8V5KFV",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tambahkan ke Tabel"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "EUgZwtgRcw0.",
+      "class": "KNBPMNEventBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Next Day"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "rVt0jh9in_bu",
+      "class": "SparkFrameBlock",
+      "textAreas": [
+       {
+        "label": "FrameTitle",
+        "text": "E08 - Order Gizi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        ".agZnaPpURha",
+        "2OfZBs7NfgdG",
+        "DQfZ2CZxxmk8",
+        "DhOX.26Fm.MR",
+        "E7fZJDSfqWwJ",
+        "EUgZwtgRcw0.",
+        "GzOXTVh911Xt",
+        "HEgZsTZi6V3G",
+        "NfOXlZFRD-UW",
+        "UYgZJmUsS6vV",
+        "UYgZfM1kLoJh",
+        "U~fZl_O~iBfv",
+        "W0fZ.li1qhBQ",
+        "_IOXWJKzSc.y",
+        "_QfZFmXETp~V",
+        "_~fZTVSz8xwW",
+        "aHNX55NWpouu",
+        "aHNXFyGBr~5y",
+        "aHNXHZVAejmW",
+        "aHNXLLWlQ9rT",
+        "aHNXYOodI8GF",
+        "aHNXYTlv~ZmN",
+        "aHNXlHbW2G~O",
+        "bEgZPKwF.vdt",
+        "cHNXiUPWWEet",
+        "fOfZRH-cQM6n",
+        "fmOXpc8V5KFV",
+        "ghgZxK8H-cUU",
+        "iagZacuR_Ce9",
+        "lgOXxlIUrM1o",
+        "lqOXi3lDHP9A",
+        "nrOXxvdH74am",
+        "tTgZxh8H9~CI",
+        "vKOXxQ.psJEc",
+        "xIgZVat5yteI",
+        "y-OXw3~OtZdJ",
+        "zlOX9u6kW5Yy"
+       ],
+       "lines": [
+        "0EgZXFdetVPb",
+        "0HgZPg-hawt3",
+        "0fOX44-t22w9",
+        "2RfZtupbsX.a",
+        "8zgZ9kIXuCNH",
+        "9agZqRPkC-Nl",
+        "AAgZnynKIq0B",
+        "BKOX6m2K5JDY",
+        "BiOXwv3LFW0c",
+        "COfZKF4c_9Kg",
+        "CkOX5DdtYVIR",
+        "DAgZmetgZ2~n",
+        "KgOX~x4ezkD_",
+        "NiOXRvV4OW4S",
+        "QVgZGqrgOqn3",
+        "REgZkWdbCWmr",
+        "UEgZ_oD7mEOg",
+        "WbgZHSZ2u-Uz",
+        "_bgZlUyK_irl",
+        "aHNXVvXfy9X~",
+        "aHNXwc.ICQgr",
+        "acgZDVZ_2dXI",
+        "bUgZZ7zp~eU_",
+        "dngZ1yIgUQf-",
+        "k1gZypR98obZ",
+        "kUgZYnAob_Gj",
+        "n1gZ3H7tnLv2",
+        "o0fZ7j9yV8h7",
+        "phgZr0RshjOg",
+        "r8fZSDC.msQ8",
+        "t8fZ_NsX28Jo",
+        "thgZ6DY_k6X.",
+        "uIgZO54p.l9P",
+        "uNfZK2m5hcfr",
+        "wQfZyAtNVqgq",
+        "z8fZNQcaNIlS"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "vKOXxQ.psJEc",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "aHNXHZVAejmW",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan history order gizi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "aHNXYOodI8GF",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "nrOXxvdH74am",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menambahkan order gizi ke dalam tabel"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "fOfZRH-cQM6n",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Auto Order?"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "GzOXTVh911Xt",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem update data tabel rencana makan pasien"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "aHNXlHbW2G~O",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan hasil filter data order gizi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "bEgZPKwF.vdt",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik Pesankan Untuk Hari Ini"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "UYgZJmUsS6vV",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mengirim Order Gizi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "DQfZ2CZxxmk8",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Non-Aktifkan Auto Order"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": ".agZnaPpURha",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Edit Item"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "tTgZxh8H9~CI",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mengirim Order Gizi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "2OfZBs7NfgdG",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Aktifkan Auto Order"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "E7fZJDSfqWwJ",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Data Lengkap?"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "W0fZ.li1qhBQ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan Order Gizi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "zlOX9u6kW5Yy",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input Data Order Gizi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "iagZacuR_Ce9",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Hapus Item"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "ghgZxK8H-cUU",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "UYgZfM1kLoJh",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Data Order Gizi Masuk ke Modul Gizi - Order Makanan Pasien"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "aHNX55NWpouu",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Input Order Gizi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "_IOXWJKzSc.y",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menambahkan ke table history order gizi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "aHNXFyGBr~5y",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan form order gizi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "HEgZsTZi6V3G",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Auto Order?"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "_~fZTVSz8xwW",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "U~fZl_O~iBfv",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "id": "acgZDVZ_2dXI",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "_~fZTVSz8xwW"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": ".agZnaPpURha"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "bUgZZ7zp~eU_",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "_IOXWJKzSc.y"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "tTgZxh8H9~CI"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "WbgZHSZ2u-Uz",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "nrOXxvdH74am"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "U~fZl_O~iBfv"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "wQfZyAtNVqgq",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "fOfZRH-cQM6n"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "2OfZBs7NfgdG"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Auto Order"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "QVgZGqrgOqn3",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "EUgZwtgRcw0."
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "xIgZVat5yteI"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kUgZYnAob_Gj",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "tTgZxh8H9~CI"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "y-OXw3~OtZdJ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "UEgZ_oD7mEOg",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "HEgZsTZi6V3G"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "bEgZPKwF.vdt"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "uNfZK2m5hcfr",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "aHNX55NWpouu"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "aHNXFyGBr~5y"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "_bgZlUyK_irl",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "U~fZl_O~iBfv"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "_~fZTVSz8xwW"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "NiOXRvV4OW4S",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "lgOXxlIUrM1o"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "DhOX.26Fm.MR"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "CkOX5DdtYVIR",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "DhOX.26Fm.MR"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "aHNXlHbW2G~O"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "r8fZSDC.msQ8",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "fmOXpc8V5KFV"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "E7fZJDSfqWwJ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "BKOX6m2K5JDY",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "aHNXlHbW2G~O"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "vKOXxQ.psJEc"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "COfZKF4c_9Kg",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "aHNXFyGBr~5y"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "fOfZRH-cQM6n"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "uIgZO54p.l9P",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "W0fZ.li1qhBQ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "EUgZwtgRcw0."
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "aHNXwc.ICQgr",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "aHNXYOodI8GF"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "aHNXLLWlQ9rT"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "t8fZ_NsX28Jo",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "E7fZJDSfqWwJ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "nrOXxvdH74am"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Ya"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "2RfZtupbsX.a",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "2OfZBs7NfgdG"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "_QfZFmXETp~V"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AAgZnynKIq0B",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "DQfZ2CZxxmk8"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "zlOX9u6kW5Yy"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "0HgZPg-hawt3",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "bEgZPKwF.vdt"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "_IOXWJKzSc.y"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "n1gZ3H7tnLv2",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "UYgZJmUsS6vV"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "UYgZfM1kLoJh"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "9agZqRPkC-Nl",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "_~fZTVSz8xwW"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "iagZacuR_Ce9"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "thgZ6DY_k6X.",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": ".agZnaPpURha"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "ghgZxK8H-cUU"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "8zgZ9kIXuCNH",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "wQfZyAtNVqgq"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "DQfZ2CZxxmk8"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Tidak Auto Order"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "0fOX44-t22w9",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "aHNXHZVAejmW"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "NfOXlZFRD-UW"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "o0fZ7j9yV8h7",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "_QfZFmXETp~V"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "fmOXpc8V5KFV"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "aHNXVvXfy9X~",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "aHNXLLWlQ9rT"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "aHNXHZVAejmW"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "k1gZypR98obZ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "xIgZVat5yteI"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "UYgZJmUsS6vV"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "REgZkWdbCWmr",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "GzOXTVh911Xt"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "HEgZsTZi6V3G"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "z8fZNQcaNIlS",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "E7fZJDSfqWwJ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "lqOXi3lDHP9A"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Tidak"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "phgZr0RshjOg",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "iagZacuR_Ce9"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "ghgZxK8H-cUU"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "BiOXwv3LFW0c",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "lgOXxlIUrM1o"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "aHNX55NWpouu"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "dngZ1yIgUQf-",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "ghgZxK8H-cUU"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "GzOXTVh911Xt"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "DAgZmetgZ2~n",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "zlOX9u6kW5Yy"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "fmOXpc8V5KFV"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "0EgZXFdetVPb",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "HEgZsTZi6V3G"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "W0fZ.li1qhBQ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "KgOX~x4ezkD_",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "NfOXlZFRD-UW"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "lgOXxlIUrM1o"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

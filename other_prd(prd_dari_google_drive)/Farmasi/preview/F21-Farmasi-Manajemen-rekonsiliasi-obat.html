@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UI Preview — F21 Management Rekonsiliasi Obat</title>
+<style>
+:root{--bg:#eef2f7;--panel:#fff;--line:#dfe5ee;--ink:#253047;--muted:#748095;--blue:#397ee8;--blue2:#eaf2ff;--green:#14965a;--green2:#e8f7ef;--red:#d84646;--red2:#fff0f0;--amber:#b66a08;--amber2:#fff6df;--thead:#f7f9fc;--shadow:0 8px 28px rgba(30,50,80,.09)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:13px/1.45 "Segoe UI",Arial,sans-serif}.wrap{max-width:1440px;margin:auto;padding:22px}.intro{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px}.intro h1{margin:0;font-size:20px}.intro p{margin:3px 0 0;color:var(--muted)}.version{background:var(--blue2);color:var(--blue);padding:5px 10px;border-radius:20px;font-weight:700}
+.nav{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}.nav button{border:1px solid var(--line);background:#fff;padding:8px 13px;border-radius:8px;color:var(--ink);cursor:pointer}.nav button.active{background:var(--blue);border-color:var(--blue);color:#fff}.screen{display:none}.screen.active{display:block}.card{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:18px}.screen-title{padding:10px 14px;background:#fbfcfe;border-bottom:1px solid var(--line);font-weight:700}.hint{font-weight:400;color:var(--muted);margin-left:8px}
+.patient{display:grid;grid-template-columns:repeat(4,1fr) auto;gap:18px;align-items:center;padding:13px 16px;border-bottom:1px solid var(--line)}.pi small{display:block;color:var(--muted);font-size:10px;margin-bottom:2px}.pi b{font-size:12px}.page-name{text-align:right;font-size:15px;font-weight:700}.close{font-size:21px;color:var(--blue);margin-left:10px}.toolbar{display:flex;gap:18px;align-items:flex-end;padding:15px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}.toolbar .lead{font-size:11px;align-self:center;color:#404b5f}.field{display:flex;flex-direction:column;gap:5px;min-width:190px}.field label{font-size:10.5px;color:var(--muted);font-weight:700}.control{height:36px;border:1px solid #ccd4df;border-radius:7px;background:#fff;padding:8px 10px;color:#4b5568}.select{display:flex;justify-content:space-between;gap:15px}.select:after{content:"▾";color:var(--muted)}.refresh{margin-left:auto;border:0;background:transparent;font-size:21px;cursor:pointer;color:#344054}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:1120px}th{background:var(--thead);color:#667085;font-size:10.5px;text-align:left;padding:10px;border-bottom:1px solid var(--line);white-space:nowrap}td{padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top}tr:hover td{background:#fbfdff}.strong{font-weight:700}.sub{font-size:10.5px;color:var(--muted);margin-top:2px}.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:14px;font-size:10.5px;font-weight:700}.ok{background:var(--green2);color:var(--green)}.bad{background:var(--red2);color:var(--red)}.warn{background:var(--amber2);color:var(--amber)}.info{background:var(--blue2);color:var(--blue)}.footer{display:flex;justify-content:flex-end;gap:15px;align-items:center;padding:12px 16px;color:var(--muted);font-size:11px}.footer select{border:0;color:var(--ink)}.pager{border:0;background:#fff;color:var(--muted);font-size:16px}.fab{position:absolute;right:30px;bottom:28px;width:48px;height:48px;border:0;border-radius:50%;background:var(--blue);color:#fff;font-size:31px;line-height:40px;box-shadow:0 7px 18px rgba(57,126,232,.35);cursor:pointer}.dash{position:relative;min-height:430px}
+.note{border-left:3px solid var(--blue);background:var(--blue2);padding:10px 12px;margin:14px 16px;border-radius:6px;color:#365078}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:16px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px 28px}.full{grid-column:1/-1}.input{width:100%;height:36px;border:0;border-bottom:1px solid #9ca6b5;padding:8px 2px;background:transparent}.textarea{width:100%;min-height:82px;border:1px solid #ccd4df;border-radius:6px;padding:10px;resize:vertical}.rule{display:grid;grid-template-columns:55px 20px 55px 1fr;align-items:end;gap:8px}.amount{display:grid;grid-template-columns:1fr 1fr;gap:16px}.seg{display:flex}.seg button{width:85px;padding:8px;border:1px solid #9aa6b5;background:#fff}.seg button.active{background:var(--blue);color:#fff;border-color:var(--blue)}.actions{display:flex;justify-content:flex-end;gap:12px;padding:14px 16px;border-top:1px solid var(--line)}.btn{border:1px solid var(--line);border-radius:7px;background:#fff;padding:8px 15px;font-weight:700;color:var(--ink);cursor:pointer}.btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.btn.danger{color:var(--red);border-color:#f0baba}.advanced{background:#f9fbfd;border:1px solid var(--line);border-radius:8px;padding:13px}.advanced h3{font-size:12px;margin:0 0 10px}.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:14px 16px}.stat{border:1px solid var(--line);border-radius:9px;padding:11px}.stat small{color:var(--muted)}.stat b{display:block;font-size:18px;margin-top:3px}.tabs{display:flex;padding:0 16px;border-bottom:1px solid var(--line);gap:20px}.tab{padding:12px 2px;color:var(--muted);cursor:pointer}.tab.active{color:var(--blue);font-weight:700;border-bottom:2px solid var(--blue)}.match-panel{display:none}.match-panel.active{display:block}.review-grid{display:grid;grid-template-columns:1fr 60px 1fr;gap:12px;align-items:center;padding:14px}.compare{border:1px solid var(--line);border-radius:8px;padding:12px}.compare h3{font-size:11px;color:var(--muted);margin:0 0 8px}.compare p{margin:5px 0}.versus{text-align:center;font-weight:800;color:var(--muted)}
+.match-head{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}.match-box{margin:14px 16px;border:1px solid var(--line);border-radius:9px;overflow:hidden}.match-title{padding:12px 14px;background:#fbfcfe;display:flex;justify-content:space-between;border-bottom:1px solid var(--line)}.alloc{display:grid;grid-template-columns:2fr repeat(4,1fr);padding:9px 13px;border-bottom:1px solid var(--line);align-items:center}.alloc.head{background:var(--thead);font-size:10.5px;color:var(--muted);font-weight:700}.qty{width:70px;border:1px solid #ccd4df;border-radius:5px;padding:6px}.impact{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 16px}.impact div{border-radius:8px;padding:10px;background:#f7f9fc}.impact b{display:block;font-size:16px}.banner{margin:14px 16px;padding:11px;border-radius:7px}.banner.warn{background:var(--amber2);color:#745013}.timeline{padding:4px 18px 18px}.event{display:grid;grid-template-columns:90px 1fr 170px;gap:15px;padding:13px 0;border-bottom:1px solid var(--line)}.event time{color:var(--muted)}.code{font-family:Consolas,monospace;font-size:11px;color:var(--muted)}.action-set{display:flex;gap:5px;flex-wrap:wrap}.action-set .btn{padding:5px 8px;font-size:10.5px}.btn.use{color:var(--blue);border-color:#a9c8f5}.btn.return{color:var(--green);border-color:#9bd4b8}.btn.move{color:var(--amber);border-color:#e8c77e}.btn.destroy{color:var(--red);border-color:#efb0b0}.action-guide{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:0 16px 16px}.guide{border:1px solid var(--line);border-radius:8px;padding:11px;background:#fbfcfe}.guide b{display:block;margin-bottom:4px}.guide small{color:var(--muted)}.bulk-bar{display:none;align-items:center;gap:8px;margin:12px 16px;padding:11px 12px;border:1px solid #b9d3f8;border-radius:9px;background:var(--blue2);box-shadow:0 4px 14px rgba(57,126,232,.1)}.bulk-bar.show{display:flex}.bulk-bar .selected{font-weight:700;color:#285ba8;margin-right:auto}.bulk-bar .btn{background:#fff}.bulk-check{width:16px;height:16px;accent-color:var(--blue);cursor:pointer}.selected-row td{background:#f3f7ff!important}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(20,30,45,.5);z-index:10;padding:25px;overflow:auto}.modal-bg.open{display:flex;align-items:flex-start;justify-content:center}.modal{width:min(950px,100%);background:#fff;border-radius:11px;box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden}.modal .patient{grid-template-columns:repeat(3,1fr) auto}.modal-body{padding:18px}.toast{display:none;position:fixed;right:25px;bottom:25px;background:#163b2b;color:#fff;padding:11px 16px;border-radius:8px;z-index:20}.toast.show{display:block}
+.patient-list table{min-width:900px}.search-only{max-width:430px;flex:1}.action-link{border:0;background:transparent;color:var(--blue);font-weight:700;cursor:pointer;padding:4px 6px}.confirmation input,.confirmation textarea{color:var(--ink)}.pharmacy-only{background:var(--blue2);color:#315f9f;border-left:3px solid var(--blue);padding:10px 14px;margin:14px 16px;border-radius:6px}
+#recommendation .impact,#recommendation>.grid2{display:none}
+@media(max-width:900px){.wrap{padding:10px}.patient{grid-template-columns:1fr 1fr}.page-name{grid-column:1/-1;text-align:left}.grid2,.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.summary{grid-template-columns:1fr 1fr}.alloc{grid-template-columns:2fr repeat(2,1fr)}.alloc>*:nth-child(4),.alloc>*:nth-child(5){display:none}.impact,.action-guide{grid-template-columns:1fr}.event{grid-template-columns:80px 1fr}.event>:last-child{grid-column:2}.modal .patient{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="intro"><div><h1>F21 — Management Rekonsiliasi Obat</h1><p>Interactive low-fidelity preview • kebutuhan utama mengikuti PRD v1.2</p></div><span class="version">UI Preview HTML</span></div>
+  <div class="nav">
+    <button class="active" data-screen="patient-list">Daftar Pasien</button>
+    <button data-screen="dashboard">Dashboard</button>
+    <button data-screen="input">Konfirmasi Obat</button>
+    <button data-screen="matching">Rekomendasi Sumber</button>
+    <button data-screen="audit">Audit Trail</button>
+  </div>
+
+  <section id="patient-list" class="screen active">
+    <div class="card patient-list">
+      <div class="screen-title">Dashboard Farmasi <span class="hint">Pasien dengan Obat Rekonsiliasi</span></div>
+      <div class="toolbar"><div class="field search-only"><label>CARI PASIEN</label><input class="control" style="width:100%" placeholder="Cari nama pasien atau No. RM"></div><button class="btn primary">Cari</button><button class="refresh" title="Muat ulang">&#8635;</button></div>
+      <div class="table-wrap"><table><thead><tr><th>No</th><th>Nama Pasien</th><th>No. RM</th><th>Jumlah Obat</th><th>Pelayanan</th><th>Jumlah Obat Layak</th><th>Aksi</th></tr></thead><tbody>
+        <tr><td>1</td><td><b>AMIN NURLAELI, Ny. (P)</b></td><td>073184</td><td><span class="badge info">3 obat</span></td><td>Rawat Inap - Mawar 2</td><td><span class="badge ok">2 obat layak</span></td><td><button class="btn primary patient-detail">Detail</button></td></tr>
+        <tr><td>2</td><td><b>BUDI SANTOSO, Tn. (L)</b></td><td>084215</td><td><span class="badge info">5 obat</span></td><td>IGD - Ruang Observasi</td><td><span class="badge ok">4 obat layak</span></td><td><button class="btn primary patient-detail">Detail</button></td></tr>
+        <tr><td>3</td><td><b>CITRA LESTARI, Ny. (P)</b></td><td>091337</td><td><span class="badge info">2 obat</span></td><td>Rawat Jalan - Poli Penyakit Dalam</td><td><span class="badge warn">1 obat layak</span></td><td><button class="btn primary patient-detail">Detail</button></td></tr>
+      </tbody></table></div><div class="footer"><span>1-3 dari 3 pasien</span></div>
+    </div>
+    <div class="pharmacy-only"><b>Khusus Farmasi.</b> Daftar hanya memuat pasien yang memiliki Obat Rekonsiliasi. Filter yang tersedia hanya nama pasien atau No. RM.</div>
+  </section>
+
+  <section id="dashboard" class="screen">
+    <div class="card dash">
+      <div class="screen-title">Design <span class="hint">Dashboard Obat Rekonsiliasi per Pasien</span></div>
+      <div class="patient">
+        <div class="pi"><small>No. RM</small><b>073184</b></div><div class="pi"><small>Nama</small><b>AMIN NURLAELI, Ny. (P)</b></div><div class="pi"><small>Tanggal Lahir</small><b>27 Juli 1972 (53 Tahun)</b></div><div class="pi"><small>Episode / Unit</small><b>RI-260719-009 • Mawar 2</b></div><div class="page-name">Rekonsiliasi Obat <span class="close">×</span></div>
+      </div>
+      <div class="toolbar"><div class="lead">Tampilkan Berdasarkan</div><div class="field"><label>ASAL OBAT</label><div class="control select">Semua Asal Obat</div></div><div class="field"><label>NAMA OBAT</label><div class="control select">Semua Obat</div></div><button class="refresh" title="Muat ulang">↻</button></div>
+      <div class="table-wrap"><table><thead><tr><th>No ↑</th><th>Nama Obat</th><th>Kekuatan / Dosis</th><th>Bentuk Sediaan</th><th>Aturan Pakai</th><th>Jumlah</th><th>Asal Obat</th><th>Kelayakan</th><th>Keputusan</th><th>Informasi Sumber</th><th>Nama Petugas</th></tr></thead><tbody>
+        <tr><td>1</td><td><span class="strong">Paracetamol</span><div class="sub">Item MF-00091</div></td><td>500 mg</td><td>Tablet</td><td>1 × 1 Bungkus</td><td><span class="strong">10 Tablet</span><div class="sub">Resv 2 • Pakai 1 • Sisa 7</div></td><td><span class="badge info">⌂ Dari Rumah</span></td><td><span class="badge ok">✓ Layak</span></td><td><span class="badge bad">■ Henti</span></td><td>Puskesmas; kemasan utuh</td><td>apt. Sari<div class="sub">19 Jul 2026 09:42</div></td></tr>
+        <tr><td>2</td><td><span class="strong">Cefixime</span><div class="sub">Item MF-00213</div></td><td>200 mg</td><td>Kapsul</td><td>2 × 1 Kapsul</td><td><span class="strong">6 Kapsul</span><div class="sub">Resv 0 • Pakai 0 • Sisa 6</div></td><td><span class="badge warn">⇄ Unit Sebelumnya</span></td><td><span class="badge ok">✓ Layak</span></td><td><span class="badge ok">▶ Lanjut</span></td><td>Transfer dari Anggrek 1</td><td>apt. Sari<div class="sub">19 Jul 2026 09:46</div></td></tr>
+        <tr><td>3</td><td><span class="strong">Amoxicillin</span><div class="sub">Belum dapat digunakan</div></td><td>500 mg</td><td>Kapsul</td><td>3 × 1 Kapsul</td><td>4 Kapsul</td><td><span class="badge info">⌂ Dari Rumah</span></td><td><span class="badge bad">× Tidak Layak</span></td><td><span class="badge warn">? Review</span></td><td>Kemasan rusak</td><td>apt. Dimas<div class="sub">19 Jul 2026 10:01</div></td></tr>
+      </tbody></table></div>
+      <div class="footer">Rows per page <select><option>5</option><option>10</option></select><span>1–3 dari 3</span><button class="pager">‹</button><button class="pager">›</button></div>
+      <button class="fab" id="openForm" title="Tambah obat" hidden>+</button>
+    </div>
+    <div class="note">Screenshot referensi digunakan untuk layout. Kolom kebutuhan utama—bentuk sediaan, kelayakan, keputusan, saldo dan petugas—tetap tersedia sesuai <b>reff/manajemen-rekonsiliasi-obat.md</b>.</div>
+  </section>
+
+  <section id="input" class="screen confirmation">
+    <div class="card">
+      <div class="screen-title">Design <span class="hint">Konfirmasi Obat oleh Farmasi</span></div>
+      <div class="patient"><div class="pi"><small>No. RM</small><b>073184</b></div><div class="pi"><small>Nama</small><b>AMIN NURLAELI, Ny. (P)</b></div><div class="pi"><small>Tanggal Lahir</small><b>27 Juli 1972 (53 Tahun)</b></div><div></div><div class="page-name">Input Data Obat</div></div>
+      <div class="pharmacy-only"><b>Konfirmasi Farmasi.</b> Data obat berasal dari sumber rekonsiliasi terintegrasi dan tidak diinput oleh Perawat. Farmasis meninjau identitas, kondisi, dan kelayakan sebelum mengonfirmasi.</div>
+      <div class="grid2">
+        <div class="form-grid">
+          <div class="field"><label>KATEGORI ASAL OBAT *</label><div class="control select">Obat pasien / dibawa dari rumah</div></div>
+          <div class="field"><label>DETAIL ASAL OBAT *</label><div class="control select">Puskesmas</div></div>
+          <div class="field"><label>NAMA OBAT *</label><input class="input" value="Paracetamol"></div>
+          <div class="field"><label>BENTUK SEDIAAN *</label><div class="control select">Tablet</div></div>
+          <div class="field"><label>KEKUATAN / DOSIS *</label><div class="amount"><input class="input" value="500"><div class="control select">mg</div></div></div>
+          <div class="field"><label>ATURAN PAKAI *</label><div class="rule"><input class="input" value="1"><b>×</b><input class="input" value="1"><div class="control select">Bungkus</div></div></div>
+          <div class="field"><label>JUMLAH *</label><div class="amount"><input class="input" value="10"><div class="control select">Tablet</div></div></div>
+          <div class="field"><label>DILANJUTKAN SAAT DI BANGSAL *</label><div class="seg"><button>Lanjut</button><button class="active">Henti</button></div></div>
+          <div class="field full"><label>INFORMASI SUMBER OBAT</label><textarea class="textarea">Diperoleh dari Puskesmas; kemasan utuh dan label terbaca.</textarea></div>
+        </div>
+        <div class="advanced">
+          <h3>Verifikasi Farmasi — wajib sebelum menjadi sumber terapi</h3>
+          <div class="form-grid">
+            <div class="field"><label>KONDISI *</label><div class="control select">Baik</div></div><div class="field"><label>STATUS KELAYAKAN *</label><div class="control select">Layak Digunakan</div></div>
+            <div class="field"><label>BATCH</label><input class="input" placeholder="Nomor batch"></div><div class="field"><label>KEDALUWARSA</label><input class="input" value="31/12/2027"></div>
+            <div class="field"><label>LOKASI PENYIMPANAN *</label><div class="control select">Lemari Pasien A-12</div></div><div class="field"><label>UNIT ASAL</label><div class="control select">Tidak berlaku</div></div>
+            <div class="field full"><label>ALASAN HENTI / CATATAN VERIFIKASI *</label><textarea class="textarea">Terapi dihentikan sesuai keputusan klinis; obat tidak dialokasikan.</textarea></div>
+            <div class="field full"><label>PETUGAS</label><div class="control">apt. Sari • Farmasis • otomatis dari sesi</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="actions"><button class="btn">Kembali</button><button class="btn primary save">SIMPAN & VERIFIKASI</button></div>
+    </div>
+  </section>
+
+  <section id="matching" class="screen">
+    <div class="card">
+      <div class="screen-title">Screen 03 <span class="hint">Pencocokan Obat dan Rekomendasi Sumber</span></div>
+      <div class="patient"><div class="pi"><small>Pasien</small><b>AMIN NURLAELI, Ny.</b></div><div class="pi"><small>Episode</small><b>RI-260719-009</b></div><div class="pi"><small>Resep Aktif</small><b>ORD-8831 • Versi 8</b></div><div class="pi"><small>Status</small><span class="badge ok">✓ Terbaru</span></div><div class="page-name">Pencocokan & Sumber</div></div>
+      <div class="tabs"><div class="tab match-tab active" data-match-panel="recommendation">Rekomendasi Sumber</div><div class="tab match-tab" data-match-panel="mismatch">Review Ketidakcocokan <span class="badge warn">2</span></div><div class="tab match-tab" data-match-panel="history">Riwayat Perhitungan</div></div>
+      <div id="recommendation" class="match-panel active">
+      <div class="match-head"><div><b>Paracetamol 500 mg • Tablet</b><div class="sub">Resep aktif dokter • 3 × 1 • kebutuhan terapi tersisa 3 tablet</div></div><span class="badge ok">✓ Cocok Tepat</span></div>
+      <div class="match-box">
+        <div class="match-title"><b>Pembagian sumber yang direkomendasikan</b><span class="sub">Prioritas: BYOM → sisa unit → stok farmasi</span></div>
+        <div class="alloc head"><span>Sumber</span><span>Tersedia</span><span>Rekomendasi</span><span>Keputusan</span><span>Billing</span></div>
+        <div class="alloc"><span><b>Obat Pasien / BYOM</b><span class="sub">Lot REC-1002 • ED 12/27</span></span><span>2 tablet</span><span>2 tablet</span><input class="qty" value="2"><span>0</span></div>
+        <div class="alloc"><span><b>Sisa Unit Sebelumnya</b><span class="sub">Mawar 1</span></span><span>0 tablet</span><span>0 tablet</span><input class="qty" value="0"><span>0</span></div>
+        <div class="alloc"><span><b>Stok Farmasi</b><span class="sub">Batch PCT-2701</span></span><span>125 tablet</span><span>1 tablet</span><input class="qty" value="1"><span>1 tablet</span></div>
+      </div>
+      <div class="impact"><div><small>Total kebutuhan</small><b>3 tablet</b></div><div><small>Inventory rekonsiliasi</small><b>−2 tablet</b></div><div><small>Stok RS / Billing</small><b>−1 / +1 tablet</b></div></div>
+      <div class="grid2"><div class="field"><label>ALASAN OVERRIDE (WAJIB JIKA DIUBAH)</label><div class="control select">Tidak ada perubahan</div></div><div class="field"><label>CATATAN</label><input class="input" placeholder="Pertimbangan klinis atau operasional"></div></div>
+      <div class="actions"><button class="btn">Hitung Ulang</button><button class="btn primary save">Konfirmasi & Reservasi</button></div>
+      </div>
+      <div id="active-prescription" class="match-panel">
+        <div class="patient"><div class="pi"><small>Dokter Pemberi Resep</small><b>dr. Andika Pratama, Sp.PD</b></div><div class="pi"><small>No. Resep</small><b>ORD-8831</b></div><div class="pi"><small>Versi</small><b>Versi 9 - Terbaru</b></div><div class="pi"><small>Waktu Resep</small><b>20 Jul 2026, 10:18 WIB</b></div><div class="page-name"><span class="badge ok">Resep Aktif</span></div></div>
+        <div class="note"><b>Resep aktif terbaru</b> yang akan diberikan kepada pasien. Versi sebelumnya tidak ditampilkan sebagai resep aktif.</div>
+        <div class="table-wrap"><table><thead><tr><th>No</th><th>Nama Obat</th><th>Dosis</th><th>Satuan</th><th>Aturan Pakai</th></tr></thead><tbody><tr><td>1</td><td><b>Paracetamol</b></td><td>500</td><td>mg Tablet</td><td>3 x 1 sesudah makan</td></tr><tr><td>2</td><td><b>Cefixime</b></td><td>200</td><td>mg Kapsul</td><td>2 x 1 sesudah makan</td></tr><tr><td>3</td><td><b>Omeprazole</b></td><td>20</td><td>mg Kapsul</td><td>1 x 1 sebelum makan</td></tr></tbody></table></div>
+        <div class="actions" style="justify-content:flex-start"><span class="sub">Diresepkan oleh <b>dr. Andika Pratama, Sp.PD</b> untuk episode RI-260719-009.</span></div>
+      </div>
+      <div id="mismatch" class="match-panel">
+        <div class="note"><b>Review Ketidakcocokan</b> digunakan saat data obat rekonsiliasi tidak identik dengan resep. Sistem tidak mengalokasikan obat secara otomatis.</div>
+        <div class="match-box"><div class="match-title"><b>Ketidakcocokan #1</b><span class="badge warn">Perlu Review Farmasis</span></div><div class="review-grid"><div class="compare"><h3>RESEP AKTIF DOKTER</h3><p><b>Paracetamol 500 mg</b></p><p>Tablet • 3 × 1 • Oral</p></div><div class="versus">≠</div><div class="compare"><h3>INVENTORY REKONSILIASI</h3><p><b>Paracetamol 650 mg</b></p><p>Kaplet • 3 × 1 • Oral</p></div></div><div class="banner warn"><b>Berbeda:</b> kekuatan 500 mg vs 650 mg dan bentuk Tablet vs Kaplet.</div><div class="actions"><button class="btn">Perbaiki Mapping/Data</button><button class="btn danger">Tandai Tidak Cocok</button><button class="btn primary">Minta Klarifikasi</button></div></div>
+        <div class="match-box"><div class="match-title"><b>Ketidakcocokan #2</b><span class="badge warn">Perlu Review Farmasis</span></div><div class="review-grid"><div class="compare"><h3>RESEP AKTIF DOKTER</h3><p><b>Metformin XR 500 mg</b></p><p>Tablet lepas lambat</p></div><div class="versus">≠</div><div class="compare"><h3>INVENTORY REKONSILIASI</h3><p><b>Metformin 500 mg</b></p><p>Tablet biasa</p></div></div><div class="banner warn"><b>Berbeda:</b> formulasi lepas lambat tidak identik dengan tablet biasa.</div></div>
+      </div>
+      <div id="history" class="match-panel">
+        <div class="note"><b>Riwayat Perhitungan</b> memperlihatkan perubahan kebutuhan dan pembagian sumber setiap kali resep atau inventory berubah. Histori lama tidak dihapus.</div>
+        <div class="table-wrap"><table><thead><tr><th>Versi</th><th>Waktu</th><th>Penyebab</th><th>Kebutuhan</th><th>Obat Pasien</th><th>Sisa Unit</th><th>Stok RS</th><th>Billing</th><th>Status</th><th>Petugas</th></tr></thead><tbody><tr><td><b>V3</b></td><td>19 Jul 10:12</td><td>Obat BYOM dinyatakan tidak layak</td><td>3 tablet</td><td>0</td><td>0</td><td>3</td><td>3</td><td><span class="badge info">Terkini</span></td><td>apt. Sari</td></tr><tr><td><b>V2</b></td><td>19 Jul 10:02</td><td>Dosis resep diturunkan</td><td>3 tablet</td><td>3</td><td>0</td><td>0</td><td>0</td><td><span class="badge warn">Kadaluarsa</span></td><td>Sistem</td></tr><tr><td><b>V1</b></td><td>19 Jul 09:45</td><td>Resep awal</td><td>6 tablet</td><td>4</td><td>0</td><td>2</td><td>2</td><td><span class="badge bad">Digantikan</span></td><td>Sistem</td></tr></tbody></table></div>
+      </div>
+    </div>
+    <div class="card"><div class="screen-title">Resep Telah Berubah — Perlu Hitung Ulang</div><div class="banner warn"><b>↻ Dokter telah mengubah resep dari versi 8 ke versi 9.</b><br>Rekomendasi sumber sebelumnya tidak berlaku dan hanya dapat dilihat dalam Riwayat Perhitungan. Reservasi obat yang belum digunakan telah dilepas menjadi saldo tersedia. Obat yang sudah digunakan tetap tercatat dan tidak dikembalikan otomatis.</div><div class="actions"><button class="btn primary" id="recalculateNow">Hitung Ulang Sekarang</button></div></div>
+  </section>
+
+  <section id="inventory" class="screen" hidden aria-hidden="true">
+    <div class="card">
+      <div class="screen-title">Screen 04 <span class="hint">Inventory Rekonsiliasi Pasien</span></div>
+      <div class="summary"><div class="stat"><small>Jumlah Awal</small><b>16 item</b></div><div class="stat"><small>Reserved</small><b>2 item</b></div><div class="stat"><small>Digunakan</small><b>1 item</b></div><div class="stat"><small>Tersisa</small><b>13 item</b></div></div>
+      <div class="table-wrap"><table><thead><tr><th><input id="selectAllInventory" class="bulk-check" type="checkbox" title="Pilih semua item aktif"></th><th>Obat / Lot</th><th>Asal</th><th>Unit Asal</th><th>Lokasi</th><th>Status</th><th>Awal</th><th>Reserved</th><th>Digunakan</th><th>Tersisa</th><th>Aksi</th></tr></thead><tbody>
+        <tr><td><input class="bulk-check inventory-check" type="checkbox" aria-label="Pilih Paracetamol 500 mg"></td><td><b>Paracetamol 500 mg</b><div class="sub">REC-1002 • ED 31/12/2027</div></td><td>Pasien/BYOM</td><td>—</td><td>Lemari A-12</td><td><span class="badge ok">● Aktif</span></td><td>10</td><td>2</td><td>1</td><td><b>7</b></td><td><div class="action-set"><button class="btn inv-action" data-action="Riwayat Stok Obat">Riwayat Stok</button></div></td></tr>
+        <tr><td><input class="bulk-check inventory-check" type="checkbox" aria-label="Pilih Cefixime 200 mg"></td><td><b>Cefixime 200 mg</b><div class="sub">REC-1010 • ED 30/08/2027</div></td><td>Sisa unit</td><td>Anggrek 1</td><td>Lemari A-12</td><td><span class="badge ok">● Aktif</span></td><td>6</td><td>0</td><td>0</td><td><b>6</b></td><td><div class="action-set"><button class="btn inv-action" data-action="Riwayat Stok Obat">Riwayat Stok</button></div></td></tr>
+      </tbody></table></div>
+      <div id="bulkInventoryBar" class="bulk-bar"><span id="bulkInventoryCount" class="selected">0 obat dipilih</span><button class="btn use bulk-action" data-action="Gunakan">Gunakan</button><button class="btn return bulk-action" data-action="Kembalikan">Kembalikan</button><button class="btn move bulk-action" data-action="Pindahkan">Pindahkan</button><button class="btn destroy bulk-action" data-action="Musnahkan">Musnahkan</button><button class="btn" id="clearInventorySelection">Batalkan Pilihan</button></div>
+      <div class="action-guide"><div class="guide"><b style="color:var(--blue)">Gunakan</b><small>Jumlah dan referensi order wajib. Tidak boleh melebihi saldo/reservasi.</small></div><div class="guide"><b style="color:var(--green)">Kembalikan</b><small>Jumlah, tujuan/penerima, dan alasan dicatat pada Riwayat Stok Obat.</small></div><div class="guide"><b style="color:var(--amber)">Pindahkan</b><small>Pilih unit/lokasi tujuan. Inventory tetap terikat pasien yang sama.</small></div><div class="guide"><b style="color:var(--red)">Musnahkan</b><small>Jumlah, alasan, metode, dan petugas wajib dicatat.</small></div></div>
+      <div class="actions"><button class="btn">Transfer Antarunit</button><button class="btn danger">Penyelesaian Pulang</button></div>
+    </div>
+  </section>
+
+  <section id="audit" class="screen">
+    <div class="card">
+      <div class="screen-title">Screen 05 <span class="hint">Audit Trail Append-only</span></div>
+      <div class="toolbar"><div class="field"><label>AKSI</label><div class="control select">Semua Aksi</div></div><div class="field"><label>PETUGAS</label><div class="control select">Semua Petugas</div></div><div class="field"><label>TANGGAL</label><div class="control">19/07/2026 — 19/07/2026</div></div><button class="btn">Ekspor</button></div>
+      <div class="timeline">
+        <div class="event"><time>10:03:04</time><div><b>DISPENSED</b><p>Paracetamol 500 mg: inventory pasien −2, stok farmasi −1, billing +1 tablet.</p><span class="code">CORR-20260719-A08F • before/after tersedia</span></div><div><b>apt. Sari</b><div class="sub">Farmasis • Farmasi RI</div></div></div>
+        <div class="event"><time>10:02:11</time><div><b>SOURCE_OVERRIDDEN</b><p>BYOM 3→2; stok farmasi 0→1. Alasan: kondisi kemasan.</p><span class="code">CORR-20260719-A07C</span></div><div><b>apt. Sari</b><div class="sub">Farmasis • Farmasi RI</div></div></div>
+        <div class="event"><time>09:42:22</time><div><b>ITEM_VERIFIED</b><p>Status kelayakan menjadi Layak Digunakan; jumlah awal 10 tablet.</p><span class="code">CORR-20260719-9F2A</span></div><div><b>apt. Sari</b><div class="sub">Farmasis • Farmasi RI</div></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="modal-bg" id="modal" hidden aria-hidden="true"><div class="modal">
+  <div class="patient"><div class="pi"><small>No. RM</small><b>073184</b></div><div class="pi"><small>Nama</small><b>AMIN NURLAELI, Ny.</b></div><div class="pi"><small>Tanggal Lahir</small><b>27 Jul 1972</b></div><div class="page-name">Input Data Obat <span class="close" id="closeForm">×</span></div></div>
+  <div class="modal-body"><div class="form-grid"><div class="field"><label>KATEGORI ASAL OBAT *</label><div class="control select">Pilih kategori asal</div></div><div class="field"><label>DETAIL ASAL OBAT *</label><div class="control select">Pilih detail sumber</div></div><div class="field"><label>NAMA OBAT *</label><input class="input" placeholder="Nama Obat"></div><div class="field"><label>BENTUK SEDIAAN *</label><div class="control select">Pilih bentuk</div></div><div class="field"><label>KEKUATAN / DOSIS *</label><input class="input" placeholder="Contoh: 500 mg"></div><div class="field"><label>JUMLAH + SATUAN *</label><input class="input" placeholder="Contoh: 10 Tablet"></div><div class="field full"><label>INFORMASI SUMBER OBAT</label><textarea class="textarea" placeholder="Tambahkan informasi sumber obat"></textarea></div></div></div>
+  <div class="actions"><button class="btn" id="cancelForm">Kembali</button><button class="btn primary save">SIMPAN DRAFT</button></div>
+</div></div>
+<div class="toast" id="toast">✓ Aksi berhasil disimulasikan pada UI preview.</div>
+<script>
+const showScreen=id=>document.querySelector('[data-screen="'+id+'"]').click();
+const dashboardTable=document.querySelector('#dashboard table');
+const actionHead=document.createElement('th');actionHead.textContent='Aksi';dashboardTable.querySelector('thead tr').appendChild(actionHead);
+dashboardTable.querySelectorAll('tbody tr').forEach(row=>{const cell=document.createElement('td');cell.innerHTML='<button class="action-link medicine-detail">Detail</button><button class="action-link stock-history">Riwayat Stok</button>';row.appendChild(cell)});
+document.querySelectorAll('.patient-detail').forEach(button=>button.onclick=()=>showScreen('dashboard'));
+document.querySelectorAll('.medicine-detail').forEach(button=>button.onclick=()=>showScreen('input'));
+document.querySelectorAll('.stock-history').forEach(button=>button.onclick=()=>{const toast=document.getElementById('toast');toast.textContent='Riwayat stok obat dibuka untuk pasien dan item terpilih.';toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2200)});
+document.querySelector('#input .page-name').textContent='Konfirmasi Obat';
+document.querySelector('#input .save').textContent='KONFIRMASI OBAT';
+document.querySelector('#input .actions .btn').onclick=()=>showScreen('dashboard');
+document.querySelectorAll('#input .grid2 > .form-grid input, #input .grid2 > .form-grid textarea').forEach(field=>field.readOnly=true);
+document.querySelector('#matching .screen-title').innerHTML='Design 03 <span class="hint">Rekomendasi Sumber</span>';
+const prescriptionTab=document.createElement('div');prescriptionTab.className='tab match-tab';prescriptionTab.dataset.matchPanel='active-prescription';prescriptionTab.textContent='Resep Aktif';document.querySelector('#matching .tabs').appendChild(prescriptionTab);
+document.querySelector('[data-match-panel="mismatch"]').style.display='none';
+document.querySelector('[data-match-panel="history"]').style.display='none';
+document.getElementById('mismatch').classList.remove('active');
+document.getElementById('history').classList.remove('active');
+document.querySelector('[data-match-panel="recommendation"]').classList.add('active');
+document.getElementById('recommendation').classList.add('active');
+document.querySelector('#matching > .card:last-child').style.display='none';
+const buttons=document.querySelectorAll('.nav button'),screens=document.querySelectorAll('.screen');
+buttons.forEach(b=>b.onclick=()=>{buttons.forEach(x=>x.classList.remove('active'));screens.forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.screen).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})});
+const modal=document.getElementById('modal');document.getElementById('openForm').onclick=()=>modal.classList.add('open');document.getElementById('closeForm').onclick=document.getElementById('cancelForm').onclick=()=>modal.classList.remove('open');modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};
+document.querySelectorAll('.save').forEach(b=>b.onclick=()=>{modal.classList.remove('open');const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)});
+document.querySelectorAll('.inv-action').forEach(b=>b.onclick=()=>{const t=document.getElementById('toast');t.textContent='Aksi “'+b.dataset.action+'” dipilih — form transaksi meminta jumlah dan detail terkait.';t.classList.add('show');setTimeout(()=>{t.classList.remove('show');t.textContent='✓ Aksi berhasil disimulasikan pada UI preview.'},2800)});
+const inventoryChecks=[...document.querySelectorAll('.inventory-check')],selectAllInventory=document.getElementById('selectAllInventory'),bulkInventoryBar=document.getElementById('bulkInventoryBar'),bulkInventoryCount=document.getElementById('bulkInventoryCount');
+function updateInventorySelection(){const selected=inventoryChecks.filter(c=>c.checked);inventoryChecks.forEach(c=>c.closest('tr').classList.toggle('selected-row',c.checked));bulkInventoryBar.classList.toggle('show',selected.length>0);bulkInventoryCount.textContent=selected.length+' obat dipilih';selectAllInventory.checked=selected.length===inventoryChecks.length;selectAllInventory.indeterminate=selected.length>0&&selected.length<inventoryChecks.length}
+inventoryChecks.forEach(c=>c.onchange=updateInventorySelection);selectAllInventory.onchange=()=>{inventoryChecks.forEach(c=>c.checked=selectAllInventory.checked);updateInventorySelection()};document.getElementById('clearInventorySelection').onclick=()=>{inventoryChecks.forEach(c=>c.checked=false);updateInventorySelection()};
+document.querySelectorAll('.bulk-action').forEach(b=>b.onclick=()=>{const count=inventoryChecks.filter(c=>c.checked).length,t=document.getElementById('toast');t.textContent='Bulk “'+b.dataset.action+'” untuk '+count+' obat — jumlah dan validasi diproses per lot.';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)});
+document.querySelectorAll('.match-tab').forEach(tab=>tab.onclick=()=>{document.querySelectorAll('.match-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.match-panel').forEach(p=>p.classList.remove('active'));tab.classList.add('active');document.getElementById(tab.dataset.matchPanel).classList.add('active')});
+document.getElementById('recalculateNow').onclick=()=>{document.querySelector('[data-match-panel="recommendation"]').click();const t=document.getElementById('toast');t.textContent='↻ Perhitungan ulang disimulasikan menggunakan resep versi terbaru.';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)};
+</script>
+</body>
+</html>

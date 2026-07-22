@@ -1,0 +1,1390 @@
+{
+ "id": "73562261-e454-410a-8e4b-8133a20d5551",
+ "title": "g-service-cpo-order",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "cHLXaPugV~BU",
+  "label": "E12 - Pelayanan - Order Catatan Pemberian Obat"
+ },
+ "pages": [
+  {
+   "id": "ur2JN4oOPYg5",
+   "title": "E12 - Pelayanan - Order Catatan Pemberian Obat",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "l.LX5rFmxCEk",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Display Table dikelompokkan per jenis sediaan obat (oral/injeksi/sirup/topikal/dll), dengan Status Icons (LANJUT/STOP)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "1njZ8d_HFrjz",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Check kondisi pasien: baru transfer dari IGD ke RI? Pasien akan dipulangkan dari RI?"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXYAOIGACm",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXb8.bzJtS",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Start"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXzJ3uCTu_",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Order Sudah Benar?"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "cHLXaPugV~BU",
+      "class": "SparkFrameBlock",
+      "textAreas": [
+       {
+        "label": "FrameTitle",
+        "text": "E12 - Pelayanan - Order Catatan Pemberian Obat"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "-y5X2Fr17cwV",
+        "1njZ8d_HFrjz",
+        "1njZKj.XrT8P",
+        "GqjZpa4BlM_9",
+        "dr9X~XFp.mLK",
+        "jG5X37zCRvtT",
+        "l.LX-lZ9uTO8",
+        "l.LX.wIkxGOO",
+        "l.LX3EOBy4X5",
+        "l.LX4RQ~2QC_",
+        "l.LX5Yh9Fssm",
+        "l.LX5rFmxCEk",
+        "l.LX61kW2i6j",
+        "l.LXBOR3xNfs",
+        "l.LXEl_Bxqo2",
+        "l.LXIcOBAHS8",
+        "l.LXK5vL11BW",
+        "l.LXLPwFMdOo",
+        "l.LXNgOUL6_6",
+        "l.LXNjEMj79t",
+        "l.LXO7mxAnB7",
+        "l.LXO_6Jb7UC",
+        "l.LXPyjEMbNV",
+        "l.LXQcM-MD-e",
+        "l.LXUbzeG2fg",
+        "l.LXUg5uN.VN",
+        "l.LXX66k~iyf",
+        "l.LXXKVM.UnK",
+        "l.LXYAOIGACm",
+        "l.LXYq-pkYYm",
+        "l.LX_MuT4a30",
+        "l.LXb8.bzJtS",
+        "l.LXcuymPWIE",
+        "l.LXeWfbgy.G",
+        "l.LXiEA-v-Cf",
+        "l.LXjI7xzfch",
+        "l.LXjLrqCmFX",
+        "l.LXp6KPnM3k",
+        "l.LXq-BU6brV",
+        "l.LXt_n_raS4",
+        "l.LXuNmpyfoP",
+        "l.LXy2VrwAQK",
+        "l.LXzJ3uCTu_",
+        "nz5Xw.vMZR23"
+       ],
+       "lines": [
+        "7E5X9E16~wP~",
+        "9E5XH1X9_vb3",
+        "CojZ49JlFpKv",
+        "RojZOt0u5vL2",
+        "Rz5XB6GzNHsE",
+        "Uz5X1HRiO4di",
+        "bF5XQzwsw~6T",
+        "cA5XzrQC58Lc",
+        "f2jZXePtMIS8",
+        "l.LX0F1h_8pu",
+        "l.LX3YIxtqZL",
+        "l.LX4DNBfYTO",
+        "l.LX4PNX6zgf",
+        "l.LX76p4ogQg",
+        "l.LXBnQ.6d9i",
+        "l.LXCDg97j7a",
+        "l.LXFUjwiof7",
+        "l.LXGwiLqLbG",
+        "l.LXHRdXn49_",
+        "l.LXIYPfJ3al",
+        "l.LXL9LPsidz",
+        "l.LXLc.4HtsP",
+        "l.LXMNR4vnVG",
+        "l.LXRakE4Vnn",
+        "l.LXSBGDmy9g",
+        "l.LXUA1nxp66",
+        "l.LXVVkjrzpk",
+        "l.LXX2C0lhtt",
+        "l.LXZ3kA0zBG",
+        "l.LX_Nruyo9F",
+        "l.LXfuXzax-R",
+        "l.LXgMH9tOgr",
+        "l.LXhYd_VpZI",
+        "l.LXni6W6SmH",
+        "l.LXqtSagGBh",
+        "l.LXtj-90XNa",
+        "l.LXuHJPi7XH",
+        "l.LXv_eOYrlK",
+        "l.LXwA2IFntT",
+        "l.LXyXuQrK.C",
+        "l.LX~6BhTeul",
+        "tD5Xcn8nD5J4"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "l.LXeWfbgy.G",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Log Audit: Siapa, Kapan, Order Apa"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LX61kW2i6j",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Dokter Ingin Order Obat untuk Pasien Rawat Inap"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXq-BU6brV",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Terima Order CPO (Pending)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXjI7xzfch",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Pasien dari List"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXjLrqCmFX",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Review Order Sebelum Submit"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXuNmpyfoP",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Generate Order ID dan Package Data"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXUg5uN.VN",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Order Tersimpan, Menunggu Farmasi"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXUbzeG2fg",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Farmasi "
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "jG5X37zCRvtT",
+        "l.LX.wIkxGOO",
+        "l.LXYAOIGACm",
+        "l.LX_MuT4a30",
+        "l.LXq-BU6brV"
+       ],
+       "lines": [
+        "l.LXCDg97j7a",
+        "l.LXv_eOYrlK",
+        "l.LX~6BhTeul"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "1njZKj.XrT8P",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Set flag URGENT pada order (IGD_TRANSFER or DISCHARGE) untuk prioritas pemrosesan farmasi"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "nz5Xw.vMZR23",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Order obat lanjut"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXNgOUL6_6",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Obat yang akan dilanjutkan/distop"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXPyjEMbNV",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Validasi Obat Baru (Kelengkapan Data)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LX-lZ9uTO8",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Edit Order"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LX.wIkxGOO",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tampilkan di Antrian Order"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXO_6Jb7UC",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Load History CPO (Existing Medications)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXp6KPnM3k",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Sistem Neurovi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "1njZ8d_HFrjz",
+        "1njZKj.XrT8P",
+        "l.LX4RQ~2QC_",
+        "l.LX5rFmxCEk",
+        "l.LXBOR3xNfs",
+        "l.LXEl_Bxqo2",
+        "l.LXK5vL11BW",
+        "l.LXO7mxAnB7",
+        "l.LXO_6Jb7UC",
+        "l.LXPyjEMbNV",
+        "l.LXeWfbgy.G",
+        "l.LXuNmpyfoP"
+       ],
+       "lines": [
+        "CojZ49JlFpKv",
+        "RojZOt0u5vL2",
+        "f2jZXePtMIS8",
+        "l.LX4PNX6zgf",
+        "l.LXGwiLqLbG",
+        "l.LXL9LPsidz",
+        "l.LXUA1nxp66",
+        "l.LXVVkjrzpk",
+        "l.LXfuXzax-R",
+        "l.LXhYd_VpZI",
+        "l.LXni6W6SmH"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "GqjZpa4BlM_9",
+      "class": "AiResponseNoteBlock",
+      "textAreas": [
+       {
+        "label": "Title",
+        "text": "Notes Order Catatan Pemberian"
+       },
+       {
+        "label": "Body",
+        "text": "1. Flagging Order Urgent\n   Sistem auto-detect & set flag URGENT untuk 2 case:\nPasien baru transfer dari IGD ke RI (IGD_TRANSFER)\nPasien dengan status persiapan pulang (DISCHARGE)\n   Order urgent ditampilkan prioritas atas di antrian farmasi.\n2. Pengelompokan Tampilan CPO\n   History CPO ditampilkan dikelompokkan per jenis sediaan obat(oral, injeksi, sirup, topikal, dll), dengan status icons\n   LANJUT/STOP per item.\n"
+       },
+       {
+        "label": "Attribution",
+        "text": "Generated by @Tamtech PO on May 17, 2026"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "jG5X37zCRvtT",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Lanjut ke: Input Pemberian Obat (Perawat)"
+       },
+       {
+        "label": "Placeholder",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LX5Yh9Fssm",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Dokter"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "-y5X2Fr17cwV",
+        "l.LX-lZ9uTO8",
+        "l.LX3EOBy4X5",
+        "l.LX61kW2i6j",
+        "l.LXIcOBAHS8",
+        "l.LXLPwFMdOo",
+        "l.LXNgOUL6_6",
+        "l.LXNjEMj79t",
+        "l.LXQcM-MD-e",
+        "l.LXUg5uN.VN",
+        "l.LXX66k~iyf",
+        "l.LXXKVM.UnK",
+        "l.LXYq-pkYYm",
+        "l.LXb8.bzJtS",
+        "l.LXcuymPWIE",
+        "l.LXiEA-v-Cf",
+        "l.LXjI7xzfch",
+        "l.LXjLrqCmFX",
+        "l.LXt_n_raS4",
+        "l.LXy2VrwAQK",
+        "l.LXzJ3uCTu_",
+        "nz5Xw.vMZR23"
+       ],
+       "lines": [
+        "7E5X9E16~wP~",
+        "9E5XH1X9_vb3",
+        "Rz5XB6GzNHsE",
+        "Uz5X1HRiO4di",
+        "bF5XQzwsw~6T",
+        "cA5XzrQC58Lc",
+        "l.LX0F1h_8pu",
+        "l.LX3YIxtqZL",
+        "l.LX4DNBfYTO",
+        "l.LXFUjwiof7",
+        "l.LXHRdXn49_",
+        "l.LXLc.4HtsP",
+        "l.LXMNR4vnVG",
+        "l.LXRakE4Vnn",
+        "l.LXSBGDmy9g",
+        "l.LXX2C0lhtt",
+        "l.LXZ3kA0zBG",
+        "l.LXgMH9tOgr",
+        "l.LXqtSagGBh",
+        "l.LXtj-90XNa",
+        "l.LXuHJPi7XH",
+        "l.LXwA2IFntT",
+        "l.LXyXuQrK.C",
+        "tD5Xcn8nD5J4"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "dr9X~XFp.mLK",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "E12 - ORDER CATATAN PEMBERIAN OBAT"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "ROW"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "COLUMN"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "-y5X2Fr17cwV",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Order baru?"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXEl_Bxqo2",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Update Status: Pending (Menunggu Farmasi)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXK5vL11BW",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Ready"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXt_n_raS4",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input Obat Non Racik (Nama, Dosis, Aturan, Rute)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LX_MuT4a30",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Note: Apoteker akan Review, Set Jadwal (ODD/non-ODD), Dispensing"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXQcM-MD-e",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tipe Obat?"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXcuymPWIE",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik Tambahkan Obat"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LX3EOBy4X5",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Submit Order ke Farmasi"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXNjEMj79t",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik Icon Obat"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXiEA-v-Cf",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik Catatan Pemberian Obat"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXX66k~iyf",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan Obat Baru"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXXKVM.UnK",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka Menu Pelayanan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXLPwFMdOo",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Terima Konfirmasi: Order Berhasil Dikirim"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LX4RQ~2QC_",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Kirim ke Antrian Farmasi"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXYq-pkYYm",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input Obat Racik (Nama Racikan, Bahan, Dosis, Aturan)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXBOR3xNfs",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Validasi Order Lanjut (Check Obat yang Ditandai)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXy2VrwAQK",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Jenis Order?"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXIcOBAHS8",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Review History CPO (Table Existing Medications)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXO7mxAnB7",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Update Status: Obat Ditandai untuk Dilanjutkan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "lines": [
+     {
+      "id": "l.LX4PNX6zgf",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXO_6Jb7UC"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LX5rFmxCEk"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "9E5XH1X9_vb3",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXYq-pkYYm"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l.LXX66k~iyf"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Rz5XB6GzNHsE",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXNgOUL6_6"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "-y5X2Fr17cwV"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXLc.4HtsP",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXy2VrwAQK"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXNgOUL6_6"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXHRdXn49_",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXQcM-MD-e"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXt_n_raS4"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "f2jZXePtMIS8",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "1njZKj.XrT8P"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l.LX4RQ~2QC_"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LX_Nruyo9F",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "l.LXNgOUL6_6"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "l.LXO7mxAnB7"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXGwiLqLbG",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXeWfbgy.G"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXK5vL11BW"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXv_eOYrlK",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LX_MuT4a30"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXYAOIGACm"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "tD5Xcn8nD5J4",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "nz5Xw.vMZR23"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l.LX3EOBy4X5"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "bF5XQzwsw~6T",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXX66k~iyf"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l.LXjLrqCmFX"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "CojZ49JlFpKv",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXuNmpyfoP"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "1njZ8d_HFrjz"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXqtSagGBh",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXQcM-MD-e"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXYq-pkYYm"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "cA5XzrQC58Lc",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "-y5X2Fr17cwV"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "nz5Xw.vMZR23"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Tidak"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LX3YIxtqZL",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LX61kW2i6j"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXXKVM.UnK"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXSBGDmy9g",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LX-lZ9uTO8"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXjLrqCmFX"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXyXuQrK.C",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXiEA-v-Cf"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXIcOBAHS8"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXtj-90XNa",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXjLrqCmFX"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXzJ3uCTu_"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXni6W6SmH",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXPyjEMbNV"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXuNmpyfoP"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "7E5X9E16~wP~",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXt_n_raS4"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l.LXX66k~iyf"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXhYd_VpZI",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LX5rFmxCEk"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXO7mxAnB7"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LX0F1h_8pu",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXXKVM.UnK"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXjI7xzfch"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXMNR4vnVG",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXNjEMj79t"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXiEA-v-Cf"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LX76p4ogQg",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "l.LXuNmpyfoP"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "l.LXq-BU6brV"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXBnQ.6d9i",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "l.LXX66k~iyf"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "l.LXPyjEMbNV"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXL9LPsidz",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXEl_Bxqo2"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXeWfbgy.G"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LX~6BhTeul",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXq-BU6brV"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LX.wIkxGOO"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXwA2IFntT",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXcuymPWIE"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXQcM-MD-e"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXCDg97j7a",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LX.wIkxGOO"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LX_MuT4a30"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXFUjwiof7",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXb8.bzJtS"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LX61kW2i6j"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXgMH9tOgr",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXIcOBAHS8"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXy2VrwAQK"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXUA1nxp66",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXO7mxAnB7"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXBOR3xNfs"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "RojZOt0u5vL2",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "1njZ8d_HFrjz"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "1njZKj.XrT8P"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXX2C0lhtt",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXLPwFMdOo"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXUg5uN.VN"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXfuXzax-R",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXBOR3xNfs"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXPyjEMbNV"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LX4DNBfYTO",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXjI7xzfch"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXNjEMj79t"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXZ3kA0zBG",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXzJ3uCTu_"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LX3EOBy4X5"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXIYPfJ3al",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "l.LXiEA-v-Cf"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "l.LXO_6Jb7UC"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXuHJPi7XH",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LXzJ3uCTu_"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LX-lZ9uTO8"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXRakE4Vnn",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LX3EOBy4X5"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXLPwFMdOo"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Uz5X1HRiO4di",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "-y5X2Fr17cwV"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l.LXcuymPWIE"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Ya"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.LXVVkjrzpk",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l.LX4RQ~2QC_"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l.LXEl_Bxqo2"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

@@ -1,0 +1,1292 @@
+{
+ "id": "8cf83baa-b5aa-4913-85f3-37ff853c5559",
+ "title": "g-backoffice-inventory-distribusi",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "l08XLNBz9DdH",
+  "label": "Unit Penerima Order | Sistem | Unit Order"
+ },
+ "pages": [
+  {
+   "id": "bucKFen3Hcc~",
+   "title": "Unit Penerima Order | Sistem | Unit Order",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "m-9XIV5UKD_1",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan list penerimaan distribusi pada dashboard "
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "HC9Xphu2y4WX",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input item tambahan\n\n"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "aa-XikCvlwN7",
+      "class": "ProcessBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Permintaan Distribusi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "hI9X0XhCs_kA",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik tombol tambah"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c99XOWEB97qd",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka menu Inventory - Penerimaan Distribusi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "fa-XUVIVtxeF",
+      "class": "ProcessBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Konfirmasi Distribusi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "l08XzOkJw58.",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "l08XDGIHiW7j",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan data"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "xb-XaX.t5i3z",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Legend Warna"
+       },
+       {
+        "label": "Placeholder",
+        "text": "plugin-default-block-placeholder"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "KR9XNr8Uacp_",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka menu Inventory - Konfirmasi Distribusi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "l08XcBB~zP3E",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Hapus item"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "l08X6VSuMeV4",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik tombol tambah"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pY9X4MHFYrUc",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "l08Xme_AJA8Y",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan list permintaan distribusi pada dashboard "
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "l08XBX3ZCzKK",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menyimpan dan mengurangi stok di unit yang mengonfirmasi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "l08XBocsQ1.A",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka menu Inventory - Permintaan Distribusi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "l08XO5e0ldwM",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Menerima pemesanan barang"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "l08XE6fU_hKu",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan form permintaan distribusi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "l08Xkt1PSISc",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "WI9X_90aK926",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menyimpan permintaan distribusi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "l08Xm6ocbTGY",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "fV9Xpp0qI4ei",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "l08XhtMmwXqF",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input item tambahan\n\n"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "l08XLNBz9DdH",
+      "class": "AdvancedSwimLaneBlockRotated",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Primary_0",
+        "text": "Unit Penerima Order"
+       },
+       {
+        "label": "Primary_1",
+        "text": "Sistem"
+       },
+       {
+        "label": "Primary_2",
+        "text": "Unit Order"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "HC9Xphu2y4WX",
+        "KR9XNr8Uacp_",
+        "WI9X_90aK926",
+        "aa-XikCvlwN7",
+        "c99XOWEB97qd",
+        "fV9XaaOL7WTB",
+        "fV9Xpp0qI4ei",
+        "fa-XUVIVtxeF",
+        "hI9X0XhCs_kA",
+        "ia-XJLY7CYT5",
+        "l08X2v1dpR1d",
+        "l08X6VSuMeV4",
+        "l08XBX3ZCzKK",
+        "l08XBocsQ1.A",
+        "l08XBuw-y7zv",
+        "l08XCNUMQi56",
+        "l08XDGIHiW7j",
+        "l08XE6fU_hKu",
+        "l08XO5e0ldwM",
+        "l08XcBB~zP3E",
+        "l08XhtMmwXqF",
+        "l08Xkt1PSISc",
+        "l08Xm6ocbTGY",
+        "l08Xme_AJA8Y",
+        "l08XorgW1NPd",
+        "l08XzOkJw58.",
+        "m-9XIV5UKD_1",
+        "pY9X4MHFYrUc",
+        "xb-XaX.t5i3z"
+       ],
+       "lines": [
+        ".Y9X2._duANV",
+        "7X9XzDNkw9d.",
+        "ER9XXCMBWMu6",
+        "LO9XNdcNHBUQ",
+        "P-9X3~znu.P2",
+        "T_9XGXEIK6Vy",
+        "fV9X4fVsLcx-",
+        "fV9XktVybhOO",
+        "l08X9rX_ZcM.",
+        "l08XAjoGCH4-",
+        "l08XFjAG9DZw",
+        "l08XGNRCOxi_",
+        "l08XPoo4oxUv",
+        "l08XQfD~dCCs",
+        "l08XSa4~t36k",
+        "l08XV17nKopL",
+        "l08XVqK38zZL",
+        "l08XYz~6h1IZ",
+        "l08XZLfLQ7-x",
+        "l08XgplevRtC",
+        "l08Xn.3Vlp8k",
+        "l08Xp0pwhh04",
+        "l08XwqbnqZkS",
+        "l08XxA1WCU2D",
+        "l08X~ycfnFU4",
+        "oI9XZ~KrZiF7",
+        "zY9X3AwquK_s"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "ia-XJLY7CYT5",
+      "class": "ProcessBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Penerimaan Distribusi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "l08X2v1dpR1d",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "l08XBuw-y7zv",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Edit jumlah"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "l08XorgW1NPd",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik konfirmasi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "l08XCNUMQi56",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "fV9XaaOL7WTB",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan list konfirmasi distribusi pada dashboard "
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "id": "7X9XzDNkw9d.",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "fV9XaaOL7WTB"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pY9X4MHFYrUc"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l08X~ycfnFU4",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l08Xkt1PSISc"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l08XcBB~zP3E"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l08XSa4~t36k",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l08XE6fU_hKu"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "HC9Xphu2y4WX"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l08XAjoGCH4-",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l08XDGIHiW7j"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l08XBX3ZCzKK"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "LO9XNdcNHBUQ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "hI9X0XhCs_kA"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "WI9X_90aK926"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oI9XZ~KrZiF7",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "HC9Xphu2y4WX"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "hI9X0XhCs_kA"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l08XwqbnqZkS",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l08Xme_AJA8Y"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l08X6VSuMeV4"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "P-9X3~znu.P2",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c99XOWEB97qd"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "m-9XIV5UKD_1"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": ".Y9X2._duANV",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pY9X4MHFYrUc"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l08Xkt1PSISc"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Ada Perubahan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l08XQfD~dCCs",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l08XBX3ZCzKK"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "c99XOWEB97qd"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l08Xp0pwhh04",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l08XcBB~zP3E"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l08X2v1dpR1d"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l08XZLfLQ7-x",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l08Xkt1PSISc"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l08XhtMmwXqF"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "zY9X3AwquK_s",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pY9X4MHFYrUc"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l08XorgW1NPd"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Tidak ada perubahan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l08XV17nKopL",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l08XhtMmwXqF"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l08X2v1dpR1d"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l08X9rX_ZcM.",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l08XBocsQ1.A"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l08Xm6ocbTGY"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l08XVqK38zZL",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l08XzOkJw58."
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "l08XBocsQ1.A"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T_9XGXEIK6Vy",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "m-9XIV5UKD_1"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l08XO5e0ldwM"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l08Xn.3Vlp8k",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l08X2v1dpR1d"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l08XDGIHiW7j"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "ER9XXCMBWMu6",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "WI9X_90aK926"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "KR9XNr8Uacp_"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l08XxA1WCU2D",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l08Xm6ocbTGY"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l08Xme_AJA8Y"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l08XFjAG9DZw",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l08XBuw-y7zv"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l08X2v1dpR1d"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "fV9X4fVsLcx-",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "KR9XNr8Uacp_"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "fV9Xpp0qI4ei"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "fV9XktVybhOO",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "fV9Xpp0qI4ei"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "fV9XaaOL7WTB"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l08XGNRCOxi_",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l08Xkt1PSISc"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l08XBuw-y7zv"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l08XYz~6h1IZ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l08XorgW1NPd"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l08XBX3ZCzKK"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l08XgplevRtC",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l08X6VSuMeV4"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l08XE6fU_hKu"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l08XPoo4oxUv",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l08XO5e0ldwM"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l08XCNUMQi56"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

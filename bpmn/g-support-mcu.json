@@ -1,0 +1,1118 @@
+{
+ "id": "f9125fff-5d36-48dc-bb05-d95d1257cd3c",
+ "title": "g-support-mcu",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "k.iZdbmbxV.~",
+  "label": "F39 F40 F41-MCU"
+ },
+ "pages": [
+  {
+   "id": "f~4Xbp8yyK1t",
+   "title": "F39 F40 F41-MCU",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "c.iZuuAd7Uo1",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menyimpan data tindakan, asesmen, dan order penunjang"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZC6E9N-qM",
+      "class": "AdvancedSwimLaneBlockRotated",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Primary_0",
+        "text": "Perawat"
+       },
+       {
+        "label": "Primary_1",
+        "text": "Sistem"
+       },
+       {
+        "label": "Primary_2",
+        "text": "Dokter"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "c.iZ0Qm6W_CQ",
+        "c.iZ3YnKdTB5",
+        "c.iZ7pgfTmn9",
+        "c.iZ8aRerFmg",
+        "c.iZE6VnEvn9",
+        "c.iZFnB0sACj",
+        "c.iZFvkIL0j3",
+        "c.iZV03gf81J",
+        "c.iZVA0bPA5H",
+        "c.iZWRy_hehh",
+        "c.iZgmOWRD7i",
+        "c.iZgwPGRhul",
+        "c.iZlu-jHyVD",
+        "c.iZqI355QfK",
+        "c.iZt-MXLodR",
+        "c.iZttB1BX48",
+        "c.iZtvJdYpPF",
+        "c.iZt~StqwHp",
+        "c.iZuuAd7Uo1",
+        "c.iZu~OQLMBJ",
+        "c.iZvnyLTcnt",
+        "c.iZxiHKesq5",
+        "k.iZyWcovVnt"
+       ],
+       "lines": [
+        "KdP0uMZ1JgEq",
+        "UdP0q2BQRqCR",
+        "c.iZ06H8KTpS",
+        "c.iZ0b_8_xDc",
+        "c.iZ9WxTwNw8",
+        "c.iZBpy1eXeX",
+        "c.iZFVWT.qj4",
+        "c.iZO2O0keqA",
+        "c.iZO40gpfC7",
+        "c.iZRntAO9-m",
+        "c.iZd8~yt_J5",
+        "c.iZdzAsjaTb",
+        "c.iZg_0PwIeY",
+        "c.iZlPbyjmgG",
+        "c.iZoNVoGRWo",
+        "c.iZrF7SfSFb",
+        "c.iZrMpBJT0F",
+        "c.iZul0vtAi0",
+        "c.iZvkc~nCl0",
+        "c.iZyF7SsJLJ"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "c.iZt-MXLodR",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "k.iZVo-YS1i.",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "F39 F40 F41-MCU"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_3"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZ8aRerFmg",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZE6VnEvn9",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZgwPGRhul",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Order paket MCU (penunjang)"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "k.iZyWcovVnt",
+      "class": "RectangleContainerBlock",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [],
+       "lines": [],
+       "groups": []
+      }
+     },
+     {
+      "id": "c.iZvnyLTcnt",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Menyerahkan Print hasil MCU"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZttB1BX48",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Print bundle hasil MCU"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "k.iZdbmbxV.~",
+      "class": "RectangleContainerBlock",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": "F39 F40 F41-MCU"
+       },
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "c.iZ0Qm6W_CQ",
+        "c.iZ3YnKdTB5",
+        "c.iZ7pgfTmn9",
+        "c.iZ8aRerFmg",
+        "c.iZC6E9N-qM",
+        "c.iZE6VnEvn9",
+        "c.iZFnB0sACj",
+        "c.iZFvkIL0j3",
+        "c.iZV03gf81J",
+        "c.iZVA0bPA5H",
+        "c.iZWRy_hehh",
+        "c.iZgmOWRD7i",
+        "c.iZgwPGRhul",
+        "c.iZlu-jHyVD",
+        "c.iZqI355QfK",
+        "c.iZt-MXLodR",
+        "c.iZttB1BX48",
+        "c.iZtvJdYpPF",
+        "c.iZt~StqwHp",
+        "c.iZuuAd7Uo1",
+        "c.iZu~OQLMBJ",
+        "c.iZvnyLTcnt",
+        "c.iZxiHKesq5",
+        "k.iZVo-YS1i.",
+        "k.iZyWcovVnt"
+       ],
+       "lines": [
+        "KdP0uMZ1JgEq",
+        "UdP0q2BQRqCR",
+        "c.iZ06H8KTpS",
+        "c.iZ0b_8_xDc",
+        "c.iZ9WxTwNw8",
+        "c.iZBpy1eXeX",
+        "c.iZFVWT.qj4",
+        "c.iZO2O0keqA",
+        "c.iZO40gpfC7",
+        "c.iZRntAO9-m",
+        "c.iZd8~yt_J5",
+        "c.iZdzAsjaTb",
+        "c.iZg_0PwIeY",
+        "c.iZlPbyjmgG",
+        "c.iZoNVoGRWo",
+        "c.iZrF7SfSFb",
+        "c.iZrMpBJT0F",
+        "c.iZul0vtAi0",
+        "c.iZvkc~nCl0",
+        "c.iZyF7SsJLJ"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "c.iZt~StqwHp",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menghapus order pelayanan MCU"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZtvJdYpPF",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai pelayanan MCU"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZFvkIL0j3",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input alasan penolakan"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZ7pgfTmn9",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input asesmen perawat (dinamis)"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZ3YnKdTB5",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZV03gf81J",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sitem mengubah status pelayanan MCU == selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZVA0bPA5H",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input asesmen dokter"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZqI355QfK",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan data"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZ0Qm6W_CQ",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZFnB0sACj",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka menu MCU"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZu~OQLMBJ",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZxiHKesq5",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan data"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZlu-jHyVD",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZgmOWRD7i",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input tindakan\n"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "c.iZWRy_hehh",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "id": "c.iZ0b_8_xDc",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZV03gf81J"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "c.iZt-MXLodR"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "c.iZrF7SfSFb",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZtvJdYpPF"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "c.iZV03gf81J"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "c.iZ06H8KTpS",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZu~OQLMBJ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "c.iZVA0bPA5H"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "c.iZBpy1eXeX",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZlu-jHyVD"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "c.iZuuAd7Uo1"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "c.iZlPbyjmgG",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZVA0bPA5H"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "c.iZ3YnKdTB5"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "c.iZvkc~nCl0",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZqI355QfK"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "c.iZt~StqwHp"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "c.iZyF7SsJLJ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZ3YnKdTB5"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "c.iZxiHKesq5"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "c.iZrMpBJT0F",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZFnB0sACj"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "c.iZWRy_hehh"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "menerima order MCU\ndari pendaftaran"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "UdP0q2BQRqCR",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZu~OQLMBJ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "k.iZyWcovVnt"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "c.iZO40gpfC7",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZt~StqwHp"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "c.iZ0Qm6W_CQ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "c.iZO2O0keqA",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZE6VnEvn9"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "c.iZu~OQLMBJ"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "terima"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "c.iZ9WxTwNw8",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZWRy_hehh"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "c.iZE6VnEvn9"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "KdP0uMZ1JgEq",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "k.iZyWcovVnt"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "c.iZ3YnKdTB5"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "c.iZg_0PwIeY",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZxiHKesq5"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "c.iZlu-jHyVD"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "kirim order penunjang\n(laboratorium/radiologi)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "c.iZoNVoGRWo",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZ8aRerFmg"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "c.iZFnB0sACj"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "c.iZFVWT.qj4",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZuuAd7Uo1"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "c.iZttB1BX48"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "c.iZRntAO9-m",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZFvkIL0j3"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "c.iZqI355QfK"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "c.iZul0vtAi0",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZttB1BX48"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "c.iZvnyLTcnt"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "c.iZd8~yt_J5",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZE6VnEvn9"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "c.iZFvkIL0j3"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "tolak"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "c.iZdzAsjaTb",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "c.iZvnyLTcnt"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "c.iZtvJdYpPF"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

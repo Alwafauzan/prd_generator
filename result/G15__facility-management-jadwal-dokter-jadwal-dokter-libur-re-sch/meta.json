@@ -1,0 +1,11 @@
+{
+  "code": "G15",
+  "moduleName": "Facility Management — Jadwal dokter (Jadwal dokter (Libur & Re-schedule))",
+  "cluster": "Core Integration",
+  "bpmnFile": null,
+  "mode": "developed (claude-code)",
+  "hasFlowchart": false,
+  "attachments": [],
+  "createdAt": "2026-06-18T06:48:58.736Z",
+  "updatedAt": "2026-06-19T13:57:44.337Z"
+}

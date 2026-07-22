@@ -1,0 +1,333 @@
+# PRD — Order Catatan Pemberian Obat (CPO)
+
+**Related Document:** BPMN g-service-cpo-order.json; List Fitur V2.xlsx (sheet MVP, code E12); Terkait E2 Order Resep, E23 CPO - Input Waktu Pemberian Obat, E11 Transfer Internal, E13 Discharge Pasien
+**Versi:** 1.1 - Tambah BR anti-duplikasi obat per hari
+**Tanggal:** 2026-06-22
+
+## 1. Overview / Brief Summary
+
+**Order Catatan Pemberian Obat (CPO)** adalah modul EMR SIMRS untuk **memesan (order) terapi obat** pasien rawat inap dan unit setara (Rawat Inap, IBS, IGD, VK) secara elektronik, lalu mendokumentasikannya sebagai dasar pelaksanaan pemberian obat oleh perawat.
+
+Scope PRD ini = **sisi ORDER** (BPMN `g-service-cpo-order.json`): dokter membuat/melanjutkan/menghentikan order obat → sistem validasi & paketkan order → kirim ke antrian Farmasi. Pencatatan **waktu aktual pemberian obat** (eMAR/6-benar di sisi perawat) berada di modul terpisah **E23 – CPO Input Waktu Pemberian Obat**; PRD ini hanya menyiapkan datanya.
+
+Modul jadi media komunikasi terintegrasi **Dokter ↔ Sistem ↔ Farmasi**. Data order: nama obat, sediaan, dosis, frekuensi, rute, jadwal, durasi, instruksi khusus. Sistem menandai order **URGENT** untuk konteks transfer IGD→RI atau rencana pulang (discharge), mencatat **log audit**, dan memberi status order (Pending → menunggu Farmasi).
+
+Mendukung prinsip keselamatan pasien (six rights) dan mengurangi *medication error* lewat validasi kelengkapan order, **pencegahan duplikasi obat (anti double-order obat sama di hari sama)**, & telusur audit.
+
+## 2. Background
+
+**Masalah saat ini (RS Tipe C & D):**
+- Order obat ranap sering ditulis manual di lembar instruksi/CPPT → tidak terstruktur, tulisan sulit dibaca, risiko salah baca dosis/rute.
+- Komunikasi dokter→farmasi via lembar resep fisik/telepon → delay, tidak ada status real-time, sulit telusur siapa-kapan-apa.
+- Riwayat obat berjalan (existing medications) tidak terkonsolidasi → risiko **duplikasi terapi** / interaksi terlewat. Dokter bisa tak sengaja order obat yang sama dua kali di hari yang sama → overdosis / double dispensing farmasi.
+- Order saat pasien transfer (IGD→RI) atau menjelang pulang tidak diprioritaskan → obat telat sampai.
+- Audit & pemenuhan akreditasi (PKPO, RME) sulit karena dokumentasi tidak elektronik.
+
+**Kenapa modul ini perlu:** menstandarkan order obat elektronik terstruktur, memberi status & prioritas, **mencegah duplikasi order obat aktif**, menyatukan riwayat CPO, dan menyediakan jejak audit untuk keselamatan pasien + akreditasi + kepatuhan RME (Permenkes 24/2022). [PERLU KONFIRMASI] nomor regulasi RME yang dijadikan acuan resmi RS.
+
+## 3. In Scope
+
+### Scope Definition (dikerjakan)
+1. Layar pemilihan pasien dari list pelayanan (RI/IBS/IGD/VK).
+2. Tampilan **History CPO** (existing medications) dikelompokkan per jenis sediaan (oral/injeksi/sirup/topikal/dll) dengan status icon **LANJUT/STOP**.
+3. Order obat **baru**: input obat **non-racik** (nama, dosis, aturan, rute) & obat **racik** (nama racikan, bahan, dosis, aturan).
+4. Order **lanjut/stop**: pilih obat existing yang dilanjutkan atau dihentikan.
+5. Review order sebelum submit + edit order.
+6. Validasi kelengkapan data obat baru & validasi order lanjut.
+7. **Validasi anti-duplikasi**: cegah order obat yang sama untuk pasien sama pada hari (tanggal) yang sama bila masih ada order aktif. (BR-012)
+8. **Generate Order ID** + packaging data order.
+9. Deteksi kondisi pasien (transfer IGD→RI / akan discharge) → set flag **URGENT**.
+10. Kirim order ke **antrian Farmasi** + update status **Pending**.
+11. **Log audit** (siapa, kapan, order apa).
+12. Konfirmasi ke dokter: order berhasil dikirim.
+
+### Out Scope (TIDAK dikerjakan di PRD ini)
+- Pencatatan waktu aktual pemberian obat / eMAR / verifikasi 6-benar oleh perawat → **modul E23**.
+- Review apoteker, penjadwalan ODD/non-ODD, dispensing, stok & billing obat → **modul Farmasi / E2 Order Resep**.
+- Skrining interaksi obat / DDI otomatis & alergi-checking otomatis → [PERLU KONFIRMASI] apakah masuk MVP. [ASUMSI] tidak masuk MVP. (Catatan: anti-duplikasi obat identik **berbeda** dari skrining interaksi — anti-duplikasi MASUK scope, lihat BR-012.)
+- Integrasi SATUSEHAT MedicationRequest (resource FHIR) → [ASUMSI] fase berikutnya.
+
+## 4. Goals and Metrics
+
+| Goal | Metrik | Target [ASUMSI] |
+|------|--------|------|
+| Order obat elektronik menggantikan manual | % order obat ranap via modul CPO | ≥ 90% dalam 3 bulan |
+| Mengurangi delay order→farmasi | Median waktu submit order → masuk antrian farmasi | < 1 menit |
+| Prioritas kasus kritis | % order URGENT (transfer/discharge) terproses lebih dulu | ≥ 95% |
+| Telusur audit lengkap | % order punya log (siapa/kapan/apa) | 100% |
+| Kelengkapan data order | % order tersubmit lolos validasi kelengkapan | 100% (validasi wajib) |
+| Akurasi terapi berjalan / anti-duplikasi | Jumlah order obat aktif duplikat dalam hari sama | **0** (diblok sistem, BR-012) |
+
+[PERLU KONFIRMASI] semua angka target perlu disepakati manajemen RS.
+
+## 5. Related Feature
+
+| Code | Menu / Fitur | Relasi ke CPO |
+|------|--------------|---------------|
+| E2 | Order resep | Order obat sejenis; resep terverifikasi farmasi jadi sumber CPO |
+| E23 | CPO - Input Waktu Pemberian Obat | **Lanjutan langsung**: eksekusi & pencatatan pemberian oleh perawat |
+| E11 | Transfer internal | Pemicu flag URGENT (IGD→RI) |
+| E13 | Discharge Pasien | Pemicu flag URGENT (rencana pulang) + obat pulang |
+| E1 | Tindakan & BHP | Konteks pelayanan ranap |
+| E8 | Order gizi | Order paralel saat ranap |
+
+Traceability scope berasal dari baris **E12** (cluster *Pelayanan utama*, unit Rawat Inap, IBS, IGD, VK).
+
+## 6. Business Process (As-Is / To-Be)
+
+### A. As-Is (kondisi saat ini) [ASUMSI]
+1. Dokter visite → tulis instruksi obat manual di lembar instruksi/CPPT.
+2. Lembar resep fisik dikirim/diantar ke farmasi; status tidak terlihat.
+3. Perawat baca instruksi manual, beri obat, catat manual.
+4. Saat transfer/pulang, order menyusul tanpa prioritas → obat telat.
+5. Tidak ada cek otomatis obat duplikat → obat sama bisa di-order ganda di hari sama.
+6. Audit manual, sulit rekonstruksi.
+
+### B. To-Be (sesuai BPMN `g-service-cpo-order.json`)
+**Aktor:** Dokter, Sistem (Neurovi), Farmasi.
+
+1. Dokter buka Menu Pelayanan → pilih pasien dari list → klik icon obat → **Catatan Pemberian Obat**.
+2. Sistem **Load History CPO** → tampilkan tabel existing medications per jenis sediaan + status icon LANJUT/STOP.
+3. Dokter pilih **Jenis Order**: lanjut/stop obat existing, atau order baru.
+   - **Order lanjut** (`Order baru? = Tidak`): pilih obat dilanjutkan/distop → submit.
+   - **Order baru** (`Order baru? = Ya`): klik Tambahkan Obat → pilih **Tipe Obat** (Non-Racik / Racik) → input → Simpan Obat Baru → Review.
+4. **Review Order Sebelum Submit** → gateway `Order Sudah Benar?` (Ya → submit; Tidak → Edit Order, kembali review).
+5. Sistem: validasi order lanjut + validasi kelengkapan obat baru + **validasi anti-duplikasi obat per hari (BR-012)** → **Generate Order ID & package data** → cek kondisi pasien (transfer IGD→RI / discharge) → **set flag URGENT** bila ya → **kirim ke antrian Farmasi** → update status **Pending** → **log audit**.
+6. Farmasi terima order CPO (Pending) → tampil di antrian → (review, set jadwal ODD/non-ODD, dispensing — luar scope).
+7. Dokter terima konfirmasi **Order Berhasil Dikirim** → event **Order Tersimpan, Menunggu Farmasi**.
+
+## 7. Main Flow / Mindmap
+
+**Skenario 1 — Order Obat Baru (Non-Racik):**
+Start → Dokter ingin order obat → Buka Menu Pelayanan → Pilih pasien → Klik icon obat → Klik Catatan Pemberian Obat → Review History CPO → Jenis Order? → Order baru? **[Ya]** → Klik Tambahkan Obat → Tipe Obat? **[Non-Racik]** → Input Obat Non-Racik (nama, dosis, aturan, rute) → Simpan Obat Baru → Review Order → Order Sudah Benar? **[Ya]** → Submit ke Farmasi → Sistem validasi (kelengkapan + **anti-duplikasi BR-012**) → Generate Order ID & package → Cek kondisi pasien → (set URGENT) → Kirim antrian Farmasi → Status Pending → Log audit → Terima konfirmasi → **Order Tersimpan, Menunggu Farmasi**.
+
+**Skenario 2 — Order Obat Baru (Racik):**
+…Tipe Obat? **[Racik]** → Input Obat Racik (nama racikan, bahan, dosis, aturan) → Simpan Obat Baru → Review … (lanjut sama skenario 1).
+
+**Skenario 3 — Order Lanjut / Stop:**
+Review History CPO → Jenis Order? → Pilih obat dilanjutkan/distop → Order baru? **[Tidak]** → Order obat lanjut → Submit ke Farmasi → Sistem: Validasi Order Lanjut (check obat ditandai) → Update status obat ditandai dilanjutkan → Generate Order ID & package → Kirim antrian Farmasi → konfirmasi.
+
+**Skenario 4 — Edit sebelum submit:**
+Review Order → Order Sudah Benar? **[Tidak]** → Edit Order → kembali Review Order.
+
+**Skenario 5 — Obat duplikat ditolak (BR-012):**
+Input/Simpan Obat Baru → Submit → Sistem cek: obat sama (obat_id) untuk pasien sama, ada order **aktif** di tanggal sama? → **[Ya]** → tampilkan peringatan blok 'Obat sudah di-order hari ini' → order ditolak submit → dokter pilih: ubah obat / edit dosis-frekuensi obat existing (bukan order baru) / batalkan. **[Tidak]** → lanjut Generate Order ID. [PERLU KONFIRMASI] apakah blok keras (hard block) atau peringatan dapat di-override dokter dengan alasan.
+
+**Cabang URGENT:** Generate Order ID → Cek kondisi pasien: baru transfer IGD→RI? / akan discharge? → bila **Ya** set flag URGENT (IGD_TRANSFER / DISCHARGE) untuk prioritas pemrosesan farmasi; bila **Tidak** order normal.
+
+## 8. Business Rules
+
+- **BR-001** (gateway *Order Sudah Benar?*): order hanya boleh disubmit setelah lolos review. Jika tidak benar → wajib Edit Order, tidak bisa submit. (BPMN: Review Order Sebelum Submit)
+- **BR-002** (gateway *Order baru?*): jika order lanjut (Tidak) → sumber data = obat existing yang ditandai; jika order baru (Ya) → wajib input data obat baru. (BPMN: Order baru?)
+- **BR-003** (gateway *Tipe Obat?*): Non-Racik wajib field {nama, dosis, frekuensi, rute}; Racik wajib field {nama racikan, ≥1 bahan, dosis, aturan, rute}. (BPMN: Tipe Obat?)
+- **BR-004** (Validasi Obat Baru): order baru ditolak submit bila ada field wajib kosong. (BPMN: Validasi Obat Baru – Kelengkapan Data)
+- **BR-005** (Validasi Order Lanjut): minimal 1 obat harus ditandai LANJUT/STOP sebelum submit order lanjut. (BPMN: Validasi Order Lanjut)
+- **BR-006** (flag URGENT): jika pasien baru transfer IGD→RI **atau** dijadwalkan discharge → order otomatis flag URGENT (IGD_TRANSFER / DISCHARGE), prioritas di antrian farmasi. (BPMN: Set flag URGENT)
+- **BR-007** (Order ID): tiap submit menghasilkan Order ID unik + timestamp. (BPMN: Generate Order ID)
+- **BR-008** (status): setelah kirim ke farmasi status order = **Pending (Menunggu Farmasi)**; tidak bisa diberikan ke pasien sebelum diverifikasi farmasi. (BPMN: Update Status Pending)
+- **BR-009** (audit): setiap order tercatat log {user, waktu, aksi, isi order} — tidak dapat dihapus. (BPMN: Log Audit)
+- **BR-010** (hak akses): hanya **Dokter/DPJP** yang berwenang membuat/melanjutkan/menghentikan order obat. [ASUMSI]
+- **BR-011** (riwayat): obat di-STOP tetap tersimpan sebagai riwayat (soft-stop), bukan dihapus. [ASUMSI]
+- **BR-012** (**anti-duplikasi obat per hari**): sistem **menolak penambahan/order obat yang sama** untuk **pasien yang sama** pada **tanggal (hari) yang sama** bila obat tsb masih punya **order aktif** (status belum STOP/selesai). Tujuan: cegah double-order → overdosis / double dispensing.
+  - **Kunci identik (duplikat)**: kombinasi `{no_rm + obat_id + tanggal_order}`. [ASUMSI] obat_id non-racik = item formularium; obat racik dianggap duplikat bila `nama_racikan` + komposisi bahan sama. [PERLU KONFIRMASI] apakah perbedaan **rute** atau **kekuatan/sediaan** dihitung obat berbeda (mis. Paracetamol PO vs IV = bukan duplikat).
+  - **Cakupan hari**: 'hari sama' = tanggal kalender lokal RS (00:00–23:59). [PERLU KONFIRMASI] apakah pakai tanggal kalender atau rentang 24 jam sejak order pertama.
+  - **Aksi saat duplikat**: blok submit obat tsb + tampilkan pesan 'Obat <nama> sudah di-order untuk pasien ini hari ini (Order ID <x>, jam <y>)'. Arahkan dokter untuk **edit order existing** (ubah dosis/frekuensi) atau order lanjut/stop, bukan buat order baru.
+  - **Pengecualian**: obat yang sudah di-STOP/selesai di hari sama → boleh di-order ulang (mis. terapi dihentikan lalu dimulai lagi). [PERLU KONFIRMASI] kebutuhan obat **PRN/kalau perlu** & dosis titrasi (insulin, analgesik) yang sah berulang — apakah dikecualikan dari BR-012.
+  - **Override**: [PERLU KONFIRMASI] apakah dokter boleh override blok dengan wajib isi **alasan klinis** (tercatat di log audit, BR-009) — direkomendasikan soft-block + override beralasan agar tidak menghambat kasus klinis sah. (Trace BPMN: Validasi sebelum Generate Order ID)
+- **BR-013** (konsistensi anti-duplikasi lintas-sumber): pengecekan BR-012 mempertimbangkan order aktif dari **CPO maupun E2 Order Resep** pada pasien & hari sama agar tidak duplikat lintas-modul. [PERLU KONFIRMASI] ketersediaan data order resep real-time. [ASUMSI]
+
+## 9. User Stories
+
+- **US-001** — Sebagai **Dokter**, saya ingin memilih pasien ranap dari list pelayanan, agar bisa membuat order obat untuk pasien yang tepat. (BPMN: Pilih Pasien dari List)
+- **US-002** — Sebagai **Dokter**, saya ingin melihat riwayat CPO (existing medications) per jenis sediaan dengan status LANJUT/STOP, agar tahu terapi berjalan & menghindari duplikasi. (BPMN: Load/Review History CPO)
+- **US-003** — Sebagai **Dokter**, saya ingin input obat non-racik (nama, dosis, aturan, rute), agar order obat tunggal terstruktur. (BPMN: Input Obat Non Racik)
+- **US-004** — Sebagai **Dokter**, saya ingin input obat racik (nama racikan, bahan, dosis, aturan), agar racikan terdokumentasi lengkap. (BPMN: Input Obat Racik)
+- **US-005** — Sebagai **Dokter**, saya ingin menandai obat existing dilanjutkan/distop, agar terapi diperbarui tanpa input ulang. (BPMN: Pilih Obat dilanjutkan/distop)
+- **US-006** — Sebagai **Dokter**, saya ingin mereview order sebelum submit & bisa edit, agar tidak salah kirim. (BPMN: Review Order / Edit Order)
+- **US-007** — Sebagai **Dokter**, saya ingin menerima konfirmasi order berhasil dikirim, agar yakin order sampai ke farmasi. (BPMN: Terima Konfirmasi)
+- **US-008** — Sebagai **Sistem**, saya ingin memvalidasi kelengkapan order, agar order tidak lolos dengan data kurang. (BPMN: Validasi Obat Baru / Order Lanjut)
+- **US-009** — Sebagai **Sistem**, saya ingin menandai order URGENT saat transfer/discharge, agar farmasi memprioritaskan. (BPMN: Set flag URGENT)
+- **US-010** — Sebagai **Farmasi**, saya ingin order CPO masuk antrian dengan status & prioritas, agar bisa diverifikasi & disiapkan. (BPMN: Terima Order CPO / Tampilkan Antrian)
+- **US-011** — Sebagai **Manajemen/Auditor**, saya ingin log audit setiap order, agar dapat ditelusuri untuk keselamatan pasien & akreditasi. (BPMN: Log Audit)
+- **US-012** — Sebagai **Dokter**, saya ingin sistem mencegah saya meng-order obat yang sama untuk pasien yang sama di hari yang sama, agar tidak terjadi duplikasi terapi / overdosis. (BR-012; BPMN: Validasi sebelum Generate Order ID)
+- **US-013** — Sebagai **Dokter**, saat order saya terblok karena duplikat, saya ingin pesan jelas (obat apa, Order ID/jam order sebelumnya) + pilihan edit order existing, agar bisa menindak cepat tanpa input ganda. (BR-012)
+- **US-014** — Sebagai **Apoteker/Farmasi**, saya ingin order obat duplikat hari sama tidak masuk antrian, agar tidak menyiapkan/dispensing obat ganda. (BR-012/BR-013)
+
+## 10. Functional Requirements
+
+| ID | Requirement | Trace BPMN |
+|----|-------------|-----------|
+| FR-001 | Sistem menampilkan list pasien per unit (RI/IBS/IGD/VK) untuk dipilih dokter | Pilih Pasien dari List |
+| FR-002 | Sistem load & tampilkan History CPO dikelompokkan per jenis sediaan + status icon LANJUT/STOP | Load History CPO / Display Table |
+| FR-003 | Sistem menyediakan form input obat **non-racik** (nama, sediaan, dosis, frekuensi, rute, jumlah, durasi, aturan, catatan khusus) | Input Obat Non Racik |
+| FR-004 | Sistem menyediakan form input obat **racik** (header racikan + multi-bahan) | Input Obat Racik |
+| FR-005 | Sistem mendukung order lanjut/stop dengan menandai obat existing | Pilih Obat dilanjutkan/distop |
+| FR-006 | Sistem menampilkan halaman Review Order & mendukung Edit sebelum submit | Review Order / Edit Order |
+| FR-007 | Sistem memvalidasi kelengkapan data obat baru sebelum submit (tolak bila wajib kosong) | Validasi Obat Baru |
+| FR-008 | Sistem memvalidasi order lanjut (minimal 1 obat ditandai) | Validasi Order Lanjut |
+| FR-009 | Sistem generate Order ID unik + package data order saat submit | Generate Order ID & Package Data |
+| FR-010 | Sistem mendeteksi kondisi pasien (transfer IGD→RI / discharge) & set flag URGENT | Check kondisi pasien / Set flag URGENT |
+| FR-011 | Sistem mengirim order ke antrian Farmasi & set status Pending | Kirim ke Antrian Farmasi / Update Status Pending |
+| FR-012 | Sistem mencatat log audit (user, waktu, aksi, order) tiap submit/edit/stop | Log Audit |
+| FR-013 | Sistem menampilkan konfirmasi 'Order Berhasil Dikirim' ke dokter | Terima Konfirmasi |
+| FR-014 | Sistem menampilkan order CPO Pending di antrian Farmasi | Terima Order CPO / Tampilkan Antrian |
+| FR-015 | Sistem menyimpan order sebagai bagian rekam medis pasien (telusur) | Order Tersimpan |
+| FR-016 | Sistem memvalidasi **anti-duplikasi**: sebelum Generate Order ID, cek apakah `obat_id` yang di-order sudah punya order **aktif** untuk `no_rm` sama di **tanggal sama**; bila ya → blok submit obat tsb (BR-012) | Validasi sebelum Generate Order ID |
+| FR-017 | Saat duplikat terdeteksi, sistem menampilkan pesan peringatan berisi nama obat, Order ID & waktu order sebelumnya, + arahan (edit order existing / order lanjut) | Validasi anti-duplikasi (BR-012) |
+| FR-018 | Sistem menghitung duplikat memakai kunci `{no_rm + obat_id + tanggal_order}`; obat ber-status STOP/selesai di hari sama dikecualikan (boleh order ulang) | Validasi anti-duplikasi (BR-012) |
+| FR-019 | [PERLU KONFIRMASI] Sistem mendukung **override** blok duplikat oleh dokter dengan input alasan klinis wajib, dicatat di log audit | Validasi anti-duplikasi (BR-012/BR-009) |
+| FR-020 | [ASUMSI] Pengecekan duplikat mempertimbangkan order aktif dari CPO & E2 Order Resep pada pasien & hari sama | Validasi anti-duplikasi (BR-013) |
+
+## 11. Data Requirements (Spesifikasi Field)
+
+### A. Layar: Pilih Pasien (list) — FR-001 (TAMPIL DATA)
+| Kolom | Sumber Data | Format Tampilan | Filter/Sort | Catatan |
+|-------|-------------|-----------------|-------------|---------|
+| no_rm | master pasien | text (format RM RS) | filter | field kanonik konsisten |
+| nama | autofill pasien | text | sort A-Z | maks 100 char (kanonik) |
+| jenis_kelamin | pasien | L/P | filter | kanonik |
+| tgl_lahir / umur | pasien | date / tahun | sort | kanonik |
+| no_bed | master bed (ranap) | text | filter | [ASUMSI] |
+| dpjp_ranap | master Staff (dokter) | text | filter | kanonik (lookup) |
+| jenis_penjamin | pasien | enum Umum/BPJS/Asuransi | filter | kanonik |
+| status_order | order CPO | badge (Belum/Pending/Verified) | filter | [ASUMSI] |
+
+### B. Layar: History CPO / Existing Medications — FR-002 (TAMPIL DATA)
+| Kolom | Sumber Data | Format Tampilan | Filter/Sort | Catatan |
+|-------|-------------|-----------------|-------------|---------|
+| jenis_sediaan | item obat | grup (oral/injeksi/sirup/topikal/dll) | group/filter | pengelompokan |
+| nama_obat | item obat | text | sort | |
+| dosis | item obat | text+satuan | – | |
+| frekuensi | item obat | text (mis. 3x1) | – | |
+| rute | item obat | enum (PO/IV/IM/SC/topikal/dll) | filter | |
+| status_obat | order item | icon **LANJUT/STOP** | filter | warna beda; dipakai BR-012 (hanya status aktif dihitung duplikat) |
+| tgl_order | order item | date | sort | dipakai BR-012 (kunci tanggal sama) |
+| tgl_mulai / durasi | order item | date / hari | sort | |
+| dpjp_peng-order | order item | text | filter | dari Staff |
+
+### C. Form: Input Obat Non-Racik — FR-003 (INPUT) [konsisten entitas 'Form Item Non-Racik']
+| Field | Label | Tipe | Wajib | Validasi/Format | Sumber/Default | Catatan |
+|-------|-------|------|-------|-----------------|----------------|---------|
+| obat_id | Nama Obat | lookup | Ya | dari master obat/formularium | master obat | autofill sediaan; **kunci anti-duplikasi BR-012** |
+| sediaan | Bentuk Sediaan | dropdown | Ya | enum (tablet/kapsul/sirup/injeksi/salep/dll) | auto dari obat | [PERLU KONFIRMASI] apakah ikut bedakan duplikat |
+| dosis | Dosis | text/number | Ya | angka+satuan (mis. 500 mg) | manual | BR-004 |
+| frekuensi | Frekuensi | dropdown/text | Ya | enum (1x1,2x1,3x1,prn,dll) | manual | nilai `prn` → [PERLU KONFIRMASI] pengecualian BR-012 |
+| rute | Rute Pemberian | dropdown | Ya | enum (PO/IV/IM/SC/SL/topikal/inhalasi) | manual | [PERLU KONFIRMASI] apakah beda rute = bukan duplikat |
+| jumlah | Jumlah | number | Ya | > 0 integer | manual | |
+| durasi | Durasi Terapi | number | Tidak | hari, > 0 | manual | |
+| aturan_pakai | Aturan Pakai | dropdown | Tidak | enum (sebelum/sesudah/saat makan) | manual | |
+| aturan_lainnya | Aturan Lainnya | text | Tidak | maks 200 char | manual | |
+| catatan_khusus | Instruksi Khusus Dokter | textarea | Tidak | maks 500 char | manual | |
+
+### D. Form: Input Obat Racik — FR-004 (INPUT) [konsisten entitas 'Header racikan']
+**Header racikan:**
+| Field | Label | Tipe | Wajib | Validasi/Format | Sumber/Default | Catatan |
+|-------|-------|------|-------|-----------------|----------------|---------|
+| nama_racikan | Nama Racikan | text | Ya | maks 100 char | manual | kunci anti-duplikasi racik (BR-012) |
+| metode_racik | Metode Racik | dropdown | Tidak | enum (puyer/kapsul/salep/larutan) | manual | |
+| jumlah_racik | Jumlah Racikan | number | Ya | > 0 | manual | |
+| aturan_racik | Aturan Pakai Racikan | dropdown/text | Ya | enum/text | manual | |
+| rute_racik | Rute | dropdown | Ya | enum rute | manual | |
+
+**Detail bahan racikan (multi-baris, ≥1):**
+| Field | Label | Tipe | Wajib | Validasi/Format | Sumber/Default | Catatan |
+|-------|-------|------|-------|-----------------|----------------|---------|
+| bahan_obat_id | Bahan Obat | lookup | Ya | master obat | master obat | min 1 bahan (BR-003); komposisi dipakai cek duplikat racik |
+| dosis_bahan | Dosis Bahan | text/number | Ya | angka+satuan | manual | |
+| jumlah_bahan | Jumlah Bahan | number | Ya | > 0 | manual | |
+
+### E. Form/Layar: Review Order Sebelum Submit — FR-006 (TAMPIL + AKSI)
+| Kolom | Sumber Data | Format Tampilan | Filter/Sort | Catatan |
+|-------|-------------|-----------------|-------------|---------|
+| daftar item order | order draft | tabel (obat, dosis, frek, rute, durasi) | – | tombol Edit/Hapus per baris |
+| tipe_order | order draft | badge (Baru/Lanjut/Stop) | – | |
+| flag_duplikat | sistem (BR-012) | badge merah 'DUPLIKAT — sudah di-order hari ini' per baris | – | FR-016/FR-017; blok submit baris tsb |
+| flag_urgent | sistem | badge URGENT (IGD_TRANSFER/DISCHARGE) | – | FR-010 |
+| total_item | hitung | angka | – | |
+
+### F. Data internal Order (di-generate sistem) — FR-009..FR-012, FR-016
+| Field | Label | Tipe | Wajib | Validasi/Format | Sumber/Default | Catatan |
+|-------|-------|------|-------|-----------------|----------------|---------|
+| order_id | Order ID | text | Ya | unik, auto-generate | auto | BR-007 |
+| no_rm | No. RM | text | Ya | format RM RS | lookup pasien | kanonik; kunci BR-012 |
+| obat_id | Obat | lookup | Ya | master obat | item order | kunci BR-012 |
+| tanggal_order | Tanggal Order | date | Ya | tanggal kalender RS | sistem | kunci BR-012 |
+| dokter_id | Dokter (DPJP) | lookup | Ya | master Staf, jenis_tenaga=dokter | lookup A2 | kanonik |
+| unit_asal | Unit | dropdown | Ya | enum (RI/IBS/IGD/VK) | konteks pasien | |
+| jenis_order | Jenis Order | enum | Ya | Baru/Lanjut/Stop | sistem | |
+| status_obat_item | Status Item | enum | Ya | Aktif/Stop/Selesai | sistem | BR-012 hanya hitung 'Aktif' sbg duplikat |
+| flag_urgent | Flag Prioritas | enum | Tidak | NULL/IGD_TRANSFER/DISCHARGE | sistem (BR-006) | FR-010 |
+| status_order | Status | enum | Ya | Pending/Verified/... | default Pending | BR-008 |
+| override_duplikat | Override Duplikat | boolean | Tidak | true bila dokter override BR-012 | sistem | FR-019 [PERLU KONFIRMASI] |
+| alasan_override | Alasan Klinis Override | text | Kondisional | wajib bila override_duplikat=true; maks 300 char | manual | dicatat log audit |
+| created_by / created_at | Pembuat / Waktu | text/datetime | Ya | auto | sistem | log audit |
+
+### G. Log Audit — FR-012 (TAMPIL DATA)
+| Kolom | Sumber Data | Format Tampilan | Filter/Sort | Catatan |
+|-------|-------------|-----------------|-------------|---------|
+| waktu | audit log | datetime | sort desc | |
+| user | Staff (nama) | text | filter | kanonik nama |
+| aksi | audit log | enum (Submit/Edit/Stop/Override-Duplikat) | filter | aksi override BR-012 wajib tercatat |
+| order_id | order | text | filter | |
+| alasan_override | order | text | – | terisi bila override BR-012 (FR-019) |
+| ringkasan_order | order | text | – | tidak dapat dihapus (BR-009) |
+
+## 12. Non-Functional Requirements
+
+- **NFR-001 (Keandalan/Offline):** RS Tipe C&D internet tidak stabil → modul order sebaiknya mendukung mode offline/queue lokal + sinkronisasi saat online. [PERLU KONFIRMASI] apakah masuk MVP. Catatan: pengecekan anti-duplikasi (BR-012) butuh data order aktif terkini → di mode offline perlu cache lokal order hari berjalan agar tetap mendeteksi duplikat.
+- **NFR-002 (Performa):** Load History CPO < 3 detik; submit order → masuk antrian farmasi < 1 menit (selaras goal). Cek anti-duplikasi (BR-012) harus < 1 detik (query index `{no_rm,obat_id,tanggal_order}`).
+- **NFR-003 (Keamanan & RBAC):** hanya role berwenang (Dokter/DPJP) order; data obat = data sensitif rekam medis. Enkripsi at-rest & in-transit. (BR-010). Override duplikat (FR-019) hanya untuk role dokter berwenang.
+- **NFR-004 (Auditability):** log audit immutable, retensi sesuai aturan rekam medis. Override BR-012 + alasan klinis wajib tercatat. [PERLU KONFIRMASI] masa retensi (mis. 25 thn berkas RM).
+- **NFR-005 (Usability):** UI ringkas, icon status jelas (LANJUT/STOP), pesan duplikat informatif & actionable, minim klik — SDM IT/operator terbatas.
+- **NFR-006 (Ketersediaan):** target uptime jam operasional layanan; IGD 24/7. [ASUMSI] ≥ 99%.
+- **NFR-007 (Kompatibilitas):** jalan di hardware sederhana / browser standar; hemat bandwidth.
+- **NFR-008 (Integritas data):** transaksi submit atomik (order + items + audit) — tidak ada order setengah jadi. Cek anti-duplikasi dijalankan dalam transaksi (atau unique constraint DB pada `{no_rm,obat_id,tanggal_order}` utk order aktif) agar tidak ada race condition double-submit. [ASUMSI]
+
+## 13. Integrasi Eksternal
+
+**Integrasi internal SIMRS (utama, sesuai BPMN):**
+- **Modul Farmasi** — kirim order ke antrian, terima status verifikasi/jadwal (ODD/non-ODD)/dispensing. (FR-011, FR-014)
+- **E2 Order Resep** — sumber/sinkronisasi resep terverifikasi farmasi; **sumber data order aktif untuk cek anti-duplikasi lintas-modul** (BR-013, FR-020). [PERLU KONFIRMASI] akses real-time.
+- **E23 CPO Input Waktu Pemberian Obat** — order yang sudah verified jadi dasar pencatatan pemberian oleh perawat.
+- **E11 Transfer Internal** — sumber sinyal transfer IGD→RI untuk flag URGENT. (FR-010)
+- **E13 Discharge Pasien** — sumber sinyal rencana pulang untuk flag URGENT + obat pulang. (FR-010)
+- **Master Data**: master obat/formularium (obat_id, sediaan, rute), master Staf (dokter_id), master pasien (no_rm, nama, dst), master bed/unit.
+- **EMR/Rekam Medis** — order tersimpan jadi bagian RME pasien. (FR-015)
+
+**Integrasi eksternal:**
+- **SATUSEHAT** — [PERLU KONFIRMASI] pengiriman resource FHIR **MedicationRequest** (order obat) ke SATUSEHAT. [ASUMSI] di luar MVP, fase berikutnya; saat masuk gunakan code & system URI obat (KFA - Kamus Farmasi Alkes) yang sesuai.
+- **BPJS** — tidak langsung di modul order CPO; klaim obat ditangani modul Farmasi/billing.
+
+[PERLU KONFIRMASI] apakah RS sudah punya formularium elektronik & mapping kode KFA untuk SATUSEHAT.
+
+## Asumsi
+- [ASUMSI] As-Is RS Tipe C&D masih order obat manual (lembar instruksi/CPPT + resep fisik) tanpa cek duplikat otomatis.
+- [ASUMSI] Hanya Dokter/DPJP yang berwenang membuat/melanjutkan/menghentikan order (BR-010).
+- [ASUMSI] BR-012: kunci duplikat = {no_rm + obat_id + tanggal_order}; obat racik duplikat bila nama_racikan + komposisi bahan sama.
+- [ASUMSI] BR-012: hanya item ber-status Aktif dihitung duplikat; item STOP/selesai boleh di-order ulang.
+- [ASUMSI] BR-012 direkomendasikan soft-block + override beralasan (tercatat audit), pending konfirmasi manajemen.
+- [ASUMSI] BR-013/FR-020: cek duplikat idealnya lintas CPO + E2 Order Resep; bergantung ketersediaan data real-time.
+- [ASUMSI] Anti-duplikasi diamankan via unique constraint/transaksi atomik untuk cegah race double-submit (NFR-008).
+- [ASUMSI] Review apoteker, penjadwalan ODD/non-ODD, dispensing, stok & billing obat ditangani modul Farmasi (luar scope).
+- [ASUMSI] Pencatatan waktu aktual pemberian obat & 6-benar ada di modul E23 (luar scope PRD ini).
+- [ASUMSI] Skrining interaksi obat/alergi otomatis tidak masuk MVP (berbeda dari anti-duplikasi BR-012).
+- [ASUMSI] Integrasi SATUSEHAT MedicationRequest fase berikutnya, bukan MVP.
+- [ASUMSI] Field pasien (no_rm, nama, nik, jenis_kelamin, tgl_lahir, jenis_penjamin, dpjp_ranap) mengikuti definisi kanonik lintas-PRD.
+- [ASUMSI] Obat di-STOP disimpan sebagai riwayat (soft-stop), tidak dihapus (BR-011).
+- [ASUMSI] Target uptime ≥ 99%; IGD 24/7.
+
+## Pertanyaan Terbuka
+- BR-012: apakah blok duplikat = hard block atau soft-block dengan override beralasan oleh dokter? (FR-019)
+- BR-012: definisi 'obat sama' — apakah beda rute / kekuatan / sediaan dihitung obat berbeda (mis. Paracetamol PO vs IV)?
+- BR-012: 'hari sama' = tanggal kalender lokal RS atau rentang 24 jam sejak order pertama?
+- BR-012: obat PRN/kalau perlu & dosis titrasi (insulin/analgesik) yang sah berulang — dikecualikan dari anti-duplikasi?
+- BR-013/FR-020: apakah cek duplikat harus lintas modul (CPO + E2 Order Resep) dan apakah data order resep tersedia real-time?
+- Apakah mode offline/sinkronisasi order masuk scope MVP untuk RS Tipe C&D (termasuk cache order hari berjalan utk BR-012)?
+- Apakah skrining interaksi obat (DDI) & alergi otomatis termasuk MVP? (asumsi tidak; berbeda dari anti-duplikasi BR-012)
+- Pengiriman MedicationRequest ke SATUSEHAT: MVP atau fase berikutnya? Apakah kode KFA sudah tersedia?
+- Daftar enum resmi: rute pemberian, bentuk sediaan, frekuensi, metode racik — perlu master baku RS.
+- Apakah hanya DPJP yang boleh order, atau dokter jaga/residen juga (dengan kewenangan)?
+- Masa retensi log audit & rekam medis elektronik sesuai kebijakan RS / regulasi.
+- Target metrik (adopsi, delay, uptime) perlu disepakati manajemen.
+- Apakah obat di-STOP disimpan sebagai riwayat (soft-stop) — konfirmasi kebijakan.
+- Definisi 'kondisi pasien akan discharge' yang memicu URGENT diambil dari modul E13 dengan trigger apa?

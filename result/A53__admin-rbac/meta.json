@@ -1,0 +1,11 @@
+{
+  "code": "A53",
+  "moduleName": "Admin — Dynamic Permission-Based RBAC",
+  "cluster": "Control Panel",
+  "bpmnFile": null,
+  "mode": "manual",
+  "hasFlowchart": false,
+  "attachments": [],
+  "createdAt": "2026-06-18T17:24:00.127Z",
+  "updatedAt": "2026-07-06T00:00:00.000Z"
+}

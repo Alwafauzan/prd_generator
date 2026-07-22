@@ -1,0 +1,13 @@
+{
+  "code": "N14",
+  "title": "Display Jadwal Operasi",
+  "cluster": "Pelayanan Pendukung",
+  "module": "IBS",
+  "semantic_type": "real-time-public-information-display",
+  "version": "1.0",
+  "date": "2026-07-21",
+  "status": "draft",
+  "primary_file": "N14__display-jadwal-operasi.md",
+  "source_features": ["Jadwal Operasi"],
+  "related_features": ["N13", "Dashboard IBS", "Master Ruang IBS", "A53"]
+}

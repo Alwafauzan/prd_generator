@@ -1,0 +1,2375 @@
+{
+ "id": "73562261-e454-410a-8e4b-8133a20d5551",
+ "title": "g-admisi-inpatient-registration",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "oefZ9eopzveU",
+  "label": "B2 - Pendaftaran Rawat Inap Updated"
+ },
+ "pages": [
+  {
+   "id": "JcfZliF~sNKo",
+   "title": "B2 - Pendaftaran Rawat Inap Updated",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "oefZyfaDoTFZ",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Petugas Pendaftaran RI"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "ELgZDFymXCU2",
+        "MIgZD7fj.R13",
+        "MIgZEPj8h8NX",
+        "MIgZLCZQ8KR4",
+        "MIgZopsJ_hdI",
+        "MNgZVMDehL7I",
+        "ZJgZf4mx.Dri",
+        "aQgZ7qHJvRyd",
+        "hLgZu4gJ3BL6",
+        "mOgZQ._Tl-jB",
+        "mOgZtQuVefUV",
+        "oefZ-M9UlNrW",
+        "oefZ.4Xu609c",
+        "oefZ0I3sYQMZ",
+        "oefZ0XJ0cnFn",
+        "oefZ0qxtg4BF",
+        "oefZ1WP34oiG",
+        "oefZ2Qa9ANZM",
+        "oefZ3hjsgszT",
+        "oefZ3s8EPNXI",
+        "oefZ80-xS.2p",
+        "oefZBnK6B1CK",
+        "oefZC0arAY0s",
+        "oefZEdCOrxPc",
+        "oefZF1Kng.P8",
+        "oefZFGdpzdVg",
+        "oefZFNAW1bwz",
+        "oefZG4jys2mM",
+        "oefZG8fHRhzC",
+        "oefZHTQbGcDB",
+        "oefZICPu3u3l",
+        "oefZKuiir_oQ",
+        "oefZLLHbioHy",
+        "oefZNnAjw.2T",
+        "oefZPyNoQayk",
+        "oefZSNTFjB5_",
+        "oefZTi1QRGxY",
+        "oefZVOOEitWA",
+        "oefZXebdFg5J",
+        "oefZYcIP3Oy~",
+        "oefZ_1IE0XCf",
+        "oefZ_Rtqddxs",
+        "oefZablikIQC",
+        "oefZapv~36hl",
+        "oefZbLx8Lx.6",
+        "oefZbfV38W3S",
+        "oefZdXNGiurp",
+        "oefZgEZsh0Bz",
+        "oefZhWEC5KAE",
+        "oefZhXS6u8vu",
+        "oefZhtIoeBTm",
+        "oefZiT0Qhrit",
+        "oefZiuqSseEg",
+        "oefZjFMi.zIf",
+        "oefZlPGD-1BZ",
+        "oefZlr8FkgpH",
+        "oefZndhW7pJd",
+        "oefZnwvkYLvb",
+        "oefZpve6Bugm",
+        "oefZqh8xROJc",
+        "oefZryxZdexn",
+        "oefZsnaqW98H",
+        "oefZszc2S33h",
+        "oefZutcGcC3_",
+        "oefZylIbpz~6",
+        "vJgZiTHlhTSQ"
+       ],
+       "lines": [
+        "4MgZdCc6tGIM",
+        "BMgZKt-T9zBL",
+        "BQgZDSPRZHuK",
+        "D2gZR7Swwebm",
+        "GQgZ.Io92qs1",
+        "PLgZBjooyhEP",
+        "_JgZV31nd2u1",
+        "d2gZHqszM3Ry",
+        "hNgZgnGpecE4",
+        "oefZ.7Vqtbvt",
+        "oefZ02zGa6i0",
+        "oefZ1wM~3i-D",
+        "oefZ20z5L-7-",
+        "oefZ2qyqa.Sv",
+        "oefZ7..EUhBK",
+        "oefZ8YBpKzaL",
+        "oefZ8wtC1gsr",
+        "oefZ9wnUUWJl",
+        "oefZBAF1K01N",
+        "oefZDbX0a5mr",
+        "oefZFBuXAfrE",
+        "oefZFxpmKmBR",
+        "oefZG.ePvly8",
+        "oefZGPamXPE6",
+        "oefZI---7p-S",
+        "oefZJO_TA5wg",
+        "oefZJS_IKI52",
+        "oefZK7bQEs47",
+        "oefZKMWlURlb",
+        "oefZL14595jx",
+        "oefZMw7A92l9",
+        "oefZMyrabBbn",
+        "oefZNGs4c.96",
+        "oefZNQSM46_8",
+        "oefZNmfVA0U8",
+        "oefZOzBTJw2T",
+        "oefZR.47sG.q",
+        "oefZRZmmGJxD",
+        "oefZRsFYqb2N",
+        "oefZUu9khcW1",
+        "oefZV-2VeGup",
+        "oefZVlXAvP4W",
+        "oefZ_2LMpMyz",
+        "oefZ_FSf0aqH",
+        "oefZiEo5bV2M",
+        "oefZixcYLDku",
+        "oefZj1FQJyBr",
+        "oefZjxbQsRQq",
+        "oefZl6HosUaG",
+        "oefZlnICnCMR",
+        "oefZq67DHOqP",
+        "oefZqGhXaMJU",
+        "oefZriHb6Ev8",
+        "oefZs8ItvyB5",
+        "oefZvULypWob",
+        "oefZwJnpaSe.",
+        "oefZwMrg0eap",
+        "oefZxR-S5-EI",
+        "oefZyUm9wibz",
+        "oefZyk1ekMYb",
+        "oefZz.vFoqfY",
+        "oefZzrcyhsbO",
+        "oefZ~9kEpOh3",
+        "p2gZyRc9uF9g",
+        "x2gZdSZJEB-9",
+        "yJgZbP7kpI-A"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "oefZKuiir_oQ",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZVZnSZ4r3",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Keluarga Inform Kelahiran Bayi"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZhXS6u8vu",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Cetak Dokumen (Gelang, Consent, Label, dll)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZsnaqW98H",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik Gambar Bed Tersedia "
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ_Rtqddxs",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Bangsal"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "mOgZtQuVefUV",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik SIMPAN (Reserve/Inden Bed)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZgEZsh0Bz",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik SIMPAN"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZLLHbioHy",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Toggle OFF: Pilih Kelas Perawatan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZXebdFg5J",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Verifikasi Identitas Pasien"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZG4jys2mM",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Form Pendaftaran Bayi Ibu Muncul"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "MIgZLCZQ8KR4",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Ubah data pendaftaran (reschedule jadwal operasi, reschedule jadwal masuk rawat inap)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZqh8xROJc",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Cari Pasien dari List"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZpve6Bugm",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik DAFTAR"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZBnK6B1CK",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka Tab Waiting List"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZml97rSZt",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Update Bed Status"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "vJgZiTHlhTSQ",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tindak lanjut"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZFNAW1bwz",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input Tanggal Lahir"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "MIgZD7fj.R13",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZbLx8Lx.6",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik LANJUTKAN"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZszc2S33h",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pasien BPJS?"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "v3gZQn-.oVlt",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Audit log waiting list action"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZPyNoQayk",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Ibu dari List"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZiuqSseEg",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buat SEP - Verifikasi SEP BPJS"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZhtIoeBTm",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tambah Bayi Lagi? (Multiple Birth)"
+       },
+       {
+        "label": "Placeholder",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZICPu3u3l",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input Data Bayi Berikutnya"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ0I3sYQMZ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik SIMPAN (Lock Bed)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZlPGD-1BZ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Cek Pre-Admission Checklist"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "MIgZopsJ_hdI",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Hapus dari waiting list + input alasan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZC0arAY0s",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Ruang/Kamar"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZSNTFjB5_",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Cek Pasien dengan Jadwal Operasi Elektif"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZbfV38W3S",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZeIjUkqMB",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Sistem Neurovi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "oefZCHbUA389",
+        "oefZFmMzx-HA",
+        "oefZlwMw_HFk",
+        "oefZml97rSZt",
+        "v3gZIoEI1zxK",
+        "v3gZQn-.oVlt"
+       ],
+       "lines": [
+        "W7gZtM6BFlKs"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "oefZablikIQC",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZnwvkYLvb",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan Pendaftaran"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "v3gZIoEI1zxK",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Update status item waiting list (Edit/Reschedule/Batal)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZylIbpz~6",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Kelas Perawatan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "mOgZQ._Tl-jB",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input estimasi jam masuk untuk inden bed"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZTi1QRGxY",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Diagnosis (optional)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZFmMzx-HA",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Generate Dokumen Print"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ3s8EPNXI",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input Nama Bayi (BY NY [Nama Ibu])"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZYcIP3Oy~",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Rawat Gabung? (Toggle)"
+       },
+       {
+        "label": "Placeholder",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZVqb6ZDFF",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Support (Dokter / Keluarga)"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "oefZVZnSZ4r3",
+        "oefZfa9Fot3-",
+        "oefZs68Rw04M"
+       ],
+       "lines": [],
+       "groups": []
+      }
+     },
+     {
+      "id": "oefZVOOEitWA",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Kamar"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZiT0Qhrit",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZjFMi.zIf",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Data Pindah dari Waiting List ke Tab Terdaftar"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZlwMw_HFk",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Link Bayi to Mother Record"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "aQgZ7qHJvRyd",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pasien Inden?"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZSMq5gb3y",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tidak bisa pendaftaran langsung rawat inap jika pasien rujukan dari RS lain, harus melewati IGD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZapv~36hl",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Cari Data Ibu (Nama/RM)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "hLgZu4gJ3BL6",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Jadwal Direschedule (waiting list update)"
+       },
+       {
+        "label": "Placeholder",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ-M9UlNrW",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Review Ringkasan Kunjungan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "MIgZEPj8h8NX",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "ZJgZf4mx.Dri",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Lanjutkan pendaftaran"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZCHbUA389",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Generate No. RM (for Bayi)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "MNgZVMDehL7I",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Bed yang akan tersedia sesuai jam masuk (bisa pilih bed yang sedang dibersihkan - dan akan tersedia sesuai rencana jam masuk)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ9eopzveU",
+      "class": "SparkFrameBlock",
+      "textAreas": [
+       {
+        "label": "FrameTitle",
+        "text": "B2 - Pendaftaran Rawat Inap Updated"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "ELgZDFymXCU2",
+        "MIgZD7fj.R13",
+        "MIgZEPj8h8NX",
+        "MIgZLCZQ8KR4",
+        "MIgZopsJ_hdI",
+        "MNgZVMDehL7I",
+        "ZJgZf4mx.Dri",
+        "aQgZ7qHJvRyd",
+        "hLgZu4gJ3BL6",
+        "mOgZQ._Tl-jB",
+        "mOgZtQuVefUV",
+        "oefZ-M9UlNrW",
+        "oefZ-QEx~D5~",
+        "oefZ.4Xu609c",
+        "oefZ0I3sYQMZ",
+        "oefZ0XJ0cnFn",
+        "oefZ0qxtg4BF",
+        "oefZ1WP34oiG",
+        "oefZ2Qa9ANZM",
+        "oefZ3hjsgszT",
+        "oefZ3s8EPNXI",
+        "oefZ80-xS.2p",
+        "oefZBnK6B1CK",
+        "oefZC0arAY0s",
+        "oefZCHbUA389",
+        "oefZEdCOrxPc",
+        "oefZF1Kng.P8",
+        "oefZFGdpzdVg",
+        "oefZFNAW1bwz",
+        "oefZFmMzx-HA",
+        "oefZG4jys2mM",
+        "oefZG8fHRhzC",
+        "oefZHTQbGcDB",
+        "oefZICPu3u3l",
+        "oefZKuiir_oQ",
+        "oefZLLHbioHy",
+        "oefZNnAjw.2T",
+        "oefZPyNoQayk",
+        "oefZSMq5gb3y",
+        "oefZSNTFjB5_",
+        "oefZTi1QRGxY",
+        "oefZVOOEitWA",
+        "oefZVZnSZ4r3",
+        "oefZVqb6ZDFF",
+        "oefZXebdFg5J",
+        "oefZYcIP3Oy~",
+        "oefZ_1IE0XCf",
+        "oefZ_Rtqddxs",
+        "oefZablikIQC",
+        "oefZapv~36hl",
+        "oefZbLx8Lx.6",
+        "oefZbfV38W3S",
+        "oefZdXNGiurp",
+        "oefZeIjUkqMB",
+        "oefZfa9Fot3-",
+        "oefZgEZsh0Bz",
+        "oefZhWEC5KAE",
+        "oefZhXS6u8vu",
+        "oefZhtIoeBTm",
+        "oefZiT0Qhrit",
+        "oefZiuqSseEg",
+        "oefZjFMi.zIf",
+        "oefZlPGD-1BZ",
+        "oefZlr8FkgpH",
+        "oefZlwMw_HFk",
+        "oefZml97rSZt",
+        "oefZndhW7pJd",
+        "oefZnwvkYLvb",
+        "oefZpve6Bugm",
+        "oefZqh8xROJc",
+        "oefZryxZdexn",
+        "oefZs68Rw04M",
+        "oefZsnaqW98H",
+        "oefZszc2S33h",
+        "oefZutcGcC3_",
+        "oefZyfaDoTFZ",
+        "oefZylIbpz~6",
+        "v3gZIoEI1zxK",
+        "v3gZQn-.oVlt",
+        "vJgZiTHlhTSQ"
+       ],
+       "lines": [
+        "03gZENqEhv-c",
+        "4MgZdCc6tGIM",
+        "BMgZKt-T9zBL",
+        "BQgZDSPRZHuK",
+        "D2gZR7Swwebm",
+        "GQgZ.Io92qs1",
+        "PLgZBjooyhEP",
+        "W7gZtM6BFlKs",
+        "_JgZV31nd2u1",
+        "d2gZHqszM3Ry",
+        "hNgZgnGpecE4",
+        "oefZ.7Vqtbvt",
+        "oefZ02zGa6i0",
+        "oefZ1wM~3i-D",
+        "oefZ20z5L-7-",
+        "oefZ2qyqa.Sv",
+        "oefZ7..EUhBK",
+        "oefZ8YBpKzaL",
+        "oefZ8wtC1gsr",
+        "oefZ9wnUUWJl",
+        "oefZBAF1K01N",
+        "oefZCBOFbV6h",
+        "oefZDbX0a5mr",
+        "oefZFBuXAfrE",
+        "oefZFxpmKmBR",
+        "oefZG.ePvly8",
+        "oefZGPamXPE6",
+        "oefZI---7p-S",
+        "oefZJO_TA5wg",
+        "oefZJS_IKI52",
+        "oefZK7bQEs47",
+        "oefZKMWlURlb",
+        "oefZL14595jx",
+        "oefZMw7A92l9",
+        "oefZMyrabBbn",
+        "oefZNGs4c.96",
+        "oefZNQSM46_8",
+        "oefZNmfVA0U8",
+        "oefZOzBTJw2T",
+        "oefZR.47sG.q",
+        "oefZRZmmGJxD",
+        "oefZRsFYqb2N",
+        "oefZUu9khcW1",
+        "oefZV-2VeGup",
+        "oefZVlXAvP4W",
+        "oefZ_2LMpMyz",
+        "oefZ_FSf0aqH",
+        "oefZiEo5bV2M",
+        "oefZixcYLDku",
+        "oefZj1FQJyBr",
+        "oefZjhYw1zHd",
+        "oefZjxbQsRQq",
+        "oefZl6HosUaG",
+        "oefZlnICnCMR",
+        "oefZmaqSHG.r",
+        "oefZq67DHOqP",
+        "oefZqGhXaMJU",
+        "oefZriHb6Ev8",
+        "oefZs8ItvyB5",
+        "oefZvULypWob",
+        "oefZwJnpaSe.",
+        "oefZwMrg0eap",
+        "oefZxR-S5-EI",
+        "oefZyUm9wibz",
+        "oefZyk1ekMYb",
+        "oefZz.vFoqfY",
+        "oefZzrcyhsbO",
+        "oefZ~9kEpOh3",
+        "p2gZyRc9uF9g",
+        "x2gZdSZJEB-9",
+        "yJgZbP7kpI-A"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "oefZlr8FkgpH",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik Daftar Pasien Anak"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZfa9Fot3-",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pre-Admission Clinic (H-7 to H-3)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZG8fHRhzC",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZFGdpzdVg",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Modal: Pencarian Ibu Muncul"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZF1Kng.P8",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Bed yang tersedia"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZndhW7pJd",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik Tambahkan Bayi"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZhWEC5KAE",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka Tab Waiting List"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZs68Rw04M",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Dokter Buat SPRI (dari RJ/IGD)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ2Qa9ANZM",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sumber Pasien RI"
+       },
+       {
+        "label": "Placeholder",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZHTQbGcDB",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Auto: Bed sama dengan Ibu"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ1WP34oiG",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Admisi RI Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ-QEx~D5~",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "B2 - PENDAFTARAN RAWAT INAP"
+       },
+       {
+        "label": "Placeholder",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ_1IE0XCf",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Penjaminan / Cara Bayar"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZutcGcC3_",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik LANJUT"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "ELgZDFymXCU2",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Waiting List Dibatalkan"
+       },
+       {
+        "label": "Placeholder",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZryxZdexn",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Verifikasi Jadwal Operasi Elektif"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZdXNGiurp",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZEdCOrxPc",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pasien Perlu Admisi RI"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ0XJ0cnFn",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Status Pasien: TERDAFTAR"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ80-xS.2p",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pop-up Pilihan Dokumen Muncul"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ.4Xu609c",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Jenis Kelamin (Laki/Perempuan)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ3hjsgszT",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Dokumen yang Akan Dicetak"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ0qxtg4BF",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Bangsal"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZNnAjw.2T",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik Icon Input Data Pendaftaran"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "lines": [
+     {
+      "id": "oefZ1wM~3i-D",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZszc2S33h"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZiuqSseEg"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZL14595jx",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZ80-xS.2p"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZ3hjsgszT"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZNmfVA0U8",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZbLx8Lx.6"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZXebdFg5J"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZxR-S5-EI",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZFGdpzdVg"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZapv~36hl"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZGPamXPE6",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZjFMi.zIf"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZ1WP34oiG"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZyk1ekMYb",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZbfV38W3S"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZLLHbioHy"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Tidak"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZiEo5bV2M",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZ.4Xu609c"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZTi1QRGxY"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "hNgZgnGpecE4",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "MIgZopsJ_hdI"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "MIgZEPj8h8NX"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZKMWlURlb",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZ-M9UlNrW"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZbLx8Lx.6"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZq67DHOqP",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZ3hjsgszT"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZhXS6u8vu"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZVlXAvP4W",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZpve6Bugm"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZG4jys2mM"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZmaqSHG.r",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZnwvkYLvb"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "oefZCHbUA389"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZj1FQJyBr",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZG4jys2mM"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZ3s8EPNXI"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZzrcyhsbO",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZapv~36hl"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZPyNoQayk"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZFxpmKmBR",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZTi1QRGxY"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZbfV38W3S"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ~9kEpOh3",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZPyNoQayk"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZpve6Bugm"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "PLgZBjooyhEP",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "MIgZLCZQ8KR4"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "MIgZD7fj.R13"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZJS_IKI52",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZLLHbioHy"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZ_Rtqddxs"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "yJgZbP7kpI-A",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "vJgZiTHlhTSQ"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "ZJgZf4mx.Dri"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZJO_TA5wg",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZF1Kng.P8"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZKuiir_oQ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "4MgZdCc6tGIM",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "vJgZiTHlhTSQ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "MIgZopsJ_hdI"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZR.47sG.q",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZqh8xROJc"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZNnAjw.2T"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ8YBpKzaL",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZnwvkYLvb"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZablikIQC"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZqGhXaMJU",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZHTQbGcDB"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZKuiir_oQ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "GQgZ.Io92qs1",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "aQgZ7qHJvRyd"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "oefZsnaqW98H"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Tidak"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZMw7A92l9",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZiT0Qhrit"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZnwvkYLvb"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ20z5L-7-",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZ3s8EPNXI"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZFNAW1bwz"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZixcYLDku",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZ_1IE0XCf"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZgEZsh0Bz"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZI---7p-S",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZiT0Qhrit"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZICPu3u3l"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZFBuXAfrE",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZutcGcC3_"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZablikIQC"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ_2LMpMyz",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZG8fHRhzC"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "oefZlr8FkgpH"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "dari Ruang Bersalin (Bayi Baru Lahir)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ_FSf0aqH",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZgEZsh0Bz"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZ80-xS.2p"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZK7bQEs47",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZsnaqW98H"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZ0I3sYQMZ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZz.vFoqfY",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZryxZdexn"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "vJgZiTHlhTSQ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZl6HosUaG",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZiuqSseEg"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZdXNGiurp"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZDbX0a5mr",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZ0I3sYQMZ"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZ_1IE0XCf"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZs8ItvyB5",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZNnAjw.2T"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZ-M9UlNrW"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "D2gZR7Swwebm",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "mOgZtQuVefUV"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "oefZ_1IE0XCf"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "03gZENqEhv-c",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "vJgZiTHlhTSQ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "v3gZIoEI1zxK"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZV-2VeGup",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZbfV38W3S"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZHTQbGcDB"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Ya"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ8wtC1gsr",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZlPGD-1BZ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "oefZablikIQC"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "x2gZdSZJEB-9",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "MNgZVMDehL7I"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "mOgZtQuVefUV"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ2qyqa.Sv",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZdXNGiurp"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZutcGcC3_"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "W7gZtM6BFlKs",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "v3gZIoEI1zxK"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "v3gZQn-.oVlt"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ02zGa6i0",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZFNAW1bwz"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZ.4Xu609c"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "BQgZDSPRZHuK",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZC0arAY0s"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "aQgZ7qHJvRyd"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZwMrg0eap",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZ0XJ0cnFn"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZjFMi.zIf"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZlnICnCMR",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZG8fHRhzC"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZBnK6B1CK"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Pasien Waiting List RJ/IGD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZG.ePvly8",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZICPu3u3l"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZ3s8EPNXI"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZUu9khcW1",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZVOOEitWA"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZF1Kng.P8"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZriHb6Ev8",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZG8fHRhzC"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "oefZhWEC5KAE"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "dari Jadwal Operas (Operasi Elektif)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZCBOFbV6h",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZs68Rw04M"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "oefZhWEC5KAE"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZRZmmGJxD",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZlr8FkgpH"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZFGdpzdVg"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZBAF1K01N",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZSNTFjB5_"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "oefZryxZdexn"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZNQSM46_8",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZ0qxtg4BF"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZC0arAY0s"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "p2gZyRc9uF9g",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "mOgZQ._Tl-jB"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "MNgZVMDehL7I"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZNGs4c.96",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZEdCOrxPc"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZG8fHRhzC"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZRsFYqb2N",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZhWEC5KAE"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "oefZSNTFjB5_"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZjhYw1zHd",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZs68Rw04M"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "oefZBnK6B1CK"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZOzBTJw2T",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZhXS6u8vu"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZ0XJ0cnFn"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ.7Vqtbvt",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZylIbpz~6"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZ0qxtg4BF"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "_JgZV31nd2u1",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "ZJgZf4mx.Dri"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZlPGD-1BZ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZvULypWob",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZndhW7pJd"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZiT0Qhrit"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZyUm9wibz",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZKuiir_oQ"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZndhW7pJd"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ9wnUUWJl",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZBnK6B1CK"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZqh8xROJc"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "BMgZKt-T9zBL",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "vJgZiTHlhTSQ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "MIgZLCZQ8KR4"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZMyrabBbn",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZXebdFg5J"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZszc2S33h"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZwJnpaSe.",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZablikIQC"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZylIbpz~6"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "d2gZHqszM3Ry",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "aQgZ7qHJvRyd"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "mOgZQ._Tl-jB"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Ya"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZjxbQsRQq",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZ_Rtqddxs"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZVOOEitWA"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "oefZ7..EUhBK",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oefZszc2S33h"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "oefZdXNGiurp"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

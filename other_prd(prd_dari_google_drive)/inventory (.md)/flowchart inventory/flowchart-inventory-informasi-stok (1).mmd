@@ -1,0 +1,96 @@
+flowchart TD
+  S([Mulai]) --> A[Buka Inventory Informasi Stok]
+  subgraph Pengguna
+    A --> B{Pilih cara akses}
+    B -->|Detail Stok| C[Isi panel filter detail]
+    B -->|Kartu Stok| K1[Pilih satu barang]
+    B -->|Telusur Recall| R1[Pilih barang dan batch]
+  end
+
+  subgraph Sistem
+    C --> AUTH{Hak akses unit gudang depo}
+    K1 --> AUTH
+    R1 --> AUTH
+    AUTH -->|tidak berwenang| AX[Batasi lingkup atau tolak]
+    AUTH -->|berwenang| D{Cut off date valid}
+    D -->|masa depan| DERR[Tolak cut off perbaiki]
+    DERR --> C
+    D -->|valid sampai hari ini| LED[(Ambil ledger pergerakan)]
+  end
+
+  subgraph Sumber
+    H2[Penerimaan masuk] --> LED
+    H3H5[Distribusi dan Mutasi] --> LED
+    H6[Stok Opname adjustment] --> LED
+    H8[Retur Pembelian keluar] --> LED
+    H9[Pemusnahan keluar] --> LED
+    H11[Pemakaian unit keluar] --> LED
+    FD[(Farmasi Dispensing Resep)] --> LED
+    FR[(Farmasi Retur Obat Pasien)] --> LED
+  end
+
+  LED --> CALC[Hitung stok t per formula]
+  CALC --> AVL[Stok Available Fisik kurang Reserved]
+  AVL --> ST{Status ketersediaan}
+  ST -->|stok nol| STH[Habis]
+  ST -->|kurang sama minimum| STM[Minimum]
+  ST -->|antara min dan ROP| STK[Kurang]
+  ST -->|stok sama ROP atau lebih| STC[Cukup]
+
+  STH --> NIL[Hitung Nilai Persediaan metode global]
+  STM --> NIL
+  STK --> NIL
+  STC --> NIL
+  CFG[(Config metode dan ambang ED)] --> NIL
+  NIL --> CARDS[Tampil summary cards dan tabel posisi]
+
+  CARDS --> ED{Barang Farmasi cek ED}
+  ED -->|sisa hari nol atau kurang| EXP[Tandai Expired keluar Available]
+  ED -->|sisa hari sama 60 atau kurang| EDN[Badge Mendekati ED tindak lanjut]
+  ED -->|aman| EOK[Tanpa badge ED]
+  EXP --> DRILL
+  EDN --> DRILL
+  EOK --> DRILL
+
+  CARDS --> DRILL{Drill down}
+  DRILL -->|RS ke Kategori ke Gudang ke Barang ke Batch FEFO| CARDS
+  DRILL -->|selesai telaah| EXP1{Export}
+  EXP1 -->|ya| XLSPDF[Export Excel atau PDF]
+  EXP1 -->|tidak| ENDA([Selesai])
+  XLSPDF --> ENDA
+
+  K1 --> KFLT[Filter unit daterange jenis multi select]
+  KFLT --> AUTH
+  CALC --> KROW[Susun baris kronologis running balance HPP]
+  KROW --> PRIV{Role kewenangan klinis}
+  PRIV -->|klinis| KCLIN[Tampil No Resep dan identitas pasien]
+  PRIV -->|non klinis| KNON[Sembunyikan No Resep dan pasien]
+  KCLIN --> KSHOW[Tampil Kartu Stok dengan link audit trail]
+  KNON --> KSHOW
+  KSHOW --> KEXP{Export Kartu Stok}
+  KEXP -->|ya| XLSPDF
+  KEXP -->|investigasi lanjut| AUDIT[Buka link dokumen atau audit trail]
+  KEXP -->|tidak| ENDB([Selesai])
+  AUDIT --> ENDB
+
+  R1 --> AUTH
+  CALC --> RTRACE[Telusur batch ke resep ke pasien]
+  RTRACE --> RPRIV{Role kewenangan klinis}
+  RPRIV -->|klinis| RSHOW[Tampil daftar resep pasien status retur]
+  RPRIV -->|non klinis| RHIDE[Sembunyikan identitas pasien]
+  RSHOW --> ENDC([Selesai])
+  RHIDE --> ENDC
+
+  subgraph Farmasi
+    FE2[Order resep dibuat] --> FRES{Reservasi stok}
+    FRES -->|reserve| FRSV[Reserved for Dispensing kurangi Available]
+    FRSV --> FKONF{Order dikonfirmasi}
+    FKONF -->|diserahkan ke pasien| FOUT[Pergerakan KELUAR FEFO Fisik berkurang]
+    FKONF -->|resep dibatalkan| FCAN[Lepas reservasi Available kembali]
+    FOUT --> FD
+    FCAN --> AVL
+    FQC{QC retur obat pasien} -->|lolos| FMASUK[MASUK batch dan ED asli FEFO]
+    FQC -->|gagal| FMUS[Tidak restock jalur Pemusnahan H9]
+    FMASUK --> FR
+    FMUS --> H9
+  end

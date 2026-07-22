@@ -1,0 +1,11 @@
+{
+  "code": "N5",
+  "title": "Master Data Rumah Sakit",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "version": "1.1",
+  "date": "2026-07-19",
+  "status": "draft",
+  "primary_file": "N5__master-data-rumah-sakit.md",
+  "related_features": ["N4", "N6", "N7", "A53"]
+}

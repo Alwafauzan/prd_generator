@@ -1,0 +1,1547 @@
+{
+ "id": "73562261-e454-410a-8e4b-8133a20d5551",
+ "title": "g-support-hemodialysis",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "O77XKMdP90tr",
+  "label": "Hemodialisa"
+ },
+ "pages": [
+  {
+   "id": "ur2JN4oOPYg5",
+   "title": "Hemodialisa",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "B87XD9159ez7",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Isi asesmen dokter HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XH~tVt6pn",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai Pendaftaran"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XJmlkiGX-",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka pasien di pelayanan HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xq3uLA8Ia",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Isi asesmen awal HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XQcPyd8wK",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai Pelayanan Perawat HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XIi_y74bG",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tampilkan pasien pada dashboard pelayanan HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xrs9KBC5b",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Catat sesi HD selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xoi~mOgKi",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Sistem EMR / HIS Neurovi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "B87XD0M885vM",
+        "B87XFivf_tqX",
+        "B87XG3mKz-sl",
+        "B87XIi_y74bG",
+        "B87XXqrI1GxS",
+        "B87Xe.fU699T",
+        "B87XihMiHPp.",
+        "B87Xl8LOi5EH",
+        "B87XlQCEhVqS",
+        "B87XqVJogyvm",
+        "B87Xrs9KBC5b",
+        "B87Xt76HIvy-",
+        "B87XzqWuU41e"
+       ],
+       "lines": [
+        "B87X6OdH5aAo",
+        "B87X6leYU1nv",
+        "B87X9A4i6~D~",
+        "B87XEhsR7y2-",
+        "B87XJNNwHcJS",
+        "B87XTuLb8j9p",
+        "B87XaUIRwQ5B",
+        "B87Xr5NI_DGb",
+        "B87Xt.AneWUH",
+        "B87XtU1q0X.l",
+        "B87XvY0Z~2Tk",
+        "B87XxQYhC3gT"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "B87XzqWuU41e",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Registrasi Diterima"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XoaeJgmag",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesaikan sesi tindakan HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xe.fU699T",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan asesmen dokter HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xu74DH3w1",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Datang untuk pelayanan Hemodialisa (HD)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XMO3MTaUh",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka pasien di nurse station HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "g8s0BCvVP2.y",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "HEMODIALISA"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "ROW"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "COLUMN"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "B87XG3mKz-sl",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan instruksi tambahan: Resep, Tindakan, Order Penunjang, Surat, Rujukan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87X-We_jg~T",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Isi form monitoring HD selama tindakan berlangsung (berkala)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XCBj_n3F5",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pasien Datang untuk HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XKM_msv2s",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Pasien / Pengantar"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "B87XCBj_n3F5",
+        "B87XWHruLJpT",
+        "B87XdDFV7NKw",
+        "B87XgSoIWnks",
+        "B87Xu74DH3w1"
+       ],
+       "lines": [
+        "B87XDAZONwvO",
+        "B87XFZlkyQrz",
+        "B87XS5jVTYrX",
+        "B87XVk2Sl4H2"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "B87XFivf_tqX",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan monitoring HD selama tindakan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XXqrI1GxS",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan status akhir pelayanan HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XdDFV7NKw",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pulang setelah pelayanan HD selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "O77XKMdP90tr",
+      "class": "SparkFrameBlock",
+      "textAreas": [
+       {
+        "label": "FrameTitle",
+        "text": "Hemodialisa"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "B87X-We_jg~T",
+        "B87X-fXGezCB",
+        "B87XC0pMUriP",
+        "B87XCBj_n3F5",
+        "B87XD0M885vM",
+        "B87XD9159ez7",
+        "B87XFivf_tqX",
+        "B87XG3mKz-sl",
+        "B87XGP5l_oOs",
+        "B87XH~tVt6pn",
+        "B87XIi_y74bG",
+        "B87XJmlkiGX-",
+        "B87XKM_msv2s",
+        "B87XMO3MTaUh",
+        "B87XNldpJAUC",
+        "B87XNtswue.F",
+        "B87XQcPyd8wK",
+        "B87XWHruLJpT",
+        "B87XXbHWh4Tw",
+        "B87XXqrI1GxS",
+        "B87XaqZy1XWs",
+        "B87XcSyovjl_",
+        "B87XdDFV7NKw",
+        "B87Xe.fU699T",
+        "B87XeveHoTHq",
+        "B87XgSoIWnks",
+        "B87XggzqzsNy",
+        "B87XihMiHPp.",
+        "B87Xl8LOi5EH",
+        "B87XlQCEhVqS",
+        "B87Xma9FnBuK",
+        "B87XoaeJgmag",
+        "B87Xoi~mOgKi",
+        "B87XpKd.PTK5",
+        "B87Xq3uLA8Ia",
+        "B87XqVJogyvm",
+        "B87Xrs9KBC5b",
+        "B87Xt76HIvy-",
+        "B87Xu74DH3w1",
+        "B87XuU5Iw3hW",
+        "B87Xya2e0_9t",
+        "B87XzqWuU41e",
+        "g8s0BCvVP2.y"
+       ],
+       "lines": [
+        "B87X4-Xb-.z1",
+        "B87X4LJ6Ff5q",
+        "B87X4N1BLV7h",
+        "B87X4zwcXYF.",
+        "B87X6OdH5aAo",
+        "B87X6leYU1nv",
+        "B87X7fiY_GqK",
+        "B87X8uJJiPOI",
+        "B87X9A4i6~D~",
+        "B87XAh5LIL~T",
+        "B87XDAZONwvO",
+        "B87XDIZ5Yyy2",
+        "B87XE-j9MExv",
+        "B87XEhsR7y2-",
+        "B87XFZlkyQrz",
+        "B87XJNNwHcJS",
+        "B87XNXVu_WLx",
+        "B87XRvg6dxQu",
+        "B87XS5jVTYrX",
+        "B87XSNXnvI.K",
+        "B87XTuLb8j9p",
+        "B87XVRAaGT3S",
+        "B87XVk2Sl4H2",
+        "B87XWHS3Ba9~",
+        "B87X_tVczDRg",
+        "B87XaUIRwQ5B",
+        "B87Xe5cjAGh_",
+        "B87XeeI2be9G",
+        "B87XfAJ3xI3t",
+        "B87XfhU.IqxX",
+        "B87Xh37lSu.D",
+        "B87Xkz5bbmEe",
+        "B87XoLwQmTPq",
+        "B87Xp2mZP9oa",
+        "B87Xr5NI_DGb",
+        "B87Xt.AneWUH",
+        "B87XtU1q0X.l",
+        "B87Xte~kjzJa",
+        "B87Xud~IVC8a",
+        "B87XvY0Z~2Tk",
+        "B87Xvj96MWbz",
+        "B87XxQYhC3gT",
+        "B87XyXR.mFkX",
+        "B87Xyv8KEXuX"
+       ],
+       "groups": [
+        "B87XgEv7XDen"
+       ]
+      }
+     },
+     {
+      "id": "B87XuU5Iw3hW",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Perawat HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "B87X-We_jg~T",
+        "B87XC0pMUriP",
+        "B87XGP5l_oOs",
+        "B87XMO3MTaUh",
+        "B87XNtswue.F",
+        "B87XQcPyd8wK",
+        "B87XeveHoTHq",
+        "B87XoaeJgmag",
+        "B87Xq3uLA8Ia"
+       ],
+       "lines": [
+        "B87X4LJ6Ff5q",
+        "B87X8uJJiPOI",
+        "B87XE-j9MExv",
+        "B87Xe5cjAGh_",
+        "B87XeeI2be9G",
+        "B87Xkz5bbmEe",
+        "B87Xte~kjzJa",
+        "B87Xvj96MWbz"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "B87XlQCEhVqS",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan asesmen awal HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87X-fXGezCB",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Petugas Pendaftaran HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "B87XH~tVt6pn",
+        "B87XXbHWh4Tw",
+        "B87XcSyovjl_"
+       ],
+       "lines": [
+        "B87XoLwQmTPq",
+        "B87Xud~IVC8a"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "B87XgSoIWnks",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Jalani asesmen dan tindakan HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XpKd.PTK5",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih status keluar / pulangkan pasien"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xt76HIvy-",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Proses Sistem Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XggzqzsNy",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Berikan instruksi tambahan selama HD (optional): Resep, Tindakan, Order Penunjang, Surat Kontrol, Rujukan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XWHruLJpT",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pelayanan HD Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XD0M885vM",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan evaluasi kondisi pasien"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XqVJogyvm",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan asesmen perawat HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XXbHWh4Tw",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pendaftaran Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XeveHoTHq",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Isi asesmen perawat HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XaqZy1XWs",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai Pelayanan Dokter HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xl8LOi5EH",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Catat tindakan HD sebagai tindakan utama"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xma9FnBuK",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Dokter HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "B87XD9159ez7",
+        "B87XJmlkiGX-",
+        "B87XNldpJAUC",
+        "B87XaqZy1XWs",
+        "B87XggzqzsNy",
+        "B87XpKd.PTK5",
+        "B87Xya2e0_9t"
+       ],
+       "lines": [
+        "B87X4N1BLV7h",
+        "B87X4zwcXYF.",
+        "B87X7fiY_GqK",
+        "B87XDIZ5Yyy2",
+        "B87XNXVu_WLx",
+        "B87Xh37lSu.D"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "B87XihMiHPp.",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Catat audit log dan timestamp pelayanan HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XC0pMUriP",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Lakukan persiapan tindakan HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xya2e0_9t",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pelayanan Dokter Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XcSyovjl_",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Daftarkan pasien ke pelayanan HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XGP5l_oOs",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai tindakan HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XNldpJAUC",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Evaluasi kondisi pasien setelah HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XNtswue.F",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tugas Perawat Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "lines": [
+     {
+      "id": "B87XE-j9MExv",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XMO3MTaUh"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87Xq3uLA8Ia"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xvj96MWbz",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XoaeJgmag"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XNtswue.F"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xe5cjAGh_",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87X-We_jg~T"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XoaeJgmag"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xp2mZP9oa",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "B87XcSyovjl_"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "B87XIi_y74bG"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Registrasi HD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87X_tVczDRg",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "B87XGP5l_oOs"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "B87Xl8LOi5EH"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "HD started"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XDAZONwvO",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XdDFV7NKw"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XWHruLJpT"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XSNXnvI.K",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "B87XeveHoTHq"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "B87XqVJogyvm"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Asesmen perawat"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87X7fiY_GqK",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XD9159ez7"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XggzqzsNy"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XtU1q0X.l",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87Xrs9KBC5b"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XD0M885vM"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XFZlkyQrz",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XCBj_n3F5"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87Xu74DH3w1"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87X4-Xb-.z1",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "B87XpKd.PTK5"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "B87XXqrI1GxS"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Status pulang"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XTuLb8j9p",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XD0M885vM"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XXqrI1GxS"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87X9A4i6~D~",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XqVJogyvm"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87Xe.fU699T"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87X4LJ6Ff5q",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XeveHoTHq"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XC0pMUriP"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xte~kjzJa",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XC0pMUriP"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XGP5l_oOs"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XfhU.IqxX",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "B87XoaeJgmag"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "B87Xrs9KBC5b"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "HD ended"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xyv8KEXuX",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "B87XggzqzsNy"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "B87XG3mKz-sl"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Instruksi medis"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XaUIRwQ5B",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XlQCEhVqS"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XqVJogyvm"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XfAJ3xI3t",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "B87Xq3uLA8Ia"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "B87XlQCEhVqS"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Asesmen awal"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XWHS3Ba9~",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "B87X-We_jg~T"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "B87XFivf_tqX"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Monitoring data"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87X6OdH5aAo",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XXqrI1GxS"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XihMiHPp."
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XAh5LIL~T",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "B87Xu74DH3w1"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "B87XcSyovjl_"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Data pasien"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xh37lSu.D",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XJmlkiGX-"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XD9159ez7"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xkz5bbmEe",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XQcPyd8wK"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XMO3MTaUh"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xud~IVC8a",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XcSyovjl_"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XXbHWh4Tw"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XVk2Sl4H2",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87Xu74DH3w1"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XgSoIWnks"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XvY0Z~2Tk",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87Xe.fU699T"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87Xl8LOi5EH"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XEhsR7y2-",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87Xl8LOi5EH"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XFivf_tqX"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87X6leYU1nv",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XIi_y74bG"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XlQCEhVqS"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xt.AneWUH",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XihMiHPp."
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87Xt76HIvy-"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XDIZ5Yyy2",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XggzqzsNy"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XNldpJAUC"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87X8uJJiPOI",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87Xq3uLA8Ia"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XeveHoTHq"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XeeI2be9G",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XGP5l_oOs"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87X-We_jg~T"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87X4N1BLV7h",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XNldpJAUC"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XpKd.PTK5"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XS5jVTYrX",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XgSoIWnks"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XdDFV7NKw"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XxQYhC3gT",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XG3mKz-sl"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87Xrs9KBC5b"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XyXR.mFkX",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "B87XNldpJAUC"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "B87XD0M885vM"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Evaluasi"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XVRAaGT3S",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "B87XMO3MTaUh"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "B87XIi_y74bG"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Request data"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XJNNwHcJS",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XFivf_tqX"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XG3mKz-sl"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87X4zwcXYF.",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XpKd.PTK5"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87Xya2e0_9t"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XRvg6dxQu",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "B87XD9159ez7"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "B87Xe.fU699T"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Asesmen dokter"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XoLwQmTPq",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XH~tVt6pn"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XcSyovjl_"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87Xr5NI_DGb",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XzqWuU41e"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XIi_y74bG"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "B87XNXVu_WLx",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "B87XaqZy1XWs"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "B87XJmlkiGX-"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [
+     {
+      "id": "B87XgEv7XDen",
+      "members": [
+       "B87XNtswue.F",
+       "B87XXbHWh4Tw",
+       "B87XQcPyd8wK",
+       "B87XCBj_n3F5",
+       "B87Xt76HIvy-",
+       "B87XWHruLJpT",
+       "B87XzqWuU41e",
+       "B87XH~tVt6pn",
+       "B87XaqZy1XWs",
+       "B87Xya2e0_9t",
+       "B87XD0M885vM",
+       "B87XihMiHPp.",
+       "B87XXqrI1GxS",
+       "B87Xe.fU699T",
+       "B87XG3mKz-sl",
+       "B87Xrs9KBC5b",
+       "B87Xl8LOi5EH",
+       "B87XFivf_tqX",
+       "B87XoaeJgmag",
+       "B87XdDFV7NKw",
+       "B87X-We_jg~T",
+       "B87XC0pMUriP",
+       "B87XNldpJAUC",
+       "B87XggzqzsNy",
+       "B87XpKd.PTK5",
+       "B87XGP5l_oOs",
+       "B87XMO3MTaUh",
+       "B87Xma9FnBuK",
+       "B87XD9159ez7",
+       "B87XlQCEhVqS",
+       "B87XqVJogyvm",
+       "B87XIi_y74bG",
+       "B87Xoi~mOgKi",
+       "B87XJmlkiGX-",
+       "B87XgSoIWnks",
+       "B87XKM_msv2s",
+       "B87Xu74DH3w1",
+       "B87XuU5Iw3hW",
+       "B87X-fXGezCB",
+       "B87XcSyovjl_",
+       "B87XeveHoTHq",
+       "B87Xq3uLA8Ia",
+       "B87XTuLb8j9p",
+       "B87X_tVczDRg",
+       "B87XEhsR7y2-",
+       "B87XWHS3Ba9~",
+       "B87XDAZONwvO",
+       "B87X8uJJiPOI",
+       "B87Xr5NI_DGb",
+       "B87XSNXnvI.K",
+       "B87Xp2mZP9oa",
+       "B87Xte~kjzJa",
+       "B87XAh5LIL~T",
+       "B87XtU1q0X.l",
+       "B87XS5jVTYrX",
+       "B87XfhU.IqxX",
+       "B87XvY0Z~2Tk",
+       "B87XJNNwHcJS",
+       "B87XeeI2be9G",
+       "B87Xe5cjAGh_",
+       "B87XfAJ3xI3t",
+       "B87XVRAaGT3S",
+       "B87XaUIRwQ5B",
+       "B87X9A4i6~D~",
+       "B87Xkz5bbmEe",
+       "B87XE-j9MExv",
+       "B87XFZlkyQrz",
+       "B87XoLwQmTPq",
+       "B87Xt.AneWUH",
+       "B87X6OdH5aAo",
+       "B87XxQYhC3gT",
+       "B87Xvj96MWbz",
+       "B87X6leYU1nv",
+       "B87XVk2Sl4H2",
+       "B87Xud~IVC8a",
+       "B87X4LJ6Ff5q",
+       "B87X4N1BLV7h",
+       "B87X4zwcXYF.",
+       "B87X4-Xb-.z1",
+       "B87XyXR.mFkX",
+       "B87XDIZ5Yyy2",
+       "B87Xh37lSu.D",
+       "B87XRvg6dxQu",
+       "B87Xyv8KEXuX",
+       "B87XNXVu_WLx",
+       "B87X7fiY_GqK"
+      ],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

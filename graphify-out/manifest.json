@@ -1,0 +1,1277 @@
+{
+  ".claude/settings.local.json": {
+    "mtime": 1784175580.8222811,
+    "ast_hash": "020c3d6c981a53c7637291255f2ce676",
+    "semantic_hash": "020c3d6c981a53c7637291255f2ce676"
+  },
+  ".vscode/settings.json": {
+    "mtime": 1784524908.6866717,
+    "ast_hash": "b1cd07102a1a0134c3c98e6763e68b6a",
+    "semantic_hash": "b1cd07102a1a0134c3c98e6763e68b6a"
+  },
+  "app/api/flowchart/route.ts": {
+    "mtime": 1782375949.40617,
+    "ast_hash": "b3a18b949693c40e122c6b8016a10b63",
+    "semantic_hash": "b3a18b949693c40e122c6b8016a10b63"
+  },
+  "app/api/generate/route.ts": {
+    "mtime": 1782375953.9951718,
+    "ast_hash": "ced6ff13ca0c52345f67d44ab9318fb3",
+    "semantic_hash": "ced6ff13ca0c52345f67d44ab9318fb3"
+  },
+  "app/api/options/route.ts": {
+    "mtime": 1782189001.4811628,
+    "ast_hash": "96509bd17592b7f69cb0bd1185c145ea",
+    "semantic_hash": "96509bd17592b7f69cb0bd1185c145ea"
+  },
+  "app/api/prd/[id]/route.ts": {
+    "mtime": 1782189001.4811628,
+    "ast_hash": "89c0a97529f33472df466dd21945457f",
+    "semantic_hash": "89c0a97529f33472df466dd21945457f"
+  },
+  "app/api/prd/route.ts": {
+    "mtime": 1782189001.4811628,
+    "ast_hash": "dc75bcd2ac22620ac720f74f58491462",
+    "semantic_hash": "dc75bcd2ac22620ac720f74f58491462"
+  },
+  "app/api/refine/route.ts": {
+    "mtime": 1782375959.0347905,
+    "ast_hash": "f4928d09328a963fc350e56756baa6bb",
+    "semantic_hash": "f4928d09328a963fc350e56756baa6bb"
+  },
+  "app/api/related/route.ts": {
+    "mtime": 1782189001.4811628,
+    "ast_hash": "5491581f7a9929f913edf288931b6203",
+    "semantic_hash": "5491581f7a9929f913edf288931b6203"
+  },
+  "app/components/Mermaid.tsx": {
+    "mtime": 1782376026.1584513,
+    "ast_hash": "b7771fa8a6d4e06632b426b59059dcfb",
+    "semantic_hash": "b7771fa8a6d4e06632b426b59059dcfb"
+  },
+  "app/layout.tsx": {
+    "mtime": 1782189001.4811628,
+    "ast_hash": "aa11de501c01f72ba6db3df1401ebfa3",
+    "semantic_hash": "aa11de501c01f72ba6db3df1401ebfa3"
+  },
+  "app/lib/attachments.ts": {
+    "mtime": 1782189001.4811628,
+    "ast_hash": "0c5696039118c493fe0da15608222ce6",
+    "semantic_hash": "0c5696039118c493fe0da15608222ce6"
+  },
+  "app/lib/dictionary.ts": {
+    "mtime": 1782189001.4811628,
+    "ast_hash": "e075a58362c134ef32a1a6f7f633ee2d",
+    "semantic_hash": "e075a58362c134ef32a1a6f7f633ee2d"
+  },
+  "app/lib/flowchart.ts": {
+    "mtime": 1782189001.4811628,
+    "ast_hash": "57aab4be11be7fbbe4fbf85a01288707",
+    "semantic_hash": "57aab4be11be7fbbe4fbf85a01288707"
+  },
+  "app/lib/generate.ts": {
+    "mtime": 1782376018.1811333,
+    "ast_hash": "fb01294f77ce8da177eb417315d3599a",
+    "semantic_hash": "fb01294f77ce8da177eb417315d3599a"
+  },
+  "app/lib/knowledge.ts": {
+    "mtime": 1782189001.4811628,
+    "ast_hash": "ec013d403df9ff7b98c5c81eb66820c0",
+    "semantic_hash": "ec013d403df9ff7b98c5c81eb66820c0"
+  },
+  "app/lib/refine.ts": {
+    "mtime": 1782189001.4811628,
+    "ast_hash": "d0f5a780252159c6a4d3c486b3b3ed1f",
+    "semantic_hash": "d0f5a780252159c6a4d3c486b3b3ed1f"
+  },
+  "app/lib/store.ts": {
+    "mtime": 1782189001.4811628,
+    "ast_hash": "0e4e8f60cb4b14b2d868b0b2efd2ef82",
+    "semantic_hash": "0e4e8f60cb4b14b2d868b0b2efd2ef82"
+  },
+  "app/page.tsx": {
+    "mtime": 1782189001.4811628,
+    "ast_hash": "45699aca7841d8d0c0ae40b3c56c303e",
+    "semantic_hash": "45699aca7841d8d0c0ae40b3c56c303e"
+  },
+  "bahan_random/Ambulance.vue": {
+    "mtime": 1784367548.6755838,
+    "ast_hash": "bde2566a93ea88d4f46333317933f5b8",
+    "semantic_hash": "bde2566a93ea88d4f46333317933f5b8"
+  },
+  "bahan_random/OrderAmbulance.vue": {
+    "mtime": 1784367548.6755838,
+    "ast_hash": "8f39217b06e2c8445d310710bbc18ff5",
+    "semantic_hash": "8f39217b06e2c8445d310710bbc18ff5"
+  },
+  "bahan_random/daftar table rbac.sql": {
+    "mtime": 1783086432.7930036,
+    "ast_hash": "d382587f010cbf08a3e2d988f9803194",
+    "semantic_hash": "d382587f010cbf08a3e2d988f9803194"
+  },
+  "bpmn/g-admisi-emergency-registration.json": {
+    "mtime": 1782189001.4811628,
+    "ast_hash": "6e1b72c80d8e9e9b67633fd3896f0352",
+    "semantic_hash": "6e1b72c80d8e9e9b67633fd3896f0352"
+  },
+  "bpmn/g-admisi-inpatient-registration.json": {
+    "mtime": 1782189001.4811628,
+    "ast_hash": "e69414db61c5f51501fb402e5792d081",
+    "semantic_hash": "e69414db61c5f51501fb402e5792d081"
+  },
+  "bpmn/g-admisi-onsite-registration.json": {
+    "mtime": 1782189001.4811628,
+    "ast_hash": "ff2e8a1615bc4edf8f391ada320a7942",
+    "semantic_hash": "ff2e8a1615bc4edf8f391ada320a7942"
+  },
+  "bpmn/g-backoffice-inventory-distribusi.json": {
+    "mtime": 1782189001.4811628,
+    "ast_hash": "c5e0640b17545c42a424bb63a3852afc",
+    "semantic_hash": "c5e0640b17545c42a424bb63a3852afc"
+  },
+  "bpmn/g-backoffice-inventory-pemesanan.json": {
+    "mtime": 1782189001.4811628,
+    "ast_hash": "c37351c48dc7cdd3e81988fb4680a24a",
+    "semantic_hash": "c37351c48dc7cdd3e81988fb4680a24a"
+  },
+  "bpmn/g-backoffice-inventory-penerimaan.json": {
+    "mtime": 1782189001.4811628,
+    "ast_hash": "acb74c89b7cecd06fa73c0ddef7d0aac",
+    "semantic_hash": "acb74c89b7cecd06fa73c0ddef7d0aac"
+  },
+  "bpmn/g-backoffice-inventory-stok-opname.json": {
+    "mtime": 1782189001.497246,
+    "ast_hash": "11b9c1a81f60bdc06eedc25d5c66b3ab",
+    "semantic_hash": "11b9c1a81f60bdc06eedc25d5c66b3ab"
+  },
+  "bpmn/g-emr-emergency.json": {
+    "mtime": 1782189001.497246,
+    "ast_hash": "196cb50287b62cf50f2e06b48c723790",
+    "semantic_hash": "196cb50287b62cf50f2e06b48c723790"
+  },
+  "bpmn/g-emr-inpatient.json": {
+    "mtime": 1782189001.497246,
+    "ast_hash": "90aba4ad9e95ba27efe348d313174475",
+    "semantic_hash": "90aba4ad9e95ba27efe348d313174475"
+  },
+  "bpmn/g-emr-patient-identity.json": {
+    "mtime": 1782189001.497246,
+    "ast_hash": "e2f8c0a3ad883411e637e3d94d29dc2c",
+    "semantic_hash": "e2f8c0a3ad883411e637e3d94d29dc2c"
+  },
+  "bpmn/g-emr-screening.json": {
+    "mtime": 1782189001.5017478,
+    "ast_hash": "4482eb502240d41bb0e042e804c84e93",
+    "semantic_hash": "4482eb502240d41bb0e042e804c84e93"
+  },
+  "bpmn/g-service-cpo-order.json": {
+    "mtime": 1782189001.5017478,
+    "ast_hash": "1c82ea8dee43a0283bbd59ae4bd06beb",
+    "semantic_hash": "1c82ea8dee43a0283bbd59ae4bd06beb"
+  },
+  "bpmn/g-service-cpo-timing.json": {
+    "mtime": 1782189001.5017478,
+    "ast_hash": "38158082808233ad1fb2454b9096f6ef",
+    "semantic_hash": "38158082808233ad1fb2454b9096f6ef"
+  },
+  "bpmn/g-service-discharge.json": {
+    "mtime": 1782189001.5017478,
+    "ast_hash": "e56ae2217b2871b6a104d57f7380cdf6",
+    "semantic_hash": "e56ae2217b2871b6a104d57f7380cdf6"
+  },
+  "bpmn/g-service-dpjp-change.json": {
+    "mtime": 1782189001.5017478,
+    "ast_hash": "ed7d25e8a4af0ec38d7691ce0c03891a",
+    "semantic_hash": "ed7d25e8a4af0ec38d7691ce0c03891a"
+  },
+  "bpmn/g-service-internal-consult.json": {
+    "mtime": 1782189001.5017478,
+    "ast_hash": "c85e5b7e3507ec3616ba512379d987c9",
+    "semantic_hash": "c85e5b7e3507ec3616ba512379d987c9"
+  },
+  "bpmn/g-service-internal-referral.json": {
+    "mtime": 1782189001.5017478,
+    "ast_hash": "f2bc36c9fa1694d4c4e25b3a551bd39b",
+    "semantic_hash": "f2bc36c9fa1694d4c4e25b3a551bd39b"
+  },
+  "bpmn/g-service-internal-transfer.json": {
+    "mtime": 1782189001.5017478,
+    "ast_hash": "3595ad64ca8a93900e1e6b84c3d014aa",
+    "semantic_hash": "3595ad64ca8a93900e1e6b84c3d014aa"
+  },
+  "bpmn/g-service-order-blood.json": {
+    "mtime": 1782189001.5017478,
+    "ast_hash": "50a10d8040c17d99b0926d2159eb1d63",
+    "semantic_hash": "50a10d8040c17d99b0926d2159eb1d63"
+  },
+  "bpmn/g-service-order-lab.json": {
+    "mtime": 1782189001.5017478,
+    "ast_hash": "1d53cb1eb7ba95a7d7ed3c5619f6de85",
+    "semantic_hash": "1d53cb1eb7ba95a7d7ed3c5619f6de85"
+  },
+  "bpmn/g-service-order-nutrition.json": {
+    "mtime": 1782189001.5017478,
+    "ast_hash": "d422784b40ed54701c77c570753df17e",
+    "semantic_hash": "d422784b40ed54701c77c570753df17e"
+  },
+  "bpmn/g-service-order-radiology.json": {
+    "mtime": 1782189001.5017478,
+    "ast_hash": "88d78f1df1b808a81b6cc62991c3f877",
+    "semantic_hash": "88d78f1df1b808a81b6cc62991c3f877"
+  },
+  "bpmn/g-service-order-resep.json": {
+    "mtime": 1782189001.5017478,
+    "ast_hash": "da76bc91594141c5b936a051258a4a98",
+    "semantic_hash": "da76bc91594141c5b936a051258a4a98"
+  },
+  "bpmn/g-service-pathology-order.json": {
+    "mtime": 1782189001.5017478,
+    "ast_hash": "6c0b93df2ba1aee85fb659fca3325089",
+    "semantic_hash": "6c0b93df2ba1aee85fb659fca3325089"
+  },
+  "bpmn/g-service-tindakan-bhp.json": {
+    "mtime": 1782189001.5017478,
+    "ast_hash": "4b12f1a3dfa9d50c2be475085d1d9fca",
+    "semantic_hash": "4b12f1a3dfa9d50c2be475085d1d9fca"
+  },
+  "bpmn/g-service-triage-emergency.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "b0a161834773161726ec043aa003b735",
+    "semantic_hash": "b0a161834773161726ec043aa003b735"
+  },
+  "bpmn/g-support-ambulance.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "00c2101be995c7f4c5ed4a725c38eda2",
+    "semantic_hash": "00c2101be995c7f4c5ed4a725c38eda2"
+  },
+  "bpmn/g-support-apotek-online-iter.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "dd3f839a4ad15b0881ba353a8ab1c28a",
+    "semantic_hash": "dd3f839a4ad15b0881ba353a8ab1c28a"
+  },
+  "bpmn/g-support-blood-transfusion.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "ce096af8d892f8d35007c737a41166a6",
+    "semantic_hash": "ce096af8d892f8d35007c737a41166a6"
+  },
+  "bpmn/g-support-hemodialysis.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "a88cae3ccebe2f863674d1eae86219e8",
+    "semantic_hash": "a88cae3ccebe2f863674d1eae86219e8"
+  },
+  "bpmn/g-support-lab-flow.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "f92f2d05b57743aeead61d02c4e50ab4",
+    "semantic_hash": "f92f2d05b57743aeead61d02c4e50ab4"
+  },
+  "bpmn/g-support-mcu.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "e9a97004b2414982d6000b11a649ca3c",
+    "semantic_hash": "e9a97004b2414982d6000b11a649ca3c"
+  },
+  "bpmn/g-support-medical-display.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "a4cccabca86c1c8ba6de77dcb40dc6ae",
+    "semantic_hash": "a4cccabca86c1c8ba6de77dcb40dc6ae"
+  },
+  "bpmn/g-support-morgue-history.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "071c03cfb43f147c970cd63e19f0457a",
+    "semantic_hash": "071c03cfb43f147c970cd63e19f0457a"
+  },
+  "bpmn/g-support-morgue-new.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "a3bd96fcd28ce43127e14e0804abe9fa",
+    "semantic_hash": "a3bd96fcd28ce43127e14e0804abe9fa"
+  },
+  "bpmn/g-support-nutrition-rekap.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "dff6af7d3d0d7fad52844577d73c8bba",
+    "semantic_hash": "dff6af7d3d0d7fad52844577d73c8bba"
+  },
+  "bpmn/g-support-nutrition-usage.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "8e8af8ef97cceb434df4c908a697dd98",
+    "semantic_hash": "8e8af8ef97cceb434df4c908a697dd98"
+  },
+  "bpmn/g-support-pharmacy-ibs.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "f659f8ef1a164b4025c559fb1fadbd4d",
+    "semantic_hash": "f659f8ef1a164b4025c559fb1fadbd4d"
+  },
+  "bpmn/g-support-pharmacy-otc.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "ec4288b56a651064b528e3917fb61f9c",
+    "semantic_hash": "ec4288b56a651064b528e3917fb61f9c"
+  },
+  "bpmn/g-support-pharmacy-queue.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "7cc3a31d9183d152b37427edb7087eb3",
+    "semantic_hash": "7cc3a31d9183d152b37427edb7087eb3"
+  },
+  "bpmn/g-support-pharmacy-retur.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "f7441abc77374098ce27ef25dcc18fbe",
+    "semantic_hash": "f7441abc77374098ce27ef25dcc18fbe"
+  },
+  "bpmn/g-support-pharmacy-return-ri.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "064493f8a17905256f38690d2634fde1",
+    "semantic_hash": "064493f8a17905256f38690d2634fde1"
+  },
+  "bpmn/g-support-pharmacy-ri-igd.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "3557ea0e8286a045017d274acbf802be",
+    "semantic_hash": "3557ea0e8286a045017d274acbf802be"
+  },
+  "bpmn/g-support-pharmacy-rj.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "fe2cbe9c66afd9307a8304d4a17fc68b",
+    "semantic_hash": "fe2cbe9c66afd9307a8304d4a17fc68b"
+  },
+  "bpmn/g-support-ppi-audit.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "4a761b0134d8ed4cf52a3917e289707a",
+    "semantic_hash": "4a761b0134d8ed4cf52a3917e289707a"
+  },
+  "bpmn/g-support-ppi-surveillance.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "bc817e99aeb5eadd5fe8e131d1f09633",
+    "semantic_hash": "bc817e99aeb5eadd5fe8e131d1f09633"
+  },
+  "bpmn/g-support-radiology-flow.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "a9eaaee40ff01d571e5bcab0a36ddca1",
+    "semantic_hash": "a9eaaee40ff01d571e5bcab0a36ddca1"
+  },
+  "bpmn/g-support-rehab-form.json": {
+    "mtime": 1782189001.5133665,
+    "ast_hash": "3eea89b10046babfc7980449cccc49fe",
+    "semantic_hash": "3eea89b10046babfc7980449cccc49fe"
+  },
+  "bpmn/g-support-vk.json": {
+    "mtime": 1782189001.529262,
+    "ast_hash": "336141a7fa3db44fd66f187e713764a4",
+    "semantic_hash": "336141a7fa3db44fd66f187e713764a4"
+  },
+  "bpmn/json/Pelayanan Medis.json": {
+    "mtime": 1782189001.529262,
+    "ast_hash": "bf933e5f432b08b46553436525bb753a",
+    "semantic_hash": "bf933e5f432b08b46553436525bb753a"
+  },
+  "bpmn/json/chart2.json": {
+    "mtime": 1782189001.5453563,
+    "ast_hash": "24a3599cb5792a94dda5d1353f95f7d8",
+    "semantic_hash": "24a3599cb5792a94dda5d1353f95f7d8"
+  },
+  "bpmn/json/chart3.json": {
+    "mtime": 1782189001.5453563,
+    "ast_hash": "4a66b302d409ce113e308f85dcbb392f",
+    "semantic_hash": "4a66b302d409ce113e308f85dcbb392f"
+  },
+  "data/features-mvp.json": {
+    "mtime": 1784197404.4336295,
+    "ast_hash": "818fd0edcec6974ff63e4727b101ad72",
+    "semantic_hash": "818fd0edcec6974ff63e4727b101ad72"
+  },
+  "lib/bpmn.mjs": {
+    "mtime": 1782189001.5453563,
+    "ast_hash": "59a4e892304efc7e3cf7bc766d22d3a5",
+    "semantic_hash": "59a4e892304efc7e3cf7bc766d22d3a5"
+  },
+  "lib/prompt.mjs": {
+    "mtime": 1782189001.5453563,
+    "ast_hash": "b2b81cbeab653cd2f9fefa41a1139d57",
+    "semantic_hash": "b2b81cbeab653cd2f9fefa41a1139d57"
+  },
+  "lib/run-generate.mjs": {
+    "mtime": 1782189001.5453563,
+    "ast_hash": "3026aff2a58fffc103df0d96c5bce76c",
+    "semantic_hash": "3026aff2a58fffc103df0d96c5bce76c"
+  },
+  "lib/test-all.mjs": {
+    "mtime": 1782189001.5453563,
+    "ast_hash": "e47b77e787fa3dfd61c4e9e0243a0643",
+    "semantic_hash": "e47b77e787fa3dfd61c4e9e0243a0643"
+  },
+  "lib/test-bpmn.mjs": {
+    "mtime": 1782189001.5453563,
+    "ast_hash": "a6f30b6129fecf9f8b7a8da72660d8f9",
+    "semantic_hash": "a6f30b6129fecf9f8b7a8da72660d8f9"
+  },
+  "next-env.d.ts": {
+    "mtime": 1782189001.5453563,
+    "ast_hash": "187b4b5b507c358a018aeeadd81abe57",
+    "semantic_hash": "187b4b5b507c358a018aeeadd81abe57"
+  },
+  "next.config.mjs": {
+    "mtime": 1782189001.5453563,
+    "ast_hash": "e5bbb9fabc71e73447224c8a8c9346c5",
+    "semantic_hash": "e5bbb9fabc71e73447224c8a8c9346c5"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/.vscode/settings.json": {
+    "mtime": 1783912617.0,
+    "ast_hash": "4a24f64351a092ba7ffb58477caa8950",
+    "semantic_hash": "4a24f64351a092ba7ffb58477caa8950"
+  },
+  "package.json": {
+    "mtime": 1782189001.5453563,
+    "ast_hash": "ff8aa6532a0ab58d396cedcffb0bdc27",
+    "semantic_hash": "ff8aa6532a0ab58d396cedcffb0bdc27"
+  },
+  "result/A10__master-data-integrasi-bpjs-v2-tindakan/meta.json": {
+    "mtime": 1782189001.5453563,
+    "ast_hash": "8740bb67ac44e19915f514eda8c13cee",
+    "semantic_hash": "8740bb67ac44e19915f514eda8c13cee"
+  },
+  "result/A10__master-data-integrasi-bpjs-v2-tindakan/prd.json": {
+    "mtime": 1782189001.5453563,
+    "ast_hash": "4c1154dac74904ca37d3c4ef960c48f0",
+    "semantic_hash": "4c1154dac74904ca37d3c4ef960c48f0"
+  },
+  "result/A14__master-data-integrasi-satusehat-bpjs-v2-item-pemeriksaan-lab/meta.json": {
+    "mtime": 1782189001.561084,
+    "ast_hash": "2bd4f6a952d2ed0529d6bcd8655fba35",
+    "semantic_hash": "2bd4f6a952d2ed0529d6bcd8655fba35"
+  },
+  "result/A14__master-data-integrasi-satusehat-bpjs-v2-item-pemeriksaan-lab/prd.json": {
+    "mtime": 1782189001.561084,
+    "ast_hash": "1efe6544c88568d881faedf4d8841d57",
+    "semantic_hash": "1efe6544c88568d881faedf4d8841d57"
+  },
+  "result/A15__master-data-bangsal/meta.json": {
+    "mtime": 1782189001.561084,
+    "ast_hash": "c610a3cd7f6316eeb77005df55958e93",
+    "semantic_hash": "c610a3cd7f6316eeb77005df55958e93"
+  },
+  "result/A15__master-data-bangsal/prd.json": {
+    "mtime": 1782189001.561084,
+    "ast_hash": "8f16afaa439e3a11cf559072f72e7662",
+    "semantic_hash": "8f16afaa439e3a11cf559072f72e7662"
+  },
+  "result/A16__master-data-kamar/meta.json": {
+    "mtime": 1782189001.561084,
+    "ast_hash": "fbf2f3381a3d323911da7fb69a61f8f3",
+    "semantic_hash": "fbf2f3381a3d323911da7fb69a61f8f3"
+  },
+  "result/A16__master-data-kamar/prd.json": {
+    "mtime": 1782189001.561084,
+    "ast_hash": "10c920ca69532ff996e87f89f12daf0f",
+    "semantic_hash": "10c920ca69532ff996e87f89f12daf0f"
+  },
+  "result/A17__master-data-integrasi-bpjs-v1-v2-bed/meta.json": {
+    "mtime": 1782189001.561084,
+    "ast_hash": "a82a6e41e635b0d900ce25722a809eb3",
+    "semantic_hash": "a82a6e41e635b0d900ce25722a809eb3"
+  },
+  "result/A17__master-data-integrasi-bpjs-v1-v2-bed/prd.json": {
+    "mtime": 1782189001.561084,
+    "ast_hash": "baa6ff622c7755b058c2e3fdeb9c0c2e",
+    "semantic_hash": "baa6ff622c7755b058c2e3fdeb9c0c2e"
+  },
+  "result/A1__master-data-user-new/meta.json": {
+    "mtime": 1782189001.5726838,
+    "ast_hash": "47927472857a2c239af26202a829c095",
+    "semantic_hash": "47927472857a2c239af26202a829c095"
+  },
+  "result/A1__master-data-user-new/prd.json": {
+    "mtime": 1782189001.5726838,
+    "ast_hash": "2b7bae224b7d4b846ba1c74e625de0ac",
+    "semantic_hash": "2b7bae224b7d4b846ba1c74e625de0ac"
+  },
+  "result/A21__master-data-sediaan-barang/meta.json": {
+    "mtime": 1782801069.974607,
+    "ast_hash": "63b21dc3d904aa400c91c983ee9dbe36",
+    "semantic_hash": "63b21dc3d904aa400c91c983ee9dbe36"
+  },
+  "result/A22__master-data-satuan-kemasan/meta.json": {
+    "mtime": 1782722752.168995,
+    "ast_hash": "d4735385e11ef8dad69194c399b0aef3",
+    "semantic_hash": "d4735385e11ef8dad69194c399b0aef3"
+  },
+  "result/A23__master-data-spesialisasi-dokter/meta.json": {
+    "mtime": 1782808172.0076418,
+    "ast_hash": "f4add4ebf3db12b7a6b118305aba14c9",
+    "semantic_hash": "f4add4ebf3db12b7a6b118305aba14c9"
+  },
+  "result/A24__master-data-aturan-pakai/meta.json": {
+    "mtime": 1782821179.2436612,
+    "ast_hash": "e2f528c40cd98bfee681984b6007f6be",
+    "semantic_hash": "e2f528c40cd98bfee681984b6007f6be"
+  },
+  "result/A2__master-data-integrasi-satusehat-bpjs-v1-v2-staff/meta.json": {
+    "mtime": 1782189001.5747006,
+    "ast_hash": "47c1cbbea91385ec95969090265b752e",
+    "semantic_hash": "47c1cbbea91385ec95969090265b752e"
+  },
+  "result/A2__master-data-integrasi-satusehat-bpjs-v1-v2-staff/prd.json": {
+    "mtime": 1782189001.5747006,
+    "ast_hash": "ff0585e63f5af58836d6e4b73e079cf3",
+    "semantic_hash": "ff0585e63f5af58836d6e4b73e079cf3"
+  },
+  "result/A33__master-data-kategori-barang/meta.json": {
+    "mtime": 1782803960.1988647,
+    "ast_hash": "00571ecaedc0bef60439ec831c5763f1",
+    "semantic_hash": "00571ecaedc0bef60439ec831c5763f1"
+  },
+  "result/A34__master-data-hari-libur/meta.json": {
+    "mtime": 1782713871.515575,
+    "ast_hash": "e286573c161913ebdc156b16a14f5c95",
+    "semantic_hash": "e286573c161913ebdc156b16a14f5c95"
+  },
+  "result/A35__master-data-farmaco/meta.json": {
+    "mtime": 1782983703.1059577,
+    "ast_hash": "d7fe68fe0d202899d492e9e206f99739",
+    "semantic_hash": "d7fe68fe0d202899d492e9e206f99739"
+  },
+  "result/A38__master-data-bank/meta.json": {
+    "mtime": 1782886060.0306745,
+    "ast_hash": "72a2fb2b1d83d0a6c0a0855f8a90a993",
+    "semantic_hash": "72a2fb2b1d83d0a6c0a0855f8a90a993"
+  },
+  "result/A3__master-data-unit/meta.json": {
+    "mtime": 1782965786.5274212,
+    "ast_hash": "8c2b1afa04ce28925ea9242754ac6bc1",
+    "semantic_hash": "8c2b1afa04ce28925ea9242754ac6bc1"
+  },
+  "result/A42__master-data-gudang-dan-farmasi-new/meta.json": {
+    "mtime": 1783048048.0817556,
+    "ast_hash": "8192d06abe001c92af344d6e3a042763",
+    "semantic_hash": "8192d06abe001c92af344d6e3a042763"
+  },
+  "result/A43__master-data-tarif-kamar/meta.json": {
+    "mtime": 1782189001.5767164,
+    "ast_hash": "28685de86e18ca6b1c94e4ca05bfbdc2",
+    "semantic_hash": "28685de86e18ca6b1c94e4ca05bfbdc2"
+  },
+  "result/A43__master-data-tarif-kamar/prd.json": {
+    "mtime": 1782189001.5767164,
+    "ast_hash": "7383655060c1f56b9912dcc1e20d8df8",
+    "semantic_hash": "7383655060c1f56b9912dcc1e20d8df8"
+  },
+  "result/A44__paket-pelayanan-mcu/meta.json": {
+    "mtime": 1782821568.0373168,
+    "ast_hash": "149ee45200ce128aa711d650ebc52196",
+    "semantic_hash": "149ee45200ce128aa711d650ebc52196"
+  },
+  "result/A4__master-data-barang-farmasi/meta.json": {
+    "mtime": 1782731103.4024036,
+    "ast_hash": "47e2717af59add7a2acec7825aa06b9a",
+    "semantic_hash": "47e2717af59add7a2acec7825aa06b9a"
+  },
+  "result/A53__admin-rbac/meta.json": {
+    "mtime": 1783308086.3947084,
+    "ast_hash": "4bd841302723a6195aef3be2121323a3",
+    "semantic_hash": "4bd841302723a6195aef3be2121323a3"
+  },
+  "result/A53__admin-rbac/prd.json": {
+    "mtime": 1782189001.5767164,
+    "ast_hash": "61f94e835f82cfbaa69919b5523656d0",
+    "semantic_hash": "61f94e835f82cfbaa69919b5523656d0"
+  },
+  "result/A55__master-data-jabatan/meta.json": {
+    "mtime": 1783047511.6450844,
+    "ast_hash": "b665f84f420de10eb4b432f21477d055",
+    "semantic_hash": "b665f84f420de10eb4b432f21477d055"
+  },
+  "result/A7__master-data-supplier/meta.json": {
+    "mtime": 1782189001.5851648,
+    "ast_hash": "b9d73fbfc11c45814b0f0d7c53b5a1ab",
+    "semantic_hash": "b9d73fbfc11c45814b0f0d7c53b5a1ab"
+  },
+  "result/A7__master-data-supplier/prd.json": {
+    "mtime": 1782189001.5851648,
+    "ast_hash": "3027add409cbab270c39b3c81ab31bac",
+    "semantic_hash": "3027add409cbab270c39b3c81ab31bac"
+  },
+  "result/B1__pendaftaran-pendaftaran-rawat-jalan/meta.json": {
+    "mtime": 1782189001.592524,
+    "ast_hash": "993e49e33c57ea28c9feccb58e4f034f",
+    "semantic_hash": "993e49e33c57ea28c9feccb58e4f034f"
+  },
+  "result/B1__pendaftaran-pendaftaran-rawat-jalan/prd.json": {
+    "mtime": 1782189001.592524,
+    "ast_hash": "7f5de808b290bb24a38310b878f2ed37",
+    "semantic_hash": "7f5de808b290bb24a38310b878f2ed37"
+  },
+  "result/D6__rawat-jalan-emr-rj-list-dokumen-emr/meta.json": {
+    "mtime": 1782189001.592524,
+    "ast_hash": "b868620d99ebf829521441fd66b32141",
+    "semantic_hash": "b868620d99ebf829521441fd66b32141"
+  },
+  "result/D6__rawat-jalan-emr-rj-list-dokumen-emr/prd.json": {
+    "mtime": 1782189001.6019197,
+    "ast_hash": "a95165ddd1bde45cd5e9cbbc1e3f122b",
+    "semantic_hash": "a95165ddd1bde45cd5e9cbbc1e3f122b"
+  },
+  "result/E12__rawat-inap-ibs-igd-vk-order-catatan-pemberian-obat/meta.json": {
+    "mtime": 1782189001.6019197,
+    "ast_hash": "d47b27bc08d9707e90f9d3392d617980",
+    "semantic_hash": "d47b27bc08d9707e90f9d3392d617980"
+  },
+  "result/E12__rawat-inap-ibs-igd-vk-order-catatan-pemberian-obat/prd.json": {
+    "mtime": 1782189001.6019197,
+    "ast_hash": "a354a3fd0dc8e561400373a7b89ff874",
+    "semantic_hash": "a354a3fd0dc8e561400373a7b89ff874"
+  },
+  "result/E20__rawat-jalan-igd-spri/meta.json": {
+    "mtime": 1782189001.6019197,
+    "ast_hash": "f4935409a2d6edd16ef1c6c0c5083aa2",
+    "semantic_hash": "f4935409a2d6edd16ef1c6c0c5083aa2"
+  },
+  "result/E20__rawat-jalan-igd-spri/prd.json": {
+    "mtime": 1782189001.6083784,
+    "ast_hash": "e6c3fabf1147f63d906cc5effc096fb9",
+    "semantic_hash": "e6c3fabf1147f63d906cc5effc096fb9"
+  },
+  "result/E2__igd-rawat-jalan-rawat-inap-ibs-vk-penunjang-medis-mcu-order-/meta.json": {
+    "mtime": 1782189001.6083784,
+    "ast_hash": "e55f631fa79ddfeaffd6ed42a5f9c294",
+    "semantic_hash": "e55f631fa79ddfeaffd6ed42a5f9c294"
+  },
+  "result/E2__igd-rawat-jalan-rawat-inap-ibs-vk-penunjang-medis-mcu-order-/prd.json": {
+    "mtime": 1782189001.6083784,
+    "ast_hash": "12ca427c0a02cf667204705a5b573b0c",
+    "semantic_hash": "12ca427c0a02cf667204705a5b573b0c"
+  },
+  "result/G15__facility-management-jadwal-dokter-jadwal-dokter-libur-re-sch/meta.json": {
+    "mtime": 1782189001.6083784,
+    "ast_hash": "153a98444321fbebcf5890460eabfbc0",
+    "semantic_hash": "153a98444321fbebcf5890460eabfbc0"
+  },
+  "result/G15__facility-management-jadwal-dokter-jadwal-dokter-libur-re-sch/prd.json": {
+    "mtime": 1782189001.6083784,
+    "ast_hash": "d3d12fc973b2988acad93e6789767551",
+    "semantic_hash": "d3d12fc973b2988acad93e6789767551"
+  },
+  "result/G2__billing-kasir-billing-tagihan-pasien/meta.json": {
+    "mtime": 1783483493.5956023,
+    "ast_hash": "c7fcb834f72939a85782fac49e2ec8aa",
+    "semantic_hash": "c7fcb834f72939a85782fac49e2ec8aa"
+  },
+  "result/G2__billing-kasir-billing-tagihan-pasien/prd.json": {
+    "mtime": 1783483493.5885365,
+    "ast_hash": "ef8d3db494f58154de31bf1cc7de8c34",
+    "semantic_hash": "ef8d3db494f58154de31bf1cc7de8c34"
+  },
+  "result/G3__billing-kasir-billing-pengelolaan-dana-wadiah-deposito-pasie/meta.json": {
+    "mtime": 1783485070.1507328,
+    "ast_hash": "5bafbfc2498305bd6f56eb2a66f78b4d",
+    "semantic_hash": "5bafbfc2498305bd6f56eb2a66f78b4d"
+  },
+  "result/G3__billing-kasir-billing-pengelolaan-dana-wadiah-deposito-pasie/prd.json": {
+    "mtime": 1783485070.1467173,
+    "ast_hash": "812eaa4998d3737e51071434e2c7c374",
+    "semantic_hash": "812eaa4998d3737e51071434e2c7c374"
+  },
+  "result/G8__casemix-pengelolaan-klaim-bpjs-managemen-dokumen-dan-data-medis/meta.json": {
+    "mtime": 1784177235.95148,
+    "ast_hash": "d182912b8b15c6b3d33ee80320124061",
+    "semantic_hash": "d182912b8b15c6b3d33ee80320124061"
+  },
+  "result/G8__casemix-pengelolaan-klaim-bpjs-managemen-dokumen-dan-data-medis/prd.json": {
+    "mtime": 1784177235.9454813,
+    "ast_hash": "247fdec718035d73a2d56c44645b778b",
+    "semantic_hash": "247fdec718035d73a2d56c44645b778b"
+  },
+  "result/G9__casemix-pengelolaan-klaim-bpjs-penerimaan-rekonsiliasi-klaim/meta.json": {
+    "mtime": 1784175682.239309,
+    "ast_hash": "b19e3a458965bf88d8e714ba0496161b",
+    "semantic_hash": "b19e3a458965bf88d8e714ba0496161b"
+  },
+  "result/G9__casemix-pengelolaan-klaim-bpjs-penerimaan-rekonsiliasi-klaim/prd.json": {
+    "mtime": 1784175169.1439798,
+    "ast_hash": "76ec38c50c81471ee10e2cc3f7c850a8",
+    "semantic_hash": "76ec38c50c81471ee10e2cc3f7c850a8"
+  },
+  "result/H1__inventory-pemesanan-barang/meta.json": {
+    "mtime": 1782377149.247093,
+    "ast_hash": "4f0e27c6e86b382aba4f996b5cde5e37",
+    "semantic_hash": "4f0e27c6e86b382aba4f996b5cde5e37"
+  },
+  "result/N10__dashboard-laboratorium/meta.json": {
+    "mtime": 1784459345.5310085,
+    "ast_hash": "2a642f12df2fa3a6aa29c749cef24f16",
+    "semantic_hash": "2a642f12df2fa3a6aa29c749cef24f16"
+  },
+  "result/N11__dashboard-permintaan-darah/meta.json": {
+    "mtime": 1784459350.9144087,
+    "ast_hash": "bb8ad89ef266b594e9c5b9e72d6504b4",
+    "semantic_hash": "bb8ad89ef266b594e9c5b9e72d6504b4"
+  },
+  "result/N12__dashboard-radiologi/meta.json": {
+    "mtime": 1784459356.491531,
+    "ast_hash": "c013b70b91bda9abd0f117823f7e5b87",
+    "semantic_hash": "c013b70b91bda9abd0f117823f7e5b87"
+  },
+  "result/N13__penundaan-operasi-pasien/meta.json": {
+    "mtime": 1784459817.474313,
+    "ast_hash": "f5bac0f9f30c12e3671b2c144e4fb28a",
+    "semantic_hash": "f5bac0f9f30c12e3671b2c144e4fb28a"
+  },
+  "result/N1__master-data-konfigurasi-tarif-pendaftaran/meta.json": {
+    "mtime": 1784199515.6783314,
+    "ast_hash": "1137edbad3168fa5f37a16b9a5ce6141",
+    "semantic_hash": "1137edbad3168fa5f37a16b9a5ce6141"
+  },
+  "result/N1__master-data-konfigurasi-tarif-pendaftaran/prd.json": {
+    "mtime": 1784199244.3447857,
+    "ast_hash": "d200f9c6f052f97f2d948861a6fc3e0b",
+    "semantic_hash": "d200f9c6f052f97f2d948861a6fc3e0b"
+  },
+  "result/N2__master-data-master-program-terapi/meta.json": {
+    "mtime": 1784198833.1541827,
+    "ast_hash": "667887b9b006e615c11a48858c0ccc99",
+    "semantic_hash": "667887b9b006e615c11a48858c0ccc99"
+  },
+  "result/N2__master-data-master-program-terapi/prd.json": {
+    "mtime": 1784296448.2515311,
+    "ast_hash": "a3a57c961e9ab507a238398e83a2de2d",
+    "semantic_hash": "a3a57c961e9ab507a238398e83a2de2d"
+  },
+  "result/N3__master-data-master-penomoran-surat/meta.json": {
+    "mtime": 1784198832.5306194,
+    "ast_hash": "a9c0782f687fe79fd3977352d64d74f4",
+    "semantic_hash": "a9c0782f687fe79fd3977352d64d74f4"
+  },
+  "result/N3__master-data-master-penomoran-surat/prd.json": {
+    "mtime": 1784198832.5296025,
+    "ast_hash": "dd5551e0cb54468eb60d8a07d24ae827",
+    "semantic_hash": "dd5551e0cb54468eb60d8a07d24ae827"
+  },
+  "result/N4__master-data-profil-rumah-sakit/meta.json": {
+    "mtime": 1784199698.1791213,
+    "ast_hash": "8b1bf87f74651e8eab8c29f955860021",
+    "semantic_hash": "8b1bf87f74651e8eab8c29f955860021"
+  },
+  "result/N4__master-data-profil-rumah-sakit/prd.json": {
+    "mtime": 1784199249.2315576,
+    "ast_hash": "9922506c0a7011ed3ae3ce14606d2a41",
+    "semantic_hash": "9922506c0a7011ed3ae3ce14606d2a41"
+  },
+  "result/N5__master-data-rumah-sakit/meta.json": {
+    "mtime": 1784457905.224343,
+    "ast_hash": "89565438ddf362ede83ec86d7317f1ab",
+    "semantic_hash": "89565438ddf362ede83ec86d7317f1ab"
+  },
+  "result/N6__menu-ambulance/meta.json": {
+    "mtime": 1784457696.3470228,
+    "ast_hash": "1db214a92f706d20a0da46251f66b23c",
+    "semantic_hash": "1db214a92f706d20a0da46251f66b23c"
+  },
+  "result/N7__order-ambulance/meta.json": {
+    "mtime": 1784457844.6999848,
+    "ast_hash": "f6b158bd86e71e07b11a19bce5b6b6ff",
+    "semantic_hash": "f6b158bd86e71e07b11a19bce5b6b6ff"
+  },
+  "result/N8__pemulasaraan-jenazah/meta.json": {
+    "mtime": 1784458681.8576934,
+    "ast_hash": "c6b2d65840320a85072a1409495bc5a3",
+    "semantic_hash": "c6b2d65840320a85072a1409495bc5a3"
+  },
+  "result/N9__resume-medis/meta.json": {
+    "mtime": 1784458686.7353249,
+    "ast_hash": "38d709ce8026426c719531fcefafdd69",
+    "semantic_hash": "38d709ce8026426c719531fcefafdd69"
+  },
+  "result/_shared/dictionary.json": {
+    "mtime": 1784198136.7748623,
+    "ast_hash": "9af71f949fafdf04b6815af5d48d0a80",
+    "semantic_hash": "9af71f949fafdf04b6815af5d48d0a80"
+  },
+  "tsconfig.json": {
+    "mtime": 1782189001.6083784,
+    "ast_hash": "0f02203f0e7e04b7773ca4d2a5a4a6c8",
+    "semantic_hash": "0f02203f0e7e04b7773ca4d2a5a4a6c8"
+  },
+  "bahan_random/N3-Master_Penomoran_Suratcopy.md": {
+    "mtime": 1784196781.5488596,
+    "ast_hash": "a5e896b4462eb938a262d756534d0723",
+    "semantic_hash": "a5e896b4462eb938a262d756534d0723"
+  },
+  "bahan_random/N4-Master_Data_Profil_RS.md": {
+    "mtime": 1784196815.5287876,
+    "ast_hash": "db407f16738c98e0f53e146340042691",
+    "semantic_hash": "db407f16738c98e0f53e146340042691"
+  },
+  "bahan_random/PRD iDRG (new template).md": {
+    "mtime": 1784103081.6951559,
+    "ast_hash": "ec1d73a26843a9ce9a8bae8c9336e9bb",
+    "semantic_hash": "ec1d73a26843a9ce9a8bae8c9336e9bb"
+  },
+  "bahan_random/prd-manajemen-dokumen-casemix.md": {
+    "mtime": 1783998623.509,
+    "ast_hash": "a9c79e9087efdc4be1e23cba91c66ae4",
+    "semantic_hash": "a9c79e9087efdc4be1e23cba91c66ae4"
+  },
+  "bahan_random/prd-master-data-integrasi-satusehat-bpjs-v2-unit.md": {
+    "mtime": 1782964949.7694356,
+    "ast_hash": "c7f8a18587ca22818d413e1c13f9278a",
+    "semantic_hash": "c7f8a18587ca22818d413e1c13f9278a"
+  },
+  "other_prd(prd_dari_google_drive)/Billing/prd-billing-kasir-billing-verifikasi-penerimaan-kas-.md": {
+    "mtime": 1784100641.312,
+    "ast_hash": "f1dbf0dabe69f622e3d82d69d66f7ca4",
+    "semantic_hash": "f1dbf0dabe69f622e3d82d69d66f7ca4"
+  },
+  "other_prd(prd_dari_google_drive)/Billing/prd-buka-tutup-kasir.md": {
+    "mtime": 1784269227.955,
+    "ast_hash": "c69f69ae85a1e32ddcf5d61c7cf9a594",
+    "semantic_hash": "c69f69ae85a1e32ddcf5d61c7cf9a594"
+  },
+  "other_prd(prd_dari_google_drive)/Billing/prd-tagihan-pasien.md": {
+    "mtime": 1784273372.927,
+    "ast_hash": "14e98f80dd595a4a1744d3b88d01680f",
+    "semantic_hash": "14e98f80dd595a4a1744d3b88d01680f"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/Draft/PRD_Master_Data_Grup_Obat.md": {
+    "mtime": 1782294172.0,
+    "ast_hash": "e80e820a12d1149bf7eb3e2bf2c8a44f",
+    "semantic_hash": "e80e820a12d1149bf7eb3e2bf2c8a44f"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/Draft/prd-master-data-tipe-penjamin-new-.md": {
+    "mtime": 1782381534.0,
+    "ast_hash": "abe0fcab1e0f00924c2967e324058d24",
+    "semantic_hash": "abe0fcab1e0f00924c2967e324058d24"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/N2__master-data-master-program-terapi.md": {
+    "mtime": 1784353285.902,
+    "ast_hash": "8f6aae46b56b904a176cdf18f54db70d",
+    "semantic_hash": "8f6aae46b56b904a176cdf18f54db70d"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/N3__master-data-master-penomoran-surat.md": {
+    "mtime": 1784198832.529,
+    "ast_hash": "4d5e035fb9dc53b3da405c9640db790f",
+    "semantic_hash": "4d5e035fb9dc53b3da405c9640db790f"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/N4__master-data-profil-rumah-sakit.md": {
+    "mtime": 1784199514.025,
+    "ast_hash": "870bcc739e91572fd0eb315bc1bc6472",
+    "semantic_hash": "870bcc739e91572fd0eb315bc1bc6472"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/PRD_Jadwal_Praktik.md": {
+    "mtime": 1782811851.0,
+    "ast_hash": "fb55e9a5396b2972d8a3f8e61643087b",
+    "semantic_hash": "fb55e9a5396b2972d8a3f8e61643087b"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/PRD_MASTER_DATA_ANJURAN_SUKON.md": {
+    "mtime": 1782977504.0,
+    "ast_hash": "24d80255dcbd458aa453b4b6cf149355",
+    "semantic_hash": "24d80255dcbd458aa453b4b6cf149355"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/PRD_Master_ Data_Hari_Libur.md": {
+    "mtime": 1782722411.0,
+    "ast_hash": "84c09154f3c6ab84769a837014ccfede",
+    "semantic_hash": "84c09154f3c6ab84769a837014ccfede"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/PRD_Master_Data_Akses_Menu.md": {
+    "mtime": 1782737625.0,
+    "ast_hash": "57f50bd652649f2c56b356b75cb98afd",
+    "semantic_hash": "57f50bd652649f2c56b356b75cb98afd"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/PRD_Master_Data_Aset.md": {
+    "mtime": 1782308855.0,
+    "ast_hash": "3a9c4a84fa3d89d124f05582e1f00903",
+    "semantic_hash": "3a9c4a84fa3d89d124f05582e1f00903"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/PRD_Master_Data_Barang_Farmasi.md": {
+    "mtime": 1784089418.829,
+    "ast_hash": "bd00d117e6968ea7c060ced5762b5a0c",
+    "semantic_hash": "bd00d117e6968ea7c060ced5762b5a0c"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/PRD_Master_Data_Barang_Gizi.md": {
+    "mtime": 1783583417.185,
+    "ast_hash": "c2d56705b61aa282f554dc6ec0b3a077",
+    "semantic_hash": "c2d56705b61aa282f554dc6ec0b3a077"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/PRD_Master_Data_Barang_Rumah_Tangga.md": {
+    "mtime": 1783483799.0,
+    "ast_hash": "5f2d0aff423a70c30a037d66104b2f8a",
+    "semantic_hash": "5f2d0aff423a70c30a037d66104b2f8a"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/PRD_Master_Data_Kamar_Template New.md": {
+    "mtime": 1783569530.136,
+    "ast_hash": "26eb8dd31f0e9446c7b13fd37e9bc13a",
+    "semantic_hash": "26eb8dd31f0e9446c7b13fd37e9bc13a"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/PRD_Master_Data_Kas_dan_Bank.md": {
+    "mtime": 1782308370.0,
+    "ast_hash": "c024f2cae72966bdfef49e2fbc3dcb22",
+    "semantic_hash": "c024f2cae72966bdfef49e2fbc3dcb22"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/PRD_Master_Data_Laboratorium.md": {
+    "mtime": 1782443694.0,
+    "ast_hash": "f77b7257acb1773f307d8ecd3811555d",
+    "semantic_hash": "f77b7257acb1773f307d8ecd3811555d"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/PRD_Master_Data_Sediaan.md": {
+    "mtime": 1782368130.522,
+    "ast_hash": "2192744b698af876ea9618b6f4f29735",
+    "semantic_hash": "2192744b698af876ea9618b6f4f29735"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/PRD_Master_Data_Supplier.md": {
+    "mtime": 1782307697.0,
+    "ast_hash": "a009a556f3c63faf293e592631684d6d",
+    "semantic_hash": "a009a556f3c63faf293e592631684d6d"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/PRD_master data_meja_antrian NEW.md": {
+    "mtime": 1782892127.0,
+    "ast_hash": "1506503f6845a61981c5b4a99ba16511",
+    "semantic_hash": "1506503f6845a61981c5b4a99ba16511"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/Prd_master-data-diagnosa-perawat-new.md": {
+    "mtime": 1782894389.616,
+    "ast_hash": "f63700ce63457775e086961a1df048e9",
+    "semantic_hash": "f63700ce63457775e086961a1df048e9"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/Untitled-1.html": {
+    "mtime": 1783310073.387,
+    "ast_hash": "2be3c0e81cedd5b5f9e4eee7e134a911",
+    "semantic_hash": "2be3c0e81cedd5b5f9e4eee7e134a911"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/master-data-integrasi-satusehat-bpjs-v2-item-pemeriksaan-radiologi-FIX.md": {
+    "mtime": 1782894411.0,
+    "ast_hash": "824e91d67d11caa3dce89908847e1c24",
+    "semantic_hash": "824e91d67d11caa3dce89908847e1c24"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-anjuran-sukon (1).md": {
+    "mtime": 1782208062.0,
+    "ast_hash": "b05945df14fb711db460679387f77625",
+    "semantic_hash": "b05945df14fb711db460679387f77625"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-item-pemeriksaan-laboratorium.md": {
+    "mtime": 1782208062.0,
+    "ast_hash": "325872f42a5f19aa0ee7b4db4b33d7f8",
+    "semantic_hash": "325872f42a5f19aa0ee7b4db4b33d7f8"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-kamar.md": {
+    "mtime": 1783505847.168,
+    "ast_hash": "1002c838c4d1bfe61b6abb08b454737d",
+    "semantic_hash": "1002c838c4d1bfe61b6abb08b454737d"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-kas-dan-bank-fix.md": {
+    "mtime": 1783142204.73,
+    "ast_hash": "860a01ab189ad20e67c6c9f513ec3057",
+    "semantic_hash": "860a01ab189ad20e67c6c9f513ec3057"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-kategori-barang.md": {
+    "mtime": 1782350053.0,
+    "ast_hash": "9894db7ba3c11b59c0e06e29a5c21c2d",
+    "semantic_hash": "9894db7ba3c11b59c0e06e29a5c21c2d"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-kelas.md": {
+    "mtime": 1783505844.943,
+    "ast_hash": "b2a74e1e52b1cc8ce05e5157ca3cac90",
+    "semantic_hash": "b2a74e1e52b1cc8ce05e5157ca3cac90"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-menu-makanan.md": {
+    "mtime": 1782290058.0,
+    "ast_hash": "0aa4a9b270f0b791a7d427e2855c46cc",
+    "semantic_hash": "0aa4a9b270f0b791a7d427e2855c46cc"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-pabrikan.md": {
+    "mtime": 1782976609.094,
+    "ast_hash": "c54e2691a98137108da08d6b00f15f83",
+    "semantic_hash": "c54e2691a98137108da08d6b00f15f83"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-paket-pelayanan-mcu_f.md": {
+    "mtime": 1782229485.0,
+    "ast_hash": "347173ba8cd95a864bf6d8e2ee57c4b3",
+    "semantic_hash": "347173ba8cd95a864bf6d8e2ee57c4b3"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-paket-pelayanan.md": {
+    "mtime": 1783652309.576,
+    "ast_hash": "41aaedaa9ab8bedbf046f0770034e6d3",
+    "semantic_hash": "41aaedaa9ab8bedbf046f0770034e6d3"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-procedure-FIX.md": {
+    "mtime": 1782217232.0,
+    "ast_hash": "0ebdfa85565c21d611661e1f47b9d47f",
+    "semantic_hash": "0ebdfa85565c21d611661e1f47b9d47f"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-profesi.md": {
+    "mtime": 1783053428.0,
+    "ast_hash": "0a1b9a489f0b376165f9b0198277dfe0",
+    "semantic_hash": "0a1b9a489f0b376165f9b0198277dfe0"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-ruang-ibs.md": {
+    "mtime": 1782977446.0,
+    "ast_hash": "fbd4d42347f19af50044a90759d95154",
+    "semantic_hash": "fbd4d42347f19af50044a90759d95154"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-satuan-dan-kemasan.md": {
+    "mtime": 1782354368.308,
+    "ast_hash": "c240408572f73d8449c23a5175387d0a",
+    "semantic_hash": "c240408572f73d8449c23a5175387d0a"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-tarif-kamar.md": {
+    "mtime": 1783315549.0,
+    "ast_hash": "13a02956dc2e015188b893b099244acd",
+    "semantic_hash": "13a02956dc2e015188b893b099244acd"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-tarif-layanan.md": {
+    "mtime": 1783135850.767,
+    "ast_hash": "f243dcc0a72fefd36260d78af99f6375",
+    "semantic_hash": "f243dcc0a72fefd36260d78af99f6375"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-tipe-penjamin-new-.md": {
+    "mtime": 1782307154.0,
+    "ast_hash": "7130cbe5011fbf4134e3925048fda163",
+    "semantic_hash": "7130cbe5011fbf4134e3925048fda163"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-unit-Fix.md": {
+    "mtime": 1783340409.907,
+    "ast_hash": "b3d7c995ea316b67ae55f05f06f641cf",
+    "semantic_hash": "b3d7c995ea316b67ae55f05f06f641cf"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-user-new-.md": {
+    "mtime": 1782284989.0,
+    "ast_hash": "77963332ed8970ecfecca5f4d0346a90",
+    "semantic_hash": "77963332ed8970ecfecca5f4d0346a90"
+  },
+  "other_prd(prd_dari_google_drive)/Master Data (.md)/prd.md": {
+    "mtime": 1782884719.243,
+    "ast_hash": "06621f270def329dd4f281eda87a1168",
+    "semantic_hash": "06621f270def329dd4f281eda87a1168"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD Dashboard Pelayanan + INTEGRASI.md": {
+    "mtime": 1783095205.457,
+    "ast_hash": "d4a311bd25ed57a0a25ea95e5521d748",
+    "semantic_hash": "d4a311bd25ed57a0a25ea95e5521d748"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD Pendaftaran Laboratorium.md": {
+    "mtime": 1783064598.0,
+    "ast_hash": "4edac4b7d709c098429b1c93594a7872",
+    "semantic_hash": "4edac4b7d709c098429b1c93594a7872"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD Riwayat Kunjungan - Assesmen RJ.md": {
+    "mtime": 1783064048.03,
+    "ast_hash": "667c748a5903be796cada5dd4a0a10e5",
+    "semantic_hash": "667c748a5903be796cada5dd4a0a10e5"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-Asesmen-Dokter-IGD-v2.md": {
+    "mtime": 1783624928.0,
+    "ast_hash": "7ecda7c9b4d16cc88c9f933909b4c24f",
+    "semantic_hash": "7ecda7c9b4d16cc88c9f933909b4c24f"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-Asesmen-HD.md": {
+    "mtime": 1783502786.989,
+    "ast_hash": "0254cc9091d7b1a2e72a1ee72cf07ad8",
+    "semantic_hash": "0254cc9091d7b1a2e72a1ee72cf07ad8"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-Asesmen-Jawaban-Konsulan-v1.7.md": {
+    "mtime": 1782988001.0,
+    "ast_hash": "42b022ecd912994b6836831ced6ab81b",
+    "semantic_hash": "42b022ecd912994b6836831ced6ab81b"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-Asesmen-Penunjang-Medis-Rehab-v2.0 Final.md": {
+    "mtime": 1783436457.0,
+    "ast_hash": "71dafc0848afdd2c704738da23c052ca",
+    "semantic_hash": "71dafc0848afdd2c704738da23c052ca"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-Asesmen-Perawat-IGD-v2_0.md": {
+    "mtime": 1783623829.0,
+    "ast_hash": "e292a51a3a0b30413311ac9d47c1661e",
+    "semantic_hash": "e292a51a3a0b30413311ac9d47c1661e"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-Asesmen-Rawat-Jalan-v1_0.md": {
+    "mtime": 1782877707.0,
+    "ast_hash": "d4c4afcbec48974c3d122d9043432ec6",
+    "semantic_hash": "d4c4afcbec48974c3d122d9043432ec6"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-Asesmen-Rehab-Medik.md": {
+    "mtime": 1784174281.0,
+    "ast_hash": "78e2b55a30696d974d011af13189c8b0",
+    "semantic_hash": "78e2b55a30696d974d011af13189c8b0"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-CPPT-IGD.md": {
+    "mtime": 1784094028.296,
+    "ast_hash": "70eed34c77aed966fa58f22881090665",
+    "semantic_hash": "70eed34c77aed966fa58f22881090665"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-Dashboard-Hemodialisa (HD).md": {
+    "mtime": 1784282625.705,
+    "ast_hash": "0c694d531b7883eb84b2bd88673460a5",
+    "semantic_hash": "0c694d531b7883eb84b2bd88673460a5"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-Dashboard-IBS.md": {
+    "mtime": 1784210042.0,
+    "ast_hash": "766a9b6e4991ccae97abab623965054e",
+    "semantic_hash": "766a9b6e4991ccae97abab623965054e"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-Dashboard-Pelayanan-IGD.md": {
+    "mtime": 1784089539.0,
+    "ast_hash": "089efe1df4dbbdc7a1600dbfc52ed4b3",
+    "semantic_hash": "089efe1df4dbbdc7a1600dbfc52ed4b3"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-Dashboard-Pelayanan-RJ-v2.1.md": {
+    "mtime": 1782830348.0,
+    "ast_hash": "1571f6c7ff1319d2d66dd975f4c443bc",
+    "semantic_hash": "1571f6c7ff1319d2d66dd975f4c443bc"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-Dashboard-Rehab Medik.md": {
+    "mtime": 1783438730.024,
+    "ast_hash": "d0c67b81a849d616183b64cb06037129",
+    "semantic_hash": "d0c67b81a849d616183b64cb06037129"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-Dashboard-Terapi.md": {
+    "mtime": 1783437472.904,
+    "ast_hash": "fd62969a376947f493d737426899f049",
+    "semantic_hash": "fd62969a376947f493d737426899f049"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-Display-Antrean [FIX].md": {
+    "mtime": 1782919388.0,
+    "ast_hash": "eb3bae1a59e4700c8e6f9f1753ba1076",
+    "semantic_hash": "eb3bae1a59e4700c8e6f9f1753ba1076"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-General-Consent-RJ-v2.0.md": {
+    "mtime": 1782896797.0,
+    "ast_hash": "80123577a0ef09e7fd3872db90618623",
+    "semantic_hash": "80123577a0ef09e7fd3872db90618623"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-P-ANT-RJ-Antrian-Pelayanan-Poliklinik-v1.2.md": {
+    "mtime": 1782882410.0,
+    "ast_hash": "3b2e990db3a8aafd5c7f066e8a406b5a",
+    "semantic_hash": "3b2e990db3a8aafd5c7f066e8a406b5a"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-Penjualan-Obat-Bebas-v1.0.md": {
+    "mtime": 1784268477.0,
+    "ast_hash": "1a34ff765a70d9eab0af5152113e79f7",
+    "semantic_hash": "1a34ff765a70d9eab0af5152113e79f7"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-Permintaan-Jadwal-Operasi.md": {
+    "mtime": 1784208477.809,
+    "ast_hash": "7b0d2ec1c69376fd74b552df3cdfcb6b",
+    "semantic_hash": "7b0d2ec1c69376fd74b552df3cdfcb6b"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-SPRI.md": {
+    "mtime": 1783576476.623,
+    "ast_hash": "6af897d70f73a4d15f5443f98f42664c",
+    "semantic_hash": "6af897d70f73a4d15f5443f98f42664c"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD-Tindakan-BHP.md": {
+    "mtime": 1782982423.109,
+    "ast_hash": "e664a8daf02c6bed11c4c4022348c28a",
+    "semantic_hash": "e664a8daf02c6bed11c4c4022348c28a"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/PRD_Transfer_Internal.md": {
+    "mtime": 1784020621.0,
+    "ast_hash": "1b08baec4b1ff4e7ba1e2ece9853c68f",
+    "semantic_hash": "1b08baec4b1ff4e7ba1e2ece9853c68f"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/[FIX] prd-antrian-apm.md": {
+    "mtime": 1782888516.0,
+    "ast_hash": "2abdbc3fa9c23e39f8d07376d19f8bc8",
+    "semantic_hash": "2abdbc3fa9c23e39f8d07376d19f8bc8"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/prd-data-pasien-ringkasan-kesehatan-pasien-catatan-pasien (1).md": {
+    "mtime": 1782885334.0,
+    "ast_hash": "097b0f65257761599748ab946ba76fbd",
+    "semantic_hash": "097b0f65257761599748ab946ba76fbd"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/prd-emr-rj-asesmen-perawat-dan-dokter-igd (1).md": {
+    "mtime": 1783625905.0,
+    "ast_hash": "5e689289d143630a5e94be90ad2b60c7",
+    "semantic_hash": "5e689289d143630a5e94be90ad2b60c7"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/prd-pendaftaran-pendaftaran-mcu.md": {
+    "mtime": 1782801845.0,
+    "ast_hash": "df6871ec6c2063c8a226d34bf656ba6c",
+    "semantic_hash": "df6871ec6c2063c8a226d34bf656ba6c"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/prd-pendaftaran-pendaftaran-radiologi.md": {
+    "mtime": 1782899396.0,
+    "ast_hash": "204930e07f264bd50131f212aaedb5fa",
+    "semantic_hash": "204930e07f264bd50131f212aaedb5fa"
+  },
+  "other_prd(prd_dari_google_drive)/Pelayanan (.md)/prd-pendaftaran-pendaftaran-rawat-jalan.md": {
+    "mtime": 1782789916.0,
+    "ast_hash": "d0be9551a00351000b048c7e1139e421",
+    "semantic_hash": "d0be9551a00351000b048c7e1139e421"
+  },
+  "other_prd(prd_dari_google_drive)/Pengaturan (.md)/prd-pengaturan-farmasi.md": {
+    "mtime": 1783329270.049,
+    "ast_hash": "ad23407d7ab9e420b257dbd2c8124a50",
+    "semantic_hash": "ad23407d7ab9e420b257dbd2c8124a50"
+  },
+  "other_prd(prd_dari_google_drive)/Pengaturan (.md)/prd-pengaturan-harga-obat.md": {
+    "mtime": 1783569534.902,
+    "ast_hash": "93782144d3442daf2baa06f5903f7cd3",
+    "semantic_hash": "93782144d3442daf2baa06f5903f7cd3"
+  },
+  "other_prd(prd_dari_google_drive)/Pengaturan (.md)/prd-pengaturan-tagihan-pasien.md": {
+    "mtime": 1784100768.21,
+    "ast_hash": "a13cf706fffbf39cfadb8840a293bcee",
+    "semantic_hash": "a13cf706fffbf39cfadb8840a293bcee"
+  },
+  "prd-a42-gudang-farmasi-include-ui.md": {
+    "mtime": 1782984207.2826388,
+    "ast_hash": "b10bb92c67e4e41d7ce537e6b8afadb8",
+    "semantic_hash": "b10bb92c67e4e41d7ce537e6b8afadb8"
+  },
+  "prd-unit-include-ui.md": {
+    "mtime": 1782965437.1435807,
+    "ast_hash": "7aaad4ec26fde8b1479aab65c719d190",
+    "semantic_hash": "7aaad4ec26fde8b1479aab65c719d190"
+  },
+  "result/A12__master-data-diagnosa-perawat/A12__master-data-diagnosa-perawat.md": {
+    "mtime": 1782889756.2915297,
+    "ast_hash": "ea588123310399a1665f31d3b451b6b9",
+    "semantic_hash": "ea588123310399a1665f31d3b451b6b9"
+  },
+  "result/A13__master-data-procedure/A13__master-data-procedure.md": {
+    "mtime": 1782893457.0318391,
+    "ast_hash": "452247327c5e869ea893b1dbe1c531de",
+    "semantic_hash": "452247327c5e869ea893b1dbe1c531de"
+  },
+  "result/A14__master-data-integrasi-satusehat-bpjs-v2-item-pemeriksaan-lab/prd.md": {
+    "mtime": 1782189001.561084,
+    "ast_hash": "9107075a9c98023b3b3650f950f3d973",
+    "semantic_hash": "9107075a9c98023b3b3650f950f3d973"
+  },
+  "result/A15__master-data-bangsal/prd.md": {
+    "mtime": 1782189001.561084,
+    "ast_hash": "2c0a353364a34bf124b6d8bba2cd0a29",
+    "semantic_hash": "2c0a353364a34bf124b6d8bba2cd0a29"
+  },
+  "result/A16__master-data-kamar/prd.md": {
+    "mtime": 1782189001.561084,
+    "ast_hash": "1de8633eab45a15107edd93eaa6ab529",
+    "semantic_hash": "1de8633eab45a15107edd93eaa6ab529"
+  },
+  "result/A17__master-data-integrasi-bpjs-v1-v2-bed/prd.md": {
+    "mtime": 1782189001.561084,
+    "ast_hash": "7e6ac488c849a0938005d6e73c22a185",
+    "semantic_hash": "7e6ac488c849a0938005d6e73c22a185"
+  },
+  "result/A1__master-data-user-new/draft.txt": {
+    "mtime": 1782189001.561084,
+    "ast_hash": "dd263cfbb30232d7c6ff4e009b32af80",
+    "semantic_hash": "dd263cfbb30232d7c6ff4e009b32af80"
+  },
+  "result/A21__master-data-sediaan-barang/A21__master-data-sediaan-barang.md": {
+    "mtime": 1782801061.7714243,
+    "ast_hash": "bedbd85b840fa12d59c6b46f49fc1614",
+    "semantic_hash": "bedbd85b840fa12d59c6b46f49fc1614"
+  },
+  "result/A22__master-data-satuan-kemasan/prd.md": {
+    "mtime": 1782884719.2435062,
+    "ast_hash": "06621f270def329dd4f281eda87a1168",
+    "semantic_hash": "06621f270def329dd4f281eda87a1168"
+  },
+  "result/A23__master-data-spesialisasi-dokter/A23__master-data-spesialisasi-dokter.md": {
+    "mtime": 1782815994.1585047,
+    "ast_hash": "bd66baac4e020563985e246cad1b6717",
+    "semantic_hash": "bd66baac4e020563985e246cad1b6717"
+  },
+  "skill/flowchart-designer.md": {
+    "mtime": 1782189001.6083784,
+    "ast_hash": "344a4eecceb493b1d504d17ce618e49f",
+    "semantic_hash": "344a4eecceb493b1d504d17ce618e49f"
+  },
+  "skill/system-analyst-prd.md": {
+    "mtime": 1782189001.6083784,
+    "ast_hash": "5f63ce352877a512f93fc587fcc22f99",
+    "semantic_hash": "5f63ce352877a512f93fc587fcc22f99"
+  }
+}

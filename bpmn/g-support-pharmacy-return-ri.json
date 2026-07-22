@@ -1,0 +1,592 @@
+{
+ "id": "f9125fff-5d36-48dc-bb05-d95d1257cd3c",
+ "title": "g-support-pharmacy-return-ri",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "p~4XP-yBxQev",
+  "label": "F20-FARMASI - PENGEMBALIAN OBAT RANAP"
+ },
+ "pages": [
+  {
+   "id": "f~4Xbp8yyK1t",
+   "title": "F20-FARMASI - PENGEMBALIAN OBAT RANAP",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "p~4XEkC1z-5B",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "F20-FARMASI - PENGEMBALIAN OBAT RANAP"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_3"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "h~4XV4TS9rrt",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan list pasien ranap aktif pada dashboard "
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "h~4Xq~oMPcgl",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "h~4XGAmE2ZC4",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan hasil pencarian"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "h~4XqBjyMWCZ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka menu Farmasi - Pengembalian Obat Ranap"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "h~4X_MKZyVMb",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan data obat"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "h~4XX~O2nx80",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem update data pengembalian obat rawat inap"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4XP-yBxQev",
+      "class": "RectangleContainerBlock",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": "F20-FARMASI - PENGEMBALIAN OBAT RANAP"
+       },
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "h~4X3AFDp6PC",
+        "h~4X7bFKDrjO",
+        "h~4X8aMR_z~Q",
+        "h~4XCltTA86m",
+        "h~4XGAmE2ZC4",
+        "h~4XLC8Eqc_R",
+        "h~4XV4TS9rrt",
+        "h~4XX~O2nx80",
+        "h~4X_MKZyVMb",
+        "h~4Xkukv3Asy",
+        "h~4XqBjyMWCZ",
+        "h~4Xq~oMPcgl",
+        "p~4XEkC1z-5B"
+       ],
+       "lines": [
+        "h~4X9W3pqxdj",
+        "h~4XDc9iZNHm",
+        "h~4XJsgRZEjH",
+        "h~4XN2ygHeZF",
+        "h~4XPAH4muU~",
+        "h~4XcI0_ecH.",
+        "h~4XcexCGjAX",
+        "h~4XjgBFO4bZ",
+        "h~4Xl7ONZSSP",
+        "h~4Xqh.x1Lz6"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "h~4X3AFDp6PC",
+      "class": "AdvancedSwimLaneBlockRotated",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Primary_0",
+        "text": "Apoteker"
+       },
+       {
+        "label": "Primary_1",
+        "text": "Sistem"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "h~4X7bFKDrjO",
+        "h~4X8aMR_z~Q",
+        "h~4XCltTA86m",
+        "h~4XGAmE2ZC4",
+        "h~4XLC8Eqc_R",
+        "h~4XV4TS9rrt",
+        "h~4XX~O2nx80",
+        "h~4X_MKZyVMb",
+        "h~4Xkukv3Asy",
+        "h~4XqBjyMWCZ",
+        "h~4Xq~oMPcgl"
+       ],
+       "lines": [
+        "h~4X9W3pqxdj",
+        "h~4XDc9iZNHm",
+        "h~4XJsgRZEjH",
+        "h~4XN2ygHeZF",
+        "h~4XPAH4muU~",
+        "h~4XcI0_ecH.",
+        "h~4XcexCGjAX",
+        "h~4XjgBFO4bZ",
+        "h~4Xl7ONZSSP",
+        "h~4Xqh.x1Lz6"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "h~4X8aMR_z~Q",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input jumlah /satuan obat yang dikembalikan"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "h~4XCltTA86m",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan resep yang sudah dikonfirmasi oleh farmasi rawat inap"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "h~4XLC8Eqc_R",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "h~4Xkukv3Asy",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Membuka data obat pasien"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "h~4X7bFKDrjO",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Melakukan pencarian berdasarkan nomor registrasi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "id": "h~4Xl7ONZSSP",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "h~4Xkukv3Asy"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "h~4XCltTA86m"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "h~4XcI0_ecH.",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "h~4X_MKZyVMb"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "h~4XX~O2nx80"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "h~4Xqh.x1Lz6",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "h~4Xq~oMPcgl"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "h~4XqBjyMWCZ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "h~4XN2ygHeZF",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "h~4X7bFKDrjO"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "h~4XGAmE2ZC4"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "h~4XjgBFO4bZ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "h~4X8aMR_z~Q"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "h~4X_MKZyVMb"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "h~4XJsgRZEjH",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "h~4XGAmE2ZC4"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "h~4Xkukv3Asy"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "h~4X9W3pqxdj",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "h~4XCltTA86m"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "h~4X8aMR_z~Q"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "h~4XcexCGjAX",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "h~4XV4TS9rrt"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "h~4X7bFKDrjO"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "h~4XPAH4muU~",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "h~4XX~O2nx80"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "h~4XLC8Eqc_R"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "h~4XDc9iZNHm",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "h~4XqBjyMWCZ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "h~4XV4TS9rrt"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

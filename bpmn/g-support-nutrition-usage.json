@@ -1,0 +1,547 @@
+{
+ "id": "f9125fff-5d36-48dc-bb05-d95d1257cd3c",
+ "title": "g-support-nutrition-usage",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "-3kYt0wuN0oO",
+  "label": "F9-PENGGUNAAN BAHAN GIZI"
+ },
+ "pages": [
+  {
+   "id": "f~4Xbp8yyK1t",
+   "title": "F9-PENGGUNAAN BAHAN GIZI",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "-3kYBm0xJdrz",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem berhasil menambahkan data"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "-3kY9uCnYOEq",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pemakaian Stok bahan pakan"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "-3kYt0wuN0oO",
+      "class": "RectangleContainerBlock",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": "F9-PENGGUNAAN BAHAN GIZI"
+       },
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "-3kY8ivWPLcn",
+        "-3kY9uCnYOEq",
+        "-3kYBm0xJdrz",
+        "-3kYJ_F5EUJT",
+        "-3kYOEQXzr2E",
+        "-3kYPN._jAq7",
+        "-3kYTxqoqQXX",
+        "-3kY_UQzLDDJ",
+        "-3kYkuUH5qQu",
+        "-3kYm7F9Vsth",
+        "-3kYsU.jelCc",
+        "-3kYw1sI06ki"
+       ],
+       "lines": [
+        "-3kY4Bif8_Wj",
+        "-3kYHWuAxRG0",
+        "-3kYIii6Ce8P",
+        "-3kYQeJUWZ2p",
+        "-3kYSa9Yc4-~",
+        "-3kYSekSh2k4",
+        "-3kYYTnwLtt2",
+        "-3kY_Wyauj5p",
+        "-3kYosfkHQst"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "-3kYsU.jelCc",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan list informasi penggunaan barang gizi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "-3kYPN._jAq7",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "-3kYkuUH5qQu",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "-3kY8ivWPLcn",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "F9-PENGGUNAAN BAHAN GIZI"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_3"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "-3kYw1sI06ki",
+      "class": "AdvancedSwimLaneBlockRotated",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Primary_0",
+        "text": "Ahli Gizi"
+       },
+       {
+        "label": "Primary_1",
+        "text": "Sistem"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "-3kY9uCnYOEq",
+        "-3kYBm0xJdrz",
+        "-3kYJ_F5EUJT",
+        "-3kYOEQXzr2E",
+        "-3kYPN._jAq7",
+        "-3kYTxqoqQXX",
+        "-3kY_UQzLDDJ",
+        "-3kYkuUH5qQu",
+        "-3kYm7F9Vsth",
+        "-3kYsU.jelCc"
+       ],
+       "lines": [
+        "-3kY4Bif8_Wj",
+        "-3kYHWuAxRG0",
+        "-3kYIii6Ce8P",
+        "-3kYQeJUWZ2p",
+        "-3kYSa9Yc4-~",
+        "-3kYSekSh2k4",
+        "-3kYYTnwLtt2",
+        "-3kY_Wyauj5p",
+        "-3kYosfkHQst"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "-3kYm7F9Vsth",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tambah data bahan"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "-3kYTxqoqQXX",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "-3kY_UQzLDDJ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan list data terupdate"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "-3kYOEQXzr2E",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Stok bahan pakan berkurang dan data terupdate"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "-3kYJ_F5EUJT",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka menu penggunaan barang gizi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "id": "-3kY4Bif8_Wj",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "-3kYTxqoqQXX"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "-3kY_UQzLDDJ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "-3kYSekSh2k4",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "-3kYJ_F5EUJT"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "-3kYsU.jelCc"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "-3kYIii6Ce8P",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "-3kY9uCnYOEq"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "-3kYOEQXzr2E"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "-3kYYTnwLtt2",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "-3kY_UQzLDDJ"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "-3kY9uCnYOEq"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "-3kYSa9Yc4-~",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "-3kYPN._jAq7"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "-3kYJ_F5EUJT"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "-3kYQeJUWZ2p",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "-3kYJ_F5EUJT"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "-3kYm7F9Vsth"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "-3kY_Wyauj5p",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "-3kYTxqoqQXX"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "-3kYBm0xJdrz"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "-3kYHWuAxRG0",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "-3kYm7F9Vsth"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "-3kYTxqoqQXX"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "-3kYosfkHQst",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "-3kYOEQXzr2E"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "-3kYkuUH5qQu"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

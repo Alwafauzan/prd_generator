@@ -1,0 +1,457 @@
+{
+ "id": "f9125fff-5d36-48dc-bb05-d95d1257cd3c",
+ "title": "g-support-medical-display",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "zMw0IwKl16_U",
+  "label": "F28-PENUNJANG MEDIS - DISPLAY PENUNJANG MEDIS"
+ },
+ "pages": [
+  {
+   "id": "f~4Xbp8yyK1t",
+   "title": "F28-PENUNJANG MEDIS - DISPLAY PENUNJANG MEDIS",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "yMw0DPwd1P-4",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": " Memilih dokter yang bertugas "
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "yMw0ZyS~ZDdQ",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "yMw0SPa7r3OS",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan list pasien Penunjang Medis "
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "yMw0k8A8JWts",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "6Vw0v4Lwo9sW",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Memilih display antrian"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "zMw0bok.MSrc",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "F28-PENUNJANG MEDIS - DISPLAY PENUNJANG MEDIS"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_3"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "XWw0JMML2e2O",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan display antrian"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "yMw0Iwu4gnGy",
+      "class": "AdvancedSwimLaneBlockRotated",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Primary_0",
+        "text": "Terapis/Fisioterapis"
+       },
+       {
+        "label": "Primary_1",
+        "text": "Sistem"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "6Vw0v4Lwo9sW",
+        "XWw0JMML2e2O",
+        "yMw09BkCRY-1",
+        "yMw0DPwd1P-4",
+        "yMw0SPa7r3OS",
+        "yMw0ZyS~ZDdQ",
+        "yMw0cZaZ_Gjp",
+        "yMw0k8A8JWts"
+       ],
+       "lines": [
+        "LXw0njzkfVKP",
+        "pWw0caiMN_ll",
+        "yMw01cZuUFvG",
+        "yMw07eI0x7-k",
+        "yMw0_zYNRPI8",
+        "yMw0qK7UAOCn",
+        "yMw0uwfQklFl"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "yMw09BkCRY-1",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka menu Penunjang Medis"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "yMw0cZaZ_Gjp",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan tombol display antrian"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "zMw0IwKl16_U",
+      "class": "RectangleContainerBlock",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": "F28-PENUNJANG MEDIS - DISPLAY PENUNJANG MEDIS"
+       },
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "6Vw0v4Lwo9sW",
+        "XWw0JMML2e2O",
+        "yMw09BkCRY-1",
+        "yMw0DPwd1P-4",
+        "yMw0Iwu4gnGy",
+        "yMw0SPa7r3OS",
+        "yMw0ZyS~ZDdQ",
+        "yMw0cZaZ_Gjp",
+        "yMw0k8A8JWts",
+        "zMw0bok.MSrc"
+       ],
+       "lines": [
+        "LXw0njzkfVKP",
+        "pWw0caiMN_ll",
+        "yMw01cZuUFvG",
+        "yMw07eI0x7-k",
+        "yMw0_zYNRPI8",
+        "yMw0qK7UAOCn",
+        "yMw0uwfQklFl"
+       ],
+       "groups": []
+      }
+     }
+    ],
+    "lines": [
+     {
+      "id": "yMw0qK7UAOCn",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "XWw0JMML2e2O"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "yMw0ZyS~ZDdQ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "yMw07eI0x7-k",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "yMw0DPwd1P-4"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "yMw0cZaZ_Gjp"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "yMw01cZuUFvG",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "yMw0k8A8JWts"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "yMw09BkCRY-1"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "yMw0_zYNRPI8",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "yMw09BkCRY-1"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "yMw0SPa7r3OS"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "LXw0njzkfVKP",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "6Vw0v4Lwo9sW"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "XWw0JMML2e2O"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "yMw0uwfQklFl",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "yMw0SPa7r3OS"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "yMw0DPwd1P-4"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pWw0caiMN_ll",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "yMw0cZaZ_Gjp"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "6Vw0v4Lwo9sW"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

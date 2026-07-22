@@ -1,0 +1,834 @@
+{
+  "communities": {
+    "0": [
+      "app_api_flowchart_route",
+      "app_api_flowchart_route_post",
+      "app_api_generate_route",
+      "app_api_generate_route_post",
+      "app_api_generate_route_readbody",
+      "app_api_options_route",
+      "app_api_options_route_get",
+      "app_lib_attachments",
+      "app_lib_attachments_docinput",
+      "app_lib_attachments_ext",
+      "app_lib_attachments_extractdocs",
+      "app_lib_attachments_extracteddoc",
+      "app_lib_attachments_extractone",
+      "app_lib_attachments_issupporteddoc",
+      "app_lib_attachments_renderdocsblock",
+      "app_lib_flowchart",
+      "app_lib_flowchart_buildflowchartprompt",
+      "app_lib_flowchart_extractmermaid",
+      "app_lib_flowchart_flowchartinput",
+      "app_lib_flowchart_flowchartskill",
+      "app_lib_flowchart_generateflowchart",
+      "app_lib_flowchart_root",
+      "app_lib_flowchart_skill_flowchart",
+      "app_lib_generate",
+      "app_lib_generate_bpmn_dir",
+      "app_lib_generate_buildprompt",
+      "app_lib_generate_code_bpmn_suggest",
+      "app_lib_generate_feature",
+      "app_lib_generate_featuresincluster",
+      "app_lib_generate_generateprd",
+      "app_lib_generate_generateviaclaudecode",
+      "app_lib_generate_geninput",
+      "app_lib_generate_listbpmn",
+      "app_lib_generate_listfeatures",
+      "app_lib_generate_loadskill",
+      "app_lib_generate_parseprdjson",
+      "app_lib_generate_pickengine",
+      "app_lib_generate_prd",
+      "app_lib_generate_prdsection",
+      "app_lib_generate_readbpmndoc",
+      "app_lib_generate_repairjson",
+      "app_lib_generate_resolve",
+      "app_lib_generate_root",
+      "app_lib_generate_runapi",
+      "app_lib_generate_runclaudecode",
+      "app_lib_generate_skill_prd",
+      "app_lib_generate_strippreamble",
+      "app_lib_generate_suggestbpmn",
+      "app_lib_refine",
+      "app_lib_refine_buildrefineprompt",
+      "app_lib_refine_refineinput",
+      "app_lib_refine_refineprd"
+    ],
+    "1": [
+      "app_lib_generate_buildcontext",
+      "app_lib_generate_featurestotext",
+      "app_lib_knowledge",
+      "app_lib_knowledge_bpmn_dir",
+      "app_lib_knowledge_bpmnknowledge",
+      "app_lib_knowledge_buildknowledge",
+      "app_lib_knowledge_compact",
+      "app_lib_knowledge_domainof",
+      "app_lib_knowledge_integrations",
+      "app_lib_knowledge_knowledgetext",
+      "app_lib_knowledge_root",
+      "app_lib_knowledge_selectrelevant",
+      "app_lib_knowledge_words",
+      "lib_bpmn",
+      "lib_bpmn_anytext",
+      "lib_bpmn_label",
+      "lib_bpmn_orderededges",
+      "lib_bpmn_parsebpmn",
+      "lib_bpmn_summarizeflow",
+      "lib_bpmn_text",
+      "lib_prompt",
+      "lib_prompt_buildprompt",
+      "lib_prompt_featurestotext",
+      "lib_prompt_loadfeatures",
+      "lib_prompt_loadskill",
+      "lib_prompt_relevantfeatures",
+      "lib_prompt_root",
+      "lib_run_generate",
+      "lib_run_generate_client",
+      "lib_run_generate_md",
+      "lib_run_generate_stream",
+      "lib_run_generate_system_user",
+      "lib_test_all",
+      "lib_test_all_dir",
+      "lib_test_all_files",
+      "lib_test_bpmn",
+      "lib_test_bpmn_doc",
+      "lib_test_bpmn_model"
+    ],
+    "2": [
+      "app_api_refine_route",
+      "app_api_refine_route_post",
+      "app_api_related_route",
+      "app_api_related_route_get",
+      "app_lib_dictionary",
+      "app_lib_dictionary_autorelatedcodes",
+      "app_lib_dictionary_backfilldict",
+      "app_lib_dictionary_cells",
+      "app_lib_dictionary_cleanheading",
+      "app_lib_dictionary_codesindict",
+      "app_lib_dictionary_dict_path",
+      "app_lib_dictionary_dictionary",
+      "app_lib_dictionary_emptydict",
+      "app_lib_dictionary_featurelike",
+      "app_lib_dictionary_featwords",
+      "app_lib_dictionary_fielddef",
+      "app_lib_dictionary_identity",
+      "app_lib_dictionary_issep",
+      "app_lib_dictionary_known_integrations",
+      "app_lib_dictionary_loaddict",
+      "app_lib_dictionary_mergefromprd",
+      "app_lib_dictionary_norm",
+      "app_lib_dictionary_parsed",
+      "app_lib_dictionary_parsemarkdown",
+      "app_lib_dictionary_relatedcontextfor",
+      "app_lib_dictionary_rendercontext",
+      "app_lib_dictionary_savedict",
+      "app_lib_dictionary_selectformodule",
+      "app_lib_dictionary_shared_dir",
+      "app_lib_dictionary_uniqpush",
+      "app_lib_dictionary_words",
+      "app_lib_generate_featurebycode",
+      "app_lib_generate_prdtomarkdown",
+      "app_lib_store_listprds"
+    ],
+    "3": [
+      "a10_tindakan",
+      "a13_procedure",
+      "a14_item_lab",
+      "a20_tipe_penjamin",
+      "a22_satuan_kemasan",
+      "a29_item_radiologi",
+      "a2_staff",
+      "a33_kategori_barang",
+      "a38_kas_dan_bank",
+      "a3_unit",
+      "a4_barang_farmasi",
+      "a58_kelas",
+      "a59_pengaturan_harga",
+      "a9_menu_makanan",
+      "g2_billing_tagihan_pasien",
+      "g3_deposito_pasien",
+      "hpp_margin_tiers",
+      "item_price_rules",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_aset_master_data_aset",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_barang_gizi_master_data_barang_gizi",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_barang_rumah_tangga_master_data_barang_rumah_tangga",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_laboratorium_master_data_laboratorium",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_paket_pelayanan_mcu_f_br_001",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_paket_pelayanan_mcu_f_br_006",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_paket_pelayanan_mcu_f_br_020",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_paket_pelayanan_mcu_f_br_021",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_paket_pelayanan_mcu_f_paket_mcu",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_paket_pelayanan_mcu_f_paket_mcu_item",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_profesi_professions",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_ruang_ibs_ibs_rooms",
+      "other_prd_prd_drive_master_data_md_n1_master_data_konfigurasi_tarif_pendaftaran",
+      "registration_fee_configs",
+      "staff_price_rules"
+    ],
+    "4": [
+      "botika_tts",
+      "bpjs_antrean_online",
+      "modul_billing",
+      "modul_emr",
+      "modul_farmasi",
+      "modul_pendaftaran_rj",
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_asesmen_dokter_igd_v2",
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_asesmen_hd_v2",
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_asesmen_rehab_medik_optimalisasi_layout",
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_dashboard_ibs_dashboard_pelayanan_operasi",
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_dashboard_pelayanan_igd_dashboard_pelayanan_igd",
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_dashboard_pelayanan_integrasi_condition",
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_dashboard_pelayanan_rj_v2_1_dashboard_pelayanan_rawat_jalan",
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_dashboard_rehab_medik_dashboard_pelayanan_rehabilitasi_medik",
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_dashboard_terapi_dashboard_pelayanan_terapi",
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_display_antrean_fix_display_antrean",
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_general_consent_rj_v2_0_general_consent_rawat_jalan",
+      "prd_asesmen_perawat_igd",
+      "prd_dashboard_pelayanan_rj",
+      "prd_discharge",
+      "prd_konsul_internal_rujuk_internal",
+      "prd_master_data_tipe_penjamin",
+      "prd_master_data_unit",
+      "prd_p_apigd_v2_0_asesmen_perawat_igd",
+      "prd_p_dsh_hd_v1_5_dashboard_pelayanan_hemodialisa",
+      "prd_p_emr_rj_asm_v1_0_asesmen_rawat_jalan",
+      "prd_pm_rhb_v2_0_asesmen_penunjang_medis_rehab",
+      "prd_triase_igd"
+    ],
+    "5": [
+      "app_api_prd_id_route",
+      "app_api_prd_id_route_code",
+      "app_api_prd_id_route_delete",
+      "app_api_prd_id_route_get",
+      "app_api_prd_id_route_put",
+      "app_api_prd_route",
+      "app_api_prd_route_get",
+      "app_api_prd_route_post",
+      "app_lib_store",
+      "app_lib_store_attachmentref",
+      "app_lib_store_deleteprd",
+      "app_lib_store_ensureroot",
+      "app_lib_store_finddirbycode",
+      "app_lib_store_getprd",
+      "app_lib_store_meta",
+      "app_lib_store_prdlistitem",
+      "app_lib_store_prdrecord",
+      "app_lib_store_readif",
+      "app_lib_store_readmeta",
+      "app_lib_store_recorddirs",
+      "app_lib_store_result_dir",
+      "app_lib_store_safecode",
+      "app_lib_store_saveattachments",
+      "app_lib_store_saveflowchart",
+      "app_lib_store_saveinput",
+      "app_lib_store_saveprd",
+      "app_lib_store_slug"
+    ],
+    "6": [
+      "ref_dom",
+      "ref_dom_iterable",
+      "ref_es2022",
+      "ref_next_env_d_ts",
+      "ref_next_types_ts",
+      "ref_node_modules",
+      "ref_ts",
+      "ref_tsx",
+      "tsconfig",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_allowjs",
+      "tsconfig_compileroptions_esmoduleinterop",
+      "tsconfig_compileroptions_incremental",
+      "tsconfig_compileroptions_isolatedmodules",
+      "tsconfig_compileroptions_jsx",
+      "tsconfig_compileroptions_lib",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_noemit",
+      "tsconfig_compileroptions_paths",
+      "tsconfig_compileroptions_plugins",
+      "tsconfig_compileroptions_resolvejsonmodule",
+      "tsconfig_compileroptions_skiplibcheck",
+      "tsconfig_compileroptions_strict",
+      "tsconfig_compileroptions_target",
+      "tsconfig_exclude",
+      "tsconfig_include"
+    ],
+    "7": [
+      "package",
+      "package_author",
+      "package_description",
+      "package_devdependencies",
+      "package_devdependencies_types_node",
+      "package_devdependencies_types_react",
+      "package_devdependencies_types_react_dom",
+      "package_devdependencies_typescript",
+      "package_directories",
+      "package_directories_lib",
+      "package_keywords",
+      "package_license",
+      "package_main",
+      "package_name",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_dev",
+      "package_scripts_start",
+      "package_version",
+      "types_node",
+      "types_react",
+      "types_react_dom",
+      "typescript"
+    ],
+    "8": [
+      "bahan_random_ambulance",
+      "bahan_random_ambulance_actionandconsumablesnew",
+      "bahan_random_ambulance_ambulanceunittype",
+      "bahan_random_ambulance_changedialog",
+      "bahan_random_ambulance_closeactionconsumable",
+      "bahan_random_ambulance_closeform",
+      "bahan_random_ambulance_data",
+      "bahan_random_ambulance_dialogwidth",
+      "bahan_random_ambulance_getfinishedorder",
+      "bahan_random_ambulance_getorderpatient",
+      "bahan_random_ambulance_mergeactionname",
+      "bahan_random_ambulance_model",
+      "bahan_random_ambulance_mounted",
+      "bahan_random_ambulance_openactionconsumable",
+      "bahan_random_ambulance_orderambulance",
+      "bahan_random_ambulance_pages",
+      "bahan_random_ambulance_patientdata",
+      "bahan_random_ambulance_refreshed",
+      "bahan_random_ambulance_search",
+      "bahan_random_ambulance_searched",
+      "d_alwa_myproject_tools_mas_prio_prd_generator_bahan_random_ambulance_orderambulance_vue",
+      "d_alwa_myproject_tools_mas_prio_prd_generator_service_generalcomponent_actionandconsumablesnew_vue"
+    ],
+    "9": [
+      "anthropic_ai_sdk",
+      "mammoth",
+      "mermaid",
+      "next",
+      "package_dependencies",
+      "package_dependencies_anthropic_ai_sdk",
+      "package_dependencies_mammoth",
+      "package_dependencies_mermaid",
+      "package_dependencies_next",
+      "package_dependencies_pdf_parse",
+      "package_dependencies_react",
+      "package_dependencies_react_dom",
+      "package_dependencies_react_markdown",
+      "package_dependencies_xlsx",
+      "pdf_parse",
+      "react",
+      "react_dom",
+      "react_markdown",
+      "xlsx"
+    ],
+    "10": [
+      "a18_role",
+      "a53_rbac",
+      "a60_pengaturan_tagihan_pasien",
+      "berita_acara_verifikasi_kas",
+      "g1_buka_tutup_kasir",
+      "g2_tagihan_pasien",
+      "g3_pengelolaan_dana_deposito",
+      "g4_verifikasi_penerimaan_kas",
+      "other_prd_prd_dari_google_drive_billing_prd_billing_kasir_billing_verifikasi_penerimaan_kas_verifikasi_penerimaan_kas",
+      "other_prd_prd_dari_google_drive_billing_prd_buka_tutup_kasir_buka_tutup_kasir",
+      "other_prd_prd_dari_google_drive_billing_prd_tagihan_pasien_tagihan_pasien",
+      "other_prd_prd_dari_google_drive_pengaturan_md_prd_pengaturan_farmasi_nfr_003",
+      "patient_billing_setting"
+    ],
+    "11": [
+      "bahan_random_orderambulance",
+      "bahan_random_orderambulance_clientdata",
+      "bahan_random_orderambulance_data",
+      "bahan_random_orderambulance_getallhospitals",
+      "bahan_random_orderambulance_getdriver",
+      "bahan_random_orderambulance_getpatienthistory",
+      "bahan_random_orderambulance_mounted",
+      "bahan_random_orderambulance_openactiondialog",
+      "bahan_random_orderambulance_refreshhistory",
+      "bahan_random_orderambulance_saveupdateorder",
+      "bahan_random_orderambulance_selectdriver",
+      "bahan_random_orderambulance_selecthospital"
+    ],
+    "12": [
+      "bpjs_vclaim",
+      "master_staf_a2",
+      "master_unit_a3",
+      "mobile_jkn_mjkn",
+      "other_prd_prd_dari_google_drive_pelayanan_md_fix_prd_antrian_apm_apm_checkin_mandiri",
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_pendaftaran_laboratorium_b4",
+      "other_prd_prd_dari_google_drive_pengaturan_md_prd_pengaturan_farmasi_a42",
+      "prd_data_pasien_ringkasan_kesehatan_pasien_d5",
+      "prd_emr_rj_asesmen_perawat_dan_dokter_igd_d12",
+      "prd_pendaftaran_mcu",
+      "prd_pendaftaran_radiologi_b5",
+      "prd_pendaftaran_rawat_jalan_b1"
+    ],
+    "13": [
+      "master_satuan_table",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_satuan_dan_kemasan_satuan",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_tarif_layanan_tarif_layanan",
+      "prd_master_data_tipe_penjamin_tipe_penjamin",
+      "prd_master_data_unit_unit",
+      "satusehat_platform",
+      "service_table",
+      "service_tariff_table",
+      "tipe_penjamin_table",
+      "ucum_standard",
+      "units_table"
+    ],
+    "14": [
+      "other_prd_prd_dari_google_drive_master_data_md_draft_prd_master_data_grup_obat",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_item_pemeriksaan_laboratorium_a14",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_menu_makanan_a9",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_pabrikan_a54",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_satuan_kemasan",
+      "prd_master_data_barang_gizi_a6",
+      "prd_master_data_paket_pelayanan_mcu_a44",
+      "prd_master_data_satuan_kemasan_a22",
+      "prd_master_data_tindakan_a10",
+      "satusehat_integration",
+      "ucum_terminology"
+    ],
+    "15": [
+      "farmasi_penjualan_obat_bebas",
+      "ibs_permintaan_jadwal_operasi",
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_penjualan_obat_bebas_v1_0_prd",
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_permintaan_jadwal_operasi_prd",
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_spri_v2_0_prd",
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_tindakan_bhp_v2_0_prd",
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_transfer_internal_v2_0_prd",
+      "pelayanan_spri",
+      "pelayanan_tindakan_bhp",
+      "pelayanan_transfer_internal"
+    ],
+    "16": [
+      "app_components_mermaid",
+      "app_components_mermaid_mermaid",
+      "app_page",
+      "app_page_featureopt",
+      "app_page_home",
+      "app_page_prd",
+      "app_page_prdsection",
+      "app_page_prdtomarkdown",
+      "app_page_saveditem"
+    ],
+    "17": [
+      "bahan_random_prd_idrg_new_template_api_idrg",
+      "bahan_random_prd_idrg_new_template_casemix",
+      "bahan_random_prd_idrg_new_template_e_klaim",
+      "bahan_random_prd_idrg_new_template_idrg",
+      "bahan_random_prd_idrg_new_template_inacbg",
+      "bahan_random_prd_manajemen_dokumen_casemix_g8_manajemen_dokumen_data_medis",
+      "bahan_random_prd_manajemen_dokumen_casemix_rme"
+    ],
+    "18": [
+      "a15_master_data_bangsal",
+      "a16_master_data_kamar",
+      "a17_master_data_bed",
+      "a3_master_data_unit",
+      "a43_tarif_kamar",
+      "bpjs_aplicares"
+    ],
+    "19": [
+      "a2_master_data_staf",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_jadwal_praktik_medical_staff_schedules",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_jadwal_praktik_schedule_leaves",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_hari_libur_holiday_master",
+      "other_prd_prd_drive_master_data_md_a55_master_data_jabatan",
+      "result_a23_master_data_spesialisasi_dokter_a23_master_data_spesialisasi_dokter"
+    ],
+    "20": [
+      "a14_master_data_item_pemeriksaan_lab",
+      "a22_master_data_satuan_kemasan",
+      "a4_master_data_barang_farmasi",
+      "result_a21_master_data_sediaan_barang_a21_master_data_sediaan_barang",
+      "satusehat_terminology"
+    ],
+    "21": [
+      "bill",
+      "bill_item",
+      "bill_payment",
+      "cash_receipt_verifications",
+      "cashier_sessions"
+    ],
+    "22": [
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_kamar_a16",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_kelas_a58",
+      "prd_master_data_bangsal_a15",
+      "prd_master_data_bed_a17",
+      "prd_master_data_tarif_kamar_a43"
+    ],
+    "23": [
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_user_new",
+      "prd_login_autentikasi",
+      "prd_master_data_role",
+      "prd_master_data_staf"
+    ],
+    "24": [
+      "app_layout",
+      "app_layout_metadata",
+      "app_layout_rootlayout"
+    ],
+    "25": [
+      "bahan_random_n3_master_penomoran_suratcopy_bridging_bpjs",
+      "bahan_random_n3_master_penomoran_suratcopy_master_penomoran_surat",
+      "bahan_random_n3_master_penomoran_suratcopy_simrs"
+    ],
+    "26": [
+      "bahan_random_prd_master_data_integrasi_satusehat_bpjs_v2_unit_location_resource",
+      "bahan_random_prd_master_data_integrasi_satusehat_bpjs_v2_unit_master_data_unit",
+      "bahan_random_prd_master_data_integrasi_satusehat_bpjs_v2_unit_satusehat"
+    ],
+    "27": [
+      "bpjs_dpho",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_barang_farmasi_master_data_barang_farmasi",
+      "satusehat_kfa"
+    ],
+    "28": [
+      "master_data_barang_farmasi",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_sediaan_sediaan",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_supplier_supplier"
+    ],
+    "29": [
+      "master_data_siki",
+      "master_data_slki",
+      "prd_master_data_diagnosa_perawat_diagnosa_perawat"
+    ],
+    "30": [
+      "other_prd_prd_dari_google_drive_master_data_md_n2_master_data_master_program_terapi_therapy_category",
+      "other_prd_prd_dari_google_drive_master_data_md_n2_master_data_master_program_terapi_therapy_intervention",
+      "other_prd_prd_dari_google_drive_master_data_md_n2_master_data_master_program_terapi_therapy_program"
+    ],
+    "31": [
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_asesmen_jawaban_konsulan_v1_7",
+      "prd_asesmen_rawat_jalan",
+      "prd_riwayat_kunjungan_asesmen_rj_panel"
+    ],
+    "32": [
+      "prd_c_cppt_igd_v2_0_cppt_igd",
+      "prd_cppt_rawat_inap",
+      "prd_spri"
+    ],
+    "33": [
+      "a11_diagnosa_medis",
+      "result_a12_master_data_diagnosa_perawat_a12_master_data_diagnosa_perawat"
+    ],
+    "34": [
+      "a43_standar_tarif_kamar",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_kamar_template_new_master_data_kamar"
+    ],
+    "35": [
+      "a53_admin_rbac",
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_akses_menu_master_menu_access"
+    ],
+    "36": [
+      "audit_log_position",
+      "master_position"
+    ],
+    "37": [
+      "bahan_random_n4_master_data_profil_rs_logo_rs",
+      "bahan_random_n4_master_data_profil_rs_master_data_profil_rs"
+    ],
+    "38": [
+      "deposit_accounts",
+      "deposit_transactions"
+    ],
+    "39": [
+      "master_data_unit",
+      "prd_master_data_meja_antrian_meja_antrian"
+    ],
+    "40": [
+      "next_config",
+      "next_config_nextconfig"
+    ],
+    "41": [
+      "next_env_d",
+      "next_env_d_rationale_4"
+    ],
+    "42": [
+      "other_prd_prd_dari_google_drive_master_data_md_n3_master_data_master_penomoran_surat_letter_number_sequence",
+      "other_prd_prd_dari_google_drive_master_data_md_n3_master_data_master_penomoran_surat_letter_numbering_config"
+    ],
+    "43": [
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_tarif_kamar_tarif_kamar",
+      "room_rate_standards_table"
+    ],
+    "44": [
+      "other_prd_prd_dari_google_drive_master_data_md_untitled_1_user_management",
+      "prd_master_data_anjuran_sukon_anjuran_sukon"
+    ],
+    "45": [
+      "prd_a42_gudang_farmasi",
+      "prd_unit_include_ui"
+    ],
+    "46": [
+      "prd_master_data_radiologi_radiologi",
+      "satusehat_loinc"
+    ],
+    "47": [
+      "a19_master_instalasi"
+    ],
+    "48": [
+      "a3_master_unit"
+    ],
+    "49": [
+      "a54_pabrikan"
+    ],
+    "50": [
+      "g_service_order_resep"
+    ],
+    "51": [
+      "modul_resep_pelayanan_farmasi"
+    ],
+    "52": [
+      "other_prd_prd_dari_google_drive_master_data_md_n4_master_data_profil_rumah_sakit_hospital_profile"
+    ],
+    "53": [
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_anjuran_sukon_control_advice"
+    ],
+    "54": [
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_kas_dan_bank_master_data_kas_dan_bank"
+    ],
+    "55": [
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_kategori_barang_a33"
+    ],
+    "56": [
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_paket_pelayanan_mcu_f_paket_mcu_version"
+    ],
+    "57": [
+      "other_prd_prd_dari_google_drive_master_data_md_prd_master_data_procedure_fix_procedure"
+    ],
+    "58": [
+      "other_prd_prd_dari_google_drive_pelayanan_md_fix_prd_antrian_apm_log_checkin"
+    ],
+    "59": [
+      "other_prd_prd_dari_google_drive_pelayanan_md_fix_prd_antrian_apm_on_screen_keyboard"
+    ],
+    "60": [
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_dashboard_pelayanan_integrasi_composition"
+    ],
+    "61": [
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_dashboard_pelayanan_integrasi_medicationrequest"
+    ],
+    "62": [
+      "other_prd_prd_dari_google_drive_pelayanan_md_prd_p_ant_rj_antrian_pelayanan_poliklinik_v1_2_prd"
+    ],
+    "63": [
+      "other_prd_prd_dari_google_drive_pengaturan_md_prd_pengaturan_farmasi_nfr_001"
+    ],
+    "64": [
+      "other_prd_prd_dari_google_drive_pengaturan_md_prd_pengaturan_farmasi_nfr_002"
+    ],
+    "65": [
+      "other_prd_prd_dari_google_drive_pengaturan_md_prd_pengaturan_farmasi_nfr_004"
+    ],
+    "66": [
+      "other_prd_prd_dari_google_drive_pengaturan_md_prd_pengaturan_farmasi_nfr_006"
+    ],
+    "67": [
+      "other_prd_prd_drive_master_data_md_n2_master_data_master_program_terapi"
+    ],
+    "68": [
+      "prd_master_data_kas_dan_bank_a38"
+    ],
+    "69": [
+      "result_a13_master_data_procedure_a13_master_data_procedure"
+    ],
+    "70": [
+      "skill_flowchart_designer"
+    ],
+    "71": [
+      "skill_system_analyst_prd"
+    ]
+  },
+  "cohesion": {
+    "0": 0.08597285067873303,
+    "1": 0.09246088193456614,
+    "2": 0.12834224598930483,
+    "3": 0.0625,
+    "4": 0.07142857142857142,
+    "5": 0.16809116809116809,
+    "6": 0.07407407407407407,
+    "7": 0.08695652173913043,
+    "8": 0.1471861471861472,
+    "9": 0.10526315789473684,
+    "10": 0.16666666666666666,
+    "11": 0.25757575757575757,
+    "12": 0.18181818181818182,
+    "13": 0.21818181818181817,
+    "14": 0.18181818181818182,
+    "15": 0.2,
+    "16": 0.2222222222222222,
+    "17": 0.2857142857142857,
+    "18": 0.3333333333333333,
+    "19": 0.3333333333333333,
+    "20": 0.4,
+    "21": 0.4,
+    "22": 0.4,
+    "23": 0.5,
+    "24": 0.6666666666666666,
+    "25": 0.6666666666666666,
+    "26": 0.6666666666666666,
+    "27": 0.6666666666666666,
+    "28": 0.6666666666666666,
+    "29": 0.6666666666666666,
+    "30": 0.6666666666666666,
+    "31": 1.0,
+    "32": 0.6666666666666666,
+    "33": 1.0,
+    "34": 1.0,
+    "35": 1.0,
+    "36": 1.0,
+    "37": 1.0,
+    "38": 1.0,
+    "39": 1.0,
+    "40": 1.0,
+    "41": 1.0,
+    "42": 1.0,
+    "43": 1.0,
+    "44": 1.0,
+    "45": 1.0,
+    "46": 1.0,
+    "47": 1.0,
+    "48": 1.0,
+    "49": 1.0,
+    "50": 1.0,
+    "51": 1.0,
+    "52": 1.0,
+    "53": 1.0,
+    "54": 1.0,
+    "55": 1.0,
+    "56": 1.0,
+    "57": 1.0,
+    "58": 1.0,
+    "59": 1.0,
+    "60": 1.0,
+    "61": 1.0,
+    "62": 1.0,
+    "63": 1.0,
+    "64": 1.0,
+    "65": 1.0,
+    "66": 1.0,
+    "67": 1.0,
+    "68": 1.0,
+    "69": 1.0,
+    "70": 1.0,
+    "71": 1.0
+  },
+  "gods": [
+    {
+      "id": "app_lib_store_saveprd",
+      "label": "savePrd()",
+      "degree": 17
+    },
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 16
+    },
+    {
+      "id": "app_api_generate_route_post",
+      "label": "POST()",
+      "degree": 14
+    },
+    {
+      "id": "app_lib_dictionary_mergefromprd",
+      "label": "mergeFromPrd()",
+      "degree": 14
+    },
+    {
+      "id": "app_lib_generate_prdtomarkdown",
+      "label": "prdToMarkdown()",
+      "degree": 11
+    },
+    {
+      "id": "lib_bpmn_parsebpmn",
+      "label": "parseBpmn()",
+      "degree": 11
+    },
+    {
+      "id": "app_lib_dictionary_autorelatedcodes",
+      "label": "autoRelatedCodes()",
+      "degree": 10
+    },
+    {
+      "id": "app_lib_store_listprds",
+      "label": "listPrds()",
+      "degree": 10
+    },
+    {
+      "id": "lib_bpmn_summarizeflow",
+      "label": "summarizeFlow()",
+      "degree": 10
+    },
+    {
+      "id": "app_lib_generate_featurebycode",
+      "label": "featureByCode()",
+      "degree": 9
+    }
+  ],
+  "surprises": [
+    {
+      "source": "closeForm()",
+      "target": "resolve()",
+      "source_files": [
+        "bahan_random/Ambulance.vue",
+        "app/lib/generate.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "indirect_call",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "getPatientHistory()",
+      "target": "resolve()",
+      "source_files": [
+        "bahan_random/OrderAmbulance.vue",
+        "app/lib/generate.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "indirect_call",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "extractOne()",
+      "target": "pdf-parse",
+      "source_files": [
+        "app/lib/attachments.ts",
+        "package.json"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "extractOne()",
+      "target": "xlsx",
+      "source_files": [
+        "app/lib/attachments.ts",
+        "package.json"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "Table: registration_fee_configs",
+      "target": "Master Tipe Penjamin (A20)",
+      "source_files": [
+        "other_prd(prd_drive)/Master Data (.md)/N1__master-data-konfigurasi-tarif-pendaftaran.md",
+        "other_prd(prd_dari_google_drive)/Master Data (.md)/prd-master-data-paket-pelayanan.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
+    }
+  ],
+  "tokens": {
+    "input": 1294154,
+    "output": 42882
+  }
+}

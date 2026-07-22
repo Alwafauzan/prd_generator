@@ -1,0 +1,47 @@
+flowchart TD
+  S([Mulai]) --> M[Buka menu Master Data User]
+  subgraph Admin_IT[Admin atau Petugas IT]
+    M --> L[Tampil list user]
+    L --> SF[Search filter status role unit]
+    SF --> ACT{Pilih aksi}
+    ACT -->|tambah| T1[Klik Tambah User]
+    ACT -->|edit| ED1[Pilih user buka detail]
+    ACT -->|nonaktif| NA1[Pilih user klik Nonaktifkan]
+    ACT -->|reset password| RP1[Pilih user Reset Password]
+    T1 --> NIP[Input NIP langkah pertama]
+  end
+  NIP --> LOOK[(Lookup Master Staff A2)]
+  LOOK --> G1{NIP ditemukan?}
+  G1 -->|tidak| E1[Error NIP tidak terdaftar]
+  E1 --> ARA[Arahkan lengkapi data staf A2]
+  ARA --> L
+  G1 -->|ya| G2{NIP sudah punya user aktif?}
+  G2 -->|ya| E2[Error user sudah ada]
+  E2 --> ED1
+  G2 -->|tidak| AF[Autofill nama jabatan unit read only]
+  AF --> AKUN[Isi username password role status]
+  AKUN --> RL[(Ambil Role Master Role A18)]
+  RL --> SIM[Klik Simpan]
+  SIM --> V1{Username unik?}
+  V1 -->|tidak| E3[Error username dipakai]
+  E3 --> AKUN
+  V1 -->|ya| V2{Password valid dan minimal 1 role?}
+  V2 -->|tidak| E4[Error lengkapi data akun]
+  E4 --> AKUN
+  V2 -->|ya| HASH[Simpan user password ter hash]
+  HASH --> EVT[Event User berhasil dibuat]
+  ED1 --> EDF[Ubah username role status]
+  EDF --> EDS[Simpan perubahan]
+  EDS --> EV1{Username unik?}
+  EV1 -->|tidak| E5[Error username dipakai]
+  E5 --> EDF
+  EV1 -->|ya| EVT
+  RP1 --> RPF[Set password baru auto atau manual]
+  RPF --> RPH[Simpan password ter hash]
+  RPH --> EVT
+  NA1 --> KON{Konfirmasi nonaktif?}
+  KON -->|tidak| L
+  KON -->|ya| SOFT[Soft delete status nonaktif]
+  SOFT --> EVT
+  EVT --> AUD[(Catat audit log pelaku timestamp)]
+  AUD --> H([Selesai])

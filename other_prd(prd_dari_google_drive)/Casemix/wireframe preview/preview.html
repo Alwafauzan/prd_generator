@@ -1,0 +1,742 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UI Preview — G8 Casemix: Manajemen Dokumen & Data Medis (BPJS)</title>
+<style>
+  :root{
+    --bg:#eef1f5; --panel:#fff; --line:#e3e7ee; --muted:#8a94a6; --ink:#2b3444;
+    --blue:#1668e3; --blue-soft:#e8f0fe; --green:#1aa356; --green-soft:#e4f5ec;
+    --amber:#b9770e; --amber-soft:#fbf0da; --red:#e2413b; --red-soft:#fce7e6;
+    --chip:#f3f5f9; --thead:#f7f9fc; --shadow:0 10px 40px rgba(20,30,50,.20);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0e141b; --panel:#161e27; --line:#2a3743; --muted:#8b97a6; --ink:#e7edf3;
+      --blue:#4d94ff; --blue-soft:#16283f; --green:#4ecb8a; --green-soft:#12271d;
+      --amber:#e0a45a; --amber-soft:#2c2214; --red:#f0837b; --red-soft:#2c1615;
+      --chip:#1f2a35; --thead:#1a232d; --shadow:0 12px 44px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#eef1f5; --panel:#fff; --line:#e3e7ee; --muted:#8a94a6; --ink:#2b3444;
+    --blue:#1668e3; --blue-soft:#e8f0fe; --green:#1aa356; --green-soft:#e4f5ec;
+    --amber:#b9770e; --amber-soft:#fbf0da; --red:#e2413b; --red-soft:#fce7e6;
+    --chip:#f3f5f9; --thead:#f7f9fc; --shadow:0 10px 40px rgba(20,30,50,.20);
+  }
+  :root[data-theme="dark"]{
+    --bg:#0e141b; --panel:#161e27; --line:#2a3743; --muted:#8b97a6; --ink:#e7edf3;
+    --blue:#4d94ff; --blue-soft:#16283f; --green:#4ecb8a; --green-soft:#12271d;
+    --amber:#e0a45a; --amber-soft:#2c2214; --red:#f0837b; --red-soft:#2c1615;
+    --chip:#1f2a35; --thead:#1a232d; --shadow:0 12px 44px rgba(0,0,0,.6);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:13px/1.45 "Segoe UI",Roboto,Arial,sans-serif;padding:20px}
+  button{font-family:inherit;cursor:pointer}
+  :focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:4px}
+  @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+  h1{font-size:18px;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 16px;font-size:12.5px}
+  .wrap{max-width:1220px;margin:0 auto}
+  .pageheadrow{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px}
+  .pageheadrow .spacer{flex:1}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    box-shadow:0 1px 3px rgba(20,30,50,.06);margin-bottom:22px;overflow:hidden}
+
+  .topbar{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--panel);flex-wrap:wrap}
+  .brand{line-height:1.1}
+  .brand b{font-size:15px}
+  .brand span{display:block;color:var(--muted);font-size:11px}
+  .search{flex:1;min-width:200px;display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;
+    padding:0 10px;gap:8px;background:var(--bg)}
+  .search input{border:0;background:transparent;color:var(--ink);padding:8px 0;flex:1;font-size:12.5px;outline:none}
+  .btn{border:1px solid transparent;border-radius:8px;padding:7px 14px;font-weight:600;cursor:pointer;font-size:12.5px}
+  .btn-blue{background:var(--blue);color:#fff}
+  .btn-ghost{background:var(--panel);border-color:var(--line);color:var(--ink)}
+  .btn-green{background:var(--green);color:#fff}
+  .btn-dis{background:var(--chip);border-color:var(--line);color:var(--muted);cursor:not-allowed}
+  .btn[disabled]{background:var(--chip);border-color:var(--line);color:var(--muted);cursor:not-allowed}
+
+  .filters{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--panel)}
+  .fl{display:flex;flex-direction:column;gap:4px}
+  .fl label{font-size:10.5px;color:var(--muted);font-weight:600}
+  select.sel,input.sel{border:1px solid var(--line);border-radius:8px;padding:7px 10px;min-width:140px;background:var(--bg);color:var(--ink);font-size:12.5px;font-family:inherit}
+
+  table{width:100%;border-collapse:collapse}
+  thead th{background:var(--thead);text-align:left;font-size:11px;color:var(--muted);
+    font-weight:600;padding:11px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+  thead th.sortable{cursor:pointer;user-select:none}
+  thead th.sortable:hover{color:var(--blue)}
+  tbody td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+  tbody tr:hover{background:var(--bg)}
+  .rm{color:var(--muted);font-size:11px;font-weight:600}
+  .strong{font-weight:600}
+  .rp{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .dt{white-space:nowrap;font-size:11.5px}
+  .dt b{font-weight:600}
+  .acts{display:flex;align-items:center;gap:6px}
+  .ico{width:26px;height:26px;border:1px solid var(--line);border-radius:6px;display:inline-flex;
+    align-items:center;justify-content:center;font-size:12px;background:var(--panel);cursor:pointer}
+  .ico:hover{background:var(--blue-soft);border-color:var(--blue)}
+  .ico.off{opacity:.35;cursor:not-allowed}
+  .ico.off:hover{background:var(--panel);border-color:var(--line)}
+
+  .badge{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:20px;white-space:nowrap}
+  .b-ok{background:var(--green-soft);color:var(--green)}
+  .b-warn{background:var(--amber-soft);color:var(--amber)}
+  .b-err{background:var(--red-soft);color:var(--red)}
+  .b-info{background:var(--blue-soft);color:var(--blue)}
+  .b-gray{background:var(--chip);color:var(--muted)}
+
+  .foot{display:flex;align-items:center;gap:16px;padding:12px 16px;border-top:1px solid var(--line);flex-wrap:wrap;background:var(--panel)}
+  .pager{display:flex;gap:6px;align-items:center}
+  .pg{min-width:26px;height:26px;border:1px solid var(--line);border-radius:6px;display:inline-flex;
+    align-items:center;justify-content:center;font-size:11.5px;background:var(--panel);cursor:pointer}
+  .pg.act{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .pg[disabled]{opacity:.4;cursor:not-allowed}
+  .chk{display:flex;align-items:center;gap:6px;color:var(--muted)}
+  .total{margin-left:auto;text-align:right;color:var(--muted)}
+  .total b{color:var(--blue);font-size:16px}
+
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--muted);margin:-4px 0 12px}
+  .aclegend{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin:0 0 18px}
+
+  /* modal */
+  .ov{position:fixed;inset:0;background:rgba(15,22,32,.55);display:none;align-items:flex-start;justify-content:center;padding:34px 16px;z-index:50;overflow:auto}
+  .ov.on{display:flex}
+  .modal{background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);width:100%;max-width:720px;overflow:hidden}
+  .modal.wide{max-width:920px}
+  .mh{display:flex;align-items:center;gap:10px;padding:13px 18px;border-bottom:1px solid var(--line);background:var(--thead)}
+  .mh b{font-size:14px}
+  .mh .x{margin-left:auto;width:28px;height:28px;border:1px solid var(--line);border-radius:7px;background:var(--panel);display:inline-flex;align-items:center;justify-content:center;font-size:15px}
+  .mb{padding:16px 18px;max-height:66vh;overflow:auto}
+  .mf{display:flex;gap:8px;justify-content:flex-end;padding:12px 18px;border-top:1px solid var(--line);flex-wrap:wrap}
+
+  .note{border-left:3px solid var(--blue);background:var(--blue-soft);padding:8px 12px;border-radius:6px;font-size:12px;color:var(--ink);margin:0 0 10px}
+  .note.warn{border-left-color:var(--amber);background:var(--amber-soft)}
+  .note.err{border-left-color:var(--red);background:var(--red-soft)}
+  .kv{display:grid;grid-template-columns:150px 1fr;gap:6px 12px;font-size:12px}
+  .kv .k{color:var(--muted)}
+  .sumrow{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line)}
+  .sumrow.big{border-bottom:0;margin-top:4px;font-size:13px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:720px){.grid2{grid-template-columns:1fr}}
+  .src{color:var(--muted);font-size:10.5px}
+
+  .code-pill{display:inline-block;font-weight:700;font-variant-numeric:tabular-nums;background:var(--chip);border:1px solid var(--line);border-radius:6px;padding:2px 7px;margin-right:6px}
+  .field{margin-bottom:12px}
+  .field label{display:block;font-size:10.5px;color:var(--muted);font-weight:600;margin-bottom:4px}
+  .inp{width:100%;border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--bg);color:var(--ink);font-size:12.5px;font-family:inherit}
+  .res{border:1px solid var(--line);border-radius:8px;margin-top:6px;overflow:hidden;max-height:210px;overflow-y:auto}
+  .res .r{padding:8px 10px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px}
+  .res .r:last-child{border-bottom:none}
+  .res .r:hover{background:var(--blue-soft)}
+  .res .r .add{margin-left:auto;color:var(--blue);font-weight:700}
+  .dxrow{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:12px}
+  .dxrow:last-child{border-bottom:none}
+  .dxrow select{border:1px solid var(--line);border-radius:6px;padding:4px 6px;background:var(--bg);color:var(--ink);font-size:11px;font-family:inherit}
+  .dxrow .del{margin-left:auto;color:var(--red);cursor:pointer;font-weight:700;border:0;background:transparent}
+  .phase2{font-size:9.5px;font-weight:700;letter-spacing:.3px;color:var(--amber);background:var(--amber-soft);border:1px solid var(--line);padding:1px 6px;border-radius:20px;margin-left:6px}
+  .dep{font-size:9.5px;font-weight:700;letter-spacing:.3px;color:var(--blue);background:var(--blue-soft);border:1px solid var(--line);padding:1px 6px;border-radius:20px;margin-left:6px}
+
+  /* Kelola Berkas */
+  .docrow{display:flex;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;margin-bottom:8px;background:var(--panel)}
+  .docrow .ord{display:flex;flex-direction:column;gap:3px}
+  .docrow .mv{width:22px;height:15px;border:1px solid var(--line);border-radius:4px;background:var(--bg);display:inline-flex;align-items:center;justify-content:center;font-size:9px;cursor:pointer;padding:0;color:var(--ink)}
+  .docrow .mv[disabled]{opacity:.3;cursor:not-allowed}
+  .docrow .nm{flex:1}
+  .docrow .num{width:20px;height:20px;border-radius:50%;background:var(--chip);color:var(--muted);display:inline-flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700}
+  .mk{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex:0 0 auto;border:0;color:#fff;cursor:pointer}
+  .mk.ok{background:var(--green)} .mk.no{background:var(--red)}
+  .paper{background:#fff;color:#222;border:1px solid #d9d9d9;border-radius:6px;padding:20px 22px;max-width:540px;margin:6px auto;font-size:12px;box-shadow:0 3px 14px rgba(0,0,0,.16)}
+  .paper .ph{text-align:center;border-bottom:2px solid #333;padding-bottom:8px;margin-bottom:12px}
+  .paper .ph h4{margin:0 0 2px;font-size:14px}
+  .paper .ph small{color:#666}
+  .paper .prow{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px dotted #ccc}
+  .paper .prow b{font-weight:600}
+  .paper p{margin:8px 0}
+  .paper .stamp{margin-top:14px;text-align:right;color:#555}
+
+  .empty{padding:34px;text-align:center;color:var(--muted)}
+  .toast{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:8px;z-index:80}
+  .toast .t{background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:8px;font-size:12.5px;box-shadow:var(--shadow);max-width:340px}
+  .toast .t.ok{background:var(--green);color:#fff}
+  .toast .t.err{background:var(--red);color:#fff}
+  .auditlog{list-style:none;margin:0;padding:0;font-size:12px}
+  .auditlog li{padding:9px 0;border-bottom:1px solid var(--line);display:flex;gap:10px}
+  .auditlog li:last-child{border-bottom:none}
+  .auditlog .tm{color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="pageheadrow">
+    <div>
+      <h1>Casemix — Manajemen Dokumen &amp; Data Medis <span class="badge b-info">G8 · BPJS/JKN</span></h1>
+      <p class="sub">Prototipe interaktif: konsolidasi data medis, kelola berkas, koding ICD-10/ICD-9-CM, tagihan (dari G2) &amp; audit trail. Coba cari, filter, urutkan, &amp; buka aksi baris.</p>
+    </div>
+    <div class="spacer"></div>
+    <button class="btn btn-ghost" id="themeBtn" title="Ganti tema">🌙 Tema</button>
+  </div>
+
+  <div class="card">
+    <div class="topbar">
+      <div class="brand"><b>Casemix</b><span>Work-list Episode JKN</span></div>
+      <div class="search">🔍 <input id="q" placeholder="Cari No. SEP / No. RM / nama pasien"></div>
+      <button class="btn btn-ghost" id="exportBtn">⭳ Ekspor</button>
+    </div>
+
+    <div class="filters">
+      <div class="fl"><label>Periode</label><input class="sel" value="Waktu Pulang" readonly title="[contoh] Waktu Masuk / Waktu Pulang"></div>
+      <div class="fl"><label>Tanggal Awal</label><input class="sel" type="date" value="2026-07-01"></div>
+      <div class="fl"><label>Tanggal Akhir</label><input class="sel" type="date" value="2026-07-10"></div>
+      <div class="fl"><label>Jenis Rawat</label>
+        <select class="sel" id="fJenis"><option value="">Semua</option><option>Rawat Inap</option><option>Rawat Jalan</option></select>
+      </div>
+      <div class="fl"><label>Penjamin</label><input class="sel" value="BPJS / JKN" readonly title="Hanya BPJS/JKN masuk alur (BR-01)"></div>
+      <div class="fl"><label>Status Klaim</label>
+        <select class="sel" id="fStatus"><option value="">Semua</option><option>Terkumpul</option><option>Belum Lengkap</option><option>Siap Koding</option><option>Terkoding</option></select>
+      </div>
+      <div class="fl"><label>Kelengkapan</label>
+        <select class="sel" id="fLengkap"><option value="">Semua</option><option>Lengkap</option><option>Belum Lengkap</option></select>
+      </div>
+    </div>
+
+    <div style="overflow-x:auto">
+    <table>
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>No. SEP</th>
+          <th>No RM / Nama Pasien</th>
+          <th>Jenis Rawat</th>
+          <th class="sortable" data-sort="masuk">Tgl Masuk / Keluar ⇅</th>
+          <th>Kelengkapan Berkas</th>
+          <th>Status Klaim</th>
+          <th class="sortable" data-sort="tagihan">Total Tagihan ⇅</th>
+          <th>Koder</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+    </div>
+
+    <div class="foot">
+      <div class="pager" id="pager"></div>
+      <div class="chk">Episode Per Halaman :
+        <select class="sel" id="perPage" style="min-width:auto"><option>5</option><option>8</option><option>10</option></select>
+      </div>
+      <div class="total">Total Episode (filter aktif) : <b id="totalCount">0</b></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><span class="badge b-gray">Terkumpul</span> data dikonsolidasi</span>
+    <span><span class="badge b-err">Belum Lengkap</span> berkas wajib kurang · koding diblokir (BR-03)</span>
+    <span><span class="badge b-info">Siap Koding</span> berkas lengkap + resume ber-TTD</span>
+    <span><span class="badge b-ok">Terkoding</span> ICD ditetapkan · siap handoff G7</span>
+  </div>
+  <div class="aclegend">
+    <b style="color:var(--ink)">Aksi:</b>
+    <span>📝 Asesmen <span class="dep">dep. Pelayanan</span></span>
+    <span>📄 Detail Konsolidasi</span>
+    <span>💳 Detail Tagihan <span class="dep">dari G2</span></span>
+    <span>🗂 Kelola Berkas</span>
+    <span>🔤 Koding ICD</span>
+    <span>🕘 Audit</span>
+    <span>⭳ Unduh</span>
+  </div>
+</div>
+
+<!-- MODALS -->
+<div class="ov" id="ov">
+  <div class="modal" id="modal" role="dialog" aria-modal="true">
+    <div class="mh"><span id="mTitle"><b>Judul</b></span><button class="x" id="mClose" aria-label="Tutup">✕</button></div>
+    <div class="mb" id="mBody"></div>
+    <div class="mf" id="mFoot"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+
+// ————— Master ICD-10 (diperluas) — G8 hanya mereferensikan lookup —————
+const ICD10 = [
+  {c:"A09",    d:"Diare & gastroenteritis dugaan infeksi"},
+  {c:"A16.2",  d:"Tuberkulosis paru tanpa konfirmasi bakteriologis/histologis"},
+  {c:"B34.9",  d:"Infeksi virus, unspecified", uns:true},
+  {c:"D64.9",  d:"Anemia, unspecified", uns:true},
+  {c:"E11.9",  d:"Diabetes melitus tipe 2 tanpa komplikasi", uns:true},
+  {c:"E11.65", d:"Diabetes melitus tipe 2 dengan hiperglikemia"},
+  {c:"E14.9",  d:"Diabetes melitus, unspecified", uns:true},
+  {c:"E78.5",  d:"Hiperlipidemia, unspecified", uns:true},
+  {c:"F20.9",  d:"Skizofrenia, unspecified", uns:true},
+  {c:"F41.1",  d:"Gangguan cemas menyeluruh"},
+  {c:"G40.909",d:"Epilepsi, unspecified, tanpa status epileptikus", uns:true},
+  {c:"I10",    d:"Hipertensi esensial (primer)"},
+  {c:"I11.0",  d:"Penyakit jantung hipertensi dengan gagal jantung"},
+  {c:"I20.0",  d:"Angina pektoris tidak stabil"},
+  {c:"I21.3",  d:"Infark miokard akut ST-elevasi (STEMI)"},
+  {c:"I50.0",  d:"Gagal jantung kongestif"},
+  {c:"J06.9",  d:"Infeksi saluran napas atas akut, unspecified", uns:true},
+  {c:"J18.9",  d:"Pneumonia, unspecified", uns:true},
+  {c:"J44.9",  d:"Penyakit paru obstruktif kronik (PPOK), unspecified", uns:true},
+  {c:"J45.9",  d:"Asma, unspecified", uns:true},
+  {c:"K29.7",  d:"Gastritis, unspecified", uns:true},
+  {c:"K35.80", d:"Apendisitis akut, lain-lain"},
+  {c:"K80.20", d:"Kolelitiasis tanpa kolesistitis"},
+  {c:"N18.9",  d:"Penyakit ginjal kronik, unspecified", uns:true},
+  {c:"N39.0",  d:"Infeksi saluran kemih, lokasi tidak dijelaskan"},
+  {c:"O80",    d:"Persalinan tunggal spontan"},
+  {c:"O82",    d:"Persalinan tunggal dengan seksio sesarea"},
+  {c:"O99.0",  d:"Anemia yang menyulitkan kehamilan & persalinan"},
+  {c:"P07.3",  d:"Bayi prematur lainnya"},
+  {c:"R50.9",  d:"Demam, unspecified", uns:true},
+  {c:"S06.0",  d:"Konkusio serebri"},
+  {c:"Z38.0",  d:"Bayi baru lahir tunggal, lahir di rumah sakit"},
+];
+const ICD9 = [
+  {c:"73.59", d:"Manually assisted delivery"},
+  {c:"74.1",  d:"Seksio sesarea klasik bawah"},
+  {c:"47.09", d:"Apendektomi lain"},
+  {c:"81.54", d:"Total knee replacement"},
+  {c:"96.6",  d:"Enteral infusion of concentrated nutrition"},
+  {c:"38.93", d:"Kateterisasi vena, lainnya"},
+  {c:"88.72", d:"Diagnostik ultrasound jantung (ekokardiografi)"},
+];
+const isUns = o => !!o.uns || /unspecified/i.test(o.d||"");
+
+// ————— Template dokumen berkas klaim (Kelola Berkas) —————
+const DOCTPL = [
+  {key:"sep",       name:"SEP (Surat Eligibilitas Peserta)", required:true},
+  {key:"resume",    name:"Resume Medis (final + TTD DPJP)",  required:true},
+  {key:"penunjang", name:"Hasil Penunjang (Lab/Rad)",        required:true},
+  {key:"tindakan",  name:"Bukti Tindakan / Laporan",         required:true},
+  {key:"billing",   name:"Rincian Billing",                  required:true},
+  {key:"consent",   name:"Informed Consent",                 required:false},
+];
+
+// ————— Sample episode JKN —————
+function ep(o){ o.audit=o.audit||[{tm:o.masuk+" 08:00", who:"Sistem", act:"Konsolidasi data medis dari modul SIMRS", fs:"-", ts:"Terkumpul"}]; return o; }
+let EP = [
+  ep({ no:1, sep:"0301R0010726A000098", rm:"154835", nama:"NIKA VIRDIAN INDANI, Ny.", jenis:"Rawat Inap", unit:"Klinik Kebidanan",
+    masuk:"24-06-2026", keluar:"01-07-2026", los:7, dpjp:"dr. Mira Maulina, Sp. OG", tagihan:399750, kelas:"Kelas 3", statusKelas:"Sesuai Kelas",
+    cl:{sep:true,resume:true,penunjang:true,tindakan:true,billing:true}, coded:false, koder:null, dx:[], px:[],
+    items:[
+      {tgl:"24-06-2026", nama:"Dopamet", kat:"Obat", op:"SRI WAHYUNINGSIH", qty:90, sat:"Butir", sub:183060, src:"Farmasi · 24/06 10:12"},
+      {tgl:"24-06-2026", nama:"Folamil Genio", kat:"Obat", op:"SRI WAHYUNINGSIH", qty:7, sat:"Butir", sub:34930, src:"Farmasi · 24/06 10:12"},
+      {tgl:"24-06-2026", nama:"USG Abdomen (OBGYN)", kat:"Prosedur Non Bedah", op:"dr. Mira Maulina, Sp. OG", qty:1, sat:"—", sub:60000, src:"Penunjang/Rad · 24/06 11:40"},
+    ]}),
+  ep({ no:2, sep:"0301R0010726V000123", rm:"184703", nama:"MURSIAH, Ny.", jenis:"Rawat Inap", unit:"Klinik Penyakit Dalam",
+    masuk:"03-07-2026", keluar:"08-07-2026", los:5, dpjp:"dr. Andi Prasetyo, Sp.PD", tagihan:338459, kelas:"Kelas 2", statusKelas:"Sesuai Kelas",
+    cl:{sep:true,resume:false,penunjang:true,tindakan:true,billing:true}, coded:false, koder:null, dx:[], px:[],
+    items:[
+      {tgl:"03-07-2026", nama:"Infus RL", kat:"BMHP", op:"NS. RATNA", qty:6, sat:"Kolf", sub:96000, src:"Farmasi · 03/07 09:20"},
+      {tgl:"04-07-2026", nama:"Cek Darah Lengkap", kat:"Laboratorium", op:"Analis Lab", qty:1, sat:"—", sub:85000, src:"Penunjang/Lab · 04/07 06:15"},
+    ]}),
+  ep({ no:3, sep:"0301B0010726V000077", rm:"135443", nama:"MAHYAH, Ny.", jenis:"Rawat Jalan", unit:"Klinik Jiwa",
+    masuk:"05-07-2026", keluar:"05-07-2026", los:0, dpjp:"dr. Retno W., Sp.KJ", tagihan:197568, kelas:"—", statusKelas:"Rawat Jalan",
+    cl:{sep:true,resume:true,penunjang:true,tindakan:true,billing:true}, coded:true, koder:"Elfira",
+    dx:[{c:"F41.1", d:"Gangguan cemas menyeluruh", t:"primer"}], px:[],
+    items:[ {tgl:"05-07-2026", nama:"Konsultasi Psikiatri", kat:"Jasa Pelayanan", op:"dr. Retno W., Sp.KJ", qty:1, sat:"—", sub:120000, src:"Poli · 05/07 10:05"} ],
+    audit:[ {tm:"05-07 10:20", who:"Sistem", act:"Konsolidasi data medis", fs:"-", ts:"Terkumpul"},
+            {tm:"05-07 11:02", who:"Elfira", act:"Koding ditetapkan (ICD-10 F41.1)", fs:"Siap Koding", ts:"Terkoding"} ]}),
+  ep({ no:4, sep:null, rm:"172210", nama:"SUPARDI, Tn.", jenis:"Rawat Inap", unit:"Klinik Bedah",
+    masuk:"02-07-2026", keluar:"04-07-2026", los:2, dpjp:"dr. Bagas H., Sp.B", tagihan:1250000, kelas:"Kelas 1", statusKelas:"Naik Kelas",
+    cl:{sep:false,resume:true,penunjang:true,tindakan:true,billing:true}, coded:false, koder:null, dx:[], px:[],
+    items:[ {tgl:"02-07-2026", nama:"Apendektomi", kat:"Tindakan Operatif", op:"dr. Bagas H., Sp.B", qty:1, sat:"—", sub:1100000, src:"OK · 02/07 14:30"} ]}),
+  ep({ no:5, sep:"0301R0010726A000201", rm:"160921", nama:"WAHYUDI, Tn.", jenis:"Rawat Inap", unit:"Klinik Paru",
+    masuk:"06-07-2026", keluar:"09-07-2026", los:3, dpjp:"dr. Sari L., Sp.P", tagihan:842300, kelas:"Kelas 3", statusKelas:"Sesuai Kelas",
+    cl:{sep:true,resume:false,penunjang:false,tindakan:true,billing:true}, coded:false, koder:null, dx:[], px:[],
+    items:[ {tgl:"06-07-2026", nama:"Nebulizer", kat:"Prosedur Non Bedah", op:"NS. DEWI", qty:6, sat:"—", sub:180000, src:"Ranap · 06/07 07:00"} ]}),
+  ep({ no:6, sep:"0301B0010726V000310", rm:"149002", nama:"KHOTIMAH, Ny.", jenis:"Rawat Jalan", unit:"Klinik Mata",
+    masuk:"07-07-2026", keluar:"07-07-2026", los:0, dpjp:"dr. Yoga P., Sp.M", tagihan:150000, kelas:"—", statusKelas:"Rawat Jalan",
+    cl:{sep:true,resume:true,penunjang:true,tindakan:true,billing:true}, coded:false, koder:null, dx:[], px:[],
+    items:[ {tgl:"07-07-2026", nama:"Pemeriksaan Refraksi", kat:"Prosedur Non Bedah", op:"Refraksionis", qty:1, sat:"—", sub:75000, src:"Poli · 07/07 09:30"} ]}),
+  ep({ no:7, sep:"0301R0010726A000255", rm:"181120", nama:"HARTONO, Tn.", jenis:"Rawat Inap", unit:"Klinik Jantung",
+    masuk:"01-07-2026", keluar:"06-07-2026", los:5, dpjp:"dr. Nia F., Sp.JP", tagihan:2110500, kelas:"Kelas 2", statusKelas:"Sesuai Kelas",
+    cl:{sep:true,resume:true,penunjang:true,tindakan:false,billing:true}, coded:false, koder:null, dx:[], px:[],
+    items:[ {tgl:"01-07-2026", nama:"EKG", kat:"Diagnostik Elektromedik", op:"NS. FARID", qty:2, sat:"—", sub:120000, src:"Ranap · 01/07 08:10"} ]}),
+  ep({ no:8, sep:"0301B0010726V000412", rm:"133877", nama:"SUGENG, Tn.", jenis:"Rawat Jalan", unit:"Klinik Gigi",
+    masuk:"08-07-2026", keluar:"08-07-2026", los:0, dpjp:"drg. Lina M.", tagihan:95000, kelas:"—", statusKelas:"Rawat Jalan",
+    cl:{sep:true,resume:false,penunjang:false,tindakan:false,billing:false}, coded:false, koder:null, dx:[], px:[],
+    items:[ {tgl:"08-07-2026", nama:"Pencabutan Gigi", kat:"Tindakan", op:"drg. Lina M.", qty:1, sat:"—", sub:80000, src:"Poli · 08/07 11:00"} ]}),
+];
+// bangun daftar dokumen berurut dari template + status ada/tidak
+function initDocs(e){
+  e.docs = DOCTPL.map(t=>({ key:t.key, name:t.name, required:t.required,
+    present: (t.key in e.cl) ? e.cl[t.key] : (t.key==="consent" ? (e.jenis==="Rawat Inap") : false) }));
+}
+EP.forEach(initDocs);
+
+// ————— Derivations —————
+function reqDocs(e){ return e.docs.filter(d=>d.required); }
+function statusOf(e){
+  if(e.coded) return "Terkoding";
+  const req=reqDocs(e), done=req.filter(d=>d.present).length;
+  if(done===req.length) return "Siap Koding";
+  if(done===0) return "Terkumpul";
+  return "Belum Lengkap";
+}
+function lengkap(e){ return reqDocs(e).every(d=>d.present); }
+function missingList(e){ return reqDocs(e).filter(d=>!d.present).map(d=>d.name); }
+const rp = n => "Rp " + (n||0).toLocaleString("id-ID");
+const badgeClass = s => ({"Terkumpul":"b-gray","Belum Lengkap":"b-err","Siap Koding":"b-info","Terkoding":"b-ok"}[s]||"b-gray");
+function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function dmy(s){ return s.split("-").reverse().join(""); }
+
+// ————— State —————
+const st = { q:"", jenis:"", status:"", lengkap:"", sortKey:"masuk", sortDir:1, page:1, perPage:5 };
+
+function filtered(){
+  let r = EP.slice();
+  const q = st.q.trim().toLowerCase();
+  if(q) r = r.filter(e => (e.sep||"").toLowerCase().includes(q) || e.rm.toLowerCase().includes(q) || e.nama.toLowerCase().includes(q));
+  if(st.jenis) r = r.filter(e => e.jenis===st.jenis);
+  if(st.status) r = r.filter(e => statusOf(e)===st.status);
+  if(st.lengkap) r = r.filter(e => st.lengkap==="Lengkap" ? lengkap(e) : !lengkap(e));
+  r.sort((a,b)=>{
+    let av,bv;
+    if(st.sortKey==="tagihan"){ av=a.tagihan; bv=b.tagihan; }
+    else { av=dmy(a[st.sortKey]); bv=dmy(b[st.sortKey]); }
+    return (av>bv?1:av<bv?-1:0)*st.sortDir;
+  });
+  return r;
+}
+
+function render(){
+  const all = filtered();
+  document.getElementById("totalCount").textContent = all.length;
+  const pages = Math.max(1, Math.ceil(all.length/st.perPage));
+  if(st.page>pages) st.page=pages;
+  const start = (st.page-1)*st.perPage;
+  const rows = all.slice(start, start+st.perPage);
+  const tb = document.getElementById("rows");
+  if(!rows.length){ tb.innerHTML = '<tr><td colspan="10"><div class="empty">Tidak ada episode cocok dengan filter.</div></td></tr>'; }
+  else tb.innerHTML = rows.map(e=>{
+    const s = statusOf(e);
+    const canCode = (s==="Siap Koding" || s==="Terkoding");
+    const sepCell = e.sep ? '<span class="rp">'+esc(e.sep)+'</span>' : '<span class="badge b-warn">menunggu SEP</span>';
+    const miss = missingList(e);
+    const klk = lengkap(e)
+      ? '<span class="badge b-ok">Lengkap</span>'
+      : '<span class="badge b-err">Belum Lengkap</span><div class="rm" style="font-weight:400;margin-top:3px">kurang: '+esc(miss.slice(0,2).join(", "))+(miss.length>2?" +"+(miss.length-2):"")+'</div>';
+    return '<tr>'+
+      '<td>'+e.no+'</td>'+
+      '<td>'+sepCell+'</td>'+
+      '<td class="strong">'+esc(e.nama)+'<div class="rm">No RM : '+esc(e.rm)+'</div></td>'+
+      '<td>'+esc(e.jenis)+'<div class="rm" style="font-weight:400">'+esc(e.unit)+'</div></td>'+
+      '<td class="dt">Masuk: <b>'+esc(e.masuk)+'</b><br>Keluar: <b>'+esc(e.keluar)+'</b></td>'+
+      '<td>'+klk+'</td>'+
+      '<td><span class="badge '+badgeClass(s)+'">'+s+'</span></td>'+
+      '<td class="rp">'+rp(e.tagihan)+'</td>'+
+      '<td>'+(e.koder?esc(e.koder):"—")+'</td>'+
+      '<td><div class="acts">'+
+        '<span class="ico" title="Asesmen (dependensi modul Pelayanan)" data-act="asesmen" data-no="'+e.no+'">📝</span>'+
+        '<span class="ico" title="Detail konsolidasi data medis" data-act="detail" data-no="'+e.no+'">📄</span>'+
+        '<span class="ico" title="Detail Tagihan Pasien (data dari G2)" data-act="tagihan" data-no="'+e.no+'">💳</span>'+
+        '<span class="ico" title="Kelola Berkas" data-act="kelola" data-no="'+e.no+'">🗂</span>'+
+        '<span class="ico '+(canCode?"":"off")+'" title="'+(canCode?"Koding ICD":"Koding diblokir — berkas belum lengkap (BR-03)")+'" data-act="koding" data-no="'+e.no+'">🔤</span>'+
+        '<span class="ico" title="Audit trail" data-act="audit" data-no="'+e.no+'">🕘</span>'+
+        '<span class="ico" title="Unduh dokumen pasien (bundel)" data-act="unduh" data-no="'+e.no+'">⭳</span>'+
+      '</div></td>'+
+    '</tr>';
+  }).join("");
+
+  const pg = document.getElementById("pager");
+  let h = '<button class="pg" data-pg="'+(st.page-1)+'" '+(st.page<=1?"disabled":"")+'>‹</button>';
+  for(let i=1;i<=pages;i++) h += '<button class="pg '+(i===st.page?"act":"")+'" data-pg="'+i+'">'+i+'</button>';
+  h += '<button class="pg" data-pg="'+(st.page+1)+'" '+(st.page>=pages?"disabled":"")+'>›</button>';
+  pg.innerHTML = h;
+}
+
+// ————— Modal core —————
+const ov=document.getElementById("ov"), mTitle=document.getElementById("mTitle"),
+      mBody=document.getElementById("mBody"), mFoot=document.getElementById("mFoot"), modal=document.getElementById("modal");
+function openModal(title, bodyHtml, footHtml, wide){
+  mTitle.innerHTML = title; mBody.innerHTML = bodyHtml; mFoot.innerHTML = footHtml||"";
+  modal.classList.toggle("wide", !!wide);
+  ov.classList.add("on");
+}
+function closeModal(){ ov.classList.remove("on"); }
+document.getElementById("mClose").onclick = closeModal;
+ov.addEventListener("click", e=>{ if(e.target===ov) closeModal(); });
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeModal(); });
+function byNo(no){ return EP.find(x=>x.no==no); }
+function logAudit(e, act, fs, ts){ e.audit.push({tm:"kini", who:"Anda", act, fs:fs||"-", ts:ts||"-"}); }
+
+// —— Asesmen (dependensi modul Pelayanan) ——
+function showAsesmen(e){
+  const body =
+    '<div class="note">Asesmen medis adalah <b>dependensi modul Pelayanan</b> (integrasi tim Pelayanan). Di G8 datanya ditampilkan <b>read-only</b> hasil tarik dari modul Pelayanan — bukan diinput di sini. <span class="dep">Dependensi: Modul Pelayanan</span></div>'+
+    '<div class="kv">'+
+      '<div class="k">Pasien</div><div class="strong">'+esc(e.nama)+' · RM '+esc(e.rm)+'</div>'+
+      '<div class="k">Unit / DPJP</div><div>'+esc(e.unit)+' · '+esc(e.dpjp)+'</div>'+
+      '<div class="k">Anamnesis</div><div>[dari Pelayanan] Keluhan utama & riwayat penyakit sekarang <span class="badge b-warn" style="font-size:9.5px">PERLU KONFIRMASI struktur</span></div>'+
+      '<div class="k">Pemeriksaan Fisik</div><div>[dari Pelayanan] TTV, status generalis/lokalis</div>'+
+      '<div class="k">Diagnosis Kerja</div><div>[dari Pelayanan] mengalir ke Koding ICD (FR-04)</div>'+
+      '<div class="k">Rencana / Tindak Lanjut</div><div>[dari Pelayanan] terapi, tindakan, edukasi</div>'+
+    '</div>'+
+    '<div class="rm" style="font-weight:400;margin-top:10px">Buka detail penuh asesmen = <b>phase berikutnya</b> (deep-link ke modul Pelayanan). G8 hanya mengonsumsi ringkasannya sebagai bahan berkas & koding.</div>';
+  openModal('<b>Asesmen Medis <span class="dep">dependensi Pelayanan</span></b>', body,
+    '<button class="btn btn-ghost" onclick="closeModal()">Tutup</button><button class="btn btn-dis" disabled title="Deep-link modul Pelayanan — phase berikutnya">Buka di Modul Pelayanan</button>');
+}
+
+// —— Detail konsolidasi ——
+function showDetail(e){
+  const s = statusOf(e);
+  const itemsRows = e.items.map((it,i)=>'<tr><td>'+(i+1)+'</td><td>'+esc(it.tgl)+'</td><td>'+esc(it.nama)+'<div class="rm" style="font-weight:400">'+esc(it.kat)+'</div></td><td>'+esc(it.op)+'</td><td>'+it.qty+'</td><td>'+esc(it.sat)+'</td><td class="rp">'+rp(it.sub)+'</td><td class="src">'+esc(it.src)+'</td></tr>').join("");
+  const subtotal = e.items.reduce((a,b)=>a+b.sub,0);
+  const body =
+    '<div class="grid2">'+
+      '<div><div class="strong" style="margin-bottom:8px">DATA PASIEN &amp; KLAIM</div><div class="kv">'+
+        '<div class="k">No. SEP</div><div class="strong">'+(e.sep?esc(e.sep):'<span class="badge b-warn">menunggu SEP (BR-02)</span>')+'</div>'+
+        '<div class="k">No RM</div><div>'+esc(e.rm)+'</div>'+
+        '<div class="k">Nama Pasien</div><div class="strong">'+esc(e.nama)+'</div>'+
+        '<div class="k">Unit</div><div>'+esc(e.unit)+'</div>'+
+        '<div class="k">Tanggal Masuk</div><div class="strong">'+esc(e.masuk)+'</div>'+
+        '<div class="k">Tanggal Keluar</div><div>'+esc(e.keluar)+'</div>'+
+        '<div class="k">LOS (hari)</div><div>'+e.los+'</div>'+
+        '<div class="k">DPJP</div><div>'+esc(e.dpjp)+'</div>'+
+        '<div class="k">Penjamin</div><div class="strong">BPJS / JKN <span class="badge b-info">BR-01</span></div>'+
+        '<div class="k">Status Klaim</div><div><span class="badge '+badgeClass(s)+'">'+s+'</span></div>'+
+      '</div></div>'+
+      '<div><div class="strong" style="margin-bottom:8px">RINGKASAN &amp; HANDOFF</div>'+
+        '<div class="sumrow"><span>Tagihan RS (snapshot Billing)</span><b class="rp">'+rp(e.tagihan)+'</b></div>'+
+        '<div class="sumrow"><span>Kode CBG</span><span class="rp">'+(e.coded?'<span class="src">menunggu grouping G7</span>':'—')+'</span></div>'+
+        '<div class="sumrow"><span>Tarif CBG</span><span class="rp">— <span class="src">(diisi G7)</span></span></div>'+
+        '<div class="sumrow"><span>Versi Grouper</span><span class="rp">INA-CBG / iDRG <span class="src">dual-running</span></span></div>'+
+        '<div class="note" style="margin-top:10px">Paket data medis (dx/prosedur/LOS/CC-MCC) di-<b>handoff</b> ke grouping <b>G7</b> setelah Terkoding. Grouping/pengajuan (G5)/penerimaan (G9) di luar lingkup G8.</div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="strong" style="margin:16px 0 8px">DETAIL PELAYANAN (konsolidasi lintas modul) — <span class="src" style="font-weight:400">tiap baris menampilkan sumber &amp; timestamp (NFR-04)</span></div>'+
+    '<div style="overflow-x:auto"><table><thead><tr><th>No</th><th>Tanggal</th><th>Item Pelayanan</th><th>Operator</th><th>Jml</th><th>Satuan</th><th>Sub Total</th><th>Sumber</th></tr></thead><tbody>'+
+      itemsRows+'<tr><td colspan="6" style="text-align:right;font-weight:600">Subtotal terkonsolidasi</td><td class="rp strong">'+rp(subtotal)+'</td><td class="src">Billing</td></tr>'+
+    '</tbody></table></div>'+
+    '<div class="rm" style="font-weight:400;margin-top:10px">Perubahan sumber <b>sebelum</b> koding mengikuti data terbaru; <b>setelah</b> terkunci ditandai <i>delta</i> (tidak menimpa diam-diam) — AC-2 FR-02.</div>';
+  openModal('<b>Detail Konsolidasi — '+esc(e.nama)+'</b>', body, '<button class="btn btn-ghost" onclick="closeModal()">Tutup</button>', true);
+}
+
+// —— Detail Tagihan Pasien (ambil data dari G2 — Billing) ——
+function showTagihan(e){
+  const total = e.items.reduce((a,b)=>a+b.sub,0);
+  const naik = e.statusKelas==="Naik Kelas";
+  const urun = naik ? Math.round(total*0.20) : 0; // ilustrasi urun biaya naik kelas
+  const ditanggung = total - urun;
+  const itemsRows = e.items.map((it,i)=>'<tr><td>'+(i+1)+'</td><td>'+esc(it.tgl)+'</td><td>'+esc(it.nama)+'<div class="rm" style="font-weight:400">'+esc(it.kat)+'</div></td><td>'+it.qty+'</td><td>'+esc(it.sat)+'</td><td class="rp">'+rp(it.sub)+'</td></tr>').join("");
+  const body =
+    '<div class="note">Data tagihan <b>ditarik dari modul G2 — Billing / Tagihan Pasien</b> (read-only di G8). Klaim BPJS bersifat prospektif: nilai final = tarif CBG hasil grouping (G7). <span class="dep">Sumber: G2</span></div>'+
+    '<div class="grid2">'+
+      '<div><div class="strong" style="margin-bottom:8px">DATA PASIEN</div><div class="kv">'+
+        '<div class="k">No RM</div><div>'+esc(e.rm)+'</div>'+
+        '<div class="k">Nama Pasien</div><div class="strong">'+esc(e.nama)+'</div>'+
+        '<div class="k">Unit</div><div>'+esc(e.unit)+'</div>'+
+        '<div class="k">Tanggal Masuk</div><div>'+esc(e.masuk)+'</div>'+
+        '<div class="k">Tanggal Keluar</div><div>'+esc(e.keluar)+'</div>'+
+        '<div class="k">Kelas / Status</div><div>'+esc(e.kelas)+' · '+esc(e.statusKelas)+'</div>'+
+        '<div class="k">DPJP</div><div>'+esc(e.dpjp)+'</div>'+
+        '<div class="k">Penjamin</div><div class="strong">BPJS / JKN</div>'+
+      '</div></div>'+
+      '<div><div class="strong" style="margin-bottom:8px">RINGKASAN TAGIHAN</div>'+
+        '<div class="sumrow"><span>Total Tagihan RS</span><b class="rp">'+rp(total)+'</b></div>'+
+        '<div class="sumrow"><span>Ditanggung Penjamin (JKN)</span><span class="rp">'+rp(ditanggung)+'</span></div>'+
+        '<div class="sumrow"><span>Urun Biaya '+(naik?'(Naik Kelas)':'')+'</span><span class="rp">'+rp(urun)+'</span></div>'+
+        '<div class="sumrow big"><span class="strong">Tagihan Pasien</span><b class="rp" style="color:'+(urun?'var(--red)':'var(--green)')+'">'+rp(urun)+'</b></div>'+
+        '<div style="margin-top:10px;display:flex;gap:8px;justify-content:flex-end">'+
+          '<span class="badge '+(urun?'b-warn':'b-ok')+'">'+(urun?'Ada urun biaya':'LUNAS / Ditanggung')+'</span>'+
+        '</div>'+
+        (naik?'<div class="note warn" style="margin-top:10px">Naik kelas → selisih menjadi urun biaya pasien (ilustrasi 20%). Aturan riil per kebijakan RS/BPJS — [PERLU KONFIRMASI].</div>':'')+
+      '</div>'+
+    '</div>'+
+    '<div class="strong" style="margin:16px 0 8px">RINCIAN — '+esc(e.unit)+'</div>'+
+    '<div style="overflow-x:auto"><table><thead><tr><th>No</th><th>Tanggal</th><th>Item</th><th>Jml</th><th>Satuan</th><th>Sub Total</th></tr></thead><tbody>'+
+      itemsRows+'<tr><td colspan="5" style="text-align:right;font-weight:600">Total</td><td class="rp strong">'+rp(total)+'</td></tr>'+
+    '</tbody></table></div>';
+  openModal('<b>Detail Tagihan Pasien <span class="dep">dari G2</span></b>', body,
+    '<button class="btn btn-ghost" onclick="closeModal()">Tutup</button>'+
+    '<button class="btn btn-ghost" id="openG2">↗ Buka di G2</button>'+
+    '<button class="btn btn-blue" id="dlInv">⭳ Unduh Invoice</button>', true);
+  const g2=document.getElementById("openG2"); if(g2) g2.onclick=()=>toast("Deep-link ke G2 — Billing/Tagihan Pasien (contoh)","ok");
+  const dl=document.getElementById("dlInv"); if(dl) dl.onclick=()=>toast("Mengunduh Invoice "+e.nama+" (contoh — tanpa file di preview)","ok");
+}
+
+// —— Kelola Berkas (dokumen: urut, preview, unduh bundel) ——
+function showKelola(e){
+  let view = "list"; // "list" | index preview
+  const paperFor = (doc)=>{
+    const head='<div class="ph"><h4>RS PKU Muhammadiyah Wonosobo</h4><small>'+esc(doc.name)+'</small></div>';
+    const pinfo='<div class="prow"><span>No. RM</span><b>'+esc(e.rm)+'</b></div><div class="prow"><span>Nama</span><b>'+esc(e.nama)+'</b></div><div class="prow"><span>No. SEP</span><b>'+(e.sep||'-')+'</b></div><div class="prow"><span>DPJP</span><b>'+esc(e.dpjp)+'</b></div>';
+    let extra='';
+    if(doc.key==="sep") extra='<div class="prow"><span>Jenis Rawat</span><b>'+esc(e.jenis)+'</b></div><div class="prow"><span>Tgl SEP</span><b>'+esc(e.masuk)+'</b></div><p>Peserta eligible untuk pelayanan '+esc(e.jenis)+'.</p>';
+    else if(doc.key==="resume") extra='<p>Resume medis pasien selama '+esc(e.jenis)+' di '+esc(e.unit)+'. Diagnosa & tindakan terlampir.</p><p>'+(doc.present?'<b>Status: FINAL — ditandatangani DPJP.</b>':'<b style="color:#b3261e">Status: DRAFT — belum ber-TTD DPJP (BR-03).</b>')+'</p>';
+    else if(doc.key==="penunjang") extra='<p>Hasil pemeriksaan penunjang (Laboratorium / Radiologi) terlampir sebagai berkas pendukung klaim.</p>';
+    else if(doc.key==="tindakan") extra='<p>Bukti/laporan tindakan medis beserta operator pelaksana.</p>';
+    else if(doc.key==="billing") extra='<p>Rincian billing pelayanan (sumber: G2). Total: <b>'+rp(e.tagihan)+'</b>.</p>';
+    else if(doc.key==="consent") extra='<p>Persetujuan tindakan medis (informed consent) oleh pasien/keluarga.</p>';
+    const stamp = doc.present ? '<div class="stamp">✔ Terverifikasi · '+esc(e.masuk)+'</div>' : '<p style="color:#b3261e"><b>Dokumen belum diunggah.</b></p>';
+    return '<div class="paper">'+head+pinfo+extra+stamp+'</div>';
+  };
+  const render = ()=>{
+    if(view!=="list"){
+      const doc=e.docs[view];
+      mBody.innerHTML = '<div class="rm" style="font-weight:400;margin-bottom:8px">Preview dokumen — '+esc(doc.name)+'</div>'+paperFor(doc);
+      mFoot.innerHTML = '<button class="btn btn-ghost" id="back">← Kembali ke daftar</button><button class="btn btn-blue" id="dl1">⭳ Unduh dokumen ini</button>';
+      mBody.parentElement.querySelector("#back").onclick=()=>{ view="list"; render(); };
+      const d1=mBody.parentElement.querySelector("#dl1"); if(d1) d1.onclick=()=>toast("Mengunduh "+doc.name+" (contoh)","ok");
+      return;
+    }
+    const s=statusOf(e), req=reqDocs(e), done=req.filter(d=>d.present).length, complete=done===req.length;
+    const gate = !e.docs.find(d=>d.key==="resume").present ? '<div class="note err">Resume medis belum final / ber-TTD DPJP → status <b>Belum Lengkap</b> &amp; <b>koding diblokir</b> (BR-03).</div>' : '';
+    const rows = e.docs.map((d,i)=>{
+      return '<div class="docrow">'+
+        '<span class="num">'+(i+1)+'</span>'+
+        '<span class="ord"><button class="mv up" data-i="'+i+'" '+(i===0?"disabled":"")+' title="Naikkan urutan">▲</button><button class="mv dn" data-i="'+i+'" '+(i===e.docs.length-1?"disabled":"")+' title="Turunkan urutan">▼</button></span>'+
+        '<button class="mk '+(d.present?"ok":"no")+'" data-tk="'+d.key+'" title="'+(d.present?"Tandai belum ada":"Tandai/unggah")+'">'+(d.present?"✓":"✕")+'</button>'+
+        '<div class="nm"><b>'+esc(d.name)+'</b> '+(d.required?'<span class="badge b-info" style="font-size:9.5px">wajib</span>':'<span class="badge b-gray" style="font-size:9.5px">opsional</span>')+' '+(d.present?'':'<span class="badge b-err" style="font-size:9.5px">belum ada</span>')+'</div>'+
+        '<div class="tools"><span class="ico" data-prev="'+i+'" title="Preview">👁</span><span class="ico '+(d.present?"":"off")+'" data-dl="'+i+'" title="Unduh">⭳</span></div>'+
+      '</div>';
+    }).join("");
+    mBody.innerHTML =
+      '<div class="rm" style="font-weight:400;margin-bottom:8px">'+esc(e.nama)+' · RM '+esc(e.rm)+' · '+esc(e.unit)+' &nbsp; <span class="badge '+badgeClass(s)+'">'+s+'</span></div>'+
+      gate+
+      '<div class="note">Kelola dokumen berkas klaim: <b>▲▼ atur urutan</b>, <b>👁 preview</b>, <b>⭳ unduh</b> per dokumen, atau <b>unduh bundel</b>. Klik ✓/✕ untuk mensimulasikan kelengkapan (status episode berpindah otomatis). Tanpa hard delete (BR-11).</div>'+
+      rows;
+    mFoot.innerHTML =
+      '<span style="align-self:center;margin-right:auto;color:var(--muted);font-size:12px">'+done+'/'+req.length+' berkas wajib · '+e.docs.filter(d=>d.present).length+' dok tersedia</span>'+
+      '<button class="btn btn-ghost" id="bundle">⭳ Unduh Bundel</button>'+
+      '<button class="btn '+(complete?"btn-green":"btn-dis")+'" id="clUp" '+(complete?"":"disabled")+'>Naik ke Siap Koding</button>';
+    // wire
+    mBody.querySelectorAll(".mv.up").forEach(b=> b.onclick=()=>{ const i=+b.dataset.i; if(i>0){ [e.docs[i-1],e.docs[i]]=[e.docs[i],e.docs[i-1]]; logAudit(e,"Ubah urutan berkas: "+e.docs[i-1].name); render(); } });
+    mBody.querySelectorAll(".mv.dn").forEach(b=> b.onclick=()=>{ const i=+b.dataset.i; if(i<e.docs.length-1){ [e.docs[i+1],e.docs[i]]=[e.docs[i],e.docs[i+1]]; logAudit(e,"Ubah urutan berkas: "+e.docs[i+1].name); render(); } });
+    mBody.querySelectorAll(".mk").forEach(b=> b.onclick=()=>{ const d=e.docs.find(x=>x.key===b.dataset.tk); d.present=!d.present; logAudit(e,(d.present?"Unggah/lengkapi":"Tandai kurang")+" berkas: "+d.name); render(); state_render(); });
+    mBody.querySelectorAll("[data-prev]").forEach(b=> b.onclick=()=>{ view=+b.dataset.prev; render(); });
+    mBody.querySelectorAll("[data-dl]").forEach(b=>{ if(b.classList.contains("off")) return; b.onclick=()=>{ const d=e.docs[+b.dataset.dl]; toast("Mengunduh "+d.name+" (contoh)","ok"); }; });
+    const bun=mBody.parentElement.querySelector("#bundle"); if(bun) bun.onclick=()=>{ const n=e.docs.filter(d=>d.present).length; if(!n){ toast("Belum ada dokumen tersedia untuk diunduh","err"); return;} logAudit(e,"Unduh bundel "+n+" dokumen"); toast("Mengunduh bundel "+n+" dokumen — "+e.nama+" (contoh .zip)","ok"); };
+    const up=mBody.parentElement.querySelector("#clUp"); if(up) up.onclick=()=>{ if(complete){ toast("Berkas lengkap — episode naik ke Siap Koding","ok"); logAudit(e,"Berkas wajib lengkap 100% (BR-08)","Belum Lengkap","Siap Koding"); closeModal(); state_render(); } };
+  };
+  openModal('<b>Kelola Berkas (FR-03 / FR-08)</b>', "", "");
+  render();
+}
+
+// —— Koding ——
+function showKoding(e){
+  const s = statusOf(e);
+  if(!(s==="Siap Koding" || s==="Terkoding")){ toast("Koding diblokir — berkas belum lengkap / resume belum final (BR-03)","err"); return; }
+  const draft = { dx: e.dx.map(x=>({...x})), px: e.px.map(x=>({...x})) };
+  const render = ()=>{
+    const hasPrimer = draft.dx.some(d=>d.t==="primer");
+    const unsWarn = draft.dx.some(d=>{ const m=ICD10.find(o=>o.c===d.c); return m&&isUns(m); });
+    const dxRows = draft.dx.length ? draft.dx.map((d,i)=>{
+      const m=ICD10.find(o=>o.c===d.c); const uns = m&&isUns(m);
+      return '<div class="dxrow"><span class="code-pill">'+esc(d.c)+'</span><span>'+esc(d.d)+'</span>'+
+        (uns?' <span class="badge b-warn">unspecified (.9)</span>':'')+
+        '<select data-i="'+i+'" class="dxt">'+["primer","sekunder","komplikasi","komorbiditas"].map(t=>'<option '+(d.t===t?"selected":"")+'>'+t+'</option>').join("")+'</select>'+
+        '<button class="del" data-i="'+i+'" title="Hapus">✕</button></div>';
+    }).join("") : '<div class="rm" style="font-weight:400;padding:8px 0">Belum ada diagnosa. Cari &amp; tambahkan dari ICD-10 ('+ICD10.length+' kode tersedia).</div>';
+    const pxRows = draft.px.length ? draft.px.map((p,i)=>'<div class="dxrow"><span class="code-pill">'+esc(p.c)+'</span><span>'+esc(p.d)+'</span><button class="delp" data-i="'+i+'" title="Hapus">✕</button></div>').join("") : '<div class="rm" style="font-weight:400;padding:8px 0">Opsional — tambahkan prosedur bila ada.</div>';
+    mBody.innerHTML =
+      '<div class="rm" style="font-weight:400;margin-bottom:10px">'+esc(e.nama)+' · RM '+esc(e.rm)+' · '+esc(e.unit)+'</div>'+
+      '<div class="field"><label>Cari Diagnosa (ICD-10) — '+ICD10.length+' kode</label><input class="inp" id="icdq" placeholder="🔍 Cari kode/istilah diagnosa (mis. J18, pneumonia, hipertensi)" autocomplete="off"><div class="res" id="icdres" style="display:none"></div></div>'+
+      (!hasPrimer?'<div class="note warn">Wajib ≥1 <b>diagnosa primer</b> sebelum menyimpan (BR-05).</div>':'')+
+      (unsWarn?'<div class="note warn">Peringatan lunak (BR-13): terdapat kode <b>unspecified (.9)</b> — pertimbangkan kode lebih spesifik. Tidak memblokir, tercatat.</div>':'')+
+      '<div style="font-weight:600;margin:10px 0 2px">Diagnosa</div>'+dxRows+
+      '<div style="font-weight:600;margin:14px 0 2px">Prosedur (ICD-9-CM)</div>'+pxRows+
+      '<div class="field" style="margin-top:8px"><label>Tambah Prosedur</label><select class="inp" id="pxsel"><option value="">— pilih ICD-9-CM —</option>'+ICD9.map(p=>'<option value="'+p.c+'">'+p.c+' — '+esc(p.d)+'</option>').join("")+'</select></div>';
+    mFoot.innerHTML =
+      '<button class="btn btn-ghost" onclick="closeModal()">Batal</button>'+
+      '<button class="btn '+(hasPrimer?"btn-green":"btn-dis")+'" id="saveCode" '+(hasPrimer?"":"disabled")+'>Simpan &amp; Tandai Terkoding</button>';
+    const q=mBody.querySelector("#icdq"), res=mBody.querySelector("#icdres");
+    q.oninput=()=>{
+      const v=q.value.trim().toLowerCase();
+      if(!v){ res.style.display="none"; return; }
+      const hits=ICD10.filter(o=>o.c.toLowerCase().includes(v)||o.d.toLowerCase().includes(v)).filter(o=>!draft.dx.some(d=>d.c===o.c)).slice(0,10);
+      res.style.display= hits.length?"block":"none";
+      res.innerHTML=hits.map(o=>'<div class="r" data-c="'+o.c+'"><span class="code-pill">'+esc(o.c)+'</span><span>'+esc(o.d)+'</span>'+(isUns(o)?' <span class="badge b-warn">.9</span>':'')+'<span class="add">+ Tambah</span></div>').join("");
+      res.querySelectorAll(".r").forEach(r=> r.onclick=()=>{
+        const o=ICD10.find(x=>x.c===r.dataset.c);
+        draft.dx.push({c:o.c, d:o.d, t: draft.dx.some(d=>d.t==="primer")?"sekunder":"primer"});
+        q.value=""; res.style.display="none"; render();
+      });
+    };
+    mBody.querySelectorAll(".dxt").forEach(sel=> sel.onchange=()=>{ draft.dx[+sel.dataset.i].t=sel.value; render(); });
+    mBody.querySelectorAll(".del").forEach(b=> b.onclick=()=>{ draft.dx.splice(+b.dataset.i,1); render(); });
+    mBody.querySelectorAll(".delp").forEach(b=> b.onclick=()=>{ draft.px.splice(+b.dataset.i,1); render(); });
+    const psel=mBody.querySelector("#pxsel");
+    if(psel) psel.onchange=()=>{ const p=ICD9.find(x=>x.c===psel.value); if(p&&!draft.px.some(x=>x.c===p.c)){ draft.px.push({c:p.c,d:p.d}); render(); } };
+    const sv=mBody.parentElement.querySelector("#saveCode");
+    if(sv) sv.onclick=()=>{
+      if(!draft.dx.some(d=>d.t==="primer")){ toast("Diagnosa primer wajib dipilih (BR-05)","err"); return; }
+      e.dx=draft.dx; e.px=draft.px; e.coded=true; e.koder="Anda (Koder)";
+      logAudit(e,"Koding ditetapkan ("+e.dx.map(d=>d.c).join(", ")+")","Siap Koding","Terkoding");
+      toast("Data Berhasil Disimpan — episode Terkoding, siap handoff G7","ok");
+      closeModal(); state_render();
+    };
+  };
+  openModal('<b>Koding ICD-10 &amp; ICD-9-CM (FR-04)</b>', "", "");
+  render();
+}
+
+// —— Audit ——
+function showAudit(e){
+  const rows = e.audit.map(a=>'<li><span class="tm">'+esc(a.tm)+'</span><div><b>'+esc(a.who)+'</b> — '+esc(a.act)+(a.fs&&a.fs!=="-"?' <span class="rm" style="font-weight:400">['+esc(a.fs)+' → '+esc(a.ts)+']</span>':'')+'</div></li>').join("");
+  openModal('<b>Audit Trail — '+esc(e.nama)+'</b>',
+    '<div class="note">Log <b>tak-terhapus</b> (append-only) & dapat ditelusuri per episode — MRMIK/STARKES (NFR-02, BR-10/11).</div><ul class="auditlog">'+rows+'</ul>',
+    '<button class="btn btn-ghost" onclick="closeModal()">Tutup</button>');
+}
+
+// —— Unduh per pasien (bundel) ——
+function doUnduh(e){
+  const n=e.docs.filter(d=>d.present).length;
+  if(!n){ toast("Belum ada dokumen tersedia untuk "+e.nama,"err"); return; }
+  logAudit(e,"Unduh bundel dokumen pasien ("+n+" berkas)");
+  toast("Mengunduh "+n+" dokumen — "+e.nama+" (contoh .zip; tanpa file di preview)","ok");
+}
+
+// ————— Wiring —————
+function state_render(){ render(); }
+document.getElementById("rows").addEventListener("click", e=>{
+  const el = e.target.closest(".ico"); if(!el) return;
+  const rec = byNo(el.dataset.no); if(!rec) return;
+  ({ asesmen:showAsesmen, detail:showDetail, tagihan:showTagihan, kelola:showKelola, koding:showKoding, audit:showAudit, unduh:doUnduh }[el.dataset.act]||(()=>{}))(rec);
+});
+document.getElementById("pager").addEventListener("click", e=>{
+  const b=e.target.closest(".pg"); if(!b||b.disabled) return;
+  st.page=+b.dataset.pg; render();
+});
+document.getElementById("q").addEventListener("input", e=>{ st.q=e.target.value; st.page=1; render(); });
+document.getElementById("fJenis").addEventListener("change", e=>{ st.jenis=e.target.value; st.page=1; render(); });
+document.getElementById("fStatus").addEventListener("change", e=>{ st.status=e.target.value; st.page=1; render(); });
+document.getElementById("fLengkap").addEventListener("change", e=>{ st.lengkap=e.target.value; st.page=1; render(); });
+document.getElementById("perPage").addEventListener("change", e=>{ st.perPage=+e.target.value; st.page=1; render(); });
+document.querySelectorAll("th.sortable").forEach(th=> th.addEventListener("click", ()=>{
+  const k=th.dataset.sort;
+  if(st.sortKey===k) st.sortDir*=-1; else { st.sortKey=k; st.sortDir=1; }
+  render();
+}));
+document.getElementById("exportBtn").onclick = ()=> toast("Ekspor "+filtered().length+" episode (contoh — tanpa file di preview)","ok");
+
+const themeBtn=document.getElementById("themeBtn");
+themeBtn.onclick=()=>{
+  const cur=document.documentElement.getAttribute("data-theme");
+  const dark = cur? cur==="dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const next = dark?"light":"dark";
+  document.documentElement.setAttribute("data-theme", next);
+  themeBtn.textContent = next==="dark" ? "☀️ Tema" : "🌙 Tema";
+};
+
+function toast(msg, kind){
+  const wrap=document.getElementById("toast");
+  const t=document.createElement("div"); t.className="t"+(kind?" "+kind:""); t.textContent=msg;
+  wrap.appendChild(t); setTimeout(()=>{ t.style.opacity="0"; setTimeout(()=>t.remove(),300); }, 2600);
+}
+window.closeModal = closeModal;
+
+render();
+</script>
+</body>
+</html>

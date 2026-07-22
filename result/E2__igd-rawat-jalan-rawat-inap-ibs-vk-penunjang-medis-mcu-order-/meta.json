@@ -1,0 +1,11 @@
+{
+  "code": "E2",
+  "moduleName": "IGD, Rawat Jalan, Rawat Inap, IBS, VK, Penunjang Medis, MCU — Order resep",
+  "cluster": "Pelayanan utama",
+  "bpmnFile": "g-service-order-resep.json",
+  "mode": "developed (claude-code)",
+  "hasFlowchart": false,
+  "attachments": [],
+  "createdAt": "2026-06-21T01:59:58.357Z",
+  "updatedAt": "2026-06-21T03:04:19.976Z"
+}

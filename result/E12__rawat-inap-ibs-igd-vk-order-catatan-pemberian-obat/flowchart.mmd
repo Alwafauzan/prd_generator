@@ -1,0 +1,49 @@
+flowchart TD
+  S([Mulai]) --> A[Buka Menu Pelayanan]
+  subgraph Dokter
+    A --> B[Pilih pasien unit RI IBS IGD VK]
+    B --> C[Klik icon obat CPO]
+    C --> D[Review History CPO]
+    D --> E{Order baru?}
+    E -->|tidak| F[Pilih obat lanjut atau stop]
+    E -->|ya| G[Klik Tambahkan Obat]
+    G --> H{Tipe Obat?}
+    H -->|non racik| I[Input obat non racik]
+    H -->|racik| J[Input obat racik dan bahan]
+    I --> K[Simpan Obat Baru]
+    J --> K
+    K --> L[Review Order Sebelum Submit]
+    F --> L
+    L --> M{Order Sudah Benar?}
+    M -->|tidak| N[Edit Order]
+    N --> L
+    M -->|ya| O[Submit ke Farmasi]
+  end
+  subgraph Sistem
+    O --> P{Order lanjut atau baru?}
+    P -->|lanjut| Q{Minimal satu obat ditandai?}
+    Q -->|tidak| R[Tolak validasi order lanjut]
+    R --> L
+    Q -->|ya| W
+    P -->|baru| T{Field wajib lengkap?}
+    T -->|tidak| U[Tolak field kosong]
+    U --> L
+    T -->|ya| V{Obat aktif sama hari sama?}
+    V -->|ya| X[Peringatan blok DUPLIKAT]
+    X --> Y{Override beralasan?}
+    Y -->|tidak| Z[Dokter edit obat existing]
+    Z --> L
+    Y -->|ya| AA[Isi alasan klinis wajib]
+    AA --> W
+    V -->|tidak| W[Generate Order ID dan package]
+    W --> AB{Transfer IGD ke RI atau discharge?}
+    AB -->|ya| AC[Set flag URGENT]
+    AB -->|tidak| AD[Order normal]
+    AC --> AE[Kirim ke antrian Farmasi]
+    AD --> AE
+    AE --> AF[Update status Pending]
+    AF --> AG[Catat log audit]
+  end
+  AG --> AH[(Modul Farmasi antrian)]
+  AG --> AI[Konfirmasi Order Berhasil Dikirim]
+  AI --> AJ([Order Tersimpan Menunggu Farmasi])

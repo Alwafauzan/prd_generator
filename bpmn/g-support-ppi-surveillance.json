@@ -1,0 +1,817 @@
+{
+ "id": "f9125fff-5d36-48dc-bb05-d95d1257cd3c",
+ "title": "g-support-ppi-surveillance",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "p~4XgLneQKYl",
+  "label": "F33 F34-AUDIT HAIS, IDO, ISK, PHLEBITIS"
+ },
+ "pages": [
+  {
+   "id": "f~4Xbp8yyK1t",
+   "title": "F33 F34-AUDIT HAIS, IDO, ISK, PHLEBITIS",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "p~4XAHNoPwjU",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4X9ocghK_Y",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih jenis laporan (HAIS/IDO/ISK/ Phlebitis)"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4X1-S~CAHw",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Edit data HAIS/ IDO/ISK/Phlebitis"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4XJLAaVK~E",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4XU_yGg6~P",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Lihat riwayat data HAIS/ IDO/ISK/Phlebitis"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4XDWKSIhr3",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4Xmg3891Pz",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4Xe2m-3NGn",
+      "class": "RectangleContainerBlock",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [],
+       "lines": [],
+       "groups": []
+      }
+     },
+     {
+      "id": "p~4X8XZbj1Kt",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka menu pelayanan RJ/RI/IGD"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4XC7_JQWTf",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menyimpan data HAIS/IDO/ISK/Phlebitis "
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4X8U3ou8qJ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka menu PPI/IPCN- Laporan"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4Xc.yGHbqZ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan data laporan (HAIS/IDO/ ISK/Phlebitis)"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4XzHWF~f_9",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem generate file laporan (HAIS/IDO/ISK/ Phlebitis) "
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4XgLneQKYl",
+      "class": "RectangleContainerBlock",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": "F33 F34-AUDIT HAIS, IDO, ISK, PHLEBITIS"
+       },
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "p~4X1-S~CAHw",
+        "p~4X8U3ou8qJ",
+        "p~4X8XZbj1Kt",
+        "p~4X9I5yNyhy",
+        "p~4X9ocghK_Y",
+        "p~4XAHNoPwjU",
+        "p~4XC7_JQWTf",
+        "p~4XDWKSIhr3",
+        "p~4XJLAaVK~E",
+        "p~4XJoz8a~SO",
+        "p~4XRiyIWY4S",
+        "p~4XU_yGg6~P",
+        "p~4XbC1j-tjg",
+        "p~4Xc.yGHbqZ",
+        "p~4Xe2m-3NGn",
+        "p~4XhZdbU12Y",
+        "p~4Xmg3891Pz",
+        "p~4Xp9s9yedY",
+        "p~4XzHWF~f_9"
+       ],
+       "lines": [
+        "aw_X7bXc3sBh",
+        "p~4X-A~WB0t3",
+        "p~4XDrkfxxVW",
+        "p~4XQZV~6Qsi",
+        "p~4XQghaC5sU",
+        "p~4XW6G_XJzM",
+        "p~4XihJz_Suy",
+        "p~4Xiotn52oZ",
+        "p~4Xl-hzKXgy",
+        "p~4XtG2xE2kp",
+        "p~4XxbD.Zsli",
+        "p~4XyqHYf8rm",
+        "yw_XExxv0MeT"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "p~4XJoz8a~SO",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan list pasien RJ/RI/IGD"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4X9I5yNyhy",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4XhZdbU12Y",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "F33 F34-AUDIT HAIS, IDO, ISK, PHLEBITIS"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_3"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4XbC1j-tjg",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input data HAIS/ IDO/ISK/Phlebitis"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4XRiyIWY4S",
+      "class": "AdvancedSwimLaneBlockRotated",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Primary_0",
+        "text": "Perawat"
+       },
+       {
+        "label": "Primary_1",
+        "text": "Sistem"
+       },
+       {
+        "label": "Primary_2",
+        "text": "Staff PPI/IPCN"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "p~4X1-S~CAHw",
+        "p~4X8U3ou8qJ",
+        "p~4X8XZbj1Kt",
+        "p~4X9I5yNyhy",
+        "p~4X9ocghK_Y",
+        "p~4XAHNoPwjU",
+        "p~4XC7_JQWTf",
+        "p~4XDWKSIhr3",
+        "p~4XJLAaVK~E",
+        "p~4XJoz8a~SO",
+        "p~4XU_yGg6~P",
+        "p~4XbC1j-tjg",
+        "p~4Xc.yGHbqZ",
+        "p~4Xe2m-3NGn",
+        "p~4Xmg3891Pz",
+        "p~4Xp9s9yedY",
+        "p~4XzHWF~f_9"
+       ],
+       "lines": [
+        "aw_X7bXc3sBh",
+        "p~4X-A~WB0t3",
+        "p~4XDrkfxxVW",
+        "p~4XQZV~6Qsi",
+        "p~4XQghaC5sU",
+        "p~4XW6G_XJzM",
+        "p~4XihJz_Suy",
+        "p~4Xiotn52oZ",
+        "p~4Xl-hzKXgy",
+        "p~4XtG2xE2kp",
+        "p~4XxbD.Zsli",
+        "p~4XyqHYf8rm",
+        "yw_XExxv0MeT"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "p~4Xp9s9yedY",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Unduh laporan HAIS/IDO/ISK/ Phlebitis"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "id": "p~4XW6G_XJzM",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "p~4XJoz8a~SO"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "p~4Xmg3891Pz"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "p~4XyqHYf8rm",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "p~4XC7_JQWTf"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "p~4XJLAaVK~E"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "mengirim data ke \ndashboard audit PPI/IPCN"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "p~4XihJz_Suy",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "p~4X9ocghK_Y"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "p~4Xc.yGHbqZ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "yw_XExxv0MeT",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "p~4Xe2m-3NGn"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "p~4XAHNoPwjU"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "p~4XDrkfxxVW",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "p~4XJLAaVK~E"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "p~4X8U3ou8qJ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "p~4XxbD.Zsli",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "p~4Xp9s9yedY"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "p~4XzHWF~f_9"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "p~4XQghaC5sU",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "p~4X9I5yNyhy"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "p~4X8XZbj1Kt"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "p~4X-A~WB0t3",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "p~4X8U3ou8qJ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "p~4X9ocghK_Y"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "p~4XQZV~6Qsi",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "p~4XzHWF~f_9"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "p~4XDWKSIhr3"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "p~4Xl-hzKXgy",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "p~4Xc.yGHbqZ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "p~4Xp9s9yedY"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "aw_X7bXc3sBh",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "p~4Xmg3891Pz"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "p~4Xe2m-3NGn"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "p~4Xiotn52oZ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "p~4X8XZbj1Kt"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "p~4XJoz8a~SO"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "p~4XtG2xE2kp",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "p~4XAHNoPwjU"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "p~4XC7_JQWTf"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

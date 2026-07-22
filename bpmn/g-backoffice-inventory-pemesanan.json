@@ -1,0 +1,966 @@
+{
+ "id": "8cf83baa-b5aa-4913-85f3-37ff853c5559",
+ "title": "g-backoffice-inventory-pemesanan",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "Gk8Xf~g6cfI1",
+  "label": "Gudang | Sistem | Keuangan"
+ },
+ "pages": [
+  {
+   "id": "bucKFen3Hcc~",
+   "title": "Gudang | Sistem | Keuangan",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "Gk8XV9Yxjp.x",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka menu Inventory - Pemesanan barang"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Gk8XB7vh4w4k",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Hapus item"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Gk8Xh~XcrEnI",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Edit jumlah"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Gk8Xh16D_t~P",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menyimpan dan update data terbaru"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Gk8XB71SNZkz",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan list pemesanan barang pada dashboard "
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Gk8XHBipG8YX",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik tambah pesanan"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Ap8XVP9MOTDR",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Gk8Xf~g6cfI1",
+      "class": "AdvancedSwimLaneBlockRotated",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Primary_0",
+        "text": "Gudang"
+       },
+       {
+        "label": "Primary_1",
+        "text": "Sistem"
+       },
+       {
+        "label": "Primary_2",
+        "text": "Keuangan"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "97_XkwMjNvjE",
+        "Ap8XVP9MOTDR",
+        "Gk8X5jckxu4L",
+        "Gk8XB71SNZkz",
+        "Gk8XB7vh4w4k",
+        "Gk8XC_L2xhci",
+        "Gk8XD68Dtseq",
+        "Gk8XHBipG8YX",
+        "Gk8XHJlFri5.",
+        "Gk8XLWOboeHQ",
+        "Gk8XMyinqodG",
+        "Gk8XPqsjbQWX",
+        "Gk8XV9Yxjp.x",
+        "Gk8Xdui.PnoK",
+        "Gk8Xh16D_t~P",
+        "Gk8Xh~XcrEnI",
+        "Gk8Xuq0jan38",
+        "Gk8XyQSxZcQ0",
+        "YD8XENXg2hE_",
+        "ha~XiDBcliFG"
+       ],
+       "lines": [
+        "Gk8X0ncacW7X",
+        "Gk8X5P_j052~",
+        "Gk8X5VFIdeAR",
+        "Gk8X62M~a_Kf",
+        "Gk8X6_ADZSjt",
+        "Gk8XDLgsjS~8",
+        "Gk8XImn4121g",
+        "Gk8XKTxHmhSO",
+        "Gk8XLuYO3rsE",
+        "Gk8XM4w~Dbtp",
+        "Gk8XTwb1ZZxA",
+        "Gk8XUbvN-LQ9",
+        "Gk8XlTfCj1qG",
+        "Gk8XpeW.a7.0",
+        "Gk8XptR1Rtb4",
+        "Gk8Xsr~3IGFp",
+        "Gk8XvL6Nrb2T",
+        "Gk8XvtODMId7",
+        "Gk8XzilX6XYO",
+        "Gp8Xk8FqKVfD",
+        "l8_XA67Cmhac",
+        "la~XUPsV-6UH"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "Gk8XLWOboeHQ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Lihat detail salah satu pemesanan barang"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "97_XkwMjNvjE",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Supplier"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Gk8XyQSxZcQ0",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input item tambahan\n\n"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Gk8XPqsjbQWX",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan list item pemesanan"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Gk8XC_L2xhci",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "YD8XENXg2hE_",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan data"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Gk8X5jckxu4L",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Gk8Xuq0jan38",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "ha~XiDBcliFG",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input item tambahan\n\n"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Gk8XHJlFri5.",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Menerima Pengajuan Pemesanan"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Gk8Xdui.PnoK",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Gk8XD68Dtseq",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Gk8XMyinqodG",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan data"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "id": "Gk8XlTfCj1qG",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Gk8XC_L2xhci"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Gk8XMyinqodG"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gk8X62M~a_Kf",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Gk8XMyinqodG"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Gk8Xh16D_t~P"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gp8Xk8FqKVfD",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Ap8XVP9MOTDR"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Gk8XLWOboeHQ"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "ada perubahan \ndata"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gk8X5P_j052~",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Gk8XPqsjbQWX"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Gk8X5jckxu4L"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "ada perubahan \ndata"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gk8XTwb1ZZxA",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Gk8XyQSxZcQ0"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Gk8XC_L2xhci"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gk8XvL6Nrb2T",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Gk8Xh~XcrEnI"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Gk8XC_L2xhci"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gk8X5VFIdeAR",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Gk8XB7vh4w4k"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Gk8XC_L2xhci"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gk8XLuYO3rsE",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Ap8XVP9MOTDR"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Gk8XHBipG8YX"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Menambah Pesanan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gk8X6_ADZSjt",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Gk8XB71SNZkz"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Ap8XVP9MOTDR"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gk8XDLgsjS~8",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Gk8Xuq0jan38"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Gk8XB71SNZkz"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gk8XKTxHmhSO",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Gk8X5jckxu4L"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Gk8XB7vh4w4k"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gk8XpeW.a7.0",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Gk8XV9Yxjp.x"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Gk8Xuq0jan38"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l8_XA67Cmhac",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "97_XkwMjNvjE"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "ha~XiDBcliFG"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gk8XM4w~Dbtp",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "YD8XENXg2hE_"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Gk8Xh16D_t~P"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gk8XImn4121g",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Gk8Xh16D_t~P"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Gk8XHJlFri5."
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gk8X0ncacW7X",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Gk8XHBipG8YX"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "97_XkwMjNvjE"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gk8XzilX6XYO",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Gk8XLWOboeHQ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Gk8XPqsjbQWX"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gk8XUbvN-LQ9",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Gk8X5jckxu4L"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Gk8XyQSxZcQ0"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gk8XptR1Rtb4",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Gk8X5jckxu4L"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Gk8Xh~XcrEnI"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gk8Xsr~3IGFp",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Gk8XD68Dtseq"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "Gk8XV9Yxjp.x"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "la~XUPsV-6UH",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "ha~XiDBcliFG"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "YD8XENXg2hE_"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Gk8XvtODMId7",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Gk8XHJlFri5."
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Gk8Xdui.PnoK"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

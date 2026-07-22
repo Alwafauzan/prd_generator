@@ -1,0 +1,11 @@
+Fitur G3 — Pengelolaan Dana Wadiah / Deposit Pasien (modul Billing/Kasir).
+
+Konteks scope:
+- Deposit = uang muka/titipan (wadiah) pasien, umumnya saat admisi rawat inap (B2).
+- Fungsi inti: setor (top-up), saldo & mutasi (ledger), pemotongan ke tagihan (integrasi G2), pengembalian sisa (refund).
+- Deposit dipotongkan ke Tagihan Pasien (G2) sebagai metode pembayaran 'deposit' (FR-G2-05 / apply-deposit).
+- Setoran & pengembalian dibukukan ke sesi kasir (G1) dan menjadi objek verifikasi kas (G4).
+- Bank non-tunai mengacu master Bank (A38).
+- Rekap/laporan ditunda ke fase berikutnya (konsisten dengan G2).
+
+Struktur PRD mengikuti template.md (metadata, overview+as-is/to-be, goals, phasing, related features, state machine + user stories, functional req + acceptance criteria + wording validasi, DB schema + API + data/business rules, workflow).

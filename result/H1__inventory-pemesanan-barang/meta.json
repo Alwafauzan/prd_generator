@@ -1,0 +1,16 @@
+{
+  "code": "H1",
+  "moduleName": "Inventory — Pemesanan Barang",
+  "cluster": "Backoffice",
+  "bpmnFile": "g-backoffice-inventory-pemesanan.json",
+  "mode": "generated (claude code)",
+  "hasFlowchart": false,
+  "attachments": [
+    {
+      "name": "Pemesanan Barang - Barang Farmasi _1_.docx",
+      "kind": "doc"
+    }
+  ],
+  "createdAt": "2026-06-25T08:45:49.197Z",
+  "updatedAt": "2026-06-25T08:45:49.246Z"
+}

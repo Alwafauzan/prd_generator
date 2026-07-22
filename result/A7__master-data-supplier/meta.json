@@ -1,0 +1,10 @@
+{
+  "code": "A7",
+  "moduleName": "Master Data — Supplier",
+  "cluster": "Control Panel",
+  "bpmnFile": null,
+  "mode": "developed (claude-code)",
+  "hasFlowchart": true,
+  "createdAt": "2026-06-17T04:57:19.015Z",
+  "updatedAt": "2026-06-17T05:22:21.053Z"
+}

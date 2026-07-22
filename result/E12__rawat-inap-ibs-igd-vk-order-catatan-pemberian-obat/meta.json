@@ -1,0 +1,11 @@
+{
+  "code": "E12",
+  "moduleName": "Rawat Inap, IBS, IGD, VK — Order Catatan Pemberian Obat",
+  "cluster": "Pelayanan utama",
+  "bpmnFile": "g-service-cpo-order.json",
+  "mode": "developed (claude-code)",
+  "hasFlowchart": true,
+  "attachments": [],
+  "createdAt": "2026-06-22T05:31:36.330Z",
+  "updatedAt": "2026-06-22T05:58:08.532Z"
+}

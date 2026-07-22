@@ -1,0 +1,5997 @@
+{
+  "fields": {
+    "staff_id": {
+      "field": "staff_id",
+      "label": "Staff",
+      "type": "lookup",
+      "validation": "harus ada di master Staff (A2); 1 staff = 1 user aktif",
+      "source": "lookup A2",
+      "definedIn": [
+        "A1",
+        "A2"
+      ]
+    },
+    "nama": {
+      "field": "nama",
+      "label": "Nama Lengkap",
+      "type": "text",
+      "validation": "maks 100 char",
+      "source": "autofill dari Staff",
+      "definedIn": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "E20",
+        "A53"
+      ]
+    },
+    "nip": {
+      "field": "nip",
+      "label": "NIP",
+      "type": "text",
+      "validation": "18 digit, unik",
+      "source": "autofill dari Staff",
+      "definedIn": [
+        "A1",
+        "A2",
+        "A53"
+      ]
+    },
+    "nik": {
+      "field": "nik",
+      "label": "NIK",
+      "type": "text",
+      "validation": "16 digit, valid Disdukcapil",
+      "source": "autofill dari Staff (integrasi Disdukcapil di A2)",
+      "definedIn": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "E20"
+      ]
+    },
+    "jenis_kelamin": {
+      "field": "jenis_kelamin",
+      "label": "Jenis Kelamin",
+      "type": "dropdown",
+      "validation": "L / P",
+      "source": "autofill dari Staff",
+      "definedIn": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "E20"
+      ]
+    },
+    "jabatan": {
+      "field": "jabatan",
+      "label": "Jabatan",
+      "type": "dropdown",
+      "validation": "dari master Jabatan (A55)",
+      "source": "autofill dari Staff",
+      "definedIn": [
+        "A1",
+        "A2",
+        "A53"
+      ]
+    },
+    "unit_id": {
+      "field": "unit_id",
+      "label": "Unit/Instalasi Akses",
+      "type": "lookup (multi)",
+      "validation": "dari master Unit A3 / Instalasi A19",
+      "source": "lookup",
+      "definedIn": [
+        "A1"
+      ]
+    },
+    "username": {
+      "field": "username",
+      "label": "Username",
+      "type": "text",
+      "validation": "unik (case-insensitive), 4–30 char, alfanumerik/titik",
+      "source": "auto-suggest dari NIP/nama, dpt diedit",
+      "definedIn": [
+        "A1"
+      ]
+    },
+    "password": {
+      "field": "password",
+      "label": "Password Awal",
+      "type": "password",
+      "validation": "min 8, huruf+angka [PERLU KONFIRMASI]",
+      "source": "manual / generate",
+      "definedIn": [
+        "A1"
+      ]
+    },
+    "confirm_password": {
+      "field": "confirm_password",
+      "label": "Konfirmasi Password",
+      "type": "password",
+      "validation": "sama dgn password",
+      "source": "manual",
+      "definedIn": [
+        "A1"
+      ]
+    },
+    "roles": {
+      "field": "roles",
+      "label": "Role",
+      "type": "dropdown (multi)",
+      "validation": "≥1 role dari master Role (A18)",
+      "source": "lookup A18",
+      "definedIn": [
+        "A1"
+      ]
+    },
+    "force_change_pwd": {
+      "field": "force_change_pwd",
+      "label": "Wajib Ganti Password Login Pertama",
+      "type": "boolean",
+      "validation": "true/false",
+      "source": "default true",
+      "definedIn": [
+        "A1"
+      ]
+    },
+    "status_aktif": {
+      "field": "status_aktif",
+      "label": "Status Aktif",
+      "type": "boolean",
+      "validation": "aktif/nonaktif",
+      "source": "default aktif",
+      "definedIn": [
+        "A1",
+        "A2",
+        "A7",
+        "A10",
+        "A14",
+        "A53",
+        "A15",
+        "A16",
+        "A17",
+        "A43",
+        "N1",
+        "N4",
+        "N2",
+        "N3"
+      ]
+    },
+    "email": {
+      "field": "email",
+      "label": "Email",
+      "type": "text",
+      "validation": "format email",
+      "source": "manual",
+      "definedIn": [
+        "A1",
+        "A2",
+        "A7",
+        "B2",
+        "N4"
+      ]
+    },
+    "no_hp": {
+      "field": "no_hp",
+      "label": "No. HP",
+      "type": "text",
+      "validation": "10–15 digit",
+      "source": "manual",
+      "definedIn": [
+        "A1",
+        "A2",
+        "B1",
+        "B2"
+      ]
+    },
+    "satusehat_practitioner_id": {
+      "field": "satusehat_practitioner_id",
+      "label": "SATUSEHAT Practitioner ID",
+      "type": "text",
+      "validation": "format ID SATUSEHAT",
+      "source": "integrasi SATUSEHAT",
+      "definedIn": [
+        "A1",
+        "A2"
+      ]
+    },
+    "new_password": {
+      "field": "new_password",
+      "label": "Password Baru",
+      "type": "password",
+      "validation": "min 8, huruf+angka",
+      "source": "manual / generate",
+      "definedIn": [
+        "A1"
+      ]
+    },
+    "staff_code": {
+      "field": "staff_code",
+      "label": "Kode Staf",
+      "type": "text",
+      "validation": "unik, auto-generate",
+      "source": "auto",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "gelar_depan": {
+      "field": "gelar_depan",
+      "label": "Gelar Depan",
+      "type": "text",
+      "validation": "maks 20 char",
+      "source": "manual",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "gelar_belakang": {
+      "field": "gelar_belakang",
+      "label": "Gelar Belakang",
+      "type": "text",
+      "validation": "maks 30 char",
+      "source": "manual",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "tgl_lahir": {
+      "field": "tgl_lahir",
+      "label": "Tanggal Lahir",
+      "type": "date",
+      "validation": "<= hari ini",
+      "source": "manual/Disdukcapil",
+      "definedIn": [
+        "A2",
+        "B1",
+        "B2",
+        "E20"
+      ]
+    },
+    "tempat_lahir": {
+      "field": "tempat_lahir",
+      "label": "Tempat Lahir",
+      "type": "text",
+      "validation": "maks 50 char",
+      "source": "manual",
+      "definedIn": [
+        "A2",
+        "B1",
+        "B2"
+      ]
+    },
+    "alamat": {
+      "field": "alamat",
+      "label": "Alamat",
+      "type": "text",
+      "validation": "maks 255 char",
+      "source": "manual/Disdukcapil",
+      "definedIn": [
+        "A2",
+        "A7",
+        "B1",
+        "B2",
+        "N4"
+      ]
+    },
+    "jenis_tenaga": {
+      "field": "jenis_tenaga",
+      "label": "Jenis Tenaga",
+      "type": "dropdown",
+      "validation": "medis/paramedis/penunjang/non-medis",
+      "source": "enum",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "instalasi": {
+      "field": "instalasi",
+      "label": "Instalasi",
+      "type": "dropdown(lookup)",
+      "validation": "dari master Instalasi (A19)",
+      "source": "lookup A19",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "unit": {
+      "field": "unit",
+      "label": "Unit/Poli",
+      "type": "dropdown(lookup)",
+      "validation": "dari master Unit (A3)",
+      "source": "lookup A3",
+      "definedIn": [
+        "A2",
+        "B2",
+        "B1",
+        "A10",
+        "A14",
+        "A53",
+        "A15",
+        "A16",
+        "A43",
+        "N1",
+        "N2",
+        "N3"
+      ]
+    },
+    "spesialisasi_smf": {
+      "field": "spesialisasi_smf",
+      "label": "Spesialisasi & SMF",
+      "type": "dropdown(lookup)",
+      "validation": "dari master A23",
+      "source": "lookup A23",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "no_str": {
+      "field": "no_str",
+      "label": "No. STR",
+      "type": "text",
+      "validation": "format STR; wajib utk tenaga medis",
+      "source": "manual",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "str_berlaku_sd": {
+      "field": "str_berlaku_sd",
+      "label": "STR Berlaku s/d",
+      "type": "date",
+      "validation": ">= hari ini saat input",
+      "source": "manual",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "no_sip": {
+      "field": "no_sip",
+      "label": "No. SIP",
+      "type": "text",
+      "validation": "wajib utk profesi tertentu",
+      "source": "manual",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "sip_berlaku_sd": {
+      "field": "sip_berlaku_sd",
+      "label": "SIP Berlaku s/d",
+      "type": "date",
+      "validation": ">= hari ini",
+      "source": "manual",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "ihs_number": {
+      "field": "ihs_number",
+      "label": "IHS Number (SATUSEHAT)",
+      "type": "text",
+      "validation": "format IHS; read-only hasil sinkron",
+      "source": "integrasi SATUSEHAT",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "satusehat_version": {
+      "field": "satusehat_version",
+      "label": "Versi SATUSEHAT",
+      "type": "dropdown",
+      "validation": "V1 / V2",
+      "source": "konfigurasi",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "kode_dokter_bpjs": {
+      "field": "kode_dokter_bpjs",
+      "label": "Kode Dokter BPJS",
+      "type": "text",
+      "validation": "wajib utk DPJP; dari referensi VClaim",
+      "source": "integrasi BPJS/manual",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "bpjs_version": {
+      "field": "bpjs_version",
+      "label": "Versi BPJS",
+      "type": "dropdown",
+      "validation": "V1 / V2",
+      "source": "konfigurasi",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "user_id": {
+      "field": "user_id",
+      "label": "Akun User Terkait",
+      "type": "lookup",
+      "validation": "dari A1 User",
+      "source": "lookup A1",
+      "definedIn": [
+        "A2",
+        "A53"
+      ]
+    },
+    "file": {
+      "field": "file",
+      "label": "File Template",
+      "type": "file",
+      "validation": ".csv/.xlsx, maks 5MB [ASUMSI]",
+      "source": "unggah",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "hasil_validasi": {
+      "field": "hasil_validasi",
+      "label": "(tampil)",
+      "type": "–",
+      "validation": "per baris: sukses/gagal+alasan",
+      "source": "sistem",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "str_berlaku_sampai": {
+      "field": "str_berlaku_sampai",
+      "label": "STR Berlaku s/d",
+      "type": "date",
+      "validation": "≥ hari ini saat input",
+      "source": "manual",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "satusehat_sync_status": {
+      "field": "satusehat_sync_status",
+      "label": "Status Sync SATUSEHAT",
+      "type": "dropdown",
+      "validation": "none/synced/failed",
+      "source": "sistem",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "bpjs_kode_dokter": {
+      "field": "bpjs_kode_dokter",
+      "label": "Kode Dokter BPJS",
+      "type": "text",
+      "validation": "format kode HFIS",
+      "source": "integrasi/manual BPJS (FR-007)",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "bpjs_versi": {
+      "field": "bpjs_versi",
+      "label": "Versi Integrasi BPJS",
+      "type": "dropdown",
+      "validation": "V1 / V2",
+      "source": "enum",
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "file_import": {
+      "field": "file_import",
+      "label": "File Staf",
+      "type": "file",
+      "validation": ".csv/.xlsx, sesuai template",
+      "source": "manual upload",
+      "definedIn": [
+        "A2",
+        "A7",
+        "A10",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A43"
+      ]
+    },
+    "mode_import": {
+      "field": "mode_import",
+      "label": "Mode",
+      "type": "dropdown",
+      "validation": "tambah / tambah+update",
+      "source": "enum",
+      "definedIn": [
+        "A2",
+        "A10",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A43"
+      ]
+    },
+    "kode_supplier": {
+      "field": "kode_supplier",
+      "label": "Kode Supplier",
+      "type": "text",
+      "validation": "unik, maks 20 char",
+      "source": "auto-generate / manual [PERLU KONFIRMASI]",
+      "definedIn": [
+        "A7"
+      ]
+    },
+    "nama_supplier": {
+      "field": "nama_supplier",
+      "label": "Nama Supplier",
+      "type": "text",
+      "validation": "maks 100 char",
+      "source": "manual",
+      "definedIn": [
+        "A7"
+      ]
+    },
+    "jenis_supplier": {
+      "field": "jenis_supplier",
+      "label": "Jenis Supplier",
+      "type": "dropdown",
+      "validation": "Badan Usaha / Perorangan",
+      "source": "enum",
+      "definedIn": [
+        "A7"
+      ]
+    },
+    "kategori_barang": {
+      "field": "kategori_barang",
+      "label": "Kategori Barang Dipasok",
+      "type": "lookup (multi)",
+      "validation": "dari master Kategori Barang (A33)",
+      "source": "lookup A33",
+      "definedIn": [
+        "A7"
+      ]
+    },
+    "npwp": {
+      "field": "npwp",
+      "label": "NPWP",
+      "type": "text",
+      "validation": "unik, 15/16 digit [PERLU KONFIRMASI]",
+      "source": "manual",
+      "definedIn": [
+        "A7",
+        "N4"
+      ]
+    },
+    "status_pkp": {
+      "field": "status_pkp",
+      "label": "PKP",
+      "type": "boolean",
+      "validation": "Ya/Tidak",
+      "source": "default Tidak",
+      "definedIn": [
+        "A7"
+      ]
+    },
+    "no_izin_usaha": {
+      "field": "no_izin_usaha",
+      "label": "No. Izin Usaha/SIUP",
+      "type": "text",
+      "validation": "maks 50 char",
+      "source": "manual",
+      "definedIn": [
+        "A7"
+      ]
+    },
+    "wilayah_id": {
+      "field": "wilayah_id",
+      "label": "Wilayah (Prov/Kab/Kec/Kel)",
+      "type": "lookup",
+      "validation": "dari master Wilayah (A32)",
+      "source": "lookup A32",
+      "definedIn": [
+        "A7"
+      ]
+    },
+    "nama_kontak": {
+      "field": "nama_kontak",
+      "label": "Nama PIC/Kontak",
+      "type": "text",
+      "validation": "maks 100 char",
+      "source": "manual",
+      "definedIn": [
+        "A7"
+      ]
+    },
+    "no_telp": {
+      "field": "no_telp",
+      "label": "No. Telepon",
+      "type": "text",
+      "validation": "10–15 digit angka",
+      "source": "manual",
+      "definedIn": [
+        "A7",
+        "B1",
+        "B2",
+        "N4"
+      ]
+    },
+    "bank_id": {
+      "field": "bank_id",
+      "label": "Bank",
+      "type": "lookup",
+      "validation": "dari master Bank (A38)",
+      "source": "lookup A38",
+      "definedIn": [
+        "A7",
+        "G3",
+        "G2"
+      ]
+    },
+    "no_rekening": {
+      "field": "no_rekening",
+      "label": "No. Rekening",
+      "type": "text",
+      "validation": "angka, maks 30 char",
+      "source": "manual",
+      "definedIn": [
+        "A7"
+      ]
+    },
+    "atas_nama_rekening": {
+      "field": "atas_nama_rekening",
+      "label": "Atas Nama Rekening",
+      "type": "text",
+      "validation": "maks 100 char",
+      "source": "manual",
+      "definedIn": [
+        "A7"
+      ]
+    },
+    "termin_pembayaran": {
+      "field": "termin_pembayaran",
+      "label": "Termin Pembayaran (hari)",
+      "type": "number",
+      "validation": ">= 0",
+      "source": "manual",
+      "definedIn": [
+        "A7"
+      ]
+    },
+    "keterangan": {
+      "field": "keterangan",
+      "label": "Keterangan",
+      "type": "text",
+      "validation": "maks 255 char",
+      "source": "manual",
+      "definedIn": [
+        "A7",
+        "G15",
+        "A10",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A43",
+        "N1",
+        "N4",
+        "N2",
+        "N3"
+      ]
+    },
+    "pilihan_duplikat": {
+      "field": "pilihan_duplikat",
+      "label": "Aksi",
+      "type": "dropdown",
+      "validation": "Pakai existing / Buat baru",
+      "source": "enum",
+      "definedIn": [
+        "A7"
+      ]
+    },
+    "jenis_kunjungan": {
+      "field": "jenis_kunjungan",
+      "label": "Jenis Kunjungan",
+      "type": "dropdown",
+      "validation": "enum: Baru / Lama",
+      "source": "manual",
+      "definedIn": [
+        "B1",
+        "B2"
+      ]
+    },
+    "kata_kunci": {
+      "field": "kata_kunci",
+      "label": "Cari Pasien",
+      "type": "text",
+      "validation": "min 3 char",
+      "source": "manual",
+      "definedIn": [
+        "B1",
+        "B2"
+      ]
+    },
+    "no_rm": {
+      "field": "no_rm",
+      "label": "No. RM",
+      "type": "text",
+      "validation": "format RM RS",
+      "source": "lookup",
+      "definedIn": [
+        "B1",
+        "B2",
+        "E20",
+        "D6",
+        "E12",
+        "G3"
+      ]
+    },
+    "kode_wilayah": {
+      "field": "kode_wilayah",
+      "label": "Wilayah (Prov/Kab/Kec/Kel)",
+      "type": "lookup",
+      "validation": "kode Kemendagri 2/4/6/10 digit",
+      "source": "master wilayah",
+      "definedIn": [
+        "B1",
+        "B2"
+      ]
+    },
+    "no_bpjs": {
+      "field": "no_bpjs",
+      "label": "No. Kartu BPJS",
+      "type": "text",
+      "validation": "13 digit",
+      "source": "manual / VClaim",
+      "definedIn": [
+        "B1",
+        "B2",
+        "E20"
+      ]
+    },
+    "pekerjaan": {
+      "field": "pekerjaan",
+      "label": "Pekerjaan",
+      "type": "dropdown",
+      "validation": "master pekerjaan",
+      "source": "lookup",
+      "definedIn": [
+        "B1",
+        "B2"
+      ]
+    },
+    "agama": {
+      "field": "agama",
+      "label": "Agama",
+      "type": "dropdown",
+      "validation": "enum",
+      "source": "lookup",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "jenis_penjamin": {
+      "field": "jenis_penjamin",
+      "label": "Penjamin",
+      "type": "dropdown",
+      "validation": "enum: Umum/BPJS/Asuransi",
+      "source": "manual",
+      "definedIn": [
+        "B1",
+        "B2",
+        "E20",
+        "A10",
+        "G2"
+      ]
+    },
+    "no_rujukan_fktp": {
+      "field": "no_rujukan_fktp",
+      "label": "No. Rujukan FKTP",
+      "type": "text",
+      "validation": "format rujukan BPJS",
+      "source": "manual / VClaim",
+      "definedIn": [
+        "B1",
+        "B2"
+      ]
+    },
+    "status_kartu": {
+      "field": "status_kartu",
+      "label": "Status Kartu",
+      "type": "text",
+      "validation": "aktif/nonaktif",
+      "source": "integrasi VClaim",
+      "definedIn": [
+        "B1",
+        "B2"
+      ]
+    },
+    "diagnosa_awal": {
+      "field": "diagnosa_awal",
+      "label": "Diagnosa Awal (ICD-10)",
+      "type": "lookup",
+      "validation": "kode ICD-10",
+      "source": "master ICD-10",
+      "definedIn": [
+        "B1",
+        "B2",
+        "G15"
+      ]
+    },
+    "poli_tujuan_sep": {
+      "field": "poli_tujuan_sep",
+      "label": "Poli Tujuan (SEP)",
+      "type": "dropdown",
+      "validation": "master poli BPJS",
+      "source": "lookup",
+      "definedIn": [
+        "B1",
+        "B2"
+      ]
+    },
+    "no_sep": {
+      "field": "no_sep",
+      "label": "No. SEP",
+      "type": "text",
+      "validation": "format SEP",
+      "source": "integrasi VClaim",
+      "definedIn": [
+        "B1",
+        "B2",
+        "G15"
+      ]
+    },
+    "nama_asuransi": {
+      "field": "nama_asuransi",
+      "label": "Nama Asuransi",
+      "type": "text",
+      "validation": "maks 100 char",
+      "source": "manual",
+      "definedIn": [
+        "B1",
+        "B2"
+      ]
+    },
+    "poli": {
+      "field": "poli",
+      "label": "Poli",
+      "type": "dropdown",
+      "validation": "dari master poli",
+      "source": "lookup",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "dokter": {
+      "field": "dokter",
+      "label": "Dokter / DPJP",
+      "type": "dropdown",
+      "validation": "dari master dokter sesuai poli & jadwal",
+      "source": "lookup",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "tgl_kunjungan": {
+      "field": "tgl_kunjungan",
+      "label": "Tanggal Kunjungan",
+      "type": "date",
+      "validation": ">= hari ini",
+      "source": "default hari ini",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "no_antrian": {
+      "field": "no_antrian",
+      "label": "No. Antrian",
+      "type": "text",
+      "validation": "format A-001, reset harian/poli",
+      "source": "auto-generate",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "cari_by": {
+      "field": "cari_by",
+      "label": "Cari Berdasarkan",
+      "type": "dropdown",
+      "validation": "NIK / No. RM / Nama+Tgl Lahir",
+      "source": "enum",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "metode_input": {
+      "field": "metode_input",
+      "label": "Metode Input",
+      "type": "dropdown",
+      "validation": "OCR KTP / Bridging NIK / Manual",
+      "source": "enum",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "file_ktp": {
+      "field": "file_ktp",
+      "label": "File/Scan KTP",
+      "type": "file",
+      "validation": "jpg/png/pdf, maks 5MB",
+      "source": "upload",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "gol_darah": {
+      "field": "gol_darah",
+      "label": "Golongan Darah",
+      "type": "dropdown",
+      "validation": "A/B/AB/O +/-",
+      "source": "enum",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "ada_batuk": {
+      "field": "ada_batuk",
+      "label": "Batuk?",
+      "type": "boolean",
+      "validation": "Ya/Tidak",
+      "source": "manual",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "ada_demam": {
+      "field": "ada_demam",
+      "label": "Demam?",
+      "type": "boolean",
+      "validation": "Ya/Tidak",
+      "source": "manual",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "suhu": {
+      "field": "suhu",
+      "label": "Suhu (°C)",
+      "type": "number",
+      "validation": "30–45",
+      "source": "manual",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "flag_batuk_tempo": {
+      "field": "flag_batuk_tempo",
+      "label": "Flag Pasien Batuk/Tempo",
+      "type": "boolean",
+      "validation": "true jika batuk/demam",
+      "source": "sistem",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "jenis_layanan": {
+      "field": "jenis_layanan",
+      "label": "Jenis Layanan",
+      "type": "dropdown",
+      "validation": "Klinik / Klinik & Penunjang / Penunjang",
+      "source": "enum",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "paket_mcu": {
+      "field": "paket_mcu",
+      "label": "Paket MCU",
+      "type": "dropdown",
+      "validation": "master paket MCU",
+      "source": "lookup B7",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "jenis_penjaminan": {
+      "field": "jenis_penjaminan",
+      "label": "Jenis Penjaminan",
+      "type": "dropdown",
+      "validation": "Umum / BPJS / Asuransi",
+      "source": "enum",
+      "definedIn": [
+        "B1",
+        "B2"
+      ]
+    },
+    "no_kartu_bpjs": {
+      "field": "no_kartu_bpjs",
+      "label": "No. Kartu BPJS",
+      "type": "text",
+      "validation": "13 digit",
+      "source": "manual/auto by NIK",
+      "definedIn": [
+        "B1",
+        "B2",
+        "G15"
+      ]
+    },
+    "no_rujukan": {
+      "field": "no_rujukan",
+      "label": "No. Rujukan",
+      "type": "text",
+      "validation": "format rujukan BPJS",
+      "source": "manual/integrasi",
+      "definedIn": [
+        "B1",
+        "B2"
+      ]
+    },
+    "no_polis": {
+      "field": "no_polis",
+      "label": "No. Polis/Kartu",
+      "type": "text",
+      "validation": "sesuai asuransi",
+      "source": "manual",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "dokumen_jaminan": {
+      "field": "dokumen_jaminan",
+      "label": "Dokumen Jaminan",
+      "type": "file",
+      "validation": "jpg/pdf maks 5MB",
+      "source": "upload",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "kelas_perawatan": {
+      "field": "kelas_perawatan",
+      "label": "Kelas Perawatan",
+      "type": "dropdown",
+      "validation": "enum: Kelas 1/2/3/VIP",
+      "source": "manual",
+      "definedIn": [
+        "B2",
+        "A10",
+        "A15",
+        "A16",
+        "A17",
+        "A43"
+      ]
+    },
+    "bangsal": {
+      "field": "bangsal",
+      "label": "Bangsal/Ruang",
+      "type": "dropdown",
+      "validation": "master bangsal",
+      "source": "lookup",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "bed_id": {
+      "field": "bed_id",
+      "label": "Bed",
+      "type": "lookup",
+      "validation": "hanya bed status tersedia",
+      "source": "grid bed real-time",
+      "definedIn": [
+        "B2",
+        "A17"
+      ]
+    },
+    "dpjp": {
+      "field": "dpjp",
+      "label": "DPJP (Dokter Penanggung Jawab)",
+      "type": "dropdown",
+      "validation": "master dokter",
+      "source": "lookup",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "tgl_masuk": {
+      "field": "tgl_masuk",
+      "label": "Tanggal Masuk RI",
+      "type": "date",
+      "validation": ">= hari ini",
+      "source": "default hari ini",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "cara_masuk": {
+      "field": "cara_masuk",
+      "label": "Cara Masuk",
+      "type": "dropdown",
+      "validation": "enum: Poli / IGD / Rujukan / Rencana Operasi",
+      "source": "manual",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "status_inden": {
+      "field": "status_inden",
+      "label": "Inden/Waiting List",
+      "type": "boolean",
+      "validation": "true bila bed penuh",
+      "source": "sistem",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "rm_ibu": {
+      "field": "rm_ibu",
+      "label": "No. RM Ibu",
+      "type": "lookup",
+      "validation": "format RM RS",
+      "source": "dari registrasi ibu",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "nama_bayi": {
+      "field": "nama_bayi",
+      "label": "Nama Bayi",
+      "type": "text",
+      "validation": "maks 100 char",
+      "source": "manual",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "tgl_lahir_bayi": {
+      "field": "tgl_lahir_bayi",
+      "label": "Tanggal/Jam Lahir",
+      "type": "date",
+      "validation": "<= hari ini",
+      "source": "manual",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "rawat_gabung": {
+      "field": "rawat_gabung",
+      "label": "Rawat Gabung",
+      "type": "boolean",
+      "validation": "true/false",
+      "source": "toggle",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "urutan_kelahiran": {
+      "field": "urutan_kelahiran",
+      "label": "Urutan (Multiple Birth)",
+      "type": "number",
+      "validation": ">=1",
+      "source": "auto-increment",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "sumber_masuk": {
+      "field": "sumber_masuk",
+      "label": "Sumber Masuk",
+      "type": "dropdown",
+      "validation": "RJ / IGD / Inden-Elektif",
+      "source": "manual",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "diagnosa_masuk": {
+      "field": "diagnosa_masuk",
+      "label": "Diagnosa Masuk",
+      "type": "text/lookup",
+      "validation": "ICD-10 [PERLU KONFIRMASI]",
+      "source": "manual/EMR",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "tgl_rencana_masuk": {
+      "field": "tgl_rencana_masuk",
+      "label": "Tgl Rencana Masuk",
+      "type": "date",
+      "validation": ">= hari ini",
+      "source": "manual",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "bangsal_id": {
+      "field": "bangsal_id",
+      "label": "Bangsal",
+      "type": "dropdown(lookup)",
+      "validation": "dari master Bangsal",
+      "source": "lookup",
+      "definedIn": [
+        "B2",
+        "A16",
+        "A17",
+        "A43"
+      ]
+    },
+    "status_reservasi": {
+      "field": "status_reservasi",
+      "label": "Status",
+      "type": "dropdown",
+      "validation": "inden / terisi",
+      "source": "auto",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "tgl_inden": {
+      "field": "tgl_inden",
+      "label": "Tgl Inden",
+      "type": "date",
+      "validation": ">= hari ini",
+      "source": "auto/manual",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "jenis_kelamin_bayi": {
+      "field": "jenis_kelamin_bayi",
+      "label": "Jenis Kelamin",
+      "type": "dropdown",
+      "validation": "L / P",
+      "source": "manual",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "status_pasien": {
+      "field": "status_pasien",
+      "label": "Status Pasien",
+      "type": "dropdown",
+      "validation": "Baru / Lama",
+      "source": "manual",
+      "definedIn": [
+        "B2",
+        "N1"
+      ]
+    },
+    "status_eligibility": {
+      "field": "status_eligibility",
+      "label": "Status Eligibility",
+      "type": "text(badge)",
+      "validation": "Aktif / Tidak Aktif",
+      "source": "integrasi BPJS VClaim",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "jenis_pelayanan": {
+      "field": "jenis_pelayanan",
+      "label": "Jenis Pelayanan",
+      "type": "dropdown",
+      "validation": "Rawat Inap",
+      "source": "default RI",
+      "definedIn": [
+        "B2",
+        "G15",
+        "E20",
+        "A15",
+        "A16",
+        "A17",
+        "A43"
+      ]
+    },
+    "poli_dpjp": {
+      "field": "poli_dpjp",
+      "label": "DPJP / Unit",
+      "type": "dropdown(lookup)",
+      "validation": "dari master Unit (A3)",
+      "source": "lookup `unit`",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "tipe_admisi": {
+      "field": "tipe_admisi",
+      "label": "Tipe Admisi",
+      "type": "dropdown",
+      "validation": "Langsung / Inden / Transfer IGD / Rujuk Internal",
+      "source": "manual",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "jadwal_masuk": {
+      "field": "jadwal_masuk",
+      "label": "Jadwal Masuk RI",
+      "type": "datetime",
+      "validation": ">= sekarang",
+      "source": "manual",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "jadwal_operasi": {
+      "field": "jadwal_operasi",
+      "label": "Jadwal Operasi",
+      "type": "datetime",
+      "validation": ">= jadwal masuk",
+      "source": "manual",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "no_rm_ibu": {
+      "field": "no_rm_ibu",
+      "label": "No. RM Ibu",
+      "type": "lookup",
+      "validation": "RM existing valid",
+      "source": "lookup",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "multiple_birth": {
+      "field": "multiple_birth",
+      "label": "Tambah Bayi Lagi",
+      "type": "boolean",
+      "validation": "Ya/Tidak",
+      "source": "manual",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "hak_kelas": {
+      "field": "hak_kelas",
+      "label": "Hak Kelas BPJS",
+      "type": "text",
+      "validation": "1/2/3",
+      "source": "integrasi BPJS",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "faskes_perujuk": {
+      "field": "faskes_perujuk",
+      "label": "Faskes Perujuk",
+      "type": "text",
+      "validation": "lookup faskes",
+      "source": "VClaim",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "tgl_sep": {
+      "field": "tgl_sep",
+      "label": "Tanggal SEP",
+      "type": "date",
+      "validation": "= tgl masuk RI",
+      "source": "auto",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "tgl_masuk_ri": {
+      "field": "tgl_masuk_ri",
+      "label": "Tanggal Masuk RI",
+      "type": "date",
+      "validation": ">= hari ini",
+      "source": "manual/default hari ini",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "status_admisi": {
+      "field": "status_admisi",
+      "label": "Status Admisi",
+      "type": "dropdown",
+      "validation": "reserve/inden/aktif",
+      "source": "default reserve",
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "keyword": {
+      "field": "keyword",
+      "label": "Kata Kunci",
+      "type": "text",
+      "validation": "min 1 kriteria terisi",
+      "source": "manual",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "jenis_identitas": {
+      "field": "jenis_identitas",
+      "label": "Jenis Identitas",
+      "type": "dropdown",
+      "validation": "KTP/NIK, Paspor, KITAS, Sementara",
+      "source": "manual",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "no_identitas_alt": {
+      "field": "no_identitas_alt",
+      "label": "No. Identitas Alternatif",
+      "type": "text",
+      "validation": "sesuai jenis",
+      "source": "manual",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "nama_ibu": {
+      "field": "nama_ibu",
+      "label": "Nama Ibu Kandung",
+      "type": "text",
+      "validation": "maks 100 char",
+      "source": "manual",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "batuk": {
+      "field": "batuk",
+      "label": "Batuk?",
+      "type": "boolean",
+      "validation": "Ya/Tidak",
+      "source": "manual",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "demam": {
+      "field": "demam",
+      "label": "Demam?",
+      "type": "boolean",
+      "validation": "Ya/Tidak",
+      "source": "manual",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "flag_isolasi": {
+      "field": "flag_isolasi",
+      "label": "Flag Pasien Batuk/Tempo",
+      "type": "boolean",
+      "validation": "true bila batuk/demam",
+      "source": "auto",
+      "definedIn": [
+        "B1",
+        "A15",
+        "A16"
+      ]
+    },
+    "dokter_id": {
+      "field": "dokter_id",
+      "label": "Dokter (DPJP)",
+      "type": "dropdown(lookup)",
+      "validation": "master Staf (A2), jenis_tenaga=dokter",
+      "source": "lookup A2",
+      "definedIn": [
+        "B1",
+        "G15",
+        "E2",
+        "E12"
+      ]
+    },
+    "no_polis_asuransi": {
+      "field": "no_polis_asuransi",
+      "label": "No. Polis Asuransi",
+      "type": "text",
+      "validation": "sesuai asuransi",
+      "source": "manual",
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "no_spri": {
+      "field": "no_spri",
+      "label": "No. SPRI",
+      "type": "text",
+      "validation": "unik, auto",
+      "source": "auto-generate",
+      "definedIn": [
+        "E20"
+      ]
+    },
+    "unit_asal": {
+      "field": "unit_asal",
+      "label": "Unit Asal",
+      "type": "dropdown",
+      "validation": "enum: Rawat Jalan / IGD",
+      "source": "auto dari konteks",
+      "definedIn": [
+        "E20",
+        "E12"
+      ]
+    },
+    "poli_asal": {
+      "field": "poli_asal",
+      "label": "Poli/Ruang Asal",
+      "type": "dropdown(lookup)",
+      "validation": "master unit",
+      "source": "lookup",
+      "definedIn": [
+        "E20"
+      ]
+    },
+    "dokter_pembuat": {
+      "field": "dokter_pembuat",
+      "label": "Dokter Pembuat",
+      "type": "lookup",
+      "validation": "dari master Staff (dokter aktif)",
+      "source": "autofill user login",
+      "definedIn": [
+        "E20"
+      ]
+    },
+    "dpjp_ranap": {
+      "field": "dpjp_ranap",
+      "label": "DPJP Rawat Inap",
+      "type": "lookup",
+      "validation": "dari master Staff (dokter)",
+      "source": "manual",
+      "definedIn": [
+        "E20"
+      ]
+    },
+    "diagnosis_kerja": {
+      "field": "diagnosis_kerja",
+      "label": "Diagnosis (Kerja/Sementara)",
+      "type": "text",
+      "validation": "maks 255 char",
+      "source": "manual",
+      "definedIn": [
+        "E20"
+      ]
+    },
+    "kode_diagnosis": {
+      "field": "kode_diagnosis",
+      "label": "Kode Diagnosis (ICD-10)",
+      "type": "lookup",
+      "validation": "format ICD-10",
+      "source": "master ICD-10",
+      "definedIn": [
+        "E20"
+      ]
+    },
+    "indikasi_ranap": {
+      "field": "indikasi_ranap",
+      "label": "Indikasi Rawat Inap",
+      "type": "textarea",
+      "validation": "maks 500 char",
+      "source": "manual",
+      "definedIn": [
+        "E20"
+      ]
+    },
+    "kelas_diinginkan": {
+      "field": "kelas_diinginkan",
+      "label": "Kelas Diinginkan",
+      "type": "dropdown",
+      "validation": "enum kelas (VIP/1/2/3)",
+      "source": "manual",
+      "definedIn": [
+        "E20"
+      ]
+    },
+    "kelas_dijamin": {
+      "field": "kelas_dijamin",
+      "label": "Kelas Dijamin",
+      "type": "dropdown",
+      "validation": "enum kelas, sesuai hak penjamin",
+      "source": "integrasi BPJS / aturan penjamin",
+      "definedIn": [
+        "E20"
+      ]
+    },
+    "naik_kelas": {
+      "field": "naik_kelas",
+      "label": "Naik Kelas?",
+      "type": "boolean",
+      "validation": "true bila diinginkan > dijamin",
+      "source": "auto-hitung",
+      "definedIn": [
+        "E20"
+      ]
+    },
+    "kebutuhan_isolasi": {
+      "field": "kebutuhan_isolasi",
+      "label": "Kebutuhan Isolasi",
+      "type": "dropdown",
+      "validation": "enum: Tidak/Airborne/Droplet/Kontak",
+      "source": "manual",
+      "definedIn": [
+        "E20",
+        "G15"
+      ]
+    },
+    "tingkat_ketergantungan": {
+      "field": "tingkat_ketergantungan",
+      "label": "Tingkat Ketergantungan",
+      "type": "dropdown",
+      "validation": "enum: Minimal/Partial/Total [PERLU KONFIRMASI skala]",
+      "source": "manual",
+      "definedIn": [
+        "E20"
+      ]
+    },
+    "kebutuhan_khusus": {
+      "field": "kebutuhan_khusus",
+      "label": "Kebutuhan Pelayanan Khusus",
+      "type": "textarea",
+      "validation": "maks 255 char",
+      "source": "manual",
+      "definedIn": [
+        "E20"
+      ]
+    },
+    "ruang_diminta": {
+      "field": "ruang_diminta",
+      "label": "Ruang/Bangsal Diminta",
+      "type": "dropdown(lookup)",
+      "validation": "master ruang ranap",
+      "source": "lookup",
+      "definedIn": [
+        "E20"
+      ]
+    },
+    "tgl_terbit": {
+      "field": "tgl_terbit",
+      "label": "Tanggal/Jam Terbit",
+      "type": "datetime",
+      "validation": "auto saat terbit",
+      "source": "auto-generate",
+      "definedIn": [
+        "E20"
+      ]
+    },
+    "alasan_batal": {
+      "field": "alasan_batal",
+      "label": "Alasan Pembatalan",
+      "type": "textarea",
+      "validation": "wajib saat membatalkan, maks 255",
+      "source": "manual",
+      "definedIn": [
+        "E20"
+      ]
+    },
+    "id_pengajuan": {
+      "field": "id_pengajuan",
+      "label": "ID Pengajuan",
+      "type": "text",
+      "validation": "auto, unik",
+      "source": "auto-generate",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "jenis_pengecualian": {
+      "field": "jenis_pengecualian",
+      "label": "Jenis",
+      "type": "dropdown",
+      "validation": "Libur/Cuti/Re-schedule/Batal",
+      "source": "enum",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "tgl_mulai": {
+      "field": "tgl_mulai",
+      "label": "Tanggal Mulai",
+      "type": "date",
+      "validation": "≥ hari ini [PERLU KONFIRMASI retroaktif]",
+      "source": "manual",
+      "definedIn": [
+        "G15",
+        "A10"
+      ]
+    },
+    "tgl_selesai": {
+      "field": "tgl_selesai",
+      "label": "Tanggal Selesai",
+      "type": "date",
+      "validation": "≥ tgl_mulai",
+      "source": "manual",
+      "definedIn": [
+        "G15",
+        "A10"
+      ]
+    },
+    "sesi_terdampak": {
+      "field": "sesi_terdampak",
+      "label": "Sesi/Jam Terdampak",
+      "type": "dropdown(multi)",
+      "validation": "dari slot dokter",
+      "source": "lookup slot",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "poli_unit": {
+      "field": "poli_unit",
+      "label": "Poli/Unit",
+      "type": "lookup",
+      "validation": "dari master poli/unit",
+      "source": "lookup",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "alasan": {
+      "field": "alasan",
+      "label": "Alasan",
+      "type": "dropdown",
+      "validation": "cuti/sakit/dinas/lainnya",
+      "source": "enum",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "ada_pengganti": {
+      "field": "ada_pengganti",
+      "label": "Ada Pengganti?",
+      "type": "boolean",
+      "validation": "true/false",
+      "source": "default false",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "dokter_pengganti_id": {
+      "field": "dokter_pengganti_id",
+      "label": "Dokter Pengganti",
+      "type": "lookup",
+      "validation": "wajib bila ada_pengganti=true; non-bentrok",
+      "source": "lookup master dokter",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "lampiran": {
+      "field": "lampiran",
+      "label": "Lampiran (surat cuti)",
+      "type": "file",
+      "validation": "pdf/jpg, ≤ 5MB",
+      "source": "upload",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "slot_asal_id": {
+      "field": "slot_asal_id",
+      "label": "Slot Asal",
+      "type": "lookup",
+      "validation": "slot aktif dokter",
+      "source": "lookup jadwal",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "tgl_baru": {
+      "field": "tgl_baru",
+      "label": "Tanggal Baru",
+      "type": "date",
+      "validation": "≥ hari ini",
+      "source": "manual",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "jam_mulai_baru": {
+      "field": "jam_mulai_baru",
+      "label": "Jam Mulai Baru",
+      "type": "time",
+      "validation": "HH:mm",
+      "source": "manual",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "jam_selesai_baru": {
+      "field": "jam_selesai_baru",
+      "label": "Jam Selesai Baru",
+      "type": "time",
+      "validation": "> jam_mulai_baru",
+      "source": "manual",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "poli_baru": {
+      "field": "poli_baru",
+      "label": "Poli/Unit Baru",
+      "type": "lookup",
+      "validation": "master poli",
+      "source": "lookup",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "kuota_baru": {
+      "field": "kuota_baru",
+      "label": "Kuota Slot Baru",
+      "type": "number",
+      "validation": "> 0",
+      "source": "dari G16",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "aksi_pasien": {
+      "field": "aksi_pasien",
+      "label": "Penanganan Pasien Terdampak",
+      "type": "dropdown",
+      "validation": "auto-pindah / manual / notifikasi saja",
+      "source": "enum",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "booking_id": {
+      "field": "booking_id",
+      "label": "ID Booking/Pendaftaran",
+      "type": "lookup",
+      "validation": "booking aktif",
+      "source": "sistem (FR-007)",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "pasien_nama": {
+      "field": "pasien_nama",
+      "label": "Nama Pasien",
+      "type": "text",
+      "validation": "read-only",
+      "source": "master pasien",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "pasien_nik": {
+      "field": "pasien_nik",
+      "label": "NIK",
+      "type": "text",
+      "validation": "16 digit",
+      "source": "master pasien/Disdukcapil",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "no_kontak": {
+      "field": "no_kontak",
+      "label": "No. Kontak/WA",
+      "type": "text",
+      "validation": "format telp ID",
+      "source": "master pasien",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "slot_tujuan_id": {
+      "field": "slot_tujuan_id",
+      "label": "Slot Tujuan",
+      "type": "lookup",
+      "validation": "kuota tersedia",
+      "source": "lookup (G16)",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "status_penanganan": {
+      "field": "status_penanganan",
+      "label": "Status",
+      "type": "dropdown",
+      "validation": "menunggu/dijadwal ulang/dibatalkan",
+      "source": "enum",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "keputusan": {
+      "field": "keputusan",
+      "label": "Keputusan",
+      "type": "dropdown",
+      "validation": "Setuju/Tolak",
+      "source": "enum",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "catatan_approval": {
+      "field": "catatan_approval",
+      "label": "Catatan",
+      "type": "text",
+      "validation": "wajib bila Tolak",
+      "source": "manual",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "approver_id": {
+      "field": "approver_id",
+      "label": "Approver",
+      "type": "lookup",
+      "validation": "user role approver",
+      "source": "sesi login",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "is_rawat_inap": {
+      "field": "is_rawat_inap",
+      "label": "Pasien Rawat Inap?",
+      "type": "boolean",
+      "validation": "true/false",
+      "source": "sistem",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "spri_no": {
+      "field": "spri_no",
+      "label": "No. SPRI",
+      "type": "text",
+      "validation": "unik",
+      "source": "auto/master admisi",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "tanggal_ranap": {
+      "field": "tanggal_ranap",
+      "label": "Tanggal Ranap",
+      "type": "date",
+      "validation": "≥ tgl SPRI; format dd-MM-yyyy",
+      "source": "manual/admisi",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "jenis_kasus": {
+      "field": "jenis_kasus",
+      "label": "Jenis Kasus",
+      "type": "dropdown",
+      "validation": "enum [PERLU KONFIRMASI daftar resmi]",
+      "source": "enum",
+      "definedIn": [
+        "G15",
+        "E20"
+      ]
+    },
+    "ruang_perawatan": {
+      "field": "ruang_perawatan",
+      "label": "Ruang Perawatan",
+      "type": "dropdown",
+      "validation": "**NICU/PICU, Umum, ICU, ICCU, VK, Isolasi**",
+      "source": "enum/master ruang",
+      "definedIn": [
+        "G15",
+        "E20"
+      ]
+    },
+    "dpjp_id": {
+      "field": "dpjp_id",
+      "label": "DPJP",
+      "type": "lookup",
+      "validation": "master dokter; non-bentrok jadwal",
+      "source": "lookup",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "tgl_ranap": {
+      "field": "tgl_ranap",
+      "label": "Rencana Tanggal Rawat Inap",
+      "type": "date",
+      "validation": ">= tgl penerbitan SPRI",
+      "source": "manual / default hari ini",
+      "definedIn": [
+        "E20"
+      ]
+    },
+    "kode_tindakan": {
+      "field": "kode_tindakan",
+      "label": "Kode Tindakan",
+      "type": "text",
+      "validation": "unik, maks 20 char, alfanumerik",
+      "source": "manual/auto-suggest",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "nama_tindakan": {
+      "field": "nama_tindakan",
+      "label": "Nama Tindakan",
+      "type": "text",
+      "validation": "maks 150 char",
+      "source": "manual",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "kelompok": {
+      "field": "kelompok",
+      "label": "Kelompok/Kategori",
+      "type": "dropdown",
+      "validation": "dari master kategori tindakan",
+      "source": "lookup",
+      "definedIn": [
+        "A10",
+        "A14"
+      ]
+    },
+    "jenis_tindakan": {
+      "field": "jenis_tindakan",
+      "label": "Jenis Tindakan",
+      "type": "dropdown",
+      "validation": "mis. medis/operatif/non-operatif/penunjang",
+      "source": "enum",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "smf": {
+      "field": "smf",
+      "label": "Spesialisasi/SMF",
+      "type": "dropdown(lookup)",
+      "validation": "dari master A23",
+      "source": "lookup A23",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "kode_procedure": {
+      "field": "kode_procedure",
+      "label": "Kode Procedure (ICD-9-CM)",
+      "type": "lookup",
+      "validation": "valid di master A13",
+      "source": "lookup A13",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "tarif_jasa_sarana": {
+      "field": "tarif_jasa_sarana",
+      "label": "Jasa Sarana",
+      "type": "number",
+      "validation": "≥ 0, format Rp",
+      "source": "manual",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "tarif_jasa_pelayanan": {
+      "field": "tarif_jasa_pelayanan",
+      "label": "Jasa Pelayanan",
+      "type": "number",
+      "validation": "≥ 0, format Rp",
+      "source": "manual",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "total_tarif": {
+      "field": "total_tarif",
+      "label": "Total Tarif",
+      "type": "number",
+      "validation": "auto = sarana+pelayanan",
+      "source": "auto-hitung",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "kode_bpjs": {
+      "field": "kode_bpjs",
+      "label": "Kode Tindakan BPJS V2",
+      "type": "lookup",
+      "validation": "dari referensi BPJS V2",
+      "source": "integrasi BPJS V2",
+      "definedIn": [
+        "A10",
+        "A14"
+      ]
+    },
+    "nama_bpjs": {
+      "field": "nama_bpjs",
+      "label": "Nama Tindakan BPJS",
+      "type": "text",
+      "validation": "read-only",
+      "source": "integrasi BPJS V2",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "status_mapping": {
+      "field": "status_mapping",
+      "label": "Status Mapping",
+      "type": "badge",
+      "validation": "ter-mapping / belum",
+      "source": "auto",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "tgl_sinkron": {
+      "field": "tgl_sinkron",
+      "label": "Tgl Sinkron Referensi",
+      "type": "date",
+      "validation": "–",
+      "source": "sistem",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "pakai_bhp_obat": {
+      "field": "pakai_bhp_obat",
+      "label": "Pakai BHP/Obat",
+      "type": "boolean",
+      "validation": "ya/tidak",
+      "source": "default tidak",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "jasa_medis_dokter": {
+      "field": "jasa_medis_dokter",
+      "label": "Jasa Medis Dokter",
+      "type": "number",
+      "validation": "≥ 0, format Rp",
+      "source": "manual",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "jasa_medis_perawat": {
+      "field": "jasa_medis_perawat",
+      "label": "Jasa Medis Perawat/Paramedis",
+      "type": "number",
+      "validation": "≥ 0, format Rp",
+      "source": "manual",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "jasa_medis_lain": {
+      "field": "jasa_medis_lain",
+      "label": "Jasa Medis Lainnya",
+      "type": "number",
+      "validation": "≥ 0, format Rp",
+      "source": "manual/default 0",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "komponen_bhp": {
+      "field": "komponen_bhp",
+      "label": "Komponen BHP",
+      "type": "number",
+      "validation": "= Σ subtotal BHP (tab D)",
+      "source": "auto-hitung",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "komponen_obat": {
+      "field": "komponen_obat",
+      "label": "Komponen Obat",
+      "type": "number",
+      "validation": "= Σ subtotal obat (tab D)",
+      "source": "auto-hitung",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "jenis_item": {
+      "field": "jenis_item",
+      "label": "Jenis Item",
+      "type": "dropdown",
+      "validation": "BHP / Obat",
+      "source": "enum",
+      "definedIn": [
+        "A10",
+        "A14"
+      ]
+    },
+    "item_id": {
+      "field": "item_id",
+      "label": "Item (BHP/Obat)",
+      "type": "lookup",
+      "validation": "dari master Inventory/Farmasi, item aktif",
+      "source": "lookup master BHP/Obat",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "nama_item": {
+      "field": "nama_item",
+      "label": "Nama Item",
+      "type": "text",
+      "validation": "read-only",
+      "source": "autofill dari item_id",
+      "definedIn": [
+        "A10",
+        "A14"
+      ]
+    },
+    "qty": {
+      "field": "qty",
+      "label": "Jumlah",
+      "type": "number",
+      "validation": "> 0",
+      "source": "manual",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "satuan": {
+      "field": "satuan",
+      "label": "Satuan",
+      "type": "text",
+      "validation": "dari master item",
+      "source": "autofill",
+      "definedIn": [
+        "A10",
+        "A14"
+      ]
+    },
+    "harga_satuan": {
+      "field": "harga_satuan",
+      "label": "Harga Satuan",
+      "type": "number",
+      "validation": "≥ 0, format Rp",
+      "source": "master item",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "subtotal": {
+      "field": "subtotal",
+      "label": "Subtotal",
+      "type": "number",
+      "validation": "= qty × harga_satuan",
+      "source": "auto-hitung",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "kode_icd9": {
+      "field": "kode_icd9",
+      "label": "Kode Procedure (ICD-9-CM)",
+      "type": "lookup",
+      "validation": "valid di master A13",
+      "source": "lookup A13",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "nama_icd9": {
+      "field": "nama_icd9",
+      "label": "Nama Procedure (ICD-9-CM)",
+      "type": "text",
+      "validation": "read-only",
+      "source": "autofill A13",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "harga_satuan_snapshot": {
+      "field": "harga_satuan_snapshot",
+      "label": "Harga Satuan (Snapshot)",
+      "type": "number",
+      "validation": "≥ 0, format Rp",
+      "source": "**snapshot dari master saat simpan**",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "tgl_snapshot_harga": {
+      "field": "tgl_snapshot_harga",
+      "label": "Tgl Snapshot Harga",
+      "type": "date",
+      "validation": "–",
+      "source": "sistem saat simpan",
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "kode_item": {
+      "field": "kode_item",
+      "label": "Kode Pemeriksaan",
+      "type": "text",
+      "validation": "unik, maks 20 char, alfanumerik",
+      "source": "manual/auto-generate",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "jenis_spesimen": {
+      "field": "jenis_spesimen",
+      "label": "Jenis Spesimen",
+      "type": "dropdown",
+      "validation": "enum: darah/urin/feses/serum/plasma/sputum/swab/lainnya",
+      "source": "manual",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "satuan_hasil": {
+      "field": "satuan_hasil",
+      "label": "Satuan Hasil",
+      "type": "dropdown/text",
+      "validation": "utk item tunggal numerik",
+      "source": "manual",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "metode": {
+      "field": "metode",
+      "label": "Metode Pemeriksaan",
+      "type": "text",
+      "validation": "maks 100 char",
+      "source": "manual",
+      "definedIn": [
+        "A14",
+        "G3"
+      ]
+    },
+    "tat_nilai": {
+      "field": "tat_nilai",
+      "label": "Turn Around Time",
+      "type": "number",
+      "validation": "> 0",
+      "source": "manual",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "tat_satuan": {
+      "field": "tat_satuan",
+      "label": "Satuan TAT",
+      "type": "dropdown",
+      "validation": "enum: menit/jam/hari",
+      "source": "manual",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "persiapan_pasien": {
+      "field": "persiapan_pasien",
+      "label": "Persiapan Pasien",
+      "type": "text",
+      "validation": "maks 255 char",
+      "source": "manual",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "tarif": {
+      "field": "tarif",
+      "label": "Tarif",
+      "type": "number",
+      "validation": ">= 0, format Rupiah",
+      "source": "manual",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "tgl_berlaku_tarif": {
+      "field": "tgl_berlaku_tarif",
+      "label": "Tarif Berlaku Mulai",
+      "type": "date",
+      "validation": ">= hari ini",
+      "source": "manual",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "loinc_code": {
+      "field": "loinc_code",
+      "label": "Kode SATUSEHAT (LOINC)",
+      "type": "lookup",
+      "validation": "format LOINC, dari pencarian",
+      "source": "integrasi SATUSEHAT",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "loinc_display": {
+      "field": "loinc_display",
+      "label": "LOINC Display",
+      "type": "text",
+      "validation": "—",
+      "source": "integrasi SATUSEHAT",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "loinc_system": {
+      "field": "loinc_system",
+      "label": "LOINC System URI",
+      "type": "text",
+      "validation": "http://loinc.org",
+      "source": "integrasi SATUSEHAT",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "nama_parameter": {
+      "field": "nama_parameter",
+      "label": "Nama Parameter",
+      "type": "text",
+      "validation": "maks 100 char",
+      "source": "manual",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "tipe_nilai": {
+      "field": "tipe_nilai",
+      "label": "Tipe Nilai",
+      "type": "dropdown",
+      "validation": "enum: numerik/teks/positif-negatif",
+      "source": "manual",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "rujukan_min": {
+      "field": "rujukan_min",
+      "label": "Nilai Rujukan Min",
+      "type": "number",
+      "validation": "numerik",
+      "source": "manual",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "rujukan_max": {
+      "field": "rujukan_max",
+      "label": "Nilai Rujukan Maks",
+      "type": "number",
+      "validation": ">= min",
+      "source": "manual",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "kategori_kelamin": {
+      "field": "kategori_kelamin",
+      "label": "Kategori Jenis Kelamin",
+      "type": "dropdown",
+      "validation": "enum: L/P/Semua",
+      "source": "default Semua",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "usia_min": {
+      "field": "usia_min",
+      "label": "Usia Min (thn)",
+      "type": "number",
+      "validation": ">= 0",
+      "source": "manual",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "usia_max": {
+      "field": "usia_max",
+      "label": "Usia Maks (thn)",
+      "type": "number",
+      "validation": ">= usia_min",
+      "source": "manual",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "loinc_code_param": {
+      "field": "loinc_code_param",
+      "label": "LOINC Parameter",
+      "type": "lookup",
+      "validation": "format LOINC",
+      "source": "integrasi SATUSEHAT",
+      "definedIn": [
+        "A14"
+      ]
+    },
+    "role_id": {
+      "field": "role_id",
+      "label": "ID Role",
+      "type": "text",
+      "validation": "auto, unik",
+      "source": "auto-generate",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "role_name": {
+      "field": "role_name",
+      "label": "Nama Role",
+      "type": "text",
+      "validation": "unik (case-insensitive), maks 50 char",
+      "source": "manual",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "role_code": {
+      "field": "role_code",
+      "label": "Kode Role",
+      "type": "text",
+      "validation": "unik, alfanumerik, maks 20 char",
+      "source": "manual/auto",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "deskripsi": {
+      "field": "deskripsi",
+      "label": "Deskripsi",
+      "type": "text",
+      "validation": "maks 255 char",
+      "source": "manual",
+      "definedIn": [
+        "A53",
+        "N2"
+      ]
+    },
+    "is_system_role": {
+      "field": "is_system_role",
+      "label": "Role Bawaan Sistem",
+      "type": "boolean",
+      "validation": "true/false",
+      "source": "default false",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "menu_id": {
+      "field": "menu_id",
+      "label": "Menu/Sub Menu",
+      "type": "lookup",
+      "validation": "dari registry A37",
+      "source": "lookup A37",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "permission_id": {
+      "field": "permission_id",
+      "label": "Permission",
+      "type": "lookup",
+      "validation": "dari katalog permission",
+      "source": "lookup A37",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "operasi": {
+      "field": "operasi",
+      "label": "Operasi",
+      "type": "dropdown(multi)",
+      "validation": "view/create/update/delete/validasi/cetak/approve",
+      "source": "enum",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "is_granted": {
+      "field": "is_granted",
+      "label": "Diizinkan",
+      "type": "boolean",
+      "validation": "true/false",
+      "source": "default false",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "role_ids": {
+      "field": "role_ids",
+      "label": "Role",
+      "type": "dropdown(multi)",
+      "validation": "minimal 1 role aktif",
+      "source": "lookup master Role",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "berlaku_mulai": {
+      "field": "berlaku_mulai",
+      "label": "Berlaku Mulai",
+      "type": "date",
+      "validation": ">= hari ini",
+      "source": "manual",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "jumlah_permission": {
+      "field": "jumlah_permission",
+      "label": "Jumlah Permission",
+      "type": "number",
+      "validation": "**>= 1** (validasi saat simpan)",
+      "source": "terhitung dari matriks",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "action_id": {
+      "field": "action_id",
+      "label": "Action",
+      "type": "lookup",
+      "validation": "dari registry action A37",
+      "source": "lookup A37",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "action_key": {
+      "field": "action_key",
+      "label": "Kode Action",
+      "type": "text",
+      "validation": "enum/registry (mis. view, create, update, delete, validasi, cetak, approve, terbitkan_sep, batalkan_sep, kirim_satusehat)",
+      "source": "A37",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "scope_id": {
+      "field": "scope_id",
+      "label": "ID Scope",
+      "type": "text",
+      "validation": "auto, unik",
+      "source": "auto-generate",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "owner_type": {
+      "field": "owner_type",
+      "label": "Lekat Pada",
+      "type": "dropdown",
+      "validation": "role / user",
+      "source": "enum",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "owner_id": {
+      "field": "owner_id",
+      "label": "Role/User",
+      "type": "lookup",
+      "validation": "role aktif / user A1",
+      "source": "lookup",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "scope_type": {
+      "field": "scope_type",
+      "label": "Jenis Scope",
+      "type": "dropdown",
+      "validation": "semua / unit_poli / dpjp / instalasi",
+      "source": "enum",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "scope_values": {
+      "field": "scope_values",
+      "label": "Nilai Scope",
+      "type": "multi-lookup",
+      "validation": "dari master Unit (A3)/DPJP/Instalasi",
+      "source": "lookup",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "enforce_level": {
+      "field": "enforce_level",
+      "label": "Penegakan",
+      "type": "dropdown",
+      "validation": "server-side (default)",
+      "source": "enum",
+      "definedIn": [
+        "A53"
+      ]
+    },
+    "kode_bangsal": {
+      "field": "kode_bangsal",
+      "label": "Kode Bangsal",
+      "type": "text",
+      "validation": "unik, maks 10 char, alfanumerik",
+      "source": "manual / auto-generate",
+      "definedIn": [
+        "A15"
+      ]
+    },
+    "nama_bangsal": {
+      "field": "nama_bangsal",
+      "label": "Nama Bangsal",
+      "type": "text",
+      "validation": "maks 100 char",
+      "source": "manual",
+      "definedIn": [
+        "A15"
+      ]
+    },
+    "instalasi_id": {
+      "field": "instalasi_id",
+      "label": "Instalasi Penanggung Jawab",
+      "type": "dropdown(lookup)",
+      "validation": "dari master Instalasi (A19)",
+      "source": "lookup A19",
+      "definedIn": [
+        "A15",
+        "A16",
+        "A43"
+      ]
+    },
+    "gedung": {
+      "field": "gedung",
+      "label": "Lokasi/Gedung",
+      "type": "text",
+      "validation": "maks 50 char",
+      "source": "manual",
+      "definedIn": [
+        "A15",
+        "A16",
+        "A17"
+      ]
+    },
+    "lantai": {
+      "field": "lantai",
+      "label": "Lantai",
+      "type": "text",
+      "validation": "maks 10 char",
+      "source": "manual",
+      "definedIn": [
+        "A15",
+        "A16",
+        "A17"
+      ]
+    },
+    "jenis_kelamin_penghuni": {
+      "field": "jenis_kelamin_penghuni",
+      "label": "Jenis Kelamin Penghuni",
+      "type": "dropdown",
+      "validation": "enum: L / P / Campur",
+      "source": "enum",
+      "definedIn": [
+        "A15",
+        "A16"
+      ]
+    },
+    "jumlah_kamar": {
+      "field": "jumlah_kamar",
+      "label": "Jumlah Kamar",
+      "type": "number",
+      "validation": ">= 0, integer",
+      "source": "autofill dari A16 / manual",
+      "definedIn": [
+        "A15"
+      ]
+    },
+    "kapasitas_tt": {
+      "field": "kapasitas_tt",
+      "label": "Kapasitas Tempat Tidur",
+      "type": "number",
+      "validation": ">= 0, integer",
+      "source": "autofill dari A17 / manual",
+      "definedIn": [
+        "A15"
+      ]
+    },
+    "flag_rawat_gabung": {
+      "field": "flag_rawat_gabung",
+      "label": "Rawat Gabung (Ibu-Bayi)",
+      "type": "boolean",
+      "validation": "true/false",
+      "source": "default false",
+      "definedIn": [
+        "A15"
+      ]
+    },
+    "status_operasional": {
+      "field": "status_operasional",
+      "label": "Status Operasional",
+      "type": "dropdown",
+      "validation": "enum: Aktif / Tutup Sementara / Nonaktif",
+      "source": "default Aktif",
+      "definedIn": [
+        "A15",
+        "A16",
+        "A17"
+      ]
+    },
+    "alasan_tutup": {
+      "field": "alasan_tutup",
+      "label": "Alasan Tutup Sementara",
+      "type": "text",
+      "validation": "maks 255 char",
+      "source": "manual",
+      "definedIn": [
+        "A15"
+      ]
+    },
+    "periode_tutup_mulai": {
+      "field": "periode_tutup_mulai",
+      "label": "Mulai Tutup",
+      "type": "date",
+      "validation": "<= periode_tutup_selesai",
+      "source": "manual",
+      "definedIn": [
+        "A15"
+      ]
+    },
+    "periode_tutup_selesai": {
+      "field": "periode_tutup_selesai",
+      "label": "Selesai Tutup",
+      "type": "date",
+      "validation": ">= periode_tutup_mulai",
+      "source": "manual",
+      "definedIn": [
+        "A15"
+      ]
+    },
+    "kode_kamar": {
+      "field": "kode_kamar",
+      "label": "Kode Kamar",
+      "type": "text",
+      "validation": "unik, maks 20 char, alfanumerik",
+      "source": "manual / auto-generate",
+      "definedIn": [
+        "A16"
+      ]
+    },
+    "nama_kamar": {
+      "field": "nama_kamar",
+      "label": "Nama / Nomor Kamar",
+      "type": "text",
+      "validation": "maks 50 char",
+      "source": "manual",
+      "definedIn": [
+        "A16"
+      ]
+    },
+    "jenis_kamar": {
+      "field": "jenis_kamar",
+      "label": "Jenis Kamar",
+      "type": "dropdown",
+      "validation": "enum: Standar/Isolasi/VIP/Intensif",
+      "source": "manual",
+      "definedIn": [
+        "A16"
+      ]
+    },
+    "kapasitas_bed": {
+      "field": "kapasitas_bed",
+      "label": "Kapasitas Tempat Tidur",
+      "type": "number",
+      "validation": "integer > 0",
+      "source": "manual",
+      "definedIn": [
+        "A16"
+      ]
+    },
+    "fasilitas": {
+      "field": "fasilitas",
+      "label": "Fasilitas Khusus",
+      "type": "text/multiselect",
+      "validation": "maks 255 char",
+      "source": "manual",
+      "definedIn": [
+        "A16"
+      ]
+    },
+    "id_jadwal": {
+      "field": "id_jadwal",
+      "label": "ID Jadwal",
+      "type": "text",
+      "validation": "auto, unik",
+      "source": "auto-generate",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "tipe_jadwal": {
+      "field": "tipe_jadwal",
+      "label": "Tipe Jadwal",
+      "type": "dropdown",
+      "validation": "Reguler/Tambahan(insidental)",
+      "source": "enum",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "pola_berulang": {
+      "field": "pola_berulang",
+      "label": "Pola Berulang?",
+      "type": "boolean",
+      "validation": "true/false",
+      "source": "default true",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "hari": {
+      "field": "hari",
+      "label": "Hari Praktik",
+      "type": "dropdown(multi)",
+      "validation": "Senin–Minggu",
+      "source": "enum",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "tgl_spesifik": {
+      "field": "tgl_spesifik",
+      "label": "Tanggal Praktik",
+      "type": "date(multi)",
+      "validation": "≥ hari ini",
+      "source": "manual",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "sesi": {
+      "field": "sesi",
+      "label": "Sesi",
+      "type": "dropdown",
+      "validation": "Pagi/Siang/Sore/Malam",
+      "source": "enum",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "jam_mulai": {
+      "field": "jam_mulai",
+      "label": "Jam Mulai",
+      "type": "time",
+      "validation": "HH:mm",
+      "source": "manual",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "jam_selesai": {
+      "field": "jam_selesai",
+      "label": "Jam Selesai",
+      "type": "time",
+      "validation": "> jam_mulai (BR-010)",
+      "source": "manual",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "kuota": {
+      "field": "kuota",
+      "label": "Kuota Slot",
+      "type": "number",
+      "validation": "> 0 (BR-012)",
+      "source": "manual / default G16",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "ruangan": {
+      "field": "ruangan",
+      "label": "Ruangan",
+      "type": "lookup",
+      "validation": "master ruangan",
+      "source": "lookup",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "tgl_berlaku_mulai": {
+      "field": "tgl_berlaku_mulai",
+      "label": "Berlaku Mulai",
+      "type": "date",
+      "validation": "≥ hari ini",
+      "source": "manual",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "tgl_berlaku_selesai": {
+      "field": "tgl_berlaku_selesai",
+      "label": "Berlaku Sampai",
+      "type": "date",
+      "validation": "≥ tgl_berlaku_mulai",
+      "source": "manual",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "status_jadwal": {
+      "field": "status_jadwal",
+      "label": "Status",
+      "type": "dropdown",
+      "validation": "Aktif/Nonaktif/Menunggu Approval",
+      "source": "enum",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "objek_approval": {
+      "field": "objek_approval",
+      "label": "Objek",
+      "type": "dropdown",
+      "validation": "Input Jadwal / Libur / Reschedule / Batal",
+      "source": "enum",
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "q": {
+      "field": "q",
+      "label": "Cari Dokumen",
+      "type": "text",
+      "validation": "maks 100 char",
+      "source": "manual",
+      "definedIn": [
+        "D6"
+      ]
+    },
+    "f_jenis": {
+      "field": "f_jenis",
+      "label": "Jenis Dokumen",
+      "type": "dropdown",
+      "validation": "dari master jenis dokumen",
+      "source": "lookup",
+      "definedIn": [
+        "D6"
+      ]
+    },
+    "f_status": {
+      "field": "f_status",
+      "label": "Status",
+      "type": "dropdown",
+      "validation": "enum: Belum/Draft/Final",
+      "source": "enum",
+      "definedIn": [
+        "D6"
+      ]
+    },
+    "f_tgl_dari": {
+      "field": "f_tgl_dari",
+      "label": "Tanggal Dari",
+      "type": "date",
+      "validation": "<= tgl_sampai",
+      "source": "manual",
+      "definedIn": [
+        "D6"
+      ]
+    },
+    "f_tgl_sampai": {
+      "field": "f_tgl_sampai",
+      "label": "Tanggal Sampai",
+      "type": "date",
+      "validation": ">= tgl_dari, <= hari ini",
+      "source": "manual",
+      "definedIn": [
+        "D6"
+      ]
+    },
+    "jenis_dokumen_id": {
+      "field": "jenis_dokumen_id",
+      "label": "Jenis Dokumen",
+      "type": "lookup",
+      "validation": "dari master jenis dokumen",
+      "source": "lookup",
+      "definedIn": [
+        "D6"
+      ]
+    },
+    "kunjungan_id": {
+      "field": "kunjungan_id",
+      "label": "No. Kunjungan",
+      "type": "lookup",
+      "validation": "kunjungan RJ aktif",
+      "source": "auto (konteks)",
+      "definedIn": [
+        "D6"
+      ]
+    },
+    "konfirmasi_final": {
+      "field": "konfirmasi_final",
+      "label": "Tandai Final",
+      "type": "boolean",
+      "validation": "true→kunci dokumen",
+      "source": "manual",
+      "definedIn": [
+        "D6"
+      ]
+    },
+    "alasan_addendum": {
+      "field": "alasan_addendum",
+      "label": "Alasan Addendum",
+      "type": "text",
+      "validation": "wajib bila edit dokumen Final",
+      "source": "manual",
+      "definedIn": [
+        "D6"
+      ]
+    },
+    "obat_id": {
+      "field": "obat_id",
+      "label": "Nama Obat",
+      "type": "lookup",
+      "validation": "dari formularium aktif",
+      "source": "master farmasi",
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "sediaan": {
+      "field": "sediaan",
+      "label": "Bentuk Sediaan",
+      "type": "dropdown",
+      "validation": "enum (tablet/kapsul/sirup/injeksi/...)",
+      "source": "master obat",
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "dosis": {
+      "field": "dosis",
+      "label": "Dosis",
+      "type": "text/number",
+      "validation": "> 0; chips/manual",
+      "source": "manual/chips",
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "frekuensi": {
+      "field": "frekuensi",
+      "label": "Frekuensi",
+      "type": "dropdown",
+      "validation": "enum (1x1, 2x1, 3x1, 1x sehari, prn,...)",
+      "source": "manual",
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "rute": {
+      "field": "rute",
+      "label": "Rute Pemberian",
+      "type": "dropdown",
+      "validation": "enum (oral/IV/IM/SC/topikal/...)",
+      "source": "master",
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "jumlah": {
+      "field": "jumlah",
+      "label": "Jumlah",
+      "type": "number",
+      "validation": "integer > 0; ≤ stok bila filter ON",
+      "source": "manual",
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "durasi": {
+      "field": "durasi",
+      "label": "Durasi Terapi (hari)",
+      "type": "number",
+      "validation": "integer > 0",
+      "source": "manual",
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "aturan_pakai": {
+      "field": "aturan_pakai",
+      "label": "Aturan Pakai",
+      "type": "text",
+      "validation": "maks 255 char",
+      "source": "manual",
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "aturan_lainnya": {
+      "field": "aturan_lainnya",
+      "label": "Aturan Lainnya",
+      "type": "text",
+      "validation": "maks 255 char",
+      "source": "manual",
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "catatan_khusus": {
+      "field": "catatan_khusus",
+      "label": "Catatan Khusus",
+      "type": "text",
+      "validation": "maks 255 char",
+      "source": "manual",
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "nama_racikan": {
+      "field": "nama_racikan",
+      "label": "Nama Racikan",
+      "type": "text",
+      "validation": "maks 100 char",
+      "source": "manual",
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "metode_racik": {
+      "field": "metode_racik",
+      "label": "Metode",
+      "type": "dropdown",
+      "validation": "DTD / Non-DTD",
+      "source": "manual",
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "jumlah_racik": {
+      "field": "jumlah_racik",
+      "label": "Jumlah (bungkus/kapsul)",
+      "type": "number",
+      "validation": "integer > 0",
+      "source": "manual",
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "aturan_racik": {
+      "field": "aturan_racik",
+      "label": "Aturan Pakai",
+      "type": "text",
+      "validation": "maks 255 char",
+      "source": "manual",
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "rute_racik": {
+      "field": "rute_racik",
+      "label": "Rute",
+      "type": "dropdown",
+      "validation": "enum rute",
+      "source": "master",
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "bahan_obat_id": {
+      "field": "bahan_obat_id",
+      "label": "Obat/Bahan",
+      "type": "lookup",
+      "validation": "dari formularium",
+      "source": "master farmasi",
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "jenis_sediaan_bahan": {
+      "field": "jenis_sediaan_bahan",
+      "label": "Jenis Sediaan Bahan",
+      "type": "dropdown",
+      "validation": "enum",
+      "source": "master",
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "dosis_bahan": {
+      "field": "dosis_bahan",
+      "label": "Dosis (DTD)",
+      "type": "text/number",
+      "validation": "wajib bila DTD; chips/manual",
+      "source": "chips",
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "jumlah_bahan": {
+      "field": "jumlah_bahan",
+      "label": "Jumlah Bahan (Non-DTD)",
+      "type": "number",
+      "validation": "wajib bila Non-DTD; > 0",
+      "source": "manual",
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "alkes_id": {
+      "field": "alkes_id",
+      "label": "Nama Alkes",
+      "type": "lookup",
+      "validation": "dari master alkes",
+      "source": "master farmasi",
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "jumlah_alkes": {
+      "field": "jumlah_alkes",
+      "label": "Jumlah",
+      "type": "number",
+      "validation": "integer > 0",
+      "source": "manual",
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "catatan_alkes": {
+      "field": "catatan_alkes",
+      "label": "Catatan",
+      "type": "text",
+      "validation": "maks 255 char",
+      "source": "manual",
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "flag_iter": {
+      "field": "flag_iter",
+      "label": "Iter (Berulang)",
+      "type": "boolean",
+      "validation": "default false",
+      "source": "manual",
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "jumlah_iter": {
+      "field": "jumlah_iter",
+      "label": "Jumlah Iter",
+      "type": "number",
+      "validation": "wajib bila iter; integer > 0",
+      "source": "manual",
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "flag_prb": {
+      "field": "flag_prb",
+      "label": "PRB",
+      "type": "boolean",
+      "validation": "default false",
+      "source": "manual",
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "flag_obat_pulang": {
+      "field": "flag_obat_pulang",
+      "label": "Obat Dibawa Pulang",
+      "type": "boolean",
+      "validation": "default false",
+      "source": "manual",
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "template_id": {
+      "field": "template_id",
+      "label": "ID Template",
+      "type": "auto",
+      "validation": "unik",
+      "source": "auto-generate",
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "nama_template": {
+      "field": "nama_template",
+      "label": "Nama Resep Default",
+      "type": "text",
+      "validation": "maks 100 char, unik per dokter",
+      "source": "manual",
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "diagnosa_terkait": {
+      "field": "diagnosa_terkait",
+      "label": "Diagnosa (opsional)",
+      "type": "lookup icd-10",
+      "validation": "kode ICD-10 valid",
+      "source": "master ICD-10",
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "items": {
+      "field": "items",
+      "label": "Daftar Item",
+      "type": "array",
+      "validation": "≥ 1 item (non-racik/racik)",
+      "source": "dari staging saat simpan",
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "dibuat_pada": {
+      "field": "dibuat_pada",
+      "label": "Dibuat",
+      "type": "timestamp",
+      "validation": "auto",
+      "source": "sistem",
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "kode_bed": {
+      "field": "kode_bed",
+      "label": "Kode Bed",
+      "type": "text",
+      "validation": "unik se-RS, maks 20 char",
+      "source": "manual",
+      "definedIn": [
+        "A17"
+      ]
+    },
+    "nomor_bed": {
+      "field": "nomor_bed",
+      "label": "Nomor/Identitas Bed",
+      "type": "text",
+      "validation": "maks 20 char",
+      "source": "manual",
+      "definedIn": [
+        "A17"
+      ]
+    },
+    "kamar_id": {
+      "field": "kamar_id",
+      "label": "Kamar Induk",
+      "type": "dropdown(lookup)",
+      "validation": "dari master Kamar (A16), terfilter by bangsal",
+      "source": "lookup A16",
+      "definedIn": [
+        "A17"
+      ]
+    },
+    "jenis_bed": {
+      "field": "jenis_bed",
+      "label": "Jenis Bed",
+      "type": "dropdown",
+      "validation": "enum: reguler/isolasi/intensif/observasi",
+      "source": "enum",
+      "definedIn": [
+        "A17"
+      ]
+    },
+    "kode_kelas_bpjs": {
+      "field": "kode_kelas_bpjs",
+      "label": "Kode Kelas BPJS (Aplicares)",
+      "type": "dropdown",
+      "validation": "enum kode kelas BPJS",
+      "source": "mapping BPJS Aplicares",
+      "definedIn": [
+        "A17"
+      ]
+    },
+    "kode_ruang_aplicares": {
+      "field": "kode_ruang_aplicares",
+      "label": "Kode Ruang Aplicares",
+      "type": "text",
+      "validation": "sesuai referensi BPJS",
+      "source": "integrasi BPJS",
+      "definedIn": [
+        "A17"
+      ]
+    },
+    "kode_tarif": {
+      "field": "kode_tarif",
+      "label": "Kode Tarif",
+      "type": "text",
+      "validation": "unik, maks 20 char, alfanumerik",
+      "source": "auto-generate / manual",
+      "definedIn": [
+        "A43"
+      ]
+    },
+    "nama_tarif": {
+      "field": "nama_tarif",
+      "label": "Nama/Jenis Tarif",
+      "type": "text",
+      "validation": "maks 100 char",
+      "source": "manual",
+      "definedIn": [
+        "A43"
+      ]
+    },
+    "kategori_penjamin": {
+      "field": "kategori_penjamin",
+      "label": "Kategori Penjamin",
+      "type": "dropdown(lookup)",
+      "validation": "dari master Tipe Penjamin (A20)",
+      "source": "lookup A20",
+      "definedIn": [
+        "A43",
+        "N1"
+      ]
+    },
+    "instansi_rekanan_id": {
+      "field": "instansi_rekanan_id",
+      "label": "Instansi Rekanan",
+      "type": "dropdown(lookup)",
+      "validation": "dari master Instansi Rekanan (A8)",
+      "source": "lookup A8",
+      "definedIn": [
+        "A43"
+      ]
+    },
+    "tarif_per_hari": {
+      "field": "tarif_per_hari",
+      "label": "Tarif Akomodasi / Hari",
+      "type": "number",
+      "validation": "≥ 0, format Rupiah, integer",
+      "source": "manual",
+      "definedIn": [
+        "A43"
+      ]
+    },
+    "berlaku_dari": {
+      "field": "berlaku_dari",
+      "label": "Berlaku Dari",
+      "type": "date",
+      "validation": "format tgl",
+      "source": "manual",
+      "definedIn": [
+        "A43"
+      ]
+    },
+    "berlaku_sampai": {
+      "field": "berlaku_sampai",
+      "label": "Berlaku Sampai",
+      "type": "date",
+      "validation": "≥ berlaku_dari",
+      "source": "manual/auto",
+      "definedIn": [
+        "A43"
+      ]
+    },
+    "komponen_nama": {
+      "field": "komponen_nama",
+      "label": "Komponen",
+      "type": "dropdown",
+      "validation": "enum: Jasa Sarana/Jasa Pelayanan/Akomodasi/Lain",
+      "source": "manual",
+      "definedIn": [
+        "A43"
+      ]
+    },
+    "komponen_nilai": {
+      "field": "komponen_nilai",
+      "label": "Nilai Komponen",
+      "type": "number",
+      "validation": "≥ 0, Rupiah",
+      "source": "manual",
+      "definedIn": [
+        "A43"
+      ]
+    },
+    "tipe_ruangan": {
+      "field": "tipe_ruangan",
+      "label": "Tipe Ruangan",
+      "type": "dropdown",
+      "validation": "enum: Reguler / Intensive Care / Isolasi / Transit / VK",
+      "source": "enum",
+      "definedIn": [
+        "A43"
+      ]
+    },
+    "sub_kelas": {
+      "field": "sub_kelas",
+      "label": "Sub Kelas",
+      "type": "dropdown",
+      "validation": "enum sesuai RS",
+      "source": "manual",
+      "definedIn": [
+        "A43"
+      ]
+    },
+    "komponen_tarif": {
+      "field": "komponen_tarif",
+      "label": "Komponen Tarif",
+      "type": "text/list",
+      "validation": "maks 255 char/komponen",
+      "source": "manual",
+      "definedIn": [
+        "A43"
+      ]
+    },
+    "tipe_penjamin_id": {
+      "field": "tipe_penjamin_id",
+      "label": "Kategori Penjamin",
+      "type": "dropdown(lookup)",
+      "validation": "dari master Tipe Penjamin (A20)",
+      "source": "lookup A20 / default Umum",
+      "definedIn": [
+        "A43"
+      ]
+    },
+    "tgl_efektif": {
+      "field": "tgl_efektif",
+      "label": "Tanggal Efektif Mulai",
+      "type": "date",
+      "validation": "tanggal valid; boleh > hari ini",
+      "source": "manual",
+      "definedIn": [
+        "A43"
+      ]
+    },
+    "tgl_berakhir": {
+      "field": "tgl_berakhir",
+      "label": "Tanggal Berakhir",
+      "type": "date",
+      "validation": ">= tgl_efektif",
+      "source": "manual",
+      "definedIn": [
+        "A43"
+      ]
+    },
+    "jenis_layanan_ruangan": {
+      "field": "jenis_layanan_ruangan",
+      "label": "Jenis Layanan/Ruangan",
+      "type": "dropdown",
+      "validation": "enum kanonik: Reguler / Intensive Care / Isolasi / Transit / VK",
+      "source": "enum",
+      "definedIn": [
+        "A43"
+      ]
+    },
+    "order_id": {
+      "field": "order_id",
+      "label": "Order ID",
+      "type": "text",
+      "validation": "unik, auto-generate",
+      "source": "auto",
+      "definedIn": [
+        "E12"
+      ]
+    },
+    "jenis_order": {
+      "field": "jenis_order",
+      "label": "Jenis Order",
+      "type": "enum",
+      "validation": "Baru/Lanjut/Stop",
+      "source": "sistem",
+      "definedIn": [
+        "E12"
+      ]
+    },
+    "flag_urgent": {
+      "field": "flag_urgent",
+      "label": "Flag Prioritas",
+      "type": "enum",
+      "validation": "NULL/IGD_TRANSFER/DISCHARGE",
+      "source": "sistem (BR-006)",
+      "definedIn": [
+        "E12"
+      ]
+    },
+    "status_order": {
+      "field": "status_order",
+      "label": "Status",
+      "type": "enum",
+      "validation": "Pending/Verified/...",
+      "source": "default Pending",
+      "definedIn": [
+        "E12"
+      ]
+    },
+    "created_by_created_at": {
+      "field": "created_by_created_at",
+      "label": "Pembuat / Waktu",
+      "type": "text/datetime",
+      "validation": "auto",
+      "source": "sistem",
+      "definedIn": [
+        "E12"
+      ]
+    },
+    "tanggal_order": {
+      "field": "tanggal_order",
+      "label": "Tanggal Order",
+      "type": "date",
+      "validation": "tanggal kalender RS",
+      "source": "sistem",
+      "definedIn": [
+        "E12"
+      ]
+    },
+    "status_obat_item": {
+      "field": "status_obat_item",
+      "label": "Status Item",
+      "type": "enum",
+      "validation": "Aktif/Stop/Selesai",
+      "source": "sistem",
+      "definedIn": [
+        "E12"
+      ]
+    },
+    "override_duplikat": {
+      "field": "override_duplikat",
+      "label": "Override Duplikat",
+      "type": "boolean",
+      "validation": "true bila dokter override BR-012",
+      "source": "sistem",
+      "definedIn": [
+        "E12"
+      ]
+    },
+    "alasan_override": {
+      "field": "alasan_override",
+      "label": "Alasan Klinis Override",
+      "type": "text",
+      "validation": "wajib bila override_duplikat=true; maks 300 char",
+      "source": "manual",
+      "definedIn": [
+        "E12"
+      ]
+    },
+    "kode_icd_10_primer": {
+      "field": "kode_icd_10_primer",
+      "label": "Kode ICD-10 (Primer)",
+      "type": "search/select",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G8"
+      ]
+    },
+    "kode_icd_9_cm": {
+      "field": "kode_icd_9_cm",
+      "label": "Kode ICD-9-CM",
+      "type": "search/select",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G8"
+      ]
+    },
+    "jenis_diagnosa": {
+      "field": "jenis_diagnosa",
+      "label": "Jenis Diagnosa",
+      "type": "dropdown",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G8"
+      ]
+    },
+    "kode_unspecified": {
+      "field": "kode_unspecified",
+      "label": "Kode Unspecified",
+      "type": "search/select",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G8"
+      ]
+    },
+    "berkas_pendukung": {
+      "field": "berkas_pendukung",
+      "label": "Berkas Pendukung",
+      "type": "upload",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G8"
+      ]
+    },
+    "resume_medis_final": {
+      "field": "resume_medis_final",
+      "label": "Resume Medis Final",
+      "type": "checklist item",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G8"
+      ]
+    },
+    "catatan_re_koding": {
+      "field": "catatan_re_koding",
+      "label": "Catatan Re-koding",
+      "type": "text",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G8"
+      ]
+    },
+    "sep_no": {
+      "field": "sep_no",
+      "label": "No. SEP",
+      "type": "text",
+      "validation": "–",
+      "source": "konsolidasi (SEP/Pendaftaran)",
+      "definedIn": [
+        "G8",
+        "G9"
+      ]
+    },
+    "icd10_code": {
+      "field": "icd10_code",
+      "label": "Diagnosis (ICD-10)",
+      "type": "search/select",
+      "validation": "valid di master ICD-10",
+      "source": "input manual (koder)",
+      "definedIn": [
+        "G8"
+      ]
+    },
+    "dx_type": {
+      "field": "dx_type",
+      "label": "Jenis Diagnosa",
+      "type": "dropdown",
+      "validation": "Primer/Sekunder",
+      "source": "input manual",
+      "definedIn": [
+        "G8"
+      ]
+    },
+    "icd9_code": {
+      "field": "icd9_code",
+      "label": "Tindakan (ICD-9-CM)",
+      "type": "search/select",
+      "validation": "valid di master ICD-9-CM bila diisi",
+      "source": "input manual",
+      "definedIn": [
+        "G8"
+      ]
+    },
+    "submitted_amount": {
+      "field": "submitted_amount",
+      "label": "Nilai Diajukan",
+      "type": "number (auto)",
+      "validation": "≥ 0",
+      "source": "Billing",
+      "definedIn": [
+        "G8",
+        "G9"
+      ]
+    },
+    "grouper_amount": {
+      "field": "grouper_amount",
+      "label": "Nilai Grouper",
+      "type": "number (auto)",
+      "validation": "≥ 0",
+      "source": "hasil grouping INACBG",
+      "definedIn": [
+        "G8",
+        "G9"
+      ]
+    },
+    "checklist_item": {
+      "field": "checklist_item",
+      "label": "Item Checklist",
+      "type": "checkbox",
+      "validation": "–",
+      "source": "dokumen",
+      "definedIn": [
+        "G8"
+      ]
+    },
+    "document_file": {
+      "field": "document_file",
+      "label": "Berkas Pendukung",
+      "type": "upload",
+      "validation": "PDF/gambar, maks 10MB",
+      "source": "unggah manual",
+      "definedIn": [
+        "G8"
+      ]
+    },
+    "resubmit_note": {
+      "field": "resubmit_note",
+      "label": "Catatan Re-koding",
+      "type": "text",
+      "validation": "maks 300 karakter",
+      "source": "input manual",
+      "definedIn": [
+        "G8"
+      ]
+    },
+    "periode": {
+      "field": "periode",
+      "label": "Periode",
+      "type": "dropdown/month",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G9"
+      ]
+    },
+    "file_hasil_klaim": {
+      "field": "file_hasil_klaim",
+      "label": "File Hasil Klaim",
+      "type": "upload",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G9"
+      ]
+    },
+    "header_kolom": {
+      "field": "header_kolom",
+      "label": "Header/Kolom",
+      "type": "validasi",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G9"
+      ]
+    },
+    "keputusan_tindak_lanjut": {
+      "field": "keputusan_tindak_lanjut",
+      "label": "Keputusan Tindak Lanjut",
+      "type": "dropdown",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G9"
+      ]
+    },
+    "catatan_tindak_lanjut": {
+      "field": "catatan_tindak_lanjut",
+      "label": "Catatan Tindak Lanjut",
+      "type": "text",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G9"
+      ]
+    },
+    "no_berita_acara": {
+      "field": "no_berita_acara",
+      "label": "No. Berita Acara",
+      "type": "text",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G9"
+      ]
+    },
+    "nilai_disepakati": {
+      "field": "nilai_disepakati",
+      "label": "Nilai Disepakati",
+      "type": "number",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G9"
+      ]
+    },
+    "file_ba": {
+      "field": "file_ba",
+      "label": "File BA",
+      "type": "upload",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G9"
+      ]
+    },
+    "recon_status": {
+      "field": "recon_status",
+      "label": "Status Rekonsiliasi",
+      "type": "badge",
+      "validation": "enum",
+      "source": "sistem",
+      "definedIn": [
+        "G9"
+      ]
+    },
+    "is_anomaly": {
+      "field": "is_anomaly",
+      "label": "Anomali",
+      "type": "badge",
+      "validation": "–",
+      "source": "sistem",
+      "definedIn": [
+        "G9"
+      ]
+    },
+    "has_nominal_selisih": {
+      "field": "has_nominal_selisih",
+      "label": "Ada Selisih Nominal (G8)",
+      "type": "badge",
+      "validation": "–",
+      "source": "claim_submissions",
+      "definedIn": [
+        "G9"
+      ]
+    },
+    "resubmit_count": {
+      "field": "resubmit_count",
+      "label": "Siklus",
+      "type": "text/badge",
+      "validation": "–",
+      "source": "rekonsiliasi",
+      "definedIn": [
+        "G9"
+      ]
+    },
+    "follow_up": {
+      "field": "follow_up",
+      "label": "Keputusan",
+      "type": "dropdown",
+      "validation": "enum",
+      "source": "manual",
+      "definedIn": [
+        "G9"
+      ]
+    },
+    "follow_up_note": {
+      "field": "follow_up_note",
+      "label": "Catatan",
+      "type": "text",
+      "validation": "maks 300",
+      "source": "manual",
+      "definedIn": [
+        "G9"
+      ]
+    },
+    "pasien_no_rm": {
+      "field": "pasien_no_rm",
+      "label": "Pasien (No. RM)",
+      "type": "lookup",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G3"
+      ]
+    },
+    "jenis_transaksi": {
+      "field": "jenis_transaksi",
+      "label": "Jenis Transaksi",
+      "type": "dropdown",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G3"
+      ]
+    },
+    "nominal": {
+      "field": "nominal",
+      "label": "Nominal",
+      "type": "number",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G3"
+      ]
+    },
+    "bank": {
+      "field": "bank",
+      "label": "Bank",
+      "type": "lookup (a38)",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G3",
+        "G2"
+      ]
+    },
+    "no_referensi": {
+      "field": "no_referensi",
+      "label": "No. Referensi",
+      "type": "text",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G3",
+        "G2"
+      ]
+    },
+    "penerima_refund": {
+      "field": "penerima_refund",
+      "label": "Penerima (refund)",
+      "type": "text",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G3"
+      ]
+    },
+    "alasan_void_refund": {
+      "field": "alasan_void_refund",
+      "label": "Alasan (void/refund)",
+      "type": "text",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G3"
+      ]
+    },
+    "encounter_id": {
+      "field": "encounter_id",
+      "label": "Episode",
+      "type": "lookup",
+      "validation": "episode aktif",
+      "source": "konteks/lookup",
+      "definedIn": [
+        "G3"
+      ]
+    },
+    "txn_type": {
+      "field": "txn_type",
+      "label": "Jenis Transaksi",
+      "type": "dropdown",
+      "validation": "topup / refund",
+      "source": "enum",
+      "definedIn": [
+        "G3"
+      ]
+    },
+    "amount": {
+      "field": "amount",
+      "label": "Nominal",
+      "type": "number",
+      "validation": "> 0; refund ≤ saldo",
+      "source": "manual",
+      "definedIn": [
+        "G3",
+        "G2"
+      ]
+    },
+    "method": {
+      "field": "method",
+      "label": "Metode",
+      "type": "dropdown",
+      "validation": "cash/transfer/qris/card",
+      "source": "enum",
+      "definedIn": [
+        "G3",
+        "G2"
+      ]
+    },
+    "reference_no": {
+      "field": "reference_no",
+      "label": "No. Referensi",
+      "type": "text",
+      "validation": "maks 40 char",
+      "source": "manual",
+      "definedIn": [
+        "G3",
+        "G2"
+      ]
+    },
+    "recipient_name": {
+      "field": "recipient_name",
+      "label": "Penerima",
+      "type": "text",
+      "validation": "maks 100 char",
+      "source": "manual",
+      "definedIn": [
+        "G3"
+      ]
+    },
+    "reason": {
+      "field": "reason",
+      "label": "Alasan",
+      "type": "text",
+      "validation": "maks 200 char",
+      "source": "manual",
+      "definedIn": [
+        "G3"
+      ]
+    },
+    "cashier_session_id": {
+      "field": "cashier_session_id",
+      "label": "Sesi Kasir",
+      "type": "lookup",
+      "validation": "sesi kasir aktif (G1)",
+      "source": "sistem",
+      "definedIn": [
+        "G3",
+        "G2"
+      ]
+    },
+    "metode_bayar": {
+      "field": "metode_bayar",
+      "label": "Metode Bayar",
+      "type": "dropdown",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G2"
+      ]
+    },
+    "nominal_bayar": {
+      "field": "nominal_bayar",
+      "label": "Nominal Bayar",
+      "type": "number",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G2"
+      ]
+    },
+    "nominal_deposit_dipakai": {
+      "field": "nominal_deposit_dipakai",
+      "label": "Nominal Deposit Dipakai",
+      "type": "number",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G2"
+      ]
+    },
+    "alasan_diskon": {
+      "field": "alasan_diskon",
+      "label": "Alasan Diskon",
+      "type": "text",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G2"
+      ]
+    },
+    "alasan_refund_void": {
+      "field": "alasan_refund_void",
+      "label": "Alasan Refund/Void",
+      "type": "text",
+      "validation": "",
+      "source": "",
+      "definedIn": [
+        "G2"
+      ]
+    },
+    "invoice_id": {
+      "field": "invoice_id",
+      "label": "Tagihan",
+      "type": "lookup",
+      "validation": "tagihan status FINAL/PARTIAL",
+      "source": "konteks tagihan",
+      "definedIn": [
+        "G2"
+      ]
+    },
+    "deposit_amount": {
+      "field": "deposit_amount",
+      "label": "Deposit Dipakai",
+      "type": "number",
+      "validation": "≤ saldo deposit (G3) & ≤ sisa",
+      "source": "lookup G3",
+      "definedIn": [
+        "G2"
+      ]
+    },
+    "discount_value": {
+      "field": "discount_value",
+      "label": "Diskon",
+      "type": "number",
+      "validation": "≥ 0; > batas → approval (P2)",
+      "source": "manual",
+      "definedIn": [
+        "G2"
+      ]
+    },
+    "discount_reason": {
+      "field": "discount_reason",
+      "label": "Alasan Diskon",
+      "type": "text",
+      "validation": "maks 200 char",
+      "source": "manual",
+      "definedIn": [
+        "G2"
+      ]
+    },
+    "kode_konfigurasi": {
+      "field": "kode_konfigurasi",
+      "label": "Kode Konfigurasi",
+      "type": "text",
+      "validation": "unik, auto-generate, maks 20 char",
+      "source": "auto-generate",
+      "definedIn": [
+        "N1",
+        "N3"
+      ]
+    },
+    "nama_konfigurasi": {
+      "field": "nama_konfigurasi",
+      "label": "Nama Konfigurasi",
+      "type": "text",
+      "validation": "maks 100 char",
+      "source": "manual",
+      "definedIn": [
+        "N1",
+        "N3"
+      ]
+    },
+    "unit_pelayanan": {
+      "field": "unit_pelayanan",
+      "label": "Unit Pelayanan",
+      "type": "dropdown",
+      "validation": "enum: Rawat Jalan / IGD",
+      "source": "enum",
+      "definedIn": [
+        "N1"
+      ]
+    },
+    "tarif_layanan_id": {
+      "field": "tarif_layanan_id",
+      "label": "Tarif Layanan",
+      "type": "dropdown (lookup/relasi)",
+      "validation": "dari Master Data Tarif Layanan",
+      "source": "lookup Master Tarif Layanan",
+      "definedIn": [
+        "N1"
+      ]
+    },
+    "prioritas": {
+      "field": "prioritas",
+      "label": "Prioritas",
+      "type": "number",
+      "validation": "integer, 1-99, [PERLU KONFIRMASI] arah urutan (kecil=tinggi atau besar=tinggi)",
+      "source": "manual",
+      "definedIn": [
+        "N1"
+      ]
+    },
+    "tanggal_berlaku": {
+      "field": "tanggal_berlaku",
+      "label": "Tanggal Berlaku Mulai",
+      "type": "date",
+      "validation": ">= hari ini kecuali diedit",
+      "source": "manual, default hari ini",
+      "definedIn": [
+        "N1"
+      ]
+    },
+    "nama_rs": {
+      "field": "nama_rs",
+      "label": "Nama Rumah Sakit",
+      "type": "text",
+      "validation": "maks 150 char",
+      "source": "manual",
+      "definedIn": [
+        "N4"
+      ]
+    },
+    "logo_rs": {
+      "field": "logo_rs",
+      "label": "Logo Rumah Sakit",
+      "type": "file",
+      "validation": "format & ukuran **[PERLU KONFIRMASI]** (draft: \"validasi format dan ukuran logo\" tanpa angka pasti; [ASUMSI] format umum JPG/PNG, maks 2MB, disarankan rasio 1:1 atau sesuai kebutuhan cetak)",
+      "source": "upload manual",
+      "definedIn": [
+        "N4"
+      ]
+    },
+    "kode_pos": {
+      "field": "kode_pos",
+      "label": "Kode Pos",
+      "type": "text",
+      "validation": "5 digit numerik [ASUMSI]",
+      "source": "manual",
+      "definedIn": [
+        "N4"
+      ]
+    },
+    "provinsi": {
+      "field": "provinsi",
+      "label": "Provinsi",
+      "type": "dropdown (lookup)",
+      "validation": "dari Master Wilayah (A32)",
+      "source": "lookup A32",
+      "definedIn": [
+        "N4"
+      ]
+    },
+    "kota_kabupaten": {
+      "field": "kota_kabupaten",
+      "label": "Kota/Kabupaten",
+      "type": "dropdown (lookup)",
+      "validation": "dari Master Wilayah (A32), terfilter oleh provinsi terpilih",
+      "source": "lookup A32",
+      "definedIn": [
+        "N4"
+      ]
+    },
+    "website": {
+      "field": "website",
+      "label": "Website",
+      "type": "text",
+      "validation": "format URL valid",
+      "source": "manual",
+      "definedIn": [
+        "N4"
+      ]
+    },
+    "kode_rs": {
+      "field": "kode_rs",
+      "label": "Kode RS",
+      "type": "text",
+      "validation": "unik; skema kode **[PERLU KONFIRMASI]** (kode PPK BPJS? ID Organisasi SATUSEHAT? kode internal Kemenkes?)",
+      "source": "manual/integrasi **[PERLU KONFIRMASI]**",
+      "definedIn": [
+        "N4"
+      ]
+    },
+    "pkp": {
+      "field": "pkp",
+      "label": "Status PKP (Pengusaha Kena Pajak)",
+      "type": "boolean",
+      "validation": "Ya / Tidak",
+      "source": "manual, default Tidak [ASUMSI]",
+      "definedIn": [
+        "N4"
+      ]
+    },
+    "kode_program": {
+      "field": "kode_program",
+      "label": "Kode Program",
+      "type": "text",
+      "validation": "unik, auto-generate, format `PRG-XXX`, maks 20 char",
+      "source": "auto-generate",
+      "definedIn": [
+        "N2"
+      ]
+    },
+    "nama_program": {
+      "field": "nama_program",
+      "label": "Nama Program Terapi",
+      "type": "text",
+      "validation": "unik, maks 100 char",
+      "source": "manual",
+      "definedIn": [
+        "N2"
+      ]
+    },
+    "urutan_tampil": {
+      "field": "urutan_tampil",
+      "label": "Urutan Tampil",
+      "type": "number",
+      "validation": "integer, >= 1",
+      "source": "manual, default urutan terakhir + 1",
+      "definedIn": [
+        "N2"
+      ]
+    },
+    "kode_intervensi": {
+      "field": "kode_intervensi",
+      "label": "Kode Intervensi",
+      "type": "text",
+      "validation": "unik, auto-generate, format `INT-XXX`, maks 20 char",
+      "source": "auto-generate",
+      "definedIn": [
+        "N2"
+      ]
+    },
+    "nama_intervensi": {
+      "field": "nama_intervensi",
+      "label": "Nama Intervensi",
+      "type": "text",
+      "validation": "maks 150 char",
+      "source": "manual",
+      "definedIn": [
+        "N2"
+      ]
+    },
+    "program_terapi_id": {
+      "field": "program_terapi_id",
+      "label": "Program Terapi",
+      "type": "dropdown (lookup/relasi)",
+      "validation": "dari Master Program Terapi status aktif",
+      "source": "lookup bagian A",
+      "definedIn": [
+        "N2"
+      ]
+    },
+    "tindakan_id": {
+      "field": "tindakan_id",
+      "label": "Kode Tindakan (Billing)",
+      "type": "dropdown (lookup/relasi)",
+      "validation": "dari master Tindakan (A10)",
+      "source": "lookup A10",
+      "definedIn": [
+        "N2"
+      ]
+    },
+    "durasi_estimasi_menit": {
+      "field": "durasi_estimasi_menit",
+      "label": "Estimasi Durasi (menit)",
+      "type": "number",
+      "validation": "integer, > 0",
+      "source": "manual",
+      "definedIn": [
+        "N2"
+      ]
+    },
+    "intervensi_id": {
+      "field": "intervensi_id",
+      "label": "Intervensi Terapi",
+      "type": "dropdown multi-select (lookup)",
+      "validation": "dari Master Intervensi aktif sesuai Program terpilih, terurut `urutan_tampil`",
+      "source": "lookup bagian B",
+      "definedIn": [
+        "N2"
+      ]
+    },
+    "asal_order": {
+      "field": "asal_order",
+      "label": "Asal Order",
+      "type": "dropdown",
+      "validation": "enum: Rawat Jalan / Rawat Inap / IGD",
+      "source": "otomatis dari konteks kunjungan",
+      "definedIn": [
+        "N2"
+      ]
+    },
+    "unit_pemesan": {
+      "field": "unit_pemesan",
+      "label": "Unit Pemesan",
+      "type": "dropdown (lookup)",
+      "validation": "dari master Unit (A3)",
+      "source": "otomatis dari konteks user login",
+      "definedIn": [
+        "N2"
+      ]
+    },
+    "order_terapi_id": {
+      "field": "order_terapi_id",
+      "label": "Referensi Order Terapi",
+      "type": "lookup/relasi",
+      "validation": "relasi ke Order Terapi (bagian C), kosong jika Order Internal",
+      "source": "otomatis (dari kunjungan aktif)",
+      "definedIn": [
+        "N2"
+      ]
+    },
+    "tipe_order": {
+      "field": "tipe_order",
+      "label": "Tipe Order",
+      "type": "dropdown",
+      "validation": "enum: Order Penunjang / Order Internal",
+      "source": "otomatis (ada order = Order Penunjang, tidak ada = Order Internal)",
+      "definedIn": [
+        "N2"
+      ]
+    },
+    "jenis_surat": {
+      "field": "jenis_surat",
+      "label": "Jenis Surat",
+      "type": "dropdown/lookup",
+      "validation": "dari Master Jenis Surat (Surat Kontrol RJ, Surat Perintah RI, Surat Rujukan ke RS Lain, Surat Rujuk Balik FKTP PRB, Surat Rujuk Balik FKTP Non PRB, Surat Keterangan Dokter, Surat Keterangan Kematian, dst)",
+      "source": "lookup master jenis surat [PERLU KONFIRMASI: master jenis surat terpisah atau enum tetap?]",
+      "definedIn": [
+        "N3"
+      ]
+    },
+    "format_nomor": {
+      "field": "format_nomor",
+      "label": "Format Nomor",
+      "type": "text (template)",
+      "validation": "kombinasi placeholder valid: {RN},{BULAN},{TAHUN},{UNIT},{PREFIX},{SUFFIX}; wajib memuat {RN}",
+      "source": "manual (template builder)",
+      "definedIn": [
+        "N3"
+      ]
+    },
+    "prefix": {
+      "field": "prefix",
+      "label": "Prefix",
+      "type": "text",
+      "validation": "maks 20 char, alfanumerik",
+      "source": "manual",
+      "definedIn": [
+        "N3"
+      ]
+    },
+    "suffix": {
+      "field": "suffix",
+      "label": "Suffix",
+      "type": "text",
+      "validation": "maks 20 char, alfanumerik",
+      "source": "manual",
+      "definedIn": [
+        "N3"
+      ]
+    },
+    "digit_running_number": {
+      "field": "digit_running_number",
+      "label": "Digit Running Number",
+      "type": "number",
+      "validation": "integer, 1-10",
+      "source": "manual, default 4",
+      "definedIn": [
+        "N3"
+      ]
+    },
+    "metode_reset": {
+      "field": "metode_reset",
+      "label": "Metode Reset",
+      "type": "dropdown",
+      "validation": "Tidak Reset / Bulanan / Tahunan",
+      "source": "enum",
+      "definedIn": [
+        "N3"
+      ]
+    },
+    "running_number_current": {
+      "field": "running_number_current",
+      "label": "Running Number Berjalan",
+      "type": "number",
+      "validation": "integer >= 0, increment atomik",
+      "source": "sistem (auto)",
+      "definedIn": [
+        "N3"
+      ]
+    },
+    "last_reset_date": {
+      "field": "last_reset_date",
+      "label": "Tanggal Reset Terakhir",
+      "type": "date",
+      "validation": "–",
+      "source": "sistem (auto)",
+      "definedIn": [
+        "N3"
+      ]
+    },
+    "nomor_surat_terbit_log": {
+      "field": "nomor_surat_terbit_log",
+      "label": "No. Surat Terbit",
+      "type": "text",
+      "validation": "hasil generate, unik per jenis surat+periode",
+      "source": "sistem (auto)",
+      "definedIn": [
+        "N3"
+      ]
+    }
+  },
+  "entities": {
+    "form_tambah_edit_user": {
+      "label": "Form Tambah/Edit User",
+      "fields": [
+        "staff_id",
+        "nama",
+        "nip",
+        "nik",
+        "jenis_kelamin",
+        "jabatan",
+        "unit_id",
+        "username",
+        "password",
+        "confirm_password",
+        "roles",
+        "force_change_pwd",
+        "status_aktif",
+        "email",
+        "no_hp",
+        "satusehat_practitioner_id"
+      ],
+      "definedIn": [
+        "A1"
+      ]
+    },
+    "reset_password": {
+      "label": "Reset Password",
+      "fields": [
+        "new_password",
+        "force_change_pwd"
+      ],
+      "definedIn": [
+        "A1"
+      ]
+    },
+    "input": {
+      "label": "INPUT",
+      "fields": [
+        "staff_code",
+        "nama",
+        "gelar_depan",
+        "gelar_belakang",
+        "nik",
+        "nip",
+        "jenis_kelamin",
+        "tgl_lahir",
+        "tempat_lahir",
+        "alamat",
+        "no_hp",
+        "email",
+        "jenis_tenaga",
+        "jabatan",
+        "instalasi",
+        "unit",
+        "spesialisasi_smf",
+        "no_str",
+        "str_berlaku_sd",
+        "no_sip",
+        "sip_berlaku_sd",
+        "ihs_number",
+        "satusehat_version",
+        "kode_dokter_bpjs",
+        "bpjs_version",
+        "user_id",
+        "status_aktif",
+        "file",
+        "hasil_validasi",
+        "keyword",
+        "no_rm",
+        "jenis_identitas",
+        "no_identitas_alt",
+        "nama_ibu",
+        "pekerjaan",
+        "batuk",
+        "demam",
+        "flag_isolasi",
+        "jenis_layanan",
+        "paket_mcu",
+        "dokter_id",
+        "jenis_penjamin",
+        "no_kartu_bpjs",
+        "no_rujukan",
+        "no_polis_asuransi"
+      ],
+      "definedIn": [
+        "A2",
+        "B1"
+      ]
+    },
+    "form_tambah_edit_staf": {
+      "label": "Form Tambah/Edit Staf",
+      "fields": [
+        "staff_id",
+        "nama",
+        "nip",
+        "nik",
+        "jenis_kelamin",
+        "tgl_lahir",
+        "tempat_lahir",
+        "jabatan",
+        "unit",
+        "jenis_tenaga",
+        "spesialisasi_smf",
+        "no_str",
+        "str_berlaku_sampai",
+        "no_sip",
+        "email",
+        "no_hp",
+        "satusehat_practitioner_id",
+        "satusehat_sync_status",
+        "bpjs_kode_dokter",
+        "bpjs_versi",
+        "status_aktif"
+      ],
+      "definedIn": [
+        "A2"
+      ]
+    },
+    "import_massal": {
+      "label": "Import Massal",
+      "fields": [
+        "file_import",
+        "mode_import"
+      ],
+      "definedIn": [
+        "A2",
+        "A7"
+      ]
+    },
+    "form_tambah_edit_supplier": {
+      "label": "Form Tambah/Edit Supplier",
+      "fields": [
+        "kode_supplier",
+        "nama_supplier",
+        "jenis_supplier",
+        "kategori_barang",
+        "npwp",
+        "status_pkp",
+        "no_izin_usaha",
+        "alamat",
+        "wilayah_id",
+        "nama_kontak",
+        "no_telp",
+        "email",
+        "bank_id",
+        "no_rekening",
+        "atas_nama_rekening",
+        "termin_pembayaran",
+        "keterangan",
+        "status_aktif"
+      ],
+      "definedIn": [
+        "A7"
+      ]
+    },
+    "konfirmasi_duplikat": {
+      "label": "Konfirmasi Duplikat",
+      "fields": [
+        "pilihan_duplikat"
+      ],
+      "definedIn": [
+        "A7"
+      ]
+    },
+    "identifikasi_pencarian_pasien": {
+      "label": "Identifikasi & Pencarian Pasien",
+      "fields": [
+        "jenis_kunjungan",
+        "kata_kunci",
+        "nik",
+        "no_rm"
+      ],
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "data_pasien_baru": {
+      "label": "Data Pasien Baru",
+      "fields": [
+        "nik",
+        "no_rm",
+        "nama",
+        "jenis_kelamin",
+        "tgl_lahir",
+        "tempat_lahir",
+        "alamat",
+        "kode_wilayah",
+        "no_telp",
+        "no_bpjs",
+        "pekerjaan",
+        "agama"
+      ],
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "penjamin_sep_bpjs": {
+      "label": "Penjamin & SEP BPJS",
+      "fields": [
+        "jenis_penjamin",
+        "no_rujukan_fktp",
+        "no_bpjs",
+        "status_kartu",
+        "diagnosa_awal",
+        "poli_tujuan_sep",
+        "no_sep",
+        "nama_asuransi"
+      ],
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "poli_dokter_antrian": {
+      "label": "Poli, Dokter & Antrian",
+      "fields": [
+        "poli",
+        "dokter",
+        "tgl_kunjungan",
+        "no_antrian"
+      ],
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "pencarian_pasien_lama": {
+      "label": "Pencarian Pasien Lama",
+      "fields": [
+        "cari_by",
+        "nik",
+        "no_rm",
+        "nama",
+        "tgl_lahir"
+      ],
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "metode_input_pasien_baru": {
+      "label": "Metode Input Pasien Baru",
+      "fields": [
+        "metode_input",
+        "file_ktp",
+        "nik",
+        "nama",
+        "jenis_kelamin",
+        "tempat_lahir",
+        "tgl_lahir",
+        "alamat",
+        "no_hp",
+        "pekerjaan",
+        "gol_darah"
+      ],
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "screening_gejala": {
+      "label": "Screening Gejala",
+      "fields": [
+        "ada_batuk",
+        "ada_demam",
+        "suhu",
+        "flag_batuk_tempo"
+      ],
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "layanan_poli_penjaminan": {
+      "label": "Layanan, Poli & Penjaminan",
+      "fields": [
+        "jenis_layanan",
+        "paket_mcu",
+        "poli",
+        "dokter",
+        "jenis_penjaminan"
+      ],
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "penjaminan_bpjs": {
+      "label": "Penjaminan BPJS",
+      "fields": [
+        "no_kartu_bpjs",
+        "status_kartu",
+        "jenis_kunjungan",
+        "no_rujukan",
+        "diagnosa_awal",
+        "no_sep"
+      ],
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "data_asuransi_non_bpjs": {
+      "label": "Data Asuransi Non-BPJS",
+      "fields": [
+        "nama_asuransi",
+        "no_polis",
+        "dokumen_jaminan"
+      ],
+      "definedIn": [
+        "B1"
+      ]
+    },
+    "": {
+      "label": ",",
+      "fields": [
+        "nik",
+        "no_rm",
+        "nama",
+        "jenis_kelamin",
+        "tgl_lahir",
+        "tempat_lahir",
+        "alamat",
+        "kode_wilayah",
+        "no_telp",
+        "no_hp",
+        "pekerjaan",
+        "jenis_penjamin",
+        "no_bpjs",
+        "no_rujukan_fktp",
+        "status_kartu",
+        "diagnosa_awal",
+        "poli_tujuan_sep",
+        "nama_asuransi",
+        "no_sep",
+        "kelas_perawatan",
+        "bangsal",
+        "bed_id",
+        "dpjp",
+        "tgl_masuk",
+        "cara_masuk",
+        "status_inden",
+        "jenis_dokumen_id",
+        "kunjungan_id",
+        "konfirmasi_final",
+        "alasan_addendum",
+        "order_id",
+        "dokter_id",
+        "unit_asal",
+        "jenis_order",
+        "flag_urgent",
+        "status_order",
+        "created_by_created_at",
+        "obat_id",
+        "tanggal_order",
+        "status_obat_item",
+        "override_duplikat",
+        "alasan_override"
+      ],
+      "definedIn": [
+        "B2",
+        "D6",
+        "E12"
+      ]
+    },
+    "form_pendaftaran_rawat_inap": {
+      "label": "Form Pendaftaran Rawat Inap",
+      "fields": [
+        "no_rm",
+        "nik",
+        "nama",
+        "jenis_kelamin",
+        "tempat_lahir",
+        "tgl_lahir",
+        "alamat",
+        "no_hp",
+        "no_telp",
+        "sumber_masuk",
+        "dpjp",
+        "unit",
+        "diagnosa_masuk",
+        "jenis_penjaminan",
+        "no_kartu_bpjs",
+        "tgl_rencana_masuk",
+        "status_pasien"
+      ],
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "pemilihan_reservasi_bed": {
+      "label": "Pemilihan & Reservasi Bed",
+      "fields": [
+        "bangsal_id",
+        "kelas_perawatan",
+        "bed_id",
+        "status_reservasi",
+        "tgl_inden"
+      ],
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "pendaftaran_bayi_rawat_gabung": {
+      "label": "Pendaftaran Bayi / Rawat Gabung",
+      "fields": [
+        "rm_ibu",
+        "nama_bayi",
+        "jenis_kelamin_bayi",
+        "tgl_lahir_bayi",
+        "rawat_gabung",
+        "urutan_kelahiran"
+      ],
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "penjaminan_sep_ri": {
+      "label": "Penjaminan & SEP RI [, ]",
+      "fields": [
+        "jenis_penjaminan",
+        "no_kartu_bpjs",
+        "status_eligibility",
+        "no_rujukan",
+        "diagnosa_masuk",
+        "no_sep",
+        "jenis_pelayanan",
+        "poli_dpjp"
+      ],
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "pemilihan_bed_kelas": {
+      "label": "Pemilihan Bed & Kelas [, ]",
+      "fields": [
+        "bangsal_id",
+        "kelas_perawatan",
+        "bed_id",
+        "tipe_admisi",
+        "jadwal_masuk",
+        "jadwal_operasi",
+        "dpjp",
+        "cara_masuk"
+      ],
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "pendaftaran_bayi_baru_lahir": {
+      "label": "Pendaftaran Bayi Baru Lahir []",
+      "fields": [
+        "no_rm_ibu",
+        "nama_bayi",
+        "jenis_kelamin_bayi",
+        "tgl_lahir_bayi",
+        "rawat_gabung",
+        "multiple_birth"
+      ],
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "004_005": {
+      "label": "/004/005",
+      "fields": [
+        "jenis_penjamin",
+        "no_kartu_bpjs",
+        "status_kartu",
+        "hak_kelas",
+        "no_rujukan_fktp",
+        "faskes_perujuk",
+        "diagnosa_masuk",
+        "tgl_sep",
+        "no_sep"
+      ],
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "007": {
+      "label": "/007",
+      "fields": [
+        "bangsal",
+        "kelas_perawatan",
+        "bed_id",
+        "tgl_masuk_ri",
+        "dpjp",
+        "status_admisi"
+      ],
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "asumsi": {
+      "label": "[ASUMSI]",
+      "fields": [
+        "rm_ibu",
+        "nama_bayi",
+        "jenis_kelamin",
+        "tgl_lahir",
+        "rawat_gabung",
+        "multiple_birth"
+      ],
+      "definedIn": [
+        "B2"
+      ]
+    },
+    "form_buat_edit_spri": {
+      "label": "Form Buat/Edit SPRI",
+      "fields": [
+        "no_spri",
+        "no_rm",
+        "nama",
+        "nik",
+        "jenis_kelamin",
+        "tgl_lahir",
+        "no_bpjs",
+        "unit_asal",
+        "poli_asal",
+        "jenis_penjamin",
+        "dokter_pembuat",
+        "dpjp_ranap",
+        "diagnosis_kerja",
+        "kode_diagnosis",
+        "indikasi_ranap",
+        "kelas_diinginkan",
+        "kelas_dijamin",
+        "naik_kelas",
+        "kebutuhan_isolasi",
+        "tingkat_ketergantungan",
+        "kebutuhan_khusus",
+        "ruang_diminta",
+        "tgl_terbit",
+        "alasan_batal",
+        "jenis_kasus",
+        "jenis_pelayanan",
+        "ruang_perawatan",
+        "tgl_ranap"
+      ],
+      "definedIn": [
+        "E20"
+      ]
+    },
+    "pengajuan_libur_cuti_dokter": {
+      "label": "Pengajuan Libur/Cuti Dokter",
+      "fields": [
+        "id_pengajuan",
+        "dokter_id",
+        "jenis_pengecualian",
+        "tgl_mulai",
+        "tgl_selesai",
+        "sesi_terdampak",
+        "poli_unit",
+        "alasan",
+        "keterangan",
+        "ada_pengganti",
+        "dokter_pengganti_id",
+        "lampiran"
+      ],
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "re_schedule_slot": {
+      "label": "Re-schedule Slot",
+      "fields": [
+        "slot_asal_id",
+        "tgl_baru",
+        "jam_mulai_baru",
+        "jam_selesai_baru",
+        "poli_baru",
+        "kuota_baru",
+        "aksi_pasien"
+      ],
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "penanganan_pasien_terdampak": {
+      "label": "Penanganan Pasien Terdampak",
+      "fields": [
+        "booking_id",
+        "pasien_nama",
+        "pasien_nik",
+        "no_kontak",
+        "slot_tujuan_id",
+        "status_penanganan",
+        "is_rawat_inap",
+        "kebutuhan_isolasi"
+      ],
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "approval": {
+      "label": "Approval",
+      "fields": [
+        "keputusan",
+        "catatan_approval",
+        "approver_id",
+        "objek_approval"
+      ],
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "data_spri_rawat_inap": {
+      "label": "Data SPRI / Rawat Inap",
+      "fields": [
+        "spri_no",
+        "no_sep",
+        "no_kartu_bpjs",
+        "tanggal_ranap",
+        "jenis_kasus",
+        "jenis_pelayanan",
+        "ruang_perawatan",
+        "dpjp_id",
+        "diagnosa_awal",
+        "kebutuhan_isolasi"
+      ],
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "hanya_aktif_bila_pakaibhpobat_ya": {
+      "label": "hanya aktif bila pakaibhpobat=Ya",
+      "fields": [
+        "jenis_item",
+        "item_id",
+        "nama_item",
+        "qty",
+        "satuan",
+        "harga_satuan",
+        "subtotal",
+        "harga_satuan_snapshot",
+        "tgl_snapshot_harga"
+      ],
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "kode_icd_9_cm": {
+      "label": "kode = ICD-9-CM",
+      "fields": [
+        "kode_icd9",
+        "nama_icd9",
+        "status_mapping"
+      ],
+      "definedIn": [
+        "A10"
+      ]
+    },
+    "006": {
+      "label": "..006",
+      "fields": [
+        "kode_bangsal",
+        "nama_bangsal",
+        "jenis_pelayanan",
+        "kelas_perawatan",
+        "instalasi_id",
+        "unit",
+        "gedung",
+        "lantai",
+        "jenis_kelamin_penghuni",
+        "jumlah_kamar",
+        "kapasitas_tt",
+        "flag_isolasi",
+        "flag_rawat_gabung",
+        "status_operasional",
+        "alasan_tutup",
+        "periode_tutup_mulai",
+        "periode_tutup_selesai",
+        "keterangan",
+        "status_aktif"
+      ],
+      "definedIn": [
+        "A15"
+      ]
+    },
+    "form_tambah_edit_kamar": {
+      "label": "Form Tambah/Edit Kamar",
+      "fields": [
+        "kode_kamar",
+        "nama_kamar",
+        "bangsal_id",
+        "instalasi_id",
+        "unit",
+        "jenis_pelayanan",
+        "kelas_perawatan",
+        "jenis_kamar",
+        "kapasitas_bed",
+        "jenis_kelamin_penghuni",
+        "gedung",
+        "lantai",
+        "flag_isolasi",
+        "fasilitas",
+        "keterangan",
+        "status_operasional",
+        "status_aktif"
+      ],
+      "definedIn": [
+        "A16"
+      ]
+    },
+    "import_massal_kamar": {
+      "label": "Import Massal Kamar",
+      "fields": [
+        "file_import",
+        "mode_import"
+      ],
+      "definedIn": [
+        "A16"
+      ]
+    },
+    "jadwal_praktik_dokter_baru": {
+      "label": "Jadwal Praktik Dokter [BARU]",
+      "fields": [
+        "id_jadwal",
+        "dokter_id",
+        "poli_unit",
+        "tipe_jadwal",
+        "pola_berulang",
+        "hari",
+        "tgl_spesifik",
+        "sesi",
+        "jam_mulai",
+        "jam_selesai",
+        "kuota",
+        "ruangan",
+        "tgl_berlaku_mulai",
+        "tgl_berlaku_selesai",
+        "status_jadwal",
+        "keterangan"
+      ],
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "jadwal_praktik_dokter": {
+      "label": "Jadwal Praktik Dokter",
+      "fields": [
+        "id_jadwal",
+        "dokter_id",
+        "poli_unit",
+        "tipe_jadwal",
+        "pola_berulang",
+        "hari",
+        "tgl_spesifik",
+        "sesi",
+        "jam_mulai",
+        "jam_selesai",
+        "kuota",
+        "ruangan",
+        "tgl_berlaku_mulai",
+        "tgl_berlaku_selesai",
+        "status_jadwal",
+        "keterangan"
+      ],
+      "definedIn": [
+        "G15"
+      ]
+    },
+    "3_form_item_non_racik": {
+      "label": "3 Form Item Non-Racik",
+      "fields": [
+        "obat_id",
+        "sediaan",
+        "dosis",
+        "frekuensi",
+        "rute",
+        "jumlah",
+        "durasi",
+        "aturan_pakai",
+        "aturan_lainnya",
+        "catatan_khusus"
+      ],
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "header_racikan": {
+      "label": "Header racikan:",
+      "fields": [
+        "nama_racikan",
+        "metode_racik",
+        "jumlah_racik",
+        "aturan_racik",
+        "rute_racik"
+      ],
+      "definedIn": [
+        "E2",
+        "E12"
+      ]
+    },
+    "bahan_racik": {
+      "label": "Bahan racik :",
+      "fields": [
+        "bahan_obat_id",
+        "jenis_sediaan_bahan",
+        "dosis_bahan",
+        "jumlah_bahan"
+      ],
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "5_form_item_alkes": {
+      "label": "5 Form Item Alkes",
+      "fields": [
+        "alkes_id",
+        "jumlah_alkes",
+        "catatan_alkes"
+      ],
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "6_penandaan_resep_obat_pulang": {
+      "label": "6 Penandaan Resep & Obat Pulang",
+      "fields": [
+        "flag_iter",
+        "jumlah_iter",
+        "flag_prb",
+        "flag_obat_pulang"
+      ],
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "5_penandaan_resep_obat_pulang": {
+      "label": "5 Penandaan Resep & Obat Pulang",
+      "fields": [
+        "flag_iter",
+        "jumlah_iter",
+        "flag_prb",
+        "flag_obat_pulang"
+      ],
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "6_resep_default_template": {
+      "label": "6 Resep Default / Template",
+      "fields": [
+        "template_id",
+        "nama_template",
+        "dokter_id",
+        "diagnosa_terkait",
+        "items",
+        "dibuat_pada"
+      ],
+      "definedIn": [
+        "E2"
+      ]
+    },
+    "form_tambah_edit_bed": {
+      "label": "Form Tambah/Edit Bed",
+      "fields": [
+        "bed_id",
+        "kode_bed",
+        "nomor_bed",
+        "bangsal_id",
+        "kamar_id",
+        "kelas_perawatan",
+        "jenis_bed",
+        "jenis_pelayanan",
+        "gedung",
+        "lantai",
+        "kode_kelas_bpjs",
+        "kode_ruang_aplicares",
+        "status_operasional",
+        "status_aktif",
+        "keterangan"
+      ],
+      "definedIn": [
+        "A17"
+      ]
+    },
+    "import_massal_bed": {
+      "label": "Import Massal Bed",
+      "fields": [
+        "file_import",
+        "mode_import"
+      ],
+      "definedIn": [
+        "A17"
+      ]
+    },
+    "form_tambah_edit_tarif_kamar": {
+      "label": "Form Tambah/Edit Tarif Kamar",
+      "fields": [
+        "kode_tarif",
+        "nama_tarif",
+        "kelas_perawatan",
+        "jenis_pelayanan",
+        "kategori_penjamin",
+        "instansi_rekanan_id",
+        "bangsal_id",
+        "instalasi_id",
+        "unit",
+        "tarif_per_hari",
+        "berlaku_dari",
+        "berlaku_sampai",
+        "status_aktif",
+        "keterangan"
+      ],
+      "definedIn": [
+        "A43"
+      ]
+    },
+    "komponen_tarif_asumsi_struktur": {
+      "label": "Komponen Tarif [ASUMSI struktur]",
+      "fields": [
+        "komponen_nama",
+        "komponen_nilai"
+      ],
+      "definedIn": [
+        "A43"
+      ]
+    },
+    "import_massal_tarif": {
+      "label": "Import Massal Tarif",
+      "fields": [
+        "file_import",
+        "mode_import"
+      ],
+      "definedIn": [
+        "A43"
+      ]
+    },
+    "konsisten_entitas_form_item_non_racik": {
+      "label": "[konsisten entitas 'Form Item Non-Racik']",
+      "fields": [
+        "obat_id",
+        "sediaan",
+        "dosis",
+        "frekuensi",
+        "rute",
+        "jumlah",
+        "durasi",
+        "aturan_pakai",
+        "aturan_lainnya",
+        "catatan_khusus"
+      ],
+      "definedIn": [
+        "E12"
+      ]
+    },
+    "detail_bahan_racikan": {
+      "label": "Detail bahan racikan :",
+      "fields": [
+        "bahan_obat_id",
+        "dosis_bahan",
+        "jumlah_bahan"
+      ],
+      "definedIn": [
+        "E12"
+      ]
+    },
+    "wording_validasi": {
+      "label": "Wording Validasi",
+      "fields": [
+        "kode_icd_10_primer",
+        "kode_icd_9_cm",
+        "jenis_diagnosa",
+        "kode_unspecified",
+        "berkas_pendukung",
+        "resume_medis_final",
+        "catatan_re_koding"
+      ],
+      "definedIn": [
+        "G8"
+      ]
+    },
+    "form_input": {
+      "label": "Form Input",
+      "fields": [
+        "sep_no",
+        "icd10_code",
+        "dx_type",
+        "icd9_code",
+        "submitted_amount",
+        "grouper_amount",
+        "checklist_item",
+        "document_file",
+        "resubmit_note"
+      ],
+      "definedIn": [
+        "G8"
+      ]
+    },
+    "wording_layar_upload_rekonsiliasi_buat_ba": {
+      "label": "Wording , layar Upload/Rekonsiliasi & Buat BA",
+      "fields": [
+        "periode",
+        "file_hasil_klaim",
+        "header_kolom",
+        "keputusan_tindak_lanjut",
+        "catatan_tindak_lanjut",
+        "no_berita_acara",
+        "nilai_disepakati",
+        "file_ba"
+      ],
+      "definedIn": [
+        "G9"
+      ]
+    },
+    "form_keputusan_tindak_lanjut": {
+      "label": "Form Keputusan Tindak Lanjut",
+      "fields": [
+        "sep_no",
+        "recon_status",
+        "is_anomaly",
+        "has_nominal_selisih",
+        "resubmit_count",
+        "submitted_amount",
+        "grouper_amount",
+        "follow_up",
+        "follow_up_note"
+      ],
+      "definedIn": [
+        "G9"
+      ]
+    },
+    "wording_layar_setor_refund_deposit": {
+      "label": "Wording , layar Setor/Refund Deposit",
+      "fields": [
+        "pasien_no_rm",
+        "jenis_transaksi",
+        "nominal",
+        "metode",
+        "bank",
+        "no_referensi",
+        "penerima_refund",
+        "alasan_void_refund"
+      ],
+      "definedIn": [
+        "G3"
+      ]
+    },
+    "form_setor_pengembalian_deposit": {
+      "label": "Form Setor / Pengembalian Deposit",
+      "fields": [
+        "no_rm",
+        "encounter_id",
+        "txn_type",
+        "amount",
+        "method",
+        "bank_id",
+        "reference_no",
+        "recipient_name",
+        "reason",
+        "cashier_session_id"
+      ],
+      "definedIn": [
+        "G3"
+      ]
+    },
+    "wording_layar_pembayaran": {
+      "label": "Wording , layar Pembayaran",
+      "fields": [
+        "metode_bayar",
+        "nominal_bayar",
+        "bank",
+        "no_referensi",
+        "nominal_deposit_dipakai",
+        "alasan_diskon",
+        "alasan_refund_void"
+      ],
+      "definedIn": [
+        "G2"
+      ]
+    },
+    "form_pembayaran": {
+      "label": "Form Pembayaran",
+      "fields": [
+        "invoice_id",
+        "jenis_penjamin",
+        "method",
+        "amount",
+        "bank_id",
+        "reference_no",
+        "deposit_amount",
+        "discount_value",
+        "discount_reason",
+        "cashier_session_id"
+      ],
+      "definedIn": [
+        "G2"
+      ]
+    },
+    "layar_form_tambah_edit_konfigurasi_tarif": {
+      "label": "Layar Form Tambah/Edit Konfigurasi Tarif",
+      "fields": [
+        "kode_konfigurasi",
+        "nama_konfigurasi",
+        "unit_pelayanan",
+        "status_pasien",
+        "kategori_penjamin",
+        "unit",
+        "tarif_layanan_id",
+        "prioritas",
+        "status_aktif",
+        "tanggal_berlaku",
+        "keterangan"
+      ],
+      "definedIn": [
+        "N1"
+      ]
+    },
+    "profil_rumah_sakit": {
+      "label": "Profil Rumah Sakit",
+      "fields": [
+        "nama_rs",
+        "logo_rs",
+        "alamat",
+        "kode_pos",
+        "provinsi",
+        "kota_kabupaten",
+        "no_telp",
+        "email",
+        "website",
+        "kode_rs",
+        "npwp",
+        "pkp",
+        "status_aktif",
+        "keterangan"
+      ],
+      "definedIn": [
+        "N4"
+      ]
+    },
+    "form_tambah_edit_program_terapi": {
+      "label": "Form Tambah/Edit Program Terapi",
+      "fields": [
+        "kode_program",
+        "nama_program",
+        "deskripsi",
+        "unit",
+        "urutan_tampil",
+        "status_aktif"
+      ],
+      "definedIn": [
+        "N2"
+      ]
+    },
+    "form_tambah_edit_intervensi_terapi": {
+      "label": "Form Tambah/Edit Intervensi Terapi",
+      "fields": [
+        "kode_intervensi",
+        "nama_intervensi",
+        "program_terapi_id",
+        "tindakan_id",
+        "durasi_estimasi_menit",
+        "urutan_tampil",
+        "keterangan",
+        "status_aktif"
+      ],
+      "definedIn": [
+        "N2"
+      ]
+    },
+    "pemilihan_program_intervensi_terapi": {
+      "label": "Pemilihan Program & Intervensi Terapi",
+      "fields": [
+        "program_terapi_id",
+        "intervensi_id",
+        "asal_order",
+        "unit_pemesan"
+      ],
+      "definedIn": [
+        "N2"
+      ]
+    },
+    "bagian_referensi_order_tindakan": {
+      "label": "Bagian Referensi Order & Tindakan",
+      "fields": [
+        "order_terapi_id",
+        "program_terapi_id",
+        "intervensi_id",
+        "tipe_order"
+      ],
+      "definedIn": [
+        "N2"
+      ]
+    },
+    "terkait": {
+      "label": "terkait",
+      "fields": [
+        "kode_konfigurasi",
+        "jenis_surat",
+        "nama_konfigurasi",
+        "format_nomor",
+        "prefix",
+        "suffix",
+        "digit_running_number",
+        "metode_reset",
+        "unit",
+        "status_aktif",
+        "keterangan"
+      ],
+      "definedIn": [
+        "N3"
+      ]
+    },
+    "entitas_pendukung": {
+      "label": "Entitas pendukung",
+      "fields": [
+        "running_number_current",
+        "last_reset_date",
+        "nomor_surat_terbit_log"
+      ],
+      "definedIn": [
+        "N3"
+      ]
+    }
+  },
+  "integrations": {
+    "BPJS (VClaim/SEP)": [
+      "A1",
+      "A2",
+      "A7",
+      "B1",
+      "B2",
+      "E20",
+      "G15",
+      "A10",
+      "A14",
+      "A53",
+      "A15",
+      "A16",
+      "D6",
+      "E2",
+      "A17",
+      "A43",
+      "E12",
+      "G8",
+      "G9",
+      "G3",
+      "G2",
+      "N1",
+      "N4",
+      "N2",
+      "N3"
+    ],
+    "SATUSEHAT": [
+      "A1",
+      "A2",
+      "A7",
+      "B1",
+      "B2",
+      "E20",
+      "G15",
+      "A10",
+      "A14",
+      "A53",
+      "A15",
+      "A16",
+      "D6",
+      "E2",
+      "A17",
+      "A43",
+      "E12",
+      "G8",
+      "N1",
+      "N4",
+      "N2",
+      "N3"
+    ],
+    "Disdukcapil (NIK)": [
+      "A1",
+      "A2",
+      "A7",
+      "B1",
+      "B2",
+      "E20",
+      "G15",
+      "A10",
+      "A53",
+      "A16",
+      "D6",
+      "E2",
+      "A43",
+      "N1",
+      "N2",
+      "N3"
+    ],
+    "INA-CBG": [
+      "A1",
+      "A2",
+      "A7",
+      "B1",
+      "B2",
+      "E20",
+      "G15",
+      "A10",
+      "A14",
+      "A53",
+      "A15",
+      "A16",
+      "D6",
+      "E2",
+      "A17",
+      "A43",
+      "E12",
+      "G8",
+      "G9",
+      "G2",
+      "N1",
+      "N4",
+      "N2",
+      "N3"
+    ],
+    "OCR KTP": [
+      "B1",
+      "B2",
+      "A43",
+      "N4"
+    ],
+    "LIS (Lab)": [
+      "A14",
+      "A53",
+      "D6"
+    ],
+    "RIS/PACS (Radiologi)": [
+      "A53",
+      "D6"
+    ]
+  }
+}

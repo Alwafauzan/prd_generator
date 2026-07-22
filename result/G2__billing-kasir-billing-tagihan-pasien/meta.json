@@ -1,0 +1,11 @@
+{
+  "code": "G2",
+  "moduleName": "Billing/Kasir — Billing (Tagihan Pasien)",
+  "cluster": "Core Integration",
+  "bpmnFile": null,
+  "mode": "developed (claude-code)",
+  "hasFlowchart": false,
+  "attachments": [],
+  "createdAt": "2026-07-08T04:04:53.579Z",
+  "updatedAt": "2026-07-08T04:04:53.579Z"
+}

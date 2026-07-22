@@ -1,0 +1,12 @@
+{
+  "code": "N7",
+  "title": "Order Ambulance",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Ambulance",
+  "version": "1.0",
+  "date": "2026-07-19",
+  "status": "draft",
+  "primary_file": "N7__order-ambulance.md",
+  "related_features": ["N4", "N5", "N6", "Menu Tindakan", "Master Data Staff", "Master Wilayah"],
+  "v1_reference": "bahan_random/OrderAmbulance.vue"
+}

@@ -1,0 +1,11 @@
+{
+  "code": "A10",
+  "moduleName": "Master Data / Integrasi BPJS V2 — Tindakan",
+  "cluster": "Control Panel",
+  "bpmnFile": null,
+  "mode": "developed (claude-code)",
+  "hasFlowchart": false,
+  "attachments": [],
+  "createdAt": "2026-06-18T16:13:12.475Z",
+  "updatedAt": "2026-06-18T17:05:48.917Z"
+}

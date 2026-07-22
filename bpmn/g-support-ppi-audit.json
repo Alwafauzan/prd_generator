@@ -1,0 +1,567 @@
+{
+ "id": "f9125fff-5d36-48dc-bb05-d95d1257cd3c",
+ "title": "g-support-ppi-audit",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "p~4XLohyuIcp",
+  "label": "F35-AUDIT HAND HYGIENE"
+ },
+ "pages": [
+  {
+   "id": "f~4Xbp8yyK1t",
+   "title": "F35-AUDIT HAND HYGIENE",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "o~4Xr1SxFXVg",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka menu PPI/IPCN- Audit Hand Hygiene"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "o~4XxG4zLHy5",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan list audit hand hygiene tiap staff"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "o~4XASs4ZceK",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "o~4XPsYPEwPz",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4XR9VV5eWz",
+      "class": "RectangleContainerBlock",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [],
+       "lines": [],
+       "groups": []
+      }
+     },
+     {
+      "id": "o~4X_C3K_KvA",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Unduh laporan audit HH\n\n"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "o~4X~CSLbroQ",
+      "class": "AdvancedSwimLaneBlockRotated",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Primary_0",
+        "text": "Staff PPI/IPCN"
+       },
+       {
+        "label": "Primary_1",
+        "text": "Sistem"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "o~4X0rjekK6_",
+        "o~4X8tHwkU49",
+        "o~4XASs4ZceK",
+        "o~4XI1gBVgWV",
+        "o~4XPsYPEwPz",
+        "o~4XROscHUL4",
+        "o~4X_C3K_KvA",
+        "o~4Xn5yd.H6j",
+        "o~4Xr1SxFXVg",
+        "o~4Xx2uVd~fL",
+        "o~4XxG4zLHy5",
+        "p~4XR9VV5eWz"
+       ],
+       "lines": [
+        "Nv_XefiXU1kV",
+        "o~4X.dyPTuOO",
+        "o~4X8rIRo7-Z",
+        "o~4XhJSiPmIT",
+        "o~4Xt0QW7056",
+        "o~4XtE2uy-kj",
+        "zv_XdpgJ.AEA"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "o~4Xx2uVd~fL",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "o~4X0rjekK6_",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Edit data audit HH\n\n"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "o~4XI1gBVgWV",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menyimpan data audit hand hygiene"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4Xh~KwuNw9",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "F35-AUDIT HAND HYGIENE"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_3"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "o~4Xn5yd.H6j",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input data audit HH baru\n"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4XLohyuIcp",
+      "class": "RectangleContainerBlock",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": "F35-AUDIT HAND HYGIENE"
+       },
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "o~4X0rjekK6_",
+        "o~4X8tHwkU49",
+        "o~4XASs4ZceK",
+        "o~4XI1gBVgWV",
+        "o~4XPsYPEwPz",
+        "o~4XROscHUL4",
+        "o~4X_C3K_KvA",
+        "o~4Xn5yd.H6j",
+        "o~4Xr1SxFXVg",
+        "o~4Xx2uVd~fL",
+        "o~4XxG4zLHy5",
+        "o~4X~CSLbroQ",
+        "p~4XR9VV5eWz",
+        "p~4Xh~KwuNw9"
+       ],
+       "lines": [
+        "Nv_XefiXU1kV",
+        "o~4X.dyPTuOO",
+        "o~4X8rIRo7-Z",
+        "o~4XhJSiPmIT",
+        "o~4Xt0QW7056",
+        "o~4XtE2uy-kj",
+        "zv_XdpgJ.AEA"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "o~4X8tHwkU49",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Hapus data audit HH\n"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "o~4XROscHUL4",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "id": "o~4Xt0QW7056",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "o~4XASs4ZceK"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "o~4Xr1SxFXVg"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "zv_XdpgJ.AEA",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "o~4Xx2uVd~fL"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "p~4XR9VV5eWz"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Nv_XefiXU1kV",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "p~4XR9VV5eWz"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "o~4XROscHUL4"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "o~4X8rIRo7-Z",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "o~4XI1gBVgWV"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "o~4XPsYPEwPz"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "o~4XhJSiPmIT",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "o~4Xr1SxFXVg"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "o~4XxG4zLHy5"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "o~4XtE2uy-kj",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "o~4XxG4zLHy5"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "o~4Xx2uVd~fL"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "o~4X.dyPTuOO",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "o~4XROscHUL4"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "o~4XI1gBVgWV"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

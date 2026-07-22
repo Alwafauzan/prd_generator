@@ -1,0 +1,16 @@
+{
+  "code": "A43",
+  "moduleName": "Master Data — Tarif Kamar",
+  "cluster": "Control Panel",
+  "bpmnFile": null,
+  "mode": "developed (claude-code)",
+  "hasFlowchart": false,
+  "attachments": [
+    {
+      "name": "PRD_MASTER_DATA_STANDAR_TARIF_KAMAR.pdf",
+      "kind": "doc"
+    }
+  ],
+  "createdAt": "2026-06-21T14:24:09.974Z",
+  "updatedAt": "2026-06-21T16:43:05.802Z"
+}

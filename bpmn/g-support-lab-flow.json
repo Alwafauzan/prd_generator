@@ -1,0 +1,1497 @@
+{
+ "id": "f9125fff-5d36-48dc-bb05-d95d1257cd3c",
+ "title": "g-support-lab-flow",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "qK1Yf46BxyLe",
+  "label": "F1 F2 F3 - Laboratorium"
+ },
+ "pages": [
+  {
+   "id": "f~4Xbp8yyK1t",
+   "title": "F1 F2 F3 - Laboratorium",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "pK1Yp-8HuePF",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1Y0neFcT5E",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1YuV1OqeCe",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1YNlsfPVtY",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1YL_dq.-jf",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Konfirmasi order pemeriksaan lab"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "qK1YNlaMuRRU",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "F1 F2 F3 - LABORATORIUM"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_3"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1YJ~GeNJTD",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tambah tindakan lab ke billing"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1YX2FMNblP",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1Y2-wDIx_L",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1YMA3gqmqd",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tolak order pemeriksaan lab"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1Ymu9ZZbID",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesaikan pemeriksaan lab"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "5reZKIH17pcy",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1YpUCPFtsW",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "qK1Yf46BxyLe",
+      "class": "RectangleContainerBlock",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": "F1 F2 F3 - Laboratorium"
+       },
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "18eZ~l_r4yws",
+        "5reZKIH17pcy",
+        "pK1Y-PEreTz-",
+        "pK1Y0neFcT5E",
+        "pK1Y1bSumDUT",
+        "pK1Y2-wDIx_L",
+        "pK1YCVkmubyD",
+        "pK1YCgGt9EN7",
+        "pK1YJ1FwPCkN",
+        "pK1YJ~GeNJTD",
+        "pK1YKoSpMdOi",
+        "pK1YL_dq.-jf",
+        "pK1YMA3gqmqd",
+        "pK1YNlsfPVtY",
+        "pK1YQM.TftVD",
+        "pK1YTeO82jjt",
+        "pK1YU_ZLiw6R",
+        "pK1YX2FMNblP",
+        "pK1YZ~WqEtyT",
+        "pK1Y_6szdlSg",
+        "pK1Y_w.RPtkv",
+        "pK1Ybim4Jziy",
+        "pK1Ybo6h0.q7",
+        "pK1YewKy3I3i",
+        "pK1Ymu9ZZbID",
+        "pK1Yp-8HuePF",
+        "pK1YpUCPFtsW",
+        "pK1YuV1OqeCe",
+        "pK1Ywk_907Fy",
+        "qK1YNlaMuRRU"
+       ],
+       "lines": [
+        "-seZ6e_Lu4QQ",
+        "88eZNME-breK",
+        "pK1Y.3~iiaWn",
+        "pK1Y.NVjKrF_",
+        "pK1Y1AGw6Wq_",
+        "pK1Y1XAyGnTA",
+        "pK1Y30O2a6a3",
+        "pK1Y3RhkdIlh",
+        "pK1Y5HsVjDVE",
+        "pK1Y8AjCoiBZ",
+        "pK1Y8cThhZ1.",
+        "pK1YAAt4jdBo",
+        "pK1YB1xn8AV4",
+        "pK1YBEly_lHK",
+        "pK1YIDhcBrGs",
+        "pK1YOXZScPmW",
+        "pK1YOw_78GoO",
+        "pK1YRtjqbzXe",
+        "pK1YYzAgk0_Z",
+        "pK1Ya_vXgrVj",
+        "pK1YfZbm2kol",
+        "pK1Yfu2h459h",
+        "pK1YibzBb17h",
+        "pK1Ymx1YLyCQ",
+        "pK1YowMY8QnU",
+        "pK1YoxDfQxMl",
+        "pK1YuhWs1ckT",
+        "pK1Yv2QK_fcL",
+        "pK1Yxccfq7pc",
+        "pK1Yz0Pjgxfp",
+        "pK1YzL-raKla",
+        "pK1Yzgfl~KiX"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "pK1Y_6szdlSg",
+      "class": "AdvancedSwimLaneBlockRotated",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Primary_0",
+        "text": "Analis Laboratorium"
+       },
+       {
+        "label": "Primary_1",
+        "text": "Sistem"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "18eZ~l_r4yws",
+        "5reZKIH17pcy",
+        "pK1Y-PEreTz-",
+        "pK1Y0neFcT5E",
+        "pK1Y1bSumDUT",
+        "pK1Y2-wDIx_L",
+        "pK1YCVkmubyD",
+        "pK1YCgGt9EN7",
+        "pK1YJ1FwPCkN",
+        "pK1YJ~GeNJTD",
+        "pK1YKoSpMdOi",
+        "pK1YL_dq.-jf",
+        "pK1YMA3gqmqd",
+        "pK1YNlsfPVtY",
+        "pK1YQM.TftVD",
+        "pK1YTeO82jjt",
+        "pK1YU_ZLiw6R",
+        "pK1YX2FMNblP",
+        "pK1YZ~WqEtyT",
+        "pK1Y_w.RPtkv",
+        "pK1Ybim4Jziy",
+        "pK1Ybo6h0.q7",
+        "pK1YewKy3I3i",
+        "pK1Ymu9ZZbID",
+        "pK1Yp-8HuePF",
+        "pK1YpUCPFtsW",
+        "pK1YuV1OqeCe",
+        "pK1Ywk_907Fy"
+       ],
+       "lines": [
+        "-seZ6e_Lu4QQ",
+        "88eZNME-breK",
+        "pK1Y.3~iiaWn",
+        "pK1Y.NVjKrF_",
+        "pK1Y1AGw6Wq_",
+        "pK1Y1XAyGnTA",
+        "pK1Y30O2a6a3",
+        "pK1Y3RhkdIlh",
+        "pK1Y5HsVjDVE",
+        "pK1Y8AjCoiBZ",
+        "pK1Y8cThhZ1.",
+        "pK1YAAt4jdBo",
+        "pK1YB1xn8AV4",
+        "pK1YBEly_lHK",
+        "pK1YIDhcBrGs",
+        "pK1YOXZScPmW",
+        "pK1YOw_78GoO",
+        "pK1YRtjqbzXe",
+        "pK1YYzAgk0_Z",
+        "pK1Ya_vXgrVj",
+        "pK1YfZbm2kol",
+        "pK1Yfu2h459h",
+        "pK1YibzBb17h",
+        "pK1Ymx1YLyCQ",
+        "pK1YowMY8QnU",
+        "pK1YoxDfQxMl",
+        "pK1YuhWs1ckT",
+        "pK1Yv2QK_fcL",
+        "pK1Yxccfq7pc",
+        "pK1Yz0Pjgxfp",
+        "pK1YzL-raKla",
+        "pK1Yzgfl~KiX"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "pK1YTeO82jjt",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "18eZ~l_r4yws",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1YCgGt9EN7",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem identifikasi nilai kritis dan memberi flag pada nilai kritis"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1Y-PEreTz-",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input hasil pemeriksaan lab"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1Y1bSumDUT",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menghapus order pemeriksaan lab"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1YJ1FwPCkN",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem update status order pemeriksaan lab"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1YZ~WqEtyT",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1YQM.TftVD",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menyimpan data tindakan dan hasil pemeriksaan lab"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1Y_w.RPtkv",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Hapus Tindakan\n\n"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1YewKy3I3i",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1YCVkmubyD",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1YKoSpMdOi",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka menu Laboratorium"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1Ybim4Jziy",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1Ybo6h0.q7",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan data"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1Ywk_907Fy",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input data rujukan keluar"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "pK1YU_ZLiw6R",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem update status pemeriksaan lab == selesai & simpan response time"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "id": "pK1Ya_vXgrVj",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1Ybo6h0.q7"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "18eZ~l_r4yws"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1YOXZScPmW",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YU_ZLiw6R"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1YNlsfPVtY"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "mengirim data hasil\nlab ke pelayanan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "88eZNME-breK",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "18eZ~l_r4yws"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1YQM.TftVD"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "kirim notifikasi\nnilai kritis ke pelayanan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1Y3RhkdIlh",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YJ1FwPCkN"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1YpUCPFtsW"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "surat rujukan\nkeluar"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1YfZbm2kol",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YCgGt9EN7"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1Y-PEreTz-"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1Yv2QK_fcL",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YTeO82jjt"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1Y_w.RPtkv"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1Y1AGw6Wq_",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1Ymu9ZZbID"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1YX2FMNblP"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1Y30O2a6a3",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1Y1bSumDUT"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1Ybim4Jziy"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1YowMY8QnU",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1Y2-wDIx_L"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1Ywk_907Fy"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "rujuk keluar"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1Y1XAyGnTA",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YCVkmubyD"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1YL_dq.-jf"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "terima"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1YzL-raKla",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YTeO82jjt"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1YJ~GeNJTD"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1YibzBb17h",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YpUCPFtsW"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1YZ~WqEtyT"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1YoxDfQxMl",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YewKy3I3i"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1Ybo6h0.q7"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1Yxccfq7pc",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YTeO82jjt"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1Y-PEreTz-"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1YIDhcBrGs",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YX2FMNblP"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1YTeO82jjt"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "edit data"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1YAAt4jdBo",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YJ1FwPCkN"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "5reZKIH17pcy"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "konfirmasi\norder "
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1Y8AjCoiBZ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1Y0neFcT5E"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1YCVkmubyD"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1YuhWs1ckT",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1Y_w.RPtkv"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1YewKy3I3i"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1YRtjqbzXe",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1Y-PEreTz-"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1YCgGt9EN7"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1Yzgfl~KiX",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YKoSpMdOi"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1Y0neFcT5E"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "menerima order\npemeriksaan lab \n(booking/same day)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1Y.NVjKrF_",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1Y2-wDIx_L"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1YJ1FwPCkN"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "konfirmasi\norder"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1Yfu2h459h",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YCVkmubyD"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1YMA3gqmqd"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "tolak"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1YOw_78GoO",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YL_dq.-jf"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1Y2-wDIx_L"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1Y8cThhZ1.",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YX2FMNblP"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1YU_ZLiw6R"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1YBEly_lHK",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1Ywk_907Fy"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1YJ1FwPCkN"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1Ymx1YLyCQ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YNlsfPVtY"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1Yp-8HuePF"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1Yz0Pjgxfp",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YQM.TftVD"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1Ymu9ZZbID"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1Y5HsVjDVE",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YuV1OqeCe"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "pK1YKoSpMdOi"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1YB1xn8AV4",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YMA3gqmqd"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1Y1bSumDUT"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1Y.3~iiaWn",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1Y-PEreTz-"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1YewKy3I3i"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "-seZ6e_Lu4QQ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "5reZKIH17pcy"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1YTeO82jjt"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "update \nbilling (today)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pK1YYzAgk0_Z",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "pK1YJ~GeNJTD"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "pK1YewKy3I3i"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

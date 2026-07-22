@@ -1,0 +1,1193 @@
+{
+ "id": "f9125fff-5d36-48dc-bb05-d95d1257cd3c",
+ "title": "g-support-rehab-form",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "p~4Xw5Amym4X",
+  "label": "F24 F25 F28 REHAB MEDIK"
+ },
+ "pages": [
+  {
+   "id": "f~4Xbp8yyK1t",
+   "title": "F24 F25 F28 REHAB MEDIK",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "i~4XpJDk8Egv",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka menu Rehab Medik"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "_mhZ900t4pye",
+      "class": "RectangleContainerBlock",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [],
+       "lines": [],
+       "groups": []
+      }
+     },
+     {
+      "id": "i~4XBdy8qIv8",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "i~4XH_mIxKps",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Asesmen rehab medik"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "-jhZRvLl2lS5",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Order operasi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "i~4X.jhWnhxA",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan data"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "i~4XpLZuZwcb",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "-ihZKys2LT4G",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Order resep"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4XC3BOzQAi",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "F24 F25 F28-REHAB MEDIK"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_3"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4Xw5Amym4X",
+      "class": "RectangleContainerBlock",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": "F24 F25 F28 REHAB MEDIK"
+       },
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "-ihZKys2LT4G",
+        "-jhZRvLl2lS5",
+        "3ihZNN_IPHtE",
+        "HRgZIy9STVeF",
+        "_mhZ900t4pye",
+        "axhZV1_zyKrv",
+        "ijhZusv6IDaW",
+        "i~4X.YpskUZK",
+        "i~4X.jhWnhxA",
+        "i~4X5~IWQ9XU",
+        "i~4X7sYBnO01",
+        "i~4X8k1.pIA8",
+        "i~4XBdy8qIv8",
+        "i~4XDUw-yd.q",
+        "i~4XH_mIxKps",
+        "i~4XHbFgvur~",
+        "i~4XJ4Q2NAAr",
+        "i~4XKws.Rcf7",
+        "i~4XM1dDN79U",
+        "i~4XUOLW6MT_",
+        "i~4XUcb9cH.7",
+        "i~4XjAQ09Her",
+        "i~4XpJDk8Egv",
+        "i~4XpLZuZwcb",
+        "i~4XtSvNDAo~",
+        "i~4XxDL1R-uF",
+        "jrhZ8EASJiID",
+        "p~4XC3BOzQAi"
+       ],
+       "lines": [
+        "-ohZUKLT-Ffy",
+        "LshZr1VgF9Ou",
+        "WohZanYnTqgE",
+        "cshZu_onuwFR",
+        "fxhZ1w.vEUwZ",
+        "i~4X5K2RfW9W",
+        "i~4X5M9-ohKF",
+        "i~4X6~uhqvHT",
+        "i~4XQ7MhZxjN",
+        "i~4XQZWBkUNF",
+        "i~4XWEsqRV96",
+        "i~4XY6NWd3ne",
+        "i~4X_2El9RT0",
+        "i~4XiDM4L-ku",
+        "i~4Xjb0IVPYX",
+        "i~4XnuUIInSH",
+        "i~4Xqjj9QCI-",
+        "i~4Xw0bzG8M_",
+        "i~4X~tfW.H2h"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "i~4XjAQ09Her",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "ijhZusv6IDaW",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Order penunjang"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "i~4X5~IWQ9XU",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "axhZV1_zyKrv",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "i~4XxDL1R-uF",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menympan data tindakan, asesmen, order resep, dan order penunjang"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "i~4XUOLW6MT_",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesaikan pemeriksaan rehab medik"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "i~4XKws.Rcf7",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menghapus order pemeriksaan rehab medik"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "HRgZIy9STVeF",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Penjadwalan terapi rehab medik"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "i~4X.YpskUZK",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Hapus Tindakan\n\n"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "i~4X7sYBnO01",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "i~4XM1dDN79U",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem update status pemeriksaan == selesai "
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "i~4XUcb9cH.7",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tolak order pemeriksaan rehab medik"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "i~4XtSvNDAo~",
+      "class": "AdvancedSwimLaneBlockRotated",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Primary_0",
+        "text": "Terapis/Fisioterapis"
+       },
+       {
+        "label": "Primary_1",
+        "text": "Sistem"
+       },
+       {
+        "label": "Primary_2",
+        "text": "Dokter"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "-ihZKys2LT4G",
+        "-jhZRvLl2lS5",
+        "3ihZNN_IPHtE",
+        "HRgZIy9STVeF",
+        "_mhZ900t4pye",
+        "axhZV1_zyKrv",
+        "ijhZusv6IDaW",
+        "i~4X.YpskUZK",
+        "i~4X.jhWnhxA",
+        "i~4X5~IWQ9XU",
+        "i~4X7sYBnO01",
+        "i~4X8k1.pIA8",
+        "i~4XBdy8qIv8",
+        "i~4XDUw-yd.q",
+        "i~4XH_mIxKps",
+        "i~4XHbFgvur~",
+        "i~4XJ4Q2NAAr",
+        "i~4XKws.Rcf7",
+        "i~4XM1dDN79U",
+        "i~4XUOLW6MT_",
+        "i~4XUcb9cH.7",
+        "i~4XjAQ09Her",
+        "i~4XpJDk8Egv",
+        "i~4XpLZuZwcb",
+        "i~4XxDL1R-uF",
+        "jrhZ8EASJiID"
+       ],
+       "lines": [
+        "-ohZUKLT-Ffy",
+        "LshZr1VgF9Ou",
+        "WohZanYnTqgE",
+        "cshZu_onuwFR",
+        "fxhZ1w.vEUwZ",
+        "i~4X5K2RfW9W",
+        "i~4X5M9-ohKF",
+        "i~4X6~uhqvHT",
+        "i~4XQ7MhZxjN",
+        "i~4XQZWBkUNF",
+        "i~4XWEsqRV96",
+        "i~4XY6NWd3ne",
+        "i~4X_2El9RT0",
+        "i~4XiDM4L-ku",
+        "i~4Xjb0IVPYX",
+        "i~4XnuUIInSH",
+        "i~4Xqjj9QCI-",
+        "i~4Xw0bzG8M_",
+        "i~4X~tfW.H2h"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "jrhZ8EASJiID",
+      "class": "RectangleContainerBlock",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [],
+       "lines": [],
+       "groups": []
+      }
+     },
+     {
+      "id": "i~4X8k1.pIA8",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "i~4XHbFgvur~",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "i~4XDUw-yd.q",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "3ihZNN_IPHtE",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Asesmen rehab medik"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "i~4XJ4Q2NAAr",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tambah tindakan\n\n"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "id": "i~4X~tfW.H2h",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "i~4XxDL1R-uF"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "i~4XUOLW6MT_"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "i~4X5K2RfW9W",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "i~4XHbFgvur~"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "i~4X7sYBnO01"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "i~4XQZWBkUNF",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "i~4XpLZuZwcb"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "i~4X.jhWnhxA"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "i~4XWEsqRV96",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "i~4X.jhWnhxA"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "axhZV1_zyKrv"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "update billing"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "i~4XY6NWd3ne",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "i~4XjAQ09Her"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "i~4XDUw-yd.q"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "edit data"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "fxhZ1w.vEUwZ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "axhZV1_zyKrv"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "i~4XxDL1R-uF"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "-ohZUKLT-Ffy",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "i~4XDUw-yd.q"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "_mhZ900t4pye"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "WohZanYnTqgE",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "_mhZ900t4pye"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "i~4XpLZuZwcb"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "i~4XnuUIInSH",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "i~4XUcb9cH.7"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "i~4XKws.Rcf7"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "i~4Xjb0IVPYX",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "i~4XM1dDN79U"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "i~4X8k1.pIA8"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "i~4Xw0bzG8M_",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "i~4XpJDk8Egv"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "i~4XHbFgvur~"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "menerima order\npemeriksaan rehab medik"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "i~4Xqjj9QCI-",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "i~4XUOLW6MT_"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "i~4XjAQ09Her"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "i~4X5M9-ohKF",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "i~4XKws.Rcf7"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "i~4X5~IWQ9XU"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "LshZr1VgF9Ou",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "jrhZ8EASJiID"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "i~4XpLZuZwcb"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "i~4X6~uhqvHT",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "i~4X7sYBnO01"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "i~4XDUw-yd.q"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "terima"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "cshZu_onuwFR",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "i~4XDUw-yd.q"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "jrhZ8EASJiID"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "i~4XiDM4L-ku",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "i~4XjAQ09Her"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "i~4XM1dDN79U"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "i~4XQ7MhZxjN",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "i~4XBdy8qIv8"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "i~4XpJDk8Egv"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "i~4X_2El9RT0",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "i~4X7sYBnO01"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "i~4XUcb9cH.7"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "tolak"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

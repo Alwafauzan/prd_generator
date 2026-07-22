@@ -1,0 +1,11 @@
+{
+  "code": "N9",
+  "title": "Resume Medis",
+  "cluster": "EMR",
+  "module": "Dokumen Klinis",
+  "version": "0.2",
+  "date": "2026-07-20",
+  "status": "foundation-draft",
+  "primary_file": "N9__resume-medis.md",
+  "related_features": ["D5", "D6", "G8", "G27", "N4", "A53"]
+}

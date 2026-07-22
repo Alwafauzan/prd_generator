@@ -1,0 +1,12 @@
+{
+  "code": "N8",
+  "title": "Pemulasaraan Jenazah",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Pemulasaran Jenazah",
+  "version": "0.2",
+  "date": "2026-07-20",
+  "status": "foundation-draft",
+  "primary_file": "N8__pemulasaraan-jenazah.md",
+  "source_features": ["F47", "F48"],
+  "related_features": ["N3", "N9", "G2", "A2", "A3", "A53"]
+}

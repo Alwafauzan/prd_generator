@@ -1,0 +1,942 @@
+{
+ "id": "8cf83baa-b5aa-4913-85f3-37ff853c5559",
+ "title": "g-backoffice-inventory-stok-opname",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "oL8XrVA1.fR1",
+  "label": "Unit | Staf Unit | Kepala Unit | Sistem | Keuangan"
+ },
+ "pages": [
+  {
+   "id": "bucKFen3Hcc~",
+   "title": "Unit | Staf Unit | Kepala Unit | Sistem | Keuangan",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "4g9XySoj0pQV",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Status SO = Disetujui"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "wV8XAjRt58.t",
+      "class": "StickiesStickyNoteBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Item Barang\nSisa Stok\nBatch\nTanggal"
+       },
+       {
+        "label": "ReadonlyAttributionText",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "nM8Xg~_xHZw0",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Oi9X.VAaIBkP",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "a48X_u_OaYP5",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "9f9X8LzTx2wS",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Status SO = Ditolak"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": ".28XUNu4EbgC",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input Alasan/Catatan Stock Opname"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "F98XzafEki5v",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Status Stock Opname menjadi \"Ditolak\""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Ha9X.caG7gDt",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Penyesuaian Nilai pada COA Persediaan"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "3X8X-4nAlRaY",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sesuai?"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3X8X9aomuIkk",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Cek Fisik Barang"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "gh9X8Pa.J.P1",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "2_8XuZOlzhGI",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Konfirmasi Persetujuan Stock Opname"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Va.X8C7lT_24",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "tb9XOH.EvaVl",
+      "class": "StickiesStickyNoteBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Menggunakan Nilai HPP pada waktu SO"
+       },
+       {
+        "label": "ReadonlyAttributionText",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "xU8X45P7lxu_",
+      "class": "BPMNDataStore",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Informasi Stok"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "z78XREliozyP",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Permintaan Konfirmasi Stock Opname"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "oL8XrVA1.fR1",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Unit"
+       },
+       {
+        "label": "Primary_0",
+        "text": "Staf Unit"
+       },
+       {
+        "label": "Primary_1",
+        "text": "Kepala Unit"
+       },
+       {
+        "label": "Primary_2",
+        "text": "Sistem"
+       },
+       {
+        "label": "Primary_3",
+        "text": "Keuangan"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        ".28XUNu4EbgC",
+        "2_8XuZOlzhGI",
+        "3X8X-4nAlRaY",
+        "3X8X9GQTcGLs",
+        "3X8X9aomuIkk",
+        "4g9XySoj0pQV",
+        "608Xh8n7XUQP",
+        "9f9X8LzTx2wS",
+        "F98XzafEki5v",
+        "Ha9X.caG7gDt",
+        "Of9XX92txV0j",
+        "Oi9X.VAaIBkP",
+        "Va.X8C7lT_24",
+        "W48XgHH1JCLZ",
+        "a48X_u_OaYP5",
+        "eT8X9Trp_e7U",
+        "gh9X8Pa.J.P1",
+        "k88XgAD_0L_-",
+        "nM8Xg~_xHZw0",
+        "tb9XOH.EvaVl",
+        "wV8XAjRt58.t",
+        "xU8X45P7lxu_",
+        "z78XREliozyP"
+       ],
+       "lines": [
+        "1f9XuGRbdLxB",
+        "278XHJ.cQFbM",
+        "2a.XmaC84m7t",
+        "3X8X4O0d33ru",
+        "3X8X7q6nDI8a",
+        "3X8XaPu5pNx6",
+        "3X8XxB4OaUrP",
+        "4i9XyV42vq~u",
+        "768XAg~8HYKU",
+        "L38X-WblT~4f",
+        "Lh9XEkIR5BI7",
+        "M.8Xak2j16pd",
+        "Ra9XD~Is3l5b",
+        "WP8Xu~Fgh3VF",
+        "Xi9XdlI5YC_n",
+        "a88Xz.-hN2hg",
+        "aZ8Xf_~GFBxa",
+        "a_8XHnVc2Ksv",
+        "g98XuIyH08CL",
+        "l.8XGGRIt_4i",
+        "og9XtJlGBhgm",
+        "p48Xq377x8yF",
+        "rh9XiDlBX~0k"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "3X8X9GQTcGLs",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "k88XgAD_0L_-",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Disetujui?"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "608Xh8n7XUQP",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input Penyesuaian Stok"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "eT8X9Trp_e7U",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mempersiapkan List Barang SO"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Of9XX92txV0j",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "W48XgHH1JCLZ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem Menyimpan Data Stock Opname"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "id": "3X8XaPu5pNx6",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3X8X9aomuIkk"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "3X8X-4nAlRaY"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "2a.XmaC84m7t",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Ha9X.caG7gDt"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Va.X8C7lT_24"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "L38X-WblT~4f",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "608Xh8n7XUQP"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": ".28XUNu4EbgC"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3X8XxB4OaUrP",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3X8X-4nAlRaY"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "3X8X9GQTcGLs"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Ya"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3X8X4O0d33ru",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "eT8X9Trp_e7U"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "3X8X9aomuIkk"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "278XHJ.cQFbM",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "a48X_u_OaYP5"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "z78XREliozyP"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "a_8XHnVc2Ksv",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "k88XgAD_0L_-"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "F98XzafEki5v"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Tidak"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l.8XGGRIt_4i",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "k88XgAD_0L_-"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "2_8XuZOlzhGI"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Ya"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Lh9XEkIR5BI7",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "gh9X8Pa.J.P1"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "4g9XySoj0pQV"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "a88Xz.-hN2hg",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "W48XgHH1JCLZ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "z78XREliozyP"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "4i9XyV42vq~u",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "9f9X8LzTx2wS"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Oi9X.VAaIBkP"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "aZ8Xf_~GFBxa",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "xU8X45P7lxu_"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "eT8X9Trp_e7U"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "og9XtJlGBhgm",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Of9XX92txV0j"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "9f9X8LzTx2wS"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "WP8Xu~Fgh3VF",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "nM8Xg~_xHZw0"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "eT8X9Trp_e7U"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Xi9XdlI5YC_n",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "4g9XySoj0pQV"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Oi9X.VAaIBkP"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3X8X7q6nDI8a",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3X8X-4nAlRaY"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "608Xh8n7XUQP"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Tidak"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "1f9XuGRbdLxB",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "F98XzafEki5v"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Of9XX92txV0j"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "rh9XiDlBX~0k",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "2_8XuZOlzhGI"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "gh9X8Pa.J.P1"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "g98XuIyH08CL",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "z78XREliozyP"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "k88XgAD_0L_-"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "M.8Xak2j16pd",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "2_8XuZOlzhGI"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "xU8X45P7lxu_"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Update Data Stok"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "768XAg~8HYKU",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "a48X_u_OaYP5"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "W48XgHH1JCLZ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "p48Xq377x8yF",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": ".28XUNu4EbgC"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "a48X_u_OaYP5"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Ra9XD~Is3l5b",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "2_8XuZOlzhGI"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Ha9X.caG7gDt"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Generate Jurnal Otomatis\nPenyesuaian Stok"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

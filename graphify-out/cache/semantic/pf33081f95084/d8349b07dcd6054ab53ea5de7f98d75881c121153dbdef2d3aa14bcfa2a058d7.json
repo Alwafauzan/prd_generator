@@ -1,0 +1,1 @@
+{"nodes": [{"id": "prd_tagihan_pasien_tagihan_pasien", "label": "Tagihan Pasien (G2)", "file_type": "document", "source_file": "other_prd(prd_dari_google_drive)/Billing/prd-tagihan-pasien.md"}, {"id": "bill", "label": "Bill Table", "file_type": "code", "source_file": "other_prd(prd_dari_google_drive)/Billing/prd-tagihan-pasien.md"}], "edges": [], "hyperedges": []}

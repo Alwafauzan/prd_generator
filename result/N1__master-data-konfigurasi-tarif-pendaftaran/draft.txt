@@ -1,0 +1,446 @@
+# Konfigurasi Tarif Pendaftaran
+
+👋 Main Goals
+
+Menyediakan fitur Konfigurasi Tarif Pendaftaran yang memungkinkan rumah sakit mengelola aturan pembebanan tarif administrasi pendaftaran secara fleksibel tanpa memerlukan perubahan source code. Fitur ini bertujuan memastikan setiap proses pendaftaran pasien Rawat Jalan maupun IGD secara otomatis menghasilkan tarif administrasi yang sesuai dengan kebijakan rumah sakit berdasarkan kriteria yang telah dikonfigurasi.
+
+
+
+📝 Feature Capabilities
+
+
+
+
+
+Mengelola konfigurasi tarif administrasi pendaftaran.
+
+
+
+Mendukung konfigurasi tarif berdasarkan kombinasi parameter, antara lain:
+
+
+
+
+
+Unit Pelayanan (Rawat Jalan / IGD).
+
+
+
+Status Pasien (Pasien Baru / Pasien Lama).
+
+
+
+Tipe Penjamin.
+
+
+
+Poli/Unit (opsional sesuai kebutuhan rumah sakit).
+
+
+
+Mengambil tarif administrasi dari Master Data Tarif Layanan.
+
+
+
+Mendukung pengaturan prioritas (priority rule) apabila terdapat lebih dari satu konfigurasi yang memenuhi kriteria.
+
+
+
+Mendukung aktivasi dan nonaktif konfigurasi tarif.
+
+
+
+Menampilkan preview hasil konfigurasi sebelum disimpan.
+
+
+
+Mendukung pencarian dan filter konfigurasi.
+
+
+
+Mendukung histori perubahan konfigurasi.
+
+
+
+Terintegrasi dengan modul:
+
+
+
+
+
+Pendaftaran Rawat Jalan.
+
+
+
+Pendaftaran IGD.
+
+
+
+Billing.
+
+
+
+Master Tarif Layanan.
+
+
+
+Mencatat seluruh perubahan konfigurasi pada Audit Trail.
+
+
+
+⚙️Performance Expectation
+
+Behavior :
+
+
+
+
+
+Sistem secara otomatis menentukan tarif administrasi pendaftaran berdasarkan konfigurasi yang aktif.
+
+
+
+Tarif administrasi langsung ditambahkan ke billing pasien setelah proses registrasi berhasil.
+
+
+
+Sistem selalu menggunakan konfigurasi yang berlaku pada saat transaksi pendaftaran dilakukan.
+
+
+
+Perubahan konfigurasi tidak memengaruhi transaksi yang telah tercatat sebelumnya.
+
+Ekspektasi :
+
+
+
+
+
+Proses penentuan tarif administrasi berlangsung otomatis tanpa intervensi manual.
+
+
+
+Rumah sakit dapat melakukan perubahan aturan tarif secara mandiri tanpa bantuan tim developer.
+
+
+
+Konfigurasi tarif dapat diterapkan secara konsisten pada seluruh proses pendaftaran.
+
+
+
+🧩Scope
+
+In Scope
+
+
+
+
+
+Konfigurasi Tarif Administrasi Rawat Jalan.
+
+
+
+Konfigurasi Tarif Administrasi IGD.
+
+
+
+Mapping Tarif Administrasi.
+
+
+
+Integrasi Master Tarif Layanan.
+
+
+
+Integrasi Billing.
+
+
+
+Aktivasi dan Nonaktif Konfigurasi.
+
+
+
+Histori Konfigurasi.
+
+
+
+Audit Trail.
+
+Out of Scope
+
+
+
+
+
+Tarif Kamar Rawat Inap.
+
+
+
+Tarif Kamar VK.
+
+
+
+Master Standar Harga Kamar.
+
+
+
+Tarif tindakan medis.
+
+
+
+Tarif obat dan BHP.
+
+
+
+📈Expected Improvement From V1
+
+Aspek Bisnis Proses :
+
+
+
+
+
+Pada versi sebelumnya (V1), proses mapping tarif administrasi pendaftaran masih dilakukan secara hardcode pada backend sehingga setiap perubahan aturan tarif memerlukan perubahan source code dan proses deployment aplikasi.
+
+
+
+Pada V2, rumah sakit dapat mengelola konfigurasi tarif administrasi secara mandiri melalui menu konfigurasi tanpa melibatkan tim developer.
+
+
+
+Tarif administrasi yang dibebankan pada saat pendaftaran Rawat Jalan maupun IGD akan mengikuti konfigurasi yang telah dibuat berdasarkan kombinasi parameter seperti status pasien (baru/lama), tipe penjamin, maupun kriteria lainnya sesuai kebutuhan rumah sakit.
+
+
+
+Tarif administrasi yang digunakan berasal dari Master Data Tarif Layanan sehingga tidak terdapat duplikasi pengelolaan tarif.
+
+
+
+Contoh mapping :
+
+
+
+
+
+
+
+No
+
+
+
+Unit
+
+
+
+Status Pasien
+
+
+
+Tipe Penjamin
+
+
+
+Tarif Layanan
+
+
+
+
+
+1
+
+
+
+Rawat Jalan
+
+
+
+Baru
+
+
+
+BPJS
+
+
+
+Administrasi RJ BPJS Baru
+
+
+
+
+
+2
+
+
+
+Rawat Jalan
+
+
+
+Lama
+
+
+
+BPJS
+
+
+
+Administrasi RJ BPJS Lama
+
+
+
+
+
+3
+
+
+
+Rawat Jalan
+
+
+
+Baru
+
+
+
+Umum
+
+
+
+Administrasi RJ Umum Baru
+
+
+
+
+
+4
+
+
+
+Rawat Jalan
+
+
+
+Lama
+
+
+
+Umum
+
+
+
+Administrasi RJ Umum Lama
+
+
+
+
+
+5
+
+
+
+IGD
+
+
+
+Semua
+
+
+
+Semua
+
+
+
+Administrasi IGD
+
+
+
+Aspek User Experience :
+
+
+
+
+
+Menyediakan tampilan konfigurasi yang sederhana, intuitif, dan mudah dipahami oleh petugas administrasi maupun tim master data.
+
+
+
+Pengguna dapat melihat aturan konfigurasi secara terstruktur sehingga mudah mengetahui tarif mana yang akan digunakan pada masing-masing kondisi pendaftaran.
+
+
+
+Menyediakan fasilitas pencarian, filter, dan preview konfigurasi untuk mempermudah proses pengelolaan.
+
+
+
+Aspek Logic System :
+
+
+
+
+
+Sistem menentukan tarif administrasi berdasarkan konfigurasi aktif yang dibuat oleh pengguna.
+
+
+
+Sistem memastikan tarif administrasi yang dibebankan selalu berasal dari Master Data Tarif Layanan.
+
+
+
+Apabila terdapat lebih dari satu konfigurasi yang memenuhi kondisi, sistem menggunakan aturan prioritas (priority rule) sesuai konfigurasi yang telah ditentukan.
+
+
+
+Tarif administrasi otomatis ditambahkan ke billing setelah proses registrasi berhasil dilakukan.
+
+
+
+Sistem memastikan setiap perubahan konfigurasi hanya berlaku untuk transaksi yang dibuat setelah perubahan disimpan, dan tidak mengubah transaksi billing yang telah tercatat sebelumnya.
+
+
+
+Sistem wajib mencatat Audit Trail terhadap seluruh aktivitas konfigurasi, meliputi:
+
+
+
+
+
+Penambahan konfigurasi.
+
+
+
+Perubahan konfigurasi.
+
+
+
+Aktivasi/nonaktif konfigurasi.
+
+
+
+Penghapusan konfigurasi (apabila diperbolehkan).
+
+
+
+Audit Trail minimal mencatat:
+
+
+
+
+
+User yang melakukan perubahan.
+
+
+
+Role pengguna.
+
+
+
+Tanggal dan waktu perubahan.
+
+
+
+Data sebelum perubahan.
+
+
+
+Data setelah perubahan.
+

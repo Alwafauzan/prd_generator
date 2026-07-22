@@ -1,0 +1,2082 @@
+[
+ {
+  "no": "1",
+  "code": "A1",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "User (New)",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "2.0",
+  "code": "A2",
+  "cluster": "Control Panel",
+  "module": "Master Data / Integrasi SATUSEHAT BPJS V1 V2",
+  "menu": "Staff",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "3.0",
+  "code": "A3",
+  "cluster": "Control Panel",
+  "module": "Master Data / Integrasi SATUSEHAT BPJS V2",
+  "menu": "Unit",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "4.0",
+  "code": "A4",
+  "cluster": "Control Panel",
+  "module": "Master Data / Integrasi SATUSEHAT BPJS V2",
+  "menu": "Barang Farmasi",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "5.0",
+  "code": "A5",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Barang Rumah Tangga",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "6.0",
+  "code": "A6",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Barang Gizi (New)",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "7.0",
+  "code": "A7",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Supplier",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "8.0",
+  "code": "A8",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Instansi Rekanan",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "9.0",
+  "code": "A9",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Menu Makanan",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "10.0",
+  "code": "A10",
+  "cluster": "Control Panel",
+  "module": "Master Data / Integrasi BPJS V2",
+  "menu": "Tindakan",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "11.0",
+  "code": "A11",
+  "cluster": "Control Panel",
+  "module": "Master Data / Integrasi SATUSEHAT BPJS V1 V2",
+  "menu": "Diagnosa",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "12.0",
+  "code": "A12",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Diagnosa Perawat",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "13.0",
+  "code": "A13",
+  "cluster": "Control Panel",
+  "module": "Master Data / Integrasi SATUSEHAT BPJS V1 V2",
+  "menu": "Procedure",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "14.0",
+  "code": "A14",
+  "cluster": "Control Panel",
+  "module": "Master Data / Integrasi SATUSEHAT BPJS V2",
+  "menu": "Item Pemeriksaan Laboratorium",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "15.0",
+  "code": "A15",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Bangsal",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "16.0",
+  "code": "A16",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Kamar",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "17.0",
+  "code": "A17",
+  "cluster": "Control Panel",
+  "module": "Master Data / Integrasi BPJS V1 V2",
+  "menu": "Bed",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "18.0",
+  "code": "A18",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Role",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "19.0",
+  "code": "A19",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Instalasi (New)",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "20.0",
+  "code": "A20",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Tipe Penjamin (New)",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "21.0",
+  "code": "A21",
+  "cluster": "Control Panel",
+  "module": "Master Data / Integrasi SATUSEHAT Terminology V2",
+  "menu": "Sediaan Barang (New)",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "22.0",
+  "code": "A22",
+  "cluster": "Control Panel",
+  "module": "Master Data / Integrasi SATUSEHAT Terminology V2",
+  "menu": "satuan & kemasan (New)",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "23.0",
+  "code": "A23",
+  "cluster": "Control Panel",
+  "module": "Master Data / Integrasi BPJS Terminology V2",
+  "menu": "Spesialisasi & SMF(New)",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "24.0",
+  "code": "A24",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Aturan pakai (New)",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "25.0",
+  "code": "A25",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Jenis infeksi (New)",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "26.0",
+  "code": "A26",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Jenis microorganisme (New)",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "27.0",
+  "code": "A27",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Target dan indikator PPI/IPCN (New)",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "28.0",
+  "code": "A28",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Clinical pathway (New)",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "29.0",
+  "code": "A29",
+  "cluster": "Control Panel",
+  "module": "Master Data / Integrasi SATUSEHAT BPJS V2",
+  "menu": "Item Pemeriksaan Radiologi (New)",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "30.0",
+  "code": "A30",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Anjuran Sukon",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "31.0",
+  "code": "A31",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Meja Antrian",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "32.0",
+  "code": "A32",
+  "cluster": "Control Panel",
+  "module": "Master Data / Integrasi SATUSEHAT V2",
+  "menu": "Wilayah (Provinsi, Kabupaten, Kecamatan, Kelurahan)",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "33.0",
+  "code": "A33",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Kategori Barang",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "34.0",
+  "code": "A34",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Hari Libur",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "35.0",
+  "code": "A35",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Farmaco",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "36.0",
+  "code": "A36",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Grup Obat",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "37.0",
+  "code": "A37",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Akses Menu (New)",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "38.0",
+  "code": "A38",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Bank (New)",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "39.0",
+  "code": "A39",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Ruang IBS",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "40.0",
+  "code": "A40",
+  "cluster": "Control Panel",
+  "module": "Master Data / Integrasi SATUSEHAT Terminology V2",
+  "menu": "ROA Obat",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "41.0",
+  "code": "A41",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Registrasi Aset (New)",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "42.0",
+  "code": "A42",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Gudang dan Farmasi (New)",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "43.0",
+  "code": "A43",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Tarif Kamar",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "44.0",
+  "code": "A54",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Pabrikan",
+  "fitur": "",
+  "tribe": "",
+  "notes": ""
+ },
+ {
+  "no": "45.0",
+  "code": "A55",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Jabatan",
+  "fitur": "",
+  "tribe": "",
+  "notes": ""
+ },
+ {
+  "no": "46.0",
+  "code": "A44",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Paket Pelayanan MCU",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "47.0",
+  "code": "A45",
+  "cluster": "Control Panel",
+  "module": "Super Admin (CMS)",
+  "menu": "On/Off Feature",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "48.0",
+  "code": "A46",
+  "cluster": "Control Panel",
+  "module": "Super Admin (CMS)",
+  "menu": "Billing subscription",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "49.0",
+  "code": "A47",
+  "cluster": "Control Panel",
+  "module": "Super Admin (CMS)",
+  "menu": "Semua Konfigurasi sistem",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "50.0",
+  "code": "A48",
+  "cluster": "Control Panel",
+  "module": "Admin",
+  "menu": "Konfigurasi RS",
+  "fitur": "a. Nama\nb. Alamat\nc. Email\nd. No Telp\ne. Logo\nf. Kode RS\ng. NPWP\nh. PKP",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "51.0",
+  "code": "A49",
+  "cluster": "Control Panel",
+  "module": "Admin",
+  "menu": "Konfigurasi fitur",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "52.0",
+  "code": "A50",
+  "cluster": "Control Panel",
+  "module": "Admin",
+  "menu": "Konfigurasi Jurnal Otomatis",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "53.0",
+  "code": "A51",
+  "cluster": "Control Panel",
+  "module": "Admin",
+  "menu": "Konfigurasi Persediaan",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "54.0",
+  "code": "A52",
+  "cluster": "Control Panel",
+  "module": "Admin",
+  "menu": "Konfigurasi Perpajakan",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "55.0",
+  "code": "A53",
+  "cluster": "Control Panel",
+  "module": "Admin",
+  "menu": "RBAC",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "56.0",
+  "code": "B1",
+  "cluster": "Admisi",
+  "module": "Pendaftaran",
+  "menu": "Pendaftaran Rawat Jalan",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "57.0",
+  "code": "B2",
+  "cluster": "Admisi",
+  "module": "Pendaftaran",
+  "menu": "Pendaftaran Rawat Inap",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "58.0",
+  "code": "B3",
+  "cluster": "Admisi",
+  "module": "Pendaftaran",
+  "menu": "Pendaftaran Instalasi Gawat Darurat",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "59.0",
+  "code": "B4",
+  "cluster": "Admisi",
+  "module": "Pendaftaran",
+  "menu": "Pendaftaran Laboratorium",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "60.0",
+  "code": "B5",
+  "cluster": "Admisi",
+  "module": "Pendaftaran",
+  "menu": "Pendaftaran Radiologi",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "61.0",
+  "code": "B6",
+  "cluster": "Admisi",
+  "module": "Pendaftaran",
+  "menu": "Pendaftaran Rehabilitasi Medis",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "62.0",
+  "code": "B7",
+  "cluster": "Admisi",
+  "module": "Pendaftaran",
+  "menu": "Pendaftaran MCU",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "63.0",
+  "code": "B8",
+  "cluster": "Admisi",
+  "module": "Antrian",
+  "menu": "APM",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "64.0",
+  "code": "B9",
+  "cluster": "Admisi",
+  "module": "Antrian",
+  "menu": "Display antrian",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "65.0",
+  "code": "C1",
+  "cluster": "External Platform",
+  "module": "Pendaftaran",
+  "menu": "Validasi biometrik",
+  "fitur": "",
+  "tribe": "Integration",
+  "notes": ""
+ },
+ {
+  "no": "66.0",
+  "code": "C2",
+  "cluster": "External Platform",
+  "module": "Pendaftaran",
+  "menu": "Pembuatan SEP",
+  "fitur": "",
+  "tribe": "Integration",
+  "notes": ""
+ },
+ {
+  "no": "67.0",
+  "code": "C3",
+  "cluster": "External Platform",
+  "module": "Web Pendaftaran",
+  "menu": "Pendaftaran RJ",
+  "fitur": "",
+  "tribe": "Integration",
+  "notes": ""
+ },
+ {
+  "no": "68.0",
+  "code": "C4",
+  "cluster": "External Platform",
+  "module": "Mobile JKN",
+  "menu": "Pendaftaran RJ",
+  "fitur": "",
+  "tribe": "Integration",
+  "notes": ""
+ },
+ {
+  "no": "69.0",
+  "code": "C5",
+  "cluster": "External Platform",
+  "module": "HFIS",
+  "menu": "Jadwal dokter",
+  "fitur": "",
+  "tribe": "Integration",
+  "notes": ""
+ },
+ {
+  "no": "70.0",
+  "code": "D1",
+  "cluster": "EMR",
+  "module": "Pendaftaran",
+  "menu": "General Consent",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "71.0",
+  "code": "D2",
+  "cluster": "EMR",
+  "module": "Pendaftaran",
+  "menu": "Informed Consent",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "72.0",
+  "code": "D3",
+  "cluster": "EMR",
+  "module": "Data Pasien",
+  "menu": "Data Sosial Pasien",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "73.0",
+  "code": "D4",
+  "cluster": "EMR",
+  "module": "Data Pasien",
+  "menu": "Data Alergi",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "74.0",
+  "code": "D5",
+  "cluster": "EMR",
+  "module": "Data Pasien",
+  "menu": "Ringkasan Kesehatan Pasien/ Catatan Pasien",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "75.0",
+  "code": "D6",
+  "cluster": "EMR",
+  "module": "Rawat Jalan",
+  "menu": "EMR RJ",
+  "fitur": "List Dokumen EMR",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "76.0",
+  "code": "D7",
+  "cluster": "EMR",
+  "module": "IGD",
+  "menu": "EMR IGD",
+  "fitur": "List Dokumen EMR",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "77.0",
+  "code": "D8",
+  "cluster": "EMR",
+  "module": "Rawat Inap, IBS, VK",
+  "menu": "EMR RI",
+  "fitur": "List Dokumen EMR",
+  "tribe": "Pelayanan Utama",
+  "notes": "Nantinya akan ada code child dari code parent. Yang di MVP ini adalah code parent"
+ },
+ {
+  "no": "78.0",
+  "code": "D9",
+  "cluster": "EMR",
+  "module": "IGD & Rawat Jalan",
+  "menu": "Screening pasien (TB, Stunting, COVID, dll.)",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "79.0",
+  "code": "D10",
+  "cluster": "EMR",
+  "module": "IGD, Rawat Jalan, Rawat Inap, IBS, VK, Lab, Rad, Penunjang Medis, Ambulance, Transfusi Darah, MCU",
+  "menu": "Dokumen pendukung",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "80.0",
+  "code": "E1",
+  "cluster": "Pelayanan utama",
+  "module": "IGD, Rawat Jalan, Rawat Inap, IBS, VK, Lab, Rad, Penunjang Medis, Ambulance, Transfusi Darah, MCU",
+  "menu": "Tindakan & BHP",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "81.0",
+  "code": "E2",
+  "cluster": "Pelayanan utama",
+  "module": "IGD, Rawat Jalan, Rawat Inap, IBS, VK, Penunjang Medis, MCU",
+  "menu": "Order resep",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "82.0",
+  "code": "E3",
+  "cluster": "Pelayanan utama",
+  "module": "IGD, Rawat Jalan, Rawat Inap, IBS, VK, Penunjang Medis, MCU",
+  "menu": "Order penunjang Laboratorium",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "83.0",
+  "code": "E4",
+  "cluster": "Pelayanan utama",
+  "module": "IGD, Rawat Jalan, Rawat Inap, IBS, VK, Penunjang Medis, MCU",
+  "menu": "Order penunjang Radiologi",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "84.0",
+  "code": "E5",
+  "cluster": "Pelayanan utama",
+  "module": "IGD, Rawat Jalan, Rawat Inap, IBS, VK, Penunjang Medis, MCU",
+  "menu": "Order permintaan darah",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "85.0",
+  "code": "E6",
+  "cluster": "Pelayanan utama",
+  "module": "IGD, Rawat Jalan, Rawat Inap, IBS, VK, MCU",
+  "menu": "Order ambulance",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "86.0",
+  "code": "E7",
+  "cluster": "Pelayanan utama",
+  "module": "IGD, Rawat Jalan, Rawat Inap, IBS, VK, MCU",
+  "menu": "Order tindakan VK",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "87.0",
+  "code": "E8",
+  "cluster": "Pelayanan utama",
+  "module": "IGD & Rawat Inap",
+  "menu": "Order gizi",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "88.0",
+  "code": "E9",
+  "cluster": "Pelayanan utama",
+  "module": "IGD, Rawat Jalan, Rawat Inap, VK",
+  "menu": "Permintaan Jadwal Operasi (Order IBS)",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "89.0",
+  "code": "E10",
+  "cluster": "Pelayanan utama",
+  "module": "IGD",
+  "menu": "Triase IGD",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "90.0",
+  "code": "E11",
+  "cluster": "Pelayanan utama",
+  "module": "IGD, Rawat Jalan, Rawat Inap, IBS, VK, MCU",
+  "menu": "Transfer internal",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "91.0",
+  "code": "E12",
+  "cluster": "Pelayanan utama",
+  "module": "Rawat Inap, IBS, IGD, VK",
+  "menu": "Order Catatan Pemberian Obat",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "92.0",
+  "code": "E13",
+  "cluster": "Pelayanan utama",
+  "module": "Rawat Jalan, Rawat Inap, IGD, MCU",
+  "menu": "Discharge Pasien",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "93.0",
+  "code": "E14",
+  "cluster": "Pelayanan utama",
+  "module": "Rawat Jalan",
+  "menu": "Konsultasi dan Rujuk Internal",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "94.0",
+  "code": "E15",
+  "cluster": "Pelayanan utama",
+  "module": "Rawat Inap",
+  "menu": "Ganti bed",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "95.0",
+  "code": "E16",
+  "cluster": "Pelayanan utama",
+  "module": "Rawat Inap",
+  "menu": "Ganti DPJP",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "96.0",
+  "code": "E17",
+  "cluster": "Pelayanan utama",
+  "module": "Rawat Inap",
+  "menu": "Rujuk ke hemodialisa",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "97.0",
+  "code": "E18",
+  "cluster": "Pelayanan utama",
+  "module": "Rawat Inap",
+  "menu": "Form Edukasi Terintegrasi",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "98.0",
+  "code": "E19",
+  "cluster": "Pelayanan utama",
+  "module": "Rawat Jalan, Rawat Inap, IGD",
+  "menu": "Surat kontrol",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "99.0",
+  "code": "E20",
+  "cluster": "Pelayanan utama",
+  "module": "Rawat Jalan, IGD",
+  "menu": "SPRI",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "100.0",
+  "code": "E21",
+  "cluster": "Pelayanan utama",
+  "module": "Rawat Jalan, Rawat Inap, IGD",
+  "menu": "Pembuatan Surat (Rujukan RS Lain, Rujuk Balik PRB, Rujuk Balik Non PRB, Surat Kematian, Surat Kematian DOA ,Surat Dokter, Surat Kelahiran)",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "101.0",
+  "code": "E22",
+  "cluster": "Pelayanan utama",
+  "module": "IGD, Rawat Jalan, Rawat Inap, IBS, VK, Penunjang Medis, MCU",
+  "menu": "Order Patologi Anatomi",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "102.0",
+  "code": "E23",
+  "cluster": "Pelayanan Utama",
+  "module": "Rawat Inap, IBS, IGD, VK",
+  "menu": "CPO - Input Waktu Pemberian Obat",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "103.0",
+  "code": "C6",
+  "cluster": "External Platform",
+  "module": "External",
+  "menu": "Surat kontrol",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "104.0",
+  "code": "C7",
+  "cluster": "External Platform",
+  "module": "External",
+  "menu": "SPRI",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "105.0",
+  "code": "C8",
+  "cluster": "External Platform",
+  "module": "External",
+  "menu": "Pembuatan Surat (Rujukan RS Lain, Rujuk Balik PRB, Rujuk Balik Non PRB, Surat Kematian, Surat Kematian DOA ,Surat Dokter, Surat Kelahiran)",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "106.0",
+  "code": "C9",
+  "cluster": "External Platform",
+  "module": "External",
+  "menu": "Antrean online BPJS",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "107.0",
+  "code": "C10",
+  "cluster": "External Platform",
+  "module": "External",
+  "menu": "Satu sehat kemenkes",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "108.0",
+  "code": "C11",
+  "cluster": "External Platform",
+  "module": "External",
+  "menu": "BPJS",
+  "fitur": "",
+  "tribe": "Pelayanan Utama",
+  "notes": ""
+ },
+ {
+  "no": "109.0",
+  "code": "F1",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Laboratorium",
+  "menu": "Konfirmasi order laboratorium",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "110.0",
+  "code": "F2",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Laboratorium",
+  "menu": "Input hasil laboratorium",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "111.0",
+  "code": "F3",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Laboratorium",
+  "menu": "Nilai kritis laboratorium",
+  "fitur": "Flagging nilai kritis lab dan notifikasi via WA ke dokter pengorder lab",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "112.0",
+  "code": "F4",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Radiologi",
+  "menu": "Konfirmasi order radiologi",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "113.0",
+  "code": "F5",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Radiologi",
+  "menu": "Input hasil radiologi (expertise)",
+  "fitur": "- Ada flagging untuk hasil imaging (sudah ada/belum)\n- Pengembangan template hasil radiologi berdasarkan jenis pemeriksaan",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "114.0",
+  "code": "F6",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Radiologi",
+  "menu": "View perbandingan dua hasil radiologi (dari history pemeriksaan radiologi)",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "115.0",
+  "code": "F7",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Gizi",
+  "menu": "Order makanan gizi",
+  "fitur": "Pengembangan untuk badge dan filtering pasien yang di auto orderkan gizi",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "116.0",
+  "code": "F8",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Gizi",
+  "menu": "Rekap order makanan",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "117.0",
+  "code": "F9",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Gizi",
+  "menu": "Penggunaan barang gizi",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "118.0",
+  "code": "F10",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Gizi",
+  "menu": "Skrining Gizi",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "119.0",
+  "code": "F11",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Farmasi Rawat Jalan",
+  "menu": "Konfirmasi order resep",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "120.0",
+  "code": "F12",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Farmasi Rawat Jalan",
+  "menu": "Penyerahan obat",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "121.0",
+  "code": "F13",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Farmasi Rawat Inap/IGD",
+  "menu": "Konfirmasi order resep",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "122.0",
+  "code": "F14",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Farmasi Rawat Inap/IGD",
+  "menu": "Penyerahan obat",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "123.0",
+  "code": "F15",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Farmasi IBS",
+  "menu": "Konfirmasi order resep",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "124.0",
+  "code": "F16",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Farmasi IBS",
+  "menu": "Penyerahan obat",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "125.0",
+  "code": "F17",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Farmasi",
+  "menu": "Retur Obat",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "126.0",
+  "code": "F18",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Farmasi",
+  "menu": "Display antrian",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "127.0",
+  "code": "F19",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Farmasi",
+  "menu": "Penjualan obat bebas",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "128.0",
+  "code": "F20",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Farmasi",
+  "menu": "Pengembalian obat ranap",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "129.0",
+  "code": "F21",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Farmasi",
+  "menu": "Manajemen rekonsiliasi obat",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "130.0",
+  "code": "F22",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Farmasi",
+  "menu": "Apotek Online",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "131.0",
+  "code": "F23",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Farmasi",
+  "menu": "Iter",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "132.0",
+  "code": "F24",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Penunjang Medis (Hemodialisa, Fisioterapi, Terapi Okupasi, Terapi Wicara)",
+  "menu": "Form poli",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "133.0",
+  "code": "F25",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Penunjang Medis (Hemodialisa, Fisioterapi, Terapi Okupasi, Terapi Wicara)",
+  "menu": "Penjadwalan terapi rehabilitasi medis",
+  "fitur": "Pengembangan jadwal integrasikan dengan app internal RS",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "134.0",
+  "code": "F26",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Penunjang Medis (Hemodialisa, Fisioterapi, Terapi Okupasi, Terapi Wicara)",
+  "menu": "Penjadwalan hemodialisa",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "135.0",
+  "code": "F27",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Penunjang Medis (Hemodialisa, Fisioterapi, Terapi Okupasi, Terapi Wicara)",
+  "menu": "Monitoring HD",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "136.0",
+  "code": "F28",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Penunjang Medis (Hemodialisa, Fisioterapi, Terapi Okupasi, Terapi Wicara)",
+  "menu": "Display penunjang medis",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "137.0",
+  "code": "F29",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Ambulance",
+  "menu": "Konfirmasi ambulance",
+  "fitur": "- Pengembangan surat keterangan kematian\n- Pengembangan tarif standart \n- Pengembangan surat pengantar",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "138.0",
+  "code": "F30",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Ambulance",
+  "menu": "Riwayat ambulance",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "139.0",
+  "code": "F31",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Transfusi Darah",
+  "menu": "Konfirmasi permintaan transfusi darah",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "140.0",
+  "code": "F32",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Transfusi Darah",
+  "menu": "Input Hasil pemeriksaan",
+  "fitur": "- Pengembangan EMR \n- Pengembangan alur menginformasikan ke lab ketika ada reaksi transfusi",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "141.0",
+  "code": "F33",
+  "cluster": "Pelayanan Pendukung",
+  "module": "PPI/IPCN",
+  "menu": "Surveilans HAIs",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "142.0",
+  "code": "F34",
+  "cluster": "Pelayanan Pendukung",
+  "module": "PPI/IPCN",
+  "menu": "Bundle care pencegahan infeksi",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "143.0",
+  "code": "F35",
+  "cluster": "Pelayanan Pendukung",
+  "module": "PPI/IPCN",
+  "menu": "Audit kepatuhan",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "144.0",
+  "code": "F36",
+  "cluster": "Pelayanan Pendukung",
+  "module": "VK",
+  "menu": "Informasi data pasien",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "145.0",
+  "code": "F37",
+  "cluster": "Pelayanan Pendukung",
+  "module": "VK",
+  "menu": "Pembuatan surat",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "146.0",
+  "code": "F38",
+  "cluster": "Pelayanan Pendukung",
+  "module": "VK",
+  "menu": "Surat keterangan lahir",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "147.0",
+  "code": "F39",
+  "cluster": "Pelayanan Pendukung",
+  "module": "MCU",
+  "menu": "Informasi data pasien",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "148.0",
+  "code": "F40",
+  "cluster": "Pelayanan Pendukung",
+  "module": "MCU",
+  "menu": "Form asesmen MCU (fleksibel)",
+  "fitur": "- Adjustable untuk inputan asesmen yang berkesinambungan dengan outputnya",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "149.0",
+  "code": "F41",
+  "cluster": "Pelayanan Pendukung",
+  "module": "MCU",
+  "menu": "Compile hasil MCU dan hasil pemeriksaan",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "150.0",
+  "code": "F42",
+  "cluster": "Pelayanan Pendukung",
+  "module": "IBS",
+  "menu": "Informasi data pasien",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "151.0",
+  "code": "F43",
+  "cluster": "Pelayanan Pendukung",
+  "module": "IBS",
+  "menu": "Jadwal operasi",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "152.0",
+  "code": "F44",
+  "cluster": "Pelayanan Pendukung",
+  "module": "IBS",
+  "menu": "Catatan pemakaian obat dan material operasi",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "153.0",
+  "code": "F45",
+  "cluster": "Pelayanan Pendukung",
+  "module": "IBS",
+  "menu": "Penundaan operasi pasien",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "154.0",
+  "code": "F46",
+  "cluster": "Pelayanan Pendukung",
+  "module": "IBS",
+  "menu": "Dashboard operasi",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "155.0",
+  "code": "F47",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Pemulasaran Jenazah",
+  "menu": "Menambahkan data pasien",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "156.0",
+  "code": "F48",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Pemulasaran Jenazah",
+  "menu": "Riwayat data jenazah",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "157.0",
+  "code": "F49",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Patologi Anatomi",
+  "menu": "Konfirmasi order patologi anatomi",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "158.0",
+  "code": "F50",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Patologi Anatomi",
+  "menu": "Input hasil patologi anatomi",
+  "fitur": "",
+  "tribe": "Pelayanan Pendukung",
+  "notes": ""
+ },
+ {
+  "no": "159.0",
+  "code": "C12",
+  "cluster": "External Platform",
+  "module": "Laboratorium",
+  "menu": "Integrasi LIS",
+  "fitur": "",
+  "tribe": "Integration",
+  "notes": ""
+ },
+ {
+  "no": "160.0",
+  "code": "C13",
+  "cluster": "External Platform",
+  "module": "Laboratorium",
+  "menu": "Integrasi Satu Sehat",
+  "fitur": "",
+  "tribe": "Integration",
+  "notes": ""
+ },
+ {
+  "no": "161.0",
+  "code": "C14",
+  "cluster": "External Platform",
+  "module": "Laboratorium",
+  "menu": "Integrasi Smartclaim BPJS",
+  "fitur": "",
+  "tribe": "Integration",
+  "notes": ""
+ },
+ {
+  "no": "162.0",
+  "code": "C15",
+  "cluster": "External Platform",
+  "module": "Farmasi",
+  "menu": "Integrasi apotek online",
+  "fitur": "",
+  "tribe": "Integration",
+  "notes": ""
+ },
+ {
+  "no": "163.0",
+  "code": "C17",
+  "cluster": "External Platform",
+  "module": "Radiologi",
+  "menu": "Integrasi RIS/PACS",
+  "fitur": "",
+  "tribe": "Integration",
+  "notes": ""
+ },
+ {
+  "no": "164.0",
+  "code": "C18",
+  "cluster": "External Platform",
+  "module": "Radiologi",
+  "menu": "Integrasi Satu Sehat",
+  "fitur": "",
+  "tribe": "Integration",
+  "notes": ""
+ },
+ {
+  "no": "165.0",
+  "code": "C19",
+  "cluster": "External Platform",
+  "module": "Radiologi",
+  "menu": "Integrasi Smartclaim BPJS",
+  "fitur": "",
+  "tribe": "Integration",
+  "notes": ""
+ },
+ {
+  "no": "166.0",
+  "code": "G1",
+  "cluster": "Core Integration",
+  "module": "Billing/Kasir",
+  "menu": "Billing",
+  "fitur": "Buka & Tutup Kasir",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "167.0",
+  "code": "G2",
+  "cluster": "Core Integration",
+  "module": "Billing/Kasir",
+  "menu": "Billing",
+  "fitur": "Tagihan Pasien",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "168.0",
+  "code": "G3",
+  "cluster": "Core Integration",
+  "module": "Billing/Kasir",
+  "menu": "Billing",
+  "fitur": "Pengelolaan dana wadiah/ Deposito Pasien",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "169.0",
+  "code": "G4",
+  "cluster": "Core Integration",
+  "module": "Billing/Kasir",
+  "menu": "Billing",
+  "fitur": "Verifikasi Penerimaan Kas",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "170.0",
+  "code": "G5",
+  "cluster": "Core Integration",
+  "module": "Casemix",
+  "menu": "Pengelolaan Klaim BPJS",
+  "fitur": "Pengajuan Klaim",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "171.0",
+  "code": "G6",
+  "cluster": "Core Integration",
+  "module": "Casemix",
+  "menu": "Pengelolaan Klaim BPJS",
+  "fitur": "Integrasi third party (BPJS)",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "172.0",
+  "code": "G7",
+  "cluster": "Core Integration",
+  "module": "Casemix",
+  "menu": "Pengelolaan Klaim BPJS",
+  "fitur": "Integrasi E-klaim",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "173.0",
+  "code": "G8",
+  "cluster": "Core Integration",
+  "module": "Casemix",
+  "menu": "Pengelolaan Klaim BPJS",
+  "fitur": "Managemen Dokumen dan Data Medis",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "174.0",
+  "code": "G9",
+  "cluster": "Core Integration",
+  "module": "Casemix",
+  "menu": "Pengelolaan Klaim BPJS",
+  "fitur": "Penerimaan Klaim dan BA",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "175.0",
+  "code": "G10",
+  "cluster": "Core Integration",
+  "module": "Casemix",
+  "menu": "Pengelolaan Klaim BPJS",
+  "fitur": "Resubmit Pengajuan Klaim",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "176.0",
+  "code": "G11",
+  "cluster": "Core Integration",
+  "module": "Casemix",
+  "menu": "Pengelolaan Klaim Asuransi Swasta",
+  "fitur": "Pengajuan dan penerimaan klaim",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "177.0",
+  "code": "G12",
+  "cluster": "Core Integration",
+  "module": "Casemix",
+  "menu": "Pengelolaan Klaim Asuransi Swasta",
+  "fitur": "Integrasi third party (API klaim swasta)",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "178.0",
+  "code": "G13",
+  "cluster": "Core Integration",
+  "module": "Casemix",
+  "menu": "Pengelolaan Klaim Asuransi Swasta",
+  "fitur": "Integrasi E-klaim",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "179.0",
+  "code": "G14",
+  "cluster": "Core Integration",
+  "module": "Casemix",
+  "menu": "Pengelolaan Klaim Asuransi Swasta",
+  "fitur": "Managemen Dokumen dan Data Medis",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "180.0",
+  "code": "G15",
+  "cluster": "Core Integration",
+  "module": "Facility Management",
+  "menu": "Jadwal dokter",
+  "fitur": "Jadwal dokter (Libur & Re-schedule)",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "181.0",
+  "code": "G16",
+  "cluster": "Core Integration",
+  "module": "Facility Management",
+  "menu": "Jadwal dokter",
+  "fitur": "Ubah kuota",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "182.0",
+  "code": "G17",
+  "cluster": "Core Integration",
+  "module": "Facility Management",
+  "menu": "Jadwal dokter",
+  "fitur": "Pengaturan antrian",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "183.0",
+  "code": "G18",
+  "cluster": "Core Integration",
+  "module": "Facility Management",
+  "menu": "Paket layanan dan pemeriksaan",
+  "fitur": "Paket tarif layanan",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "184.0",
+  "code": "G19",
+  "cluster": "Core Integration",
+  "module": "Facility Management",
+  "menu": "Paket layanan dan pemeriksaan",
+  "fitur": "Paket pemeriksaan laboratorium",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "185.0",
+  "code": "G20",
+  "cluster": "Core Integration",
+  "module": "Facility Management",
+  "menu": "Paket layanan dan pemeriksaan",
+  "fitur": "Paket pemeriksaan radiologi",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "186.0",
+  "code": "G21",
+  "cluster": "Core Integration",
+  "module": "Facility Management",
+  "menu": "Paket layanan dan pemeriksaan",
+  "fitur": "Program diskon",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "187.0",
+  "code": "G22",
+  "cluster": "Core Integration",
+  "module": "Facility Management",
+  "menu": "Paket layanan dan pemeriksaan",
+  "fitur": "Penentuan harga jual obat (margin dkk)",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "188.0",
+  "code": "G23",
+  "cluster": "Core Integration",
+  "module": "Satu Sehat",
+  "menu": "SATUSEHAT Integration",
+  "fitur": "Patient Profile Sync",
+  "tribe": "Integration",
+  "notes": ""
+ },
+ {
+  "no": "189.0",
+  "code": "G24",
+  "cluster": "Core Integration",
+  "module": "Satu Sehat",
+  "menu": "SATUSEHAT Integration",
+  "fitur": "Encounter Sync",
+  "tribe": "Integration",
+  "notes": ""
+ },
+ {
+  "no": "190.0",
+  "code": "G25",
+  "cluster": "Core Integration",
+  "module": "Satu Sehat",
+  "menu": "SATUSEHAT Integration",
+  "fitur": "Observation Sync",
+  "tribe": "Integration",
+  "notes": ""
+ },
+ {
+  "no": "191.0",
+  "code": "G26",
+  "cluster": "Core Integration",
+  "module": "Satu Sehat",
+  "menu": "SATUSEHAT Integration",
+  "fitur": "Medication Request Sync",
+  "tribe": "Integration",
+  "notes": ""
+ },
+ {
+  "no": "192.0",
+  "code": "G27",
+  "cluster": "Core Integration",
+  "module": "Satu Sehat",
+  "menu": "SATUSEHAT Integration",
+  "fitur": "Resume Medis Sync",
+  "tribe": "Integration",
+  "notes": ""
+ },
+ {
+  "no": "193.0",
+  "code": "G28",
+  "cluster": "Core Integration",
+  "module": "Sisdi",
+  "menu": "SISDI PKU",
+  "fitur": "",
+  "tribe": "Integration",
+  "notes": ""
+ },
+ {
+  "no": "194.0",
+  "code": "H1",
+  "cluster": "Backoffice",
+  "module": "Inventory",
+  "menu": "Pemesanan Barang",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "195.0",
+  "code": "H2",
+  "cluster": "Backoffice",
+  "module": "Inventory",
+  "menu": "Penerimaan Barang",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "196.0",
+  "code": "H3",
+  "cluster": "Backoffice",
+  "module": "Inventory",
+  "menu": "Distribusi Barang",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "197.0",
+  "code": "H4",
+  "cluster": "Backoffice",
+  "module": "Inventory",
+  "menu": "Informasi Stok",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "198.0",
+  "code": "H5",
+  "cluster": "Backoffice",
+  "module": "Inventory",
+  "menu": "Mutasi Stok",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "199.0",
+  "code": "H6",
+  "cluster": "Backoffice",
+  "module": "Inventory",
+  "menu": "Stok Opname",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "200.0",
+  "code": "H7",
+  "cluster": "Backoffice",
+  "module": "Inventory",
+  "menu": "Peminjaman dan Pengembalian Barang",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "201.0",
+  "code": "H8",
+  "cluster": "Backoffice",
+  "module": "Inventory",
+  "menu": "Retur Pembelian",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "202.0",
+  "code": "H9",
+  "cluster": "Backoffice",
+  "module": "Inventory",
+  "menu": "Pemusnahan Barang",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "203.0",
+  "code": "H10",
+  "cluster": "Backoffice",
+  "module": "Inventory",
+  "menu": "Rencanan Pengadaan Barang",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "204.0",
+  "code": "H11",
+  "cluster": "Backoffice",
+  "module": "Inventory",
+  "menu": "Penggunaan Barang Unit",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": ""
+ },
+ {
+  "no": "205.0",
+  "code": "N1",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Konfigurasi Tarif Pendaftaran",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": "Kode sementara N; ganti ke A-series saat nomor terbaru diketahui"
+ },
+ {
+  "no": "206.0",
+  "code": "N2",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Master Program Terapi",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": "Kode sementara N; ganti ke A-series saat nomor terbaru diketahui"
+ },
+ {
+  "no": "207.0",
+  "code": "N3",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Master Penomoran Surat",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": "Kode sementara N; ganti ke A-series saat nomor terbaru diketahui"
+ },
+ {
+  "no": "208.0",
+  "code": "N4",
+  "cluster": "Control Panel",
+  "module": "Master Data",
+  "menu": "Profil Rumah Sakit",
+  "fitur": "",
+  "tribe": "Backoffice Administrasi",
+  "notes": "Kode sementara N; ganti ke A-series saat nomor terbaru diketahui"
+ }
+]

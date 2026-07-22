@@ -1,0 +1,1257 @@
+{
+ "id": "8cf83baa-b5aa-4913-85f3-37ff853c5559",
+ "title": "g-support-apotek-online-iter",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "O87XS.JRFkm-",
+  "label": ""
+ },
+ "pages": [
+  {
+   "id": "ZosXDC337QCF",
+   "title": "g-support-apotek-online-iter",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "N87X~AwdsQTR",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Konfirmasi penyerahan obat"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87X0p0kdYVW",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Validasi Data"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87XdGkfkM9Q",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pembuatan Obat Kronis dengan iterasi"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87Xsju-Sgq3",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Konfirmasi permintaan obat"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87XQCeglYmZ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Menyimpan data sesuai dengan data obat yang diserahkan ke Dashboard APOL(Neurovi)"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87XfsuYDvjS",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87Xdim91L-0",
+      "class": "BPMNDataStore",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Data disimpan di APOL(BPJS)"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87XHp9z8oMY",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tebus Iterasi Obat "
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87XO-D32fBC",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Menampilkan Dashboard Data Siap Integrasi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87XNeAGHMxL",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87XMFzllQ4j",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87Xe6zD9wuU",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Integrasi Apotek Online"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87XfEg_BQGX",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Validasi Data"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87XbOF3NTaU",
+      "class": "AdvancedSwimLaneBlockRotated",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Primary_0",
+        "text": "Petugas Farmasi"
+       },
+       {
+        "label": "Primary_1",
+        "text": "System Neurovi"
+       },
+       {
+        "label": "Primary_2",
+        "text": "Apotek Online(BPJS)"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "N87X0p0kdYVW",
+        "N87X8gV27lu1",
+        "N87X9pl2uqOe",
+        "N87XAe~e-RoK",
+        "N87XBIqDeIrH",
+        "N87XFMNOTV1j",
+        "N87XHp9z8oMY",
+        "N87XIp.Egyy2",
+        "N87XK5.XSjni",
+        "N87XL0VptYTb",
+        "N87XMFzllQ4j",
+        "N87XNeAGHMxL",
+        "N87XO-D32fBC",
+        "N87XQCeglYmZ",
+        "N87XSfeCY28T",
+        "N87XdGkfkM9Q",
+        "N87Xdim91L-0",
+        "N87Xe6zD9wuU",
+        "N87XfEg_BQGX",
+        "N87XfsuYDvjS",
+        "N87XjAHFIV5w",
+        "N87XkB2w2oQJ",
+        "N87Xsju-Sgq3",
+        "N87Xvr8XG_1b",
+        "N87X~AwdsQTR"
+       ],
+       "lines": [
+        "N87X1QbhVG9u",
+        "N87XAQTe01DL",
+        "N87XAZ7~EvJW",
+        "N87XCWCUih11",
+        "N87XDknGanI0",
+        "N87XFb4iQnxs",
+        "N87XJQz2TxmJ",
+        "N87XSePA9J~X",
+        "N87XSgfQir.J",
+        "N87XTj6TQ.~v",
+        "N87XW8bisAiz",
+        "N87XWHPbdYCq",
+        "N87XYc_2ZHWV",
+        "N87Xdpl8Fs57",
+        "N87XgGtucPRO",
+        "N87XhG-RHX7x",
+        "N87XhvtDSUFh",
+        "N87XjceyCseI",
+        "N87Xk2j7_gJ3",
+        "N87XoXTuT-v0",
+        "N87XreKJFMkI",
+        "N87XwGSPxM_w",
+        "N87Xy~DPw-uX"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "N87X8gV27lu1",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "APOL(BPJS) Menrima Data"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "0soYPwxUQZRJ",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Apotek Online"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87Xvr8XG_1b",
+      "class": "BPMNDataStore",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan Data Integrasi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87XIp.Egyy2",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Resep di Dashboard APOL(Neurovi)"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87XL0VptYTb",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Konfirmasi pembuatan obat"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87X9pl2uqOe",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Data Ditolak & Return Response ke Neurovi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_2"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87XkB2w2oQJ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Kirim ke APOL BPJS"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "O87XS.JRFkm-",
+      "class": "RectangleContainerBlock",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "0soYPwxUQZRJ",
+        "N87X0p0kdYVW",
+        "N87X8gV27lu1",
+        "N87X9pl2uqOe",
+        "N87XAe~e-RoK",
+        "N87XBIqDeIrH",
+        "N87XFMNOTV1j",
+        "N87XHp9z8oMY",
+        "N87XIp.Egyy2",
+        "N87XK5.XSjni",
+        "N87XL0VptYTb",
+        "N87XMFzllQ4j",
+        "N87XNeAGHMxL",
+        "N87XO-D32fBC",
+        "N87XQCeglYmZ",
+        "N87XSfeCY28T",
+        "N87XbOF3NTaU",
+        "N87XdGkfkM9Q",
+        "N87Xdim91L-0",
+        "N87Xe6zD9wuU",
+        "N87XfEg_BQGX",
+        "N87XfsuYDvjS",
+        "N87XjAHFIV5w",
+        "N87XkB2w2oQJ",
+        "N87Xsju-Sgq3",
+        "N87Xvr8XG_1b",
+        "N87X~AwdsQTR"
+       ],
+       "lines": [
+        "N87X1QbhVG9u",
+        "N87XAQTe01DL",
+        "N87XAZ7~EvJW",
+        "N87XCWCUih11",
+        "N87XDknGanI0",
+        "N87XFb4iQnxs",
+        "N87XJQz2TxmJ",
+        "N87XSePA9J~X",
+        "N87XSgfQir.J",
+        "N87XTj6TQ.~v",
+        "N87XW8bisAiz",
+        "N87XWHPbdYCq",
+        "N87XYc_2ZHWV",
+        "N87Xdpl8Fs57",
+        "N87XgGtucPRO",
+        "N87XhG-RHX7x",
+        "N87XhvtDSUFh",
+        "N87XjceyCseI",
+        "N87Xk2j7_gJ3",
+        "N87XoXTuT-v0",
+        "N87XreKJFMkI",
+        "N87XwGSPxM_w",
+        "N87Xy~DPw-uX",
+        "O87XAdxeeG2r",
+        "O87XC6W81L~W"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "N87XFMNOTV1j",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Menyimpan iterasi sesuai dengan jumlah iterasi resep."
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87XK5.XSjni",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Integrasi Data ke APOL BPJS"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87XAe~e-RoK",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tebus Iterasi"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87XjAHFIV5w",
+      "class": "BPMNDataStore",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan Data Iterasi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87XSfeCY28T",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Response Ke Petugas Farmasi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "N87XBIqDeIrH",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "id": "N87XTj6TQ.~v",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87XBIqDeIrH"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87XjAHFIV5w"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Valid? Ya"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87XSgfQir.J",
+      "endpoint1": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87XkB2w2oQJ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87XK5.XSjni"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87XgGtucPRO",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87XNeAGHMxL"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87Xdim91L-0"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Valid? Ya"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87Xy~DPw-uX",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87XNeAGHMxL"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87X9pl2uqOe"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Valid? Tidak"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "O87XAdxeeG2r",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87XbOF3NTaU"
+      },
+      "endpoint2": {
+       "style": "None",
+       "connectedTo": "N87XbOF3NTaU"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87XAQTe01DL",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87XHp9z8oMY"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87XL0VptYTb"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87XDknGanI0",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87XFMNOTV1j"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87X0p0kdYVW"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87Xk2j7_gJ3",
+      "endpoint1": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87XQCeglYmZ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87X~AwdsQTR"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87XJQz2TxmJ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87X8gV27lu1"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87XfEg_BQGX"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87XCWCUih11",
+      "endpoint1": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87XBIqDeIrH"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87Xsju-Sgq3"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87XAZ7~EvJW",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87XBIqDeIrH"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87XSfeCY28T"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Valid? Tidak"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87XjceyCseI",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87Xdim91L-0"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87XfsuYDvjS"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87X1QbhVG9u",
+      "endpoint1": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87Xvr8XG_1b"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87XO-D32fBC"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87XhvtDSUFh",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87XSfeCY28T"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87XFMNOTV1j"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87XSePA9J~X",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87X9pl2uqOe"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87X8gV27lu1"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87XhG-RHX7x",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87XIp.Egyy2"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87XkB2w2oQJ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87XwGSPxM_w",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87XQCeglYmZ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87Xvr8XG_1b"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "O87XC6W81L~W",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87XbOF3NTaU"
+      },
+      "endpoint2": {
+       "style": "None",
+       "connectedTo": "N87XbOF3NTaU"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87XFb4iQnxs",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87Xsju-Sgq3"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "N87XL0VptYTb"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87XW8bisAiz",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87XfEg_BQGX"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87XNeAGHMxL"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87XYc_2ZHWV",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87XMFzllQ4j"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "N87Xsju-Sgq3"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87XWHPbdYCq",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87XL0VptYTb"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "N87X~AwdsQTR"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87XoXTuT-v0",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "N87X0p0kdYVW"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87XBIqDeIrH"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87Xdpl8Fs57",
+      "endpoint1": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87XK5.XSjni"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87XNeAGHMxL"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "N87XreKJFMkI",
+      "endpoint1": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87XIp.Egyy2"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "N87XO-D32fBC"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

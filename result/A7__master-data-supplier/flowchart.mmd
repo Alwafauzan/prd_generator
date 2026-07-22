@@ -1,0 +1,48 @@
+flowchart TD
+  S([Mulai]) --> A[Buka menu Master Data Supplier]
+  subgraph PetugasAdmin[Admin atau Petugas Logistik]
+    A --> B[Tampil dashboard list Supplier]
+    B --> C{Pilih aksi}
+    C -->|tambah| D[Form tambah Supplier]
+    C -->|cari filter| E[Cari filter kategori status]
+    C -->|detail| F[Halaman detail read only]
+    C -->|edit| G[Form edit Supplier]
+    C -->|non aktifkan| H{Sudah dipakai transaksi?}
+    C -->|import massal| IM1[Unduh template]
+    E --> B
+    D --> VAL[Isi field identitas kontak bank kategori]
+    G --> VAL
+  end
+  VAL --> CEKBANK{Rekening diisi?}
+  CEKBANK -->|ya| BANKL[(Lookup Bank A38)]
+  CEKBANK -->|tidak| KATL
+  BANKL --> KATL[(Lookup Kategori Barang A33)]
+  KATL --> V{Data valid?}
+  V -->|tidak| ERR[Tampilkan error per field]
+  ERR --> VAL
+  V -->|ya| PKP{PKP Ya tapi NPWP kosong?}
+  PKP -->|ya| ERR
+  PKP -->|tidak| DUP{Duplikat NPWP atau nama?}
+  DUP -->|ada kandidat| KONF{Aksi konfirmasi}
+  KONF -->|pakai existing| F
+  KONF -->|buat baru| SAVE
+  DUP -->|tidak| SAVE[Simpan dan generate kode]
+  SAVE --> AUD[Catat audit trail]
+  AUD --> B
+  H -->|ya blok hard delete| SOFT[Set status aktif false]
+  H -->|tidak terpakai| SOFT
+  SOFT --> AUD
+  subgraph ImportMassal[Import Massal]
+    IM1 --> IM2[Unggah file csv xlsx]
+    IM2 --> IM3[Validasi tiap baris]
+    IM3 --> IM4[Ringkasan sukses gagal]
+    IM4 --> IM5[Commit baris valid]
+  end
+  IM5 --> B
+  subgraph ModulLain[Modul Pemesanan Penerimaan Retur]
+    LK1[Pilih Supplier]
+  end
+  SAVE -.->|expose lookup aktif| LK1
+  LK1 --> LKAPI[(Lookup Supplier aktif filter kategori)]
+  LKAPI --> LKEND([Supplier dipakai transaksi])
+  AUD --> E2([Supplier berhasil disimpan])

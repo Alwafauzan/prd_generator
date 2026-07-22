@@ -1,0 +1,1071 @@
+{
+ "id": "73562261-e454-410a-8e4b-8133a20d5551",
+ "title": "g-emr-patient-identity",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "~87XXYSSPaCg",
+  "label": "D3 D4 D5 - Dashboard EMR"
+ },
+ "pages": [
+  {
+   "id": "ur2JN4oOPYg5",
+   "title": "D3 D4 D5 - Dashboard EMR",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "T~7XO0lXIwTq",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sediakan data klinis dari Modul Klinis: Asesmen, CPPT, Diagnosis, Riwayat Penyakit, Alergi"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7Xx6z9zKi0",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sediakan riwayat obat dari Modul Farmasi: Resep, CPO, Rekonsiliasi Obat"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XnULBHg-r",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tampilkan riwayat pelayanan: Kunjungan, Tindakan, Operasi, Gizi"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XD.JxZdB8",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Request Data Diterima"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XOA7rLwko",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka menu EMR pasien"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XspUuguhP",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sediakan data pelayanan dari Modul Pelayanan: Kunjungan, Tindakan, Operasi, Gizi"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XB.KL6j9q",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Data Source / Modul Terintegrasi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "T~7XD.JxZdB8",
+        "T~7XLQ0rxkju",
+        "T~7XO0lXIwTq",
+        "T~7XSR0cVVRu",
+        "T~7XW-PTCxrb",
+        "T~7XeBlfgzpe",
+        "T~7XspUuguhP",
+        "T~7Xx6z9zKi0"
+       ],
+       "lines": [
+        "T~7X35Hm2Dyz",
+        "T~7XKnpj.mE4",
+        "T~7XPCTrVtAf",
+        "T~7Xhzyoyr8z",
+        "T~7Xl6mp7ESB",
+        "T~7Xoej.-VgU",
+        "T~7XxlYZSoBn"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "T~7XW-PTCxrb",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sediakan data sosial dari Modul Pendaftaran: Identitas, Demografi, BPJS"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XqzwzHqyL",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "EMR Displayed"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7X38bGj1yC",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Request EMR Diterima"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XnvpES3gI",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Sistem EMR / HIS Neurovi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "T~7X38bGj1yC",
+        "T~7X3IKJUn2n",
+        "T~7XQvhL3NaJ",
+        "T~7XYyJuxCEZ",
+        "T~7X_4W4EVTj",
+        "T~7Xerj-AXW2",
+        "T~7Xh04okltH",
+        "T~7XleG.FIqw",
+        "T~7XnULBHg-r",
+        "T~7XqzwzHqyL",
+        "T~7XwG4fTbnp"
+       ],
+       "lines": [
+        "T~7X.Nw5A82X",
+        "T~7X7eBT_-mF",
+        "T~7X9dGgdhpD",
+        "T~7XP4xbKjX-",
+        "T~7XRQu_CpMc",
+        "T~7XT-T89KLI",
+        "T~7XZdK117Nd",
+        "T~7XcYNgNjqC",
+        "T~7XiyTnRve_",
+        "T~7XsEnw_~IN"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "T~7XVXv4V2tM",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "User Klinis / Tenaga Medis"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "T~7X0ND-3yWP",
+        "T~7X9kEyFWf0",
+        "T~7XKY-rmPw2",
+        "T~7XOA7rLwko",
+        "T~7XdArn.~Rc",
+        "T~7Xq03I1KxE"
+       ],
+       "lines": [
+        "T~7X7BGHpE6X",
+        "T~7XIqSsCsZk",
+        "T~7XVL6GbPVB",
+        "T~7XsglBxxB4",
+        "T~7XslEGOAdJ"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "T~7X9kEyFWf0",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai Akses EMR"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7X0ND-3yWP",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai Melihat EMR"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XeBlfgzpe",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sediakan hasil penunjang dari Modul Penunjang: Lab, Radiologi, Transfusi, Penunjang Lain"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7X_4W4EVTj",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tampilkan administrasi pendukung: Surat, Dokumen Administrasi, Consent, Dokumen Pendukung"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Obt0I_~HvlQ-",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "D3 D4 D5 - DASHBOARD EMR"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "ROW"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "COLUMN"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "T~7XLQ0rxkju",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sediakan dokumen dari Modul Dokumen: Surat, Dokumen Administrasi, Consent, Dokumen Pendukung"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XQvhL3NaJ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Catat audit log: User, Timestamp, Pasien yang diakses"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XYyJuxCEZ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tampilkan dashboard EMR pasien"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7Xq03I1KxE",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih tab atau section yang ingin dilihat"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7Xerj-AXW2",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tampilkan hasil penunjang: Lab, Radiologi, Transfusi, Penunjang Lain"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XSR0cVVRu",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Data Provided"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7Xh04okltH",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tampilkan riwayat klinis: Asesmen, CPPT, Diagnosis, Penyakit Sebelumnya, Alergi"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "~87XXYSSPaCg",
+      "class": "SparkFrameBlock",
+      "textAreas": [
+       {
+        "label": "FrameTitle",
+        "text": "D3 D4 D5 - Dashboard EMR "
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "Obt0I_~HvlQ-",
+        "T~7X0ND-3yWP",
+        "T~7X38bGj1yC",
+        "T~7X3IKJUn2n",
+        "T~7X9kEyFWf0",
+        "T~7XB.KL6j9q",
+        "T~7XD.JxZdB8",
+        "T~7XKY-rmPw2",
+        "T~7XLQ0rxkju",
+        "T~7XO0lXIwTq",
+        "T~7XOA7rLwko",
+        "T~7XQvhL3NaJ",
+        "T~7XSR0cVVRu",
+        "T~7XVXv4V2tM",
+        "T~7XW-PTCxrb",
+        "T~7XYyJuxCEZ",
+        "T~7X_4W4EVTj",
+        "T~7XdArn.~Rc",
+        "T~7XeBlfgzpe",
+        "T~7Xerj-AXW2",
+        "T~7Xh04okltH",
+        "T~7XleG.FIqw",
+        "T~7XnULBHg-r",
+        "T~7XnvpES3gI",
+        "T~7Xq03I1KxE",
+        "T~7XqzwzHqyL",
+        "T~7XspUuguhP",
+        "T~7XwG4fTbnp",
+        "T~7Xx6z9zKi0"
+       ],
+       "lines": [
+        "T~7X.Nw5A82X",
+        "T~7X2XZF9_zK",
+        "T~7X35Hm2Dyz",
+        "T~7X7BGHpE6X",
+        "T~7X7eBT_-mF",
+        "T~7X9dGgdhpD",
+        "T~7XIqSsCsZk",
+        "T~7XKnpj.mE4",
+        "T~7XP4xbKjX-",
+        "T~7XPCTrVtAf",
+        "T~7XRQu_CpMc",
+        "T~7XSsXnV9xo",
+        "T~7XT-T89KLI",
+        "T~7XVL6GbPVB",
+        "T~7XY31L2jQj",
+        "T~7XZdK117Nd",
+        "T~7X_J4zpAnW",
+        "T~7XcYNgNjqC",
+        "T~7XfjMEtyd.",
+        "T~7Xgzm.XXj2",
+        "T~7XhaCinkn9",
+        "T~7Xhzyoyr8z",
+        "T~7XiyTnRve_",
+        "T~7XjJ9MjX9-",
+        "T~7Xl6mp7ESB",
+        "T~7Xoej.-VgU",
+        "T~7XsEnw_~IN",
+        "T~7XsglBxxB4",
+        "T~7XslEGOAdJ",
+        "T~7XxlYZSoBn"
+       ],
+       "groups": [
+        "U~7X9jaWW5hB"
+       ]
+      }
+     },
+     {
+      "id": "T~7XleG.FIqw",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tampilkan riwayat obat: Resep, CPO, Rekonsiliasi Obat"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XKY-rmPw2",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Lihat dashboard EMR pasien dengan semua section"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XdArn.~Rc",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Lihat detail data sesuai tab yang dipilih"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7X3IKJUn2n",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tampilkan data sosial pasien: Identitas, Demografi, BPJS"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XwG4fTbnp",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tampilkan detail data sesuai tab yang dipilih user"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "lines": [
+     {
+      "id": "T~7XZdK117Nd",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7XwG4fTbnp"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7XQvhL3NaJ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7X2XZF9_zK",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "T~7X_4W4EVTj"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "T~7XLQ0rxkju"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Request dokumen"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7X_J4zpAnW",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "T~7XOA7rLwko"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "T~7XYyJuxCEZ"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Request EMR"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XjJ9MjX9-",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "T~7X3IKJUn2n"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "T~7XW-PTCxrb"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Request data sosial"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XcYNgNjqC",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7Xh04okltH"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7Xerj-AXW2"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XxlYZSoBn",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7XO0lXIwTq"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7XeBlfgzpe"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7Xhzyoyr8z",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7Xx6z9zKi0"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7XLQ0rxkju"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XP4xbKjX-",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7X3IKJUn2n"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7XnULBHg-r"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XSsXnV9xo",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "T~7XleG.FIqw"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "T~7Xx6z9zKi0"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Request riwayat obat"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XVL6GbPVB",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7Xq03I1KxE"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7XdArn.~Rc"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7X9dGgdhpD",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7X38bGj1yC"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7XYyJuxCEZ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7X7BGHpE6X",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7XdArn.~Rc"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7X0ND-3yWP"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XsEnw_~IN",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7XQvhL3NaJ"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7XqzwzHqyL"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7X35Hm2Dyz",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7XLQ0rxkju"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7XSR0cVVRu"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XslEGOAdJ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7XOA7rLwko"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7XKY-rmPw2"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XKnpj.mE4",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7XD.JxZdB8"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7XW-PTCxrb"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7X7eBT_-mF",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7XYyJuxCEZ"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7X3IKJUn2n"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XiyTnRve_",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7X_4W4EVTj"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7XwG4fTbnp"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XT-T89KLI",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7Xerj-AXW2"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7XleG.FIqw"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7Xoej.-VgU",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7XeBlfgzpe"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7Xx6z9zKi0"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7Xgzm.XXj2",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "T~7XnULBHg-r"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "T~7XspUuguhP"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Request riwayat pelayanan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XsglBxxB4",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7X9kEyFWf0"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7XOA7rLwko"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XfjMEtyd.",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "T~7Xq03I1KxE"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "T~7XwG4fTbnp"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Tab selected"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XPCTrVtAf",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7XW-PTCxrb"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7XspUuguhP"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XRQu_CpMc",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7XleG.FIqw"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7X_4W4EVTj"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XY31L2jQj",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "T~7Xh04okltH"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "T~7XO0lXIwTq"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Request riwayat klinis"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7Xl6mp7ESB",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7XspUuguhP"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7XO0lXIwTq"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7X.Nw5A82X",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7XnULBHg-r"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7Xh04okltH"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XIqSsCsZk",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "T~7XKY-rmPw2"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "T~7Xq03I1KxE"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "T~7XhaCinkn9",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "T~7Xerj-AXW2"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "T~7XeBlfgzpe"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Request hasil penunjang"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [
+     {
+      "id": "U~7X9jaWW5hB",
+      "members": [
+       "T~7X9kEyFWf0",
+       "T~7XdArn.~Rc",
+       "T~7Xq03I1KxE",
+       "T~7X0ND-3yWP",
+       "T~7XVXv4V2tM",
+       "T~7XOA7rLwko",
+       "T~7XKY-rmPw2",
+       "T~7XspUuguhP",
+       "T~7XO0lXIwTq",
+       "T~7XeBlfgzpe",
+       "T~7Xx6z9zKi0",
+       "T~7XB.KL6j9q",
+       "T~7Xh04okltH",
+       "T~7Xerj-AXW2",
+       "T~7XleG.FIqw",
+       "T~7X_4W4EVTj",
+       "T~7XnvpES3gI",
+       "T~7XLQ0rxkju",
+       "T~7XSR0cVVRu",
+       "T~7XwG4fTbnp",
+       "T~7XQvhL3NaJ",
+       "T~7XqzwzHqyL",
+       "T~7X38bGj1yC",
+       "T~7XD.JxZdB8",
+       "T~7XW-PTCxrb",
+       "T~7XYyJuxCEZ",
+       "T~7X3IKJUn2n",
+       "T~7XnULBHg-r",
+       "T~7XIqSsCsZk",
+       "T~7X7BGHpE6X",
+       "T~7XVL6GbPVB",
+       "T~7XsglBxxB4",
+       "T~7XslEGOAdJ",
+       "T~7X35Hm2Dyz",
+       "T~7Xhzyoyr8z",
+       "T~7XSsXnV9xo",
+       "T~7X2XZF9_zK",
+       "T~7Xoej.-VgU",
+       "T~7XxlYZSoBn",
+       "T~7XhaCinkn9",
+       "T~7XY31L2jQj",
+       "T~7XPCTrVtAf",
+       "T~7Xl6mp7ESB",
+       "T~7XKnpj.mE4",
+       "T~7Xgzm.XXj2",
+       "T~7XjJ9MjX9-",
+       "T~7XZdK117Nd",
+       "T~7XiyTnRve_",
+       "T~7XsEnw_~IN",
+       "T~7XfjMEtyd.",
+       "T~7XT-T89KLI",
+       "T~7XcYNgNjqC",
+       "T~7XRQu_CpMc",
+       "T~7X.Nw5A82X",
+       "T~7X9dGgdhpD",
+       "T~7X7eBT_-mF",
+       "T~7XP4xbKjX-",
+       "T~7X_J4zpAnW"
+      ],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

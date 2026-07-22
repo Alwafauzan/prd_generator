@@ -1,0 +1,11 @@
+Fitur G9 — Penerimaan Klaim dan BA / Berita Acara (modul Casemix, menu Pengelolaan Klaim BPJS).
+
+TUJUAN INTI: rekonsiliasi klaim yang diajukan G8 (pengajuan ke VClaim/BPJS, di-handle tim lain) terhadap HASIL klaim BPJS yang ditarik via API VClaim Monitoring Klaim (attachments/data-claim.md).
+
+Alur: G8 mengajukan klaim -> hasil klaim dimuat ke G9 (Phase 1: upload Excel/CSV; Phase 2: tarik API Monitoring Klaim) -> hasil muncul di menu G9 -> rekonsiliasi terhadap pengajuan G8 (match by noSEP) -> klasifikasi cocok/selisih/ditolak/pending/proses/belum muncul/anomali -> tindak lanjut (resubmit G10 hanya utk yg dapat direvisi) -> Berita Acara -> pencatatan pembayaran.
+
+Sumber data (keputusan 2 lead): Phase 1 = UPLOAD Excel/CSV (kolom = field API), Phase 2 = INTEGRASI API BPJS Monitoring Klaim. Skema hasil (claim_bpjs_results) & rekonsiliasi identik utk kedua sumber. Sisi kiri rekon = daftar pengajuan G8 (G8 menyesuaikan kontrak G9); sisi kanan = hasil (byPengajuan, bySetujui, byTarifGruper, byTarifRS, byTopup, noFPK, Inacbg, status).
+
+Semantik penting: tolak total (dispute) = DAPAT DIREVISI (resubmit G10); selisih nilai (bySetujui<byPengajuan) = FINAL, tidak dapat direvisi. 'Tolak total' tidak eksplisit di 3 status API -> [PERLU KONFIRMASI] deteksinya. Tidak ada endpoint Berita Acara -> BA manual/E-Klaim. Autentikasi VClaim di luar scope (integrasi BPJS).
+
+Struktur PRD mengikuti template.md + section Integrasi Eksternal (mapping API), plus Asumsi & Pertanyaan Terbuka.

@@ -1,0 +1,1014 @@
+{
+ "id": "f9125fff-5d36-48dc-bb05-d95d1257cd3c",
+ "title": "g-support-pharmacy-otc",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "px.X_b.7jL6D",
+  "label": "F19-FARMASI - PENJUALAN OBAT BEBAS"
+ },
+ "pages": [
+  {
+   "id": "f~4Xbp8yyK1t",
+   "title": "F19-FARMASI - PENJUALAN OBAT BEBAS",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "ox.XLBGY1lYr",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "0F~XMNETC2b6",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "ox.X-b.VwfSk",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "ox.X3PD-CfYP",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "sx~XM3nv9ZT_",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai transaksi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "ox.XUUTk8XRw",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input data obat, alkes, bhp\n\n"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "zs~X~MyBqYkj",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "ox.XXgCLRaZ3",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tambah data penjualan obat bebas"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "-x~Xr4_xdWGH",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem update status transaksi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "ox.XULRw3w2B",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input data pasien dan dokter"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "px.XhGrfPH38",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "F19-FARMASI - PENJUALAN OBAT BEBAS"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_3"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "wA~Xmy-hUplN",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Lu~Xrud9f8rB",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Lihat detail order & cetak nota"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "ox.XN49y_3I6",
+      "class": "AdvancedSwimLaneBlockRotated",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Primary_0",
+        "text": "Apoteker"
+       },
+       {
+        "label": "Primary_1",
+        "text": "Sistem"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "-x~Xr4_xdWGH",
+        "0F~XMNETC2b6",
+        "9n~XyTy9VVIV",
+        "Lu~Xrud9f8rB",
+        "cl~X2l8H-dPG",
+        "ox.X-b.VwfSk",
+        "ox.X3PD-CfYP",
+        "ox.XCgEIwpRf",
+        "ox.XCs2ut~ww",
+        "ox.XIrLc6qim",
+        "ox.XLBGY1lYr",
+        "ox.XULRw3w2B",
+        "ox.XUUTk8XRw",
+        "ox.XX4P~I_cJ",
+        "ox.XXgCLRaZ3",
+        "ox.Xf9IcO08s",
+        "sx~XM3nv9ZT_",
+        "wA~Xmy-hUplN",
+        "zs~X~MyBqYkj"
+       ],
+       "lines": [
+        "3D~XfKnwmTdr",
+        "CG~XokyLjwRH",
+        "Kp~X5p5aad68",
+        "Kx~XrSH1EiFt",
+        "Qo~Xg~ODOWtT",
+        "dG~Xhs85rR2d",
+        "ev~XxbYTd8w2",
+        "hy~X4MrrDsSe",
+        "jl~Xxprem-J~",
+        "ko~XT8Gqf3lA",
+        "lt~XX41dR-kA",
+        "ox.X8l.ItrbP",
+        "ox.XE27i2Ani",
+        "ox.XKvyiguNe",
+        "ox.XVw8PiHNH",
+        "ox.XXtjcYxQN",
+        "ox.X_~pO8FRE",
+        "ox.XgSkTCD86",
+        "pE~X-e4X5Izv",
+        "uo~X3gPc2_8~"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "ox.XCgEIwpRf",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka menu Farmasi - Penjualan Obat Bebas"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "ox.XX4P~I_cJ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menyimpan data orderan"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "px.X_b.7jL6D",
+      "class": "RectangleContainerBlock",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": "F19-FARMASI - PENJUALAN OBAT BEBAS"
+       },
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "-x~Xr4_xdWGH",
+        "0F~XMNETC2b6",
+        "9n~XyTy9VVIV",
+        "Lu~Xrud9f8rB",
+        "cl~X2l8H-dPG",
+        "ox.X-b.VwfSk",
+        "ox.X3PD-CfYP",
+        "ox.XCgEIwpRf",
+        "ox.XCs2ut~ww",
+        "ox.XIrLc6qim",
+        "ox.XLBGY1lYr",
+        "ox.XN49y_3I6",
+        "ox.XULRw3w2B",
+        "ox.XUUTk8XRw",
+        "ox.XX4P~I_cJ",
+        "ox.XXgCLRaZ3",
+        "ox.Xf9IcO08s",
+        "px.XhGrfPH38",
+        "sx~XM3nv9ZT_",
+        "wA~Xmy-hUplN",
+        "zs~X~MyBqYkj"
+       ],
+       "lines": [
+        "3D~XfKnwmTdr",
+        "CG~XokyLjwRH",
+        "Kp~X5p5aad68",
+        "Kx~XrSH1EiFt",
+        "Qo~Xg~ODOWtT",
+        "dG~Xhs85rR2d",
+        "ev~XxbYTd8w2",
+        "hy~X4MrrDsSe",
+        "jl~Xxprem-J~",
+        "ko~XT8Gqf3lA",
+        "lt~XX41dR-kA",
+        "ox.X8l.ItrbP",
+        "ox.XE27i2Ani",
+        "ox.XKvyiguNe",
+        "ox.XVw8PiHNH",
+        "ox.XXtjcYxQN",
+        "ox.X_~pO8FRE",
+        "ox.XgSkTCD86",
+        "pE~X-e4X5Izv",
+        "uo~X3gPc2_8~"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "cl~X2l8H-dPG",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input dan buat obat racik\n"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "ox.XCs2ut~ww",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input data pasien dan dokter"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "ox.XIrLc6qim",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan list riwayat penjualan obat bebas pada dashboard "
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "ox.Xf9IcO08s",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan data"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "9n~XyTy9VVIV",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "id": "ox.XVw8PiHNH",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "ox.XIrLc6qim"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "ox.XXgCLRaZ3"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "ox.X_~pO8FRE",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "ox.XLBGY1lYr"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "ox.XULRw3w2B"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "penjualan obat\nnon racik, alkes, dan BHP"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "pE~X-e4X5Izv",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "-x~Xr4_xdWGH"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "ox.X-b.VwfSk"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "ox.XXtjcYxQN",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "ox.X3PD-CfYP"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "ox.XCgEIwpRf"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "hy~X4MrrDsSe",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "sx~XM3nv9ZT_"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "-x~Xr4_xdWGH"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "ox.X8l.ItrbP",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "ox.XULRw3w2B"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "ox.XUUTk8XRw"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "ox.XKvyiguNe",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "ox.XXgCLRaZ3"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "ox.XLBGY1lYr"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Kp~X5p5aad68",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "ox.Xf9IcO08s"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "ox.XX4P~I_cJ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "ox.XgSkTCD86",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "ox.XCgEIwpRf"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "ox.XIrLc6qim"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "uo~X3gPc2_8~",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "cl~X2l8H-dPG"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "9n~XyTy9VVIV"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "ox.XE27i2Ani",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "ox.XLBGY1lYr"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "ox.XCs2ut~ww"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "penjualan obat \nracik"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "ko~XT8Gqf3lA",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "ox.XUUTk8XRw"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "9n~XyTy9VVIV"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "dG~Xhs85rR2d",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "0F~XMNETC2b6"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "ox.XULRw3w2B"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "if pasien = karyawan\ninput nama karyawan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Qo~Xg~ODOWtT",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "9n~XyTy9VVIV"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "ox.Xf9IcO08s"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "jl~Xxprem-J~",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "ox.XCs2ut~ww"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "cl~X2l8H-dPG"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3D~XfKnwmTdr",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "wA~Xmy-hUplN"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "-x~Xr4_xdWGH"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "pelunasan\nbilling"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "ev~XxbYTd8w2",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "zs~X~MyBqYkj"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Lu~Xrud9f8rB"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "update billing"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "CG~XokyLjwRH",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "0F~XMNETC2b6"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "ox.XCs2ut~ww"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "if pasien = karyawan\ninput nama karyawan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "lt~XX41dR-kA",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "ox.XX4P~I_cJ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "zs~X~MyBqYkj"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Kx~XrSH1EiFt",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Lu~Xrud9f8rB"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "sx~XM3nv9ZT_"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

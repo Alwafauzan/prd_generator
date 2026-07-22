@@ -1,0 +1,10 @@
+{
+  "code": "A38",
+  "moduleName": "Master Data Bank",
+  "cluster": "Control Panel",
+  "bpmnFile": null,
+  "mode": "manual",
+  "hasFlowchart": false,
+  "createdAt": "2026-07-01T00:00:00.000Z",
+  "updatedAt": "2026-07-01T00:00:00.000Z"
+}

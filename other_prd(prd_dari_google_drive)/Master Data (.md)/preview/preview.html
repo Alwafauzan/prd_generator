@@ -1,0 +1,973 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A19 — Master Data Instalasi · Prototipe UI</title>
+<style>
+:root{
+  --bg:#f4f6f9; --surface:#ffffff; --surface-2:#f9fafb; --border:#e2e8f0; --border-strong:#cbd5e1;
+  --text:#1e293b; --text-muted:#64748b; --text-faint:#94a3b8;
+  --accent:#2563eb; --accent-hover:#1d4ed8; --accent-soft:#eff6ff; --accent-border:#bfdbfe;
+  --ok:#059669; --ok-bg:#ecfdf5; --ok-border:#a7f3d0;
+  --gray-bg:#f1f5f9; --gray-fg:#475569; --gray-border:#cbd5e1;
+  --warn:#b45309; --warn-bg:#fffbeb; --warn-border:#fcd34d;
+  --err:#dc2626; --err-bg:#fef2f2; --err-border:#fecaca;
+  --shadow:0 1px 2px rgba(15,23,42,.06),0 4px 12px rgba(15,23,42,.06);
+  --shadow-lg:0 10px 40px rgba(15,23,42,.18);
+  --radius:10px; --radius-sm:7px;
+  /* tipe badge colors */
+  --t-nonpel-bg:#eef2f6; --t-nonpel-fg:#475569; --t-nonpel-bd:#cbd5e1;
+  --t-bangsal-bg:#ecfdf5; --t-bangsal-fg:#047857; --t-bangsal-bd:#6ee7b7;
+  --t-poli-bg:#eff6ff; --t-poli-fg:#1d4ed8; --t-poli-bd:#93c5fd;
+  --t-farmasi-bg:#f5f3ff; --t-farmasi-fg:#6d28d9; --t-farmasi-bd:#c4b5fd;
+  --t-gudang-bg:#fff7ed; --t-gudang-fg:#c2410c; --t-gudang-bd:#fdba74;
+  --t-penunjang-bg:#ecfeff; --t-penunjang-fg:#0e7490; --t-penunjang-bd:#67e8f9;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0b1120; --surface:#111827; --surface-2:#0f1729; --border:#1f2937; --border-strong:#334155;
+    --text:#e2e8f0; --text-muted:#94a3b8; --text-faint:#64748b;
+    --accent:#3b82f6; --accent-hover:#60a5fa; --accent-soft:#0f2135; --accent-border:#1e3a5f;
+    --ok:#34d399; --ok-bg:#052e23; --ok-border:#0f5132;
+    --gray-bg:#1e293b; --gray-fg:#cbd5e1; --gray-border:#334155;
+    --warn:#fbbf24; --warn-bg:#2a2205; --warn-border:#5a4708;
+    --err:#f87171; --err-bg:#2a0f10; --err-border:#5a1a1c;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 12px rgba(0,0,0,.4);
+    --shadow-lg:0 10px 40px rgba(0,0,0,.6);
+    --t-nonpel-bg:#1a2230; --t-nonpel-fg:#cbd5e1; --t-nonpel-bd:#334155;
+    --t-bangsal-bg:#052e23; --t-bangsal-fg:#6ee7b7; --t-bangsal-bd:#0f5132;
+    --t-poli-bg:#0f2135; --t-poli-fg:#93c5fd; --t-poli-bd:#1e3a5f;
+    --t-farmasi-bg:#1e1633; --t-farmasi-fg:#c4b5fd; --t-farmasi-bd:#3b2a63;
+    --t-gudang-bg:#2a1705; --t-gudang-fg:#fdba74; --t-gudang-bd:#5a3410;
+    --t-penunjang-bg:#052a30; --t-penunjang-fg:#67e8f9; --t-penunjang-bd:#0e5561;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f4f6f9; --surface:#ffffff; --surface-2:#f9fafb; --border:#e2e8f0; --border-strong:#cbd5e1;
+  --text:#1e293b; --text-muted:#64748b; --text-faint:#94a3b8;
+  --accent:#2563eb; --accent-hover:#1d4ed8; --accent-soft:#eff6ff; --accent-border:#bfdbfe;
+  --ok:#059669; --ok-bg:#ecfdf5; --ok-border:#a7f3d0;
+  --gray-bg:#f1f5f9; --gray-fg:#475569; --gray-border:#cbd5e1;
+  --warn:#b45309; --warn-bg:#fffbeb; --warn-border:#fcd34d;
+  --err:#dc2626; --err-bg:#fef2f2; --err-border:#fecaca;
+  --shadow:0 1px 2px rgba(15,23,42,.06),0 4px 12px rgba(15,23,42,.06);
+  --shadow-lg:0 10px 40px rgba(15,23,42,.18);
+  --t-nonpel-bg:#eef2f6; --t-nonpel-fg:#475569; --t-nonpel-bd:#cbd5e1;
+  --t-bangsal-bg:#ecfdf5; --t-bangsal-fg:#047857; --t-bangsal-bd:#6ee7b7;
+  --t-poli-bg:#eff6ff; --t-poli-fg:#1d4ed8; --t-poli-bd:#93c5fd;
+  --t-farmasi-bg:#f5f3ff; --t-farmasi-fg:#6d28d9; --t-farmasi-bd:#c4b5fd;
+  --t-gudang-bg:#fff7ed; --t-gudang-fg:#c2410c; --t-gudang-bd:#fdba74;
+  --t-penunjang-bg:#ecfeff; --t-penunjang-fg:#0e7490; --t-penunjang-bd:#67e8f9;
+}
+:root[data-theme="dark"]{
+  --bg:#0b1120; --surface:#111827; --surface-2:#0f1729; --border:#1f2937; --border-strong:#334155;
+  --text:#e2e8f0; --text-muted:#94a3b8; --text-faint:#64748b;
+  --accent:#3b82f6; --accent-hover:#60a5fa; --accent-soft:#0f2135; --accent-border:#1e3a5f;
+  --ok:#34d399; --ok-bg:#052e23; --ok-border:#0f5132;
+  --gray-bg:#1e293b; --gray-fg:#cbd5e1; --gray-border:#334155;
+  --warn:#fbbf24; --warn-bg:#2a2205; --warn-border:#5a4708;
+  --err:#f87171; --err-bg:#2a0f10; --err-border:#5a1a1c;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 12px rgba(0,0,0,.4);
+  --shadow-lg:0 10px 40px rgba(0,0,0,.6);
+  --t-nonpel-bg:#1a2230; --t-nonpel-fg:#cbd5e1; --t-nonpel-bd:#334155;
+  --t-bangsal-bg:#052e23; --t-bangsal-fg:#6ee7b7; --t-bangsal-bd:#0f5132;
+  --t-poli-bg:#0f2135; --t-poli-fg:#93c5fd; --t-poli-bd:#1e3a5f;
+  --t-farmasi-bg:#1e1633; --t-farmasi-fg:#c4b5fd; --t-farmasi-bd:#3b2a63;
+  --t-gudang-bg:#2a1705; --t-gudang-fg:#fdba74; --t-gudang-bd:#5a3410;
+  --t-penunjang-bg:#052a30; --t-penunjang-fg:#67e8f9; --t-penunjang-bd:#0e5561;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased;
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* Layout */
+.app{display:flex;min-height:100vh}
+.sidebar{
+  width:250px;flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);
+  display:flex;flex-direction:column;padding:18px 14px;gap:4px;
+}
+.brand{display:flex;align-items:center;gap:10px;padding:6px 8px 16px;border-bottom:1px solid var(--border);margin-bottom:10px}
+.brand .logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
+.brand h1{font-size:15px;margin:0;font-weight:700;letter-spacing:-.2px}
+.brand span{font-size:11.5px;color:var(--text-muted)}
+.nav-group{font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--text-faint);padding:12px 8px 4px;font-weight:600}
+.nav-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:var(--radius-sm);color:var(--text-muted);text-decoration:none;font-size:13.5px;cursor:pointer}
+.nav-item:hover{background:var(--surface-2);color:var(--text)}
+.nav-item.active{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.nav-item svg{flex-shrink:0}
+
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:14px 26px;background:var(--surface);border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:20;
+}
+.crumbs{font-size:12.5px;color:var(--text-muted)}
+.crumbs b{color:var(--text)}
+.topbar-right{display:flex;align-items:center;gap:14px}
+.iconbtn{background:transparent;border:1px solid var(--border);color:var(--text-muted);width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.iconbtn:hover{background:var(--surface-2);color:var(--text)}
+.user{display:flex;align-items:center;gap:9px}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:12.5px}
+.user small{display:block;color:var(--text-muted);font-size:11px}
+
+.content{padding:24px 26px;max-width:1280px;width:100%}
+.page-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.page-head h2{margin:0 0 4px;font-size:21px;letter-spacing:-.3px}
+.page-head p{margin:0;color:var(--text-muted);font-size:13px;max-width:640px}
+.head-actions{display:flex;gap:9px;flex-wrap:wrap}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:var(--radius-sm);font-size:13.5px;font-weight:600;cursor:pointer;border:1px solid transparent;font-family:inherit;white-space:nowrap}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-hover)}
+.btn-ghost{background:var(--surface);color:var(--text);border-color:var(--border-strong)}
+.btn-ghost:hover{background:var(--surface-2)}
+.btn-danger{background:var(--err);color:#fff}
+.btn-sm{padding:6px 11px;font-size:12.5px}
+.btn[disabled]{opacity:.55;cursor:not-allowed}
+.phase-badge{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn-border);padding:1px 6px;border-radius:20px;margin-left:2px}
+
+/* Metrics */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:18px}
+.metric{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+.metric .k{font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:6px}
+.metric .v{font-size:24px;font-weight:700;margin-top:5px;letter-spacing:-.5px}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+/* Toolbar */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.toolbar{display:flex;align-items:center;gap:11px;padding:14px 16px;flex-wrap:wrap;border-bottom:1px solid var(--border)}
+.search{position:relative;flex:1;min-width:230px}
+.search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--text-faint)}
+.search input{width:100%;padding:9px 12px 9px 34px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-2);color:var(--text);font-size:13.5px;font-family:inherit}
+.search input:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:var(--accent)}
+.field-select{display:flex;flex-direction:column;gap:3px}
+.field-select label{font-size:10.5px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.4px;font-weight:600;padding-left:2px}
+select,input[type=text],textarea{font-family:inherit}
+.select{position:relative}
+.select select{appearance:none;padding:8px 30px 8px 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface-2);color:var(--text);font-size:13px;cursor:pointer;min-width:150px}
+.select::after{content:"";position:absolute;right:12px;top:50%;width:7px;height:7px;border-right:2px solid var(--text-faint);border-bottom:2px solid var(--text-faint);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.select select:focus{outline:2px solid var(--accent);outline-offset:-1px}
+
+/* Table */
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:860px}
+thead th{
+  text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);
+  padding:11px 14px;border-bottom:1px solid var(--border);background:var(--surface-2);font-weight:600;white-space:nowrap;
+}
+thead th.sortable{cursor:pointer;user-select:none}
+thead th.sortable:hover{color:var(--text)}
+.sort-ind{display:inline-block;margin-left:5px;color:var(--text-faint);font-size:10px}
+th.active-sort .sort-ind{color:var(--accent)}
+tbody td{padding:12px 14px;border-bottom:1px solid var(--border);font-size:13.5px;vertical-align:middle}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--surface-2)}
+.namecell{font-weight:600;color:var(--accent);cursor:pointer;text-decoration:none}
+.namecell:hover{text-decoration:underline}
+.code-mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;color:var(--text-muted)}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.center{text-align:center}
+.unit-count{display:inline-flex;align-items:center;justify-content:center;min-width:26px;padding:2px 8px;background:var(--gray-bg);border-radius:20px;font-weight:600;font-variant-numeric:tabular-nums}
+
+/* Badges */
+.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:20px;font-size:11.5px;font-weight:600;border:1px solid transparent;white-space:nowrap}
+.st-aktif{background:var(--ok-bg);color:var(--ok);border-color:var(--ok-border)}
+.st-nonaktif{background:var(--gray-bg);color:var(--gray-fg);border-color:var(--gray-border)}
+.t-NON_PELAYANAN{background:var(--t-nonpel-bg);color:var(--t-nonpel-fg);border-color:var(--t-nonpel-bd)}
+.t-BANGSAL{background:var(--t-bangsal-bg);color:var(--t-bangsal-fg);border-color:var(--t-bangsal-bd)}
+.t-PELAYANAN_POLI{background:var(--t-poli-bg);color:var(--t-poli-fg);border-color:var(--t-poli-bd)}
+.t-FARMASI{background:var(--t-farmasi-bg);color:var(--t-farmasi-fg);border-color:var(--t-farmasi-bd)}
+.t-GUDANG{background:var(--t-gudang-bg);color:var(--t-gudang-fg);border-color:var(--t-gudang-bd)}
+.t-PENUNJANG{background:var(--t-penunjang-bg);color:var(--t-penunjang-fg);border-color:var(--t-penunjang-bd)}
+
+.row-actions{display:flex;gap:6px;align-items:center}
+.link-btn{background:transparent;border:1px solid var(--border-strong);color:var(--text);padding:5px 10px;border-radius:6px;font-size:12.5px;cursor:pointer;font-weight:600;font-family:inherit}
+.link-btn:hover{background:var(--surface-2)}
+
+/* toggle switch */
+.switch{position:relative;display:inline-block;width:40px;height:22px;flex-shrink:0}
+.switch input{opacity:0;width:0;height:0}
+.slider{position:absolute;inset:0;background:var(--gray-border);border-radius:20px;transition:.2s;cursor:pointer}
+.slider:before{content:"";position:absolute;height:16px;width:16px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}
+.switch input:checked + .slider{background:var(--ok)}
+.switch input:checked + .slider:before{transform:translateX(18px)}
+.switch input:focus-visible + .slider{outline:2px solid var(--accent);outline-offset:2px}
+
+/* pagination */
+.pagination{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;gap:10px;flex-wrap:wrap}
+.pagination .info{font-size:12.5px;color:var(--text-muted)}
+.pager{display:flex;gap:4px}
+.pager button{min-width:32px;height:32px;padding:0 8px;border:1px solid var(--border-strong);background:var(--surface);border-radius:6px;color:var(--text);cursor:pointer;font-size:12.5px;font-family:inherit}
+.pager button:hover:not([disabled]){background:var(--surface-2)}
+.pager button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.pager button[disabled]{opacity:.45;cursor:not-allowed}
+.empty{padding:44px 20px;text-align:center;color:var(--text-muted)}
+
+/* Modal */
+.overlay{position:fixed;inset:0;background:rgba(15,23,42,.55);backdrop-filter:blur(2px);display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:60;overflow-y:auto}
+.overlay[hidden]{display:none}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-lg);width:100%;max-width:600px;animation:pop .18s ease}
+.modal.wide{max-width:680px}
+@keyframes pop{from{transform:translateY(8px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:20px 22px 14px;border-bottom:1px solid var(--border)}
+.modal-head h3{margin:0;font-size:17px;letter-spacing:-.2px}
+.modal-head .sub{font-size:12.5px;color:var(--text-muted);margin-top:3px}
+.modal-body{padding:20px 22px;max-height:64vh;overflow-y:auto}
+.modal-foot{display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:15px 22px;border-top:1px solid var(--border);background:var(--surface-2);border-radius:0 0 14px 14px}
+.x-btn{background:transparent;border:none;color:var(--text-faint);cursor:pointer;font-size:22px;line-height:1;padding:2px 6px;border-radius:6px}
+.x-btn:hover{background:var(--surface-2);color:var(--text)}
+
+/* form */
+.form-field{margin-bottom:16px}
+.form-field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.form-field .req{color:var(--err);margin-left:2px}
+.form-field .lock{font-size:11px;color:var(--text-faint);font-weight:500;margin-left:6px}
+.form-field input[type=text],.form-field textarea,.form-field select{
+  width:100%;padding:9px 12px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);
+  background:var(--surface-2);color:var(--text);font-size:13.5px;
+}
+.form-field textarea{resize:vertical;min-height:66px}
+.form-field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='3'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:34px}
+.form-field input:focus,.form-field textarea:focus,.form-field select:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:var(--accent)}
+.form-field input[readonly]{background:var(--gray-bg);color:var(--text-muted);cursor:not-allowed}
+.form-field.invalid input,.form-field.invalid select,.form-field.invalid textarea{border-color:var(--err);background:var(--err-bg)}
+.helper{font-size:11.5px;color:var(--text-muted);margin-top:5px}
+.count{float:right;font-size:11px;color:var(--text-faint);font-variant-numeric:tabular-nums}
+.err-msg{display:none;color:var(--err);font-size:12px;margin-top:5px;font-weight:500}
+.form-field.invalid .err-msg{display:block}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+
+/* inline warning / alert */
+.alert{border-radius:var(--radius-sm);padding:11px 13px;font-size:12.5px;display:flex;gap:9px;align-items:flex-start;margin-top:2px}
+.alert svg{flex-shrink:0;margin-top:1px}
+.alert-warn{background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn-border)}
+.alert-err{background:var(--err-bg);color:var(--err);border:1px solid var(--err-border)}
+.alert-info{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-border)}
+.alert b{font-weight:700}
+.alert a.deeplink{color:inherit;font-weight:700;text-decoration:underline;cursor:pointer}
+
+/* detail units list */
+.section-label{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--text-faint);font-weight:700;margin:18px 0 9px}
+.unit-list{border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
+.unit-row{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-bottom:1px solid var(--border);font-size:13px}
+.unit-row:last-child{border-bottom:none}
+.unit-row .u-name{font-weight:500}
+.mini-badge{font-size:10.5px;padding:2px 7px;border-radius:20px;font-weight:600;border:1px solid transparent}
+
+/* confirm modal small */
+.modal.sm{max-width:460px}
+.confirm-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* toast */
+.toast-wrap{position:fixed;right:22px;bottom:22px;display:flex;flex-direction:column;gap:10px;z-index:90}
+.toast{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--ok);border-radius:10px;box-shadow:var(--shadow-lg);padding:13px 16px;display:flex;align-items:center;gap:11px;font-size:13.5px;font-weight:500;min-width:250px;animation:slidein .22s ease}
+.toast.err{border-left-color:var(--err)}
+.toast.info{border-left-color:var(--accent)}
+@keyframes slidein{from{transform:translateX(20px);opacity:0}to{transform:translateX(0);opacity:1}}
+
+.footnote{margin-top:16px;font-size:11.5px;color:var(--text-faint);text-align:center}
+.kbd{font-family:ui-monospace,monospace;font-size:11px;background:var(--gray-bg);border:1px solid var(--border-strong);border-radius:4px;padding:1px 5px}
+
+@media (max-width:860px){
+  .sidebar{display:none}
+  .content{padding:18px 14px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"/></svg>
+      </div>
+      <div>
+        <h1>Neurovi SIMRS</h1>
+        <span>Control Panel</span>
+      </div>
+    </div>
+    <div class="nav-group">Menu</div>
+    <a class="nav-item"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard</a>
+    <div class="nav-group">Master Data</div>
+    <a class="nav-item active"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M10 21v-4h4v4"/></svg>Instalasi <span style="margin-left:auto;font-size:10px;background:var(--accent);color:#fff;padding:1px 6px;border-radius:20px">A19</span></a>
+    <a class="nav-item"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Unit <span style="margin-left:auto;font-size:10px;color:var(--text-faint)">A3</span></a>
+    <a class="nav-item"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>Bangsal / Kamar / Bed</a>
+    <a class="nav-item"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>Gudang &amp; Farmasi <span style="margin-left:auto;font-size:10px;color:var(--text-faint)">A42</span></a>
+    <a class="nav-item"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 21v-2a6 6 0 0 1 12 0v2"/></svg>User &amp; Staff</a>
+    <a class="nav-item"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>Konfigurasi RS</a>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <div class="crumbs">Master Data <span style="color:var(--text-faint)">/</span> <b>Instalasi</b></div>
+      <div class="topbar-right">
+        <button class="iconbtn" id="themeBtn" title="Ganti tema" aria-label="Ganti tema">
+          <svg id="iconSun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <div class="user">
+          <div class="avatar">AD</div>
+          <div><b style="font-size:12.5px">Admin Master Data</b><small>Admin RS · RBAC</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="page-head">
+        <div>
+          <h2>Master Data Instalasi</h2>
+          <p>Kelola seluruh instalasi rumah sakit — pengelompokan tingkat atas yang membawahi Unit (A3). Klasifikasi peruntukan ditentukan satu atribut tunggal <b>Tipe Instalasi</b> (6 nilai).</p>
+        </div>
+        <div class="head-actions">
+          <button class="btn btn-ghost" id="btnExport" title="Fitur Phase 2 — belum aktif">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Ekspor (.csv) <span class="phase-badge">Phase 2</span>
+          </button>
+          <button class="btn btn-ghost" id="btnImport" title="Fitur Phase 2 — belum aktif">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 8l5-5 5 5M12 3v12"/></svg>
+            Impor <span class="phase-badge">Phase 2</span>
+          </button>
+          <button class="btn btn-primary" id="btnAdd">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+            Tambah Instalasi
+          </button>
+        </div>
+      </div>
+
+      <!-- Metrics -->
+      <div class="metrics">
+        <div class="metric"><div class="k">Total Instalasi</div><div class="v" id="mTotal">0</div></div>
+        <div class="metric"><div class="k"><span class="dot" style="background:var(--ok)"></span>Aktif</div><div class="v" id="mAktif">0</div></div>
+        <div class="metric"><div class="k"><span class="dot" style="background:var(--gray-border)"></span>Nonaktif</div><div class="v" id="mNonaktif">0</div></div>
+        <div class="metric"><div class="k">Total Unit Tertaut</div><div class="v" id="mUnit">0</div></div>
+      </div>
+
+      <!-- Table card -->
+      <div class="card">
+        <div class="toolbar">
+          <div class="search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="searchInput" placeholder="Cari nama atau kode instalasi..." aria-label="Cari nama atau kode instalasi">
+          </div>
+          <div class="field-select">
+            <label for="filterTipe">Tipe Instalasi</label>
+            <div class="select"><select id="filterTipe" aria-label="Filter Tipe Instalasi"></select></div>
+          </div>
+          <div class="field-select">
+            <label for="filterStatus">Status</label>
+            <div class="select"><select id="filterStatus" aria-label="Filter Status">
+              <option value="">Semua Status</option>
+              <option value="AKTIF">Aktif</option>
+              <option value="NONAKTIF">Nonaktif</option>
+            </select></div>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th class="sortable" data-col="no" style="width:56px">Nomor</th>
+                <th class="sortable" data-col="nama">Nama</th>
+                <th class="sortable" data-col="kode">Kode</th>
+                <th class="sortable" data-col="tipe">Tipe Instalasi</th>
+                <th class="sortable center" data-col="jumlahUnit">Jumlah Unit</th>
+                <th class="sortable" data-col="status">Status</th>
+                <th style="width:160px">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+
+        <div class="pagination">
+          <div class="info" id="pageInfo"></div>
+          <div class="pager" id="pager"></div>
+        </div>
+      </div>
+
+      <div class="footnote">
+        Prototipe layar (mockup interaktif) — diturunkan dari PRD <b>A19 v3.0</b>. Data contoh bersifat ilustratif.
+        Fitur bertanda <span class="phase-badge">Phase 2</span> ditampilkan namun belum diimplementasikan. Tekan <span class="kbd">Esc</span> untuk menutup dialog.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADD / EDIT MODAL -->
+<div class="overlay" id="formOverlay" hidden>
+  <div class="modal wide" role="dialog" aria-modal="true" aria-labelledby="formTitle">
+    <div class="modal-head">
+      <div>
+        <h3 id="formTitle">Tambah Instalasi</h3>
+        <div class="sub" id="formSub">Lengkapi data instalasi. Status di-set <b>Aktif</b> otomatis oleh sistem.</div>
+      </div>
+      <button class="x-btn" id="formClose" aria-label="Tutup">&times;</button>
+    </div>
+    <div class="modal-body">
+      <form id="instForm" novalidate autocomplete="off">
+        <!-- Nama -->
+        <div class="form-field" id="f-nama">
+          <label for="in-nama">Nama Instalasi <span class="req">*</span></label>
+          <input type="text" id="in-nama" maxlength="120" placeholder="Contoh: Instalasi Rawat Inap">
+          <div class="err-msg" id="e-nama"></div>
+          <div class="helper">Contoh: Instalasi Rawat Inap <span class="count" id="c-nama">0/100</span></div>
+        </div>
+
+        <!-- Kode -->
+        <div class="form-field" id="f-kode">
+          <label for="in-kode">Kode <span class="req">*</span><span class="lock" id="kodeLock" hidden>🔒 immutable</span></label>
+          <input type="text" id="in-kode" maxlength="24" placeholder="Contoh: INST-RANAP">
+          <div class="err-msg" id="e-kode"></div>
+          <div class="helper" id="h-kode">Dipakai pelaporan BPJS/SIMRS — tidak dapat diubah setelah dibuat</div>
+        </div>
+
+        <!-- Keterangan -->
+        <div class="form-field" id="f-ket">
+          <label for="in-ket">Keterangan</label>
+          <textarea id="in-ket" maxlength="300" placeholder="Keterangan tambahan (opsional)"></textarea>
+          <div class="err-msg" id="e-ket"></div>
+          <div class="helper">Keterangan tambahan (opsional) <span class="count" id="c-ket">0/255</span></div>
+        </div>
+
+        <!-- Tipe Instalasi -->
+        <div class="form-field" id="f-tipe">
+          <label for="in-tipe">Tipe Instalasi <span class="req">*</span></label>
+          <select id="in-tipe">
+            <option value="">— Pilih Tipe Instalasi —</option>
+          </select>
+          <div class="err-msg" id="e-tipe"></div>
+          <div class="helper" id="h-tipe">Bangsal (Rawat Inap) &amp; Farmasi memicu ketergantungan modul turunan</div>
+        </div>
+
+        <!-- Warning ketergantungan (BR-018) -->
+        <div class="alert alert-warn" id="depWarn" hidden>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+          <span id="depWarnText"></span>
+        </div>
+
+        <!-- Blokir perubahan tipe (BR-016/BR-017) -->
+        <div class="alert alert-err" id="tipeBlock" hidden>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>
+          <span id="tipeBlockText"></span>
+        </div>
+
+        <!-- Daftar Unit tertaut (edit mode) -->
+        <div id="unitSection" hidden>
+          <div class="section-label">Unit Tertaut (A3)</div>
+          <div class="unit-list" id="unitList"></div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="formCancel">Kembali</button>
+      <button class="btn btn-primary" id="formSave">Simpan</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM / STATUS MODAL -->
+<div class="overlay" id="confirmOverlay" hidden>
+  <div class="modal sm" role="dialog" aria-modal="true" aria-labelledby="confTitle">
+    <div class="modal-head">
+      <div style="display:flex;gap:13px;align-items:flex-start">
+        <div class="confirm-icon" id="confIcon"></div>
+        <div>
+          <h3 id="confTitle">Konfirmasi</h3>
+          <div class="sub" id="confSub"></div>
+        </div>
+      </div>
+      <button class="x-btn" id="confClose" aria-label="Tutup">&times;</button>
+    </div>
+    <div class="modal-body" id="confBody"></div>
+    <div class="modal-foot" id="confFoot"></div>
+  </div>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script>
+"use strict";
+/* ---------- Enum Tipe Instalasi (6 nilai) ---------- */
+const TIPES = [
+  {key:"NON_PELAYANAN",   label:"Non Pelayanan"},
+  {key:"BANGSAL",         label:"Bangsal (Rawat Inap)"},
+  {key:"PELAYANAN_POLI",  label:"Poli (Rawat Jalan)"},
+  {key:"FARMASI",         label:"Farmasi"},
+  {key:"GUDANG",          label:"Gudang"},
+  {key:"PENUNJANG",       label:"Penunjang"},
+];
+const tipeLabel = k => (TIPES.find(t=>t.key===k)||{}).label || k;
+
+/* ---------- Sample data (state in JS variable only) ---------- */
+/* activeUnits/nonaktifUnits = nama Unit A3; hasActiveDeriv = Bangsal/Kamar/Bed aktif (BANGSAL); usedByA42 = dipakai A42 (FARMASI) */
+let SEQ = 100;
+let DATA = [
+  {id:++SEQ, nama:"Instalasi Rawat Inap", kode:"INST-RANAP", ket:"Instalasi rawat inap utama membawahi bangsal perawatan", tipe:"BANGSAL", status:"AKTIF",
+   activeUnits:["Bangsal Melati","Bangsal Anggrek","Bangsal Mawar"], nonaktifUnits:["Bangsal Dahlia (lama)"], hasActiveDeriv:true, usedByA42:false},
+  {id:++SEQ, nama:"Instalasi Farmasi", kode:"INST-FARM", ket:"Instalasi farmasi & pengelolaan obat", tipe:"FARMASI", status:"AKTIF",
+   activeUnits:["Depo Farmasi Rawat Jalan","Depo Farmasi Rawat Inap"], nonaktifUnits:[], hasActiveDeriv:false, usedByA42:true},
+  {id:++SEQ, nama:"Instalasi Rawat Jalan", kode:"INST-RAJAL", ket:"Instalasi poliklinik rawat jalan", tipe:"PELAYANAN_POLI", status:"AKTIF",
+   activeUnits:["Poli Umum","Poli Anak","Poli Gigi","Poli Penyakit Dalam"], nonaktifUnits:[], hasActiveDeriv:false, usedByA42:false},
+  {id:++SEQ, nama:"Instalasi Gawat Darurat", kode:"INST-IGD", ket:"Layanan gawat darurat 24 jam", tipe:"PELAYANAN_POLI", status:"AKTIF",
+   activeUnits:["Unit Triase","Unit Observasi IGD"], nonaktifUnits:[], hasActiveDeriv:false, usedByA42:false},
+  {id:++SEQ, nama:"Instalasi Laboratorium", kode:"INST-LAB", ket:"Laboratorium patologi klinik", tipe:"PENUNJANG", status:"AKTIF",
+   activeUnits:["Lab Hematologi","Lab Kimia Klinik"], nonaktifUnits:[], hasActiveDeriv:false, usedByA42:false},
+  {id:++SEQ, nama:"Instalasi Radiologi", kode:"INST-RAD", ket:"Layanan pencitraan diagnostik", tipe:"PENUNJANG", status:"AKTIF",
+   activeUnits:["Unit Rontgen","Unit USG"], nonaktifUnits:[], hasActiveDeriv:false, usedByA42:false},
+  {id:++SEQ, nama:"Instalasi Gudang Umum", kode:"INST-GDG", ket:"Gudang logistik non-medis", tipe:"GUDANG", status:"AKTIF",
+   activeUnits:["Unit Logistik ATK"], nonaktifUnits:[], hasActiveDeriv:false, usedByA42:false},
+  {id:++SEQ, nama:"Instalasi Gizi", kode:"INST-GIZI", ket:"Penyelenggaraan makanan pasien", tipe:"NON_PELAYANAN", status:"AKTIF",
+   activeUnits:[], nonaktifUnits:["Unit Dapur (lama)"], hasActiveDeriv:false, usedByA42:false},
+  {id:++SEQ, nama:"Instalasi Pemeliharaan Sarana (IPSRS)", kode:"INST-IPSRS", ket:"Pemeliharaan sarana & prasarana RS", tipe:"NON_PELAYANAN", status:"AKTIF",
+   activeUnits:[], nonaktifUnits:[], hasActiveDeriv:false, usedByA42:false},
+  {id:++SEQ, nama:"Instalasi Rekam Medis", kode:"INST-RM", ket:"Pengelolaan berkas rekam medis", tipe:"NON_PELAYANAN", status:"AKTIF",
+   activeUnits:["Unit Pendaftaran","Unit Filing"], nonaktifUnits:[], hasActiveDeriv:false, usedByA42:false},
+  {id:++SEQ, nama:"Instalasi Bedah Sentral", kode:"INST-OK", ket:"Kamar operasi terpusat", tipe:"PENUNJANG", status:"AKTIF",
+   activeUnits:["Unit OK 1","Unit OK 2"], nonaktifUnits:[], hasActiveDeriv:false, usedByA42:false},
+  {id:++SEQ, nama:"Instalasi Hemodialisa", kode:"INST-HD", ket:"Layanan cuci darah", tipe:"PENUNJANG", status:"AKTIF",
+   activeUnits:["Unit HD"], nonaktifUnits:[], hasActiveDeriv:false, usedByA42:false},
+  {id:++SEQ, nama:"Instalasi Farmasi Lama", kode:"INST-FARM-OLD", ket:"Instalasi farmasi lama (arsip)", tipe:"FARMASI", status:"NONAKTIF",
+   activeUnits:[], nonaktifUnits:["Depo Lama"], hasActiveDeriv:false, usedByA42:false},
+  {id:++SEQ, nama:"Instalasi Rawat Inap VIP", kode:"INST-VIP", ket:"Bangsal VIP & VVIP", tipe:"BANGSAL", status:"AKTIF",
+   activeUnits:["Bangsal VIP"], nonaktifUnits:[], hasActiveDeriv:false, usedByA42:false},
+];
+
+/* ---------- UI state ---------- */
+const state = { search:"", tipe:"", status:"", sortCol:"nama", sortDir:"asc", page:1, perPage:10 };
+let editingId = null; // null = add mode
+
+/* ---------- Helpers ---------- */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const jumlahUnit = r => r.activeUnits.length + r.nonaktifUnits.length;
+
+/* ---------- Populate selects ---------- */
+(function(){
+  const ft = $("filterTipe");
+  ft.innerHTML = '<option value="">Semua Tipe</option>' + TIPES.map(t=>`<option value="${t.key}">${t.label}</option>`).join("");
+  const it = $("in-tipe");
+  it.innerHTML = '<option value="">— Pilih Tipe Instalasi —</option>' + TIPES.map(t=>`<option value="${t.key}">${t.label}</option>`).join("");
+})();
+
+/* ---------- Render table ---------- */
+function getFiltered(){
+  let rows = DATA.slice();
+  const q = state.search.trim().toLowerCase();
+  if(q) rows = rows.filter(r => r.nama.toLowerCase().includes(q) || r.kode.toLowerCase().includes(q));
+  if(state.tipe) rows = rows.filter(r => r.tipe === state.tipe);
+  if(state.status) rows = rows.filter(r => r.status === state.status);
+  const dir = state.sortDir === "asc" ? 1 : -1;
+  rows.sort((a,b)=>{
+    let va,vb;
+    switch(state.sortCol){
+      case "kode": va=a.kode.toLowerCase(); vb=b.kode.toLowerCase(); break;
+      case "tipe": va=tipeLabel(a.tipe).toLowerCase(); vb=tipeLabel(b.tipe).toLowerCase(); break;
+      case "jumlahUnit": va=jumlahUnit(a); vb=jumlahUnit(b); break;
+      case "status": va=a.status; vb=b.status; break;
+      case "no": va=a.id; vb=b.id; break;
+      default: va=a.nama.toLowerCase(); vb=b.nama.toLowerCase();
+    }
+    if(va<vb) return -1*dir; if(va>vb) return 1*dir; return 0;
+  });
+  return rows;
+}
+
+function render(){
+  const rows = getFiltered();
+  const total = rows.length;
+  const pages = Math.max(1, Math.ceil(total/state.perPage));
+  if(state.page > pages) state.page = pages;
+  const start = (state.page-1)*state.perPage;
+  const pageRows = rows.slice(start, start+state.perPage);
+  const tb = $("tbody");
+
+  if(pageRows.length === 0){
+    tb.innerHTML = `<tr><td colspan="7"><div class="empty">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="opacity:.5;margin-bottom:8px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <div>Tidak ada data instalasi yang cocok dengan pencarian/filter.</div></div></td></tr>`;
+  } else {
+    tb.innerHTML = pageRows.map((r,i)=>{
+      const stCls = r.status==="AKTIF" ? "st-aktif" : "st-nonaktif";
+      const stLabel = r.status==="AKTIF" ? "Aktif" : "Nonaktif";
+      const checked = r.status==="AKTIF" ? "checked" : "";
+      return `<tr>
+        <td class="num" style="color:var(--text-muted)">${start+i+1}</td>
+        <td><a class="namecell" data-open="${r.id}">${esc(r.nama)}</a></td>
+        <td><span class="code-mono">${esc(r.kode)}</span></td>
+        <td><span class="badge t-${r.tipe}">${esc(tipeLabel(r.tipe))}</span></td>
+        <td class="center"><span class="unit-count" title="${r.activeUnits.length} aktif · ${r.nonaktifUnits.length} nonaktif">${jumlahUnit(r)}</span></td>
+        <td><span class="badge ${stCls}">${stLabel}</span></td>
+        <td>
+          <div class="row-actions">
+            <button class="link-btn" data-open="${r.id}">Detail</button>
+            <label class="switch" title="Aktif / Nonaktif">
+              <input type="checkbox" ${checked} data-toggle="${r.id}" aria-label="Toggle status ${esc(r.nama)}">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </td>
+      </tr>`;
+    }).join("");
+  }
+
+  // page info
+  $("pageInfo").textContent = total===0 ? "Menampilkan 0 data" :
+    `Menampilkan ${start+1}–${Math.min(start+state.perPage,total)} dari ${total} instalasi`;
+
+  // pager
+  const pg = $("pager");
+  let html = `<button ${state.page===1?"disabled":""} data-page="prev">‹</button>`;
+  for(let p=1;p<=pages;p++){
+    if(pages>7 && (p>3 && p<pages-1) && Math.abs(p-state.page)>1){
+      if(p===4 || p===pages-1) html+=`<button disabled style="border:none;background:none">…</button>`;
+      continue;
+    }
+    html += `<button class="${p===state.page?'active':''}" data-page="${p}">${p}</button>`;
+  }
+  html += `<button ${state.page===pages?"disabled":""} data-page="next">›</button>`;
+  pg.innerHTML = html;
+
+  // sort indicators
+  document.querySelectorAll("thead th.sortable").forEach(th=>{
+    th.classList.toggle("active-sort", th.dataset.col===state.sortCol);
+    const ind = th.dataset.col===state.sortCol ? (state.sortDir==="asc"?"▲":"▼") : "⇅";
+    let s = th.querySelector(".sort-ind"); if(!s){s=document.createElement("span");s.className="sort-ind";th.appendChild(s);}
+    s.textContent = ind;
+  });
+
+  renderMetrics();
+}
+
+function renderMetrics(){
+  $("mTotal").textContent = DATA.length;
+  $("mAktif").textContent = DATA.filter(r=>r.status==="AKTIF").length;
+  $("mNonaktif").textContent = DATA.filter(r=>r.status==="NONAKTIF").length;
+  $("mUnit").textContent = DATA.reduce((s,r)=>s+jumlahUnit(r),0);
+}
+
+/* ---------- Toolbar events ---------- */
+$("searchInput").addEventListener("input", e=>{ state.search=e.target.value; state.page=1; render(); });
+$("filterTipe").addEventListener("change", e=>{ state.tipe=e.target.value; state.page=1; render(); });
+$("filterStatus").addEventListener("change", e=>{ state.status=e.target.value; state.page=1; render(); });
+
+document.querySelectorAll("thead th.sortable").forEach(th=>{
+  th.addEventListener("click",()=>{
+    const c=th.dataset.col;
+    if(state.sortCol===c){ state.sortDir = state.sortDir==="asc"?"desc":"asc"; }
+    else { state.sortCol=c; state.sortDir="asc"; }
+    render();
+  });
+});
+
+$("pager").addEventListener("click", e=>{
+  const b=e.target.closest("button[data-page]"); if(!b||b.disabled) return;
+  const v=b.dataset.page;
+  const pages=Math.max(1,Math.ceil(getFiltered().length/state.perPage));
+  if(v==="prev") state.page=Math.max(1,state.page-1);
+  else if(v==="next") state.page=Math.min(pages,state.page+1);
+  else state.page=parseInt(v,10);
+  render();
+});
+
+$("tbody").addEventListener("click", e=>{
+  const open=e.target.closest("[data-open]");
+  if(open){ openEdit(parseInt(open.dataset.open,10)); return; }
+});
+$("tbody").addEventListener("change", e=>{
+  const tg=e.target.closest("[data-toggle]");
+  if(tg){ handleToggle(parseInt(tg.dataset.toggle,10), tg); }
+});
+
+/* ---------- Phase 2 buttons ---------- */
+$("btnExport").addEventListener("click", ()=> toast("Fitur Ekspor (.csv) dijadwalkan pada Phase 2.", "info"));
+$("btnImport").addEventListener("click", ()=> toast("Fitur Impor massal dijadwalkan pada Phase 2.", "info"));
+
+/* ---------- Form (Add / Edit) ---------- */
+function openAdd(){
+  editingId = null;
+  $("formTitle").textContent = "Tambah Instalasi";
+  $("formSub").innerHTML = "Lengkapi data instalasi. Status di-set <b>Aktif</b> otomatis oleh sistem.";
+  $("kodeLock").hidden = true;
+  $("h-kode").textContent = "Dipakai pelaporan BPJS/SIMRS — tidak dapat diubah setelah dibuat";
+  const kode=$("in-kode"); kode.readOnly=false; kode.placeholder="Contoh: INST-RANAP";
+  $("in-nama").value=""; $("in-kode").value=""; $("in-ket").value=""; $("in-tipe").value="";
+  $("unitSection").hidden = true;
+  clearErrors(); updateCounts(); updateTipeAlerts();
+  showForm();
+  setTimeout(()=>$("in-nama").focus(),50);
+}
+function openEdit(id){
+  const r = DATA.find(x=>x.id===id); if(!r) return;
+  editingId = id;
+  $("formTitle").textContent = "Detail / Ubah Instalasi";
+  $("formSub").innerHTML = "Ubah atribut instalasi. Kode bersifat <b>immutable</b>. Perubahan tersinkron real-time ke modul terkait.";
+  $("kodeLock").hidden = false;
+  $("h-kode").textContent = "Kode tidak dapat diubah setelah dibuat";
+  $("in-nama").value=r.nama; $("in-kode").value=r.kode; $("in-ket").value=r.ket||""; $("in-tipe").value=r.tipe;
+  const kode=$("in-kode"); kode.readOnly=true;
+  // unit list
+  $("unitSection").hidden = false;
+  renderUnitList(r);
+  clearErrors(); updateCounts(); updateTipeAlerts();
+  showForm();
+  setTimeout(()=>$("in-nama").focus(),50);
+}
+function renderUnitList(r){
+  const ul=$("unitList");
+  const items=[
+    ...r.activeUnits.map(n=>({n,active:true})),
+    ...r.nonaktifUnits.map(n=>({n,active:false}))
+  ];
+  if(items.length===0){ ul.innerHTML=`<div class="unit-row" style="color:var(--text-muted)">Belum ada Unit tertaut.</div>`; return; }
+  ul.innerHTML = items.map(u=>`
+    <div class="unit-row">
+      <span class="u-name">${esc(u.n)}</span>
+      <span class="mini-badge ${u.active?'st-aktif':'st-nonaktif'}">${u.active?'Aktif':'Nonaktif (histori)'}</span>
+    </div>`).join("");
+}
+function showForm(){ $("formOverlay").hidden=false; }
+function hideForm(){ $("formOverlay").hidden=true; }
+
+/* Warning + block logic on tipe change */
+function updateTipeAlerts(){
+  const t = $("in-tipe").value;
+  const warn=$("depWarn"), warnT=$("depWarnText"), block=$("tipeBlock"), blockT=$("tipeBlockText");
+  warn.hidden=true; block.hidden=true;
+
+  // BR-018: warning informatif saat memilih BANGSAL / FARMASI
+  if(t==="BANGSAL"){
+    warn.hidden=false;
+    warnT.innerHTML="<b>Tipe Bangsal (Rawat Inap)</b> menjadikan instalasi ini induk Bangsal/Kamar/Bed (A15/A16/A17). Tipe tidak dapat diubah bila sudah ada data turunan aktif.";
+  } else if(t==="FARMASI"){
+    warn.hidden=false;
+    warnT.innerHTML="<b>Tipe Farmasi</b> menjadikan instalasi ini acuan modul Gudang &amp; Farmasi (A42). Tipe tidak dapat diubah bila masih menjadi acuan.";
+  }
+
+  // BR-016 / BR-017: blokir perubahan tipe KELUAR dari BANGSAL/FARMASI bila ada dependensi aktif (edit mode)
+  if(editingId!==null){
+    const r=DATA.find(x=>x.id===editingId);
+    if(r){
+      if(r.tipe==="BANGSAL" && t!=="BANGSAL" && r.hasActiveDeriv){
+        block.hidden=false;
+        blockT.innerHTML="Tipe tidak dapat diubah dari <b>Bangsal (Rawat Inap)</b> karena masih ada Bangsal/Kamar/Bed aktif tertaut. Pindahkan/lepas data turunan aktif terlebih dahulu.";
+      } else if(r.tipe==="FARMASI" && t!=="FARMASI" && r.usedByA42){
+        block.hidden=false;
+        blockT.innerHTML="Tipe tidak dapat diubah dari <b>Farmasi</b> karena masih menjadi acuan modul Gudang &amp; Farmasi (A42).";
+      }
+    }
+  }
+}
+$("in-tipe").addEventListener("change", ()=>{ setInvalid("f-tipe",false); updateTipeAlerts(); });
+
+/* counters */
+function updateCounts(){
+  $("c-nama").textContent = `${$("in-nama").value.length}/100`;
+  $("c-ket").textContent = `${$("in-ket").value.length}/255`;
+}
+$("in-nama").addEventListener("input", ()=>{ updateCounts(); setInvalid("f-nama",false); });
+$("in-ket").addEventListener("input", ()=>{ updateCounts(); setInvalid("f-ket",false); });
+$("in-kode").addEventListener("input", ()=> setInvalid("f-kode",false));
+
+function setInvalid(fieldId, on, msg){
+  const f=$(fieldId); f.classList.toggle("invalid", !!on);
+  if(msg!=null){ const e=$("e-"+fieldId.split("-")[1]); if(e) e.textContent=msg; }
+}
+function clearErrors(){ ["f-nama","f-kode","f-ket","f-tipe"].forEach(f=>$(f).classList.remove("invalid")); }
+
+/* Validate + save */
+function validateAndSave(){
+  clearErrors();
+  const nama=$("in-nama").value.trim();
+  const kode=$("in-kode").value.trim();
+  const ket=$("in-ket").value.trim();
+  const tipe=$("in-tipe").value;
+  let ok=true, firstBad=null;
+
+  // Nama
+  if(!nama){ setInvalid("f-nama",true,"Nama instalasi wajib diisi"); ok=false; firstBad=firstBad||"in-nama"; }
+  else if(nama.length>100){ setInvalid("f-nama",true,`Nama melebihi 100 karakter (${nama.length}/100)`); ok=false; firstBad=firstBad||"in-nama"; }
+  else {
+    const dup=DATA.some(r=>r.id!==editingId && r.nama.trim().toLowerCase()===nama.toLowerCase());
+    if(dup){ setInvalid("f-nama",true,"Nama instalasi sudah digunakan."); ok=false; firstBad=firstBad||"in-nama"; }
+  }
+
+  // Kode (immutable in edit)
+  if(editingId===null){
+    if(!kode){ setInvalid("f-kode",true,"Kode wajib diisi"); ok=false; firstBad=firstBad||"in-kode"; }
+    else if(!/^[A-Za-z0-9-]+$/.test(kode)){ setInvalid("f-kode",true,"Kode harus alfanumerik"); ok=false; firstBad=firstBad||"in-kode"; }
+    else if(kode.length>20){ setInvalid("f-kode",true,"Kode melebihi 20 karakter"); ok=false; firstBad=firstBad||"in-kode"; }
+    else {
+      const dup=DATA.some(r=>r.kode.toLowerCase()===kode.toLowerCase());
+      if(dup){ setInvalid("f-kode",true,"Kode instalasi sudah digunakan."); ok=false; firstBad=firstBad||"in-kode"; }
+    }
+  }
+
+  // Keterangan
+  if(ket.length>255){ setInvalid("f-ket",true,`Keterangan melebihi 255 karakter (${ket.length}/255)`); ok=false; firstBad=firstBad||"in-ket"; }
+
+  // Tipe wajib
+  if(!tipe){ setInvalid("f-tipe",true,"Tipe Instalasi wajib dipilih."); ok=false; firstBad=firstBad||"in-tipe"; }
+
+  // BR-016 / BR-017 blokir perubahan tipe keluar dari BANGSAL/FARMASI
+  if(editingId!==null && tipe){
+    const r=DATA.find(x=>x.id===editingId);
+    if(r.tipe==="BANGSAL" && tipe!=="BANGSAL" && r.hasActiveDeriv){
+      setInvalid("f-tipe",true,"Tipe tidak dapat diubah dari Bangsal (Rawat Inap): masih ada Bangsal/Kamar/Bed aktif tertaut"); ok=false; firstBad=firstBad||"in-tipe";
+      $("tipeBlock").hidden=false;
+    } else if(r.tipe==="FARMASI" && tipe!=="FARMASI" && r.usedByA42){
+      setInvalid("f-tipe",true,"Tipe tidak dapat diubah dari Farmasi: masih menjadi acuan Gudang & Farmasi"); ok=false; firstBad=firstBad||"in-tipe";
+      $("tipeBlock").hidden=false;
+    }
+  }
+
+  if(!ok){ if(firstBad) $(firstBad).focus(); return; }
+
+  // Save
+  if(editingId===null){
+    const rec={id:++SEQ, nama, kode, ket, tipe, status:"AKTIF", activeUnits:[], nonaktifUnits:[],
+      hasActiveDeriv:false, usedByA42:false};
+    DATA.push(rec);
+  } else {
+    const r=DATA.find(x=>x.id===editingId);
+    r.nama=nama; r.ket=ket; r.tipe=tipe; // kode immutable
+  }
+  hideForm();
+  toast("Data Berhasil Disimpan", "ok");
+  render();
+}
+
+$("btnAdd").addEventListener("click", openAdd);
+$("formSave").addEventListener("click", validateAndSave);
+$("formCancel").addEventListener("click", hideForm);
+$("formClose").addEventListener("click", hideForm);
+$("formOverlay").addEventListener("click", e=>{ if(e.target===$("formOverlay")) hideForm(); });
+
+/* ---------- Toggle status (BR-006 blokir bila ada Unit aktif) ---------- */
+function handleToggle(id, checkbox){
+  const r=DATA.find(x=>x.id===id); if(!r) return;
+  const goingNonaktif = r.status==="AKTIF"; // toggle turning off
+  if(goingNonaktif){
+    // BR-006: blokir bila masih ada Unit AKTIF tertaut
+    if(r.activeUnits.length>0){
+      checkbox.checked = true; // revert
+      showBlockDeactivate(r);
+      return;
+    }
+    // no active units -> confirm nonaktif
+    checkbox.checked = true; // keep until confirmed
+    showConfirmNonaktif(r, checkbox);
+  } else {
+    // reactivation
+    r.status="AKTIF";
+    toast(`Instalasi "${r.nama}" diaktifkan kembali.`, "ok");
+    render();
+  }
+}
+
+function showBlockDeactivate(r){
+  const n=r.activeUnits.length;
+  $("confIcon").style.background="var(--err-bg)";
+  $("confIcon").innerHTML=`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--err)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>`;
+  $("confTitle").textContent="Penonaktifan Diblokir";
+  $("confSub").textContent=r.nama;
+  $("confBody").innerHTML=`
+    <div class="alert alert-err" style="margin-bottom:14px">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+      <span>Instalasi tidak dapat dinonaktifkan karena masih memiliki <b>${n} Unit aktif</b>. Pindahkan Unit terlebih dahulu melalui Master Data Unit.</span>
+    </div>
+    <div class="section-label" style="margin-top:6px">Unit aktif tertaut (${n})</div>
+    <div class="unit-list">
+      ${r.activeUnits.map(u=>`<div class="unit-row"><span class="u-name">${esc(u)}</span><span class="mini-badge st-aktif">Aktif</span></div>`).join("")}
+    </div>
+    <div class="alert alert-info" style="margin-top:14px">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <span>Klik tautan untuk membuka <b>Master Data Unit (A3)</b> ter-filter instalasi ini.
+      <a class="deeplink" id="dl-a3">Buka Master Data Unit (A3) — filter: instalasi_asal=${esc(r.kode)} ↗</a></span>
+    </div>`;
+  $("confFoot").innerHTML=`<button class="btn btn-ghost" id="confOk">Tutup</button>`;
+  showConfirm();
+  $("confOk").addEventListener("click", hideConfirm);
+  const dl=$("dl-a3"); if(dl) dl.addEventListener("click", ()=>{ hideConfirm(); toast(`Membuka Master Data Unit (A3), ter-filter instalasi asal "${r.nama}". Pemindahan Unit dieksekusi di A3.`, "info"); });
+}
+
+function showConfirmNonaktif(r, checkbox){
+  $("confIcon").style.background="var(--warn-bg)";
+  $("confIcon").innerHTML=`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--warn)" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>`;
+  $("confTitle").textContent="Nonaktifkan Instalasi?";
+  $("confSub").textContent=r.nama;
+  const histNote = r.nonaktifUnits.length>0
+    ? `<div class="alert alert-info" style="margin-top:6px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><span>${r.nonaktifUnits.length} Unit <b>Nonaktif</b> dibiarkan tertaut sebagai histori dan tidak memblokir penonaktifan.</span></div>`
+    : "";
+  $("confBody").innerHTML=`
+    <p style="margin:0 0 4px;color:var(--text-muted)">Instalasi ini tidak memiliki Unit aktif tertaut, sehingga dapat dinonaktifkan (soft status, tanpa hard delete). Data tetap tersimpan sebagai histori dan dapat direaktivasi.</p>
+    ${histNote}`;
+  $("confFoot").innerHTML=`<button class="btn btn-ghost" id="confCancel">Batal</button><button class="btn btn-primary" id="confYes">Ya, Nonaktifkan</button>`;
+  showConfirm();
+  $("confCancel").addEventListener("click", ()=>{ checkbox.checked=true; hideConfirm(); });
+  $("confYes").addEventListener("click", ()=>{
+    r.status="NONAKTIF"; hideConfirm(); toast(`Instalasi "${r.nama}" berhasil dinonaktifkan.`, "ok"); render();
+  });
+}
+
+function showConfirm(){ $("confirmOverlay").hidden=false; }
+function hideConfirm(){ $("confirmOverlay").hidden=true; render(); }
+$("confClose").addEventListener("click", hideConfirm);
+$("confirmOverlay").addEventListener("click", e=>{ if(e.target===$("confirmOverlay")) hideConfirm(); });
+
+/* ---------- Toast ---------- */
+function toast(msg, kind){
+  const el=document.createElement("div");
+  el.className="toast"+(kind==="err"?" err":kind==="info"?" info":"");
+  const icon = kind==="err"
+    ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--err)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>`
+    : kind==="info"
+    ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>`
+    : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>`;
+  el.innerHTML=`${icon}<span>${esc(msg)}</span>`;
+  $("toastWrap").appendChild(el);
+  setTimeout(()=>{ el.style.transition="opacity .3s,transform .3s"; el.style.opacity="0"; el.style.transform="translateX(20px)"; setTimeout(()=>el.remove(),300); }, 3200);
+}
+
+/* ---------- Theme toggle ---------- */
+function currentTheme(){
+  const attr=document.documentElement.getAttribute("data-theme");
+  if(attr) return attr;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark":"light";
+}
+$("themeBtn").addEventListener("click", ()=>{
+  const next = currentTheme()==="dark" ? "light":"dark";
+  document.documentElement.setAttribute("data-theme", next);
+  updateThemeIcon();
+});
+function updateThemeIcon(){
+  const dark = currentTheme()==="dark";
+  $("themeBtn").innerHTML = dark
+    ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`
+    : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>`;
+}
+updateThemeIcon();
+
+/* ---------- Global Esc ---------- */
+document.addEventListener("keydown", e=>{
+  if(e.key==="Escape"){
+    if(!$("confirmOverlay").hidden) hideConfirm();
+    else if(!$("formOverlay").hidden) hideForm();
+  }
+});
+
+/* ---------- init ---------- */
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+👋 Main Goals
+
+Menghilangkan konfigurasi hardcode pada daftar Program/Layanan Terapi dan Intervensi/Tindakan Terapi dengan menyediakan Master Data yang dapat dikelola oleh rumah sakit serta menjadi single source of truth yang digunakan bersama oleh modul Order Penunjang, Asesmen Fisioterapi, Terapi Okupasi, dan Terapi Wicara
+
+
+
+📝 Feature Capabilities
+
+
+
+
+
+Menambahkan fitur Master Program Terapi (contoh: Fisioterapi, Terapi Okupasi, Terapi Wicara).
+
+
+
+Menambahkan fitur Master Intervensi Terapi yang dapat dikaitkan dengan Program Terapi.
+
+
+
+Mengelola data Program Terapi (Tambah, Ubah, Nonaktifkan).
+
+
+
+Mengelola data Intervensi Terapi (Tambah, Ubah, Nonaktifkan).
+
+
+
+Mengatur Intervensi berdasarkan Program Terapi.
+
+
+
+Mengatur urutan tampilan Intervensi.
+
+
+
+Menentukan status aktif/nonaktif setiap Program maupun Intervensi.
+
+
+
+Order Penunjang mengambil daftar Program dan Intervensi dari Master Data.
+
+
+
+Form Asesmen Fisioterapi, Terapi Okupasi, dan Terapi Wicara menggunakan Master Data yang sama.
+
+
+
+Menyimpan referensi Order Penunjang ke dalam Asesmen sehingga diketahui tindakan berasal dari Order Rawat Inap/Rawat Jalan.
+
+
+
+Menyediakan relasi antara Order dan Pelaksanaan Terapi untuk kebutuhan histori, dashboard, dan pelaporan.
+
+
+
+⚙️Performance Expectation
+
+Behavior :
+
+
+
+
+
+User dapat menambah Program Terapi baru tanpa deployment aplikasi.
+
+
+
+User dapat menambah Intervensi baru tanpa deployment aplikasi.
+
+
+
+Daftar Program dan Intervensi selalu konsisten pada seluruh modul rehabilitasi.
+
+
+
+Perubahan Master Data langsung digunakan pada Order maupun Asesmen.
+
+
+
+Sistem dapat mengidentifikasi asal tindakan (Order Rawat Jalan, Rawat Inap, atau Order Internal).
+
+Ekspektasi :
+
+
+
+
+
+Waktu menampilkan daftar Program Terapi < 300 ms
+
+
+
+Waktu menampilkan daftar Intervensi < 500 ms
+
+
+
+Sinkronisasi Master Data digunakan oleh seluruh modul tanpa duplikasi data.
+
+
+
+Tidak ada lagi daftar tindakan yang disimpan secara hardcode di source code.
+
+
+
+🧩Scope
+
+
+
+
+
+Data Program Terapi
+
+
+
+Data Intervensi Terapi
+
+
+
+Integrasi Master ke Order Penunjang
+
+
+
+Integrasi Master ke Asesmen Fisioterapi
+
+
+
+Integrasi Master ke Asesmen Terapi Okupasi
+
+
+
+Integrasi Master ke Asesmen Terapi Wicara
+
+
+
+📈Expected Improvement From V1
+
+Aspek Bisnis Proses :
+
+
+
+
+
+Rumah sakit dapat menambahkan Program Terapi baru tanpa meminta perubahan aplikasi.
+
+
+
+Rumah sakit dapat menambahkan Intervensi baru sesuai perkembangan layanan.
+
+
+
+Menghilangkan duplikasi daftar tindakan pada setiap modul rehabilitasi.
+
+
+
+Seluruh tindakan terapi memiliki referensi yang sama di seluruh sistem.
+
+
+
+Asesmen dapat mengetahui tindakan berasal dari Order Penunjang sehingga alur pelayanan menjadi lebih terintegrasi.
+
+
+
+Mempermudah audit histori pelayanan rehabilitasi.
+
+
+
+Aspek User Experience :
+
+
+
+
+
+User hanya melakukan maintenance data pada satu Master.
+
+
+
+Daftar tindakan selalu sama antara Order dan Asesmen.
+
+
+
+Mengurangi risiko user memilih tindakan yang berbeda antar modul.
+
+
+
+Mempermudah pencarian dan pengelolaan Intervensi.
+
+
+
+Mengurangi kebingungan akibat perbedaan daftar tindakan.
+
+
+
+Aspek Logic System :
+
+
+
+
+
+Menghilangkan dependency terhadap hardcode.
+
+
+
+Menerapkan konsep Single Source of Truth untuk Program dan Intervensi Terapi.
+
+
+
+Seluruh modul membaca referensi dari Master Data yang sama.
+
+
+
+Setiap Order menghasilkan referensi yang dapat ditelusuri sampai proses pelaksanaan terapi.
+
+
+
+Sistem mampu menyimpan relasi:
+
+
+
+
+
+Order
+
+
+
+Program Terapi
+
+
+
+Intervensi
+
+
+
+Asesmen
+
+
+
+Pelaksanaan Terapi
+
+
+
+Mendukung pengembangan layanan rehabilitasi baru tanpa perubahan source code.
+
+
+

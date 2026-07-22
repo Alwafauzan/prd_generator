@@ -1,0 +1,645 @@
+<title>Master Data Barang Rumah Tangga — Preview UI (A5)</title>
+<style>
+  :root {
+    --bg:#f5f5f8; --surface:#fff; --surface-2:#f7f7fb; --border:#e6e5ee; --border-strong:#cfcde0;
+    --text:#161327; --text-2:#4b4763; --text-3:#6d6987;
+    --accent:#4f46e5; --accent-weak:#e6e4fb; --accent-ink:#4338ca;
+    --shadow:0 1px 2px rgba(22,19,39,.04),0 1px 3px rgba(22,19,39,.06);
+    --shadow-lg:0 12px 32px -12px rgba(22,19,39,.28);
+    --ok:#059669; --ok-bg:#d1fae5; --ok-ink:#065f46;
+    --off:#64748b; --off-bg:#e7e6ee; --off-ink:#3f3d51;
+    --warn:#d97706; --warn-bg:#fef3c7; --warn-ink:#92400e;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:#0c0b14; --surface:#141222; --surface-2:#1b1930; --border:#282540; --border-strong:#3b3760;
+      --text:#eceafa; --text-2:#b3aecf; --text-3:#847fa3;
+      --accent:#818cf8; --accent-weak:#2a2653; --accent-ink:#a5b0ff;
+      --shadow:0 1px 2px rgba(0,0,0,.35); --shadow-lg:0 14px 34px -12px rgba(0,0,0,.65);
+      --ok:#34d399; --ok-bg:#06382a; --ok-ink:#a7f3d0;
+      --off:#94a3b8; --off-bg:#242235; --off-ink:#cbd5e1;
+      --warn:#fbbf24; --warn-bg:#3a2506; --warn-ink:#fde68a;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg:#f5f5f8; --surface:#fff; --surface-2:#f7f7fb; --border:#e6e5ee; --border-strong:#cfcde0;
+    --text:#161327; --text-2:#4b4763; --text-3:#6d6987;
+    --accent:#4f46e5; --accent-weak:#e6e4fb; --accent-ink:#4338ca;
+    --shadow:0 1px 2px rgba(22,19,39,.04),0 1px 3px rgba(22,19,39,.06); --shadow-lg:0 12px 32px -12px rgba(22,19,39,.28);
+    --ok:#059669; --ok-bg:#d1fae5; --ok-ink:#065f46;
+    --off:#64748b; --off-bg:#e7e6ee; --off-ink:#3f3d51;
+    --warn:#d97706; --warn-bg:#fef3c7; --warn-ink:#92400e;
+  }
+  :root[data-theme="dark"] {
+    --bg:#0c0b14; --surface:#141222; --surface-2:#1b1930; --border:#282540; --border-strong:#3b3760;
+    --text:#eceafa; --text-2:#b3aecf; --text-3:#847fa3;
+    --accent:#818cf8; --accent-weak:#2a2653; --accent-ink:#a5b0ff;
+    --shadow:0 1px 2px rgba(0,0,0,.35); --shadow-lg:0 14px 34px -12px rgba(0,0,0,.65);
+    --ok:#34d399; --ok-bg:#06382a; --ok-ink:#a7f3d0;
+    --off:#94a3b8; --off-bg:#242235; --off-ink:#cbd5e1;
+    --warn:#fbbf24; --warn-bg:#3a2506; --warn-ink:#fde68a;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-size:14px; line-height:1.5;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; -webkit-font-smoothing:antialiased; }
+  .tnum { font-variant-numeric: tabular-nums; }
+
+  .app { max-width:1180px; margin:0 auto; padding:0 20px 64px; }
+  .topbar { display:flex; align-items:center; gap:14px; padding:16px 20px; max-width:1180px; margin:0 auto; flex-wrap:wrap; }
+  .brand { display:flex; align-items:center; gap:11px; }
+  .logo { width:34px; height:34px; border-radius:9px; flex:none; background:linear-gradient(140deg,var(--accent),var(--accent-ink));
+    display:grid; place-items:center; color:#fff; box-shadow:var(--shadow); }
+  .logo svg { width:19px; height:19px; }
+  .brand h1 { font-size:15px; margin:0; letter-spacing:-.01em; }
+  .brand .sub { font-size:11.5px; color:var(--text-3); }
+  .crumb { margin-left:4px; font-size:12px; color:var(--text-3); display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .crumb b { color:var(--text-2); font-weight:600; }
+  .crumb .code { font-size:10.5px; font-weight:700; letter-spacing:.04em; color:var(--accent-ink); background:var(--accent-weak); padding:2px 7px; border-radius:6px; }
+  .spacer { flex:1; }
+  .theme-toggle { border:1px solid var(--border); background:var(--surface); color:var(--text-2); width:34px; height:34px; border-radius:9px; cursor:pointer; display:grid; place-items:center; }
+  .theme-toggle:hover { border-color:var(--border-strong); }
+
+  .tabs { display:flex; gap:2px; border-bottom:1px solid var(--border); max-width:1180px; margin:0 auto; padding:0 20px; overflow-x:auto; }
+  .tab { appearance:none; border:none; background:none; cursor:pointer; padding:11px 15px; font-size:13px; font-weight:550; color:var(--text-3);
+    border-bottom:2px solid transparent; margin-bottom:-1px; font-family:inherit; display:flex; align-items:center; gap:7px; white-space:nowrap; }
+  .tab:hover { color:var(--text); }
+  .tab[aria-selected="true"] { color:var(--accent-ink); border-bottom-color:var(--accent); }
+  .panel { display:none; padding-top:24px; }
+  .panel.active { display:block; animation:fade .22s ease; }
+  @keyframes fade { from { opacity:0; transform:translateY(4px);} to { opacity:1; transform:none;} }
+  @media (prefers-reduced-motion:reduce){ .panel.active,.toast{animation:none;} }
+
+  .eyebrow { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-3); margin:0 0 3px; }
+  .h-row { display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:18px; }
+  .h-row h2 { margin:0; font-size:20px; letter-spacing:-.02em; }
+  .h-row p { margin:4px 0 0; color:var(--text-2); font-size:13px; max-width:62ch; }
+  .h-actions { display:flex; gap:8px; flex-wrap:wrap; }
+
+  .kpis { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:22px; }
+  @media (max-width:640px){ .kpis{ grid-template-columns:1fr; } }
+  .kpi { background:var(--surface); border:1px solid var(--border); border-radius:13px; padding:14px 15px; box-shadow:var(--shadow); position:relative; overflow:hidden; }
+  .kpi::before { content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--k,var(--border-strong)); }
+  .kpi .lab { font-size:11.5px; color:var(--text-3); display:flex; align-items:center; gap:6px; }
+  .kpi .dot { width:8px; height:8px; border-radius:50%; background:var(--k); }
+  .kpi .val { font-size:30px; font-weight:680; letter-spacing:-.03em; margin-top:6px; line-height:1; }
+  .kpi .meta { font-size:11.5px; color:var(--text-3); margin-top:6px; }
+  .kpi.total{ --k:var(--accent); } .kpi.ok{ --k:var(--ok); } .kpi.off{ --k:var(--off); }
+
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow); overflow:hidden; }
+  .toolbar { display:flex; gap:10px; padding:13px 14px; align-items:center; flex-wrap:wrap; border-bottom:1px solid var(--border); }
+  .search { position:relative; flex:1; min-width:190px; }
+  .search svg { position:absolute; left:11px; top:50%; transform:translateY(-50%); width:15px; height:15px; color:var(--text-3); }
+  .search input { width:100%; padding:8px 11px 8px 33px; }
+  input,select,textarea { font-family:inherit; font-size:13px; color:var(--text); background:var(--surface-2); border:1px solid var(--border); border-radius:9px; padding:8px 11px; }
+  input:focus,select:focus,textarea:focus { outline:2px solid var(--accent); outline-offset:1px; border-color:transparent; }
+  select { cursor:pointer; }
+  .btn { font-family:inherit; font-size:13px; font-weight:600; cursor:pointer; border-radius:9px; padding:8px 14px; border:1px solid var(--border-strong);
+    background:var(--surface); color:var(--text); display:inline-flex; align-items:center; gap:7px; }
+  .btn:hover { background:var(--surface-2); }
+  .btn.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .btn.primary:hover { background:var(--accent-ink); }
+  .btn.sm { padding:6px 10px; font-size:12px; }
+  .btn svg { width:15px; height:15px; }
+
+  .twrap { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font-size:13px; min-width:840px; }
+  thead th { text-align:left; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-3); font-weight:700; padding:10px 14px;
+    background:var(--surface-2); border-bottom:1px solid var(--border); white-space:nowrap; }
+  thead th.sortable { cursor:pointer; user-select:none; }
+  thead th.sortable:hover { color:var(--accent-ink); }
+  thead th .arr { opacity:.5; font-size:9px; }
+  tbody td { padding:11px 14px; border-bottom:1px solid var(--border); vertical-align:middle; }
+  tbody tr:hover { background:var(--surface-2); }
+  tbody tr:last-child td { border-bottom:none; }
+  .idx { color:var(--text-3); }
+  .kode { font-weight:650; letter-spacing:-.01em; font-variant-numeric:tabular-nums; }
+  .nm { font-weight:600; cursor:pointer; }
+  .nm:hover { color:var(--accent-ink); text-decoration:underline; }
+  .muted { color:var(--text-3); }
+  .cat { font-size:11px; font-weight:600; padding:2px 8px; border-radius:6px; background:var(--accent-weak); color:var(--accent-ink); white-space:nowrap; }
+  .badge { display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; padding:3px 9px 3px 8px; border-radius:20px; white-space:nowrap; }
+  .badge .bd { width:7px; height:7px; border-radius:50%; }
+  .st-aktif { background:var(--ok-bg); color:var(--ok-ink); } .st-aktif .bd{ background:var(--ok); }
+  .st-nonaktif { background:var(--off-bg); color:var(--off-ink); } .st-nonaktif .bd{ background:var(--off); }
+  .actions { display:flex; gap:6px; align-items:center; }
+  .rowbtn { border:1px solid var(--border); background:var(--surface); color:var(--text-2); border-radius:7px; height:28px; padding:0 9px; cursor:pointer; display:inline-flex; align-items:center; gap:5px; font-size:12px; font-family:inherit; }
+  .rowbtn:hover { border-color:var(--accent); color:var(--accent-ink); }
+  .tgl { width:34px; height:20px; border-radius:20px; background:var(--border-strong); position:relative; cursor:pointer; border:none; flex:none; transition:background .16s; }
+  .tgl::after { content:""; position:absolute; top:2px; left:2px; width:16px; height:16px; border-radius:50%; background:#fff; transition:transform .16s; box-shadow:0 1px 2px rgba(0,0,0,.3); }
+  .tgl.on { background:var(--ok); } .tgl.on::after { transform:translateX(14px); }
+  .tfoot { padding:11px 14px; display:flex; justify-content:space-between; align-items:center; color:var(--text-3); font-size:12px; flex-wrap:wrap; gap:8px; }
+  .pager { display:flex; gap:4px; align-items:center; }
+  .pg { width:28px; height:28px; border-radius:7px; border:1px solid var(--border); background:var(--surface); color:var(--text-2); cursor:pointer; font-family:inherit; font-size:12px; }
+  .pg.active { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .empty { padding:40px; text-align:center; color:var(--text-3); }
+
+  .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:720px){ .form-grid{ grid-template-columns:1fr; } }
+  .section-card { padding:18px 18px 20px; }
+  .section-card + .section-card { margin-top:16px; }
+  .sec-title { display:flex; align-items:center; gap:9px; margin:0 0 14px; font-size:14px; }
+  .sec-title .n { width:22px; height:22px; border-radius:6px; background:var(--accent-weak); color:var(--accent-ink); font-size:11px; font-weight:700; display:grid; place-items:center; }
+  .field { display:flex; flex-direction:column; gap:5px; }
+  .field.col-2 { grid-column:span 2; } @media (max-width:720px){ .field.col-2{ grid-column:span 1; } }
+  .field label { font-size:12px; font-weight:600; color:var(--text-2); display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .req { color:#e11d48; font-weight:700; }
+  .hint { font-size:11px; color:var(--text-3); }
+  .tag-src { font-size:9.5px; font-weight:700; letter-spacing:.04em; padding:1px 5px; border-radius:4px; text-transform:uppercase; }
+  .tag-lookup { background:var(--accent-weak); color:var(--accent-ink); }
+  .tag-auto { background:var(--off-bg); color:var(--off-ink); }
+  .tag-conf { background:var(--warn-bg); color:var(--warn-ink); }
+  .ro { background:var(--surface-2); color:var(--text-3); }
+  .rupiah { position:relative; } .rupiah span { position:absolute; left:11px; top:50%; transform:translateY(-50%); color:var(--text-3); font-size:12px; }
+  .rupiah input { padding-left:34px; width:100%; }
+
+  /* conversion table */
+  .conv { border:1px solid var(--border); border-radius:11px; overflow:hidden; margin-top:4px; }
+  .conv-row { display:grid; grid-template-columns:1fr 92px 1fr 36px; gap:10px; padding:10px 12px; align-items:center; border-bottom:1px solid var(--border); }
+  .conv-row.head { background:var(--surface-2); font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--text-3); font-weight:700; }
+  .conv-row:last-child { border-bottom:none; }
+  .conv-row .eqn { grid-column:1 / -1; font-size:11px; color:var(--text-3); padding-top:2px; }
+  .conv-row select, .conv-row input { padding:7px 9px; }
+  .del { border:1px solid var(--border); background:var(--surface); color:#e11d48; border-radius:7px; width:32px; height:32px; cursor:pointer; display:grid; place-items:center; }
+  .del:hover { border-color:#e11d48; background:var(--warn-bg); }
+  @media (max-width:560px){ .conv-row{ grid-template-columns:1fr 70px 1fr 34px; } }
+
+  .form-actions { display:flex; justify-content:flex-end; gap:10px; margin-top:18px; }
+  .note { display:flex; gap:10px; padding:11px 13px; border-radius:10px; font-size:12.5px; background:var(--warn-bg); color:var(--warn-ink);
+    border:1px solid color-mix(in srgb,var(--warn) 25%,transparent); margin-top:16px; }
+  .note svg { width:16px; height:16px; flex:none; margin-top:1px; }
+
+  .drop { border:2px dashed var(--border-strong); border-radius:14px; padding:34px 20px; text-align:center; background:var(--surface-2); color:var(--text-2); cursor:pointer; transition:border-color .18s,background .18s; }
+  .drop:hover { border-color:var(--accent); background:var(--accent-weak); }
+  .drop svg { width:34px; height:34px; color:var(--text-3); }
+  .drop b { display:block; margin:10px 0 2px; color:var(--text); font-size:15px; }
+  .import-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px; }
+  @media (max-width:620px){ .import-steps{ grid-template-columns:1fr; } }
+  .step { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:14px; box-shadow:var(--shadow); }
+  .step .n { width:24px; height:24px; border-radius:50%; background:var(--accent); color:#fff; font-weight:700; font-size:12px; display:grid; place-items:center; margin-bottom:9px; }
+  .step h4 { margin:0 0 4px; font-size:13px; } .step p { margin:0; font-size:12px; color:var(--text-3); }
+
+  .audit td { font-size:12.5px; }
+  .act-pill { font-size:10.5px; font-weight:700; letter-spacing:.03em; padding:2px 7px; border-radius:5px; text-transform:uppercase; }
+  .act-create { background:var(--ok-bg); color:var(--ok-ink); }
+  .act-update { background:var(--accent-weak); color:var(--accent-ink); }
+  .act-status { background:var(--warn-bg); color:var(--warn-ink); }
+  .diff { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11.5px; color:var(--text-2); }
+  .diff .a { color:#e11d48; } .diff .b { color:var(--ok); }
+
+  .foot-meta { max-width:1180px; margin:26px auto 0; padding:0 20px; color:var(--text-3); font-size:11.5px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+  .foot-meta .k { color:var(--text-2); font-weight:600; }
+
+  .toast { position:fixed; bottom:22px; left:50%; transform:translateX(-50%); background:var(--text); color:var(--bg); padding:11px 18px; border-radius:11px;
+    font-size:13px; font-weight:600; box-shadow:var(--shadow-lg); display:none; align-items:center; gap:9px; z-index:50; animation:pop .25s ease; }
+  .toast.show { display:flex; }
+  .toast .bd { width:8px; height:8px; border-radius:50%; background:var(--ok); }
+  @keyframes pop { from { opacity:0; transform:translate(-50%,8px);} to { opacity:1; transform:translate(-50%,0);} }
+</style>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 12 3l9 6"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+    </div>
+    <div>
+      <h1>NeuroVI SIMRS</h1>
+      <div class="sub">Control Panel · RS Tipe C &amp; D</div>
+    </div>
+  </div>
+  <div class="crumb"><span>Master Data</span><span>›</span><b>Barang Rumah Tangga</b><span class="code">A5</span></div>
+  <div class="spacer"></div>
+  <button class="theme-toggle" id="themeBtn" title="Ganti tema" aria-label="Ganti tema">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+  </button>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Layar modul Barang RT">
+  <button class="tab" role="tab" aria-selected="true" data-tab="dash">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="4" rx="1"/><rect x="3" y="11" width="18" height="4" rx="1"/><rect x="3" y="18" width="18" height="3" rx="1"/></svg>
+    Dashboard &amp; List
+  </button>
+  <button class="tab" role="tab" aria-selected="false" data-tab="form">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+    Tambah / Ubah Barang
+  </button>
+  <button class="tab" role="tab" aria-selected="false" data-tab="io">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12M8 11l4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+    Impor &amp; Ekspor
+    <span class="tag-src tag-conf" style="margin-left:2px">Phase 2</span>
+  </button>
+  <button class="tab" role="tab" aria-selected="false" data-tab="audit">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    Riwayat Aktivitas
+  </button>
+</nav>
+
+<main class="app">
+
+  <!-- ══ DASHBOARD ══ -->
+  <section class="panel active" id="p-dash" role="tabpanel">
+    <div class="h-row">
+      <div>
+        <p class="eyebrow">Master Data · Barang Non-Medis</p>
+        <h2>Dashboard Barang Rumah Tangga</h2>
+        <p>Single source of truth barang non-medis/non-farmasi — alat kebersihan, perlengkapan kantor, perawatan fasilitas. Dikonsumsi real-time oleh Inventori, Keuangan &amp; Logistik.</p>
+      </div>
+      <div class="h-actions">
+        <button class="btn" onclick="go('io')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 15V3M8 7l4-4 4 4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Ekspor</button>
+        <button class="btn primary" onclick="go('form')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Tambah Barang</button>
+      </div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi total"><div class="lab"><span class="dot"></span>Total Barang</div><div class="val tnum" id="k-total">0</div><div class="meta">seluruh master barang RT</div></div>
+      <div class="kpi ok"><div class="lab"><span class="dot"></span>Barang Aktif</div><div class="val tnum" id="k-aktif">0</div><div class="meta">tampil sebagai opsi baru</div></div>
+      <div class="kpi off"><div class="lab"><span class="dot"></span>Barang Nonaktif</div><div class="val tnum" id="k-nonaktif">0</div><div class="meta">soft — histori tetap</div></div>
+    </div>
+
+    <div class="card">
+      <div class="toolbar">
+        <div class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg>
+          <input id="q" type="search" placeholder="Cari nama atau kode barang…" aria-label="Cari barang">
+        </div>
+        <select id="f-kat" aria-label="Filter kategori"><option value="">Semua Kategori</option></select>
+        <select id="f-status" aria-label="Filter status">
+          <option value="">Semua Status</option><option value="aktif">Aktif</option><option value="nonaktif">Nonaktif</option>
+        </select>
+      </div>
+      <div class="twrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:44px">No</th>
+              <th class="sortable" data-sort="kode">Kode <span class="arr" data-arr="kode"></span></th>
+              <th class="sortable" data-sort="nama">Nama Barang <span class="arr" data-arr="nama">▲</span></th>
+              <th class="sortable" data-sort="kategori">Kategori <span class="arr" data-arr="kategori"></span></th>
+              <th>Satuan</th><th>Pabrikan</th>
+              <th class="sortable" data-sort="status">Status <span class="arr" data-arr="status"></span></th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+      <div class="tfoot">
+        <span id="count">—</span>
+        <div class="pager" id="pager"></div>
+      </div>
+    </div>
+    <div class="note" style="background:var(--accent-weak);color:var(--accent-ink);border-color:transparent">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+      <span>Tidak ada hapus permanen di modul ini — penghapusan selalu <b>soft nonaktif</b> agar histori &amp; integritas relasi terjaga (BR-A5-08). Toggle Status pada tiap baris.</span>
+    </div>
+  </section>
+
+  <!-- ══ FORM ══ -->
+  <section class="panel" id="p-form" role="tabpanel">
+    <div class="h-row">
+      <div>
+        <p class="eyebrow">§7.1 · Form Tambah / Ubah</p>
+        <h2>Form Barang Rumah Tangga</h2>
+        <p>Field <span class="req">*</span> wajib. <b>Kode</b> di-generate sistem (prefix Kategori + nomor urut, immutable) dan <b>Status</b> otomatis <b>AKTIF</b> — keduanya tak diinput manual.</p>
+      </div>
+    </div>
+
+    <form id="itemForm" onsubmit="return submitForm(event)">
+      <div class="card section-card">
+        <h3 class="sec-title"><span class="n">1</span> Identitas &amp; Klasifikasi</h3>
+        <div class="form-grid">
+          <div class="field">
+            <label>Kode Barang <span class="tag-src tag-auto">Auto</span></label>
+            <input class="ro" id="fm-kode" readonly value="RT-KBR-006">
+            <span class="hint">Dibuat otomatis oleh sistem · immutable · BR-A5-02</span>
+          </div>
+          <div class="field">
+            <label>Nama Barang <span class="req">*</span></label>
+            <input required placeholder="Contoh: Pembersih Lantai 1L" value="Pengharum Ruangan 300ml" maxlength="100">
+            <span class="hint">Maks 100 karakter · BR-A5-01</span>
+          </div>
+          <div class="field">
+            <label>Kategori <span class="req">*</span> <span class="tag-src tag-lookup">Lookup A33</span></label>
+            <select id="fm-kat" required onchange="regenKode()">
+              <option>Alat Kebersihan</option><option>Perlengkapan Kantor</option>
+              <option>Perawatan Fasilitas</option><option>Barang Habis Pakai</option><option>Alat Dapur / Pantry</option>
+            </select>
+            <span class="hint">Hanya Kelompok Barang "Rumah Tangga" · BR-A5-04</span>
+          </div>
+          <div class="field">
+            <label>Satuan <span class="req">*</span> <span class="tag-src tag-lookup">Lookup A22</span></label>
+            <select required><option>Botol</option><option>Pcs</option><option>Rim</option><option>Box</option><option>Pack</option><option>Roll</option><option>Lusin</option></select>
+            <span class="hint">Dari Master Satuan &amp; Kemasan · BR-A5-05</span>
+          </div>
+          <div class="field">
+            <label>Kemasan <span class="tag-src tag-lookup">Lookup A22</span></label>
+            <select><option value="">— opsional —</option><option>Karton</option><option>Box</option><option>Pack</option></select>
+          </div>
+          <div class="field">
+            <label>Pabrikan <span class="tag-src tag-lookup">A54 · read-only</span></label>
+            <select><option value="">— opsional —</option><option>PT Kimia Bersih</option><option>CV Sinar Kantor</option><option>PT Fasilitas Jaya</option></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card section-card">
+        <h3 class="sec-title"><span class="n">2</span> Harga &amp; Identifikasi</h3>
+        <div class="form-grid">
+          <div class="field">
+            <label>Barcode / SKU <span class="tag-src tag-conf">Perlu Konfirmasi</span></label>
+            <input placeholder="opsional, maks 50 karakter">
+          </div>
+          <div class="field">
+            <label>Harga Beli</label>
+            <div class="rupiah"><span>Rp</span><input type="text" inputmode="numeric" value="18.500"></div>
+            <span class="hint">Dikelola di master ini · dikonsumsi Keuangan/Pengadaan · BR-A5-17</span>
+          </div>
+          <div class="field">
+            <label>HET (Harga Eceran Tertinggi)</label>
+            <div class="rupiah"><span>Rp</span><input type="text" inputmode="numeric" value="24.000"></div>
+            <span class="hint">Opsional · ≥ 0</span>
+          </div>
+          <div class="field col-2">
+            <label>Keterangan</label>
+            <textarea rows="2" maxlength="255" placeholder="Keterangan tambahan (opsional, maks 255 karakter)"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="card section-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px">
+          <h3 class="sec-title" style="margin:0"><span class="n">3</span> Konversi Satuan <span style="font-weight:500;color:var(--text-3);font-size:12px">· opsional, multi-aturan</span></h3>
+          <button type="button" class="btn sm primary" onclick="addConv()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Tambah Aturan</button>
+        </div>
+        <p class="hint" style="margin:0 0 12px">Tiap baris bermakna <b>1 Satuan Besar = faktor Satuan Kecil</b> (mis. 1 Box = 12 Strip). Pasangan Satuan Besar–Kecil unik per barang · BR-A5-18.</p>
+        <div class="conv" id="conv">
+          <div class="conv-row head"><div>Satuan Besar</div><div>Faktor</div><div>Satuan Kecil</div><div></div></div>
+        </div>
+        <div class="note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+          <span>Saat simpan, sistem menolak jika kombinasi <b>Nama + Kategori + Satuan</b> sudah ada (peringatan duplikat · BR-A5-03) dan mencatat aksi ke <b>Audit Trail</b> (BR-A5-07).</span>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn" onclick="go('dash')">Kembali</button>
+        <button type="submit" class="btn primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Simpan Barang</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- ══ IMPOR & EKSPOR ══ -->
+  <section class="panel" id="p-io" role="tabpanel">
+    <div class="h-row">
+      <div>
+        <p class="eyebrow">§7 · Phase 2</p>
+        <h2>Impor &amp; Ekspor Massal</h2>
+        <p>Setup awal atau migrasi cepat lewat template <b>.csv</b>. Ekspor mencakup seluruh field sesuai filter aktif, termasuk kolom Aturan Konversi.</p>
+      </div>
+      <div class="h-actions">
+        <button class="btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 15V3M8 7l4-4 4 4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Ekspor .csv</button>
+        <button class="btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12M8 11l4 4 4-4M4 21h16"/></svg>Unduh Template</button>
+      </div>
+    </div>
+
+    <div class="card section-card">
+      <div class="form-grid" style="margin-bottom:16px">
+        <div class="field">
+          <label>Mode Impor <span class="req">*</span></label>
+          <select><option>tambah — lewati duplikat</option><option>tambah + update — perbarui existing</option></select>
+          <span class="hint">BR-A5-13 · field kanonik mode_import</span>
+        </div>
+        <div class="field">
+          <label>Format File</label>
+          <input class="ro" readonly value=".csv (UTF-8) · sesuai template · maks 10MB">
+        </div>
+      </div>
+      <label class="drop" for="fileInput">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M12 18v-6M9.5 14.5 12 12l2.5 2.5"/></svg>
+        <b>Letakkan file .csv di sini atau klik untuk memilih</b>
+        <span class="hint">Kolom: nama, kategori, satuan, kemasan, konversi, pabrikan, harga_beli, het, barcode, keterangan · Kode di-generate sistem</span>
+        <input id="fileInput" type="file" accept=".csv" hidden onchange="pickedFile(this)">
+      </label>
+      <div class="import-steps">
+        <div class="step"><div class="n">1</div><h4>Unduh &amp; isi template</h4><p>Kolom konversi memuat aturan multi: <code>1 Box=12>Strip; 1 Strip=10>Pcs</code>.</p></div>
+        <div class="step"><div class="n">2</div><h4>Validasi per baris</h4><p>Nama/Kategori/Satuan wajib, lookup cocok master aktif, duplikat Nama+Kategori+Satuan dicek.</p></div>
+        <div class="step"><div class="n">3</div><h4>Ringkasan hasil</h4><p>Baris gagal dilaporkan per-baris; baris valid tetap tersimpan · X berhasil, Y di-skip.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ AUDIT ══ -->
+  <section class="panel" id="p-audit" role="tabpanel">
+    <div class="h-row">
+      <div>
+        <p class="eyebrow">§7.1 · Immutable Log</p>
+        <h2>Riwayat Aktivitas (Audit Trail)</h2>
+        <p>Seluruh aksi create / update / status-change tercatat dengan user, waktu &amp; perubahan before→after. Log bersifat immutable · BR-A5-07.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="toolbar">
+        <select style="min-width:150px"><option>Semua User</option><option>siti.admin</option><option>budi.logistik</option><option>rina.super</option></select>
+        <select style="min-width:150px"><option>Semua Aksi</option><option>CREATE</option><option>UPDATE</option><option>STATUS_CHANGE</option></select>
+        <div class="spacer"></div>
+      </div>
+      <div class="twrap">
+        <table class="audit">
+          <thead><tr><th style="width:150px">Waktu</th><th>User</th><th>Aksi</th><th>Barang</th><th>Perubahan (before → after)</th></tr></thead>
+          <tbody id="auditBody"></tbody>
+        </table>
+      </div>
+      <div class="tfoot"><span>5 aktivitas terakhir · urut waktu terbaru</span><span>Log immutable — tidak dapat diubah retroaktif</span></div>
+    </div>
+  </section>
+</main>
+
+<div class="foot-meta">
+  <span><span class="k">PRD A5</span> · Master Data Barang Rumah Tangga</span>
+  <span>Versi 2.4 · 2026-06-30</span>
+  <span>Mockup UI — bukan aplikasi produksi</span>
+</div>
+
+<div class="toast" id="toast"><span class="bd"></span><span id="toastMsg">Tersimpan</span></div>
+
+<script>
+  // ── Data ──
+  const KAT_PREFIX = { "Alat Kebersihan":"KBR", "Perlengkapan Kantor":"KTR", "Perawatan Fasilitas":"FAS", "Barang Habis Pakai":"HBP", "Alat Dapur / Pantry":"DPR" };
+  let items = [
+    { kode:"RT-KBR-001", nama:"Pembersih Lantai 1L", kategori:"Alat Kebersihan", satuan:"Botol", pabrikan:"PT Kimia Bersih", aktif:true },
+    { kode:"RT-KBR-002", nama:"Sapu Ijuk Gagang Kayu", kategori:"Alat Kebersihan", satuan:"Pcs", pabrikan:"—", aktif:true },
+    { kode:"RT-KBR-003", nama:"Cairan Pel Antiseptik 5L", kategori:"Alat Kebersihan", satuan:"Jerigen", pabrikan:"PT Kimia Bersih", aktif:true },
+    { kode:"RT-KTR-001", nama:"Kertas HVS A4 70gr", kategori:"Perlengkapan Kantor", satuan:"Rim", pabrikan:"CV Sinar Kantor", aktif:true },
+    { kode:"RT-KTR-002", nama:"Pulpen Hitam Standar", kategori:"Perlengkapan Kantor", satuan:"Box", pabrikan:"CV Sinar Kantor", aktif:true },
+    { kode:"RT-KTR-003", nama:"Map Snelhecter Plastik", kategori:"Perlengkapan Kantor", satuan:"Lusin", pabrikan:"—", aktif:false },
+    { kode:"RT-FAS-001", nama:"Lampu LED 12W Putih", kategori:"Perawatan Fasilitas", satuan:"Pcs", pabrikan:"PT Fasilitas Jaya", aktif:true },
+    { kode:"RT-FAS-002", nama:"Kabel Ties 20cm", kategori:"Perawatan Fasilitas", satuan:"Pack", pabrikan:"—", aktif:true },
+    { kode:"RT-HBP-001", nama:"Tisu Toilet 2-ply", kategori:"Barang Habis Pakai", satuan:"Roll", pabrikan:"PT Kimia Bersih", aktif:true },
+    { kode:"RT-HBP-002", nama:"Kantong Sampah 60x90", kategori:"Barang Habis Pakai", satuan:"Pack", pabrikan:"—", aktif:false },
+    { kode:"RT-DPR-001", nama:"Sabun Cuci Piring 800ml", kategori:"Alat Dapur / Pantry", satuan:"Botol", pabrikan:"PT Kimia Bersih", aktif:true },
+    { kode:"RT-DPR-002", nama:"Galon Air 19L", kategori:"Alat Dapur / Pantry", satuan:"Galon", pabrikan:"PT Distribusi Sehat", aktif:true }
+  ];
+
+  const audit = [
+    { t:"30-06-2026 14:22", u:"siti.admin", a:"CREATE", ap:"act-create", it:"RT-DPR-002 · Galon Air 19L", d:'<span class="b">+ barang baru dibuat (status AKTIF)</span>' },
+    { t:"30-06-2026 11:07", u:"budi.logistik", a:"UPDATE", ap:"act-update", it:"RT-KBR-001 · Pembersih Lantai 1L", d:'harga_beli: <span class="a">17.000</span> → <span class="b">18.500</span>' },
+    { t:"29-06-2026 16:40", u:"rina.super", a:"STATUS_CHANGE", ap:"act-status", it:"RT-HBP-002 · Kantong Sampah 60x90", d:'status: <span class="a">AKTIF</span> → <span class="b">NONAKTIF</span>' },
+    { t:"29-06-2026 09:15", u:"siti.admin", a:"UPDATE", ap:"act-update", it:"RT-KTR-002 · Pulpen Hitam Standar", d:'konversi: <span class="b">+ 1 Box = 12 Pcs</span>' },
+    { t:"28-06-2026 13:50", u:"rina.super", a:"STATUS_CHANGE", ap:"act-status", it:"RT-KTR-003 · Map Snelhecter Plastik", d:'status: <span class="a">AKTIF</span> → <span class="b">NONAKTIF</span>' }
+  ];
+
+  const PAGE = 8;
+  let sortKey = "nama", sortDir = 1, page = 1;
+
+  const fKat = document.getElementById('f-kat');
+  [...new Set(items.map(i=>i.kategori))].forEach(k=>fKat.add(new Option(k,k)));
+
+  function esc(s){ return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+
+  function view(){
+    const q = document.getElementById('q').value.toLowerCase().trim();
+    const kat = fKat.value, st = document.getElementById('f-status').value;
+    let rows = items.filter(i =>
+      (!q || i.nama.toLowerCase().includes(q) || i.kode.toLowerCase().includes(q)) &&
+      (!kat || i.kategori===kat) &&
+      (!st || (st==="aktif")===i.aktif));
+    rows.sort((a,b)=>{
+      let x,y;
+      if(sortKey==="status"){ x=a.aktif?1:0; y=b.aktif?1:0; }
+      else { x=(a[sortKey]||"").toLowerCase(); y=(b[sortKey]||"").toLowerCase(); }
+      return x<y?-1*sortDir : x>y?1*sortDir : 0;
+    });
+    return rows;
+  }
+
+  function render(){
+    const rows = view();
+    const pages = Math.max(1, Math.ceil(rows.length/PAGE));
+    if(page>pages) page=pages;
+    const slice = rows.slice((page-1)*PAGE, page*PAGE);
+    const tb = document.getElementById('tbody');
+    tb.innerHTML = slice.length ? slice.map((i,n)=>`
+      <tr>
+        <td class="idx">${(page-1)*PAGE+n+1}</td>
+        <td class="kode">${esc(i.kode)}</td>
+        <td><span class="nm" onclick="edit('${i.kode}')">${esc(i.nama)}</span></td>
+        <td><span class="cat">${esc(i.kategori)}</span></td>
+        <td class="muted">${esc(i.satuan)}</td>
+        <td class="muted">${esc(i.pabrikan)}</td>
+        <td><span class="badge ${i.aktif?'st-aktif':'st-nonaktif'}"><span class="bd"></span>${i.aktif?'Aktif':'Nonaktif'}</span></td>
+        <td><div class="actions">
+          <button class="rowbtn" onclick="edit('${i.kode}')" title="Detail / Ubah"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Detail</button>
+          <button class="tgl ${i.aktif?'on':''}" onclick="toggle('${i.kode}')" title="${i.aktif?'Nonaktifkan':'Aktifkan'}" aria-label="Toggle status"></button>
+        </div></td>
+      </tr>`).join('') : `<tr><td colspan="8" class="empty">Tidak ada barang yang cocok dengan filter.</td></tr>`;
+
+    document.getElementById('count').textContent = `Menampilkan ${slice.length} dari ${rows.length} barang`;
+
+    const pg = document.getElementById('pager');
+    pg.innerHTML = Array.from({length:pages},(_,k)=>`<button class="pg ${k+1===page?'active':''}" onclick="goPage(${k+1})">${k+1}</button>`).join('');
+
+    document.querySelectorAll('[data-arr]').forEach(el=>el.textContent='');
+    const arr = document.querySelector(`[data-arr="${sortKey}"]`);
+    if(arr) arr.textContent = sortDir===1?'▲':'▼';
+  }
+
+  function kpis(){
+    document.getElementById('k-total').textContent = items.length;
+    document.getElementById('k-aktif').textContent = items.filter(i=>i.aktif).length;
+    document.getElementById('k-nonaktif').textContent = items.filter(i=>!i.aktif).length;
+  }
+
+  function toggle(kode){
+    const it = items.find(i=>i.kode===kode); if(!it) return;
+    it.aktif = !it.aktif;
+    kpis(); render();
+    toast(`${it.kode} → ${it.aktif?'AKTIF':'NONAKTIF'} · audit trail dicatat`);
+  }
+  function goPage(p){ page=p; render(); }
+  window.toggle=toggle; window.goPage=goPage;
+
+  document.querySelectorAll('thead th.sortable').forEach(th=>{
+    th.addEventListener('click',()=>{
+      const k = th.dataset.sort;
+      if(sortKey===k) sortDir*=-1; else { sortKey=k; sortDir=1; }
+      render();
+    });
+  });
+  ['q','f-kat','f-status'].forEach(id=>{
+    const el=document.getElementById(id);
+    el.addEventListener('input',()=>{page=1;render();});
+    el.addEventListener('change',()=>{page=1;render();});
+  });
+
+  kpis(); render();
+
+  // ── Tabs ──
+  function go(tab){
+    document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected', t.dataset.tab===tab));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active', p.id==='p-'+tab));
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  window.go=go;
+  document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>go(t.dataset.tab)));
+
+  function edit(kode){
+    const it = items.find(i=>i.kode===kode);
+    if(it){ document.getElementById('fm-kode').value=it.kode; document.querySelector('#p-form input[maxlength="100"]').value=it.nama; document.getElementById('fm-kat').value=it.kategori; }
+    go('form');
+  }
+  window.edit=edit;
+
+  // ── Kode auto-generate preview ──
+  function nextSeq(prefix){
+    const nums = items.filter(i=>i.kode.startsWith('RT-'+prefix)).map(i=>+i.kode.split('-')[2]||0);
+    return (Math.max(0,...nums)+1).toString().padStart(3,'0');
+  }
+  function regenKode(){
+    const kat = document.getElementById('fm-kat').value;
+    const p = KAT_PREFIX[kat] || 'XXX';
+    document.getElementById('fm-kode').value = `RT-${p}-${nextSeq(p)}`;
+  }
+
+  // ── Konversi Satuan dynamic rows ──
+  const UNITS = ["Box","Strip","Pcs","Karton","Pack","Roll","Lusin","Botol","Rim"];
+  function unitOpts(sel){ return `<option value="">—</option>`+UNITS.map(u=>`<option ${u===sel?'selected':''}>${u}</option>`).join(''); }
+  function addConv(big,fac,small){
+    const row = document.createElement('div');
+    row.className='conv-row';
+    row.innerHTML = `
+      <select aria-label="Satuan besar">${unitOpts(big)}</select>
+      <input type="number" min="1" step="1" placeholder="12" value="${fac||''}" aria-label="Faktor">
+      <select aria-label="Satuan kecil">${unitOpts(small)}</select>
+      <button type="button" class="del" onclick="this.parentElement.remove()" aria-label="Hapus baris"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13"/></svg></button>`;
+    document.getElementById('conv').appendChild(row);
+  }
+  window.addConv=addConv;
+  addConv("Box",12,"Pcs"); // seed one example rule
+
+  function toast(msg){
+    const t=document.getElementById('toast');
+    document.getElementById('toastMsg').textContent=msg;
+    t.classList.add('show'); clearTimeout(t._t);
+    t._t=setTimeout(()=>t.classList.remove('show'),2800);
+  }
+  function submitForm(e){ e.preventDefault(); toast('Data Berhasil Diperbarui · sinkron real-time ke modul terkait'); go('dash'); return false; }
+  function pickedFile(inp){ if(inp.files[0]) toast('File "'+inp.files[0].name+'" siap divalidasi per baris'); }
+  window.submitForm=submitForm; window.pickedFile=pickedFile;
+
+  // ── Audit render ──
+  document.getElementById('auditBody').innerHTML = audit.map(r=>`
+    <tr>
+      <td class="muted tnum" style="white-space:nowrap">${r.t}</td>
+      <td>${r.u}</td>
+      <td><span class="act-pill ${r.ap}">${r.a}</span></td>
+      <td class="muted">${esc(r.it)}</td>
+      <td class="diff">${r.d}</td>
+    </tr>`).join('');
+
+  // ── Theme ──
+  const root=document.documentElement;
+  document.getElementById('themeBtn').addEventListener('click',()=>{
+    const cur = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    root.setAttribute('data-theme', cur==='dark'?'light':'dark');
+  });
+</script>

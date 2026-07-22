@@ -1,0 +1,51 @@
+flowchart TD
+  S([Mulai]) --> A[Temukan barang tidak layak]
+  subgraph Petugas Gudang
+    A --> B[Buka menu Retur Pembelian]
+    B --> C[Klik tambah retur]
+    C --> D[Pilih supplier dan dokumen penerimaan]
+    E --> F[Input item batch jumlah]
+    F --> G[Pilih alasan dan kondisi]
+    G --> H{Alasan Lainnya?}
+    H -->|ya| I[Isi catatan wajib]
+    H -->|tidak| J[Simpan dan Ajukan]
+    I --> J
+  end
+  D --> X1[(H2 Tarik item batch ED harga)]
+  X1 --> E[Form item retur terisi]
+  J --> K{Jumlah valid?}
+  K -->|tidak| L[Tampilkan error input]
+  L --> F
+  K -->|ya| M[(H4 Soft reserve stok)]
+  M --> N[Status Diajukan]
+  N --> O{Barang farmasi?}
+  O -->|ya| P[Tandai Reserved for QC]
+  P --> Q
+  O -->|tidak| Q{Rute persetujuan}
+  subgraph Apoteker dan PJ Gudang
+    Q -->|farmasi| R[Apoteker dan PJ review]
+    Q -->|non farmasi| T[PJ Kepala Gudang review]
+    R --> U{Disetujui?}
+    T --> U
+  end
+  U -->|tidak| V[Lepas soft reserve]
+  V --> W[Status Ditolak catat alasan]
+  W --> Z([Selesai ditolak])
+  N -.->|batal sebelum setuju| BA[Lepas soft reserve]
+  BA --> BB[Status Dibatalkan]
+  BB --> Z
+  U -->|ya| AA[(H4 Kurangi stok gudang)]
+  AA --> AB[Status Disetujui In Transit]
+  AB --> AC[Generate Nota Retur NRP]
+  subgraph Petugas Gudang Konfirmasi
+    AC --> AD[Kirim atau pickup supplier]
+    AD --> AE{Supplier terima?}
+  end
+  AE -->|tidak| AF[Tandai Gagal Retur]
+  AF --> X2[(H9 Hand off Pemusnahan)]
+  X2 --> AG([Selesai gagal retur])
+  AE -->|ya| AH[Input tanggal penerima ekspedisi]
+  AH --> AI[Status Selesai]
+  AI --> X3[(Modul Keuangan Nota Retur)]
+  X3 --> AJ[(Audit Trail catat status)]
+  AJ --> AK([Selesai])

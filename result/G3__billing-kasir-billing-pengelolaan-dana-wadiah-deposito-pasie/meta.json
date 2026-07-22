@@ -1,0 +1,11 @@
+{
+  "code": "G3",
+  "moduleName": "Billing/Kasir — Billing (Pengelolaan dana wadiah/ Deposito Pasien)",
+  "cluster": "Core Integration",
+  "bpmnFile": null,
+  "mode": "developed (claude-code)",
+  "hasFlowchart": false,
+  "attachments": [],
+  "createdAt": "2026-07-08T04:31:10.139Z",
+  "updatedAt": "2026-07-08T04:31:10.139Z"
+}

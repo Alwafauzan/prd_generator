@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Demo G9 — Penerimaan &amp; Rekonsiliasi Klaim BPJS (Casemix)</title>
+<style>
+  :root{
+    --bg:#0f172a; --panel:#ffffff; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0;
+    --brand:#1d4ed8; --brand-soft:#eff6ff; --sidebar:#0f172a; --sidebar-ink:#cbd5e1;
+    --ok:#16a34a; --ok-soft:#dcfce7; --warn:#d97706; --warn-soft:#fef3c7;
+    --danger:#dc2626; --danger-soft:#fee2e2; --info:#0891b2; --info-soft:#cffafe;
+    --purple:#7c3aed; --purple-soft:#ede9fe; --slate-soft:#f1f5f9;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f8fafc;color:var(--ink);font-size:14px;line-height:1.5}
+  a{color:var(--brand);text-decoration:none}
+  .app{display:flex;min-height:100vh}
+  /* Sidebar */
+  .sidebar{width:250px;background:var(--sidebar);color:var(--sidebar-ink);flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;padding:0 0 24px}
+  .brand{padding:20px 20px 14px;border-bottom:1px solid #1e293b}
+  .brand .k{display:inline-block;background:var(--brand);color:#fff;font-weight:700;border-radius:8px;padding:4px 9px;font-size:13px}
+  .brand h1{font-size:15px;margin:10px 0 2px;color:#fff;font-weight:600}
+  .brand p{margin:0;font-size:11px;color:#64748b}
+  .nav{padding:12px 10px}
+  .nav .grp{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#475569;padding:12px 12px 6px;font-weight:700}
+  .nav button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:none;border:0;color:var(--sidebar-ink);padding:9px 12px;border-radius:8px;cursor:pointer;font-size:13px;font-family:inherit}
+  .nav button:hover{background:#1e293b;color:#fff}
+  .nav button.active{background:var(--brand);color:#fff;font-weight:600}
+  .nav button .ic{width:20px;text-align:center;font-size:15px}
+  /* Main */
+  .main{flex:1;min-width:0}
+  .topbar{background:#fff;border-bottom:1px solid var(--line);padding:12px 28px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:20}
+  .topbar .crumb{font-size:12px;color:var(--muted)}
+  .topbar .crumb b{color:var(--ink)}
+  .period-pill{margin-left:auto;display:flex;align-items:center;gap:8px;background:var(--slate-soft);border:1px solid var(--line);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:600}
+  .content{padding:28px;max-width:1180px}
+  .page{display:none}
+  .page.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  h2.title{font-size:22px;margin:0 0 4px}
+  p.sub{color:var(--muted);margin:0 0 22px;max-width:760px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:18px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+  .card h3{margin:0 0 4px;font-size:15px}
+  .card .desc{color:var(--muted);font-size:12.5px;margin:0 0 16px}
+  .grid{display:grid;gap:16px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  /* Badges */
+  .badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap}
+  .b-ok{background:var(--ok-soft);color:#15803d}
+  .b-warn{background:var(--warn-soft);color:#b45309}
+  .b-danger{background:var(--danger-soft);color:#b91c1c}
+  .b-info{background:var(--info-soft);color:#0e7490}
+  .b-purple{background:var(--purple-soft);color:#6d28d9}
+  .b-slate{background:var(--slate-soft);color:#475569}
+  .b-brand{background:var(--brand-soft);color:var(--brand)}
+  .b-yellow{background:#fef9c3;color:#a16207}
+  .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+  /* KPI */
+  .kpi{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .kpi .lbl{font-size:12px;color:var(--muted);margin-bottom:6px}
+  .kpi .val{font-size:24px;font-weight:700}
+  .kpi .val.small{font-size:19px}
+  .kpi .sub{font-size:11px;color:var(--muted);margin-top:4px}
+  /* Table */
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th{text-align:left;color:var(--muted);font-weight:600;padding:9px 12px;border-bottom:2px solid var(--line);white-space:nowrap;font-size:11px;text-transform:uppercase;letter-spacing:.03em}
+  td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+  tr.clickable{cursor:pointer}
+  tr.clickable:hover{background:var(--brand-soft)}
+  .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .neg{color:var(--danger);font-weight:600}
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+  .table-wrap table td:first-child,.table-wrap table th:first-child{padding-left:16px}
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;border:0;border-radius:9px;padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{background:var(--slate-soft)}
+  .btn.sm{padding:6px 12px;font-size:12px}
+  .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+  .filters{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{border:1px solid var(--line);background:#fff;border-radius:20px;padding:5px 12px;font-size:12px;cursor:pointer;font-weight:500;color:var(--muted)}
+  .chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .search{flex:1;min-width:180px;border:1px solid var(--line);border-radius:9px;padding:8px 12px;font-size:13px;font-family:inherit}
+  /* Flow diagram */
+  .flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+  .flow .node{flex:1;min-width:150px;border:2px solid var(--line);border-radius:12px;padding:14px;background:#fff;position:relative}
+  .flow .node.me{border-color:var(--brand);background:var(--brand-soft)}
+  .flow .node .tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .flow .node.me .tag{color:var(--brand)}
+  .flow .node h4{margin:6px 0 4px;font-size:14px}
+  .flow .node p{margin:0;font-size:11.5px;color:var(--muted)}
+  .flow .arrow{display:flex;align-items:center;padding:0 6px;color:var(--muted);font-size:22px}
+  /* Steps / state machine */
+  .states{display:flex;gap:0;flex-wrap:wrap;align-items:center}
+  .state{border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:#fff;text-align:center;min-width:96px}
+  .state .s-name{font-weight:700;font-size:12px}
+  .state .s-desc{font-size:10.5px;color:var(--muted);margin-top:2px}
+  .state-arrow{color:var(--muted);padding:0 8px;font-size:18px}
+  /* Legend list */
+  .legend{display:grid;gap:10px}
+  .legend .row{display:grid;grid-template-columns:150px 1fr 130px;gap:14px;align-items:start;padding:11px;border:1px solid var(--line);border-radius:10px}
+  .legend .row .d{font-size:12px;color:var(--muted)}
+  @media(max-width:760px){.legend .row{grid-template-columns:1fr}}
+  /* Upload dropzone */
+  .drop{border:2px dashed #cbd5e1;border-radius:14px;padding:34px;text-align:center;background:var(--slate-soft);cursor:pointer}
+  .drop:hover{border-color:var(--brand);background:var(--brand-soft)}
+  .drop .big{font-size:34px}
+  .drop h4{margin:10px 0 4px}
+  .drop p{margin:0;color:var(--muted);font-size:12px}
+  .maprow{display:grid;grid-template-columns:1fr 30px 1fr;gap:10px;align-items:center;margin-bottom:8px}
+  .maprow .file{background:var(--slate-soft);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-family:ui-monospace,monospace;font-size:12px}
+  .maprow select{width:100%;border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-family:inherit;font-size:12.5px}
+  .maprow .ar{text-align:center;color:var(--muted)}
+  /* Detail drawer */
+  .drawer-bg{display:none;position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:50;animation:fade .2s}
+  .drawer-bg.open{display:block}
+  .drawer{position:fixed;top:0;right:0;height:100vh;width:520px;max-width:92vw;background:#fff;z-index:51;box-shadow:-8px 0 30px rgba(0,0,0,.18);transform:translateX(100%);transition:transform .28s;overflow-y:auto}
+  .drawer.open{transform:none}
+  .drawer .dh{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;position:sticky;top:0;background:#fff}
+  .drawer .dh h3{margin:0;font-size:16px}
+  .drawer .db{padding:22px}
+  .close{margin-left:auto;background:none;border:0;font-size:22px;cursor:pointer;color:var(--muted);line-height:1}
+  .kv{display:grid;grid-template-columns:150px 1fr;gap:8px 14px;font-size:13px;margin-bottom:6px}
+  .kv .k{color:var(--muted)}
+  .kv .v{font-weight:600}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:12px;font-weight:600;margin-bottom:6px}
+  .field select,.field textarea,.field input{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px 11px;font-family:inherit;font-size:13px}
+  .field textarea{min-height:70px;resize:vertical}
+  .hint{font-size:11px;color:var(--muted);margin-top:5px}
+  .callout{border-left:4px solid var(--brand);background:var(--brand-soft);padding:12px 14px;border-radius:0 8px 8px 0;font-size:12.5px;margin:14px 0}
+  .callout.warn{border-color:var(--warn);background:var(--warn-soft)}
+  .callout.danger{border-color:var(--danger);background:var(--danger-soft)}
+  .tag-conf{font-size:10px;font-weight:700;color:var(--warn);background:var(--warn-soft);padding:1px 6px;border-radius:5px}
+  .mono{font-family:ui-monospace,'Cascadia Code',monospace;font-size:12px}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .split .side{padding:14px 16px}
+  .split .side.left{background:#fdfdfd;border-right:1px solid var(--line)}
+  .split .side h5{margin:0 0 10px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .barwrap{background:var(--slate-soft);border-radius:8px;height:10px;overflow:hidden;display:flex}
+  .barwrap i{display:block;height:100%}
+  .notice{font-size:11px;color:var(--muted);margin-top:6px}
+  .footer-note{color:var(--muted);font-size:11px;text-align:center;padding:20px}
+  .phase-tag{font-size:9.5px;font-weight:700;padding:1px 6px;border-radius:5px;vertical-align:middle}
+  .p1{background:var(--ok-soft);color:#15803d}
+  .p2{background:var(--purple-soft);color:#6d28d9}
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="k">G9</span>
+      <h1>Penerimaan &amp; Rekonsiliasi Klaim BPJS</h1>
+      <p>Casemix · Pengelolaan Klaim BPJS · SIMRS RS Tipe C/D</p>
+    </div>
+    <nav class="nav">
+      <div class="grp">Gambaran Sistem</div>
+      <button data-page="overview" class="active"><span class="ic">🗺️</span> Gambaran &amp; Alur</button>
+      <button data-page="lifecycle"><span class="ic">🔄</span> Siklus &amp; Status</button>
+      <div class="grp">Prototipe Layar</div>
+      <button data-page="dashboard"><span class="ic">📊</span> Dashboard Periode</button>
+      <button data-page="upload"><span class="ic">📤</span> Muat Hasil Klaim</button>
+      <button data-page="recon"><span class="ic">⚖️</span> Rekonsiliasi</button>
+      <button data-page="ba"><span class="ic">📄</span> Berita Acara</button>
+      <button data-page="payment"><span class="ic">💰</span> Pembayaran</button>
+      <div class="grp">Referensi</div>
+      <button data-page="statuses"><span class="ic">🏷️</span> Status Rekonsiliasi</button>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="topbar">
+      <div class="crumb">Casemix › Pengelolaan Klaim BPJS › <b id="crumb">Gambaran &amp; Alur</b></div>
+      <div class="period-pill"><span class="dot" style="background:var(--brand)"></span> Periode aktif: <b>Juni 2025</b> · <span class="badge b-warn">RECONCILED</span></div>
+    </div>
+    <div class="content">
+
+      <!-- ============ OVERVIEW ============ -->
+      <section class="page active" id="overview">
+        <h2 class="title">Gambaran Sistem G9</h2>
+        <p class="sub">G9 adalah <b>tahap hilir</b> siklus klaim Casemix. Setelah klaim diajukan ke BPJS oleh modul G8, G9 <b>memuat hasil klaim</b>, <b>merekonsiliasi</b> pengajuan ↔ hasil BPJS, lalu menjadi dasar tindak lanjut (resubmit), Berita Acara, dan pencatatan pembayaran.</p>
+
+        <div class="card">
+          <h3>Posisi G9 dalam siklus klaim</h3>
+          <p class="desc">Kunci pencocokan antar-modul = <span class="mono">noSEP</span>. G9 mengonsumsi data, tidak menyusun/mengirim klaim.</p>
+          <div class="flow">
+            <div class="node">
+              <div class="tag">Hulu · G8</div>
+              <h4>G8 — Koding &amp; Pengajuan Klaim</h4>
+              <p>Alur teknis E-Klaim lengkap: koding, Grouping iDRG → INACBG, <span class="mono">send_claim_individual</span>. Selisih nominal (tarif grouper vs diajukan) sudah terdeteksi <b>di sini</b>, pra-submit. Menyediakan <span class="mono">claim_submissions</span>.</p>
+            </div>
+            <div class="arrow">→</div>
+            <div class="node me">
+              <div class="tag">★ Modul ini</div>
+              <h4>G9 — Penerimaan &amp; Rekonsiliasi</h4>
+              <p>Muat export Excel BPJS (Pending/Dispute) → absensi = COCOK, hadir = PENDING/DISPUTE → klasifikasi → Berita Acara → pembayaran.</p>
+            </div>
+            <div class="arrow">↺</div>
+            <div class="node">
+              <div class="tag">Kembali ke hulu</div>
+              <h4>G8 — Re-koding (PENDING)</h4>
+              <p>Klaim <b>PENDING</b> dikembalikan ke G8 untuk re-koding (<span class="mono">idrg_grouper_reedit / inacbg_grouper_reedit / reedit_claim</span>), maks 2×. Tidak ada modul resubmit terpisah (G10 ditiadakan).</p>
+            </div>
+          </div>
+          <div class="grid g2" style="margin-top:16px">
+            <div class="callout">
+              <b>Sisi kiri rekonsiliasi (terkirim):</b> <span class="mono">claim_submissions</span> dari <b>G8</b> — <span class="mono">sep_no, jns_pelayanan, tgl_pulang, submitted_amount, grouper_amount, has_nominal_selisih, g8_claim_id</span>.
+            </div>
+            <div class="callout">
+              <b>Sisi kanan rekonsiliasi (hasil):</b> export Excel BPJS — <span class="mono">claim_bpjs_results</span>, hanya berisi klaim <b>PENDING/DISPUTE</b> (COCOK tidak pernah muncul di file).
+            </div>
+          </div>
+        </div>
+
+        <div class="grid g2">
+          <div class="card">
+            <h3>Sumber data (v1.6)</h3>
+            <p class="desc">Excel export BPJS = sumber operasional utama di Phase 1 <b>maupun</b> Phase 2 (bukan fallback).</p>
+            <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+              <span class="phase-tag p1">PHASE 1 &amp; 2</span>
+              <div><b>Upload Excel/CSV (Pending/Dispute)</b><div class="notice">Sumber utama permanen. Hanya berisi klaim PENDING/DISPUTE — absen dari file = COCOK.</div></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center">
+              <span class="phase-tag p2">PHASE 2</span>
+              <div><b>Integrasi API BPJS Monitoring Klaim</b><div class="notice">Opsional, menunggu ketersediaan API pull dari BPJS <span class="tag-conf">PERLU KONFIRMASI</span>. Upload tetap primary/fallback permanen.</div></div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Aturan bisnis paling kritis (v1.6)</h3>
+            <p class="desc">Menentukan klasifikasi &amp; boleh/tidaknya klaim diajukan ulang.</p>
+            <div class="callout" style="border-color:var(--ok);background:var(--ok-soft);margin-top:0">
+              <b>Absen dari export Excel = COCOK.</b> recon_status ditentukan dari ada/tidaknya <span class="mono">sep_no</span> di file, bukan dari perbandingan nominal.
+            </div>
+            <div class="callout" style="border-color:var(--ok);background:var(--ok-soft)">
+              <b>Hanya PENDING = dapat diajukan ulang.</b> Kembali ke <b>G8</b> untuk re-koding, maks 2× (BR-G9-12/15). G10 ditiadakan.
+            </div>
+            <div class="callout danger" style="margin-bottom:0">
+              <b>DISPUTE = FINAL, TIDAK bisa diajukan ulang.</b> <span class="mono">has_nominal_selisih</span> adalah flag informasional dari G8 (pra-submit) — <b>tidak menentukan</b> recon_status.
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Alur utama (happy path)</h3>
+          <p class="desc">Langkah operasional petugas Casemix per periode.</p>
+          <div class="states">
+            <div class="state"><div class="s-name">1 · Buka Periode</div><div class="s-desc">OPEN</div></div>
+            <div class="state-arrow">→</div>
+            <div class="state"><div class="s-name">2 · Muat Hasil</div><div class="s-desc">Upload / API</div></div>
+            <div class="state-arrow">→</div>
+            <div class="state"><div class="s-name">3 · Rekonsiliasi</div><div class="s-desc">match noSEP</div></div>
+            <div class="state-arrow">→</div>
+            <div class="state"><div class="s-name">4 · Tindak Lanjut</div><div class="s-desc">resubmit/terima</div></div>
+            <div class="state-arrow">→</div>
+            <div class="state"><div class="s-name">5 · Berita Acara</div><div class="s-desc">BA_ISSUED</div></div>
+            <div class="state-arrow">→</div>
+            <div class="state"><div class="s-name">6 · Pembayaran</div><div class="s-desc">PAID</div></div>
+            <div class="state-arrow">→</div>
+            <div class="state"><div class="s-name">7 · Tutup</div><div class="s-desc">CLOSED</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ LIFECYCLE ============ -->
+      <section class="page" id="lifecycle">
+        <h2 class="title">Siklus &amp; Status</h2>
+        <p class="sub">Dua state machine: (1) status <b>Periode</b> klaim per bulan pelayanan, dan (2) status <b>Rekonsiliasi</b> per klaim (per <span class="mono">noSEP</span>).</p>
+
+        <div class="card">
+          <h3>State Machine — Periode Klaim</h3>
+          <p class="desc">Satu periode = satu bulan pelayanan (batch).</p>
+          <div class="states" style="margin-bottom:8px">
+            <div class="state"><div class="s-name">OPEN</div><div class="s-desc">kumpulkan klaim</div></div>
+            <div class="state-arrow">→</div>
+            <div class="state"><div class="s-name">RECONCILED</div><div class="s-desc">semua ter-klasifikasi</div></div>
+            <div class="state-arrow">→</div>
+            <div class="state"><div class="s-name">BA_ISSUED</div><div class="s-desc">BA terbit</div></div>
+            <div class="state-arrow">→</div>
+            <div class="state"><div class="s-name">PAID</div><div class="s-desc">bayar diterima</div></div>
+            <div class="state-arrow">→</div>
+            <div class="state"><div class="s-name">CLOSED</div><div class="s-desc">selesai</div></div>
+          </div>
+          <div class="callout warn">Periode <b>tidak dapat CLOSED</b> selama masih ada klaim <b>PENDING</b> tanpa keputusan, atau <b>DISPUTE</b> yang belum TERIMA. Klaim <b>ANOMALI</b> tidak memblok (catatan opsional, BR-G9-17).</div>
+        </div>
+
+        <div class="card">
+          <h3>Status Rekonsiliasi per klaim (v1.6)</h3>
+          <p class="desc">Diturunkan dari absensi/kehadiran <span class="mono">sep_no</span> di export Excel BPJS + <span class="mono">bpjs_status_raw</span> (BR-G9-02). Hanya <b>4 nilai</b>: <b>COCOK · PENDING · DISPUTE · ANOMALI</b> (ANOMALI = flag <span class="mono">is_anomaly</span>, bukan enum recon_status tersendiri). Selisih nominal (<span class="mono">has_nominal_selisih</span>) tidak menentukan status — flag informasional dari G8.</p>
+          <div class="legend" id="legend-lifecycle"></div>
+        </div>
+      </section>
+
+      <!-- ============ DASHBOARD ============ -->
+      <section class="page" id="dashboard">
+        <h2 class="title">Dashboard Periode — Juni 2025</h2>
+        <p class="sub">Rekap jumlah &amp; nilai per status rekonsiliasi dan rasio <span class="mono">has_nominal_selisih</span> (informasional, dari G8). Klik kartu status untuk drill-down ke daftar rekonsiliasi.</p>
+
+        <div class="grid g4" style="margin-bottom:18px">
+          <div class="kpi"><div class="lbl">Total Klaim Terkirim (G8)</div><div class="val">248</div><div class="sub">claim_submissions periode</div></div>
+          <div class="kpi"><div class="lbl">Total Nilai Diajukan</div><div class="val small">Rp 3,84 M</div><div class="sub">Σ submitted_amount</div></div>
+          <div class="kpi"><div class="lbl">Ada di Export Excel</div><div class="val small">47 klaim</div><div class="sub">PENDING + DISPUTE</div></div>
+          <div class="kpi"><div class="lbl">Ketepatan Klasifikasi</div><div class="val">100%</div><div class="sub">absen-dari-Excel → COCOK</div></div>
+        </div>
+
+        <div class="grid g2">
+          <div class="card">
+            <h3>Komposisi status rekonsiliasi (v1.6)</h3>
+            <p class="desc">Σ per status = total klaim periode. Hanya 4 nilai.</p>
+            <div class="barwrap" style="height:16px;margin-bottom:14px">
+              <i style="width:81%;background:var(--ok)" title="Cocok"></i>
+              <i style="width:9%;background:#eab308" title="Pending"></i>
+              <i style="width:10%;background:var(--danger)" title="Dispute"></i>
+              <i style="width:2%;background:var(--purple)" title="Anomali"></i>
+            </div>
+            <div id="dash-status-list"></div>
+          </div>
+          <div class="card">
+            <h3>Ringkasan nilai &amp; tindak lanjut</h3>
+            <p class="desc">Angka kunci untuk manajemen keuangan.</p>
+            <div class="kv"><div class="k">Klaim ber-flag selisih nominal</div><div class="v">18 klaim <span style="color:var(--muted);font-weight:400">(informasional, dari G8)</span></div></div>
+            <div class="kv"><div class="k">Nilai klaim COCOK</div><div class="v">Rp 2,98 M</div></div>
+            <div class="kv"><div class="k">Klaim perlu keputusan</div><div class="v">22 klaim</div></div>
+            <div class="kv"><div class="k">Sudah diputuskan</div><div class="v">15 / 22</div></div>
+            <div class="barwrap" style="margin:8px 0 4px"><i style="width:68%;background:var(--brand)"></i></div>
+            <div class="notice">68% klaim PENDING sudah punya keputusan tindak lanjut (kembali ke G8 atau diterima).</div>
+            <div class="callout warn" style="margin-bottom:0">7 klaim (PENDING/DISPUTE) belum diputuskan — <b>memblokir penutupan periode</b>.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ UPLOAD ============ -->
+      <section class="page" id="upload">
+        <h2 class="title">Muat Hasil Klaim <span class="phase-tag p1">PHASE 1 · UPLOAD</span></h2>
+        <p class="sub">Unggah file Excel/CSV hasil klaim per periode. Sistem menyediakan <b>peta kolom</b> (header antar-varian bisa beda), validasi, dan <b>preview</b> sebelum simpan.</p>
+
+        <div class="grid g2">
+          <div class="card">
+            <h3>1. Pilih periode &amp; tipe file</h3>
+            <div class="field"><label>Periode pelayanan</label>
+              <select><option>Juni 2025</option><option>Mei 2025</option><option>Juli 2025</option></select>
+              <div class="hint">Bulan pelayanan hasil klaim.</div>
+            </div>
+            <div class="field"><label>Tipe / varian file</label>
+              <select id="variant-select">
+                <option value="A">Varian A — Template baku G9 / export Monitoring Klaim (lengkap nilai)</option>
+                <option value="B" selected>Varian B — Export "Pending/Dispute" RS (tanpa bySetujui)</option>
+              </select>
+              <div class="hint">Menentukan peta kolom &amp; aturan validasi yang diterapkan.</div>
+            </div>
+            <div class="drop">
+              <div class="big">📄</div>
+              <h4>PENDING JUNI 2025.xlsx</h4>
+              <p>2 sheet terdeteksi: <b>RI</b> (Rawat Inap) + <b>RJ</b> (Rawat Jalan) · 248 baris · 312 KB</p>
+            </div>
+            <div class="callout" id="variant-note">Varian B (export Pending/Dispute) <b>cukup sendirian</b> untuk rekonsiliasi penuh (v1.6) — recon_status ditentukan dari absen/hadirnya <span class="mono">sep_no</span>, bukan dari <span class="mono">bySetujui</span>. Klaim tak muncul di file = COCOK otomatis.</div>
+          </div>
+
+          <div class="card">
+            <h3>2. Peta kolom <span class="tag-conf">otomatis terdeteksi</span></h3>
+            <p class="desc">Cocokkan header file → kolom sistem. Kolom inti wajib ditandai.</p>
+            <div id="map-list"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>3. Preview hasil validasi</h3>
+          <p class="desc">Tampilkan jumlah baris valid/invalid + ringkasan sebelum konfirmasi simpan (idempoten, upsert per <span class="mono">noSEP</span>).</p>
+          <div class="grid g4" style="margin-bottom:16px">
+            <div class="kpi"><div class="lbl">Total baris</div><div class="val">248</div></div>
+            <div class="kpi"><div class="lbl">Valid</div><div class="val" style="color:var(--ok)">243</div></div>
+            <div class="kpi"><div class="lbl">Ditolak</div><div class="val" style="color:var(--danger)">5</div><div class="sub">tanpa noSEP / data bergeser</div></div>
+            <div class="kpi"><div class="lbl">Duplikat (upsert)</div><div class="val" style="color:var(--warn)">12</div></div>
+          </div>
+          <div class="callout danger">
+            <b>5 baris ditolak</b> — <span class="mono">NOKARTU/NMPESERTA</span> berisi tanggal (data bergeser), atau <span class="mono">NOSEP</span> kosong. Baris ini <b>tidak disimpan diam-diam</b>; ditampilkan dengan alasan agar bisa diperbaiki.
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Baris</th><th>NOSEP</th><th>Nama Peserta</th><th>By Pengajuan</th><th>Jenis Pending</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>7</td><td class="mono">0301R0060625V001</td><td>SITI ANISA</td><td class="num">Rp 4.250.000</td><td>Kelengkapan Administrasi</td><td><span class="badge b-ok">✓ valid</span></td></tr>
+                <tr><td>8</td><td class="mono">0301R0060625V014</td><td>BUDI SANTOSO</td><td class="num">Rp 8.100.000</td><td>Kaidah Koding</td><td><span class="badge b-ok">✓ valid</span></td></tr>
+                <tr style="background:var(--danger-soft)"><td>9</td><td class="mono">—</td><td>2025-06-14</td><td class="num">Rp 0</td><td>—</td><td><span class="badge b-danger">✕ data bergeser</span></td></tr>
+                <tr><td>10</td><td class="mono">0301R0060625V027</td><td>AGUS PRAYITNO</td><td class="num">Rp 3.700.000</td><td>Standar Pelayanan</td><td><span class="badge b-ok">✓ valid</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="toolbar" style="margin-top:16px;justify-content:flex-end">
+            <button class="btn ghost">Unduh baris invalid</button>
+            <button class="btn" onclick="go('recon')">Konfirmasi &amp; Simpan 243 baris →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ RECON ============ -->
+      <section class="page" id="recon">
+        <h2 class="title">Rekonsiliasi Klaim — Juni 2025</h2>
+        <p class="sub">Daftar <b>dua sisi</b>: klaim diajukan (G8) disandingkan dengan hasil BPJS, dicocokkan per <span class="mono">noSEP</span>. Klik baris untuk melihat detail &amp; menetapkan tindak lanjut.</p>
+
+        <div class="toolbar">
+          <input class="search" placeholder="🔍 Cari No. SEP / nama peserta / No. FPK…">
+          <button class="btn ghost sm">⬇ Ekspor CSV</button>
+          <button class="btn sm" onclick="go('ba')">Jalankan ulang rekonsiliasi</button>
+        </div>
+        <div class="filters" id="recon-filters" style="margin-bottom:14px"></div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>No. SEP</th><th>Peserta</th><th>INA-CBG</th><th>Status BPJS</th>
+                <th>Recon</th><th>Selisih Nominal</th><th>Siklus</th><th class="num">Diajukan</th><th class="num">Grouper G8</th><th>Tindak Lanjut</th>
+              </tr>
+            </thead>
+            <tbody id="recon-body"></tbody>
+          </table>
+        </div>
+        <div class="notice" style="margin-top:10px">Menampilkan 8 dari 248 klaim · <span class="badge b-slate">Selisih Nominal = flag has_nominal_selisih dari G8, informasional</span> · <span class="badge b-slate">Siklus = pending/resubmit ke-berapa, maks 2× (BR-G9-15)</span></div>
+      </section>
+
+      <!-- ============ BERITA ACARA ============ -->
+      <section class="page" id="ba">
+        <h2 class="title">Berita Acara (BA)</h2>
+        <p class="sub">BA dibuat dari periode <b>RECONCILED</b>. Nilai disepakati default = Σ nilai klaim <b>COCOK</b> (+ DISPUTE yang diterima). File BA bertanda tangan diunggah, lalu periode → <b>BA_ISSUED</b>.</p>
+
+        <div class="grid g2">
+          <div class="card">
+            <h3>Buat Berita Acara</h3>
+            <div class="field"><label>No. Berita Acara</label><input value="BA/VER/2025/06/PKU-WNS/014"><div class="hint">Harus unik. Sesuai kebijakan RS/BPJS.</div></div>
+            <div class="field"><label>Jenis BA</label><select><option>Hasil Verifikasi</option><option>Pembayaran</option></select></div>
+            <div class="field"><label>Tanggal BA</label><input type="date" value="2025-07-10"></div>
+            <div class="field"><label>Nilai disepakati</label><input value="Rp 2.984.500.000"><div class="hint">Default = Σ nilai klaim COCOK + DISPUTE diterima. Perubahan wajib catatan.</div></div>
+            <div class="field"><label>File BA (PDF bertanda tangan)</label>
+              <div class="drop" style="padding:20px"><div class="big" style="font-size:26px">📎</div><p>Seret file PDF ke sini · maks 10 MB</p></div>
+            </div>
+            <button class="btn" onclick="go('payment')" style="width:100%;justify-content:center">Terbitkan BA → periode BA_ISSUED</button>
+          </div>
+          <div class="card">
+            <h3>Klaim tercakup dalam BA</h3>
+            <p class="desc">201 klaim COCOK + 25 DISPUTE (diterima). BA terbit mengunci klaim ini dari perubahan.</p>
+            <div class="kv"><div class="k">Cocok</div><div class="v">201 · Rp 2,98 M</div></div>
+            <div class="kv"><div class="k">Dispute (diterima)</div><div class="v">25 · Rp 0,19 M (final)</div></div>
+            <div class="kv"><div class="k">Pihak RS</div><div class="v">RS PKU Muhammadiyah Wonosobo</div></div>
+            <div class="kv"><div class="k">Pihak BPJS</div><div class="v">KC Wonosobo</div></div>
+            <div class="callout" style="margin-bottom:6px">Tidak ada endpoint BA di API VClaim → BA <b>manual / E-Klaim</b>, diunggah sebagai file di G9.</div>
+            <div class="callout warn" style="margin-bottom:0"><span class="tag-conf">PHASE 2</span> Approval berjenjang: verifikator internal → koordinator → keuangan sebelum BA berlaku.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PAYMENT ============ -->
+      <section class="page" id="payment">
+        <h2 class="title">Pencatatan Pembayaran Klaim</h2>
+        <p class="sub">Keuangan mencatat pembayaran per BA. Sistem menghitung <span class="mono">variance = dibayar − disepakati</span>; variance ≠ 0 ditandai untuk ditelaah. Setelah lunas → periode <b>PAID</b> → <b>CLOSED</b>.</p>
+
+        <div class="grid g2">
+          <div class="card">
+            <h3>Catat pembayaran</h3>
+            <div class="field"><label>Berita Acara</label><select><option>BA/VER/2025/06/PKU-WNS/014 — Rp 2.984.500.000</option></select></div>
+            <div class="field"><label>Tanggal bayar</label><input type="date" value="2025-07-25"></div>
+            <div class="field"><label>Nilai dibayar</label><input value="Rp 2.984.500.000"></div>
+            <div class="field"><label>No. referensi transfer</label><input value="TRF/BNI/20250725/8841"></div>
+            <div class="field"><label>Bank (master A38)</label><select><option>BNI — 009</option><option>Mandiri — 008</option><option>BSI — 451</option></select></div>
+            <button class="btn" style="width:100%;justify-content:center">Simpan pembayaran</button>
+          </div>
+          <div class="card">
+            <h3>Rekonsiliasi pembayaran</h3>
+            <div class="grid g2" style="margin-bottom:14px">
+              <div class="kpi"><div class="lbl">Disepakati (BA)</div><div class="val small">Rp 2,98 M</div></div>
+              <div class="kpi"><div class="lbl">Dibayar</div><div class="val small">Rp 2,98 M</div></div>
+            </div>
+            <div class="kv"><div class="k">Variance bayar</div><div class="v" style="color:var(--ok)">Rp 0 · sesuai ✓</div></div>
+            <div class="kv"><div class="k">Status periode</div><div class="v"><span class="badge b-purple">PAID</span></div></div>
+            <div class="table-wrap" style="margin-top:14px">
+              <table>
+                <thead><tr><th>Tanggal</th><th>Referensi</th><th class="num">Nilai</th><th>Bank</th></tr></thead>
+                <tbody>
+                  <tr><td>25 Jul 2025</td><td class="mono">TRF/BNI/20250725/8841</td><td class="num">Rp 2.984.500.000</td><td>BNI</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout" style="margin-top:14px;margin-bottom:0"><span class="tag-conf">PHASE 2</span> Rekonsiliasi otomatis dengan mutasi bank + posting jurnal keuangan.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ STATUSES ref ============ -->
+      <section class="page" id="statuses">
+        <h2 class="title">Referensi Status Rekonsiliasi</h2>
+        <p class="sub">Panduan warna &amp; sifat keputusan untuk tim UI/UX — konsisten di list, badge, dan dashboard.</p>
+        <div class="card">
+          <div class="legend" id="legend-ref"></div>
+        </div>
+        <div class="card">
+          <h3>Catatan penting untuk UI</h3>
+          <ul style="margin:0;padding-left:20px;color:var(--muted);font-size:13px;line-height:1.9">
+            <li>recon_status v1.6 hanya <b>4 nilai</b>: COCOK/PENDING/DISPUTE ditentukan dari absen/hadirnya <span class="mono">sep_no</span> di export Excel (BR-G9-02). <b>ANOMALI bukan nilai enum</b> — flag <span class="mono">is_anomaly</span> terpisah (unmatched/duplicate sep_no, status tak dikenal — BR-G9-13).</li>
+            <li><span class="mono">has_nominal_selisih</span> (dari G8, pra-submit) ditampilkan sebagai <b>badge informasional</b> di samping recon_status — tidak menggantikan atau menentukan status apa pun.</li>
+            <li>Opsi <b>RESUBMIT (kembali ke G8)</b> hanya muncul untuk <b>PENDING</b> — satu-satunya status resubmit-eligible, maks 2× (BR-G9-12/15). Untuk <b>DISPUTE</b> (final) sembunyikan opsi resubmit; untuk <b>ANOMALI</b> ganti dengan catatan telaah opsional (bukan siklus, bukan keputusan wajib — BR-G9-17).</li>
+            <li><b>Dispute ≠ Pending.</b> Dispute bersifat final sehingga tidak dapat diajukan ulang — beri warna merah & tegaskan di UI agar tak tertukar dengan Pending.</li>
+            <li>Item bertanda <span class="tag-conf">PERLU KONFIRMASI</span> pada PRD sebaiknya divisualkan agar demo tidak menyiratkan kepastian.</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="footer-note">Prototipe UI/UX &amp; gambaran sistem G9 · dibuat dari PRD v1.6 · data di layar adalah <b>contoh demo</b>, bukan data asli.</div>
+    </div>
+  </main>
+</div>
+
+<!-- Drawer detail klaim -->
+<div class="drawer-bg" id="drawer-bg" onclick="closeDrawer()"></div>
+<aside class="drawer" id="drawer">
+  <div class="dh">
+    <span class="badge" id="d-recon">—</span>
+    <h3 id="d-sep">No. SEP</h3>
+    <button class="close" onclick="closeDrawer()">×</button>
+  </div>
+  <div class="db">
+    <div class="split" style="margin-bottom:18px">
+      <div class="side left">
+        <h5>Terkirim (G8 — claim_submissions)</h5>
+        <div class="kv"><div class="k">submitted_amount</div><div class="v" id="d-sub">—</div></div>
+        <div class="kv"><div class="k">grouper_amount</div><div class="v" id="d-appr">—</div></div>
+        <div class="kv"><div class="k">has_nominal_selisih</div><div class="v" id="d-selisih">—</div></div>
+        <div class="kv"><div class="k">g8_claim_id</div><div class="v mono" id="d-g8">—</div></div>
+        <div class="kv"><div class="k">Jenis pelayanan</div><div class="v" id="d-jns">—</div></div>
+      </div>
+      <div class="side">
+        <h5>Export Excel BPJS</h5>
+        <div class="kv"><div class="k">No. FPK</div><div class="v mono" id="d-fpk">—</div></div>
+        <div class="kv"><div class="k">bpjs_status_raw</div><div class="v" id="d-bpjs">—</div></div>
+        <div class="kv"><div class="k">Siklus pending/resubmit</div><div class="v" id="d-siklus">—</div></div>
+      </div>
+    </div>
+
+    <div class="callout" id="d-note" style="margin-top:0">—</div>
+
+    <div id="d-followup">
+      <h3 style="font-size:14px;margin:18px 0 12px">Keputusan Tindak Lanjut</h3>
+      <div class="field"><label>Keputusan</label>
+        <select id="d-decision"><option>Pilih…</option></select>
+        <div class="hint" id="d-decision-hint">Wajib dipilih untuk klaim pending/selisih nilai/dispute.</div>
+      </div>
+      <div class="field"><label>Catatan (wajib, maks 300)</label>
+        <textarea placeholder="Alasan keputusan…"></textarea>
+      </div>
+      <button class="btn" style="width:100%;justify-content:center" onclick="closeDrawer()">Simpan keputusan</button>
+    </div>
+
+    <div id="d-optional-note" style="display:none">
+      <h3 style="font-size:14px;margin:18px 0 12px">Catatan Telaah <span style="font-weight:400;color:var(--muted)">(opsional, BR-G9-17)</span></h3>
+      <div class="field">
+        <textarea placeholder="Catatan investigasi bebas — mis. sudah dicek ke G8, klaim belum terkirim… (maks 300, tidak wajib)"></textarea>
+        <div class="hint">Tidak ada keputusan formal, tidak ada siklus/counter, tidak memblok penutupan periode.</div>
+      </div>
+      <button class="btn" style="width:100%;justify-content:center" onclick="closeDrawer()">Simpan catatan</button>
+    </div>
+  </div>
+</aside>
+
+<script>
+/* ---------- Data status rekonsiliasi (v1.6) ----------
+   recon_status (PRD §8.1 / BR-G9-02): COCOK · PENDING · DISPUTE — ditentukan dari absen/hadirnya sep_no
+   di export Excel BPJS (Pending/Dispute), BUKAN dari perbandingan nominal.
+   ANOMALI bukan nilai enum recon_status — flag is_anomaly terpisah (BR-G9-13): unmatched sep_no,
+   duplicate sep_no, atau bpjs_status_raw tak dikenal. Bisa terjadi tanpa claim_submissions valid.
+   has_nominal_selisih: flag informasional dari G8 (pra-submit, deteksi grouper INACBG) — tidak
+   menentukan recon_status, ditampilkan terpisah sebagai badge tambahan. */
+const STATUSES = [
+  {key:'COCOK', badge:'b-ok', color:'var(--ok)', title:'COCOK', bpjs:'Absen dari Excel', sifat:'Final · diterima sesuai grouper G8', tl:'Masuk BA',
+    desc:'sep_no TIDAK muncul di export Excel BPJS periode berjalan → dianggap disetujui sesuai pengajuan/hasil grouper G8.'},
+  {key:'PENDING', badge:'b-yellow', color:'#eab308', title:'PENDING', bpjs:'Pending', sifat:'Satu-satunya status dgn jalur resubmit (maks 2×)', tl:'RESUBMIT (kembali ke G8)',
+    desc:'sep_no muncul di Excel dengan bpjs_status_raw = Pending → dapat dikembalikan ke G8 untuk re-koding, maksimal 2 kali (BR-G9-15).'},
+  {key:'DISPUTE', badge:'b-danger', color:'var(--danger)', title:'DISPUTE', bpjs:'Dispute', sifat:'FINAL — TIDAK dapat diajukan ulang', tl:'Telaah / terima',
+    desc:'sep_no muncul di Excel dengan bpjs_status_raw = Dispute → final, tidak pernah masuk jalur resubmit.'},
+  {key:'ANOMALI', badge:'b-purple', color:'var(--purple)', title:'ANOMALI', bpjs:'—', sifat:'Flag kualitas data (is_anomaly) · bukan kandidat resubmit', tl:'Catatan telaah (opsional)',
+    desc:'Baris Excel tak match sep_no manapun di G8, sep_no duplikat, atau bpjs_status_raw tak dikenal (BR-G9-13).'},
+];
+/* Klaim yang boleh diajukan ulang — kembali ke G8, hanya PENDING, maks 2× (BR-G9-12/15). G10 ditiadakan. */
+const REVISABLE = ['PENDING'];
+
+/* ---------- Mock rekonsiliasi ---------- */
+/* has_nominal_selisih: flag dari G8 (pra-submit) — independen dari recon_status, bisa true di COCOK maupun DISPUTE */
+const CLAIMS = [
+  {sep:'0301R0060625V001', nama:'Siti Anisa', cbg:'K-4-17-I', bpjs:'Absen dari Excel', bpjsBadge:'b-ok', recon:'COCOK', sub:4250000, appr:4250000, jns:'Rawat Inap', fpk:'FPK0625-0091', g8:'G8-0006251', resubmitCount:0, hasSelisih:false},
+  {sep:'0301R0060625V014', nama:'Budi Santoso', cbg:'I-4-12-II', bpjs:'Absen dari Excel', bpjsBadge:'b-ok', recon:'COCOK', sub:8100000, appr:6480000, jns:'Rawat Inap', fpk:'FPK0625-0104', g8:'G8-0006252', resubmitCount:0, hasSelisih:true},
+  {sep:'0301R0060625V027', nama:'Agus Prayitno', cbg:'M-4-30-I', bpjs:'Dispute', bpjsBadge:'b-danger', recon:'DISPUTE', sub:3700000, appr:0, jns:'Rawat Inap', fpk:'FPK0625-0117', g8:'G8-0006253', resubmitCount:0, hasSelisih:false},
+  {sep:'0302R0060625V041', nama:'Dewi Lestari', cbg:'Q-5-44-0', bpjs:'Pending', bpjsBadge:'b-yellow', recon:'PENDING', sub:1250000, appr:null, jns:'Rawat Jalan', fpk:'—', g8:'G8-0006254', resubmitCount:1, hasSelisih:false},
+  {sep:'0302R0060625V052', nama:'Rudi Hartono', cbg:'U-3-15-0', bpjs:'Absen dari Excel', bpjsBadge:'b-ok', recon:'COCOK', sub:980000, appr:980000, jns:'Rawat Jalan', fpk:'—', g8:'G8-0006255', resubmitCount:0, hasSelisih:false},
+  {sep:'0301R0060625V077', nama:'Slamet Riyadi', cbg:'J-4-16-III', bpjs:'Dispute (duplikat baris)', bpjsBadge:'b-purple', recon:'ANOMALI', sub:null, appr:9200000, jns:'Rawat Inap', fpk:'FPK0625-0140', g8:'—', resubmitCount:0, hasSelisih:false},
+  {sep:'0301R0060625V088', nama:'Endang Sari', cbg:'K-1-08-I', bpjs:'Absen dari Excel', bpjsBadge:'b-ok', recon:'COCOK', sub:6750000, appr:6750000, jns:'Rawat Inap', fpk:'FPK0625-0151', g8:'G8-0006258', resubmitCount:0, hasSelisih:false},
+  {sep:'0302R0060625V099', nama:'Tono Wijaya', cbg:'Q-5-44-0', bpjs:'Pending', bpjsBadge:'b-yellow', recon:'PENDING', sub:1600000, appr:null, jns:'Rawat Jalan', fpk:'—', g8:'G8-0006259', resubmitCount:2, hasSelisih:true},
+];
+
+const DASH = [
+  {key:'COCOK', n:201, val:'Rp 2,98 M'},
+  {key:'PENDING', n:22, val:'Rp 0,14 M'}, {key:'DISPUTE', n:25, val:'Rp 0,19 M'},
+  {key:'ANOMALI', n:5, val:'Rp 0,05 M'},
+];
+
+const MAP_B = [
+  ['NOSEP','sep_no ★'],['Status','bpjs_status_raw'],['NOREG','no_reg'],['NAMARS','nama_rs'],
+  ['KDINACBG','inacbg_code'],['BYPENGAJUAN','by_pengajuan ★'],['JNSPEL','jns_pelayanan ★'],
+  ['NOKARTU','peserta_no_kartu'],['NMPESERTA','peserta_nama'],['TGLSEP','tgl_sep ★'],
+  ['TGLPULANG','tgl_pulang ★'],['jenis_pending','jenis_pending'],['ket_pending','ket_pending'],
+];
+const MAP_A = [
+  ['noSEP','sep_no ★'],['noFPK','fpk_no'],['status','bpjs_status_raw'],['byPengajuan','by_pengajuan ★'],
+  ['bySetujui','by_setujui'],['byTarifGruper','by_tarif_gruper'],['byTarifRS','by_tarif_rs'],
+  ['inacbgKode','inacbg_code'],['jnsPelayanan','jns_pelayanan ★'],['tglSep','tgl_sep ★'],['tglPulang','tgl_pulang ★'],
+];
+
+const rp = n => n===null ? '—' : 'Rp ' + n.toLocaleString('id-ID');
+const stById = k => STATUSES.find(s=>s.key===k);
+/* Siklus resubmit: hanya utk PENDING, maks 2x, eksekusi teknis di G8 (BR-G9-12/15). Status lain tak punya siklus. */
+const RESUBMIT_MAX = 2;
+function siklusHTML(c){
+  if(c.recon!=='PENDING') return '<span style="color:var(--muted)">—</span>';
+  const n = c.resubmitCount + 1;
+  const locked = c.resubmitCount >= RESUBMIT_MAX;
+  return `<span class="badge ${locked?'b-danger':'b-yellow'}">${n}/${RESUBMIT_MAX+1}${locked?' [Limit]':''}</span>`;
+}
+
+/* ---------- Navigation ---------- */
+function go(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===page));
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));
+  const btn=document.querySelector('.nav button[data-page="'+page+'"]');
+  document.getElementById('crumb').textContent = btn?btn.textContent.trim():'';
+  window.scrollTo(0,0);
+}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>go(b.dataset.page));
+
+/* ---------- Render legend ---------- */
+function legendHTML(){
+  return STATUSES.map(s=>`
+    <div class="row">
+      <div><span class="badge ${s.badge}"><span class="dot" style="background:${s.color}"></span>${s.title}</span>
+        <div class="d" style="font-size:10.5px;margin-top:5px">Status BPJS: <b>${s.bpjs}</b></div></div>
+      <div class="d">${s.desc}</div>
+      <div><div style="font-size:11px;font-weight:600">${s.sifat}</div><div class="d" style="font-size:11px">→ ${s.tl}</div></div>
+    </div>`).join('');
+}
+document.getElementById('legend-lifecycle').innerHTML = legendHTML();
+document.getElementById('legend-ref').innerHTML = legendHTML();
+
+/* ---------- Dashboard status list ---------- */
+document.getElementById('dash-status-list').innerHTML = DASH.map(d=>{
+  const s=stById(d.key);
+  return `<div class="row" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer" onclick="go('recon')">
+    <span class="dot" style="background:${s.color}"></span>
+    <span class="badge ${s.badge}">${s.title}</span>
+    <b style="margin-left:auto">${d.n}</b>
+    <span style="color:var(--muted);width:78px;text-align:right">${d.val}</span>
+  </div>`;
+}).join('');
+
+/* ---------- Upload map ---------- */
+function renderMap(){
+  const v=document.getElementById('variant-select').value;
+  const map = v==='A'?MAP_A:MAP_B;
+  document.getElementById('map-list').innerHTML = map.map(([f,g])=>`
+    <div class="maprow">
+      <div class="file">${f}</div>
+      <div class="ar">→</div>
+      <select><option selected>${g}</option><option>— abaikan —</option></select>
+    </div>`).join('');
+  document.getElementById('variant-note').style.display = v==='A'?'none':'block';
+}
+document.getElementById('variant-select').onchange = renderMap;
+renderMap();
+
+/* ---------- Recon filters + table ---------- */
+let activeFilter='ALL';
+function renderFilters(){
+  const all=[{key:'ALL',title:'Semua',badge:'b-brand',color:'var(--brand)'}].concat(STATUSES);
+  document.getElementById('recon-filters').innerHTML = all.map(s=>
+    `<div class="chip ${s.key===activeFilter?'active':''}" onclick="setFilter('${s.key}')">${s.title||s.key}</div>`).join('');
+}
+function setFilter(k){activeFilter=k;renderFilters();renderRecon();}
+function renderRecon(){
+  const rows = CLAIMS.filter(c=>activeFilter==='ALL'||c.recon===activeFilter);
+  document.getElementById('recon-body').innerHTML = rows.map((c,i)=>{
+    const s=stById(c.recon);
+    const selisihTxt = c.hasSelisih?'<span class="badge b-warn">flag G8</span>':'<span style="color:var(--muted)">—</span>';
+    const tl = REVISABLE.includes(c.recon)?'<span class="badge b-brand">perlu keputusan</span>'
+      : c.recon==='DISPUTE'?'<span class="badge b-danger">final · tak bisa resubmit</span>'
+      : c.recon==='ANOMALI'?'<span class="badge b-purple">telaah</span>'
+      : '<span class="badge b-ok">masuk BA</span>';
+    return `<tr class="clickable" onclick="openDrawer(${CLAIMS.indexOf(c)})">
+      <td class="mono">${c.sep}</td>
+      <td>${c.nama}</td>
+      <td class="mono">${c.cbg}</td>
+      <td><span class="badge ${c.bpjsBadge}">${c.bpjs}</span></td>
+      <td><span class="badge ${s.badge}">${s.title}</span></td>
+      <td>${selisihTxt}</td>
+      <td>${siklusHTML(c)}</td>
+      <td class="num">${rp(c.sub)}</td>
+      <td class="num">${rp(c.appr)}</td>
+      <td>${tl}</td>
+    </tr>`;
+  }).join('');
+}
+renderFilters();renderRecon();
+
+/* ---------- Drawer ---------- */
+function openDrawer(idx){
+  const c=CLAIMS[idx], s=stById(c.recon);
+  document.getElementById('d-sep').textContent = c.sep;
+  const rb=document.getElementById('d-recon'); rb.className='badge '+s.badge; rb.textContent=s.title;
+  document.getElementById('d-sub').textContent = rp(c.sub);
+  document.getElementById('d-g8').textContent = c.g8;
+  document.getElementById('d-jns').textContent = c.jns;
+  document.getElementById('d-appr').textContent = c.appr===null?'— (belum ada data grouper)':rp(c.appr);
+  document.getElementById('d-selisih').innerHTML = c.hasSelisih?'<span class="badge b-warn">true — informasional</span>':'<span class="badge b-slate">false</span>';
+  document.getElementById('d-fpk').textContent = c.fpk;
+  document.getElementById('d-bpjs').textContent = c.bpjs;
+  document.getElementById('d-siklus').innerHTML = siklusHTML(c);
+
+  const note=document.getElementById('d-note');
+  const revisable=REVISABLE.includes(c.recon);
+  const resubmitLocked = c.resubmitCount >= RESUBMIT_MAX;
+  const sel=document.getElementById('d-decision');
+  const hint=document.getElementById('d-decision-hint');
+  const fu=document.getElementById('d-followup');
+  const optNote=document.getElementById('d-optional-note');
+  fu.style.display='none';
+  optNote.style.display='none';
+
+  if(c.recon==='DISPUTE'){
+    note.className='callout danger';
+    note.innerHTML='<b>DISPUTE — FINAL, TIDAK dapat diajukan ulang.</b> Bukan kandidat resubmit; keputusan hanya TERIMA. Proses sengketa (bila ada) di luar SIMRS.';
+    sel.innerHTML='<option>Pilih…</option><option>Terima (tidak dibayar)</option>';
+    hint.textContent='Dispute bukan kandidat resubmit — opsi ajukan ulang disembunyikan.'; fu.style.display='block';
+  } else if(revisable && resubmitLocked){
+    note.className='callout danger';
+    note.innerHTML=`<b>SIKLUS ${c.resubmitCount+1}/${RESUBMIT_MAX+1} — LIMIT RESUBMIT TERCAPAI.</b> Klaim ini sudah dikembalikan ke G8 untuk re-koding ${c.resubmitCount}× dan tetap tidak disetujui BPJS. Opsi RESUBMIT dikunci otomatis (BR-G9-15) — pengguna wajib menerima hasil akhir.`;
+    sel.innerHTML='<option>Pilih…</option><option>Terima (hasil akhir)</option><option>Tolak — gagal (klaim hangus)</option>';
+    hint.textContent='Resubmit tidak tersedia — sudah mencapai batas maksimal 2×.'; fu.style.display='block';
+  } else if(revisable){
+    note.className='callout';
+    note.style.borderColor='var(--ok)'; note.style.background='var(--ok-soft)';
+    note.innerHTML=`<b>Dapat diajukan ulang.</b> Siklus saat ini ${c.resubmitCount+1}/${RESUBMIT_MAX+1}. Satu-satunya status dengan jalur resubmit (BR-G9-12) — boleh di-RESUBMIT (kembali ke G8 untuk re-koding via idrg_grouper_reedit/inacbg_grouper_reedit/reedit_claim), atau diterima/ditolak dengan catatan. G9 hanya mencatat keputusan, eksekusi teknis di G8.`;
+    sel.innerHTML='<option>Pilih…</option><option>Resubmit (kembali ke G8)</option><option>Terima</option><option>Tolak — gagal</option>';
+    hint.textContent='Wajib dipilih untuk klaim pending.'; fu.style.display='block';
+  } else if(c.recon==='ANOMALI'){
+    note.className='callout'; note.style.borderColor='var(--purple)'; note.style.background='var(--purple-soft)';
+    note.innerHTML='<b>Anomali — flag is_anomaly (BR-G9-13).</b> Baris Excel tak match sep_no manapun di G8, duplikat, atau bpjs_status_raw tak dikenal. <b>Bukan jalur resubmit</b> (BR-G9-17) — hanya catatan telaah opsional (koreksi data di hulu G8), tak memblok penutupan periode.';
+    optNote.style.display='block';
+  } else {
+    note.className='callout'; note.style.borderColor='var(--ok)'; note.style.background='var(--ok-soft)';
+    note.innerHTML='<b>COCOK.</b> sep_no absen dari export Excel periode berjalan → dianggap disetujui sesuai pengajuan/hasil grouper G8. Klaim masuk ke Berita Acara — tidak butuh tindak lanjut.'+(c.hasSelisih?' <span class="badge b-warn" style="margin-left:4px">has_nominal_selisih = true</span> (informasional, tak mengubah status ini).':'');
+  }
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('drawer-bg').classList.add('open');
+}
+function closeDrawer(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawer-bg').classList.remove('open');
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
+</script>
+</body>
+</html>

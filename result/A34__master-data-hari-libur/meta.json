@@ -1,0 +1,10 @@
+{
+  "code": "A34",
+  "moduleName": "Master Data Hari Libur",
+  "cluster": "Control Panel",
+  "bpmnFile": null,
+  "mode": "manual",
+  "hasFlowchart": false,
+  "createdAt": "2026-06-29T00:00:00.000Z",
+  "updatedAt": "2026-06-29T00:00:00.000Z"
+}

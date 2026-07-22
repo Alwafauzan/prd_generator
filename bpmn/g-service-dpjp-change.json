@@ -1,0 +1,868 @@
+{
+ "id": "73562261-e454-410a-8e4b-8133a20d5551",
+ "title": "g-service-dpjp-change",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "q1t07UfROu1m",
+  "label": "E16 - Ganti DPJP"
+ },
+ "pages": [
+  {
+   "id": "ur2JN4oOPYg5",
+   "title": "E16 - Ganti DPJP",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "NPOXVzjX3QGq",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan form ubah dokter DPJP"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "q1t07UfROu1m",
+      "class": "SparkFrameBlock",
+      "textAreas": [
+       {
+        "label": "FrameTitle",
+        "text": "E16 - Ganti DPJP"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        ".-VXso1AlCW8",
+        "3_VXutO1C4PQ",
+        "BbWX5iiRGCeG",
+        "EbWXcwcgCxar",
+        "IaWXPKtuThmw",
+        "IbWX_WVGua7p",
+        "NPOX72j5hzeR",
+        "NPOX8IacUQ2b",
+        "NPOXBeD0i4xr",
+        "NPOXVzjX3QGq",
+        "NPOXm5vm56tu",
+        "UJVX2Na9ZWrZ",
+        "_8VXOB3J4eHA",
+        "gIVXSqUrO5Q-",
+        "l7VXKNRqS~at",
+        "m2VXzyc_jZig",
+        "oJVX-OYRjXOa",
+        "q5VXUpVc6k5K",
+        "x6VXRSw84HKb"
+       ],
+       "lines": [
+        "2bWXLznTwN2P",
+        "3OVXQn9sDSj_",
+        "AIVX6ly~Dhrb",
+        "M.VX_TGj.tF8",
+        "NPOXcl6XOrcy",
+        "NPOXpUSiH8xm",
+        "ObWXsJak1Vgp",
+        "Q_VXqnAV_C6c",
+        "WbWXiHQf5.jZ",
+        "X.VXQlfpl6Yj",
+        "Z6VX1G.jLDqf",
+        "d6VXy3l_Tqy0",
+        "g2VXxZUeNIfA",
+        "l8VX.xSuQTgF",
+        "tbWXT0ehb4PE",
+        "v2VXeN~9ejyK"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "IaWXPKtuThmw",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "BbWX5iiRGCeG",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "oJVX-OYRjXOa",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tambah DPJP"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": ".-VXso1AlCW8",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan data DPJP pada EMR RI - Resume Medis sebagai DPJP Rawat Bersama Ganti Lead"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "NPOXBeD0i4xr",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "E16 - GANTI DPJP"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "ROW"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "COLUMN"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "q5VXUpVc6k5K",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan data DPJP pada EMR RI - Resume Medis sebagai DPJP Utama"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "NPOX8IacUQ2b",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka menu Pelayanan - Rawat Inap - Ganti Dokter DPJP"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "_8VXOB3J4eHA",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Hapus DPJP"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "gIVXSqUrO5Q-",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "l7VXKNRqS~at",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Edit DPJP Utama - Rawat Bersama"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "NPOX72j5hzeR",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "3_VXutO1C4PQ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan data DPJP pada EMR RI - Resume Medis - Riwayat sebagai DPJP Alih Rawat"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "NPOXm5vm56tu",
+      "class": "AdvancedSwimLaneBlockRotated",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Primary_0",
+        "text": "Dokter"
+       },
+       {
+        "label": "Primary_1",
+        "text": "Sistem"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        ".-VXso1AlCW8",
+        "3_VXutO1C4PQ",
+        "BbWX5iiRGCeG",
+        "EbWXcwcgCxar",
+        "IaWXPKtuThmw",
+        "IbWX_WVGua7p",
+        "NPOX72j5hzeR",
+        "NPOX8IacUQ2b",
+        "NPOXVzjX3QGq",
+        "UJVX2Na9ZWrZ",
+        "_8VXOB3J4eHA",
+        "gIVXSqUrO5Q-",
+        "l7VXKNRqS~at",
+        "m2VXzyc_jZig",
+        "oJVX-OYRjXOa",
+        "q5VXUpVc6k5K",
+        "x6VXRSw84HKb"
+       ],
+       "lines": [
+        "2bWXLznTwN2P",
+        "3OVXQn9sDSj_",
+        "AIVX6ly~Dhrb",
+        "M.VX_TGj.tF8",
+        "NPOXcl6XOrcy",
+        "NPOXpUSiH8xm",
+        "ObWXsJak1Vgp",
+        "Q_VXqnAV_C6c",
+        "WbWXiHQf5.jZ",
+        "X.VXQlfpl6Yj",
+        "Z6VX1G.jLDqf",
+        "d6VXy3l_Tqy0",
+        "g2VXxZUeNIfA",
+        "l8VX.xSuQTgF",
+        "tbWXT0ehb4PE",
+        "v2VXeN~9ejyK"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "EbWXcwcgCxar",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "UJVX2Na9ZWrZ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input Nama DPJP"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "IbWX_WVGua7p",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "x6VXRSw84HKb",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan data DPJP pada EMR RI - Resume Medis sebagai DPJP Rawat Bersama"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "m2VXzyc_jZig",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Set as DPJP Utama?"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "id": "3OVXQn9sDSj_",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "gIVXSqUrO5Q-"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "oJVX-OYRjXOa"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "M.VX_TGj.tF8",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "gIVXSqUrO5Q-"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "_8VXOB3J4eHA"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "l8VX.xSuQTgF",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "gIVXSqUrO5Q-"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "l7VXKNRqS~at"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "tbWXT0ehb4PE",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3_VXutO1C4PQ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "IaWXPKtuThmw"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "v2VXeN~9ejyK",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "UJVX2Na9ZWrZ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "m2VXzyc_jZig"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "WbWXiHQf5.jZ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "x6VXRSw84HKb"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "EbWXcwcgCxar"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "X.VXQlfpl6Yj",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "_8VXOB3J4eHA"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "3_VXutO1C4PQ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AIVX6ly~Dhrb",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "NPOXVzjX3QGq"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "gIVXSqUrO5Q-"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "2bWXLznTwN2P",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "q5VXUpVc6k5K"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "IbWX_WVGua7p"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "NPOXcl6XOrcy",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "NPOX8IacUQ2b"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "NPOXVzjX3QGq"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "g2VXxZUeNIfA",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "oJVX-OYRjXOa"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "UJVX2Na9ZWrZ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "NPOXpUSiH8xm",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "NPOX72j5hzeR"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "NPOX8IacUQ2b"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "ObWXsJak1Vgp",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": ".-VXso1AlCW8"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "BbWX5iiRGCeG"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Q_VXqnAV_C6c",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "l7VXKNRqS~at"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": ".-VXso1AlCW8"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "d6VXy3l_Tqy0",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "m2VXzyc_jZig"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "q5VXUpVc6k5K"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Ya"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Z6VX1G.jLDqf",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "m2VXzyc_jZig"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "x6VXRSw84HKb"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Tidak"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

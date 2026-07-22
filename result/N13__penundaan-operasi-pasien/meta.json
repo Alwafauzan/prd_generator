@@ -1,0 +1,13 @@
+{
+  "code": "N13",
+  "title": "Penundaan Operasi Pasien",
+  "cluster": "Pelayanan Pendukung",
+  "module": "IBS",
+  "semantic_type": "operational-worklist-and-process",
+  "version": "0.2",
+  "date": "2026-07-20",
+  "status": "foundation-draft",
+  "primary_file": "N13__penundaan-operasi-pasien.md",
+  "source_features": ["E9", "F43", "F45"],
+  "related_features": ["Dashboard IBS", "Jadwal Operasi", "Master Ruang IBS", "G2", "A53"]
+}

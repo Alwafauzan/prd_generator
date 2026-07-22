@@ -1,0 +1,12 @@
+{
+  "code": "N6",
+  "title": "Konfirmasi Ambulance",
+  "cluster": "Pelayanan Pendukung",
+  "module": "Ambulance",
+  "version": "1.1",
+  "date": "2026-07-19",
+  "status": "draft",
+  "primary_file": "N6__menu-ambulance.md",
+  "related_features": ["N4", "N5", "N7", "Menu Tindakan", "Master Data Staff", "Master Wilayah"],
+  "v1_reference": "bahan_random/Ambulance.vue"
+}

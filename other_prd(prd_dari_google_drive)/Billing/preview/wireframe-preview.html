@@ -1,0 +1,543 @@
+<title>Wireframe — Verifikasi Penerimaan Setor Kas (G4)</title>
+<style>
+  :root {
+    --ground:#eef1f5; --surface:#ffffff; --surface-2:#f6f8fb; --surface-3:#eff3f9;
+    --ink:#1e2530; --muted:#68727f; --faint:#9aa4b1;
+    --line:#e1e6ed; --line-strong:#cdd4de;
+    --accent:#3a5ccc; --accent-ink:#ffffff; --accent-soft:#eaeffb;
+    --danger:#cf4436; --danger-soft:#fbecea;
+    --good:#2f9e6f; --good-soft:#e8f5ef;
+    --warn:#b7791f; --warn-soft:#fbf3e2;
+    --shadow:0 1px 2px rgba(20,30,50,.05), 0 8px 28px rgba(20,30,50,.06);
+    --mono:ui-monospace,"Cascadia Code","SF Mono",Consolas,"Liberation Mono",monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --radius:10px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --ground:#0f1218; --surface:#171b22; --surface-2:#1e232c; --surface-3:#222835;
+      --ink:#e6ebf2; --muted:#9aa5b3; --faint:#6b7787;
+      --line:#272d38; --line-strong:#39414f;
+      --accent:#7d97f4; --accent-ink:#0f1218; --accent-soft:#1c2436;
+      --danger:#e8776a; --danger-soft:#2c1e1c;
+      --good:#5cc79a; --good-soft:#16271f;
+      --warn:#d9a441; --warn-soft:#2a2113;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"]{
+    --ground:#eef1f5; --surface:#ffffff; --surface-2:#f6f8fb; --surface-3:#eff3f9;
+    --ink:#1e2530; --muted:#68727f; --faint:#9aa4b1;
+    --line:#e1e6ed; --line-strong:#cdd4de;
+    --accent:#3a5ccc; --accent-ink:#ffffff; --accent-soft:#eaeffb;
+    --danger:#cf4436; --danger-soft:#fbecea; --good:#2f9e6f; --good-soft:#e8f5ef;
+    --warn:#b7791f; --warn-soft:#fbf3e2;
+    --shadow:0 1px 2px rgba(20,30,50,.05), 0 8px 28px rgba(20,30,50,.06);
+  }
+  :root[data-theme="dark"]{
+    --ground:#0f1218; --surface:#171b22; --surface-2:#1e232c; --surface-3:#222835;
+    --ink:#e6ebf2; --muted:#9aa5b3; --faint:#6b7787;
+    --line:#272d38; --line-strong:#39414f;
+    --accent:#7d97f4; --accent-ink:#0f1218; --accent-soft:#1c2436;
+    --danger:#e8776a; --danger-soft:#2c1e1c; --good:#5cc79a; --good-soft:#16271f;
+    --warn:#d9a441; --warn-soft:#2a2113;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+    font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:28px 20px 64px}
+
+  /* ---- wireframe banner ---- */
+  .ribbon{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+  .ribbon .tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);border:1px dashed var(--line-strong);padding:4px 9px;border-radius:6px}
+  .ribbon h1{font-size:19px;margin:0;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+  .ribbon .sub{color:var(--muted);font-size:13px;flex-basis:100%}
+
+  /* ---- app screen frame ---- */
+  .screen{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    box-shadow:var(--shadow);overflow:hidden}
+  .chrome{display:flex;align-items:center;gap:8px;padding:11px 16px;background:var(--surface-2);
+    border-bottom:1px solid var(--line)}
+  .dot{width:10px;height:10px;border-radius:50%;background:var(--line-strong)}
+  .chrome .path{font-family:var(--mono);font-size:12px;color:var(--faint);margin-left:8px}
+
+  /* ---- tabs ---- */
+  .tabs{display:flex;gap:2px;padding:10px 14px 0;background:var(--surface-2);border-bottom:1px solid var(--line)}
+  .tab{appearance:none;border:1px solid transparent;border-bottom:none;background:transparent;
+    color:var(--muted);font-family:var(--sans);font-size:13px;font-weight:600;padding:9px 15px;
+    border-radius:8px 8px 0 0;cursor:pointer;transform:translateY(1px)}
+  .tab[aria-selected="true"]{background:var(--surface);color:var(--ink);border-color:var(--line)}
+  .tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  .view{padding:18px}
+  .view[hidden]{display:none}
+
+  /* ---- toolbar / session ---- */
+  .toolbar{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+  .back{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-weight:600;cursor:pointer;
+    background:none;border:none;font-size:13px;padding:0}
+  .back:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+  .sess-title{font-size:16px;font-weight:700;margin:6px 0 3px}
+  .sess-meta{color:var(--muted);font-size:12.5px}
+  .sess-meta b{color:var(--ink);font-weight:600}
+
+  .pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;
+    padding:5px 11px;border-radius:999px;white-space:nowrap}
+  .pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.9}
+  .pill.wait{color:var(--warn);background:var(--warn-soft)}
+  .pill.ok{color:var(--good);background:var(--good-soft)}
+  .pill.rej{color:var(--danger);background:var(--danger-soft)}
+
+  /* ---- KPI tiles ---- */
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+  .tile{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);padding:13px 15px}
+  .tile .k{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600}
+  .tile .v{font-size:20px;font-weight:700;margin-top:5px;font-variant-numeric:tabular-nums;font-family:var(--mono)}
+  .tile.var{position:relative}
+  .tile.var .v.neg{color:var(--danger)} .tile.var .v.pos{color:var(--good)} .tile.var .v.zero{color:var(--good)}
+
+  /* ---- tree controls ---- */
+  .treebar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+  .treebar .hint{color:var(--muted);font-size:12.5px}
+  .btns{display:flex;gap:8px}
+  .mini{appearance:none;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);
+    font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 11px;border-radius:7px;cursor:pointer}
+  .mini:hover{background:var(--surface-2)}
+  .mini:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  /* ---- tree table ---- */
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius)}
+  table.tree{width:100%;min-width:720px;border-collapse:collapse;font-size:13px}
+  .tree thead th{text-align:right;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;
+    color:var(--muted);font-weight:600;padding:9px 14px;background:var(--surface-2);border-bottom:1px solid var(--line)}
+  .tree thead th.lft{text-align:left}
+  .tree td{padding:0;border-bottom:1px solid var(--line)}
+  .tree tr:last-child td{border-bottom:none}
+  .cell{display:flex;align-items:center;min-height:40px;padding:6px 14px}
+  .num{justify-content:flex-end;text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono);white-space:nowrap}
+
+  .node{cursor:pointer}
+  .node .cell{gap:8px}
+  .tw{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;color:var(--faint);
+    transition:transform .15s ease;flex:none}
+  .tw svg{width:11px;height:11px}
+  .node.open>td .tw{transform:rotate(90deg)}
+  .leaf .tw{visibility:hidden}
+
+  /* levels */
+  .lvl1>td:first-child .cell{padding-left:14px;font-weight:700}
+  .lvl2>td:first-child .cell{padding-left:40px;font-weight:600}
+  .lvl3>td:first-child .cell{padding-left:66px;color:var(--muted)}
+  .lvl1{background:var(--surface)}
+  .lvl2{background:var(--surface-2)}
+  .lvl3{background:var(--surface-3)}
+  .node:hover{filter:brightness(.985)}
+  :root[data-theme="dark"] .node:hover, @media (prefers-color-scheme:dark){.node:hover{filter:brightness(1.12)}}
+
+  .ico{font-size:15px;line-height:1}
+  .count{font-size:11px;color:var(--faint);font-weight:500;font-family:var(--mono)}
+  .src{font-size:9.5px;font-family:var(--mono);letter-spacing:.03em;color:var(--muted);
+    border:1px solid var(--line-strong);border-radius:4px;padding:1px 5px;margin-left:2px}
+  .code{font-family:var(--mono);font-size:12px;color:var(--ink)}
+  .patient{color:var(--muted);font-size:12px}
+  .time{color:var(--faint);font-size:11.5px;font-family:var(--mono)}
+
+  .fisik-in{width:118px;text-align:right;font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;
+    border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:6px;padding:5px 8px}
+  .fisik-in:focus{outline:2px solid var(--accent);outline-offset:0;border-color:var(--accent)}
+  .proof{font-size:11px;color:var(--accent);border:1px dashed var(--accent);border-radius:6px;
+    padding:4px 8px;background:none;cursor:pointer;font-family:var(--sans);font-weight:600}
+  .proof:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .sel{font-weight:700}.sel.neg{color:var(--danger)}.sel.pos{color:var(--good)}.sel.zero{color:var(--faint)}
+  .warnflag{color:var(--warn)}
+
+  /* ---- variance footer + decision ---- */
+  .foot{margin-top:14px}
+  .callout{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:var(--radius);
+    background:var(--warn-soft);color:var(--warn);font-size:13px;font-weight:600}
+  .callout.clean{background:var(--good-soft);color:var(--good)}
+  .callout .ci{font-size:16px}
+
+  .decision{margin-top:14px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .decision h3{margin:0;font-size:13px;padding:11px 15px;background:var(--surface-2);border-bottom:1px solid var(--line);
+    font-weight:700;letter-spacing:.01em}
+  .dbody{padding:15px;display:grid;gap:13px}
+  .frow{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center}
+  .frow label{font-size:12.5px;color:var(--muted);font-weight:600}
+  .frow .req::after{content:" *";color:var(--danger)}
+  .seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:7px;overflow:hidden}
+  .seg button{appearance:none;border:none;background:var(--surface);color:var(--muted);font-family:var(--sans);
+    font-size:12.5px;font-weight:600;padding:7px 14px;cursor:pointer}
+  .seg button+button{border-left:1px solid var(--line-strong)}
+  .seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+  .seg button.dgr[aria-pressed="true"]{background:var(--danger)}
+  .seg button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+  .fld{width:100%;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);
+    border-radius:7px;padding:8px 10px;font-family:var(--sans);font-size:13px}
+  .fld:focus{outline:2px solid var(--accent);outline-offset:0;border-color:var(--accent)}
+  .dact{display:flex;justify-content:flex-end;gap:10px;padding:13px 15px;border-top:1px solid var(--line);background:var(--surface-2)}
+  .btn{appearance:none;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);
+    font-family:var(--sans);font-size:13px;font-weight:600;padding:9px 16px;border-radius:8px;cursor:pointer}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  /* ---- dashboard list ---- */
+  .filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px}
+  .chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line-strong);background:var(--surface-2);
+    color:var(--muted);border-radius:8px;padding:7px 11px;font-size:12.5px;font-weight:500}
+  .chip b{color:var(--ink);font-weight:600}
+  table.list{width:100%;min-width:660px;border-collapse:collapse;font-size:13px}
+  .list th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
+    font-weight:600;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--surface-2)}
+  .list th.r,.list td.r{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono)}
+  .list td{padding:12px 14px;border-bottom:1px solid var(--line)}
+  .list tr.row{cursor:pointer}
+  .list tr.row:hover td{background:var(--surface-2)}
+  .list .kasir{font-weight:600}
+  .list .no{font-family:var(--mono);font-size:12px;color:var(--accent)}
+  .caret{color:var(--faint)}
+
+  .legend{margin-top:16px;color:var(--faint);font-size:11.5px;line-height:1.6}
+  .legend code{font-family:var(--mono);background:var(--surface-2);padding:1px 5px;border-radius:4px;color:var(--muted)}
+
+  @media (max-width:560px){
+    .tiles{grid-template-columns:1fr}
+    .frow{grid-template-columns:1fr;gap:6px}
+  }
+</style>
+
+<div class="wrap">
+  <div class="ribbon">
+    <span class="tag">Wireframe · Low-fidelity</span>
+    <h1>Verifikasi Penerimaan Setor Kas — <span style="color:var(--muted)">G4</span></h1>
+    <div class="sub">Penerusan dari G1 (Buka &amp; Tutup Kasir). Validasi setoran berjenjang: Kategori metode → Sub-kategori sumber → Transaksi. Nominal &amp; nama pasien ilustratif.</div>
+  </div>
+
+  <div class="screen">
+    <div class="chrome">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="path">simrs / keuangan / billing / verifikasi-penerimaan-kas</span>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Layar">
+      <button class="tab" role="tab" id="tab-list" aria-controls="view-list" aria-selected="false">Daftar Setoran</button>
+      <button class="tab" role="tab" id="tab-detail" aria-controls="view-detail" aria-selected="true">Detail Verifikasi</button>
+    </div>
+
+    <!-- ============ DASHBOARD LIST ============ -->
+    <section class="view" id="view-list" role="tabpanel" aria-labelledby="tab-list" hidden>
+      <div class="filters">
+        <span class="chip">Tanggal <b>09/07/2026</b></span>
+        <span class="chip">Shift <b>Semua ▾</b></span>
+        <span class="chip">Unit <b>Semua ▾</b></span>
+        <span class="chip">🔍 Cari kasir…</span>
+      </div>
+      <div class="tablewrap">
+        <table class="list">
+          <thead>
+            <tr><th>No. Setoran</th><th>Kasir</th><th>Shift</th><th>Tutup</th>
+              <th class="r">Kas Sistem</th><th class="r">Selisih</th><th>Status</th><th></th></tr>
+          </thead>
+          <tbody id="listBody"></tbody>
+        </table>
+      </div>
+      <p class="legend">Klik salah satu baris <b>Menunggu</b> untuk membuka layar <b>Detail Verifikasi</b> (contoh: KS-0709-P-01).</p>
+    </section>
+
+    <!-- ============ DETAIL ============ -->
+    <section class="view" id="view-detail" role="tabpanel" aria-labelledby="tab-detail">
+      <div class="toolbar">
+        <div>
+          <button class="back" id="goList">‹ Daftar setoran</button>
+          <div class="sess-title">Setoran <span style="font-family:var(--mono)">KS-0709-P-01</span></div>
+          <div class="sess-meta">Kasir <b>Siti Aminah</b> · Shift <b>Pagi</b> · Tutup <b>09/07/2026 14:05</b> · Unit <b>Kasir Rawat Jalan</b></div>
+        </div>
+        <span class="pill wait">Menunggu Verifikasi</span>
+      </div>
+
+      <div class="tiles">
+        <div class="tile"><div class="k">Kas Tercatat Sistem</div><div class="v" id="tSys">—</div></div>
+        <div class="tile"><div class="k">Fisik / Bukti Disetor</div><div class="v" id="tFis">—</div></div>
+        <div class="tile var"><div class="k">Selisih Total</div><div class="v" id="tVar">—</div></div>
+      </div>
+
+      <div class="treebar">
+        <span class="hint">Klik kategori untuk menelusuri sumber &amp; transaksi. Isi kolom <b>Fisik/Bukti</b> untuk menghitung selisih.</span>
+        <div class="btns">
+          <button class="mini" id="expandAll">Expand all</button>
+          <button class="mini" id="collapseAll">Collapse all</button>
+        </div>
+      </div>
+
+      <div class="tablewrap">
+        <table class="tree">
+          <thead>
+            <tr>
+              <th class="lft">Kategori / Sub-kategori / Transaksi</th>
+              <th>Kas Sistem</th>
+              <th>Fisik / Bukti</th>
+              <th>Selisih</th>
+            </tr>
+          </thead>
+          <tbody id="treeBody"></tbody>
+        </table>
+      </div>
+
+      <div class="foot" id="foot"></div>
+
+      <div class="decision" id="decision">
+        <h3>Keputusan Verifikasi</h3>
+        <div class="dbody">
+          <div class="frow">
+            <label class="req">Kategori Selisih</label>
+            <div class="seg" role="group" aria-label="Kategori selisih">
+              <button type="button" data-k="lebih" aria-pressed="false">Lebih</button>
+              <button type="button" data-k="kurang" aria-pressed="true">Kurang</button>
+            </div>
+          </div>
+          <div class="frow">
+            <label class="req" for="pj">Penanggung Jawab</label>
+            <select class="fld" id="pj">
+              <option>Siti Aminah — Kasir (penyetor)</option>
+              <option>Supervisor Kasir</option>
+              <option>Kas kecil / selisih lain-lain</option>
+            </select>
+          </div>
+          <div class="frow">
+            <label class="req" for="ket">Keterangan</label>
+            <input class="fld" id="ket" placeholder="Contoh: selisih uang receh belum ditemukan, akan dicek ulang shift berikutnya" />
+          </div>
+          <div class="frow">
+            <label class="req">Keputusan</label>
+            <div class="seg" role="group" aria-label="Keputusan">
+              <button type="button" data-d="setuju" aria-pressed="true">Setuju dengan catatan</button>
+              <button type="button" class="dgr" data-d="tolak" aria-pressed="false">Tolak</button>
+            </div>
+          </div>
+        </div>
+        <div class="dact">
+          <button class="btn">Batal</button>
+          <button class="btn primary" id="commit">Simpan &amp; Sahkan</button>
+        </div>
+      </div>
+
+      <p class="legend">
+        Sumber data: <code>G3</code> = Deposito/Wadiah · <code>G2</code> = Tagihan, Resep Obat, Obat Bebas.
+        Aturan: selisih ≠ 0 (di luar toleransi) wajib diisi kategori selisih, penanggung jawab &amp; keterangan sebelum disetujui
+        (<code>BR-005</code>). Non-tunai dicocokkan dengan bukti settlement (<code>BR-010</code>).
+      </p>
+    </section>
+  </div>
+</div>
+
+<script>
+(function(){
+  const rp = n => "Rp " + Math.round(n).toLocaleString("id-ID");
+  const sum = a => a.reduce((s,x)=>s+x,0);
+
+  // ---- model ----
+  const categories = [
+    { id:"cash", name:"Cash (Tunai)", ico:"💵", kind:"tunai", fisik:7980000, open:true, subs:[
+      { name:"Deposito Pasien", src:"G3", open:true, trx:[
+        {code:"DP-0912",pt:"Budi Santoso",t:"10:12",amt:2000000},
+        {code:"DP-0913",pt:"Ani Wijaya",t:"11:40",amt:800000},
+        {code:"DP-0915",pt:"Joko Prasetyo",t:"13:02",amt:200000}]},
+      { name:"Resep Obat (Farmasi)", src:"G2", open:true, trx:[
+        {code:"RO-3320",pt:"Tn. Joko",t:"09:50",amt:150000},
+        {code:"RO-3321",pt:"Ny. Sari",t:"12:05",amt:2350000}]},
+      { name:"Tagihan Pasien", src:"G2", open:false, trx:[
+        {code:"TG-1101",pt:"Dewi Lestari",t:"08:40",amt:1200000},
+        {code:"TG-1102",pt:"Rudi Hartono",t:"10:55",amt:500000},
+        {code:"TG-1103",pt:"Maya Putri",t:"13:20",amt:300000}]},
+      { name:"Penjualan Obat Bebas", src:"G2", open:false, trx:[
+        {code:"OB-4410",pt:"Umum (non-pasien)",t:"11:15",amt:500000}]},
+    ]},
+    { id:"edc", name:"Non-Tunai (EDC / Debit)", ico:"💳", kind:"nontunai", fisik:3200000, open:false, subs:[
+      { name:"Tagihan Pasien", src:"G2", open:false, trx:[
+        {code:"ED-2201",pt:"Siti Rahayu",t:"09:10",amt:1500000},
+        {code:"ED-2202",pt:"Bambang S.",t:"12:30",amt:700000}]},
+      { name:"Resep Obat (Farmasi)", src:"G2", open:false, trx:[
+        {code:"ED-2203",pt:"Nur Aini",t:"13:45",amt:1000000}]},
+    ]},
+    { id:"qris", name:"QRIS", ico:"📱", kind:"nontunai", fisik:1000000, open:false, subs:[
+      { name:"Tagihan Pasien", src:"G2", open:false, trx:[
+        {code:"QR-5501",pt:"Andi P.",t:"08:20",amt:250000},
+        {code:"QR-5502",pt:"Lina M.",t:"09:35",amt:150000},
+        {code:"QR-5503",pt:"Toni H.",t:"10:40",amt:100000},
+        {code:"QR-5504",pt:"Sari D.",t:"11:50",amt:200000},
+        {code:"QR-5505",pt:"Umum",t:"12:15",amt:200000},
+        {code:"QR-5506",pt:"Umum",t:"13:05",amt:100000}]},
+    ]},
+    { id:"transfer", name:"Transfer", ico:"🏦", kind:"nontunai", fisik:250000, open:false, subs:[
+      { name:"Deposito Pasien", src:"G3", open:false, trx:[
+        {code:"TF-7701",pt:"Hendra K.",t:"10:00",amt:250000}]},
+    ]},
+  ];
+
+  const subTotal = s => sum(s.trx.map(t=>t.amt));
+  const catTotal = c => sum(c.subs.map(subTotal));
+  const catCount = c => sum(c.subs.map(s=>s.trx.length));
+
+  const treeBody = document.getElementById("treeBody");
+
+  function selClass(v){ return v<0?"neg":v>0?"pos":"zero"; }
+  function selText(v){ return v===0 ? "—" : (v>0?"+":"−") + rp(Math.abs(v)).slice(3); }
+
+  function render(){
+    treeBody.innerHTML = "";
+    categories.forEach(c=>{
+      const sysT = catTotal(c), fis = c.fisik, sel = fis - sysT;
+      // level 1
+      const r1 = document.createElement("tr");
+      r1.className = "node lvl1" + (c.open?" open":"");
+      r1.innerHTML =
+        `<td><div class="cell">
+            <span class="tw">${caret()}</span><span class="ico">${c.ico}</span>
+            <span>${c.name}</span><span class="count">(${catCount(c)} trx)</span>
+         </div></td>
+         <td><div class="cell num">${rp(sysT)}</div></td>
+         <td><div class="cell num" data-fis="${c.id}"></div></td>
+         <td><div class="cell num sel ${selClass(sel)}">${selText(sel)}${sel!==0?' <span class="warnflag" title="di luar toleransi">⚠</span>':''}</div></td>`;
+      r1.addEventListener("click",e=>{ if(e.target.closest("input,button"))return; c.open=!c.open; render(); });
+      treeBody.appendChild(r1);
+
+      // fisik input / proof control
+      const fisCell = r1.querySelector(`[data-fis="${c.id}"]`);
+      if(c.kind==="tunai"){
+        const inp = document.createElement("input");
+        inp.className="fisik-in"; inp.type="text"; inp.value=fis.toLocaleString("id-ID");
+        inp.setAttribute("aria-label","Kas fisik tunai disetor");
+        inp.addEventListener("click",e=>e.stopPropagation());
+        inp.addEventListener("input",()=>{ c.fisik = +inp.value.replace(/[^\d]/g,"")||0; updateTotals(); syncRow(c); });
+        fisCell.appendChild(inp);
+      } else {
+        const b = document.createElement("button");
+        b.className="proof"; b.textContent="⭱ Bukti "+rp(fis).slice(3);
+        b.addEventListener("click",e=>e.stopPropagation());
+        fisCell.appendChild(b);
+      }
+
+      if(!c.open) return;
+      c.subs.forEach(s=>{
+        const stot = subTotal(s);
+        const r2 = document.createElement("tr");
+        r2.className = "node lvl2" + (s.open?" open":"");
+        r2.innerHTML =
+          `<td><div class="cell">
+              <span class="tw">${caret()}</span><span>${s.name}</span>
+              <span class="src">${s.src}</span><span class="count">(${s.trx.length} trx)</span>
+           </div></td>
+           <td><div class="cell num">${rp(stot)}</div></td>
+           <td><div class="cell num" style="color:var(--faint)">—</div></td>
+           <td><div class="cell num" style="color:var(--faint)">—</div></td>`;
+        r2.addEventListener("click",()=>{ s.open=!s.open; render(); });
+        treeBody.appendChild(r2);
+
+        if(!s.open) return;
+        s.trx.forEach(t=>{
+          const r3 = document.createElement("tr");
+          r3.className="leaf lvl3";
+          r3.innerHTML =
+            `<td><div class="cell">
+                <span class="tw"></span>
+                <span class="code">${t.code}</span>
+                <span class="patient">· ${t.pt}</span>
+                <span class="time">· ${t.t}</span>
+             </div></td>
+             <td><div class="cell num">${rp(t.amt)}</div></td>
+             <td><div class="cell num"></div></td>
+             <td><div class="cell num"></div></td>`;
+          treeBody.appendChild(r3);
+        });
+      });
+    });
+    updateTotals();
+  }
+
+  function syncRow(c){
+    // re-render is simplest; keep totals live without collapsing state
+    render();
+  }
+
+  function updateTotals(){
+    const sys = sum(categories.map(catTotal));
+    const fis = sum(categories.map(c=>c.fisik));
+    const v = fis - sys;
+    document.getElementById("tSys").textContent = rp(sys);
+    document.getElementById("tFis").textContent = rp(fis);
+    const tv = document.getElementById("tVar");
+    tv.textContent = v===0 ? rp(0) : (v>0?"+":"−")+rp(Math.abs(v)).slice(3);
+    tv.className = "v "+(v<0?"neg":v>0?"pos":"zero");
+
+    // footer + decision visibility
+    const foot = document.getElementById("foot");
+    const dec = document.getElementById("decision");
+    if(v===0){
+      foot.innerHTML = `<div class="callout clean"><span class="ci">✔</span> Kas fisik &amp; bukti cocok dengan catatan sistem. Setoran siap disetujui.</div>`;
+      dec.style.display="none";
+    } else {
+      const kind = v<0?"Kurang":"Lebih";
+      const badCat = categories.filter(c=>(c.fisik-catTotal(c))!==0).map(c=>c.name.split(" ")[0]).join(", ");
+      foot.innerHTML = `<div class="callout"><span class="ci">⚠</span> Selisih ${(v>0?"+":"−")+rp(Math.abs(v)).slice(3)} (${kind}) terdeteksi pada: <b style="margin-left:4px">${badCat||"—"}</b>. Wajib isi keterangan sebelum keputusan.</div>`;
+      dec.style.display="";
+    }
+  }
+
+  function caret(){ return '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'; }
+
+  document.getElementById("expandAll").addEventListener("click",()=>{ categories.forEach(c=>{c.open=true;c.subs.forEach(s=>s.open=true);}); render(); });
+  document.getElementById("collapseAll").addEventListener("click",()=>{ categories.forEach(c=>{c.open=false;c.subs.forEach(s=>s.open=false);}); render(); });
+
+  // segmented toggles
+  document.querySelectorAll(".seg").forEach(g=>{
+    g.addEventListener("click",e=>{
+      const b=e.target.closest("button"); if(!b)return;
+      g.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed", x===b));
+    });
+  });
+  document.getElementById("commit").addEventListener("click",()=>{
+    const pill=document.querySelector("#view-detail .pill");
+    pill.className="pill ok"; pill.textContent="Terverifikasi";
+    document.getElementById("foot").innerHTML=`<div class="callout clean"><span class="ci">✔</span> Setoran disahkan. Berita Acara Verifikasi Kas dibuat &amp; masuk daftar siap setor bank.</div>`;
+    document.getElementById("decision").style.display="none";
+  });
+
+  // ---- dashboard list ----
+  const rows = [
+    {no:"KS-0709-P-01",kasir:"Siti Aminah",shift:"Pagi",tutup:"14:05",sys:12450000,sel:-20000,st:"wait",label:"Menunggu"},
+    {no:"KS-0709-P-02",kasir:"Budi Hartono",shift:"Pagi",tutup:"14:20",sys:8900000,sel:0,st:"wait",label:"Menunggu"},
+    {no:"KS-0708-M-04",kasir:"Rina Dewi",shift:"Malam",tutup:"22:10",sys:6300000,sel:0,st:"ok",label:"Terverifikasi"},
+    {no:"KS-0708-S-03",kasir:"Tono W.",shift:"Sore",tutup:"21:45",sys:9100000,sel:150000,st:"rej",label:"Perlu Koreksi"},
+  ];
+  const lb=document.getElementById("listBody");
+  rows.forEach(r=>{
+    const tr=document.createElement("tr");
+    const selHtml = r.sel===0?'<span style="color:var(--faint)">0</span>':
+      `<span style="color:var(--${r.sel<0?'danger':'good'});font-weight:700">${(r.sel>0?'+':'−')+rp(Math.abs(r.sel)).slice(3)}</span>`;
+    tr.className="row";
+    tr.innerHTML=`<td class="no">${r.no}</td><td class="kasir">${r.kasir}</td><td>${r.shift}</td><td>${r.tutup}</td>
+      <td class="r">${rp(r.sys)}</td><td class="r">${selHtml}</td>
+      <td><span class="pill ${r.st}">${r.label}</span></td><td class="caret">›</td>`;
+    if(r.no==="KS-0709-P-01") tr.addEventListener("click",()=>selectTab("detail"));
+    lb.appendChild(tr);
+  });
+
+  // ---- tabs ----
+  function selectTab(which){
+    const map={list:["tab-list","view-list"],detail:["tab-detail","view-detail"]};
+    Object.entries(map).forEach(([k,[t,v]])=>{
+      const on=k===which;
+      document.getElementById(t).setAttribute("aria-selected",on);
+      document.getElementById(v).hidden=!on;
+    });
+  }
+  document.getElementById("tab-list").addEventListener("click",()=>selectTab("list"));
+  document.getElementById("tab-detail").addEventListener("click",()=>selectTab("detail"));
+  document.getElementById("goList").addEventListener("click",()=>selectTab("list"));
+
+  render();
+})();
+</script>

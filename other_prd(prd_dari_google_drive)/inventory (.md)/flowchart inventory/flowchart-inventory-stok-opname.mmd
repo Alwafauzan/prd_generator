@@ -1,0 +1,73 @@
+flowchart TD
+  S([Mulai]) --> A1
+  subgraph Petugas_Input
+    A1[Buka menu Inventaris Stok Opname]
+    A2[Buat dokumen SO]
+    A3[Pilih tipe opname]
+    A6[Input penyesuaian stok]
+    A7[Input alasan catatan]
+    A8[Simpan dan kirim konfirmasi]
+  end
+  subgraph Sistem
+    B1[Ambil snapshot stok sistem]
+    B2{Tipe opname Penuh?}
+    B3[Bekukan transaksi inventori]
+    B4[Hitung selisih qty fisik minus sistem]
+    B5{Sesuai semua item?}
+    B6[Simpan data SO status Menunggu Persetujuan]
+    B7[Status SO Ditolak dan lepas freeze]
+    B8[Set status SO Disetujui]
+    B9{Tipe opname Parsial?}
+    B10[Status Sebagian Disetujui tampilkan barang sisa]
+    B11{Masih ada barang sisa?}
+    B12[Status SO Selesai dan lepas freeze]
+  end
+  subgraph Petugas_Penghitung
+    C1[Input hasil hitung fisik per barang]
+    C2[Input per batch untuk farmasi]
+  end
+  subgraph Kepala_Unit
+    D1[Review hasil opname]
+    D2{Disetujui?}
+    D3[Tentukan lingkup approval]
+  end
+  subgraph Akuntansi
+    E1[Terima jurnal penyesuaian]
+  end
+
+  A1 --> A2
+  A2 --> A3
+  A3 --> B1
+  B1 --> H4[(Sistem: Informasi Stok H4)]
+  H4 --> B2
+  B2 -->|ya| B3
+  B2 -->|tidak| C1
+  B3 --> INV[(Sistem: Transaksi Inventori H2 H3 H5 H8 H11)]
+  INV --> C1
+  C1 --> C2
+  C2 --> B4
+  B4 --> B5
+  B5 -->|ya| End1([Selesai tanpa penyesuaian])
+  B5 -->|tidak| A6
+  A6 --> A7
+  A7 --> A8
+  A8 --> B6
+  B6 --> D1
+  D1 --> D3
+  D3 --> D2
+  D2 -->|tidak| B7
+  B7 --> End2([Selesai SO void])
+  D2 -->|ya| B8
+  B8 --> Upd[Update stok aktual ke H4]
+  Upd --> H4b[(Sistem: Informasi Stok H4)]
+  B8 --> Jrn[Generate jurnal otomatis COA Persediaan]
+  Jrn --> COA[(Sistem: Modul Akuntansi COA)]
+  COA --> E1
+  B8 --> B9
+  H4b --> B9
+  B9 -->|tidak penuh| End3([Selesai])
+  B9 -->|ya parsial| B10
+  B10 --> B11
+  B11 -->|ya| C1
+  B11 -->|tidak| B12
+  B12 --> End4([Selesai])

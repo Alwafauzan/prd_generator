@@ -1,0 +1,49 @@
+flowchart TD
+  S([Mulai]) --> A[Buka menu Inventory Penerimaan Barang]
+  subgraph Petugas_Gudang
+    A --> B[Lihat dashboard list SP]
+    B --> C[Cari atau filter supplier tanggal status]
+    C --> D[Buka detail SP]
+    D --> E[Lihat list item pemesanan]
+    E --> F{Ada perubahan data?}
+    F -->|tidak| G[Isi form penerimaan]
+  end
+  F -->|ya| ADJ{Role PJ Shift Gudang?}
+  subgraph PJ_Shift_Gudang
+    ADJ -->|ya| H{Pilih aksi adjustment}
+    H -->|edit jumlah| I[Edit qty boleh over receipt]
+    H -->|input item tambahan| J[Tambah item luar SP]
+    H -->|hapus item| K[Hapus item tidak diterima]
+    H -->|koreksi selisih qty| KS[Koreksi qty diterima kurang]
+  end
+  ADJ -->|tidak| BLK[Aksi adjustment ditolak]
+  BLK --> G
+  I --> FL[Sistem menandai flag perbedaan]
+  J --> FL
+  K --> FL
+  KS --> FL
+  FL --> L
+  G --> ISI[Isi No Faktur No Batch dan kedaluwarsa]
+  subgraph Petugas_Gudang_Input
+    ISI --> VB{No Faktur dan No Batch terisi?}
+    VB -->|tidak| ISI
+    VB -->|ya| VF{Barang farmasi?}
+    VF -->|ya| VE{Tanggal kedaluwarsa terisi?}
+    VE -->|tidak| ISI
+    VE -->|ya| L[Pilih simpan]
+    VF -->|tidak| L
+  end
+  L --> M{Status dokumen?}
+  M -->|draft| DR[Simpan draft]
+  DR --> END1([Selesai sementara])
+  M -->|final| AUD[Catat audit trail]
+  AUD --> VAL{Validasi penuh atau partial?}
+  VAL -->|penuh| P1[Tutup SP status Diterima Penuh]
+  VAL -->|partial| P2[SP tetap terbuka status Diterima Sebagian]
+  P1 --> STK[(Update stok Informasi Stok H4)]
+  P2 --> STK
+  STK --> OFF{Koneksi online?}
+  OFF -->|tidak| SYNC[Simpan lokal antrian sync]
+  SYNC --> END2([Selesai offline])
+  OFF -->|ya| KEU[(Kirim data ke Keuangan DP atau SPM)]
+  KEU --> END([Selesai])

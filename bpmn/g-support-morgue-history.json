@@ -1,0 +1,367 @@
+{
+ "id": "f9125fff-5d36-48dc-bb05-d95d1257cd3c",
+ "title": "g-support-morgue-history",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "a8v0GZ6L~9cb",
+  "label": "F48-RIWAYAT DATA JENAZAH"
+ },
+ "pages": [
+  {
+   "id": "f~4Xbp8yyK1t",
+   "title": "F48-RIWAYAT DATA JENAZAH",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "a8v0w-hsmJM1",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Melihat detail informasi pasien"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "a8v0kE7GtJHj",
+      "class": "AdvancedSwimLaneBlockRotated",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Primary_0",
+        "text": "Petugas jenazah"
+       },
+       {
+        "label": "Primary_1",
+        "text": "Sistem"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "a8v03of.JQTc",
+        "a8v09HiE80G.",
+        "a8v09aVQ1uNw",
+        "a8v0qgfv2IN_",
+        "a8v0vCAb44LN",
+        "a8v0w-hsmJM1"
+       ],
+       "lines": [
+        "a8v0GfQIfHXz",
+        "a8v0K4utHM__",
+        "a8v0NAUxiR2N",
+        "a8v0dkKaEAXz",
+        "a8v0inadi.oG"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "a8v0GZ6L~9cb",
+      "class": "RectangleContainerBlock",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": "F48-RIWAYAT DATA JENAZAH"
+       },
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "a8v03of.JQTc",
+        "a8v09HiE80G.",
+        "a8v09aVQ1uNw",
+        "a8v0eO56CB9j",
+        "a8v0kE7GtJHj",
+        "a8v0qgfv2IN_",
+        "a8v0vCAb44LN",
+        "a8v0w-hsmJM1"
+       ],
+       "lines": [
+        "a8v0GfQIfHXz",
+        "a8v0K4utHM__",
+        "a8v0NAUxiR2N",
+        "a8v0dkKaEAXz",
+        "a8v0inadi.oG"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "a8v0vCAb44LN",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka Menu Pemulasaran Jenazah"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "a8v0eO56CB9j",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "F48-RIWAYAT DATA JENAZAH"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_3"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "a8v03of.JQTc",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan list pasien order Pemulasaran Jenazah"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "a8v0qgfv2IN_",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan detail informasi Pasien "
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "a8v09aVQ1uNw",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "a8v09HiE80G.",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "id": "a8v0inadi.oG",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "a8v0w-hsmJM1"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "a8v0qgfv2IN_"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "a8v0K4utHM__",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "a8v0qgfv2IN_"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "a8v09aVQ1uNw"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "a8v0NAUxiR2N",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "a8v03of.JQTc"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "a8v0w-hsmJM1"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "a8v0GfQIfHXz",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "a8v0vCAb44LN"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "a8v03of.JQTc"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "a8v0dkKaEAXz",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "a8v09HiE80G."
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "a8v0vCAb44LN"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

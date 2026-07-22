@@ -1,0 +1,989 @@
+{
+ "id": "73562261-e454-410a-8e4b-8133a20d5551",
+ "title": "g-service-internal-transfer",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "ckPXUNbWnER0",
+  "label": "E11 - Transfer Internal"
+ },
+ "pages": [
+  {
+   "id": "ur2JN4oOPYg5",
+   "title": "E11 - Transfer Internal",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "kA6X2mBBAMuy",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tampilkan Form Transfer & Daftar Tempat"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6X_rXGww-s",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Transfer Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6X9S-pjefy",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Transfer Tertunda"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XNGbFGAnv",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tentukan Unit Tujuan Transfer"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XZ0iWzjbH",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Serah Terima Dokumen & Tanda Tangan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6Xkz7r0Rxv",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Klinisi Pengirim (DPJP & Perawat Asal)"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "3GFYMDmJWdIa",
+        "kA6X-BUjnJkZ",
+        "kA6X47TdsAVX",
+        "kA6X9S-pjefy",
+        "kA6XBXkIHiBN",
+        "kA6XCZcyJA3N",
+        "kA6XNGbFGAnv",
+        "kA6XRR2JENwv",
+        "kA6XR_H4oyjC",
+        "kA6XW-aeMXFx",
+        "kA6XWOgbOZ81",
+        "kA6X_rXGww-s",
+        "kA6XcCLsauX8",
+        "kA6XsyALusZ0",
+        "kA6XvLuC5-ey",
+        "kA6Xw_aTphUV",
+        "kA6Xzi06-T35",
+        "mHFYPB~2jU3g"
+       ],
+       "lines": [
+        "kA6X-cU8V_hm",
+        "kA6X1VBj.gAZ",
+        "kA6XCc3ILjQL",
+        "kA6XIJl__BH_",
+        "kA6XKmcpRqwx",
+        "kA6XMHri.I4X",
+        "kA6XYEo4ppQy",
+        "kA6XYrZboAqz",
+        "kA6Xa9eSeVQj",
+        "kA6XdmgDfzMz",
+        "kA6XeQgWiiyY",
+        "kA6XmMGnfHZ5",
+        "kA6Xv4k6q.WV",
+        "kA6XvvMOivCK",
+        "kA6XzT26jH3S"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "kA6XWOgbOZ81",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Isi Form Transfer Internal (SBAR)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6Xzi06-T35",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Edukasi & Informed Consent Pasien/Keluarga"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XrgTav_Qd",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Siapkan Ruangan & Perawat Penerima"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XvLuC5-ey",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XczfZYM8e",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Klinisi Penerima (Perawat & DPJP Tujuan)"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "kA6XK7I~zp.h",
+        "kA6XR8V7rDdd",
+        "kA6XVpzHgcGi",
+        "kA6XZ0iWzjbH",
+        "kA6XmaSp2-U4",
+        "kA6XrgTav_Qd",
+        "kA6XxJwZSxFN"
+       ],
+       "lines": [
+        "kA6XIfRkP_8H",
+        "kA6XL3Xi3UuD",
+        "kA6XMT0Ry3p-",
+        "kA6XiSO-TPXM",
+        "kA6Xj9Z-Fyo3",
+        "kA6XyaH2Q35e"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "kA6XCZcyJA3N",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Transfer Fisik Pasien ke Unit Tujuan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "vnu0VvvHK_90",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "E11 - TRANSFER INTERNAL"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "ROW"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "COLUMN"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "kA6X-SgbNemu",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Kirim Notifikasi ke Unit Tujuan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6X47TdsAVX",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Kebutuhan Transfer Teridentifikasi"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XW-aeMXFx",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Koordinasi Alternatif / Waiting List"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XR_H4oyjC",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Persiapan Pasien & Dokumen Penunjang"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XBXkIHiBN",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Cek Ketersediaan Tempat"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XsyALusZ0",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Dokumentasi Penolakan Transfer"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XK7I~zp.h",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Notifikasi Transfer Diterima"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XmaSp2-U4",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Konfirmasi Kesiapan Terima Pasien"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XRR2JENwv",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Transfer Ditolak"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XJ0TPCjJ6",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Validasi & Simpan Form Transfer"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XSXLhxE7Q",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Update Status Pasien & Carry-Over Data Klinis"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XxJwZSxFN",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Verifikasi Identitas & Kondisi Pasien"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XcCLsauX8",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Handover ISBAR ke Penerima"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "ckPXUNbWnER0",
+      "class": "SparkFrameBlock",
+      "textAreas": [
+       {
+        "label": "FrameTitle",
+        "text": "E11 - Transfer Internal"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "3GFYMDmJWdIa",
+        "kA6X-BUjnJkZ",
+        "kA6X-SgbNemu",
+        "kA6X2mBBAMuy",
+        "kA6X47TdsAVX",
+        "kA6X9S-pjefy",
+        "kA6XBXkIHiBN",
+        "kA6XCZcyJA3N",
+        "kA6XJ0TPCjJ6",
+        "kA6XK7I~zp.h",
+        "kA6XNGbFGAnv",
+        "kA6XR8V7rDdd",
+        "kA6XRR2JENwv",
+        "kA6XR_H4oyjC",
+        "kA6XSXLhxE7Q",
+        "kA6XVpzHgcGi",
+        "kA6XW-aeMXFx",
+        "kA6XWOgbOZ81",
+        "kA6XZ0iWzjbH",
+        "kA6X_rXGww-s",
+        "kA6X_~DLKp52",
+        "kA6XcCLsauX8",
+        "kA6XczfZYM8e",
+        "kA6Xkz7r0Rxv",
+        "kA6XmaSp2-U4",
+        "kA6XrgTav_Qd",
+        "kA6XsyALusZ0",
+        "kA6XvLuC5-ey",
+        "kA6Xw_aTphUV",
+        "kA6XxJwZSxFN",
+        "kA6Xzi06-T35",
+        "mHFYPB~2jU3g",
+        "vnu0VvvHK_90"
+       ],
+       "lines": [
+        "kA6X-cU8V_hm",
+        "kA6X-z0ExWHx",
+        "kA6X1VBj.gAZ",
+        "kA6XCc3ILjQL",
+        "kA6XIJl__BH_",
+        "kA6XIfRkP_8H",
+        "kA6XKmcpRqwx",
+        "kA6XL3Xi3UuD",
+        "kA6XMHri.I4X",
+        "kA6XMT0Ry3p-",
+        "kA6XYEo4ppQy",
+        "kA6XYrZboAqz",
+        "kA6Xa9eSeVQj",
+        "kA6XdmgDfzMz",
+        "kA6XeQgWiiyY",
+        "kA6XiSO-TPXM",
+        "kA6Xj9Z-Fyo3",
+        "kA6XmMGnfHZ5",
+        "kA6XmUlhXKJx",
+        "kA6XnM4_CGCF",
+        "kA6XnlsEWWKm",
+        "kA6XqcHbQ4Ek",
+        "kA6XqsPj4sLh",
+        "kA6Xv4k6q.WV",
+        "kA6XvvMOivCK",
+        "kA6XyaH2Q35e",
+        "kA6XzT26jH3S"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "kA6X_~DLKp52",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Sistem Neurovi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "kA6X-SgbNemu",
+        "kA6X2mBBAMuy",
+        "kA6XJ0TPCjJ6",
+        "kA6XSXLhxE7Q"
+       ],
+       "lines": [
+        "kA6X-z0ExWHx",
+        "kA6XmUlhXKJx",
+        "kA6XqsPj4sLh"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "kA6Xw_aTphUV",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6X-BUjnJkZ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Asesmen Klinis Pasien"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3GFYMDmJWdIa",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pasien/Keluarga Setuju?"
+       },
+       {
+        "label": "Placeholder",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XR8V7rDdd",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pasien Diterima"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "mHFYPB~2jU3g",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tempat Tersedia?"
+       },
+       {
+        "label": "Placeholder",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XVpzHgcGi",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Terima Pasien di Unit Tujuan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "lines": [
+     {
+      "id": "kA6XYEo4ppQy",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6XR_H4oyjC"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6XCZcyJA3N"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XMHri.I4X",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6XsyALusZ0"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6XRR2JENwv"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6Xj9Z-Fyo3",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6XmaSp2-U4"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6XrgTav_Qd"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XdmgDfzMz",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6X47TdsAVX"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6X-BUjnJkZ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XeQgWiiyY",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6XvLuC5-ey"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6XsyALusZ0"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6X-z0ExWHx",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6X-SgbNemu"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6XSXLhxE7Q"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XIfRkP_8H",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6XK7I~zp.h"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6XmaSp2-U4"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XIJl__BH_",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6XCZcyJA3N"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6XcCLsauX8"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XKmcpRqwx",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6XW-aeMXFx"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6X9S-pjefy"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XiSO-TPXM",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6XxJwZSxFN"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6XZ0iWzjbH"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XCc3ILjQL",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6Xw_aTphUV"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6XW-aeMXFx"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XzT26jH3S",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6XvLuC5-ey"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6XBXkIHiBN"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Ya"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XvvMOivCK",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6XNGbFGAnv"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6Xzi06-T35"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XqsPj4sLh",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6X2mBBAMuy"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6XJ0TPCjJ6"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XL3Xi3UuD",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6XrgTav_Qd"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6XVpzHgcGi"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XmUlhXKJx",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6XJ0TPCjJ6"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6X-SgbNemu"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6Xv4k6q.WV",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6XWOgbOZ81"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6XR_H4oyjC"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XyaH2Q35e",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6XVpzHgcGi"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6XxJwZSxFN"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XqcHbQ4Ek",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "kA6XWOgbOZ81"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "kA6X2mBBAMuy"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6Xa9eSeVQj",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6XcCLsauX8"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6X_rXGww-s"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6X-cU8V_hm",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6XBXkIHiBN"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6Xw_aTphUV"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XYrZboAqz",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6Xzi06-T35"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6XvLuC5-ey"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XnlsEWWKm",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "kA6XmaSp2-U4"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "kA6XSXLhxE7Q"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XmMGnfHZ5",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6X-BUjnJkZ"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6XNGbFGAnv"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XMT0Ry3p-",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6XZ0iWzjbH"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6XR8V7rDdd"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6X1VBj.gAZ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "kA6Xw_aTphUV"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "kA6XWOgbOZ81"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "kA6XnM4_CGCF",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "kA6X-SgbNemu"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "kA6XK7I~zp.h"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

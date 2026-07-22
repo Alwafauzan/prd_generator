@@ -1,0 +1,243 @@
+👋 Main Goals
+
+Menyediakan Master Data Profil Rumah Sakit sebagai sumber data utama (single source of truth) yang menyimpan identitas resmi rumah sakit, sehingga seluruh dokumen, e-tiket, formulir, dan surat yang dihasilkan sistem menggunakan informasi profil yang konsisten, valid, dan mudah dikelola.
+
+
+
+📝 Feature Capabilities
+
+
+
+
+
+Menyediakan halaman konfigurasi Profil Rumah Sakit.
+
+
+
+Mengelola data identitas dasar rumah sakit, seperti:
+
+
+
+
+
+Nama Rumah Sakit
+
+
+
+Logo Rumah Sakit
+
+
+
+Alamat
+
+
+
+Nomor Telepon
+
+
+
+Email
+
+
+
+Website
+
+
+
+Kode Pos
+
+
+
+Kota/Kabupaten
+
+
+
+Provinsi
+
+
+
+Informasi identitas lain yang diperlukan sebagai header dokumen.
+
+
+
+Mendukung upload dan penggantian logo rumah sakit.
+
+
+
+Menyediakan validasi format dan ukuran logo agar tetap optimal saat dicetak maupun ditampilkan secara digital.
+
+
+
+Menjadikan data profil sebagai referensi yang dapat digunakan oleh seluruh modul yang membutuhkan identitas rumah sakit.
+
+
+
+Mendukung preview tampilan logo dan informasi profil sebelum disimpan.
+
+
+
+⚙️Performance Expectation
+
+Behavior :
+
+
+
+
+
+Perubahan data profil rumah sakit langsung menjadi referensi utama bagi seluruh dokumen baru yang dicetak maupun dihasilkan oleh sistem.
+
+
+
+Logo dan identitas rumah sakit tampil secara proporsional pada seluruh media cetak maupun digital.
+
+
+
+Sistem memastikan hanya pengguna yang memiliki hak akses administrasi yang dapat mengubah data profil rumah sakit.
+
+
+
+Apabila logo atau data wajib belum dilengkapi, sistem memberikan validasi sebelum konfigurasi dapat disimpan.
+
+Ekspektasi :
+
+
+
+
+
+Tidak diperlukan perubahan manual pada setiap template dokumen ketika terjadi perubahan identitas rumah sakit.
+
+
+
+Seluruh dokumen menggunakan identitas rumah sakit yang seragam.
+
+
+
+Proses pemeliharaan identitas rumah sakit menjadi lebih mudah, cepat, dan terpusat.
+
+
+
+🧩Scope
+
+
+
+
+
+Pembuatan Master Data Profil Rumah Sakit.
+
+
+
+Pengelolaan data identitas dasar rumah sakit.
+
+
+
+Upload, preview, update, dan penghapusan logo rumah sakit.
+
+
+
+Validasi data wajib dan format logo.
+
+
+
+Penyediaan API atau service yang dapat digunakan oleh seluruh modul untuk mengambil informasi profil rumah sakit.
+
+
+
+Integrasi penggunaan profil rumah sakit pada:
+
+
+
+
+
+E-Tiket Pendaftaran
+
+
+
+Surat Rawat Jalan
+
+
+
+Surat Rawat Inap
+
+
+
+Surat Rujukan
+
+
+
+Surat Kontrol
+
+
+
+Surat Keterangan
+
+
+
+Dokumen administrasi
+
+
+
+Seluruh output print maupun PDF yang membutuhkan identitas rumah sakit.
+
+
+
+📈Expected Improvement From V1
+
+Aspek Bisnis Proses :
+
+
+
+
+
+Pada versi 1, identitas rumah sakit (nama, alamat, logo, dan informasi lainnya) masih dikelola secara terpisah pada masing-masing template laporan atau dokumen sehingga perubahan identitas harus dilakukan berulang di banyak tempat.
+
+
+
+Pada versi 2, seluruh identitas rumah sakit dikelola melalui satu master data terpusat sehingga setiap perubahan otomatis digunakan oleh seluruh modul yang menghasilkan dokumen maupun e-tiket.
+
+
+
+Mempermudah proses perubahan branding rumah sakit, perubahan alamat, maupun perubahan informasi kontak tanpa memerlukan penyesuaian pada setiap template.
+
+
+
+Aspek User Experience :
+
+
+
+
+
+Administrator cukup melakukan konfigurasi identitas rumah sakit melalui satu halaman pengaturan.
+
+
+
+Logo dan informasi rumah sakit dapat dipreview sebelum digunakan.
+
+
+
+Proses pengelolaan identitas menjadi lebih sederhana, konsisten, dan mengurangi risiko kesalahan akibat perbedaan data antar dokumen.
+
+
+
+Aspek Logic System :
+
+
+
+
+
+Master Data Profil Rumah Sakit menjadi single source of truth untuk seluruh identitas rumah sakit.
+
+
+
+Seluruh template dokumen dan e-tiket wajib mengambil data identitas rumah sakit dari master data, bukan menggunakan data hardcode maupun konfigurasi lokal pada masing-masing modul.
+
+
+
+Sistem mendukung mekanisme fallback apabila logo belum tersedia, misalnya hanya menampilkan identitas teks rumah sakit.
+
+
+
+Setiap perubahan profil rumah sakit hanya memengaruhi dokumen yang dihasilkan setelah perubahan dilakukan, sehingga menjaga konsistensi arsip dokumen yang telah diterbitkan sebelumnya.
+
+
+
+Sistem menyediakan mekanisme validasi ukuran, format, dan resolusi logo agar kualitas tampilan tetap optimal pada media digital maupun hasil cetak.

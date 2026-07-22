@@ -1,0 +1,557 @@
+{
+ "id": "f9125fff-5d36-48dc-bb05-d95d1257cd3c",
+ "title": "g-support-pharmacy-retur",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "p~4XfGRMl5zt",
+  "label": "F17-FARMASI - KONFIRMASI RETUR OBAT"
+ },
+ "pages": [
+  {
+   "id": "f~4Xbp8yyK1t",
+   "title": "F17-FARMASI - KONFIRMASI RETUR OBAT",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "g~4XhRDy574y",
+      "class": "AdvancedSwimLaneBlockRotated",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": ""
+       },
+       {
+        "label": "Primary_0",
+        "text": "Apoteker"
+       },
+       {
+        "label": "Primary_1",
+        "text": "Sistem"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "Xs_XtVKhsXAq",
+        "g~4X459NQ-Zn",
+        "g~4XDO0-I.iy",
+        "g~4XFItaTLT.",
+        "g~4XJkwVZmd8",
+        "g~4XNnG9UGHM",
+        "g~4XQxe~RHJg",
+        "g~4XgfJTnRqj",
+        "g~4Xm45jgnS4",
+        "g~4XvW8MEV2Z"
+       ],
+       "lines": [
+        "Wt_XkocpipZz",
+        "g~4X.eSVxSeR",
+        "g~4XHZU1Wwsz",
+        "g~4XKslwjJp3",
+        "g~4XQmAIC6yH",
+        "g~4XUBzAq3LL",
+        "g~4XilQwD7dz",
+        "g~4Xk_idDPgu",
+        "g~4XvH5Sb1nB"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "g~4XFItaTLT.",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "g~4Xm45jgnS4",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Konfirmasi retur obat"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "g~4X459NQ-Zn",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Melakukan pencarian berdasarkan nomor registrasi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "g~4XDO0-I.iy",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4XOhLdIydf",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "F17-FARMASI - KONFIRMASI RETUR OBAT"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_3"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "g~4XgfJTnRqj",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan list retur obat pada dashboard "
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "Xs_XtVKhsXAq",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "p~4XfGRMl5zt",
+      "class": "RectangleContainerBlock",
+      "textAreas": [
+       {
+        "label": "FloatingTitle",
+        "text": "F17-FARMASI - KONFIRMASI RETUR OBAT"
+       },
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "Xs_XtVKhsXAq",
+        "g~4X459NQ-Zn",
+        "g~4XDO0-I.iy",
+        "g~4XFItaTLT.",
+        "g~4XJkwVZmd8",
+        "g~4XNnG9UGHM",
+        "g~4XQxe~RHJg",
+        "g~4XgfJTnRqj",
+        "g~4XhRDy574y",
+        "g~4Xm45jgnS4",
+        "g~4XvW8MEV2Z",
+        "p~4XOhLdIydf"
+       ],
+       "lines": [
+        "Wt_XkocpipZz",
+        "g~4X.eSVxSeR",
+        "g~4XHZU1Wwsz",
+        "g~4XKslwjJp3",
+        "g~4XQmAIC6yH",
+        "g~4XUBzAq3LL",
+        "g~4XilQwD7dz",
+        "g~4Xk_idDPgu",
+        "g~4XvH5Sb1nB"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "g~4XNnG9UGHM",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Update status retur dan menampilkan dashboard terupdate"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "g~4XQxe~RHJg",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Sistem menampilkan hasil pencarian"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_1"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "g~4XvW8MEV2Z",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "g~4XJkwVZmd8",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka menu Pelayanan Farmasi - Konfirmasi Retur Obat"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "Primary_0"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "DEFAULT_EMPTY"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     }
+    ],
+    "lines": [
+     {
+      "id": "g~4XQmAIC6yH",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "g~4XJkwVZmd8"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "g~4XFItaTLT."
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "menerima retur\nobat"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "g~4XvH5Sb1nB",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "g~4XgfJTnRqj"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "g~4X459NQ-Zn"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "g~4XilQwD7dz",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "g~4XFItaTLT."
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "g~4XgfJTnRqj"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "g~4XKslwjJp3",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "g~4XvW8MEV2Z"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "g~4XJkwVZmd8"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "g~4X.eSVxSeR",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "g~4XNnG9UGHM"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "Xs_XtVKhsXAq"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "g~4XUBzAq3LL",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "g~4XQxe~RHJg"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "g~4Xm45jgnS4"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "Wt_XkocpipZz",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "Xs_XtVKhsXAq"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "g~4XDO0-I.iy"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "update stok\nupdate billing"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "g~4Xk_idDPgu",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "g~4Xm45jgnS4"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "g~4XNnG9UGHM"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "g~4XHZU1Wwsz",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "g~4X459NQ-Zn"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "g~4XQxe~RHJg"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

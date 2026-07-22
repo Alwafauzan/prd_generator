@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Preview UI — Pengaturan Farmasi (A42)</title>
+<style>
+  :root{
+    --bg:#f1f5f9; --card:#ffffff; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0;
+    --brand:#0d9488; --brand-d:#0f766e; --brand-l:#ccfbf1; --blue:#2563eb; --blue-l:#dbeafe;
+    --amber:#b45309; --amber-l:#fef3c7; --rose:#e11d48; --rose-l:#ffe4e6;
+    --green:#15803d; --green-l:#dcfce7; --violet:#7c3aed; --violet-l:#ede9fe;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);font-size:14px}
+  .topbar{background:var(--brand-d);color:#fff;padding:12px 22px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:20}
+  .topbar .logo{width:30px;height:30px;border-radius:8px;background:#fff;color:var(--brand-d);display:grid;place-items:center;font-weight:800}
+  .topbar h1{font-size:15px;margin:0;font-weight:600}
+  .topbar .crumb{font-size:12px;opacity:.85}
+  .topbar .spacer{flex:1}
+  .topbar .user{font-size:12px;background:rgba(255,255,255,.15);padding:6px 12px;border-radius:20px}
+  .tabs{display:flex;gap:4px;padding:0 22px;background:var(--brand-d);flex-wrap:wrap}
+  .tabs button{background:transparent;border:0;color:#cbfaf0;padding:11px 18px;cursor:pointer;font-size:13px;font-weight:600;border-bottom:3px solid transparent}
+  .tabs button.active{color:#fff;border-bottom-color:#fff}
+  .wrap{max-width:1180px;margin:22px auto;padding:0 22px}
+  .screen{display:none} .screen.active{display:block}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+  .card .hd{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px}
+  .card .hd h2{font-size:15px;margin:0}
+  .card .hd .sub{font-size:12px;color:var(--muted)}
+  .card .bd{padding:18px}
+  .btn{border:1px solid var(--line);background:#fff;color:var(--ink);padding:8px 14px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;display:inline-flex;gap:6px;align-items:center}
+  .btn:hover{background:#f8fafc}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .btn.primary:hover{background:var(--brand-d)}
+  .btn.sm{padding:5px 10px;font-size:12px}
+  .spacer{flex:1}
+  .flex{display:flex;align-items:center;gap:10px}
+  .badge{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:700}
+  .b-teal{background:var(--brand-l);color:var(--brand-d)} .b-blue{background:var(--blue-l);color:var(--blue)}
+  .b-amber{background:var(--amber-l);color:var(--amber)} .b-green{background:var(--green-l);color:var(--green)}
+  .b-rose{background:var(--rose-l);color:var(--rose)} .b-violet{background:var(--violet-l);color:var(--violet)}
+  .b-gray{background:#e2e8f0;color:#475569}
+  .p2{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:10px 12px;font-size:13px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#f8fafc;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.03em;font-weight:700}
+  tbody tr:hover{background:#f8fafc}
+  .toolbar{display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .input,select{border:1px solid var(--line);border-radius:8px;padding:8px 11px;font-size:13px;background:#fff;color:var(--ink);font-family:inherit}
+  .input:focus,select:focus{outline:2px solid var(--brand-l);border-color:var(--brand)}
+  select:disabled{background:#f1f5f9;color:#94a3b8}
+  .search{flex:1;min-width:200px;position:relative}
+  .search .input{width:100%;padding-left:32px}
+  .search svg{position:absolute;left:10px;top:9px;color:var(--muted)}
+  .muted{color:var(--muted)}
+  .req{color:var(--rose);font-weight:700}
+  .kpi{display:flex;gap:14px;margin-bottom:16px;flex-wrap:wrap}
+  .kpi .box{background:linear-gradient(135deg,#ecfeff,#f0fdfa);border:1px solid var(--brand-l);border-radius:10px;padding:12px 18px;min-width:180px}
+  .kpi .box .lbl{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase}
+  .kpi .box .val{font-size:22px;font-weight:800;color:var(--brand-d)}
+  .note{font-size:12px;color:var(--muted);background:#f8fafc;border:1px dashed var(--line);border-radius:8px;padding:10px 12px}
+  .section-tag{font-size:11px;font-weight:800;letter-spacing:.05em;color:var(--brand-d);background:var(--brand-l);padding:3px 10px;border-radius:6px}
+  .link{color:var(--brand-d);cursor:pointer;font-weight:600;font-size:12px}
+  .arrow{color:var(--brand-d);font-weight:800}
+  /* activity rows */
+  .act{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:12px}
+  .act .ttl{font-weight:700;font-size:13px;display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .act .row{display:grid;grid-template-columns:260px 24px 1fr;align-items:center;gap:10px;margin:6px 0}
+  .act .row .to{min-width:0}
+  .act select{width:100%}
+  .chk{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600}
+  .chk input{width:16px;height:16px;accent-color:var(--brand)}
+  .cpo-loc{display:grid;grid-template-columns:260px 24px 1fr;align-items:center;gap:10px;margin:8px 0}
+  .disabledrow{opacity:.45}
+  /* summary panel */
+  .sum{background:#f0fdfa;border:1px solid var(--brand-l);border-radius:10px;padding:14px 16px}
+  .sum h3{margin:0 0 8px;font-size:13px;color:var(--brand-d)}
+  .sum ul{margin:0;padding-left:0;list-style:none}
+  .sum li{padding:5px 0;font-size:13px;border-bottom:1px dashed #cbeee6}
+  .sum li:last-child{border-bottom:0}
+  /* layout + sidebar */
+  .layout{display:flex;align-items:flex-start}
+  .main{flex:1;min-width:0}
+  .sidebar{width:240px;flex-shrink:0;background:#0b3b36;color:#cbfaf0;align-self:stretch;min-height:calc(100vh - 54px);padding:12px 12px 20px;position:sticky;top:54px}
+  .sb-sec{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#7fd8cb;font-weight:700;margin:14px 8px 6px}
+  .sb-item{display:flex;align-items:center;gap:8px;padding:9px 10px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;color:#e2fbf5}
+  .sb-item:hover{background:rgba(255,255,255,.08)}
+  .sb-sub{margin:2px 0 4px 15px;border-left:1px solid rgba(255,255,255,.14);padding-left:6px;display:flex;flex-direction:column}
+  .sb-link{padding:7px 10px;border-radius:7px;font-size:12.5px;color:#bfeee5;cursor:pointer;text-decoration:none}
+  .sb-link:hover{background:rgba(255,255,255,.08)}
+  .sb-link.active{background:var(--brand);color:#fff;font-weight:700}
+  .sb-note{font-size:10.5px;line-height:1.55;color:#8ec6bb;background:rgba(255,255,255,.05);border:1px dashed rgba(255,255,255,.16);border-radius:8px;padding:9px 10px;margin:14px 4px 0}
+  .dl{display:grid;grid-template-columns:170px 1fr;gap:8px 14px;font-size:13px}
+  .dl dt{color:var(--muted);font-weight:600}
+  .dl dd{margin:0;font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">⚙</div>
+  <div>
+    <h1>SIMRS — Pengaturan</h1>
+    <div class="crumb">Pengaturan › <b>Pengaturan Farmasi</b> <span style="opacity:.6">(A42) · Alur resep unit → unit farmasi</span></div>
+  </div>
+  <div class="spacer"></div>
+  <div class="user">👤 Admin</div>
+</div>
+
+<div class="layout">
+<aside class="sidebar">
+  <div class="sb-sec">Menu Utama</div>
+  <div class="sb-item">📊 Dashboard</div>
+  <div class="sb-item">🗂️ Master Data</div>
+  <div class="sb-sec">Pengaturan</div>
+  <div class="sb-item" style="background:rgba(255,255,255,.10)">⚙️ Pengaturan</div>
+  <div class="sb-sub">
+    <a class="sb-link">Pengaturan Umum</a>
+    <a class="sb-link active">Pengaturan Farmasi</a>
+    <a class="sb-link">Hak Akses / Role</a>
+  </div>
+  <div class="sb-note">Fitur <b>Pengaturan Farmasi</b> mengatur alur resep dari <b>Unit Order</b> ke <b>Unit Farmasi</b> (Unit ber-<code>tipe_instalasi=Farmasi</code>, A3/A19). Aktivitas: Order Obat Pulang, CPO (centang IGD/Rawat Inap), Retur Obat.</div>
+</aside>
+<div class="main">
+<div class="tabs">
+  <button class="tab-btn active" data-screen="list" onclick="showScreen('list',this)">Daftar Pemetaan</button>
+  <button class="tab-btn" data-screen="form" onclick="showScreen('form',this)">Atur Pemetaan — IGD</button>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ LIST ============ -->
+  <div id="list" class="screen active">
+    <div class="card">
+      <div class="hd">
+        <div><h2>Daftar Pemetaan Alur Resep</h2><div class="sub">Per Unit Order · tujuan = Unit Farmasi (instalasi tipe Farmasi) · dibaca modul resep saat runtime</div></div>
+        <div class="spacer"></div>
+        <button class="btn primary" onclick="showScreen('form',document.querySelector('[data-screen=form]'))">✎ Atur Pemetaan</button>
+      </div>
+      <div class="bd">
+        <div class="kpi">
+          <div class="box"><div class="lbl">Unit Order Terpetakan</div><div class="val">4</div></div>
+          <div class="box"><div class="lbl">Unit Farmasi Tujuan</div><div class="val">4</div></div>
+          <div class="box" style="background:#f5f3ff;border-color:#ddd6fe"><div class="lbl">Pakai Default</div><div class="val" style="color:#7c3aed">2</div></div>
+        </div>
+        <div class="toolbar">
+          <div class="search">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+            <input class="input" placeholder="Cari Unit Order…" />
+          </div>
+          <select class="input"><option>Aktivitas: Semua</option><option>Order Obat Pulang</option><option>CPO</option><option>Retur Obat</option></select>
+          <select class="input"><option>Tujuan Farmasi: Semua</option><option>Farmasi IGD</option><option>Farmasi Rawat Inap</option><option>Farmasi Rawat Jalan</option><option>Depo Farmasi Sentral</option></select>
+          <select class="input"><option>Status: Semua</option><option>Aktif</option><option>Nonaktif</option></select>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Unit Order</th>
+              <th>Obat Pulang →</th>
+              <th>CPO (IGD) →</th>
+              <th>CPO (Rawat Inap) →</th>
+              <th>Retur →</th>
+              <th>Default?</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>IGD</b></td>
+              <td><span class="badge b-teal">Farmasi IGD</span></td>
+              <td><span class="badge b-teal">Farmasi IGD</span></td>
+              <td><span class="badge b-violet">Farmasi Rawat Inap</span></td>
+              <td><span class="badge b-teal">Farmasi IGD</span></td>
+              <td><span class="badge b-gray">Tidak</span></td>
+              <td><span class="badge b-green">Aktif</span></td>
+              <td><button class="btn sm" onclick="showScreen('form',document.querySelector('[data-screen=form]'))">Edit</button></td>
+            </tr>
+            <tr>
+              <td><b>Poli Penyakit Dalam</b></td>
+              <td><span class="badge b-blue">Farmasi Rawat Jalan</span></td>
+              <td class="muted">—</td>
+              <td class="muted">—</td>
+              <td><span class="badge b-blue">Farmasi Rawat Jalan</span></td>
+              <td><span class="badge b-violet">Ya</span></td>
+              <td><span class="badge b-green">Aktif</span></td>
+              <td><button class="btn sm" onclick="showScreen('form',document.querySelector('[data-screen=form]'))">Edit</button></td>
+            </tr>
+            <tr>
+              <td><b>Rawat Inap Mawar</b></td>
+              <td><span class="badge b-violet">Farmasi Rawat Inap</span></td>
+              <td class="muted">—</td>
+              <td><span class="badge b-violet">Farmasi Rawat Inap</span></td>
+              <td><span class="badge b-violet">Farmasi Rawat Inap</span></td>
+              <td><span class="badge b-violet">Ya</span></td>
+              <td><span class="badge b-green">Aktif</span></td>
+              <td><button class="btn sm" onclick="showScreen('form',document.querySelector('[data-screen=form]'))">Edit</button></td>
+            </tr>
+            <tr>
+              <td><b>IBS (Bedah)</b></td>
+              <td><span class="badge b-violet">Farmasi Rawat Inap</span></td>
+              <td class="muted">—</td>
+              <td><span class="badge b-violet">Farmasi Rawat Inap</span></td>
+              <td><span class="badge b-violet">Farmasi Rawat Inap</span></td>
+              <td><span class="badge b-gray">Tidak</span></td>
+              <td><span class="badge b-green">Aktif</span></td>
+              <td><button class="btn sm" onclick="showScreen('form',document.querySelector('[data-screen=form]'))">Edit</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="note" style="margin-top:12px">
+          <b>Tujuan Unit Farmasi</b> hanya berisi Unit ber-<code>tipe_instalasi=Farmasi</code> (A19) yang aktif (BR-001). <b>CPO</b> bisa punya 2 tujuan (centang IGD & Rawat Inap → BR-002). <b>Obat Pulang</b> & <b>Retur</b> tepat 1 tujuan (BR-004). Baris <b>Default</b> di-seed sistem; berubah jadi <b>Tidak</b> saat Admin menyesuaikan (BR-005). Fitur ini hanya menyimpan <b>aturan</b> — eksekusi resep di modul Resep Pelayanan Farmasi (BR-010).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FORM ============ -->
+  <div id="form" class="screen">
+    <div class="card">
+      <div class="hd">
+        <span class="section-tag">ATUR PEMETAAN</span>
+        <div><h2>Pemetaan Alur Resep — Unit Order</h2><div class="sub">Tetapkan tujuan Unit Farmasi per aktivitas peresepan</div></div>
+      </div>
+      <div class="bd">
+        <div style="display:grid;grid-template-columns:1.35fr .65fr;gap:20px">
+          <div>
+            <div class="flex" style="margin-bottom:14px;gap:14px">
+              <div style="flex:1">
+                <label style="display:block;font-size:12px;font-weight:700;margin-bottom:5px">Unit Order <span class="req">*</span></label>
+                <select class="input" style="width:100%" id="unitOrder">
+                  <option>IGD</option>
+                  <option>Poli Penyakit Dalam</option>
+                  <option>Rawat Inap Mawar</option>
+                  <option>IBS (Bedah)</option>
+                </select>
+                <div class="muted" style="font-size:11px;margin-top:4px">Sumber Master Unit (A3) — unit pelayanan aktif.</div>
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:700;margin-bottom:5px">Pemetaan Default</label>
+                <span class="badge b-gray" id="defBadge">Tidak (disesuaikan)</span>
+              </div>
+            </div>
+
+            <!-- Order Obat Pulang -->
+            <div class="act">
+              <div class="ttl">💊 Order Obat Pulang</div>
+              <div class="row">
+                <div class="muted">Resep obat dibawa pulang</div>
+                <div class="arrow">→</div>
+                <div class="to">
+                  <select class="input" id="s_pulang" onchange="renderSummary()">
+                    <option>Farmasi IGD</option>
+                    <option>Farmasi Rawat Inap</option>
+                    <option>Farmasi Rawat Jalan</option>
+                    <option>Depo Farmasi Sentral</option>
+                  </select>
+                </div>
+              </div>
+              <div class="muted" style="font-size:11px">Tepat 1 tujuan (BR-004).</div>
+            </div>
+
+            <!-- CPO -->
+            <div class="act">
+              <div class="ttl">🧾 CPO <span class="muted" style="font-weight:500">— centang lokasi pemberian (boleh lebih dari satu)</span></div>
+              <div class="cpo-loc" id="cpoIgdRow">
+                <label class="chk"><input type="checkbox" id="c_igd" checked onchange="toggleCpo()"> Diberikan di <b>IGD</b></label>
+                <div class="arrow">→</div>
+                <div class="to"><select class="input" id="s_igd" onchange="renderSummary()">
+                  <option>Farmasi IGD</option><option>Farmasi Rawat Inap</option><option>Farmasi Rawat Jalan</option><option>Depo Farmasi Sentral</option>
+                </select></div>
+              </div>
+              <div class="cpo-loc" id="cpoRanapRow">
+                <label class="chk"><input type="checkbox" id="c_ranap" checked onchange="toggleCpo()"> Diberikan di <b>Rawat Inap</b></label>
+                <div class="arrow">→</div>
+                <div class="to"><select class="input" id="s_ranap" onchange="renderSummary()">
+                  <option selected>Farmasi Rawat Inap</option><option>Farmasi IGD</option><option>Farmasi Rawat Jalan</option><option>Depo Farmasi Sentral</option>
+                </select></div>
+              </div>
+              <div class="muted" style="font-size:11px">Centang keduanya → resep CPO menuju <b>2 farmasi</b> (BR-002). Tanpa centang → CPO nonaktif (BR-003).</div>
+            </div>
+
+            <!-- Retur Obat -->
+            <div class="act">
+              <div class="ttl">↩️ Retur Obat</div>
+              <div class="row">
+                <div class="muted">Pengembalian obat</div>
+                <div class="arrow">→</div>
+                <div class="to">
+                  <select class="input" id="s_retur" onchange="renderSummary()">
+                    <option>Farmasi IGD</option>
+                    <option>Farmasi Rawat Inap</option>
+                    <option>Farmasi Rawat Jalan</option>
+                    <option>Depo Farmasi Sentral</option>
+                  </select>
+                </div>
+              </div>
+              <div class="muted" style="font-size:11px">Tepat 1 tujuan (BR-004).</div>
+            </div>
+
+            <div class="flex" style="margin-top:16px;justify-content:flex-end">
+              <button class="btn" onclick="showScreen('list',document.querySelector('[data-screen=list]'))">Batal</button>
+              <button class="btn" onclick="resetDefault()">↺ Kembalikan Default</button>
+              <button class="btn primary" onclick="save()">💾 Simpan Pemetaan</button>
+            </div>
+          </div>
+
+          <!-- Ringkasan alur -->
+          <div>
+            <div class="sum">
+              <h3>Ringkasan Alur Resep — IGD</h3>
+              <ul id="sumList"></ul>
+            </div>
+            <div class="note" style="margin-top:12px">
+              Dropdown tujuan hanya memuat <b>Unit Farmasi</b> (instalasi tipe Farmasi, A3/A19) yang aktif. Aktivitas aktif wajib punya tujuan sebelum simpan (BR-007). Perubahan tercatat audit; role pengelola = <b>Admin</b> (BR-008).
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div><!-- /main -->
+</div><!-- /layout -->
+
+<script>
+  function showScreen(id,btn){
+    document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    if(btn) btn.classList.add('active');
+    window.scrollTo(0,0);
+  }
+
+  function toggleCpo(){
+    const igd=document.getElementById('c_igd').checked;
+    const ranap=document.getElementById('c_ranap').checked;
+    document.getElementById('s_igd').disabled=!igd;
+    document.getElementById('s_ranap').disabled=!ranap;
+    document.getElementById('cpoIgdRow').classList.toggle('disabledrow',!igd);
+    document.getElementById('cpoRanapRow').classList.toggle('disabledrow',!ranap);
+    renderSummary();
+  }
+
+  function renderSummary(){
+    const rows=[];
+    rows.push(['Order Obat Pulang', document.getElementById('s_pulang').value]);
+    if(document.getElementById('c_igd').checked) rows.push(['CPO — diberikan di IGD', document.getElementById('s_igd').value]);
+    if(document.getElementById('c_ranap').checked) rows.push(['CPO — diberikan di Rawat Inap', document.getElementById('s_ranap').value]);
+    rows.push(['Retur Obat', document.getElementById('s_retur').value]);
+    const cpoCount=(document.getElementById('c_igd').checked?1:0)+(document.getElementById('c_ranap').checked?1:0);
+    const ul=document.getElementById('sumList');
+    ul.innerHTML = rows.map(r=>'<li><b>'+r[0]+'</b> <span class="arrow">→</span> '+r[1]+'</li>').join('')
+      + (cpoCount===0 ? '<li class="muted">CPO nonaktif (tidak ada lokasi dicentang)</li>' : (cpoCount===2 ? '<li class="muted">CPO → 2 tujuan farmasi</li>' : ''));
+  }
+
+  function resetDefault(){
+    document.getElementById('c_igd').checked=true;
+    document.getElementById('c_ranap').checked=true;
+    document.getElementById('s_pulang').value='Farmasi IGD';
+    document.getElementById('s_igd').value='Farmasi IGD';
+    document.getElementById('s_ranap').value='Farmasi Rawat Inap';
+    document.getElementById('s_retur').value='Farmasi IGD';
+    document.getElementById('defBadge').className='badge b-violet';
+    document.getElementById('defBadge').textContent='Ya (default sistem)';
+    toggleCpo();
+  }
+
+  function save(){
+    const igd=document.getElementById('c_igd').checked, ranap=document.getElementById('c_ranap').checked;
+    if(!document.getElementById('s_pulang').value || !document.getElementById('s_retur').value){
+      alert('Validasi (BR-007): Obat Pulang & Retur wajib punya tujuan farmasi.'); return;
+    }
+    if(igd && !document.getElementById('s_igd').value){ alert('CPO IGD dicentang tapi tujuan kosong (BR-007).'); return; }
+    if(ranap && !document.getElementById('s_ranap').value){ alert('CPO Rawat Inap dicentang tapi tujuan kosong (BR-007).'); return; }
+    document.getElementById('defBadge').className='badge b-gray';
+    document.getElementById('defBadge').textContent='Tidak (disesuaikan)';
+    alert('(Demo) Pemetaan tersimpan. Tercatat audit (aktor = Admin). Modul resep akan membaca aturan ini saat runtime.');
+  }
+
+  // init
+  toggleCpo();
+  renderSummary();
+</script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+Master data user/staf: input nama, NIP, NIK, jenis kelamin, jabatan, unit, role, status aktif.

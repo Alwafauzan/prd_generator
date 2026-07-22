@@ -1,0 +1,325 @@
+👋 Main Goals
+
+Menyediakan fitur Master Penomoran Surat yang memungkinkan administrator rumah sakit mengelola format dan aturan penomoran setiap jenis surat secara mandiri tanpa memerlukan perubahan konfigurasi di backend. Dengan adanya fitur ini, setiap jenis surat dapat memiliki format nomor, prefix, suffix, reset sequence, serta running number yang berbeda sesuai kebutuhan rumah sakit maupun regulasi yang berlaku.
+Fitur ini hanya mengatur penomoran surat internal rumah sakit yang diterbitkan oleh SIMRS. Untuk surat atau dokumen yang nomor referensinya berasal dari sistem eksternal (misalnya BPJS Kesehatan melalui Bridging VClaim), sistem tetap menggunakan nomor yang dikembalikan (response) dari layanan bridging dan tidak mengikuti konfigurasi pada Master Penomoran Surat.
+
+
+
+📝 Feature Capabilities
+
+
+
+
+
+Menambahkan konfigurasi penomoran untuk setiap jenis surat.
+
+
+
+Mengatur format nomor surat menggunakan placeholder (misal Running Number, Bulan, Tahun, Unit, dan Prefix).
+
+
+
+Mengatur prefix dan suffix nomor surat.
+
+
+
+Mengatur digit running number (padding).
+
+
+
+Mengatur metode reset running number (Tidak Reset, Bulanan, Tahunan).
+
+
+
+Mengaktifkan atau menonaktifkan konfigurasi penomoran suatu surat.
+
+
+
+Mendukung konfigurasi penomoran yang berbeda untuk setiap jenis surat, seperti:
+
+
+
+
+
+Surat Kontrol Rawat Jalan
+
+
+
+Surat Perintah Rawat Inap
+
+
+
+Surat Rujukan ke RS Lain
+
+
+
+Surat Rujuk Balik FKTP PRB
+
+
+
+Surat Rujuk Balik FKTP Non PRB
+
+
+
+Surat Keterangan Dokter
+
+
+
+Surat Keterangan Kematian
+
+
+
+Jenis surat lain yang akan ditambahkan di masa mendatang.
+
+
+
+Sistem secara otomatis menghasilkan nomor surat berdasarkan konfigurasi yang aktif.
+
+
+
+Menampilkan preview format nomor surat sebelum konfigurasi disimpan.
+
+
+
+Konfigurasi penomoran hanya berlaku untuk surat internal rumah sakit yang diterbitkan oleh SIMRS.
+
+
+
+Dokumen yang memperoleh nomor referensi dari sistem eksternal (misalnya Bridging BPJS) tidak menggunakan konfigurasi Master Penomoran Surat, melainkan menggunakan nomor yang dikembalikan oleh sistem eksternal.
+
+
+
+⚙️Performance Expectation
+
+Behavior :
+
+
+
+
+
+Administrator dapat melakukan perubahan konfigurasi penomoran tanpa memerlukan deployment aplikasi.
+
+
+
+Nomor surat yang dihasilkan selalu mengikuti konfigurasi yang aktif.
+
+
+
+Running number bertambah secara otomatis ketika surat berhasil diterbitkan.
+
+
+
+Sistem menjaga agar tidak terjadi nomor surat yang duplikat meskipun terdapat proses pembuatan surat secara bersamaan (concurrent process).
+
+Ekspektasi :
+
+
+
+
+
+Seluruh jenis surat menggunakan mekanisme penomoran yang terstandarisasi.
+
+
+
+Rumah sakit dapat menyesuaikan format nomor surat secara mandiri sesuai kebutuhan operasional.
+
+
+
+Mengurangi ketergantungan terhadap tim development untuk perubahan format penomoran.
+
+
+
+Menjamin konsistensi dan keunikan nomor surat pada seluruh pelayanan.
+
+
+
+🧩Scope
+
+In Scope
+
+
+
+
+
+Master Penomoran Surat.
+
+
+
+CRUD konfigurasi penomoran surat.
+
+
+
+Pengaturan format nomor surat.
+
+
+
+Pengaturan running number.
+
+
+
+Pengaturan reset nomor.
+
+
+
+Preview nomor surat.
+
+
+
+Validasi agar hanya terdapat satu konfigurasi aktif untuk setiap jenis surat.
+
+
+
+Integrasi dengan seluruh modul pembuatan surat.
+
+
+
+Pengaturan penomoran seluruh surat internal rumah sakit yang diterbitkan oleh SIMRS.
+
+
+
+Pengaturan format nomor surat internal.
+
+
+
+Pengaturan running number surat internal.
+
+Out of Scope
+
+
+
+
+
+Digital Signature.
+
+
+
+Template isi surat.
+
+
+
+Approval workflow surat.
+
+
+
+Penomoran dokumen selain surat.
+
+
+
+Penomoran yang berasal dari sistem eksternal (Bridging BPJS/VClaim).
+
+
+
+Nomor SEP.
+
+
+
+Nomor Surat Kontrol BPJS.
+
+
+
+Nomor SPRI BPJS.
+
+
+
+Nomor Rujukan BPJS.
+
+
+
+Nomor referensi lain yang diterbitkan oleh sistem eksternal.
+
+
+
+📈Expected Improvement From V1
+
+Aspek Bisnis Proses :
+
+
+
+
+
+Pada versi sebelumnya (V1), penomoran seluruh surat masih dikonfigurasi secara hardcode pada backend sehingga setiap perubahan format nomor surat memerlukan perubahan source code dan deployment aplikasi.
+
+
+
+Rumah sakit belum memiliki fleksibilitas untuk menyesuaikan format nomor surat sesuai kebijakan internal.
+
+
+
+Dengan adanya Master Penomoran Surat, administrator dapat melakukan konfigurasi penomoran secara mandiri melalui menu pengaturan tanpa melibatkan tim developer.
+
+
+
+Penomoran surat internal rumah sakit dapat dikonfigurasi secara mandiri melalui aplikasi.
+
+
+
+Penomoran dokumen yang berasal dari integrasi eksternal (misalnya BPJS) tetap mengikuti nomor resmi yang diberikan oleh layanan eksternal, sehingga tidak mengubah mekanisme integrasi yang telah ditetapkan.
+
+
+
+Aspek User Experience :
+
+
+
+
+
+Administrator dapat mengelola seluruh konfigurasi penomoran surat melalui satu halaman konfigurasi yang terpusat.
+
+
+
+Perubahan format nomor surat dapat dilakukan secara real-time tanpa downtime aplikasi.
+
+
+
+Tersedia preview nomor surat sehingga administrator dapat memastikan format yang dihasilkan sudah sesuai sebelum digunakan.
+
+
+
+Konfigurasi menjadi lebih mudah dipahami dan dipelihara dibandingkan konfigurasi melalui backend.
+
+
+
+Aspek Logic System :
+
+
+
+
+
+Sistem menentukan format nomor surat berdasarkan konfigurasi aktif dari jenis surat yang diterbitkan.
+
+
+
+Sistem menghasilkan nomor surat menggunakan kombinasi placeholder yang telah dikonfigurasi (Running Number, Prefix, Bulan, Tahun, Unit, dan komponen lainnya).
+
+
+
+Running number bertambah otomatis setelah surat berhasil dibuat.
+
+
+
+Sistem melakukan reset running number sesuai konfigurasi (Bulanan, Tahunan, atau Tidak Reset).
+
+
+
+Sistem menjamin nomor surat bersifat unik (unique) dan tidak terjadi duplikasi meskipun terdapat proses penerbitan surat secara bersamaan.
+
+
+
+Apabila konfigurasi penomoran suatu jenis surat belum tersedia atau tidak aktif, sistem menampilkan validasi kepada administrator dan tidak mengizinkan proses penerbitan surat hingga konfigurasi dilengkapi.
+
+
+
+Sistem melakukan pengecekan sumber penomoran sebelum menghasilkan nomor surat.
+
+
+
+Apabila dokumen merupakan surat internal rumah sakit, sistem akan menghasilkan nomor berdasarkan konfigurasi pada Master Penomoran Surat.
+
+
+
+Apabila dokumen berasal dari proses Bridging BPJS atau sistem eksternal lainnya, sistem tidak melakukan generate nomor, melainkan menyimpan dan menampilkan nomor yang diterima dari response layanan eksternal.
+
+
+
+Konfigurasi Master Penomoran Surat tidak boleh mengubah atau menimpa nomor referensi resmi yang diterbitkan oleh BPJS maupun sistem pihak ketiga lainnya.
+

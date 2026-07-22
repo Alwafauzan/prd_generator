@@ -1,0 +1,1 @@
+dibuat untuk kebenaran tunggal terkait data Supplier bagi seluruh modul lainnya. data supplier berperan dalam penyediaan barang farmasi, barang rumah tangga, dan barang gizi hingga data penerimaan barang. adanya data supplier terpusat, sistem memastikan keakuratan data dalam setiap proses pengadaan barang, pencatatan stok, peminjaman dan pengembalian barang serta retur barang

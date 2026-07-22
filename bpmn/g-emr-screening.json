@@ -1,0 +1,1614 @@
+{
+ "id": "73562261-e454-410a-8e4b-8133a20d5551",
+ "title": "g-emr-screening",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "LLZX1nIOVnMu",
+  "label": "D9 - Input Skrining TB"
+ },
+ "pages": [
+  {
+   "id": "ur2JN4oOPYg5",
+   "title": "D9 - Input Skrining TB",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "3LZXqrswHSEy",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Arahkan ke IGD untuk triase"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXqGAVcV7w",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Arahkan ke Nurse Station Poli"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXuMGAb.gB",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Catat user pengisi, timestamp, dan riwayat skrining"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX-8mG-y2R",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Skor > Threshold?"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXIzTDWaRm",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tampilkan popup pilihan Skrining TB: Anak / Dewasa"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX7OB7AkC7",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX5GBHTaIh",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Izinkan proses pelayanan dilanjutkan ke asesmen berikutnya"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXaeAnk-IU",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Sistem EMR / HIS Neurovi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "3LZX-8mG-y2R",
+        "3LZX5GBHTaIh",
+        "3LZXEoVqbK2h",
+        "3LZXIzTDWaRm",
+        "3LZXJ9FXTgHN",
+        "3LZXJqF6My57",
+        "3LZXK~GK018S",
+        "3LZXRranRrkV",
+        "3LZXS6O7pSgg",
+        "3LZXYYU7cGj2",
+        "3LZXZC-DEBFn",
+        "3LZXhgJNJswM",
+        "3LZXhlWoC.1n",
+        "3LZXuMGAb.gB",
+        "3LZXyS5Y7mKf",
+        "3LZXz0xoXiQh",
+        "3LZX~ZVKjuMW"
+       ],
+       "lines": [
+        "3LZX6GW8SUR0",
+        "3LZXHlEq0ozw",
+        "3LZXI-8xxr7n",
+        "3LZXLoj_3l4o",
+        "3LZXMDpSxN4x",
+        "3LZXNOiZ8hDq",
+        "3LZXSJ2.5jJn",
+        "3LZXWupE6TFR",
+        "3LZXX0VrT8FL",
+        "3LZXZZA570yn",
+        "3LZX_yc8Hfv8",
+        "3LZXc7inHpeL",
+        "3LZXknmk_QB4",
+        "3LZXmqLHfZNW",
+        "3LZXqfkzm2zq",
+        "3LZXtT7jik6V",
+        "3LZXzrQczdlU"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "3LZX~ZVKjuMW",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Proses Sistem Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXEoVqbK2h",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan hasil skrining TB"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX2~qHsbM3",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buat episode pelayanan aktif"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXJ9FXTgHN",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXOti6ZQef",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Jalur Pelayanan?"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXBDupB1da",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai Pelayanan Medis"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX4iixRd8Z",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Lakukan registrasi pasien"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXhlWoC.1n",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Validasi data skrining"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXgEtrwYoo",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Menunggu pelayanan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXRranRrkV",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Ubah kesimpulan menjadi 'Suspek TB'"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXS6O7pSgg",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Request Diterima"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXyS5Y7mKf",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka form Skrining TB sesuai kategori"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXoDDk~A97",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX9h121GkY",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih jenis skrining TB: Anak atau Dewasa"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXl7xMt~4b",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai Pelayanan Perawat"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXq2b6y1aF",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pasien datang ke IGD atau Poliklinik"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX5Jh4~6Rd",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Mulai Registrasi"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXUBSxG9SS",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pelayanan Dilanjutkan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX2~l_75iY",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik Simpan Skrining TB"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXuz0ktjYS",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Skrining TB Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXeMLFxR2X",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Isi keterangan tambahan (optional)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXz0xoXiQh",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Set default jawaban 'Tidak' dan kesimpulan 'Bukan Suspek TB'"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXq2vEsSKA",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka asesmen perawat poli di Nurse Station"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXqtS4K9RP",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Lanjutkan pelayanan berdasarkan hasil skrining TB"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXZC-DEBFn",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tampilkan error validasi"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "yUs04fi1fOiV",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "D9 - SKRINING TB"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "ROW"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "COLUMN"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "3LZXzwpYzOh4",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Isi indikator skrining: Batuk, Penurunan BB, Demam, Kontak TB, dll"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXk~i~xVO3",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Perawat IGD / Perawat Poliklinik"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "3LZX0sIwvc2y",
+        "3LZX2~l_75iY",
+        "3LZX9h121GkY",
+        "3LZXOti6ZQef",
+        "3LZXeMLFxR2X",
+        "3LZXl7xMt~4b",
+        "3LZXoDDk~A97",
+        "3LZXq2vEsSKA",
+        "3LZXuz0ktjYS",
+        "3LZXzwpYzOh4"
+       ],
+       "lines": [
+        "3LZX20M05D9e",
+        "3LZX9-KERSr2",
+        "3LZXGjEhQg2-",
+        "3LZXOQH7UUik",
+        "3LZXY2HtZmBI",
+        "3LZX_G9.X1hM",
+        "3LZXso6hodH~",
+        "3LZXu8LqFho4",
+        "3LZXwS87h_~~",
+        "3LZXyQ0_K-vi"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "LLZX1nIOVnMu",
+      "class": "SparkFrameBlock",
+      "textAreas": [
+       {
+        "label": "FrameTitle",
+        "text": "D9 - Input Skrining TB"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "3LZX-8mG-y2R",
+        "3LZX0sIwvc2y",
+        "3LZX2~l_75iY",
+        "3LZX2~qHsbM3",
+        "3LZX4iixRd8Z",
+        "3LZX5GBHTaIh",
+        "3LZX5Jh4~6Rd",
+        "3LZX7OB7AkC7",
+        "3LZX9h121GkY",
+        "3LZXBDupB1da",
+        "3LZXC9XOdVNU",
+        "3LZXEoVqbK2h",
+        "3LZXIzTDWaRm",
+        "3LZXJ9FXTgHN",
+        "3LZXJqF6My57",
+        "3LZXK~GK018S",
+        "3LZXMI2fy~gi",
+        "3LZXMJ66p_pg",
+        "3LZXOti6ZQef",
+        "3LZXRranRrkV",
+        "3LZXS6O7pSgg",
+        "3LZXSAG6FWFa",
+        "3LZXUBSxG9SS",
+        "3LZXYYU7cGj2",
+        "3LZXZC-DEBFn",
+        "3LZXaeAnk-IU",
+        "3LZXai.ZAv-z",
+        "3LZXdV0Y2dqu",
+        "3LZXeMLFxR2X",
+        "3LZXgEtrwYoo",
+        "3LZXhgJNJswM",
+        "3LZXhlWoC.1n",
+        "3LZXk~i~xVO3",
+        "3LZXl7xMt~4b",
+        "3LZXoDDk~A97",
+        "3LZXq2b6y1aF",
+        "3LZXq2vEsSKA",
+        "3LZXqGAVcV7w",
+        "3LZXqrswHSEy",
+        "3LZXqtS4K9RP",
+        "3LZXuMGAb.gB",
+        "3LZXuz0ktjYS",
+        "3LZXyS5Y7mKf",
+        "3LZXz0xoXiQh",
+        "3LZXzwpYzOh4",
+        "3LZX~ZVKjuMW",
+        "yUs04fi1fOiV"
+       ],
+       "lines": [
+        "3LZX0xkaPTLw",
+        "3LZX10sFJQOG",
+        "3LZX144PrKM9",
+        "3LZX20M05D9e",
+        "3LZX5r9aYMm7",
+        "3LZX62U7iA_e",
+        "3LZX6GW8SUR0",
+        "3LZX9-KERSr2",
+        "3LZXAYX9EUh.",
+        "3LZXCYbHqGDD",
+        "3LZXDgi2yBgG",
+        "3LZXEDMGALiJ",
+        "3LZXGjEhQg2-",
+        "3LZXHlEq0ozw",
+        "3LZXI-8xxr7n",
+        "3LZXLoj_3l4o",
+        "3LZXMDpSxN4x",
+        "3LZXNOiZ8hDq",
+        "3LZXOQH7UUik",
+        "3LZXObF8zS.q",
+        "3LZXRiqDblNw",
+        "3LZXSJ2.5jJn",
+        "3LZXTGxRp3H.",
+        "3LZXWupE6TFR",
+        "3LZXX0VrT8FL",
+        "3LZXY2HtZmBI",
+        "3LZXZZA570yn",
+        "3LZX_G9.X1hM",
+        "3LZX_yc8Hfv8",
+        "3LZXc7inHpeL",
+        "3LZXia4.sbDu",
+        "3LZXjCI-_7Er",
+        "3LZXjeXyiGiz",
+        "3LZXknmk_QB4",
+        "3LZXlCev_2Wb",
+        "3LZXmqLHfZNW",
+        "3LZXnopnUNJz",
+        "3LZXpQ0prYqo",
+        "3LZXqfkzm2zq",
+        "3LZXso6hodH~",
+        "3LZXt8ufkTla",
+        "3LZXtT7jik6V",
+        "3LZXu8LqFho4",
+        "3LZXwS87h_~~",
+        "3LZXyQ0_K-vi",
+        "3LZXzc3Pw1fx",
+        "3LZXzfUrcAHt",
+        "3LZXzrQczdlU",
+        "3LZX~RKSC2i."
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "3LZXai.ZAv-z",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Registrasi Selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXK~GK018S",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Cek episode pelayanan aktif"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXdV0Y2dqu",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Jenis Pelayanan?"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXMJ66p_pg",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Petugas Pendaftaran"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "3LZX2~qHsbM3",
+        "3LZX4iixRd8Z",
+        "3LZX5Jh4~6Rd",
+        "3LZX7OB7AkC7",
+        "3LZXai.ZAv-z",
+        "3LZXdV0Y2dqu",
+        "3LZXqGAVcV7w",
+        "3LZXqrswHSEy"
+       ],
+       "lines": [
+        "3LZX0xkaPTLw",
+        "3LZXEDMGALiJ",
+        "3LZXObF8zS.q",
+        "3LZXjeXyiGiz",
+        "3LZXlCev_2Wb",
+        "3LZXnopnUNJz",
+        "3LZXpQ0prYqo",
+        "3LZXzfUrcAHt"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "3LZXSAG6FWFa",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Pasien / Pengantar"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "3LZXC9XOdVNU",
+        "3LZXgEtrwYoo",
+        "3LZXq2b6y1aF"
+       ],
+       "lines": [
+        "3LZXt8ufkTla",
+        "3LZXzc3Pw1fx"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "3LZXMI2fy~gi",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Dokter Triase / Dokter Poli / Tim Pelayanan"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "3LZXBDupB1da",
+        "3LZXUBSxG9SS",
+        "3LZXqtS4K9RP"
+       ],
+       "lines": [
+        "3LZX5r9aYMm7",
+        "3LZXTGxRp3H."
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "3LZX0sIwvc2y",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Isi dan simpan Triase IGD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXYYU7cGj2",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pertahankan kesimpulan 'Bukan Suspek TB'"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXJqF6My57",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Data Valid?"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXC9XOdVNU",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pasien Datang"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXhgJNJswM",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Hitung skor skrining TB otomatis"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "lines": [
+     {
+      "id": "3LZXt8ufkTla",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXC9XOdVNU"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXq2b6y1aF"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXEDMGALiJ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXdV0Y2dqu"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXqGAVcV7w"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Rawat Jalan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXqfkzm2zq",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXYYU7cGj2"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXJ9FXTgHN"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXlCev_2Wb",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZX5Jh4~6Rd"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZX4iixRd8Z"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX0xkaPTLw",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXdV0Y2dqu"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXqrswHSEy"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "IGD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX_G9.X1hM",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZX9h121GkY"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXzwpYzOh4"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXNOiZ8hDq",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXRranRrkV"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXJ9FXTgHN"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXSJ2.5jJn",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXyS5Y7mKf"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXz0xoXiQh"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXzfUrcAHt",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXqrswHSEy"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZX7OB7AkC7"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXWupE6TFR",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXuMGAb.gB"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZX5GBHTaIh"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXia4.sbDu",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "3LZXq2b6y1aF"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "3LZX4iixRd8Z"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Data pasien"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXY2HtZmBI",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXeMLFxR2X"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZX2~l_75iY"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXjCI-_7Er",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "3LZX2~qHsbM3"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "3LZXK~GK018S"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Episode pelayanan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXwS87h_~~",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZX2~l_75iY"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXuz0ktjYS"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXu8LqFho4",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXq2vEsSKA"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXoDDk~A97"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXDgi2yBgG",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "3LZXZC-DEBFn"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "3LZXzwpYzOh4"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Error message"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXTGxRp3H.",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXBDupB1da"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXqtS4K9RP"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXzrQczdlU",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZX5GBHTaIh"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZX~ZVKjuMW"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXObF8zS.q",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZX4iixRd8Z"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZX2~qHsbM3"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX_yc8Hfv8",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZX-8mG-y2R"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXRranRrkV"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Ya"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXknmk_QB4",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXJ9FXTgHN"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXhlWoC.1n"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX10sFJQOG",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXZC-DEBFn"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXzwpYzOh4"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX62U7iA_e",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "3LZX2~l_75iY"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "3LZXhlWoC.1n"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Submit skrining"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXRiqDblNw",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "3LZX9h121GkY"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "3LZXyS5Y7mKf"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Kategori dipilih"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXCYbHqGDD",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "3LZXEoVqbK2h"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "3LZXqtS4K9RP"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Hasil skrining TB"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXnopnUNJz",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZX7OB7AkC7"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXai.ZAv-z"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX9-KERSr2",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXOti6ZQef"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXq2vEsSKA"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Rawat Jalan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXmqLHfZNW",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZX-8mG-y2R"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXYYU7cGj2"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Tidak"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXyQ0_K-vi",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXOti6ZQef"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZX0sIwvc2y"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "IGD"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX5r9aYMm7",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXqtS4K9RP"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXUBSxG9SS"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXZZA570yn",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXz0xoXiQh"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXhgJNJswM"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXtT7jik6V",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXJqF6My57"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXZC-DEBFn"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Invalid"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXHlEq0ozw",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXK~GK018S"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXIzTDWaRm"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXAYX9EUh.",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "3LZXq2vEsSKA"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "3LZXIzTDWaRm"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Request skrining"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXI-8xxr7n",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXS6O7pSgg"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXK~GK018S"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXpQ0prYqo",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXqGAVcV7w"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZX7OB7AkC7"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXc7inHpeL",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXJqF6My57"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXEoVqbK2h"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Valid"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXMDpSxN4x",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXhlWoC.1n"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXJqF6My57"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXso6hodH~",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXoDDk~A97"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZX9h121GkY"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXOQH7UUik",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZX0sIwvc2y"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXoDDk~A97"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXGjEhQg2-",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXzwpYzOh4"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXeMLFxR2X"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX144PrKM9",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "3LZX0sIwvc2y"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "3LZXIzTDWaRm"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Triase selesai"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXzc3Pw1fx",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXq2b6y1aF"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXgEtrwYoo"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX6GW8SUR0",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXIzTDWaRm"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXyS5Y7mKf"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXjeXyiGiz",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZX2~qHsbM3"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXdV0Y2dqu"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX20M05D9e",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXl7xMt~4b"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXOti6ZQef"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZX~RKSC2i.",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "3LZXzwpYzOh4"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "3LZXhgJNJswM"
+      },
+      "textAreas": [
+       {
+        "label": "m0",
+        "text": "Data indikator"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXLoj_3l4o",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXhgJNJswM"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZX-8mG-y2R"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "3LZXX0VrT8FL",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "3LZXEoVqbK2h"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "3LZXuMGAb.gB"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

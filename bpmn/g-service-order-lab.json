@@ -1,0 +1,2142 @@
+{
+ "id": "73562261-e454-410a-8e4b-8133a20d5551",
+ "title": "g-service-order-lab",
+ "product": "lucidchart",
+ "accountId": 215044378,
+ "sourceFrame": {
+  "id": "OGMXSKAR5.rm",
+  "label": "E3 - Order Laboratorium"
+ },
+ "pages": [
+  {
+   "id": "ur2JN4oOPYg5",
+   "title": "E3 - Order Laboratorium",
+   "index": 0,
+   "items": {
+    "shapes": [
+     {
+      "id": "jRjZF1-qPffn",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tampilkan notif URGENT di SIMRS dokter pengirim"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXtpDKVUCJ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Determine Default Recommendation (Reg Saat Ini/Reg Baru)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "OGMXSKAR5.rm",
+      "class": "SparkFrameBlock",
+      "textAreas": [
+       {
+        "label": "FrameTitle",
+        "text": "E3 - Order Laboratorium"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "AMMX.CuDh3Tm",
+        "AMMX.llvJjSQ",
+        "AMMX02P~mwjK",
+        "AMMX0sdNFqgG",
+        "AMMX0vqGkb4C",
+        "AMMX1RwWEYFQ",
+        "AMMX4XcU_lMT",
+        "AMMX5.k.O6zF",
+        "AMMX5p2lAYrR",
+        "AMMX6q3O_GMk",
+        "AMMX777DvcPO",
+        "AMMX8Q43Ku_D",
+        "AMMX8u3T2TIH",
+        "AMMX9Wm_MSmJ",
+        "AMMXCePyMjgJ",
+        "AMMXCpOTcRS9",
+        "AMMXD6riYKVn",
+        "AMMXDEDODlxN",
+        "AMMXDsEwMCtl",
+        "AMMXFTuy~A~H",
+        "AMMXFU8Z_w_~",
+        "AMMXG.BAWshb",
+        "AMMXILtv~rCk",
+        "AMMXIYmrS0s2",
+        "AMMXKCh.zIPX",
+        "AMMXNG_dkS29",
+        "AMMXNR3MXTh6",
+        "AMMXNmS0-osG",
+        "AMMXPEDzVCvF",
+        "AMMXRYbCYZte",
+        "AMMXRaA20Les",
+        "AMMXS5nF4YDZ",
+        "AMMXSZuBcb7M",
+        "AMMXT60xkPzz",
+        "AMMXTy5c~HtV",
+        "AMMXUBOsGD3m",
+        "AMMXZMeDK-Ey",
+        "AMMXaDeaLKhO",
+        "AMMXb6RWb977",
+        "AMMXdBJFJpdF",
+        "AMMXdhH-1PgF",
+        "AMMXgJspMt3e",
+        "AMMXhOQp3h5b",
+        "AMMXi7pplM9.",
+        "AMMXj2y.AwvQ",
+        "AMMXkfKwteF4",
+        "AMMXlHgPQLQU",
+        "AMMXllULYhyO",
+        "AMMXlmVrN_dZ",
+        "AMMXmxDXbq0k",
+        "AMMXo69t9dlc",
+        "AMMXptHgfXUF",
+        "AMMXsncd6.sc",
+        "AMMXtR5FvBMz",
+        "AMMXtkKJsqhU",
+        "AMMXtpDKVUCJ",
+        "AMMXudGH_AZ9",
+        "AMMXugB4EW4O",
+        "AMMXurzIswrh",
+        "AMMX~lzGen19",
+        "ZUjZK9Vf6FBL",
+        "jRjZF1-qPffn",
+        "jRjZPE~aJo.y",
+        "jRjZV3Tcv6X6",
+        "lSjZiY~_602p",
+        "toUX97KpHP6o"
+       ],
+       "lines": [
+        "0SjZf13WqDPy",
+        "8TjZJD3G1vM1",
+        "AMMX--kqDDuI",
+        "AMMX-.l3s2d~",
+        "AMMX-KdqQ6gz",
+        "AMMX-u1DGZxv",
+        "AMMX0h28AjKA",
+        "AMMX1nZAijHq",
+        "AMMX2E3j240.",
+        "AMMX50056NSX",
+        "AMMX6skeKfzK",
+        "AMMX8ax7gRRc",
+        "AMMX8pD1_vL8",
+        "AMMX9TMhOIvf",
+        "AMMX9hW74LEa",
+        "AMMXB4HurPQZ",
+        "AMMXBm42fmFN",
+        "AMMXCBDMmXsA",
+        "AMMXCK2i7Le-",
+        "AMMXCuX~imwr",
+        "AMMXEdBRM1s1",
+        "AMMXFMCYcJZ2",
+        "AMMXFis1BG-d",
+        "AMMXHTPs8sQ_",
+        "AMMXJ6jttoYS",
+        "AMMXKpFxJ---",
+        "AMMXM~Foi2z2",
+        "AMMXN4mjVtF7",
+        "AMMXRNEMGQyu",
+        "AMMXRRUT~49y",
+        "AMMXTrUlnFLu",
+        "AMMXU-2oYycQ",
+        "AMMXW5GvFnv8",
+        "AMMXXE0jLFq6",
+        "AMMXXQS7cxpI",
+        "AMMXXYF~koUc",
+        "AMMXXuyTld3i",
+        "AMMXYO71fuq4",
+        "AMMXa9Ymr98m",
+        "AMMXdD5rA88q",
+        "AMMXdVeB9ypb",
+        "AMMXeJ8EFgrf",
+        "AMMXfYG6ZJxT",
+        "AMMXfjuyYvB0",
+        "AMMXgxdfNiC-",
+        "AMMXid4weW0B",
+        "AMMXj2_x9osm",
+        "AMMXqtoG90PZ",
+        "AMMXrF6895xR",
+        "AMMXryT7_Go4",
+        "AMMXs1XfruZo",
+        "AMMXs8q-FAFu",
+        "AMMXuW4LM5ol",
+        "AMMXz7OLrHau",
+        "AMMXzAr~pq1G",
+        "AMMXzD_JnYsZ",
+        "AMMX~5XfaF50",
+        "AMMX~O07ZnoC",
+        "AMMX~Sf~PUQc",
+        "AMMX~lqNfPFM",
+        "HvUXa3OM9e46",
+        "NvUXC_X4L19c",
+        "UTjZnW4Oy.8i",
+        "WBUX73Pcq9_k",
+        "_TjZMokUhEUJ",
+        "gBUXpqjiNjY_",
+        "gUjZQl02-5Pt",
+        "mrUXM8YTr~oF",
+        "tMUXWn1k_LU0",
+        "~LUXFxvUUqAI"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "AMMXRYbCYZte",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXG.BAWshb",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "User Pilih: Registrasi Ini atau Buat Baru"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX8u3T2TIH",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Edit Order"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX9Wm_MSmJ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Ambil Specimen "
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "lSjZiY~_602p",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Ada nilai kritis?"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXS5nF4YDZ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Review Daftar Pemeriksaan "
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXmxDXbq0k",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Validate Pilihan Registrasi User"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXNG_dkS29",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Load Info Pasien (Nama, RM, Diagnosis, Registrasi)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXptHgfXUF",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Show Recommendation dengan Warning Message"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXdBJFJpdF",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Download PDF Report (Optional)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXDsEwMCtl",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Results Reviewed"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXILtv~rCk",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Data Benar?"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXCpOTcRS9",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Klik Lihat Hasil Laboratorium "
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXugB4EW4O",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Urgency: CITO/Reguler"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXNmS0-osG",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tampilkan Pilihan : [●] Registrasi Ini / [ ] Registrasi Baru"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "jRjZV3Tcv6X6",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tag hasil dengan flag CRITICAL (visible di EMR semua unit: IGD/RJ/RI)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX~lzGen19",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Generate Order ID"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX1RwWEYFQ",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXllULYhyO",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Gunakan Registrasi Saat Ini"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "ZUjZK9Vf6FBL",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "E3-ORDER LABORATORIUM"
+       },
+       {
+        "label": "Placeholder",
+        "text": "Type something"
+       }
+      ],
+      "customData": [],
+      "linkedData": [
+       {
+        "collectionId": null,
+        "data": [
+         {
+          "key": "SpreadsheetRowParentKey",
+          "value": "ROW"
+         },
+         {
+          "key": "SpreadsheetColumnParentKey",
+          "value": "COLUMN"
+         }
+        ],
+        "primaryKeyValue": "\"192d0e9f-2f5a-4032-9f03-59bbf1ea5891\""
+       }
+      ]
+     },
+     {
+      "id": "AMMXaDeaLKhO",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Buka Form Order Laboratorium"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXIYmrS0s2",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input Tanggal Rencana Pemeriksaan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXlHgPQLQU",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Review Results (cek Hasil Lab Klinik)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXtkKJsqhU",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX777DvcPO",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Kirim Order ke Unit Laboratorium"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX6q3O_GMk",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Check Critical Values (Auto-Alert if Abnormal)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXhOQp3h5b",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Monitor Status di Dashboard "
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXRaA20Les",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Terima Order dari Sistem (Context)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX4XcU_lMT",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Pilih Pemeriksaan Lab (Browse Kategori / Search / Package)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXSZuBcb7M",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input Catatan Khusus (Puasa, dll)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX5p2lAYrR",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Set Status: Pending"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXTy5c~HtV",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Start"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX0vqGkb4C",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Registration Type?"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX8Q43Ku_D",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Terima Konfirmasi: Order Berhasil"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXD6riYKVn",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Create New Registration"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXb6RWb977",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Update Billing"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXFU8Z_w_~",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Update Status: 🔬 Sedang Diproses"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXudGH_AZ9",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Review Info Pasien (Nama, RM, Diagnosis, Dokter)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "toUX97KpHP6o",
+      "class": "AutoGrowTextBlock",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Tanggal = Hari ini?"
+       },
+       {
+        "label": "Placeholder",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXZMeDK-Ey",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Log Audit Order"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX02P~mwjK",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXNR3MXTh6",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Dari Dashboard Pasien: Pilih Order Laboratorium"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX.llvJjSQ",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Dokter / Perawat"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "AMMX.CuDh3Tm",
+        "AMMX1RwWEYFQ",
+        "AMMX4XcU_lMT",
+        "AMMX5.k.O6zF",
+        "AMMX8Q43Ku_D",
+        "AMMX8u3T2TIH",
+        "AMMXCePyMjgJ",
+        "AMMXCpOTcRS9",
+        "AMMXDsEwMCtl",
+        "AMMXG.BAWshb",
+        "AMMXILtv~rCk",
+        "AMMXIYmrS0s2",
+        "AMMXNR3MXTh6",
+        "AMMXNmS0-osG",
+        "AMMXPEDzVCvF",
+        "AMMXRYbCYZte",
+        "AMMXS5nF4YDZ",
+        "AMMXSZuBcb7M",
+        "AMMXTy5c~HtV",
+        "AMMXaDeaLKhO",
+        "AMMXdBJFJpdF",
+        "AMMXgJspMt3e",
+        "AMMXhOQp3h5b",
+        "AMMXi7pplM9.",
+        "AMMXj2y.AwvQ",
+        "AMMXkfKwteF4",
+        "AMMXlHgPQLQU",
+        "AMMXlmVrN_dZ",
+        "AMMXo69t9dlc",
+        "AMMXtR5FvBMz",
+        "AMMXtkKJsqhU",
+        "AMMXudGH_AZ9",
+        "AMMXugB4EW4O",
+        "toUX97KpHP6o"
+       ],
+       "lines": [
+        "AMMX--kqDDuI",
+        "AMMX-.l3s2d~",
+        "AMMX-KdqQ6gz",
+        "AMMX0h28AjKA",
+        "AMMX2E3j240.",
+        "AMMX50056NSX",
+        "AMMX6skeKfzK",
+        "AMMX8pD1_vL8",
+        "AMMXB4HurPQZ",
+        "AMMXBm42fmFN",
+        "AMMXCBDMmXsA",
+        "AMMXEdBRM1s1",
+        "AMMXFis1BG-d",
+        "AMMXJ6jttoYS",
+        "AMMXM~Foi2z2",
+        "AMMXN4mjVtF7",
+        "AMMXRNEMGQyu",
+        "AMMXTrUlnFLu",
+        "AMMXU-2oYycQ",
+        "AMMXXE0jLFq6",
+        "AMMXXQS7cxpI",
+        "AMMXXuyTld3i",
+        "AMMXfjuyYvB0",
+        "AMMXgxdfNiC-",
+        "AMMXid4weW0B",
+        "AMMXrF6895xR",
+        "AMMXryT7_Go4",
+        "AMMXs1XfruZo",
+        "AMMXuW4LM5ol",
+        "AMMXz7OLrHau",
+        "AMMX~5XfaF50",
+        "AMMX~O07ZnoC",
+        "AMMX~Sf~PUQc",
+        "mrUXM8YTr~oF",
+        "tMUXWn1k_LU0",
+        "~LUXFxvUUqAI"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "jRjZPE~aJo.y",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Broadcast WA ke dokter pengirim pemeriksaan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXsncd6.sc",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Results Released"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXkfKwteF4",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Entry Point?"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXCePyMjgJ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Simpan Order"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXj2y.AwvQ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Auto: Gunakan Registrasi Saat Ini"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXdhH-1PgF",
+      "class": "BPMNEvent",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Results Filed to EMR"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXKCh.zIPX",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Display Riwayat Pemeriksaan Lab Pasien"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXlmVrN_dZ",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input Waktu Rencana Pemeriksaan"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXtR5FvBMz",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": ""
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXUBOsGD3m",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Update Status: ✓ Selesai (Results Ready)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXPEDzVCvF",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Dari Form Assessment: Klik Order Laboratorium"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXurzIswrh",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Proses & Analisa"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX5.k.O6zF",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Lihat Icon Status: ⏰ Pending (Sedang di Proses)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXi7pplM9.",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Print Label Specimen"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXDEDODlxN",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Laboratorium (Context)"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "AMMX9Wm_MSmJ",
+        "AMMXRaA20Les",
+        "AMMXsncd6.sc",
+        "AMMXurzIswrh"
+       ],
+       "lines": [
+        "AMMX-u1DGZxv",
+        "AMMXCK2i7Le-",
+        "AMMXRRUT~49y"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "AMMX0sdNFqgG",
+      "class": "BPMNAdvancedPoolBlock",
+      "textAreas": [
+       {
+        "label": "poolPrimaryTitleKey",
+        "text": "Sistem Neurovi"
+       }
+      ],
+      "customData": [],
+      "linkedData": [],
+      "contains": {
+       "shapes": [
+        "AMMX02P~mwjK",
+        "AMMX0vqGkb4C",
+        "AMMX5p2lAYrR",
+        "AMMX6q3O_GMk",
+        "AMMX777DvcPO",
+        "AMMXD6riYKVn",
+        "AMMXFTuy~A~H",
+        "AMMXFU8Z_w_~",
+        "AMMXKCh.zIPX",
+        "AMMXNG_dkS29",
+        "AMMXT60xkPzz",
+        "AMMXUBOsGD3m",
+        "AMMXZMeDK-Ey",
+        "AMMXb6RWb977",
+        "AMMXdhH-1PgF",
+        "AMMXllULYhyO",
+        "AMMXmxDXbq0k",
+        "AMMXptHgfXUF",
+        "AMMXtpDKVUCJ",
+        "AMMX~lzGen19",
+        "jRjZF1-qPffn",
+        "jRjZPE~aJo.y",
+        "jRjZV3Tcv6X6",
+        "lSjZiY~_602p"
+       ],
+       "lines": [
+        "0SjZf13WqDPy",
+        "8TjZJD3G1vM1",
+        "AMMX1nZAijHq",
+        "AMMX8ax7gRRc",
+        "AMMX9TMhOIvf",
+        "AMMX9hW74LEa",
+        "AMMXFMCYcJZ2",
+        "AMMXHTPs8sQ_",
+        "AMMXKpFxJ---",
+        "AMMXW5GvFnv8",
+        "AMMXYO71fuq4",
+        "AMMXa9Ymr98m",
+        "AMMXdD5rA88q",
+        "AMMXdVeB9ypb",
+        "AMMXeJ8EFgrf",
+        "AMMXj2_x9osm",
+        "AMMXqtoG90PZ",
+        "AMMXs8q-FAFu",
+        "AMMXzD_JnYsZ",
+        "AMMX~lqNfPFM",
+        "HvUXa3OM9e46",
+        "NvUXC_X4L19c",
+        "UTjZnW4Oy.8i",
+        "_TjZMokUhEUJ",
+        "gUjZQl02-5Pt"
+       ],
+       "groups": []
+      }
+     },
+     {
+      "id": "AMMXFTuy~A~H",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Check Patient Status (RJ/RI/IGD)"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXo69t9dlc",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Perlu Order Pemeriksaan Laboratorium"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX.CuDh3Tm",
+      "class": "BPMNGateway",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Print Label Specimen?"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXgJspMt3e",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Input/Konfirmasi Diagnosis"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXT60xkPzz",
+      "class": "BPMNActivity",
+      "textAreas": [
+       {
+        "label": "Text",
+        "text": "Notify Dokter: Results Available"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "lines": [
+     {
+      "id": "AMMXgxdfNiC-",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXi7pplM9."
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXtR5FvBMz"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXYO71fuq4",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMX5p2lAYrR"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMX777DvcPO"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXFMCYcJZ2",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXD6riYKVn"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMX02P~mwjK"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXryT7_Go4",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXo69t9dlc"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXkfKwteF4"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "8TjZJD3G1vM1",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "jRjZV3Tcv6X6"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "jRjZF1-qPffn"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXa9Ymr98m",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMX0vqGkb4C"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXllULYhyO"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXqtoG90PZ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXtpDKVUCJ"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXptHgfXUF"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXXE0jLFq6",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXTy5c~HtV"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXo69t9dlc"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXRRUT~49y",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXurzIswrh"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXsncd6.sc"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXfYG6ZJxT",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "AMMXCePyMjgJ"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "AMMX~lzGen19"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXid4weW0B",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMX8Q43Ku_D"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMX.CuDh3Tm"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXs8q-FAFu",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXT60xkPzz"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMX6q3O_GMk"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXU-2oYycQ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMX5.k.O6zF"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXhOQp3h5b"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXN4mjVtF7",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXtR5FvBMz"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMX5.k.O6zF"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "HvUXa3OM9e46",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXllULYhyO"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "AMMX02P~mwjK"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXKpFxJ---",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXptHgfXUF"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXmxDXbq0k"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "UTjZnW4Oy.8i",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "lSjZiY~_602p"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "jRjZV3Tcv6X6"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXW5GvFnv8",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXmxDXbq0k"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMX0vqGkb4C"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXXYF~koUc",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "AMMXUBOsGD3m"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "AMMXCpOTcRS9"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "NvUXC_X4L19c",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMX02P~mwjK"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "AMMX~lzGen19"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX--kqDDuI",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXPEDzVCvF"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXRYbCYZte"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXrF6895xR",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXdBJFJpdF"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXDsEwMCtl"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX-.l3s2d~",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMX8u3T2TIH"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXS5nF4YDZ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXXuyTld3i",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXCePyMjgJ"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMX8Q43Ku_D"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXXQS7cxpI",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXugB4EW4O"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXgJspMt3e"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXz7OLrHau",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMX1RwWEYFQ"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXj2y.AwvQ"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Ya"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX2E3j240.",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXG.BAWshb"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXtkKJsqhU"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "gBUXpqjiNjY_",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "AMMX777DvcPO"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "AMMXRaA20Les"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXdVeB9ypb",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMX6q3O_GMk"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "lSjZiY~_602p"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXfjuyYvB0",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXSZuBcb7M"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXS5nF4YDZ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX-u1DGZxv",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXRaA20Les"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMX9Wm_MSmJ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX1nZAijHq",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXUBOsGD3m"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXT60xkPzz"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "~LUXFxvUUqAI",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMX4XcU_lMT"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "AMMXugB4EW4O"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXCuX~imwr",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "AMMXG.BAWshb"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "AMMXmxDXbq0k"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX9hW74LEa",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXFU8Z_w_~"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXUBOsGD3m"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX-KdqQ6gz",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXj2y.AwvQ"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXtkKJsqhU"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "WBUX73Pcq9_k",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "AMMXRaA20Les"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "AMMXb6RWb977"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXeJ8EFgrf",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXNG_dkS29"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXKCh.zIPX"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX~Sf~PUQc",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXkfKwteF4"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXNR3MXTh6"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "mrUXM8YTr~oF",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXNR3MXTh6"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "AMMXRYbCYZte"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXj2_x9osm",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXZMeDK-Ey"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXFU8Z_w_~"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXEdBRM1s1",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMX.CuDh3Tm"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXtR5FvBMz"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX8ax7gRRc",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMX0vqGkb4C"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXD6riYKVn"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX9TMhOIvf",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXb6RWb977"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXZMeDK-Ey"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXzD_JnYsZ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXFTuy~A~H"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXtpDKVUCJ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "_TjZMokUhEUJ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "jRjZF1-qPffn"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "jRjZPE~aJo.y"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX8pD1_vL8",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXS5nF4YDZ"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXILtv~rCk"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "0SjZf13WqDPy",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "lSjZiY~_602p"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXdhH-1PgF"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Tidak"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXzAr~pq1G",
+      "endpoint1": {
+       "style": "CircleOpen",
+       "connectedTo": "AMMXaDeaLKhO"
+      },
+      "endpoint2": {
+       "style": "Generalization",
+       "connectedTo": "AMMXNG_dkS29"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX~O07ZnoC",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXILtv~rCk"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMX8u3T2TIH"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXdD5rA88q",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMX777DvcPO"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXb6RWb977"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX~lqNfPFM",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXKCh.zIPX"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXFTuy~A~H"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXBm42fmFN",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMX.CuDh3Tm"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXi7pplM9."
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXB4HurPQZ",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXgJspMt3e"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXSZuBcb7M"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXuW4LM5ol",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXlHgPQLQU"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXdBJFJpdF"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "tMUXWn1k_LU0",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXlmVrN_dZ"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "AMMX4XcU_lMT"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXRNEMGQyu",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXCpOTcRS9"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXlHgPQLQU"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX0h28AjKA",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXRYbCYZte"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXaDeaLKhO"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX6skeKfzK",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXNmS0-osG"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXG.BAWshb"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX50056NSX",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMX1RwWEYFQ"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXNmS0-osG"
+      },
+      "textAreas": [
+       {
+        "label": "t0",
+        "text": "Tidak"
+       }
+      ],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXs1XfruZo",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXIYmrS0s2"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMX1RwWEYFQ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMX~5XfaF50",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXkfKwteF4"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXPEDzVCvF"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXFis1BG-d",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXhOQp3h5b"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXCpOTcRS9"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXCK2i7Le-",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMX9Wm_MSmJ"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXurzIswrh"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXTrUlnFLu",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXudGH_AZ9"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXIYmrS0s2"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXJ6jttoYS",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXILtv~rCk"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXCePyMjgJ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXM~Foi2z2",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXaDeaLKhO"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXudGH_AZ9"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXHTPs8sQ_",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMX~lzGen19"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMX5p2lAYrR"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "gUjZQl02-5Pt",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "jRjZPE~aJo.y"
+      },
+      "endpoint2": {
+       "style": "Equilateral Arrow",
+       "connectedTo": "AMMXdhH-1PgF"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     },
+     {
+      "id": "AMMXCBDMmXsA",
+      "endpoint1": {
+       "style": "None",
+       "connectedTo": "AMMXtkKJsqhU"
+      },
+      "endpoint2": {
+       "style": "Arrow",
+       "connectedTo": "AMMXlmVrN_dZ"
+      },
+      "textAreas": [],
+      "customData": [],
+      "linkedData": []
+     }
+    ],
+    "groups": [],
+    "layers": []
+   },
+   "customData": [],
+   "linkedData": []
+  }
+ ],
+ "data": {
+  "collections": []
+ }
+}

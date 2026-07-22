@@ -1,0 +1,69 @@
+flowchart TD
+  S([Mulai]) --> A
+  subgraph Unit_Peminta
+    A[Buka menu Permintaan Distribusi] --> B[Lihat list permintaan]
+    B --> C[Klik Tambah]
+    C --> D[Form permintaan distribusi]
+    D --> E[Pilih gudang tujuan dan urgency]
+    E --> F[Input item barang qty]
+    F --> G{Tambah item lagi?}
+    G -->|ya| F
+    G -->|tidak| H[Simpan permintaan]
+  end
+  H --> I[(Cek stok Informasi Stok H4)]
+  I --> J[Set status Diajukan]
+  J --> K[(Soft reservation stok gudang)]
+  K --> L{Batalkan permintaan?}
+  L -->|ya sebelum tindakan final| M[Lepas soft reservation]
+  M --> Z1([Permintaan Batal])
+  subgraph PJ_Shift_Gudang
+    L -->|tidak| N[Buka menu Konfirmasi Distribusi]
+    N --> O[Lihat list konfirmasi filter urgency status unit]
+    O --> P{Ada perubahan?}
+    P -->|ya adjustment| Q[Hapus item atau tambah item atau edit jumlah]
+    Q --> R[Simpan data]
+    P -->|tidak| T{Keputusan?}
+    R --> T
+    T -->|reject| U[Input alasan wajib]
+    T -->|approve| V[Konfirmasi pemenuhan]
+  end
+  U --> U2[Lepas soft reservation]
+  U2 --> Z2([Permintaan Ditolak])
+  V --> W{Barang Farmasi?}
+  W -->|ya| X[(Alokasi batch FEFO Master Batch ED)]
+  W -->|tidak| Y[Lanjut pengurangan stok]
+  X --> Y
+  Y --> AA{Stok gudang cukup?}
+  AA -->|tidak| Q
+  AA -->|ya| AB[Kurangi stok gudang permanen]
+  AB --> AC[Set status Dalam Pengiriman]
+  subgraph Unit_Peminta_Terima
+    AC --> AD[Buka menu Penerimaan Distribusi]
+    AD --> AE[Lihat list penerimaan]
+    AE --> AF[Input qty diterima]
+    AF --> AG{Qty diterima kurang dari dipenuhi?}
+    AG -->|ya| AH[Koreksi dan flag selisih plus catatan]
+    AG -->|tidak| AI[Konfirmasi penerimaan]
+    AH --> AI
+  end
+  AI --> AJ[(Tambah stok unit peminta H11)]
+  AJ --> AK[Catat audit trail dan dokumen]
+  AK --> Z3([Selesai])
+  Z3 --> RA{Ajukan retur distribusi?}
+  subgraph Unit_Peminta_Retur
+    RA -->|ya| RB[Pilih satu dokumen distribusi asal]
+    RB --> RC[Pilih barang batch dan qty retur]
+    RC --> RD[Pilih alasan retur]
+    RD --> RE[Simpan permintaan retur]
+  end
+  subgraph PJ_Shift_Gudang_Retur
+    RE --> RF[Tindakan retur gudang]
+    RF --> RG[Konfirmasi penerimaan fisik retur]
+  end
+  RG --> RH[(Kurangi stok unit tambah stok gudang)]
+  RH --> RI{Barang rusak atau ED?}
+  RI -->|ya| RJ[(Arahkan ke Pemusnahan H9)]
+  RI -->|tidak| RK[Catat telusur batch asal]
+  RJ --> RK
+  RK --> Z4([Retur Selesai])
+  RA -->|tidak| Z5([Akhir])

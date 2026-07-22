@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIMRS — Verifikasi Setor Kas (Buka & Tutup Kasir)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDEFEB; --surface:#FFFFFF; --surface-2:#F6F7F3;
+    --ink:#1A2420; --ink-soft:#5B655C; --ink-mute:#8A928A;
+    --pine:#123A32; --pine-2:#0C2A25; --pine-line:#1c5045;
+    --brass:#A9762A; --brass-soft:#F0E2C6; --brass-line:#DCC490;
+    --verify:#2C7A52; --verify-soft:#DCEBE1; --verify-line:#A9CDB6;
+    --alert:#A6482C; --alert-soft:#F1DDD3; --alert-line:#E0B7A5;
+    --rule:#E1E2DA; --rule-2:#D5D7CD;
+    --sans:"IBM Plex Sans",system-ui,sans-serif;
+    --disp:"Archivo",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+    --shadow:0 1px 2px rgba(20,40,30,.05),0 8px 24px rgba(20,40,30,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;-webkit-font-smoothing:antialiased}
+  button{font-family:inherit;cursor:pointer}
+  button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+  .mono{font-family:var(--mono)}
+
+  /* ---- App bar ---- */
+  .appbar{background:var(--pine);color:#EEF3EF;display:flex;align-items:center;gap:16px;padding:0 22px;height:58px;position:sticky;top:0;z-index:40}
+  .brand{display:flex;align-items:center;gap:11px}
+  .logo{width:30px;height:30px;border-radius:8px;background:var(--brass);color:#231705;display:grid;place-items:center;font-family:var(--disp);font-weight:800;font-size:15px}
+  .brand .bt{font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:.02em;line-height:1}
+  .brand .bs{font-family:var(--mono);font-size:10.5px;color:#9CB6AC;letter-spacing:.08em}
+  .crumb{font-family:var(--mono);font-size:11.5px;color:#9CB6AC;letter-spacing:.04em;margin-left:6px}
+  .crumb b{color:#DCE7E1}
+  .appbar .spacer{flex:1}
+  .who{display:flex;align-items:center;gap:9px;font-size:13px;color:#CFDCD6}
+  .who .av{width:28px;height:28px;border-radius:50%;background:#1c5045;display:grid;place-items:center;font-size:12px;font-weight:600;color:#DDECE4}
+
+  .shell{max-width:1300px;margin:0 auto;padding:20px 22px 60px}
+
+  /* ---- Session banner ---- */
+  .banner{background:var(--surface);border:1px solid var(--rule);border-radius:14px;box-shadow:var(--shadow);display:flex;align-items:center;gap:22px;padding:16px 20px;flex-wrap:wrap}
+  .banner .bk{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
+  .banner .bv{font-family:var(--disp);font-weight:700;font-size:16px;margin-top:2px}
+  .sess-item{display:flex;flex-direction:column}
+  .divide{width:1px;align-self:stretch;background:var(--rule)}
+  .pill{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.05em;padding:5px 12px;border-radius:100px;display:inline-flex;align-items:center;gap:6px}
+  .pill .d{width:7px;height:7px;border-radius:50%}
+  .pill.pre{background:#EBEDE8;color:#6b746b} .pill.pre .d{background:#9aa39a}
+  .pill.open{background:var(--verify-soft);color:#215c3e} .pill.open .d{background:var(--verify)}
+  .pill.ver{background:var(--brass-soft);color:#6a4a12} .pill.ver .d{background:var(--brass)}
+  .pill.closed{background:var(--pine);color:#dcece4} .pill.closed .d{background:#9ec9b6}
+  .banner .grow{flex:1}
+  .btn{border:1px solid var(--rule-2);background:var(--surface);color:var(--ink);font-weight:600;font-size:14px;padding:10px 16px;border-radius:10px;display:inline-flex;align-items:center;gap:8px}
+  .btn:hover{background:var(--surface-2)}
+  .btn.pri{background:var(--pine);border-color:var(--pine);color:#eef4f0}
+  .btn.pri:hover{background:#16463c}
+  .btn.brass{background:var(--brass);border-color:var(--brass);color:#241708}
+  .btn.brass:hover{filter:brightness(1.04)}
+  .btn.ghost-danger{color:var(--alert);border-color:var(--alert-line);background:var(--surface)}
+  .btn.ghost-danger:hover{background:var(--alert-soft)}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .btn.sm{padding:7px 12px;font-size:13px;border-radius:9px}
+
+  /* ---- Layout ---- */
+  .work{display:grid;grid-template-columns:1fr 340px;gap:20px;margin-top:20px;align-items:start}
+  .panel{background:var(--surface);border:1px solid var(--rule);border-radius:14px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+
+  /* ---- Tabs ---- */
+  .tabs{display:flex;gap:2px;padding:6px 8px 0;border-bottom:1px solid var(--rule)}
+  .tab{border:none;background:transparent;color:var(--ink-soft);font-weight:600;font-size:14px;padding:12px 16px 13px;border-radius:9px 9px 0 0;position:relative;display:flex;align-items:center;gap:9px}
+  .tab:hover{color:var(--ink);background:var(--surface-2)}
+  .tab.active{color:var(--pine)}
+  .tab.active::after{content:"";position:absolute;left:12px;right:12px;bottom:-1px;height:2.5px;background:var(--pine);border-radius:3px}
+  .tab .src{font-family:var(--mono);font-size:10px;font-weight:600;padding:2px 6px;border-radius:5px}
+  .tab .src.g2{background:var(--brass-soft);color:#6a4a12}
+  .tab .src.g3{background:var(--verify-soft);color:#215c3e}
+  .tab .cnt{font-family:var(--mono);font-size:11px;background:var(--alert-soft);color:var(--alert);padding:1px 7px;border-radius:100px;font-weight:600}
+  .tab .cnt.zero{background:#EBEDE8;color:var(--ink-mute)}
+
+  /* ---- Toolbar ---- */
+  .toolbar{display:flex;align-items:center;gap:12px;padding:14px 18px;flex-wrap:wrap}
+  .subttl{font-size:13px;color:var(--ink-soft)}
+  .subttl b{color:var(--ink)}
+  .toolbar .grow{flex:1}
+  .search{display:flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--rule);border-radius:10px;padding:8px 12px;min-width:230px}
+  .search input{border:none;background:transparent;outline:none;font-family:inherit;font-size:14px;width:100%;color:var(--ink)}
+  .search svg{color:var(--ink-mute);flex-shrink:0}
+
+  /* ---- Table ---- */
+  .tbl-scroll{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:900px}
+  thead th{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;padding:10px 14px;border-bottom:1px solid var(--rule);white-space:nowrap;background:var(--surface-2)}
+  thead th.r,tbody td.r{text-align:right}
+  thead th.c,tbody td.c{text-align:center}
+  tbody td{padding:11px 14px;border-bottom:1px solid var(--rule);vertical-align:middle}
+  tbody tr:hover{background:var(--surface-2)}
+  tbody tr.sel{background:#f2f6ee}
+  tbody tr.done{background:#f4f9f5}
+  .pname{font-weight:600}
+  .preg{font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
+  .amt{font-family:var(--mono);font-weight:600;white-space:nowrap}
+  .cbx{width:17px;height:17px;accent-color:var(--pine);cursor:pointer}
+  .badge{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.02em;padding:3px 9px;border-radius:6px;white-space:nowrap;display:inline-flex;align-items:center;gap:5px}
+  .b-lunas{background:var(--verify-soft);color:#215c3e}
+  .b-belum{background:var(--brass-soft);color:#6a4a12}
+  .b-tunai{background:var(--brass);color:#241708}
+  .b-non{background:#EBEDE8;color:#5b655c;border:1px solid var(--rule-2)}
+  .b-umum{background:#eef1ee;color:#4b544b}
+  .vst{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.03em;padding:3px 9px;border-radius:6px;display:inline-flex;align-items:center;gap:5px}
+  .v-unv{background:#EBEDE8;color:#6b746b}
+  .v-ver{background:var(--verify);color:#eafaf0}
+  .v-cor{background:var(--alert-soft);color:#7d3016}
+  .rowact{display:flex;gap:6px;justify-content:flex-end}
+  .iconbtn{border:1px solid var(--rule-2);background:var(--surface);width:30px;height:30px;border-radius:8px;display:grid;place-items:center;color:var(--ink-soft)}
+  .iconbtn:hover{background:var(--surface-2);color:var(--ink)}
+  .iconbtn.danger:hover{background:var(--alert-soft);color:var(--alert);border-color:var(--alert-line)}
+  .iconbtn:disabled{opacity:.35;cursor:not-allowed}
+  .empty{text-align:center;color:var(--ink-mute);padding:40px 0;font-size:14px}
+
+  /* ---- Footer action bar ---- */
+  .footbar{display:flex;align-items:center;gap:16px;padding:14px 18px;border-top:1px solid var(--rule);background:var(--surface-2);flex-wrap:wrap}
+  .foot-total{font-family:var(--mono)}
+  .foot-total .lbl{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);display:block}
+  .foot-total .val{font-size:18px;font-weight:600}
+  .foot-ver{font-size:13px;color:var(--verify);font-weight:600;font-family:var(--mono)}
+  .footbar .grow{flex:1}
+  .pager{display:flex;align-items:center;gap:10px;padding:10px 18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-soft)}
+  .pager select{border:1px solid var(--rule-2);border-radius:7px;padding:4px 6px;font-family:inherit;background:var(--surface)}
+  .pager .nav{display:flex;gap:6px;margin-left:auto}
+  .pgbtn{border:1px solid var(--rule-2);background:var(--surface);border-radius:8px;width:32px;height:32px;display:grid;place-items:center;color:var(--ink-soft)}
+  .pgbtn:disabled{opacity:.4;cursor:not-allowed}
+
+  /* ---- Dashboard ---- */
+  .dash{padding:18px}
+  .dash h3{font-family:var(--disp);font-weight:700;font-size:15px;margin:0 0 3px}
+  .dash .dsub{font-size:12px;color:var(--ink-soft);margin:0 0 16px}
+  .mcard{border-radius:12px;padding:14px 15px;margin-bottom:12px}
+  .mcard.tunai{background:linear-gradient(180deg,#faf4e7,#f6ecd5);border:1px solid var(--brass-line)}
+  .mcard.non{background:var(--surface-2);border:1px solid var(--rule)}
+  .mcard .mk{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between}
+  .mcard.tunai .mk{color:#6a4a12}
+  .mcard.non .mk{color:var(--ink-mute)}
+  .mcard .mtot{font-family:var(--mono);font-weight:600;font-size:22px;margin:6px 0 3px}
+  .mcard .mver{font-size:12px;color:var(--ink-soft)}
+  .mcard .mver b{color:var(--verify)}
+  .mcard .bar{height:5px;border-radius:100px;background:#e6e0cf;margin-top:9px;overflow:hidden}
+  .mcard.non .bar{background:#e3e5df}
+  .mcard .bar span{display:block;height:100%;background:var(--verify);border-radius:100px;transition:width .35s ease}
+  .grand{display:flex;justify-content:space-between;align-items:baseline;padding:13px 15px;border-radius:12px;background:var(--pine);color:#eaf4ee;margin-bottom:14px}
+  .grand .gl{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:#a9c9bd}
+  .grand .gv{font-family:var(--mono);font-weight:600;font-size:18px}
+  .dashnote{font-size:12px;color:var(--ink-soft);line-height:1.5;background:var(--surface-2);border:1px dashed var(--rule-2);border-radius:10px;padding:11px 13px}
+  .dashnote b{color:var(--alert)}
+  .kseh{display:flex;justify-content:space-between;font-family:var(--mono);font-size:13px;padding:10px 2px 0;border-top:1px solid var(--rule);margin-top:6px}
+  .kseh .kl{color:var(--ink-soft)} .kseh .kv{font-weight:600}
+
+  /* closed struk in dash */
+  .struk{font-family:var(--mono);font-size:12.5px;line-height:1.9}
+  .struk .sh{text-align:center;font-weight:600;letter-spacing:.1em;border-bottom:1.5px dashed var(--rule-2);padding-bottom:8px;margin-bottom:8px}
+  .struk .sr{display:flex;justify-content:space-between;gap:10px}
+  .struk .sr .sd{color:var(--ink-soft)}
+  .struk .tot{border-top:1.5px dashed var(--rule-2);margin-top:8px;padding-top:8px;font-weight:600}
+  .struk .ok{color:var(--verify);text-align:center;margin-top:8px}
+  .struk .warn{color:var(--alert)}
+
+  /* ---- Lock overlay ---- */
+  .lock{position:absolute;inset:0;background:rgba(240,242,238,.72);backdrop-filter:blur(1.5px);display:none;place-items:center;z-index:5;padding:24px}
+  .lock.on{display:grid}
+  .lockcard{background:var(--surface);border:1px solid var(--rule);border-radius:14px;box-shadow:var(--shadow);padding:26px 28px;text-align:center;max-width:360px}
+  .lockcard .li{width:46px;height:46px;border-radius:12px;background:var(--brass-soft);color:#6a4a12;display:grid;place-items:center;margin:0 auto 12px}
+  .lockcard h4{font-family:var(--disp);font-weight:700;font-size:18px;margin:0 0 6px}
+  .lockcard p{color:var(--ink-soft);font-size:14px;margin:0 0 16px}
+
+  /* ---- Modal ---- */
+  .backdrop{position:fixed;inset:0;background:rgba(12,26,22,.42);display:none;place-items:center;z-index:60;padding:20px}
+  .backdrop.on{display:grid}
+  .modal{background:var(--surface);border-radius:16px;box-shadow:0 30px 60px rgba(0,0,0,.28);width:100%;max-width:460px;overflow:hidden;animation:pop .18s ease}
+  .modal.wide{max-width:520px}
+  @keyframes pop{from{transform:translateY(10px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+  .mhd{padding:20px 22px 4px}
+  .mhd .mk{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);font-weight:600}
+  .mhd h3{font-family:var(--disp);font-weight:700;font-size:20px;margin:5px 0 3px}
+  .mhd p{color:var(--ink-soft);font-size:13.5px;margin:0}
+  .mbody{padding:16px 22px 6px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:6px}
+  .field label .req{color:var(--alert)}
+  .field input,.field select,.field textarea{width:100%;border:1px solid var(--rule-2);border-radius:10px;padding:10px 12px;font-family:inherit;font-size:14px;background:var(--surface);color:var(--ink)}
+  .field textarea{resize:vertical;min-height:64px}
+  .field .hint{font-size:11.5px;color:var(--ink-mute);margin-top:5px}
+  .field.ro input{background:var(--surface-2);color:var(--ink-soft)}
+  .money-input{position:relative}
+  .money-input .rp{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-family:var(--mono);color:var(--ink-mute);font-size:14px}
+  .money-input input{padding-left:34px;font-family:var(--mono)}
+  .fpreview{font-family:var(--mono);font-size:12px;color:var(--brass);margin-top:5px;font-weight:600;min-height:15px}
+  .carry{margin-top:6px}
+  .carry button{background:var(--verify-soft);border:1px solid var(--verify-line);color:#215c3e;font-size:12.5px;font-weight:600;padding:7px 11px;border-radius:9px;font-family:var(--mono)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .calc{background:var(--surface-2);border:1px solid var(--rule);border-radius:12px;padding:14px;font-family:var(--mono);margin-bottom:14px}
+  .calc .cr{display:flex;justify-content:space-between;font-size:13.5px;padding:4px 0}
+  .calc .cr .cl{color:var(--ink-soft)}
+  .calc .cr.tot{border-top:1px dashed var(--rule-2);margin-top:5px;padding-top:8px;font-weight:600;font-size:15px}
+  .calc .selisih.pos{color:var(--verify)} .calc .selisih.neg{color:var(--alert)}
+  .mfoot{padding:14px 22px 20px;display:flex;gap:10px;justify-content:flex-end;border-top:1px solid var(--rule);margin-top:8px}
+  .errline{color:var(--alert);font-size:12.5px;margin:2px 0 8px;min-height:0;display:none}
+  .errline.on{display:block}
+
+  /* toast */
+  .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--pine);color:#eaf4ee;font-size:14px;font-weight:500;padding:12px 18px;border-radius:11px;box-shadow:0 12px 30px rgba(0,0,0,.25);opacity:0;transition:.28s;z-index:80;display:flex;align-items:center;gap:9px;pointer-events:none}
+  .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+  .toast.warn{background:var(--alert)}
+  .toast .ti{color:var(--brass)}
+  .toast.warn .ti{color:#f4d3c6}
+
+  @media (max-width:980px){
+    .work{grid-template-columns:1fr}
+    .crumb{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="appbar">
+  <div class="brand">
+    <div class="logo">S</div>
+    <div>
+      <div class="bt">SIMRS</div>
+      <div class="bs">KEUANGAN</div>
+    </div>
+  </div>
+  <div class="crumb">Billing › <b>Verifikasi Setor Kas</b></div>
+  <div class="spacer"></div>
+  <div class="who"><span>Ns. Putri — Kasir</span><span class="av">P</span></div>
+</div>
+
+<div class="shell">
+
+  <!-- SESSION BANNER -->
+  <div class="banner">
+    <div class="sess-item">
+      <span class="bk">Tanggal</span>
+      <span class="bv" id="bnDate">—</span>
+    </div>
+    <div class="divide"></div>
+    <div class="sess-item">
+      <span class="bk">Shift</span>
+      <span class="bv" id="bnShift">—</span>
+    </div>
+    <div class="divide"></div>
+    <div class="sess-item">
+      <span class="bk">Status Sesi</span>
+      <span id="bnStatus" class="pill pre" style="margin-top:3px"><span class="d"></span>Belum Dibuka</span>
+    </div>
+    <div class="divide" id="bnOpenDiv" style="display:none"></div>
+    <div class="sess-item" id="bnOpenWrap" style="display:none">
+      <span class="bk">Modal Awal</span>
+      <span class="bv mono" id="bnOpening">—</span>
+    </div>
+    <div class="grow"></div>
+    <div id="bnActions"></div>
+  </div>
+
+  <!-- WORKSPACE -->
+  <div class="work">
+    <!-- LEFT: verification -->
+    <div class="panel" id="wsPanel">
+      <div class="tabs" id="tabs"></div>
+
+      <div class="toolbar">
+        <div class="subttl" id="subttl">—</div>
+        <div class="grow"></div>
+        <button class="btn sm" id="btnTambah">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          Tambah
+        </button>
+        <div class="search">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+          <input id="search" type="text" placeholder="Cari nama / no. pendaftaran…">
+        </div>
+      </div>
+
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr>
+            <th class="c" style="width:36px"><input type="checkbox" class="cbx" id="selAll"></th>
+            <th style="width:34px">No.</th>
+            <th>Tanggal</th>
+            <th>No. Reg</th>
+            <th>Nama</th>
+            <th>Penjamin</th>
+            <th>Kuitansi</th>
+            <th>Metode</th>
+            <th class="r">Nominal</th>
+            <th class="c">Verifikasi</th>
+            <th class="r">Aksi</th>
+          </tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="footbar">
+        <div class="foot-total">
+          <span class="lbl">Total (tab ini)</span>
+          <span class="val" id="tabTotal">Rp 0</span>
+        </div>
+        <div class="foot-ver" id="tabVerif">✓ 0 terverifikasi</div>
+        <div class="grow"></div>
+        <button class="btn ghost-danger" id="btnUnverify" disabled>Batal Verifikasi <span id="unvCount"></span></button>
+        <button class="btn brass" id="btnVerify" disabled>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Verifikasi <span id="verCount"></span>
+        </button>
+      </div>
+
+      <div class="pager">
+        <span>Baris per halaman</span>
+        <select id="perPage"><option>10</option><option>25</option><option>50</option></select>
+        <span id="pageInfo" style="margin-left:6px"></span>
+        <div class="nav">
+          <button class="pgbtn" id="prevPg">‹</button>
+          <button class="pgbtn" id="nextPg">›</button>
+        </div>
+      </div>
+
+      <!-- lock overlay -->
+      <div class="lock" id="lock">
+        <div class="lockcard" id="lockcard"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: dashboard -->
+    <div class="panel">
+      <div class="dash" id="dash"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODALS ============ -->
+<div class="backdrop" id="bd">
+  <!-- content injected -->
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+
+/* ---------- ICONS ---------- */
+const IC = {
+  edit:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
+  trash:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2m-9 0 1 14h8l1-14"/></svg>',
+  lock:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
+  check:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>'
+};
+
+/* ---------- DATA ---------- */
+const GUARANTORS = ["Umum","BPJS","Asuransi","Perusahaan"];
+let UID = 100;
+
+function seed(){
+  const D = (id,cat,src,reg,name,g,rc,pm,amt) =>
+    ({id:id,cat:cat,src:src,reg:reg,name:name,g:g,rc:rc,pm:pm,amt:amt,
+      date:"09/07/2026 "+ (7+Math.floor(Math.random()*4)) + ":" + String(10+Math.floor(Math.random()*49)).padStart(2,"0"),
+      v:"UNVERIFIED",del:false,sel:false});
+  return [
+    // Deposito Pasien <- G3
+    D(1,"DEPOSITO","G3","MR-240811","Andi Saputra","Umum","BELUM_LUNAS","TUNAI",500000),
+    D(2,"DEPOSITO","G3","MR-240815","Rina Wijayanti","BPJS","LUNAS","NON_TUNAI",300000),
+    D(3,"DEPOSITO","G3","MR-240820","Budi Hartono","Asuransi","BELUM_LUNAS","TUNAI",750000),
+    D(4,"DEPOSITO","G3","MR-240822","Siti Rahmawati","Umum","LUNAS","TUNAI",250000),
+    // Tagihan Pasien <- G2
+    D(5,"TAGIHAN","G2","MR-240811","Andi Saputra","Umum","LUNAS","TUNAI",1250000),
+    D(6,"TAGIHAN","G2","MR-240818","Dewi Anggraini","BPJS","LUNAS","NON_TUNAI",4200000),
+    D(7,"TAGIHAN","G2","MR-240819","Joko Prasetyo","Perusahaan","BELUM_LUNAS","TUNAI",875000),
+    D(8,"TAGIHAN","G2","MR-240821","Maya Puspita","Umum","BELUM_LUNAS","TUNAI",640000),
+    D(9,"TAGIHAN","G2","MR-240823","Hendra Kurniawan","Asuransi","LUNAS","NON_TUNAI",2100000),
+    // Penjualan Obat Bebas <- G2
+    D(10,"OBAT","G2","","Pembeli Umum","Umum","LUNAS","TUNAI",45000),
+    D(11,"OBAT","G2","MR-240815","Rina Wijayanti","BPJS","LUNAS","TUNAI",78000),
+    D(12,"OBAT","G2","","Pembeli Umum","Umum","LUNAS","NON_TUNAI",120000),
+    D(13,"OBAT","G2","MR-240822","Siti Rahmawati","Umum","BELUM_LUNAS","TUNAI",32000),
+  ];
+}
+
+const TABS = [
+  {key:"DEPOSITO", label:"Deposito Pasien", src:"G3"},
+  {key:"TAGIHAN",  label:"Tagihan Pasien",  src:"G2"},
+  {key:"OBAT",     label:"Penjualan Obat Bebas", src:"G2"},
+];
+
+let S = null;
+function reset(){
+  S = {
+    status:"PRE_OPEN", date:"", shift:"", opening:0, physical:null, variance:null, note:"",
+    rows: seed(), tab:"DEPOSITO", q:"", page:1, perPage:10,
+  };
+}
+reset();
+
+const CARRYOVER = 500000; // sisa kas shift sebelumnya (demo)
+
+/* ---------- HELPERS ---------- */
+const rp = n => "Rp " + Math.round(n||0).toLocaleString("id-ID");
+const $ = s => document.querySelector(s);
+const el = (t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
+
+const live = () => S.rows.filter(r=>!r.del);
+const tabRows = k => live().filter(r=>r.cat===k);
+function filtered(k){
+  const q = S.q.trim().toLowerCase();
+  let a = tabRows(k);
+  if(q) a = a.filter(r => (r.name||"").toLowerCase().includes(q) || (r.reg||"").toLowerCase().includes(q));
+  return a;
+}
+const unverifiedAll = () => live().filter(r=>r.v!=="VERIFIED").length;
+const editable = () => S.status==="OPEN" || S.status==="VERIFYING";
+
+function toast(msg,warn){
+  const t=$("#toast");
+  t.className="toast"+(warn?" warn":"");
+  t.innerHTML='<span class="ti">'+(warn?"!":"✓")+'</span>'+msg;
+  void t.offsetWidth; t.classList.add("on");
+  clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove("on"),2600);
+}
+
+/* ---------- RENDER ---------- */
+function render(){
+  renderBanner();
+  renderTabs();
+  renderTable();
+  renderFooter();
+  renderPager();
+  renderDash();
+  applyLock();
+}
+
+function renderBanner(){
+  $("#bnDate").textContent = S.date || "—";
+  $("#bnShift").textContent = S.shift || "—";
+  const st=$("#bnStatus");
+  const map={PRE_OPEN:["pre","Belum Dibuka"],OPEN:["open","Terbuka"],VERIFYING:["ver","Verifikasi Berjalan"],CLOSED:["closed","Ditutup"]};
+  const [cls,txt]=map[S.status];
+  st.className="pill "+cls; st.innerHTML='<span class="d"></span>'+txt;
+
+  const showOpen = S.status!=="PRE_OPEN";
+  $("#bnOpenDiv").style.display = showOpen?"":"none";
+  $("#bnOpenWrap").style.display = showOpen?"":"none";
+  $("#bnOpening").textContent = rp(S.opening);
+
+  const act=$("#bnActions"); act.innerHTML="";
+  if(S.status==="PRE_OPEN"){
+    const b=el("button","btn pri","Buka Kasir"); b.onclick=openBukaModal; act.appendChild(b);
+  } else if(S.status==="OPEN"||S.status==="VERIFYING"){
+    const b=el("button","btn pri","Tutup Kasir"); b.onclick=tryTutup; act.appendChild(b);
+  } else {
+    const b=el("button","btn","Mulai Sesi Baru"); b.onclick=()=>{reset();render();toast("Sesi direset — siap dibuka kembali");};
+    act.appendChild(b);
+  }
+}
+
+function renderTabs(){
+  const wrap=$("#tabs"); wrap.innerHTML="";
+  TABS.forEach(t=>{
+    const unv = tabRows(t.key).filter(r=>r.v!=="VERIFIED").length;
+    const b=el("button","tab"+(S.tab===t.key?" active":""));
+    b.innerHTML = t.label + ' <span class="src '+t.src.toLowerCase()+'">'+t.src+'</span>'
+      + ' <span class="cnt'+(unv===0?" zero":"")+'">'+unv+'</span>';
+    b.onclick=()=>{S.tab=t.key;S.page=1;render();};
+    wrap.appendChild(b);
+  });
+  const unv = tabRows(S.tab).filter(r=>r.v!=="VERIFIED").length;
+  $("#subttl").innerHTML = unv>0
+    ? '<b>'+unv+'</b> transaksi untuk diverifikasi pada tab ini'
+    : 'Semua transaksi pada tab ini <b>sudah diverifikasi</b>';
+}
+
+function renderTable(){
+  const tb=$("#tbody"); tb.innerHTML="";
+  const all=filtered(S.tab);
+  const start=(S.page-1)*S.perPage;
+  const rows=all.slice(start,start+S.perPage);
+  if(rows.length===0){
+    tb.innerHTML='<tr><td colspan="11"><div class="empty">Tidak ada data. '
+      +(S.q?'Coba kata kunci lain.':'Belum ada transaksi pada filter ini.')+'</div></td></tr>';
+    return;
+  }
+  const lock = !editable();
+  rows.forEach((r,i)=>{
+    const tr=el("tr", (r.v==="VERIFIED"?"done ":"")+(r.sel?"sel":""));
+    const vcls = r.v==="VERIFIED"?"v-ver":(r.v==="CORRECTED"?"v-cor":"v-unv");
+    const vtxt = r.v==="VERIFIED"?"✓ VERIFIED":(r.v==="CORRECTED"?"CORRECTED":"UNVERIFIED");
+    const canDelete = r.rc==="BELUM_LUNAS" && !lock;
+    tr.innerHTML =
+      '<td class="c"><input type="checkbox" class="cbx" data-sel="'+r.id+'" '+(r.sel?"checked":"")+(lock?" disabled":"")+'></td>'
+      +'<td class="mono" style="color:var(--ink-mute)">'+(start+i+1)+'</td>'
+      +'<td class="mono" style="font-size:12px;color:var(--ink-soft)">'+r.date+'</td>'
+      +'<td class="preg">'+(r.reg||"—")+'</td>'
+      +'<td><span class="pname">'+r.name+'</span></td>'
+      +'<td><span class="badge b-umum">'+r.g+'</span></td>'
+      +'<td>'+(r.rc==="LUNAS"?'<span class="badge b-lunas">LUNAS</span>':'<span class="badge b-belum">BELUM LUNAS</span>')+'</td>'
+      +'<td>'+(r.pm==="TUNAI"?'<span class="badge b-tunai">TUNAI</span>':'<span class="badge b-non">NON-TUNAI</span>')+'</td>'
+      +'<td class="r amt">'+rp(r.amt)+'</td>'
+      +'<td class="c"><span class="vst '+vcls+'">'+vtxt+'</span></td>'
+      +'<td class="r"><div class="rowact">'
+        +'<button class="iconbtn" data-edit="'+r.id+'" title="Edit" '+(lock?"disabled":"")+'>'+IC.edit+'</button>'
+        +'<button class="iconbtn danger" data-del="'+r.id+'" title="'+(r.rc==="LUNAS"?"Transaksi Lunas tidak bisa dihapus":"Hapus")+'" '+(canDelete?"":"disabled")+'>'+IC.trash+'</button>'
+      +'</div></td>';
+    tb.appendChild(tr);
+  });
+  // select-all reflects filtered set
+  const selectable=all;
+  const sa=$("#selAll");
+  sa.checked = selectable.length>0 && selectable.every(r=>r.sel);
+  sa.disabled = lock || selectable.length===0;
+}
+
+function renderFooter(){
+  const a=tabRows(S.tab);
+  const total=a.reduce((s,r)=>s+r.amt,0);
+  const ver=a.filter(r=>r.v==="VERIFIED").length;
+  $("#tabTotal").textContent=rp(total);
+  $("#tabVerif").textContent="✓ "+ver+" terverifikasi";
+
+  const sel=live().filter(r=>r.sel);
+  const toVerify=sel.filter(r=>r.v!=="VERIFIED").length;
+  const toUnverify=sel.filter(r=>r.v==="VERIFIED").length;
+  const bv=$("#btnVerify"), bu=$("#btnUnverify");
+  bv.disabled = toVerify===0 || !editable();
+  bu.disabled = toUnverify===0 || !editable();
+  $("#verCount").textContent = toVerify? "("+toVerify+")":"";
+  $("#unvCount").textContent = toUnverify? "("+toUnverify+")":"";
+}
+
+function renderPager(){
+  const all=filtered(S.tab);
+  const pages=Math.max(1,Math.ceil(all.length/S.perPage));
+  if(S.page>pages)S.page=pages;
+  const start=all.length? (S.page-1)*S.perPage+1 : 0;
+  const end=Math.min(all.length,S.page*S.perPage);
+  $("#pageInfo").textContent = all.length? (start+"–"+end+" dari "+all.length) : "0 dari 0";
+  $("#prevPg").disabled=S.page<=1;
+  $("#nextPg").disabled=S.page>=pages;
+}
+
+function renderDash(){
+  const d=$("#dash");
+  if(S.status==="CLOSED"){ renderClosedStruk(d); return; }
+
+  const L=live();
+  const sum=f=>L.filter(f).reduce((s,r)=>s+r.amt,0);
+  const tunaiTot=sum(r=>r.pm==="TUNAI");
+  const tunaiVer=sum(r=>r.pm==="TUNAI"&&r.v==="VERIFIED");
+  const nonTot=sum(r=>r.pm==="NON_TUNAI");
+  const nonVer=sum(r=>r.pm==="NON_TUNAI"&&r.v==="VERIFIED");
+  const grand=tunaiTot+nonTot;
+  const pT=tunaiTot? Math.round(tunaiVer/tunaiTot*100):0;
+  const pN=nonTot? Math.round(nonVer/nonTot*100):0;
+  const kasSeharusnya = S.opening + tunaiVer;
+  const unv=unverifiedAll();
+
+  d.innerHTML =
+    '<h3>Ringkasan Setoran</h3>'
+    +'<p class="dsub">Sesi '+(S.date||"—")+' · '+(S.shift||"—")+' — real-time</p>'
+    +'<div class="grand"><span class="gl">TOTAL KESELURUHAN</span><span class="gv">'+rp(grand)+'</span></div>'
+    +'<div class="mcard tunai"><div class="mk"><span>TUNAI · masuk kas laci</span><span>'+pT+'%</span></div>'
+      +'<div class="mtot">'+rp(tunaiTot)+'</div>'
+      +'<div class="mver">Terverifikasi <b>'+rp(tunaiVer)+'</b></div>'
+      +'<div class="bar"><span style="width:'+pT+'%"></span></div></div>'
+    +'<div class="mcard non"><div class="mk"><span>NON-TUNAI · info saja</span><span>'+pN+'%</span></div>'
+      +'<div class="mtot">'+rp(nonTot)+'</div>'
+      +'<div class="mver">Terverifikasi <b>'+rp(nonVer)+'</b></div>'
+      +'<div class="bar"><span style="width:'+pN+'%"></span></div></div>'
+    +'<div class="kseh"><span class="kl">Saldo Awal</span><span class="kv">'+rp(S.opening)+'</span></div>'
+    +'<div class="kseh" style="border:none;padding-top:2px"><span class="kl">+ Tunai terverifikasi</span><span class="kv">'+rp(tunaiVer)+'</span></div>'
+    +'<div class="kseh" style="border:none;padding-top:2px"><span class="kl"><b>= Kas Seharusnya</b></span><span class="kv" style="color:var(--brass)">'+rp(kasSeharusnya)+'</span></div>'
+    +'<div class="dashnote" style="margin-top:12px">'
+      +(unv>0 ? 'Masih ada <b>'+unv+' transaksi</b> belum diverifikasi. Tutup Kasir akan diblokir sampai semuanya beres.'
+             : 'Semua transaksi terverifikasi ✓ — kasir siap ditutup.')
+    +'</div>';
+}
+
+function renderClosedStruk(d){
+  const L=live();
+  const tunaiVer=L.filter(r=>r.pm==="TUNAI"&&r.v==="VERIFIED").reduce((s,r)=>s+r.amt,0);
+  const kasSeharusnya=S.opening+tunaiVer;
+  const selisih=S.variance;
+  const sc = selisih===0?"":(selisih>0?"":"warn");
+  d.innerHTML =
+    '<h3>Sesi Ditutup</h3><p class="dsub">Struk penutupan kasir</p>'
+    +'<div class="struk">'
+      +'<div class="sh">TUTUP KASIR — '+(S.shift||"")+'</div>'
+      +'<div class="sr"><span class="sd">Tanggal</span><span>'+(S.date||"")+'</span></div>'
+      +'<div class="sr"><span class="sd">Saldo Awal</span><span>'+rp(S.opening)+'</span></div>'
+      +'<div class="sr"><span class="sd">Tunai terverifikasi</span><span>'+rp(tunaiVer)+'</span></div>'
+      +'<div class="sr tot"><span>Kas Seharusnya</span><span>'+rp(kasSeharusnya)+'</span></div>'
+      +'<div class="sr"><span class="sd">Kas Fisik</span><span>'+rp(S.physical)+'</span></div>'
+      +'<div class="sr tot"><span>Selisih</span><span class="'+(selisih===0?"":"warn")+'">'+(selisih>0?"+":"")+rp(selisih)+'</span></div>'
+      +(S.note?'<div class="sr" style="margin-top:6px"><span class="sd">Ket.</span><span style="text-align:right;max-width:170px">'+S.note+'</span></div>':'')
+      +'<div class="ok">'+(selisih===0?"✓ kas cocok — nihil":"⚠ selisih dicatat")+'</div>'
+    +'</div>';
+}
+
+function applyLock(){
+  const lock=$("#lock"), card=$("#lockcard");
+  if(S.status==="PRE_OPEN"){
+    lock.classList.add("on");
+    card.innerHTML='<div class="li">'+IC.lock+'</div><h4>Kasir belum dibuka</h4>'
+      +'<p>Buka kasir dan masukkan modal awal untuk mulai memverifikasi transaksi shift ini.</p>'
+      +'<button class="btn pri" id="lockOpen">Buka Kasir</button>';
+    $("#lockOpen").onclick=openBukaModal;
+  } else if(S.status==="CLOSED"){
+    lock.classList.add("on");
+    card.innerHTML='<div class="li" style="background:var(--verify-soft);color:#215c3e">'+IC.check+'</div>'
+      +'<h4>Sesi kasir telah ditutup</h4><p>Data terkunci untuk audit. Selisih & setoran tercatat pada struk penutupan.</p>'
+      +'<button class="btn" id="lockNew">Mulai Sesi Baru</button>';
+    $("#lockNew").onclick=()=>{reset();render();toast("Sesi direset — siap dibuka kembali");};
+  } else {
+    lock.classList.remove("on");
+  }
+}
+
+/* ---------- ACTIONS: verify / unverify ---------- */
+function verifySelected(){
+  const sel=live().filter(r=>r.sel && r.v!=="VERIFIED");
+  if(!sel.length) return;
+  sel.forEach(r=>{r.v="VERIFIED";r.sel=false;});
+  if(S.status==="OPEN") S.status="VERIFYING";
+  render();
+  toast(sel.length+" transaksi diverifikasi");
+}
+function unverifySelected(){
+  if(!editable()) return;
+  const sel=live().filter(r=>r.sel && r.v==="VERIFIED");
+  if(!sel.length) return;
+  sel.forEach(r=>{r.v="UNVERIFIED";r.sel=false;});
+  render();
+  toast(sel.length+" verifikasi dibatalkan", true);
+}
+
+/* ---------- MODAL ENGINE ---------- */
+function showModal(html){ $("#bd").innerHTML=html; $("#bd").classList.add("on"); }
+function closeModal(){ $("#bd").classList.remove("on"); $("#bd").innerHTML=""; }
+$("#bd").addEventListener("click",e=>{ if(e.target.id==="bd") closeModal(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeModal(); });
+function fmtLive(inp,out){ const v=parseInt((inp.value||"").replace(/\D/g,""))||0; out.textContent=v?rp(v):""; }
+
+/* ---- Buka Kasir ---- */
+function openBukaModal(){
+  const now=new Date();
+  const dd=String(now.getDate()).padStart(2,"0"),mm=String(now.getMonth()+1).padStart(2,"0");
+  const iso=now.getFullYear()+"-"+mm+"-"+dd;
+  const h=now.getHours();
+  const defShift = h<12?"Pagi":(h<18?"Siang":"Malam");
+  showModal(
+    '<div class="modal"><div class="mhd"><div class="mk">Fase A</div><h3>Buka Kasir</h3>'
+    +'<p>Mulai sesi untuk Tanggal + Shift, lalu masukkan uang tunai tersedia di laci.</p></div>'
+    +'<div class="mbody">'
+      +'<div class="grid2"><div class="field"><label>Tanggal Transaksi</label><input type="date" id="mDate" value="'+iso+'"></div>'
+      +'<div class="field"><label>Shift <span class="hint" style="display:inline">(Master Shift)</span></label><select id="mShift">'
+        +['Pagi','Siang','Malam'].map(s=>'<option '+(s===defShift?'selected':'')+'>'+s+'</option>').join('')+'</select></div></div>'
+      +'<div class="field"><label>Uang Tersedia di Kasir — Modal Awal <span class="req">*</span></label>'
+        +'<div class="money-input"><span class="rp">Rp</span><input type="text" inputmode="numeric" id="mOpen" placeholder="0"></div>'
+        +'<div class="fpreview" id="mOpenP"></div>'
+        +'<div class="carry"><button type="button" id="mCarry">↺ Gunakan sisa shift lalu — '+rp(CARRYOVER)+'</button></div>'
+        +'<div class="hint">Cukup nominal total; rincian pecahan tidak wajib.</div></div>'
+      +'<div class="errline" id="mErr">Modal awal wajib diisi (≥ 0).</div>'
+    +'</div>'
+    +'<div class="mfoot"><button class="btn" onclick="closeModal()">Batal</button>'
+      +'<button class="btn pri" id="mConfirm">Buka Kasir</button></div></div>'
+  );
+  const inp=$("#mOpen"),out=$("#mOpenP");
+  inp.addEventListener("input",()=>{inp.value=inp.value.replace(/\D/g,"");fmtLive(inp,out);});
+  $("#mCarry").onclick=()=>{inp.value=String(CARRYOVER);fmtLive(inp,out);};
+  $("#mConfirm").onclick=()=>{
+    const v=parseInt(inp.value.replace(/\D/g,""));
+    if(isNaN(v)){$("#mErr").classList.add("on");return;}
+    const dv=$("#mDate").value; const [y,m,dd2]=dv.split("-");
+    S.date=dd2+"/"+m+"/"+y; S.shift=$("#mShift").value; S.opening=v; S.status="OPEN";
+    closeModal(); render(); toast("Kasir dibuka — modal awal "+rp(v));
+  };
+}
+
+/* ---- Tambah (dalam batas data pasien G2/G3) ---- */
+function sourcePatients(tab){
+  // unique existing patients from the tab's source module
+  const src = tab==="DEPOSITO" ? "G3":"G2";
+  const seen={}; const out=[];
+  live().filter(r=>r.src===src).forEach(r=>{
+    const key=(r.reg||"NONPX")+"|"+r.name;
+    if(!seen[key]){seen[key]=1; out.push({reg:r.reg,name:r.name,g:r.g,pm:r.pm});}
+  });
+  return out;
+}
+function openTambah(){
+  if(!editable()) return;
+  const tab=S.tab; const list=sourcePatients(tab);
+  const tabLabel=TABS.find(t=>t.key===tab).label;
+  const opts=list.map((p,i)=>'<option value="'+i+'">'+(p.reg?p.reg+' — ':'(non-pasien) ')+p.name+'</option>').join('');
+  showModal(
+    '<div class="modal wide"><div class="mhd"><div class="mk">Koreksi · Tambah</div><h3>Tambah Billing — '+tabLabel+'</h3>'
+    +'<p>Hanya menambah tindakan/billing untuk <b>pasien yang sudah dikirim '+(tab==="DEPOSITO"?"G3":"G2")+'</b>. Tidak bisa membuat pasien baru.</p></div>'
+    +'<div class="mbody">'
+      +'<div class="field"><label>Pasien / Sumber (lookup '+(tab==="DEPOSITO"?"G3":"G2")+') <span class="req">*</span></label>'
+        +'<select id="tPx"><option value="">— pilih pasien sumber —</option>'+opts+'</select>'
+        +'<div class="hint">Identitas terisi otomatis & read-only (BR-17).</div></div>'
+      +'<div class="grid2"><div class="field ro"><label>No. Pendaftaran</label><input id="tReg" readonly></div>'
+      +'<div class="field ro"><label>Tipe Penjamin</label><input id="tG" readonly></div></div>'
+      +'<div class="grid2"><div class="field"><label>Item / Tindakan <span class="req">*</span></label><input id="tItem" placeholder="mis. Administrasi, Tindakan…"></div>'
+      +'<div class="field"><label>Metode Pembayaran</label><div id="tPm" style="padding-top:4px"></div>'
+        +'<div class="hint">Mengikuti transaksi sumber '+(tab==="DEPOSITO"?"G3":"G2")+'.</div></div></div>'
+      +'<div class="field"><label>Nominal <span class="req">*</span></label>'
+        +'<div class="money-input"><span class="rp">Rp</span><input type="text" inputmode="numeric" id="tAmt" placeholder="0"></div>'
+        +'<div class="fpreview" id="tAmtP"></div></div>'
+      +'<div class="errline" id="tErr"></div>'
+    +'</div>'
+    +'<div class="mfoot"><button class="btn" onclick="closeModal()">Batal</button>'
+      +'<button class="btn pri" id="tSave">Simpan</button></div></div>'
+  );
+  const pmBadge = pm => pm==="TUNAI"?'<span class="badge b-tunai">TUNAI</span>':'<span class="badge b-non">NON-TUNAI</span>';
+  $("#tPx").onchange=e=>{
+    const i=e.target.value;
+    if(i===""){$("#tReg").value="";$("#tG").value="";$("#tPm").innerHTML="";$("#tPx").dataset.pm="";return;}
+    const p=list[i]; $("#tReg").value=p.reg||"(non-pasien)"; $("#tG").value=p.g;
+    $("#tPm").innerHTML=pmBadge(p.pm); $("#tPx").dataset.pm=p.pm; $("#tPx").dataset.name=p.name; $("#tPx").dataset.reg=p.reg||"";
+  };
+  const ai=$("#tAmt"),ao=$("#tAmtP");
+  ai.addEventListener("input",()=>{ai.value=ai.value.replace(/\D/g,"");fmtLive(ai,ao);});
+  $("#tSave").onclick=()=>{
+    const err=$("#tErr");
+    const i=$("#tPx").value; const item=$("#tItem").value.trim(); const amt=parseInt(ai.value.replace(/\D/g,""));
+    if(i===""){err.textContent="Pilih pasien sumber dulu (wajib, BR-17).";err.classList.add("on");return;}
+    if(!item){err.textContent="Item / tindakan wajib diisi.";err.classList.add("on");return;}
+    if(isNaN(amt)||amt<0){err.textContent="Nominal wajib diisi (≥ 0).";err.classList.add("on");return;}
+    const p=list[i];
+    S.rows.push({id:++UID,cat:tab,src:(tab==="DEPOSITO"?"G3":"G2"),reg:p.reg||"",name:p.name,g:p.g,
+      rc:"BELUM_LUNAS",pm:p.pm,amt:amt,date:S.date+" (baru)",v:"UNVERIFIED",del:false,sel:false});
+    closeModal(); render(); toast("Billing ditambahkan — "+rp(amt)+" (belum diverifikasi)");
+  };
+}
+
+/* ---- Edit ---- */
+function openEdit(id){
+  const r=live().find(x=>x.id===id); if(!r||!editable())return;
+  showModal(
+    '<div class="modal"><div class="mhd"><div class="mk">Koreksi · Edit</div><h3>Edit Transaksi</h3>'
+    +'<p>'+r.name+(r.reg?' · '+r.reg:'')+'. Mengedit baris terverifikasi akan menandainya <b>CORRECTED</b>.</p></div>'
+    +'<div class="mbody">'
+      +'<div class="grid2"><div class="field"><label>Tipe Penjamin</label><select id="eG">'
+        +GUARANTORS.map(g=>'<option '+(g===r.g?'selected':'')+'>'+g+'</option>').join('')+'</select></div>'
+      +'<div class="field"><label>Status Kuitansi</label><select id="eRc">'
+        +'<option value="BELUM_LUNAS" '+(r.rc==="BELUM_LUNAS"?'selected':'')+'>Belum Lunas</option>'
+        +'<option value="LUNAS" '+(r.rc==="LUNAS"?'selected':'')+'>Lunas</option></select></div></div>'
+      +'<div class="field"><label>Nominal <span class="req">*</span></label>'
+        +'<div class="money-input"><span class="rp">Rp</span><input type="text" inputmode="numeric" id="eAmt" value="'+r.amt+'"></div>'
+        +'<div class="fpreview" id="eAmtP">'+rp(r.amt)+'</div></div>'
+      +'<div class="field"><label>Alasan Koreksi <span class="req">*</span></label>'
+        +'<textarea id="eReason" placeholder="Jelaskan alasan perubahan (untuk audit)…"></textarea></div>'
+      +'<div class="errline" id="eErr"></div>'
+    +'</div>'
+    +'<div class="mfoot"><button class="btn" onclick="closeModal()">Batal</button>'
+      +'<button class="btn pri" id="eSave">Simpan Perubahan</button></div></div>'
+  );
+  const ai=$("#eAmt"),ao=$("#eAmtP");
+  ai.addEventListener("input",()=>{ai.value=ai.value.replace(/\D/g,"");fmtLive(ai,ao);});
+  $("#eSave").onclick=()=>{
+    const err=$("#eErr");
+    const amt=parseInt(ai.value.replace(/\D/g,"")); const reason=$("#eReason").value.trim();
+    if(isNaN(amt)||amt<0){err.textContent="Nominal wajib diisi (≥ 0).";err.classList.add("on");return;}
+    if(!reason){err.textContent="Alasan koreksi wajib diisi (audit).";err.classList.add("on");return;}
+    r.g=$("#eG").value; r.rc=$("#eRc").value; r.amt=amt;
+    const was=r.v; if(r.v==="VERIFIED"){r.v="CORRECTED";}
+    r.sel=false;
+    closeModal(); render();
+    toast(was==="VERIFIED"?"Transaksi diedit → CORRECTED (verifikasi ulang)":"Transaksi diperbarui");
+  };
+}
+
+/* ---- Hapus ---- */
+function openHapus(id){
+  const r=live().find(x=>x.id===id); if(!r||!editable())return;
+  if(r.rc==="LUNAS"){ toast("Transaksi Lunas tidak boleh dihapus dari sini",true); return; }
+  showModal(
+    '<div class="modal"><div class="mhd"><div class="mk" style="color:var(--alert)">Koreksi · Hapus</div><h3>Hapus Transaksi</h3>'
+    +'<p>'+r.name+' — '+rp(r.amt)+'. Soft-delete: data disimpan untuk audit, keluar dari Total.</p></div>'
+    +'<div class="mbody">'
+      +'<div class="field"><label>Alasan Hapus <span class="req">*</span></label>'
+        +'<textarea id="dReason" placeholder="mis. transaksi dobel, salah input…"></textarea></div>'
+      +'<div class="errline" id="dErr">Alasan wajib diisi.</div>'
+    +'</div>'
+    +'<div class="mfoot"><button class="btn" onclick="closeModal()">Batal</button>'
+      +'<button class="btn ghost-danger" id="dConfirm">Hapus Transaksi</button></div></div>'
+  );
+  $("#dConfirm").onclick=()=>{
+    if(!$("#dReason").value.trim()){$("#dErr").classList.add("on");return;}
+    r.del=true; r.sel=false;
+    closeModal(); render(); toast("Transaksi dihapus (soft-delete)",true);
+  };
+}
+
+/* ---- Tutup Kasir ---- */
+function tryTutup(){
+  const unv=unverifiedAll();
+  if(unv>0){ toast("Tutup diblokir — masih ada "+unv+" transaksi belum diverifikasi",true); return; }
+  const tunaiVer=live().filter(r=>r.pm==="TUNAI"&&r.v==="VERIFIED").reduce((s,r)=>s+r.amt,0);
+  const kasSeharusnya=S.opening+tunaiVer;
+  showModal(
+    '<div class="modal"><div class="mhd"><div class="mk">Fase D</div><h3>Tutup Kasir</h3>'
+    +'<p>Masukkan kas fisik (tunai) di laci. Non-tunai tidak dihitung ke uang fisik.</p></div>'
+    +'<div class="mbody">'
+      +'<div class="calc">'
+        +'<div class="cr"><span class="cl">Saldo Awal</span><span>'+rp(S.opening)+'</span></div>'
+        +'<div class="cr"><span class="cl">Total Tunai Terverifikasi</span><span>'+rp(tunaiVer)+'</span></div>'
+        +'<div class="cr tot"><span>Kas Seharusnya</span><span id="cSeh">'+rp(kasSeharusnya)+'</span></div>'
+      +'</div>'
+      +'<div class="field"><label>Uang Tersedia di Kasir — Kas Fisik <span class="req">*</span></label>'
+        +'<div class="money-input"><span class="rp">Rp</span><input type="text" inputmode="numeric" id="cFis" placeholder="0"></div></div>'
+      +'<div class="calc" style="margin-top:2px"><div class="cr tot"><span>Selisih</span>'
+        +'<span id="cSel" class="selisih">Rp 0</span></div></div>'
+      +'<div class="field" id="noteWrap" style="display:none"><label>Keterangan Selisih <span class="req">*</span></label>'
+        +'<textarea id="cNote" placeholder="Wajib jelaskan selisih lebih/kurang…"></textarea></div>'
+      +'<div class="errline" id="cErr"></div>'
+    +'</div>'
+    +'<div class="mfoot"><button class="btn" onclick="closeModal()">Batal</button>'
+      +'<button class="btn pri" id="cConfirm">Tutup Kasir</button></div></div>'
+  );
+  const fi=$("#cFis"); let selisih=-kasSeharusnya;
+  function upd(){
+    const v=parseInt(fi.value.replace(/\D/g,""))||0;
+    selisih=v-kasSeharusnya;
+    const s=$("#cSel");
+    s.textContent=(selisih>0?"+":"")+rp(selisih);
+    s.className="selisih "+(selisih>0?"pos":(selisih<0?"neg":""));
+    $("#noteWrap").style.display = selisih!==0 ? "" : "none";
+  }
+  fi.addEventListener("input",()=>{fi.value=fi.value.replace(/\D/g,"");upd();});
+  $("#cConfirm").onclick=()=>{
+    const err=$("#cErr");
+    if(fi.value===""){err.textContent="Kas fisik wajib diisi.";err.classList.add("on");return;}
+    const note=(($("#cNote")||{}).value||"").trim();
+    if(selisih!==0 && !note){err.textContent="Selisih ≠ 0 — keterangan wajib diisi.";err.classList.add("on");return;}
+    S.physical=parseInt(fi.value.replace(/\D/g,""))||0;
+    S.variance=selisih; S.note=note; S.status="CLOSED";
+    closeModal(); render();
+    toast(selisih===0?"Kasir ditutup — kas cocok (nihil)":"Kasir ditutup — selisih dicatat");
+  };
+}
+
+/* ---------- EVENT WIRING ---------- */
+$("#btnVerify").onclick=verifySelected;
+$("#btnUnverify").onclick=unverifySelected;
+$("#btnTambah").onclick=openTambah;
+$("#selAll").onchange=e=>{
+  const all=filtered(S.tab); const on=e.target.checked;
+  all.forEach(r=>r.sel=on); render();
+};
+$("#tbody").addEventListener("change",e=>{
+  const cb=e.target.closest("[data-sel]"); if(!cb)return;
+  const r=live().find(x=>x.id===+cb.dataset.sel); if(r){r.sel=cb.checked; render();}
+});
+$("#tbody").addEventListener("click",e=>{
+  const ed=e.target.closest("[data-edit]"); if(ed){openEdit(+ed.dataset.edit);return;}
+  const de=e.target.closest("[data-del]"); if(de && !de.disabled){openHapus(+de.dataset.del);return;}
+});
+$("#search").addEventListener("input",e=>{S.q=e.target.value;S.page=1;render();});
+$("#perPage").addEventListener("change",e=>{S.perPage=+e.target.value;S.page=1;render();});
+$("#prevPg").onclick=()=>{if(S.page>1){S.page--;render();}};
+$("#nextPg").onclick=()=>{S.page++;render();};
+
+render();
+</script>
+</body>
+</html>
