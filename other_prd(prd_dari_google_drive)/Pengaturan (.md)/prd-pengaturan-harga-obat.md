@@ -11,7 +11,6 @@
 * **PIC PRD**: Arif Aminudin
 * **Related Documents**:
     * PRD Master Data Kategori Barang (A33) — sumber daftar **kategori** & **Kelompok Barang** (Farmasi/Gizi/Rumah Tangga) untuk penetapan harga level **group**
-    * PRD Master Data Menu Makanan (A9) — sumber daftar **item Menu Makanan** (level Item) & **kategori menu** (7 nilai **enum internal A9**: Makanan Pokok, Lauk Hewani, Lauk Nabati, Sayur, Buah, Snack, Minuman) untuk penetapan harga level **group** kelompok **Menu Makanan**; **kategori Menu Makanan tidak bersumber A33**
     * PRD Master Data Barang Farmasi (A4), Barang Rumah Tangga (A5), Barang Gizi (A6) — sumber daftar **item barang** untuk penetapan harga level **item**
     * PRD Master Data Tipe Penjamin (A20) — **dimensi tarif** (Umum/BPJS/Asuransi) untuk **multi-tarif per penjamin** (Phase 1)
     * PRD Master Data Kelas (A58) — **dimensi tarif** (**Kelas induk** perawatan: I/II/III/VIP — **bukan Sub Kelas**) untuk **multi-tarif per kelas** (Phase 1)
@@ -34,15 +33,14 @@
 | 2026-07-08 | 1.6 - Draft | **Restrukturisasi domain harga**: **(1)** **Harga Staf dipisah** menjadi **section aturan tersendiri** (`staff_price_rules`) — bukan lagi sub-baris pada Matriks Penjamin×Kelas — karena segmentasi staf/non-staf adalah domain pengaturan berbeda (tetap khusus penjamin **Umum**, flag via **NIK ke A2**). **(2)** Menambah **Margin per Nilai HPP** (`hpp_margin_tiers`): aturan margin berbasis **bracket nilai HPP** (mis. HPP ≤ Rp1.000 → 15%, ≤ Rp2.000 → 12%). **(3)** **Urutan level harga (spesifik → umum)** ditetapkan: **Item > Kategori > Tier HPP > Default 35%**; Harga Staf = overlay terpisah untuk transaksi Umum. Field `segmen_pembeli` dihapus dari `item_price_rules` (BR-006/014/016/017/018). |
 | 2026-07-08 | 1.7 - Draft | **Klarifikasi/penajaman**: **(1)** **Tier HPP berbasis HPP satuan item** — aturan bracket dievaluasi memakai HPP satuan barang, sehingga efektif berlaku di **level Item** (di antara Kategori & Default). **(2)** **Aturan Harga Staf kini berdimensi Tipe Pelayanan × Kelas** (Tipe Penjamin **tetap Umum saja**); `staff_price_rules` menambah `tipe_pelayanan` & `kelas_id`. **(3)** **Harga jual disimpan sebagai snapshot** (`harga_jual_terakhir`) & **dihitung ulang saat HPP berubah** — bracket Tier ikut **re-evaluasi** (mis. HPP Rp999 → 10%, setelah update Rp1.002 → 15%). Menutup 4 pertanyaan terbuka (snapshot; dimensi staf; cakupan tier; **urutan prioritas dimensi = pelayanan > penjamin > kelas**, terbesar→terkecil). |
 | 2026-07-08 | 1.8 - Draft | **Konfirmasi 4 keputusan terakhir** (menutup seluruh pertanyaan terbuka): **(1)** Dimensi **Kelas = level Kelas induk saja** (I/II/III/VIP), **bukan Sub Kelas** — `kelas_id` merujuk kelas induk. **(2)** Item **"belum berharga"** di titik jual → **warning non-blocking** (tidak memblokir transaksi; petugas dapat lanjut/input manual). **(3)** **Tidak ada default kelipatan pembulatan** yang dipaksakan; **Tier HPP & Default margin tanpa kelipatan** (pembulatan ke atas ke rupiah); kelipatan opsional hanya pada aturan matriks. **(4)** **"Semua Penjamin" tidak wajib** dibuat lebih dulu sebagai baseline — celah tertutup inheritance → Tier/Default 35%. |
-| 2026-07-09 | 1.9 - Draft | Menambah **kelompok barang keempat: Menu Makanan (A9)** pada cakupan Pengaturan Harga. **(1)** `kelompok_barang` menambah enum **`MENU_MAKANAN`**; item level-Item bersumber **Master Data Menu Makanan (A9)** (bukan A4/A5/A6). **(2)** **Kategori Menu Makanan** memakai **7 nilai enum internal A9** (Makanan Pokok, Lauk Hewani, Lauk Nabati, Sayur, Buah, Snack, Minuman) — **bukan** kategori A33; aturan level Kategori memakai enum ini. **(3)** Seluruh mekanisme harga (Matriks Penjamin×Kelas×Pelayanan, Tier HPP, Default 35%, Harga Staf, resolver) berlaku sama untuk Menu Makanan. **HPP Menu Makanan (dikonfirmasi)** = **agregasi biaya bahan komposisi resep** (Σ BDD×harga bahan Barang Gizi A6, mengikuti metode persediaan FIFO/Average) — bukan input manual; perubahan HPP bahan memicu recompute harga menu (Persentase/Tier). |
-| 2026-07-09 | 2.0 - Draft | **Dua penajaman**: **(1) HPP Menu Makanan (A9) dikonfirmasi** = **agregasi biaya bahan komposisi** menu (Σ BDD×harga bahan Barang Gizi A6, mengikuti metode persediaan FIFO/Average) — **bukan** input manual; perubahan HPP bahan memicu recompute harga menu (Persentase/Tier). **(2) Margin per Nilai HPP (Tier) diubah scope-nya**: aturan **dibuat per (Kelompok Barang × Kategori)** — **tidak dapat dibuat per item**; bracket dipilih memakai HPP satuan tiap item dalam kategori. **Bila suatu kategori tidak memiliki aturan Tier → kembali ke Default Sistem 35%** (BR-016). `hpp_margin_tiers` menambah kolom `kelompok_barang` & `kategori_id`; non-overlap divalidasi per kategori (BR-018). |
+| 2026-07-21 | 2.1 - Draft | Cakupan Pengaturan Harga ditegaskan hanya untuk Barang Farmasi (A4), Barang Rumah Tangga (A5), dan Barang Gizi (A6). Margin per Nilai HPP tetap dibuat per (Kelompok Barang x Kategori); kategori tanpa Tier kembali ke Default Sistem 35% (BR-016). |
 
 ---
 
 ## 2. Overview & Background
 
 * **Overview / Brief Summary**:
-  **Pengaturan Harga** (kode **A59**) adalah fitur pada **Menu Pengaturan** yang mengelola **penetapan harga jual** barang secara terpusat untuk empat kelompok barang: **Barang Farmasi (A4)**, **Barang Rumah Tangga (A5)**, **Barang Gizi (A6)**, dan **Menu Makanan (A9)**.
+  **Pengaturan Harga** (kode **A59**) adalah fitur pada **Menu Pengaturan** yang mengelola **penetapan harga jual** barang secara terpusat untuk tiga kelompok barang: **Barang Farmasi (A4)**, **Barang Rumah Tangga (A5)**, dan **Barang Gizi (A6)**.
 
   Harga jual ditetapkan dengan **dua metode**:
     * **Persentase (%)** — markup dinyatakan sebagai persentase dari nilai **HPP**. `harga_jual = pembulatan_ke_atas( HPP × (1 + nilai/100) )`. Karena bergantung HPP, harga jual **dihitung ulang otomatis** saat HPP berubah (menjaga margin). Persentase **tidak dibatasi** (boleh > 100%).
@@ -70,7 +68,7 @@
 
   **Aturan Harga Staf — domain terpisah.** Segmentasi **staf / non-staf** dikelola pada **section pengaturan tersendiri** (bukan bagian dari Matriks Penjamin×Kelas) karena merupakan domain yang berbeda. Aturan Harga Staf **hanya berlaku pada transaksi berpenjamin Umum** (Tipe Penjamin **selalu Umum**) untuk pasien yang ditandai **staf** (via pencocokan **NIK ke Master Data Staff A2**), namun **tetap dapat dibedakan per Tipe Pelayanan × Kelas** (mis. staf Rawat Inap Kelas I ≠ staf Rawat Jalan). Bila ada aturan staf untuk item/kategori tsb → dipakai; bila tidak → pasien-staf mengikuti **harga Umum normal** (Item→Kategori→Tier→Default). Untuk **BPJS/Asuransi**, aturan staf **diabaikan total** (BR-014).
 
-  Modul ini menjadi **sumber kebenaran tunggal** aturan harga jual yang dikonsumsi runtime oleh **Pelayanan Farmasi, Kasir, dan Billing** (dengan konteks **Tipe Pelayanan, Tipe Penjamin (termasuk flag staf), dan Kelas** transaksi). Modul ini **bukan** master barang (A4/A5/A6/A9) dan **bukan** modul stok/HPP (HPP berasal dari Inventori/Pengadaan) — A59 hanya **memetakan aturan pembentuk harga jual**.
+  Modul ini menjadi **sumber kebenaran tunggal** aturan harga jual yang dikonsumsi runtime oleh **Pelayanan Farmasi, Kasir, dan Billing** (dengan konteks **Tipe Pelayanan, Tipe Penjamin (termasuk flag staf), dan Kelas** transaksi). Modul ini **bukan** master barang (A4/A5/A6) dan **bukan** modul stok/HPP (HPP berasal dari Inventori/Pengadaan) — A59 hanya **memetakan aturan pembentuk harga jual**.
 
   > `[ASUMSI]` **HPP** = harga perolehan satuan barang yang dihitung modul Inventori/Pengadaan **sesuai konfigurasi metode persediaan** (FIFO atau Average). Nilai dasar yang dibaca A59 = **HPP satuan terkini** dari modul persediaan (untuk FIFO = HPP satuan lapisan berjalan; untuk Average = HPP rata-rata tertimbang).
 
@@ -86,7 +84,7 @@
 
     * **To-Be** (workflow digital baru):
         1. **Bagian Keuangan** membuka **Pengaturan > Pengaturan Harga** — memuat **3 section**: **Matriks Harga**, **Margin per Nilai HPP**, & **Aturan Harga Staf**.
-        2. Sistem menampilkan daftar aturan (Matriks) harga, dapat difilter per **Kelompok Barang** (Farmasi/Gizi/Rumah Tangga/Menu Makanan), **tingkat** (Kategori/Item), **Tipe Pelayanan**, **Tipe Penjamin**, dan **Kelas**.
+        2. Sistem menampilkan daftar aturan (Matriks) harga, dapat difilter per **Kelompok Barang** (Farmasi/Gizi/Rumah Tangga), **tingkat** (Kategori/Item), **Tipe Pelayanan**, **Tipe Penjamin**, dan **Kelas**.
         3. Petugas menetapkan aturan **level Kategori**: pilih kategori (A33) → **Tipe Pelayanan** (Rawat Jalan/Rawat Inap/IGD/Penunjang atau **Semua Pelayanan**) → pada matriks pilih **Tipe Penjamin** & **Kelas** (masing-masing bisa "Semua") → **metode** (Nominal/Persentase) → **nilai** → sistem menampilkan **preview harga jual** sampel item.
         4. Bila perlu, ditetapkan aturan **level Item** sebagai **override** kategori.
         5. Pada section **Margin per Nilai HPP**, petugas memilih **Kelompok Barang → Kategori**, lalu menyusun **bracket HPP → margin %** (mis. HPP ≤ Rp1.000 = 15%, ≤ Rp2.000 = 12%) untuk kategori tsb (**tidak per item**) sebagai fallback di atas Default 35%; kategori tanpa aturan Tier jatuh ke Default 35% (BR-018).
@@ -100,7 +98,7 @@
 
 | No | Metrics | Success Criteria |
 |----|---------|------------------|
-| 1 | Standarisasi harga | 100% barang aktif (Farmasi/RT/Gizi/Menu Makanan) berharga — via aturan Item/Kategori atau default margin 35% — untuk minimal penjamin "Umum/Semua" |
+| 1 | Standarisasi harga | 100% barang aktif (Farmasi/RT/Gizi) berharga — via aturan Item/Kategori atau default margin 35% — untuk minimal penjamin "Umum/Semua" |
 | 2 | Efisiensi pengaturan massal | Menetapkan harga 1 kategori (mencakup N item) selesai < 1 menit tanpa mengubah item satu per satu |
 | 3 | Multi-tarif konsisten | Harga per Tipe Penjamin (Umum/BPJS/Asuransi) terkelola dari satu tempat; 0 perbedaan harga yang dikelola manual di luar A59 |
 | 4 | Deteksi jual rugi | 100% kasus `harga_jual < HPP` memunculkan peringatan ke petugas saat penetapan |
@@ -138,9 +136,9 @@
 
 | No | Scope |
 |----|-------|
-| 1 | **Definisi/CRUD barang & menu** (nama, satuan, kode, atribut klinis, komposisi menu) — dikelola A4/A5/A6/A9. |
+| 1 | **Definisi/CRUD barang** (nama, satuan, kode, atribut) — dikelola A4/A5/A6. |
 | 2 | **Perhitungan HPP / stok / batch / harga beli & konfigurasi metode persediaan (FIFO/Average)** — dikelola Inventori & Pengadaan. A59 hanya **membaca** HPP satuan. |
-| 3 | **CRUD kategori barang, kelompok barang, kategori/menu makanan, Tipe Penjamin & Kelas** — dikelola A33/A20/A58/**A9** (kategori Menu Makanan = enum A9). A59 hanya **merujuk** (lookup). |
+| 3 | **CRUD kategori barang, kelompok barang, kategori, Tipe Penjamin & Kelas** — dikelola A33/A20/A58. A59 hanya **merujuk** (lookup). |
 | 4 | **Diskon transaksional / promo / potongan per resep** di titik jual — domain Kasir/Billing. |
 | 5 | **Tarif tindakan/pelayanan/kamar** (bukan barang) — dikelola master tarif masing-masing (mis. A43 Tarif Kamar). |
 | 6 | **Harga berjadwal (effective date)** & **approval berjenjang** — Phase 2. |
@@ -152,11 +150,10 @@
 | Code | Menu | Deskripsi Relasi (Teknis / Bisnis) |
 |------|------|-------------------------------------|
 | **A59** | Pengaturan > Pengaturan Harga | **Modul ini** |
-| A33 | Master Data > Kategori Barang | **Lookup wajib** — sumber `kategori_id` & `kelompok_barang` (Farmasi/Gizi/Rumah Tangga) untuk aturan level Kategori (**kelompok Menu Makanan memakai enum kategori A9, bukan A33**). |
+| A33 | Master Data > Kategori Barang | **Lookup wajib** — sumber `kategori_id` & `kelompok_barang` (Farmasi/Gizi/Rumah Tangga). |
 | A4 | Master Data > Barang Farmasi | Sumber `item_id` (Kelompok Farmasi) untuk aturan level Item; konsumen harga saat peresepan/penjualan. |
 | A5 | Master Data > Barang Rumah Tangga | Sumber `item_id` (Kelompok Rumah Tangga) untuk aturan level Item. |
 | A6 | Master Data > Barang Gizi | Sumber `item_id` (Kelompok Gizi) untuk aturan level Item. |
-| **A9** | Master Data > Menu Makanan | **Lookup (kelompok Menu Makanan)** — sumber `item_id` menu (level Item) & **kategori menu** (7 nilai **enum internal A9**: Makanan Pokok, Lauk Hewani, Lauk Nabati, Sayur, Buah, Snack, Minuman) untuk aturan level Kategori. **Kategori Menu Makanan berasal dari enum A9, bukan A33.** |
 | **A20** | Master Data > Tipe Penjamin | **Lookup wajib (Phase 1)** — dimensi `tipe_penjamin_id` (Umum/BPJS/Asuransi) untuk multi-tarif; nilai khusus "Semua Penjamin" (null) = default. |
 | **A58** | Master Data > Kelas | **Lookup wajib (Phase 1)** — dimensi `kelas_id` (**Kelas induk saja**: I/II/III/VIP, **bukan Sub Kelas**) untuk multi-tarif; nilai khusus "Semua Kelas" (null) = default. |
 | (enum) | Enum Tipe Pelayanan | **Konteks tarif (Phase 1)** — **enum tetap sistem** (bukan master ber-CRUD): `tipe_pelayanan` (Rawat Jalan/Rawat Inap/IGD/Penunjang); nilai khusus "Semua Pelayanan" (null) = default. |
@@ -231,7 +228,7 @@ Prioritas: **P0** Critical/MVP · **P1** Must Have · **P2** Should Have · **P3
 
   | Field | Tipe Input | Rules | Error Message | Helper Text |
   |-------|------------|-------|---------------|-------------|
-  | Kelompok Barang | Dropdown | Required; Farmasi/Gizi/Rumah Tangga/Menu Makanan | "Kelompok Barang wajib dipilih." | "Menentukan daftar kategori/item yang tampil" |
+  | Kelompok Barang | Dropdown | Required; Farmasi/Gizi/Rumah Tangga | "Kelompok Barang wajib dipilih." | "Menentukan daftar kategori/item yang tampil" |
   | Kategori | Dropdown (A33) | Required; kategori aktif sesuai kelompok | "Kategori wajib dipilih." | "Hanya kategori aktif pada kelompok terpilih" |
   | Tipe Pelayanan | Selektor/Tab | Required (boleh "Semua Pelayanan"); Rawat Jalan/Rawat Inap/IGD/Penunjang | "Pilih tipe pelayanan atau Semua Pelayanan." | "Konteks matriks; Semua Pelayanan = default yang diwarisi" |
   | Metode | Radio | Required; NOMINAL / PERSENTASE (berlaku matriks) | "Pilih metode penetapan harga." | "Persentase = markup % dari HPP; Nominal = harga jual final (Rp)" |
@@ -245,7 +242,7 @@ Prioritas: **P0** Critical/MVP · **P1** Must Have · **P2** Should Have · **P3
 * **Prioritas**: P0
 * **Fase**: Phase 1
 * **Acceptance Criteria**:
-    * **AC 1**: Form memilih **Kelompok Barang** → **Item Barang** (dropdown/pencarian A4/A5/A6/A9, item aktif) → **Tipe Pelayanan** (selektor konteks, termasuk Semua Pelayanan) → **Metode** & **Pembulatan**, lalu tampil **Matriks Harga** (Penjamin × Kelas) untuk item pada pelayanan tsb.
+    * **AC 1**: Form memilih **Kelompok Barang** → **Item Barang** (dropdown/pencarian A4/A5/A6, item aktif) → **Tipe Pelayanan** (selektor konteks, termasuk Semua Pelayanan) → **Metode** & **Pembulatan**, lalu tampil **Matriks Harga** (Penjamin × Kelas) untuk item pada pelayanan tsb.
     * **AC 2**: Menampilkan **HPP satuan terkini** item; tiap sel matriks menghitung harga dari HPP tsb (Persentase) atau harga final (Nominal), dibulatkan ke atas.
     * **AC 3**: Sel matriks **Item** yang terisi **meng-override** matriks **Kategori** (lalu Tier HPP → Default) untuk item tersebut pada kombinasi (tipe pelayanan, penjamin, kelas) — BR-001.
     * **AC 4**: Menyimpan meng-upsert satu aturan aktif per sel terisi; sel kosong menghapus aturan sel itu (BR-006).
@@ -338,10 +335,10 @@ Prioritas: **P0** Critical/MVP · **P1** Must Have · **P2** Should Have · **P3
 |-------|------|-------|--------------------|----------|------------|
 | `id` | UUID | Ya | auto | PK | |
 | `scope_type` | enum | Ya | pilihan user | `KATEGORI` / `ITEM` | tingkat aturan (group vs detail) |
-| `kelompok_barang` | enum | Ya | A33 / A9 / pilihan | `FARMASI` / `GIZI` / `RUMAH_TANGGA` / `MENU_MAKANAN` | filter & konsistensi kelompok; **`MENU_MAKANAN` → item & kategori dari A9** |
-| `kategori_id` | UUID (FK A33) / kode enum A9 | Kondisional | lookup A33 (Farmasi/RT/Gizi) **atau** enum kategori A9 (Menu Makanan) | wajib bila `scope_type=KATEGORI`; opsional (info) bila ITEM | kategori target; utk `MENU_MAKANAN` = **kode kategori enum A9** (Makanan Pokok/Lauk Hewani/Lauk Nabati/Sayur/Buah/Snack/Minuman), bukan FK A33 |
-| `item_type` | enum | Kondisional | — | `FARMASI`/`RUMAH_TANGGA`/`GIZI`/`MENU_MAKANAN`; wajib bila ITEM | menentukan master item (A4/A5/A6/A9); `MENU_MAKANAN` → A9 |
-| `item_id` | UUID | Kondisional | lookup A4/A5/A6/A9 | wajib bila `scope_type=ITEM` | item target (polymorphic by `item_type`; `MENU_MAKANAN` → menu A9) |
+| `kelompok_barang` | enum | Ya | A33 / pilihan | `FARMASI` / `GIZI` / `RUMAH_TANGGA` | filter & konsistensi kelompok barang |
+| `kategori_id` | UUID (FK A33) | Kondisional | lookup A33 (Farmasi/RT/Gizi) | wajib bila `scope_type=KATEGORI`; opsional (info) bila ITEM | kategori target sesuai kelompok barang |
+| `item_type` | enum | Kondisional | — | `FARMASI`/`RUMAH_TANGGA`/`GIZI`; wajib bila ITEM | menentukan master item (A4/A5/A6) |
+| `item_id` | UUID | Kondisional | lookup A4/A5/A6 | wajib bila `scope_type=ITEM` | item target (polymorphic by `item_type`) |
 | `tipe_penjamin_id` | UUID (FK A20) | Tidak | lookup A20 | null = **Semua Penjamin** (baris default) | **baris Matriks Harga (Phase 1)** |
 | `kelas_id` | UUID (FK A58) | Tidak | lookup A58 (**Kelas induk saja**) | null = **Semua Kelas** (kolom default) | **kolom Matriks Harga (Phase 1)**; hanya **Kelas induk** (I/II/III/VIP), bukan Sub Kelas |
 | `tipe_pelayanan` | enum | Tidak | pilihan user | `RAWAT_JALAN`/`RAWAT_INAP`/`IGD`/`PENUNJANG`; null = **Semua Pelayanan** | **konteks Matriks Harga (Phase 1)**; null = default warisan |
@@ -371,7 +368,7 @@ Prioritas: **P0** Critical/MVP · **P1** Must Have · **P2** Should Have · **P3
 
 > **Model Matriks**: seluruh baris `item_price_rules` dengan **(scope, target, `tipe_pelayanan`) sama** membentuk **satu Matriks Harga** untuk satu **konteks pelayanan** — tiap baris = satu **sel** `(tipe_penjamin_id, kelas_id)`. Editor menyimpan matriks sebagai kumpulan sel (upsert per sel terisi; hapus sel yang dikosongkan). Uniqueness di atas menjamin **satu sel = satu aturan aktif**.
 >
-> **Tabel `hpp_margin_tiers`** (Margin per Nilai HPP — BR-018): `id`, **`kelompok_barang`** (enum, wajib), **`kategori_id`** (FK A33 / kode enum A9 utk Menu Makanan, wajib — **scope aturan Tier**), `hpp_min` (decimal ≥0), `hpp_max` (decimal, nullable = ∞), `margin_persen` (decimal ≥0), `urutan` (int), `is_active` (bool), audit. **Aturan Tier dibuat per (`kelompok_barang`, `kategori_id`) — tidak ada Tier per item.** Bracket **tidak boleh tumpang-tindih dalam satu (kelompok × kategori)**; resolver mengambil tabel Tier pada scope kategori item lalu memilih baris yang `hpp_min ≤ HPP_satuan_item ≤ COALESCE(hpp_max, ∞)` — bracket dipilih memakai **HPP satuan item**. **Bila kategori item tak punya aturan Tier → Default 35%** (BR-016). Harga hasil disimpan **snapshot** & di-recompute saat HPP berubah (item dapat pindah bracket). **Tanpa kolom kelipatan pembulatan** — harga dibulatkan **ke atas ke rupiah** (BR-009). Non-overlap dijaga per (`kelompok_barang`, `kategori_id`, rentang HPP) saat `is_active=true`.
+> **Tabel `hpp_margin_tiers`** (Margin per Nilai HPP — BR-018): `id`, **`kelompok_barang`** (enum, wajib), **`kategori_id`** (FK A33, wajib — **scope aturan Tier**), `hpp_min` (decimal ≥0), `hpp_max` (decimal, nullable = ∞), `margin_persen` (decimal ≥0), `urutan` (int), `is_active` (bool), audit. **Aturan Tier dibuat per (`kelompok_barang`, `kategori_id`) — tidak ada Tier per item.** Bracket **tidak boleh tumpang-tindih dalam satu (kelompok × kategori)**; resolver mengambil tabel Tier pada scope kategori item lalu memilih baris yang `hpp_min ≤ HPP_satuan_item ≤ COALESCE(hpp_max, ∞)` — bracket dipilih memakai **HPP satuan item**. **Bila kategori item tak punya aturan Tier → Default 35%** (BR-016). Harga hasil disimpan **snapshot** & di-recompute saat HPP berubah (item dapat pindah bracket). **Tanpa kolom kelipatan pembulatan** — harga dibulatkan **ke atas ke rupiah** (BR-009). Non-overlap dijaga per (`kelompok_barang`, `kategori_id`, rentang HPP) saat `is_active=true`.
 >
 > **Tabel `staff_price_rules`** (Aturan Harga Staf — domain terpisah, BR-014): `id`, `scope_type` (`KATEGORI`/`ITEM`), `kelompok_barang`, `kategori_id` / (`item_type`+`item_id`), **`tipe_pelayanan`** (nullable = Semua Pelayanan), **`kelas_id`** (FK A58, nullable = Semua Kelas), `metode` (`NOMINAL`/`PERSENTASE`), `nilai` (decimal ≥0), `pembulatan_kelipatan`, `harga_jual_terakhir`, `is_active`, audit. **Tanpa kolom penjamin** — implisit **Umum**. `UNIQUE(scope_type, COALESCE(kategori_id, item_id), COALESCE(tipe_pelayanan,'ALL'), COALESCE(kelas_id,'ALL')) WHERE is_active=true`. Resolusi: **Staf-Item → Staf-Kategori**, tiap level **pelayanan spesifik → Semua Pelayanan** & **kelas spesifik → Semua Kelas**. Hanya di-resolve untuk transaksi **Umum + pasien staf**.
 >
@@ -400,9 +397,8 @@ Prioritas: **P0** Critical/MVP · **P1** Must Have · **P2** Should Have · **P3
 | Field | Label | Tipe | Wajib | Validasi | Sumber | Catatan |
 |-------|-------|------|-------|----------|--------|---------|
 | scope_type | Tingkat Aturan | Radio/Tab | Ya | KATEGORI / ITEM | pilihan | menentukan form (group vs detail) |
-| kelompok_barang | Kelompok Barang | Dropdown | Ya | Farmasi/Gizi/Rumah Tangga/Menu Makanan | A33/A9 | memfilter daftar kategori/item; Menu Makanan → A9 |
-| kategori_id | Kategori | Dropdown | Ya (bila KATEGORI) | kategori aktif sesuai kelompok | lookup A33 (Farmasi/RT/Gizi) / enum A9 (Menu Makanan) | target group |
-| item_id | Item Barang | Dropdown/Search | Ya (bila ITEM) | item aktif sesuai kelompok | lookup A4/A5/A6/A9 | target detail (override) |
+| `kategori_id` | UUID (FK A33) | Kondisional | lookup A33 (Farmasi/RT/Gizi) | wajib bila `scope_type=KATEGORI`; opsional (info) bila ITEM | kategori target sesuai kelompok barang |
+| `item_id` | UUID | Kondisional | lookup A4/A5/A6 | wajib bila `scope_type=ITEM` | item target (polymorphic by `item_type`) |
 | tipe_penjamin_id | Tipe Penjamin | Dropdown | Ya (boleh "Semua") | penjamin aktif | lookup A20 | dimensi multi-tarif; "Semua" = default |
 | kelas_id | Kelas | Dropdown | Ya (boleh "Semua") | **Kelas induk** aktif | lookup A58 (induk saja) | dimensi multi-tarif; "Semua" = default; bukan Sub Kelas |
 | tipe_pelayanan | Tipe Pelayanan | Selektor/Tab | Ya (boleh "Semua") | Rawat Jalan/Rawat Inap/IGD/Penunjang | enum | konteks matriks; "Semua Pelayanan" = default warisan |
@@ -418,7 +414,7 @@ Prioritas: **P0** Critical/MVP · **P1** Must Have · **P2** Should Have · **P3
 
 | Kolom | Sumber Data | Format | Filter / Sort | Catatan |
 |-------|-------------|--------|---------------|---------|
-| Kelompok Barang | `kelompok_barang` | badge | Filter | Farmasi/Gizi/Rumah Tangga/Menu Makanan |
+| Kelompok Barang | `kelompok_barang` | badge | Filter | Farmasi/Gizi/Rumah Tangga |
 | Tingkat | `scope_type` | badge | Filter | Kategori / Item |
 | Target | `kategori.nama` / `item.nama_barang` | text | Search | nama kategori atau item |
 | Tipe Pelayanan | `tipe_pelayanan` / "Semua" | badge | Filter | Rawat Jalan/Rawat Inap/IGD/Penunjang |
@@ -438,7 +434,7 @@ Prioritas: **P0** Critical/MVP · **P1** Must Have · **P2** Should Have · **P3
 * **BR-004 (Sumber & sinkronisasi HPP)** — HPP satuan dibaca dari **modul Inventori/Pengadaan sesuai konfigurasi metode persediaan (FIFO / Average)**: FIFO → HPP satuan lapisan berjalan; Average → HPP rata-rata tertimbang. Untuk metode **Persentase**, perubahan HPP **memicu perhitungan ulang** harga jual (menjaga margin). Untuk metode **Nominal**, harga jual **tidak** terpengaruh HPP. Bila HPP belum tersedia (=0/null): aturan Persentase **maupun default margin 35%** → item "belum berharga"; aturan Nominal → tetap berharga. **Harga jual disimpan sebagai snapshot** (`harga_jual_terakhir`); perubahan HPP memicu **recompute** untuk aturan **Persentase, Tier HPP, & Default** — termasuk **re-evaluasi bracket Tier** (item dapat pindah bracket, mis. HPP Rp999 → Rp1.002).
 * **BR-005 (Peringatan jual rugi — non-blocking)** — Bila `harga_jual < HPP`, sistem menampilkan **peringatan** kepada petugas namun **tidak memblokir** penyimpanan/penjualan (keputusan tetap di tangan Bagian Keuangan).
 * **BR-006 (Keunikan aturan aktif)** — Maksimal **satu aturan aktif** per kombinasi: **(Kategori × Tipe Pelayanan × Tipe Penjamin × Kelas)** dan **(Item × Tipe Pelayanan × Tipe Penjamin × Kelas)** ("Semua"/null pada tiap dimensi dihitung sebagai satu nilai). Untuk **Aturan Harga Staf**: satu aturan aktif per **(scope × target)**; untuk **Tier HPP**: bracket tidak tumpang-tindih (BR-018). Membuat aturan baru untuk kombinasi yang sudah punya aturan aktif ditolak (arahkan edit).
-* **BR-007 (Konsistensi kelompok & lookup)** — Aturan Kategori hanya untuk kategori pada kelompok yang benar (A33); aturan Item hanya untuk item dari master yang sesuai kelompoknya (Farmasi→A4, Rumah Tangga→A5, Gizi→A6, Menu Makanan→A9). Tipe Penjamin (A20) & Kelas (A58) diambil dari master aktif.
+* **BR-007 (Konsistensi kelompok & lookup)** — Aturan Kategori hanya untuk kategori pada kelompok yang benar (A33); aturan Item hanya untuk item dari master yang sesuai kelompoknya (Farmasi→A4, Rumah Tangga→A5, Gizi→A6). Tipe Penjamin (A20) & Kelas (A58) diambil dari master aktif.
 * **BR-008 (Tanpa hapus permanen)** — Aturan hanya dinonaktifkan (soft delete via `is_active`); histori & audit tetap utuh.
 * **BR-009 (Pembulatan ke atas)** — Arah pembulatan **selalu ke atas**. **Kelipatan** (`pembulatan_kelipatan`) bersifat **opsional** & hanya pada **aturan matriks** (Kategori/Item); **tidak ada kelipatan default yang dipaksakan** (default `TANPA` → dibulatkan ke atas ke **rupiah terdekat**). **Tier HPP & Default margin 35% tidak memakai kelipatan** (`↑` ke rupiah) — granularitas harga sudah dicover oleh margin default sistem. Bila kelipatan diisi (mis. 100): 12.340 → 12.400.
 * **BR-010 (RBAC — Bagian Keuangan)** — Hanya role **Bagian Keuangan** (via RBAC A53) yang boleh create/edit/toggle aturan harga. (Pemisahan penetap vs peninjau menuju approval Phase 2.)
@@ -447,7 +443,7 @@ Prioritas: **P0** Critical/MVP · **P1** Must Have · **P2** Should Have · **P3
 * **BR-013 (Phase 3 — COA)** — Nilai jual (pendapatan) & HPP (beban pokok) diteruskan ke jurnal via pemetaan `coa_pendapatan_id`/`coa_persediaan_id`; hanya aktif Phase 3.
 * **BR-014 (Aturan Harga Staf — domain terpisah, hanya Umum)** — Harga staf dikelola pada **section/tabel tersendiri** (`staff_price_rules`), **bukan** bagian dari Matriks Penjamin×Kelas. Aturan staf **hanya valid & hanya di-resolve** untuk transaksi berpenjamin **Umum** dengan pasien ditandai **staf**. Aturan staf **berdimensi Tipe Pelayanan × Kelas** (Tipe Penjamin **selalu Umum**, tanpa dimensi penjamin). Resolusi staf: **Staf-Item → Staf-Kategori**, tiap level dengan **pelayanan spesifik → Semua Pelayanan** & **kelas spesifik → Semua Kelas**; bila tak ada → pasien-staf mengikuti **harga Umum normal** (Item→Kategori→Tier HPP→Default 35%). Untuk **BPJS/Asuransi**, aturan staf **diabaikan total**. **Penentuan status staf**: saat **pendaftaran pasien**, **NIK pasien dicocokkan ke Master Data Staff (A2)** (NIK wajib & unik 16 digit); cocok dengan **staf aktif** → pasien = **staf**. Karena berbasis **NIK pasien**, hanya **individu staf** yang berhak; keluarga/tanggungan dengan NIK berbeda **tidak** otomatis mendapat harga staf.
 * **BR-015 (Dimensi Tipe Pelayanan)** — Harga dapat dibedakan per **Tipe Pelayanan** (`RAWAT_JALAN`/`RAWAT_INAP`/`IGD`/`PENUNJANG`). `tipe_pelayanan` = null berarti **Semua Pelayanan** — **default** yang diwarisi bila tak ada aturan spesifik pelayanan. Resolver mengevaluasi **pelayanan spesifik → Semua Pelayanan** (pada tiap level Item/Kategori) sebelum menyimpulkan "belum berharga". `tipe_pelayanan` = **enum tetap sistem** (bukan master ber-CRUD).
-* **BR-016 (Default Margin Global 35%)** — Bila untuk suatu barang tidak ada aturan yang berlaku pada level **Item, Kategori, maupun Tier HPP** & konteksnya, sistem menerapkan **markup default 35% (Persentase atas HPP)** sebagai harga jual: `harga_jual = ↑(HPP × 1,35)`, **berlaku seragam untuk semua kelompok barang** (Farmasi/Rumah Tangga/Gizi/Menu Makanan). Nilai default = konfigurasi global `default_margin_persen` (`[ASUMSI]` **35**, dapat diubah **Bagian Keuangan**). Konsekuensi: barang dengan **HPP tersedia selalu berharga**; **"belum berharga"** hanya bila HPP belum tersedia (untuk Persentase/Tier/Default) & tak ada aturan Nominal. Baseline default matriks (Semua Pelayanan × Semua Penjamin × Semua Kelas) juga di-preset **+35%**. **Precedence: Item > Kategori > Tier HPP > Default 35%**.
+* **BR-016 (Default Margin Global 35%)** — Bila untuk suatu barang tidak ada aturan yang berlaku pada level **Item, Kategori, maupun Tier HPP** & konteksnya, sistem menerapkan **markup default 35% (Persentase atas HPP)** sebagai harga jual: `harga_jual = ↑(HPP × 1,35)`, **berlaku seragam untuk semua kelompok barang** (Farmasi/Rumah Tangga/Gizi). Nilai default = konfigurasi global `default_margin_persen` (`[ASUMSI]` **35**, dapat diubah **Bagian Keuangan**). Konsekuensi: barang dengan **HPP tersedia selalu berharga**; **"belum berharga"** hanya bila HPP belum tersedia (untuk Persentase/Tier/Default) & tak ada aturan Nominal. Baseline default matriks (Semua Pelayanan × Semua Penjamin × Semua Kelas) juga di-preset **+35%**. **Precedence: Item > Kategori > Tier HPP > Default 35%**.
 * **BR-017 (Aturan Harga Staf = section terpisah)** — Segmentasi staf/non-staf adalah **domain pengaturan berbeda** dan dikelola pada **section tersendiri** (`staff_price_rules`), terpisah dari Matriks Penjamin×Kelas; perubahan pada satu section tidak memengaruhi yang lain. (Resolusi & batasan Umum-only: BR-014.)
 * **BR-018 (Margin per Nilai HPP — Tier)** — RS dapat menyusun **bracket margin** (`hpp_margin_tiers`) yang **dibuat per (`kelompok_barang`, `kategori_id`)** — **tidak dapat dibuat per item**. Tiap bracket = rentang HPP → `margin_persen`. Bila item tak punya aturan Item/Kategori untuk konteksnya, resolver mengambil **tabel Tier milik (Kelompok × Kategori) item** lalu memilih bracket yang memuat **HPP satuan item** → `harga_jual = ↑(HPP × (1 + margin/100))`. Bracket **tidak boleh tumpang-tindih dalam satu kategori**; **bila kategori item tidak memiliki aturan Tier (tak diatur) atau tak ada bracket cocok → kembali ke Default 35% (aturan sistem)** (BR-016). Urutan level: **Item > Kategori > Tier HPP > Default**. Bracket dipilih via HPP satuan item, sehingga **harga disimpan snapshot & di-recompute saat HPP berubah** — item dapat **pindah bracket** (mis. HPP **Rp999 → 15%** [0–1.000], setelah update **Rp1.002 → 12%** [1.001–2.000]). Contoh (untuk satu kategori): HPP 0–1.000 → 15%, 1.001–2.000 → 12%, > 2.000 → 10%.
 
@@ -516,11 +512,9 @@ Prioritas: **P0** Critical/MVP · **P1** Must Have · **P2** Should Have · **P3
 * **"Semua Penjamin" tidak wajib** dibuat lebih dulu sebagai baseline — sel/aturan boleh langsung spesifik; celah tertutup inheritance → Tier/Default 35% (dikonfirmasi).
 * **Hak akses = Bagian Keuangan** (via RBAC A53).
 * **HPP** mengikuti **konfigurasi metode persediaan (FIFO/Average)** di Inventori; A59 membaca **HPP satuan terkini**. **Harga jual = snapshot** (`harga_jual_terakhir`), di-recompute saat HPP berubah (Persentase, Tier HPP, & Default — termasuk re-evaluasi bracket Tier); Nominal → tetap.
-* **HPP Menu Makanan (A9) — dikonfirmasi**: HPP menu = **agregasi biaya bahan komposisinya** (Σ BDD×harga bahan Barang Gizi A6, sesuai metode persediaan FIFO/Average), **bukan** input manual; perubahan HPP bahan → recompute harga menu (Persentase/Tier).
-* Cakupan barang: **Farmasi (A4), Rumah Tangga (A5), Gizi (A6), Menu Makanan (A9)** via Kelompok Barang. **Kategori Menu Makanan** memakai **7 nilai enum internal A9** (Makanan Pokok, Lauk Hewani, Lauk Nabati, Sayur, Buah, Snack, Minuman), bukan kategori A33. **HPP Menu Makanan (dikonfirmasi)** = **agregasi biaya bahan komposisi** menu (Σ BDD×harga Barang Gizi A6, sesuai metode persediaan); recompute otomatis saat HPP bahan berubah.
 * **Default margin global = 35% (Persentase)** — fallback bila tak ada aturan Item/Kategori/Tier HPP (BR-016); berlaku **seragam semua kelompok barang**; konfigurabel oleh Bagian Keuangan.
 * **Precedence level**: **Item > Kategori > Tier HPP > Default 35%** (overlay **Staf** untuk transaksi Umum-staf); di dalam matriks: pelayanan spesifik > Semua Pelayanan, penjamin spesifik > Semua, kelas spesifik > Semua; tanpa HPP (Persentase/Tier/Default) → "belum berharga".
 * Soft delete (nonaktif) agar histori harga & referensi konsumen tetap utuh.
 
 **Pertanyaan Terbuka**
-* **[PERLU KONFIRMASI]** Apakah **kategori Menu Makanan** cukup memakai **7 enum A9** apa adanya untuk penetapan harga level group, atau perlu granularitas berbeda (mis. per Bentuk Makanan/Jenis Diet). *(ditambahkan v1.9)*
+* N/A

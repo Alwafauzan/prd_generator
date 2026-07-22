@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>D31 — Catatan Pemakaian Obat dan Material Operasi</title>
+  <style>
+    :root{--nav:#153f49;--pri:#168ed0;--pri-dark:#0876b4;--bg:#f2f5f7;--ink:#242b30;--muted:#7b858b;--line:#d9dfe2;--red:#b42318;--green:#147a46;--shadow:0 2px 9px #172b3514}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:13px Inter,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}.topbar{height:56px;padding:0 22px;background:var(--nav);color:#fff;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:10px;font-weight:800}.mark{width:32px;height:32px;border:2px solid #fff;border-radius:7px;display:grid;place-items:center;font-size:19px}.user{font-size:12px}.layout{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:calc(100vh - 56px)}aside{background:#fff;border-right:1px solid var(--line);padding:18px 12px}.side-title{padding:0 10px 8px;color:var(--muted);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.07em}.side{width:100%;padding:10px 11px;border:0;border-radius:7px;background:none;text-align:left;color:#43515a}.side.on{background:#e6f4f7;color:#0d6674;font-weight:800}.side.dim{color:#a2abb0}.content{min-width:0;padding:18px 22px 40px}.crumb{margin-bottom:11px;color:var(--muted);font-size:11px}.page-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:14px}.page-head h1{margin:0 0 4px;font-size:21px}.subtitle{color:var(--muted);line-height:1.4}.card{background:#fff;border:1px solid var(--line);border-radius:9px;box-shadow:var(--shadow);overflow:hidden}.patient-head{display:grid;grid-template-columns:150px 1fr 180px 1.6fr minmax(250px,1fr);gap:18px;align-items:center;padding:17px 20px;border-bottom:1px solid var(--line)}.patient-head .label{color:#989fa4;font-size:11px}.patient-head .value{font-weight:800}.patient-head h2{margin:0;text-align:right;font-size:18px;line-height:1.12}.form-body{padding:14px 20px 4px}.input-section{padding-bottom:18px}.section-heading{font-size:12px;font-weight:800;margin-bottom:4px}.entry-labels,.entry-row{display:grid;grid-template-columns:minmax(270px,1.5fr) 38px 38px 105px 88px 210px;gap:10px;align-items:end;max-width:1040px}.entry-labels{font-size:10px;color:#48535a;margin-bottom:2px}.entry-labels span:first-child{font-size:11px}.entry-row{align-items:center}.line-input{width:100%;height:38px;padding:8px 0;border:0;border-bottom:1px solid #8f999f;background:#fff;color:var(--ink)}.line-input:focus{outline:0;border-bottom:2px solid var(--pri)}.unit{color:#878f94;font-size:11px;padding-bottom:9px;border-bottom:1px solid transparent}.icon{width:31px;height:31px;border:0;border-radius:5px;background:transparent;color:#68747b;font-size:18px}.icon:hover{background:#eef2f4}.add-list{height:38px;border:1px solid var(--pri);background:#fff;color:var(--pri-dark);font-size:11px;font-weight:800;padding:0 14px}.add-list:hover{background:#f0f8fc}.plus{font-size:20px;vertical-align:-1px;margin-right:6px}.list-title{font-size:11px;font-weight:800;margin:7px 0 7px}.tablewrap{max-width:820px;overflow:auto}.item-table{width:100%;border-collapse:collapse;table-layout:fixed}.item-table th,.item-table td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}.item-table th{font-size:9px;color:#6e777d;font-weight:700}.item-table td{font-size:11px}.item-table th:nth-child(1),.item-table td:nth-child(1){width:48px;text-align:center}.item-table th:nth-child(2){width:235px}.item-table th:nth-child(3){width:105px}.item-table th:nth-child(4){width:95px}.item-table th:nth-child(5),.item-table td:nth-child(5){width:80px;text-align:center}.item-table th:nth-child(6){width:70px}.item-table th:nth-child(7){width:74px}.row-actions{display:flex;gap:3px}.row-actions button{border:0;background:none;color:#768289;padding:4px;font-size:15px}.empty{text-align:center!important;color:#444;padding:15px!important}.form-foot{display:flex;align-items:center;justify-content:space-between;padding:13px 20px 17px}.back{border:0;background:none;color:#a0a6aa;font-weight:750;padding:9px 18px}.save{min-width:100px;height:42px;border:0;border-radius:2px;background:var(--pri);color:#fff;font-weight:800;box-shadow:0 2px 5px #1669963d}.save:hover{background:var(--pri-dark)}.toast{position:fixed;right:22px;bottom:22px;display:none;max-width:430px;padding:12px 15px;border-radius:7px;background:var(--nav);color:#fff;box-shadow:0 12px 30px #172b3538}.toast.show{display:block}.error{color:var(--red);font-size:11px;margin-top:6px;display:none}.error.show{display:block}
+    .tablewrap{max-width:1120px}.item-table{min-width:1040px}.item-table th:nth-child(7){width:245px}.item-table th:nth-child(8){width:74px}.activity{font-size:10px;line-height:1.45}.activity b{font-size:11px}.activity .origin{display:inline-flex;margin-left:5px;padding:2px 6px;border-radius:99px;background:#e7f4f8;color:#0c6878;font-weight:800}.activity .meta{color:var(--muted)}
+    .modalbg{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:18px;background:#102029a6}.modalbg.open{display:flex}.dialog{width:min(560px,100%);background:#fff;border-radius:9px;box-shadow:0 18px 50px #10202945}.dialog-head{display:flex;align-items:center;justify-content:space-between;padding:15px 17px;border-bottom:1px solid var(--line)}.dialog-head h3{margin:0;font-size:16px}.close{width:30px;height:30px;border:0;border-radius:50%;background:#edf1f3;color:#58656d;font-size:18px}.dialog-body{padding:17px}.duplicate-info{padding:12px;border:1px solid #e6cf77;border-radius:7px;background:#fff8dc;color:#6a4d00;line-height:1.45}.duplicate-name{margin-top:13px;font-weight:800}.duplicate-actor{margin-top:4px;color:var(--muted);font-size:11px}.qty-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:13px}.qty-cell{padding:10px;border:1px solid var(--line);border-radius:7px}.qty-cell span{display:block;color:var(--muted);font-size:10px;margin-bottom:3px}.qty-cell b{font-size:15px}.dialog-foot{display:flex;justify-content:flex-end;gap:8px;padding:12px 17px;border-top:1px solid var(--line)}.secondary{min-height:38px;padding:8px 13px;border:1px solid var(--line);border-radius:5px;background:#fff;font-weight:750}.confirm{min-height:38px;padding:8px 13px;border:0;border-radius:5px;background:var(--pri);color:#fff;font-weight:800}
+    @media(max-width:1050px){.layout{grid-template-columns:1fr}aside{display:none}.patient-head{grid-template-columns:120px 1fr 140px 1fr}.patient-head h2{grid-column:1/-1;text-align:left}.entry-labels,.entry-row{grid-template-columns:minmax(220px,1fr) 34px 34px 90px 75px 190px}}
+    @media(max-width:700px){.content{padding:12px}.page-head{flex-direction:column}.patient-head{grid-template-columns:110px 1fr;padding:14px}.patient-head h2{grid-column:1/-1}.form-body{padding:14px}.entry-labels{display:none}.entry-row{grid-template-columns:minmax(0,1fr) 34px 34px 90px}.entry-row .unit{grid-column:1/2}.entry-row .add-list{grid-column:2/5}.tablewrap{max-width:100%}.form-foot{padding:12px 14px}.qty-summary{grid-template-columns:1fr}.toast{left:14px;right:14px}}
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="brand"><span class="mark">+</span><span>SIMRS · Pelayanan IBS</span></div><div class="user">Ns. Budi S. · IBS &nbsp;|&nbsp; Selasa, 21 Juli 2026 · 15:20 WIB</div></header>
+  <div class="layout">
+    <aside>
+      <div class="side-title">Pelayanan Operasi</div>
+      <button class="side">▦ Jadwal Operasi</button>
+      <button class="side">⌁ Laporan Operasi</button>
+      <button class="side on">▤ Catatan Pemakaian</button>
+      <div class="side-title" style="margin-top:20px">Farmasi IBS</div>
+      <button class="side">▤ Stok Farmasi IBS</button>
+      <button class="side dim">↻ Mutasi Stok</button>
+    </aside>
+    <main class="content">
+      <div class="crumb">Pelayanan IBS / Jadwal Operasi / <b>Catatan Pemakaian Obat dan Material</b></div>
+      <div class="page-head"><div><h1>Catatan Pemakaian Obat dan Material Operasi</h1><div class="subtitle">Satu form untuk mencatat obat dan alat kesehatan yang digunakan selama operasi.</div></div></div>
+      <section class="card">
+        <div class="patient-head">
+          <div class="label">No.RM</div><div class="value">178684</div>
+          <div class="label">Nama Pasien</div><div class="value">ANANDA HAFIZ AL WAFI, An.</div>
+          <h2>Catatan Pemakaian Obat dan Material<br>Operasi</h2>
+        </div>
+
+        <div class="form-body">
+          <section class="input-section">
+            <div class="section-heading">Masukkan Nama Obat</div>
+            <div class="entry-labels"><span>Nama Obat</span><span></span><span></span><span>Jumlah</span><span>Satuan</span><span></span></div>
+            <div class="entry-row">
+              <select class="line-input" id="medicineSelect" onchange="syncUnit('medicine')">
+                <option value="">Nama Obat</option>
+                <option value="iol">IOL Ifocus 22.5 (-) (NON-FORNAS)</option>
+                <option value="bupi">Bupivacaine 0.5% Injection</option>
+                <option value="cef">Ceftriaxone 1 g Injeksi</option>
+              </select>
+              <button class="icon" title="Tambah item baru" onclick="toast('Buka form master obat baru')">＋</button>
+              <button class="icon" title="Bersihkan input" onclick="clearEntry('medicine')">▣</button>
+              <input class="line-input" id="medicineQty" type="number" min="0.01" step="0.01" value="0">
+              <div class="unit" id="medicineUnit">Satuan</div>
+              <button class="add-list" onclick="addItem('medicine')"><span class="plus">＋</span>TAMBAHKAN KE LIST</button>
+            </div>
+            <div class="error" id="medicineError"></div>
+            <div class="list-title">List Data Obat</div>
+            <div class="tablewrap">
+              <table class="item-table"><thead><tr><th>No.</th><th>Nama</th><th>Pabrikan</th><th>Fornas</th><th>Jumlah</th><th>Unit</th><th>Informasi Input</th><th></th></tr></thead><tbody id="medicineList">
+                <tr data-key="iol" data-actor-id="usr-rina" data-created-at="21 Jul 2026 · 14:19" data-reviewed="true"><td>1</td><td>IOL Ifocus 22.5 (-) (NON-FORNAS)</td><td>-</td><td>NON-FORNAS</td><td>2</td><td>Pcs</td><td><div class="activity"><b>Apt. Rina K.</b><span class="origin">Farmasi IBS</span><div class="meta">Input: 21 Jul 2026 · 14:19</div><div class="meta">Update: 21 Jul 2026 · 14:19 · Apt. Rina K.</div></div></td><td><div class="row-actions"><button title="Edit" onclick="editRow(this,'medicine')">✎</button><button title="Hapus" onclick="deleteRow(this,'medicine')">▮</button></div></td></tr>
+              </tbody></table>
+            </div>
+          </section>
+
+          <section class="input-section">
+            <div class="section-heading">Masukkan Alat Kesehatan</div>
+            <div class="entry-labels"><span>Nama Alat Kesehatan</span><span></span><span></span><span>Jumlah</span><span>Satuan</span><span></span></div>
+            <div class="entry-row">
+              <select class="line-input" id="medicalSelect" onchange="syncUnit('medical')">
+                <option value="">Nama Alat Kesehatan</option>
+                <option value="gauze">Kasa Steril 10 × 10 cm</option>
+                <option value="syringe">Syringe 10 ml</option>
+                <option value="suture">Surgical Suture Vicryl 2-0</option>
+              </select>
+              <button class="icon" title="Tambah item baru" onclick="toast('Buka form master alat kesehatan baru')">＋</button>
+              <button class="icon" title="Bersihkan input" onclick="clearEntry('medical')">▣</button>
+              <input class="line-input" id="medicalQty" type="number" min="0.01" step="0.01" value="0">
+              <div class="unit" id="medicalUnit">Satuan</div>
+              <button class="add-list" onclick="addItem('medical')"><span class="plus">＋</span>TAMBAHKAN KE LIST</button>
+            </div>
+            <div class="error" id="medicalError"></div>
+            <div class="list-title">List Alat Kesehatan</div>
+            <div class="tablewrap">
+              <table class="item-table"><thead><tr><th>No.</th><th>Nama</th><th>Pabrikan</th><th>Fornas</th><th>Jumlah</th><th>Unit</th><th>Informasi Input</th><th></th></tr></thead><tbody id="medicalList"><tr class="empty-row"><td class="empty" colspan="8">No data available</td></tr></tbody></table>
+            </div>
+          </section>
+        </div>
+
+        <div class="form-foot"><button class="back" onclick="toast('Kembali ke Jadwal Operasi')">Kembali</button><button class="save" id="saveBtn" onclick="saveForm()">Simpan</button></div>
+      </section>
+    </main>
+  </div>
+  <div class="modalbg" id="duplicateModal">
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="duplicateTitle">
+      <div class="dialog-head"><h3 id="duplicateTitle">Item Sudah Ada</h3><button class="close" onclick="cancelDuplicate()" aria-label="Tutup">×</button></div>
+      <div class="dialog-body">
+        <div class="duplicate-info" id="duplicateMessage"><b>Item sudah ada di list.</b></div>
+        <div class="duplicate-name" id="duplicateName"></div>
+        <div class="duplicate-actor" id="duplicateActor"></div>
+        <div class="qty-summary"><div class="qty-cell"><span>Jumlah sebelumnya</span><b id="duplicateOld"></b></div><div class="qty-cell"><span>Jumlah ditambahkan</span><b id="duplicateAdd"></b></div><div class="qty-cell"><span id="duplicateResultLabel">Total baru</span><b id="duplicateTotal"></b></div></div>
+      </div>
+      <div class="dialog-foot"><button class="secondary" onclick="cancelDuplicate()">Batal</button><button class="confirm" id="duplicateConfirm" onclick="confirmDuplicate()">Lanjutkan & Total</button></div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script>
+    const catalog={
+      iol:{name:'IOL Ifocus 22.5 (-) (NON-FORNAS)',manufacturer:'-',fornas:'NON-FORNAS',unit:'Pcs'},
+      bupi:{name:'Bupivacaine 0.5% Injection',manufacturer:'PT Contoh Farma',fornas:'FORNAS',unit:'Ampul'},
+      cef:{name:'Ceftriaxone 1 g Injeksi',manufacturer:'PT Contoh Farma',fornas:'FORNAS',unit:'Vial'},
+      gauze:{name:'Kasa Steril 10 × 10 cm',manufacturer:'PT Medika',fornas:'-',unit:'Pcs'},
+      syringe:{name:'Syringe 10 ml',manufacturer:'PT Medika',fornas:'-',unit:'Pcs'},
+      suture:{name:'Surgical Suture Vicryl 2-0',manufacturer:'Ethicon',fornas:'-',unit:'Pcs'}
+    };
+    const currentUser={id:'usr-budi',name:'Ns. Budi S.',unit:'IBS'},currentTime='21 Jul 2026 · 15:20';
+    function el(id){return document.getElementById(id)}
+    function toast(message){const t=el('toast');t.textContent=message;t.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove('show'),2600)}
+    function controls(type){return{select:el(type+'Select'),qty:el(type+'Qty'),unit:el(type+'Unit'),error:el(type+'Error'),list:el(type+'List')}}
+    function syncUnit(type){const c=controls(type),item=catalog[c.select.value];c.unit.textContent=item?item.unit:'Satuan';c.error.classList.remove('show')}
+    function clearEntry(type){const c=controls(type);c.select.value='';c.qty.value='0';c.unit.textContent='Satuan';c.error.classList.remove('show')}
+    let pendingDuplicate=null;
+    function addItem(type){const c=controls(type),key=c.select.value,qty=Number(c.qty.value),item=catalog[key];if(!item){showError(c,'Nama '+(type==='medicine'?'Obat':'Alat Kesehatan')+' wajib dipilih.');return}if(!Number.isFinite(qty)||qty<=0){showError(c,'Jumlah harus lebih besar dari 0.');return}const matches=[...c.list.querySelectorAll(`tr[data-key="${key}"]`)],own=matches.find(row=>row.dataset.actorId===currentUser.id),other=matches.find(row=>row.dataset.actorId!==currentUser.id);if(own){openDuplicate('MERGE',type,key,qty,own);return}if(other){openDuplicate('SEPARATE',type,key,qty,other);return}appendRow(type,key,qty,true);clearEntry(type);toast('Item ditambahkan ke list')}
+    function activityMarkup(actor,createdAt,updatedAt,updatedBy){return `<div class="activity"><b>${actor.name}</b><span class="origin">${actor.unit}</span><div class="meta">Input: ${createdAt}</div><div class="meta">Update: ${updatedAt} · ${updatedBy}</div></div>`}
+    function appendRow(type,key,qty,reviewed){const c=controls(type),item=catalog[key],row=document.createElement('tr');c.list.querySelector('.empty-row')?.remove();row.dataset.key=key;row.dataset.actorId=currentUser.id;row.dataset.createdAt=currentTime;row.dataset.reviewed=String(reviewed);row.innerHTML=`<td></td><td>${item.name}</td><td>${item.manufacturer}</td><td>${item.fornas}</td><td>${qty}</td><td>${item.unit}</td><td>${activityMarkup(currentUser,currentTime,currentTime,currentUser.name)}</td><td><div class="row-actions"><button title="Edit" onclick="editRow(this,'${type}')">✎</button><button title="Hapus" onclick="deleteRow(this,'${type}')">▮</button></div></td>`;c.list.appendChild(row);renumber(c.list)}
+    function openDuplicate(mode,type,key,qty,row){const item=catalog[key],oldQty=Number(row.children[4].textContent),total=oldQty+qty,isMerge=mode==='MERGE';pendingDuplicate={mode,type,key,qty,row,total};el('duplicateName').textContent=item.name;el('duplicateActor').textContent=isMerge?'Input sebelumnya dibuat oleh user yang sama.':`Sudah diinput oleh ${row.querySelector('.activity b')?.textContent||'user lain'} · ${row.querySelector('.origin')?.textContent||'unit lain'}.`;el('duplicateOld').textContent=oldQty+' '+item.unit;el('duplicateAdd').textContent=qty+' '+item.unit;el('duplicateResultLabel').textContent=isMerge?'Total baru':'Hasil jika dilanjutkan';el('duplicateTotal').textContent=isMerge?total+' '+item.unit:'Baris terpisah';el('duplicateMessage').innerHTML=isMerge?'<b>Item sudah ada di list oleh user yang sama.</b><br>Jika dilanjutkan, jumlah baru akan ditambahkan ke jumlah sebelumnya.':'<b>Item yang sama sudah diinput oleh user/unit berbeda.</b><br>Periksa kemungkinan miss komunikasi. Jika dilanjutkan, item dibuat sebagai baris terpisah karena mewakili penggunaan berbeda.';el('duplicateConfirm').textContent=isMerge?'Lanjutkan & Total':'Tetap Tambahkan Baris Baru';el('duplicateModal').classList.add('open')}
+    function cancelDuplicate(){el('duplicateModal').classList.remove('open');pendingDuplicate=null;toast('Penambahan item dibatalkan; jumlah tidak berubah')}
+    function confirmDuplicate(){if(!pendingDuplicate)return;const p=pendingDuplicate;if(p.mode==='MERGE'){p.row.children[4].textContent=String(p.total);const actor={name:p.row.querySelector('.activity b')?.textContent||currentUser.name,unit:p.row.querySelector('.origin')?.textContent||currentUser.unit};p.row.children[6].innerHTML=activityMarkup(actor,p.row.dataset.createdAt||currentTime,currentTime,currentUser.name)}else appendRow(p.type,p.key,p.qty,true);el('duplicateModal').classList.remove('open');pendingDuplicate=null;clearEntry(p.type);toast(p.mode==='MERGE'?'Jumlah item diperbarui menjadi total baru':'Item ditambahkan sebagai baris terpisah setelah konfirmasi')}
+    function showError(c,message){c.error.textContent=message;c.error.classList.add('show')}
+    function renumber(list){[...list.querySelectorAll('tr[data-key]')].forEach((row,index)=>row.children[0].textContent=index+1)}
+    function editRow(button,type){const row=button.closest('tr'),c=controls(type);c.select.value=row.dataset.key;c.qty.value=row.children[4].textContent;syncUnit(type);row.remove();ensureEmpty(c.list);renumber(c.list);c.select.focus();toast('Item dipindahkan kembali ke input untuk diedit')}
+    function deleteRow(button,type){const list=controls(type).list;button.closest('tr').remove();ensureEmpty(list);renumber(list);toast('Item dihapus dari list')}
+    function ensureEmpty(list){if(!list.querySelector('tr[data-key]'))list.innerHTML='<tr class="empty-row"><td class="empty" colspan="8">No data available</td></tr>'}
+    function saveForm(){const rows=[...document.querySelectorAll('#medicineList tr[data-key],#medicalList tr[data-key]')];if(!rows.length){toast('Tambahkan minimal satu obat atau alat kesehatan.');return}const b=el('saveBtn');b.disabled=true;b.textContent='Validasi data terbaru…';setTimeout(()=>{b.textContent='Menyimpan…';setTimeout(()=>{b.disabled=false;b.textContent='Simpan';toast('Catatan berhasil disimpan setelah validasi duplikat IBS/Farmasi')},700)},550)}
+  </script>
+</body>
+</html>

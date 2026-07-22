@@ -1,8 +1,8 @@
 # PRD — Dashboard VK (E7a)
 
 **Related Document:** Child/consumer dari E7 Order Tindakan VK; BPMN g-support-vk.json; D8 EMR RI; E1, E2, E3, E4, E6, E8, E9, E12, E22; F38; D3; D10
-**Versi:** 1.2 — Update data grid, penyelesaian layanan, dan billing VK
-**Tanggal:** 18 Juli 2026
+**Versi:** 1.4 — Filter default Konfirmasi, penyelesaian layanan dengan overlay pilihan pulang, dan status Dipulangkan
+**Tanggal:** 22 Juli 2026
 
 ## 1. Metadata Dokumen
 
@@ -39,6 +39,8 @@
 | 18 Juli 2026 | 1.0 | Draft awal Dashboard VK, tiga tab worklist, aksi penerimaan/penolakan/selesai, dan integrasi action launcher. |
 | 18 Juli 2026 | 1.1 | Konfirmasi stakeholder: Terima langsung mengaktifkan pasien ke `IN_PROGRESS`; penyelesaian pelayanan dipisahkan dari discharge; Pulangkan Pasien memanggil E13; action lintas-modul hanya tersedia saat Sedang Dilayani; default filter harian dengan timezone Asia/Jakarta. |
 | 18 Juli 2026 | 1.2 | Penambahan Unit Dirawat, filter Waktu dan Dokter pada Sudah Dilayani, perubahan Pulangkan Pasien menjadi penyelesaian layanan VK, serta integrasi biaya administrasi dan charge ke Billing G2. |
+| 21 Juli 2026 | 1.3 | Penyesuaian label status: `ORDER_CREATED` tampil sebagai **Menunggu Konfirmasi** pada Tab Konfirmasi Permintaan; `REJECTED` sebagai **Ditolak**; `CANCELED` sebagai **Cancel**; `IN_PROGRESS` sebagai **Dalam Proses** pada Tab Sedang Dilayani; `COMPLETED` sebagai **Selesai** pada Tab Sudah Dilayani. |
+| 22 Juli 2026 | 1.4 | Tab Konfirmasi Permintaan memiliki default filter Status = **Menunggu Konfirmasi**. Tab Sedang Dilayani tidak menampilkan kolom Status. Aksi **Selesai** pada Sedang Dilayani membuka overlay pilihan pasien **juga dipulangkan atau tidak**; pilihan Tidak menghasilkan status **Selesai**, pilihan Dipulangkan menghasilkan status **Dipulangkan** pada Tab Sudah Dilayani. |
 
 ## 2. Overview & Background
 
@@ -46,7 +48,7 @@
 
 Dashboard VK adalah **worklist operasional pasien Verlos Kamer**, bukan dashboard analitik. Dashboard mengonsumsi order aktif dari E7, memberi petugas VK satu daftar pasien yang aman untuk dikonfirmasi, dilayani, dan ditutup pelayanannya. Semua aksi membuka modul pemilik data dengan konteks pasien/kunjungan VK yang sama; Dashboard VK tidak menggantikan EMR, order klinis, farmasi, penunjang, ataupun discharge administratif.
 
-Tiga tab tetap tersedia: **Konfirmasi Permintaan**, **Sedang Dilayani**, dan **Sudah Dilayani**. Ketiga tab menampilkan **Unit Dirawat** sebagai tujuan bangsal dari SPRI bila tersedia; bila tidak ada SPRI dari Unit Asal, nilainya ditampilkan `-`. Kolom **Tanggal Selesai** hanya ditampilkan pada Tab Sudah Dilayani.
+Tiga tab tetap tersedia: **Konfirmasi Permintaan**, **Sedang Dilayani**, dan **Sudah Dilayani**. Ketiga tab menampilkan **Unit Dirawat** sebagai tujuan bangsal dari SPRI bila tersedia; bila tidak ada SPRI dari Unit Asal, nilainya ditampilkan `-`. Kolom **Tanggal Selesai** hanya ditampilkan pada Tab Sudah Dilayani. Pada Tab Sedang Dilayani, kolom **Status** tidak ditampilkan di UI karena seluruh data di tab ini sudah bermakna `IN_PROGRESS`/**Dalam Proses**.
 
 Setiap pasien yang masuk dan dilayani di VK dikenakan **Biaya Administrasi VK**. Tarifnya diatur melalui **Modul Pengaturan → Tarif Pendaftaran**. Charge layanan VK dari seluruh aksi klinis/administratif diteruskan ke **Billing → Tagihan Pasien (G2)**.
 
@@ -59,12 +61,12 @@ Setiap pasien yang masuk dan dilayani di VK dikenakan **Biaya Administrasi VK**.
 
 ### To-Be
 
-1. E7 menyimpan order dan membuat satu worklist item VK berstatus `ORDER_CREATED`.
+1. E7 menyimpan order dan membuat satu worklist item VK berstatus teknis `ORDER_CREATED` dengan label tampilan **Menunggu Konfirmasi**.
 2. Dashboard VK menampilkan item itu pada tab **Konfirmasi Permintaan**. Petugas berwenang memilih **Terima** atau **Tolak**.
-3. Terima adalah satu aksi UI. Sistem mencatat event `RECEIVED` sebagai bukti penerimaan lalu langsung mengaktifkan item sebagai `IN_PROGRESS`; item berpindah ke tab **Sedang Dilayani** tanpa tab/status UI RECEIVED terpisah. Tolak mengubah state menjadi `REJECTED`, mewajibkan alasan, dan mencatat audit trail; item tidak dihapus fisik.
-4. Pada Sedang Dilayani, petugas membuka aksi lintas-modul dengan `patient_id`, `encounter_id`, `vk_order_id`, dan konteks `VK`; action E8 Gizi, E6 Ambulans, E9 IBS, F38 Surat Keterangan Lahir, dan D3 Data Sosial baru tersedia setelah pasien diterima dan berstatus `IN_PROGRESS`.
-5. Pada tab Sedang Dilayani, user menjalankan **Pulangkan Pasien** sebagai aksi penyelesaian layanan VK. Sistem mencatat `COMPLETED`, `completed_at`, user, serta catatan bila ada, lalu memindahkan item ke tab **Sudah Dilayani**.
-6. Tab Sudah Dilayani menampilkan status **Selesai** tanpa status **Menunggu Dipulangkan** dan tanpa aksi pemulangan lanjutan. Proses discharge administratif, bila diperlukan oleh alur rumah sakit, berada di luar aksi Dashboard VK.
+3. Terima adalah satu aksi UI. Sistem mencatat event `RECEIVED` sebagai bukti penerimaan lalu langsung mengaktifkan item sebagai `IN_PROGRESS` dengan label tampilan **Dalam Proses**; item berpindah ke tab **Sedang Dilayani** tanpa tab/status UI RECEIVED terpisah. Tolak mengubah state menjadi `REJECTED` dengan label tampilan **Ditolak**, mewajibkan alasan, dan mencatat audit trail; item tidak dihapus fisik.
+4. Pada Sedang Dilayani, petugas membuka aksi lintas-modul dengan `patient_id`, `encounter_id`, `vk_order_id`, dan konteks `VK`; action E8 Gizi, E6 Ambulans, E9 IBS, F38 Surat Keterangan Lahir, dan D3 Data Sosial baru tersedia setelah pasien diterima dan berstatus **Dalam Proses** (`IN_PROGRESS`).
+5. Pada tab Sedang Dilayani, user klik **Selesai** sebagai aksi penyelesaian layanan VK. Sistem menampilkan overlay untuk memilih apakah pasien **juga dipulangkan atau tidak**.
+6. Jika user memilih **Tidak**, sistem mencatat `COMPLETED`, `completed_at`, user, serta catatan bila ada, lalu memindahkan item ke tab **Sudah Dilayani** dengan label tampilan **Selesai**. Jika user memilih **Dipulangkan**, sistem mencatat `DISCHARGED`, timestamp, user, serta catatan bila ada, lalu memindahkan item ke tab **Sudah Dilayani** dengan label tampilan **Dipulangkan**.
 
 ## 3. Goals & Metrics
 
@@ -72,7 +74,7 @@ Setiap pasien yang masuk dan dilayani di VK dikenakan **Biaya Administrasi VK**.
 |---|---|---|
 | 1 | Visibilitas order | 100% order E7 aktif yang berhasil disimpan muncul tepat pada satu tab aktif Dashboard VK dalam ≤ 3 detik. |
 | 2 | Ketepatan state | 0% item aktif tampil sekaligus pada Konfirmasi dan Sedang Dilayani; state/timestamp sinkron dengan audit trail. |
-| 3 | Audit keputusan | 100% aksi Terima, Tolak, dan Pulangkan Pasien sebagai penyelesaian layanan memiliki actor, server timestamp, state lama/baru, serta alasan bila dipersyaratkan. |
+| 3 | Audit keputusan | 100% aksi Terima, Tolak, dan Selesai sebagai penyelesaian layanan memiliki actor, server timestamp, state lama/baru, pilihan pulang/tidak, serta alasan/catatan bila dipersyaratkan. |
 | 4 | Keselamatan konteks aksi | 100% deep link action membawa `patient_id`, `encounter_id`, `vk_order_id`, dan `service_context=VK`; target menolak konteks tidak aktif/tidak berhak. |
 | 5 | Kecepatan kerja | P95 pemuatan daftar/filter pada scope unit normal ≤ 3 detik [ASUMSI; perlu baseline]. |
 | 6 | Tanpa penghapusan jejak | 0% order/worklist dihapus fisik melalui aksi Tolak atau selesai pelayanan. |
@@ -83,8 +85,8 @@ Setiap pasien yang masuk dan dilayani di VK dikenakan **Biaya Administrasi VK**.
 |---|---|---|---|
 | Tiga tab worklist | Konfirmasi Permintaan, Sedang Dilayani, Sudah Dilayani dengan kolom wajib, pencarian, filter, sort, pagination, loading/empty/error. | Saved filter, SLA/breach alert, kapasitas/queue, notifikasi eskalasi. | N/A — dashboard tidak membuat transaksi keuangan. |
 | Penerimaan order | Terima dan Tolak dengan alasan wajib saat Tolak, idempotensi, row lock/versioning, audit. | Approval berjenjang atau eskalasi bila waktu respons terlampaui; `status_approval` dan `role_approver`. | N/A. |
-| Pelayanan aktif | State `IN_PROGRESS`, detail drawer, action launcher lintas-modul, timeline audit read-only. | Checklist kesiapan persalinan, kolaborasi role dan notification. | Dashboard hanya meneruskan referensi tindakan/charge ke E1/Billing; `coa_id`, `akun_debit`, `akun_kredit` tidak dipopulasi di E7a. |
-| Penyelesaian pelayanan | Aksi **Pulangkan Pasien** pada Sedang Dilayani mengubah `IN_PROGRESS` menjadi `COMPLETED`/**Selesai** dan memindahkan item ke Sudah Dilayani; tidak ada aksi lanjutan pada tab tersebut. | Re-open/correction berjenjang dan review supervisor. | N/A. |
+| Pelayanan aktif | State `IN_PROGRESS` ditampilkan sebagai **Dalam Proses**, detail drawer, action launcher lintas-modul, timeline audit read-only. | Checklist kesiapan persalinan, kolaborasi role dan notification. | Dashboard hanya meneruskan referensi tindakan/charge ke E1/Billing; `coa_id`, `akun_debit`, `akun_kredit` tidak dipopulasi di E7a. |
+| Penyelesaian pelayanan | Aksi **Selesai** pada Sedang Dilayani membuka overlay pilihan **juga dipulangkan atau tidak**. Pilih **Tidak** → `COMPLETED`/**Selesai**; pilih **Dipulangkan** → `DISCHARGED`/**Dipulangkan**. Keduanya berpindah ke Sudah Dilayani. | Re-open/correction berjenjang dan review supervisor. | N/A. |
 | Biaya administrasi dan charge | E7a meneruskan referensi biaya administrasi VK dan charge layanan ke Billing — Tagihan Pasien (G2); E7a tidak menghitung nominal final. | Rekonsiliasi, klaim, refund, dan mapping COA lanjutan. | Billing/G2 menjadi source of truth transaksi. |
 
 ### Out of Scope Phase 1
@@ -93,32 +95,32 @@ Setiap pasien yang masuk dan dilayani di VK dikenakan **Biaya Administrasi VK**.
 - Pengelolaan stok, dispensing farmasi, hasil penunjang, kalkulasi nominal billing, klaim, jurnal, dan mapping COA. E7a tetap mengirim referensi charge ke Billing G2.
 - Penentuan ruang/bed VK, penjadwalan tenaga, kapasitas, SLA otomatis, notifikasi eksternal, dan approval berjenjang.
 - Penghapusan fisik order/worklist atau pengubahan riwayat audit.
-- Eksekusi detail discharge administratif, bila diperlukan, tetap menjadi milik E13 dan bukan aksi pada Dashboard VK.
+- Eksekusi detail discharge administratif lanjutan, bila diperlukan, tetap mengikuti owner discharge rumah sakit. Pada Phase 1 E7a hanya mencatat pilihan hasil overlay sebagai status worklist **Dipulangkan** bila user memilih dipulangkan.
 - Transfer internal/E11 dan perubahan unit aktif Rawat Inap secara langsung oleh E7a.
 
 ## 5. Business Process & User Stories
 
 ### State Machine
 
-| Status | Tab | Deskripsi | Efek Data | Transisi Phase 1 | Transisi Phase 2 |
-|---|---|---|---|---|---|
-| `ORDER_CREATED` | Konfirmasi Permintaan | Order E7 aktif menunggu keputusan VK. | `ordered_at`, unit asal, DPJP dan snapshot konteks tersimpan. | E7 → `ORDER_CREATED`; Terima → event `RECEIVED` lalu langsung `IN_PROGRESS`; Tolak → `REJECTED`. | Eskalasi bila melewati SLA. |
-| `RECEIVED` | Tidak menjadi tab/status UI terpisah | Event penerimaan transien sebagai bukti bahwa user menerima order. | `received_at`, `received_by`, audit event terisi. | Setelah event tersimpan, item langsung berstatus `IN_PROGRESS` dan pindah ke Sedang Dilayani. | Dapat dikembangkan menjadi approval/triase hanya bila kebijakan berubah. |
-| `IN_PROGRESS` | Sedang Dilayani | Pasien sudah diterima dan sedang dalam tanggung jawab operasional VK. | Action launcher lintas-modul tersedia sesuai RBAC/prasyarat. | Pulangkan Pasien sebagai penyelesaian layanan → `COMPLETED`. | Pause/transfer/escalation [PERLU KONFIRMASI]. |
-| `COMPLETED` | Sudah Dilayani | Pelayanan VK telah selesai dan ditampilkan sebagai **Selesai**. | `completed_at`, `completed_by`, completion note/audit terisi. | Terminal E7a; tidak ada aksi pemulangan pada tab ini. | Re-open/correction dengan approval VK. |
-| `DISCHARGED` | Tidak tampil pada tiga tab aktif | Status eksternal/legacy bila discharge administratif dicatat oleh modul lain. | Dikelola modul discharge terkait, bukan command E7a. | Bukan transisi UI E7a. | Mengikuti owner discharge. |
-| `REJECTED` | Tidak ada tab khusus | Order ditolak oleh VK. | `rejected_at`, `rejected_by`, `rejection_reason` wajib. | Terminal; gunakan status/filter dan audit bila perlu. | Re-review/escalation bila kebijakan ditambahkan. |
-| `CANCELED` | Tidak ada tab khusus | Order dibatalkan oleh owner proses terkait. | Audit pembatalan dipertahankan. | Bukan aksi normal E7a; cukup direpresentasikan sebagai status. | Aturan pembatalan lintas-unit [PERLU KONFIRMASI]. |
+| Status Teknis | Status Tampilan | Tab | Deskripsi | Efek Data | Transisi Phase 1 | Transisi Phase 2 |
+|---|---|---|---|---|---|---|
+| `ORDER_CREATED` | **Menunggu Konfirmasi** | Konfirmasi Permintaan | Order E7 aktif menunggu keputusan VK. | `ordered_at`, unit asal, DPJP dan snapshot konteks tersimpan. | E7 → `ORDER_CREATED`; Terima → event `RECEIVED` lalu langsung `IN_PROGRESS`; Tolak → `REJECTED`. | Eskalasi bila melewati SLA. |
+| `RECEIVED` | Tidak ditampilkan sebagai status | Tidak menjadi tab/status UI terpisah | Event penerimaan transien sebagai bukti bahwa user menerima order. | `received_at`, `received_by`, audit event terisi. | Setelah event tersimpan, item langsung berstatus `IN_PROGRESS`/**Dalam Proses** dan pindah ke Sedang Dilayani. | Dapat dikembangkan menjadi approval/triase hanya bila kebijakan berubah. |
+| `IN_PROGRESS` | **Dalam Proses** | Sedang Dilayani | Pasien sudah diterima dan sedang dalam tanggung jawab operasional VK. | Action launcher lintas-modul tersedia sesuai RBAC/prasyarat. | Klik **Selesai** → overlay pilihan pulang: **Tidak** → `COMPLETED`/**Selesai**; **Dipulangkan** → `DISCHARGED`/**Dipulangkan**. | Pause/transfer/escalation [PERLU KONFIRMASI]. |
+| `COMPLETED` | **Selesai** | Sudah Dilayani | Pelayanan VK telah selesai. | `completed_at`, `completed_by`, completion note/audit terisi. | Terminal E7a; tidak ada aksi pemulangan pada tab ini. | Re-open/correction dengan approval VK. |
+| `DISCHARGED` | **Dipulangkan** | Sudah Dilayani | Pelayanan VK selesai dan user memilih pasien juga dipulangkan pada overlay penyelesaian. | `completed_at`, `completed_by`, `discharged_at`, `discharged_by`, completion/discharge note/audit terisi. | Terminal E7a; tidak ada aksi pemulangan lanjutan pada tab ini. | Re-open/correction dengan approval VK. |
+| `REJECTED` | **Ditolak** | Tidak ada tab khusus | Order ditolak oleh VK. | `rejected_at`, `rejected_by`, `rejection_reason` wajib. | Terminal; gunakan status/filter dan audit bila perlu. | Re-review/escalation bila kebijakan ditambahkan. |
+| `CANCELED` | **Cancel** | Tidak ada tab khusus | Order dibatalkan oleh owner proses terkait. | Audit pembatalan dipertahankan. | Bukan aksi normal E7a; cukup direpresentasikan sebagai status. | Aturan pembatalan lintas-unit [PERLU KONFIRMASI]. |
 
-**BR-E7A-01 — Keanggotaan tab eksklusif:** `ORDER_CREATED` hanya di Konfirmasi, `IN_PROGRESS` hanya di Sedang Dilayani, dan `COMPLETED` hanya di Sudah Dilayani sebagai status **Selesai**. `RECEIVED` hanya event audit transien, bukan tab/status UI yang terpisah. `DISCHARGED`, `REJECTED`, dan `CANCELED` tidak memiliki tab khusus; status tetap tersimpan untuk filter/detail/audit sesuai hak akses.
+**BR-E7A-01 — Keanggotaan tab eksklusif:** `ORDER_CREATED` hanya di Konfirmasi Permintaan dan tampil sebagai **Menunggu Konfirmasi**; `IN_PROGRESS` hanya di Sedang Dilayani dan tampil sebagai **Dalam Proses** namun kolom Status tidak ditampilkan pada UI tab tersebut; `COMPLETED`/**Selesai** dan `DISCHARGED`/**Dipulangkan** tampil di Sudah Dilayani. `RECEIVED` hanya event audit transien, bukan tab/status UI yang terpisah. `REJECTED` tampil sebagai **Ditolak** dan `CANCELED` tampil sebagai **Cancel** tanpa tab khusus; status tetap tersimpan untuk filter/detail/audit sesuai hak akses.
 
 ### User Stories
 
 - **US-E7A-01:** Sebagai petugas VK, saya ingin melihat order E7 yang menunggu agar dapat cepat menerima atau menolak pasien. *(BPMN: menerima rujukan/order VK)*
 - **US-E7A-02:** Sebagai petugas VK, saya ingin memberi alasan saat menolak agar unit asal dan auditor dapat menelusuri keputusan. *(BPMN gateway: `tolak`)*
 - **US-E7A-03:** Sebagai dokter/perawat VK, saya ingin membuka EMR dan seluruh aksi pelayanan dari baris pasien yang sama agar tidak salah konteks. *(BPMN: Input EMR, Input tindakan, Order penunjang, Order Operasi)*
-- **US-E7A-04:** Sebagai petugas berwenang, saya ingin menekan **Pulangkan Pasien** pada tab Sedang Dilayani sebagai penyelesaian layanan VK agar pasien berpindah ke tab Sudah Dilayani dengan status **Selesai**.
-- **US-E7A-05:** Sebagai petugas VK, saya ingin tab Sudah Dilayani hanya menampilkan pasien yang sudah selesai tanpa status Menunggu Dipulangkan atau aksi pemulangan lanjutan.
+- **US-E7A-04:** Sebagai petugas berwenang, saya ingin menekan **Selesai** pada tab Sedang Dilayani lalu memilih apakah pasien juga dipulangkan, agar pasien berpindah ke tab Sudah Dilayani dengan status **Selesai** atau **Dipulangkan** sesuai keputusan.
+- **US-E7A-05:** Sebagai petugas VK, saya ingin tab Sudah Dilayani menampilkan pasien yang sudah selesai maupun dipulangkan tanpa aksi pemulangan lanjutan.
 - **US-E7A-06:** Sebagai auditor/supervisor, saya ingin melihat riwayat state yang tidak dapat diubah agar keputusan layanan dan discharge dapat ditelusuri.
 
 ## 6. Functional & UI/UX Requirements
@@ -126,9 +128,9 @@ Setiap pasien yang masuk dan dilayani di VK dikenakan **Biaya Administrasi VK**.
 ### 6.1 UI/UX dan General Flow
 
 1. User membuka menu **VK > Dashboard VK**; server menerapkan RBAC dan scope unit sebelum mengembalikan data.
-2. Header memuat pencarian Nama Pasien/No. RM/No. Order, filter rentang waktu, Unit Asal, DPJP, status relevan, tombol Reset, serta `data_as_of`. Pada Tab Sudah Dilayani, filter waktu menggunakan `completed_at`, default **harian untuk tanggal berjalan** dari `00:00:00` sampai `23:59:59` timezone **Asia/Jakarta**, dan user dapat mengubah rentang tanggal serta memfilter berdasarkan dokter DPJP.
+2. Header memuat pencarian Nama Pasien/No. RM/No. Order, filter rentang waktu, Unit Asal, DPJP, status relevan, tombol Reset, serta `data_as_of`. Pada Tab Konfirmasi Permintaan, filter Status default bernilai **Menunggu Konfirmasi**. Pada Tab Sudah Dilayani, filter waktu menggunakan `completed_at`, default **harian untuk tanggal berjalan** dari `00:00:00` sampai `23:59:59` timezone **Asia/Jakarta**, dan user dapat mengubah rentang tanggal serta memfilter berdasarkan dokter DPJP.
 3. Tiga tab menampilkan count hasil scope: **Konfirmasi Permintaan**, **Sedang Dilayani**, **Sudah Dilayani**.
-4. Semua tabel memiliki kolom **Unit Dirawat**. **Tanggal Selesai** tidak ditampilkan pada Tab Konfirmasi Permintaan dan Tab Sedang Dilayani; hanya Tab Sudah Dilayani yang menampilkannya. Detail field per tab berada pada Section 7.1.
+4. Semua tabel memiliki kolom **Unit Dirawat**. **Tanggal Selesai** tidak ditampilkan pada Tab Konfirmasi Permintaan dan Tab Sedang Dilayani; hanya Tab Sudah Dilayani yang menampilkannya. Tab Sedang Dilayani tidak menampilkan kolom **Status**. Detail field per tab berada pada Section 7.1.
 5. Banner informasi menyatakan bahwa setiap pasien VK dikenakan **Biaya Administrasi VK**. Tarif dibaca dari **Modul Pengaturan → Tarif Pendaftaran**. Referensi charge layanan dan biaya administrasi diteruskan ke Billing G2.
 5. Klik baris membuka detail drawer read-only: identitas/context order, state, timestamps, user, alasan penolakan/penyelesaian bila ada, dan timeline audit. Aksi berada di drawer/row menu sesuai tab dan RBAC.
 6. UI menangani skeleton/loading, daftar kosong yang menjelaskan filter aktif, error dengan retry, pagination server-side, sort yang diizinkan, dan refresh tanpa menghilangkan filter.
@@ -139,39 +141,41 @@ Setiap pasien yang masuk dan dilayani di VK dikenakan **Biaya Administrasi VK**.
 **User Story:** US-E7A-01. **Prioritas:** P0. **Fase:** Phase 1.
 
 - **AC 1:** Sistem hanya mengembalikan item E7 aktif yang berada pada scope organisasi/unit user di server.
-- **AC 2:** `ORDER_CREATED` muncul hanya pada Konfirmasi Permintaan; `IN_PROGRESS` hanya pada Sedang Dilayani; `COMPLETED` hanya pada Sudah Dilayani.
-- **AC 3:** Ketiga tab menampilkan **Unit Dirawat** sesuai Section 7.1.1–7.1.3; setiap kolom memiliki field dan sumber data yang terdokumentasi. **Tanggal Selesai** hanya ada pada Tab Sudah Dilayani.
+- **AC 2:** `ORDER_CREATED`/**Menunggu Konfirmasi** muncul hanya pada Tab Konfirmasi Permintaan; `IN_PROGRESS`/**Dalam Proses** hanya pada Tab Sedang Dilayani; `COMPLETED`/**Selesai** dan `DISCHARGED`/**Dipulangkan** hanya pada Tab Sudah Dilayani.
+- **AC 3:** Ketiga tab menampilkan **Unit Dirawat** sesuai Section 7.1.1–7.1.3; setiap kolom memiliki field dan sumber data yang terdokumentasi. **Tanggal Selesai** hanya ada pada Tab Sudah Dilayani. Kolom **Status** tidak ditampilkan pada Tab Sedang Dilayani.
 - **AC 4:** Pencarian Name/No. RM/No. Order, filter, sort, dan pagination diterapkan di server serta tidak mengubah state pasien.
 - **AC 5:** `Unit Dirawat` mengambil tujuan bangsal dari SPRI yang berasal dari Unit Asal; bila SPRI tidak ada atau tujuan bangsal kosong, sistem menampilkan `-`.
-- **AC 6:** Saat halaman pertama kali dibuka, filter waktu otomatis menggunakan tanggal berjalan dalam timezone Asia/Jakarta. Pada Tab Sudah Dilayani basis waktunya `completed_at`, dan tombol Reset mengembalikan filter harian serta dokter ke default.
+- **AC 6:** Saat halaman pertama kali dibuka, filter waktu otomatis menggunakan tanggal berjalan dalam timezone Asia/Jakarta. Pada Tab Konfirmasi Permintaan, filter Status default bernilai **Menunggu Konfirmasi**. Pada Tab Sudah Dilayani basis waktunya `completed_at`, dan tombol Reset mengembalikan filter harian serta dokter ke default.
 
 #### FR-E7A-02 — Terima dan Tolak Permintaan
 **User Story:** US-E7A-01, US-E7A-02. **Prioritas:** P0. **Fase:** Phase 1. **Trace BPMN:** `terima` / `tolak`.
 
 - **AC 1:** Hanya item `ORDER_CREATED` yang menampilkan aksi Terima dan Tolak kepada role berwenang.
-- **AC 2:** Terima meminta konfirmasi sebagai **satu aksi UI**, menulis event `RECEIVED`, lalu langsung mengubah item yang sama menjadi `IN_PROGRESS` dalam satu transaksi/idempotent command; `received_at`, `received_by`, `updated_at`, dan audit tercatat. Tidak ada langkah/klik UI terpisah untuk RECEIVED dan IN_PROGRESS.
+- **AC 2:** Terima meminta konfirmasi sebagai **satu aksi UI**, menulis event `RECEIVED`, lalu langsung mengubah item yang sama menjadi `IN_PROGRESS`/**Dalam Proses** dalam satu transaksi/idempotent command; `received_at`, `received_by`, `updated_at`, dan audit tercatat. Tidak ada langkah/klik UI terpisah untuk RECEIVED dan IN_PROGRESS.
 - **AC 3:** Tolak membuka dialog dengan `rejection_reason` wajib; submit kosong ditolak di frontend dan server.
-- **AC 4:** Tolak mengubah state ke `REJECTED`, mencatat actor/timestamp/alasan, dan tidak menghapus row/order fisik.
+- **AC 4:** Tolak mengubah state ke `REJECTED`/**Ditolak**, mencatat actor/timestamp/alasan, dan tidak menghapus row/order fisik.
 - **AC 5:** Dua request bersamaan atau retry dengan idempotency key yang sama tidak boleh menghasilkan transisi ganda; stale version mendapat respons konflik yang aman.
 
 #### FR-E7A-03 — Aksi Pelayanan dari Konteks Pasien
 **User Story:** US-E7A-03. **Prioritas:** P0. **Fase:** Phase 1.
 
-- **AC 1:** Setelah Terima berhasil dan item berstatus `IN_PROGRESS` pada tab Sedang Dilayani, action menu dapat membuka: D8 Asesmen EMR RI/IBS/VK (muat/edit), E8 Order Makanan Gizi, E1 Input Tindakan dan BHP, E2 e-Resep, E12 CPO, E3 Lab, E4 Radiologi, E22 Patologi Anatomi, F38 Surat Keterangan Lahir, D3 Data Sosial, E6 Ambulans, E9 Order Operasi, dan D10 Dokumen Pendukung.
-- **AC 1a:** Action E8 Gizi, E6 Ambulans, E9 IBS, F38 Surat Keterangan Lahir, dan D3 Data Sosial tidak tersedia pada Konfirmasi Permintaan (`ORDER_CREATED`) maupun Sudah Dilayani (`COMPLETED`); action tersebut hanya tersedia pada `IN_PROGRESS` setelah pasien diterima.
+- **AC 1:** Setelah Terima berhasil dan item berstatus `IN_PROGRESS`/**Dalam Proses** pada tab Sedang Dilayani, action menu dapat membuka: D8 Asesmen EMR RI/IBS/VK (muat/edit), E8 Order Makanan Gizi, E1 Input Tindakan dan BHP, E2 e-Resep, E12 CPO, E3 Lab, E4 Radiologi, E22 Patologi Anatomi, F38 Surat Keterangan Lahir, D3 Data Sosial, E6 Ambulans, E9 Order Operasi, dan D10 Dokumen Pendukung.
+- **AC 1a:** Action E8 Gizi, E6 Ambulans, E9 IBS, F38 Surat Keterangan Lahir, dan D3 Data Sosial tidak tersedia pada Konfirmasi Permintaan (`ORDER_CREATED`/**Menunggu Konfirmasi**) maupun Sudah Dilayani (`COMPLETED`/**Selesai** atau `DISCHARGED`/**Dipulangkan**); action tersebut hanya tersedia pada `IN_PROGRESS`/**Dalam Proses** setelah pasien diterima.
 - **AC 2:** Setiap deep link membawa `patient_id`, `encounter_id`, `vk_order_id`, dan `service_context=VK`; parameter hanya sebagai konteks dan target memvalidasi ulang hak akses serta kunjungan aktif.
 - **AC 3:** Aksi yang tidak diizinkan role, tidak relevan state, atau tidak tersedia pada konfigurasi RS disembunyikan/disabled dengan alasan yang dapat dipahami; server target tetap menjadi guard terakhir.
 - **AC 4:** E2 dan E12 ditampilkan sebagai pilihan berbeda: E2 membuat/mengelola e-Resep, E12 membuat/mengelola order CPO; Dashboard VK tidak menyinkronkan atau menduplikasi order obat tersebut.
 - **AC 5:** Return dari modul target tidak boleh mengubah state worklist tanpa command Dashboard VK yang eksplisit dan teraudit.
 
-#### FR-E7A-04 — Pulangkan Pasien sebagai Penyelesaian Layanan VK
+#### FR-E7A-04 — Selesai Layanan VK dengan Overlay Pilihan Pulang
 **User Story:** US-E7A-04. **Prioritas:** P0. **Fase:** Phase 1.
 
-- **AC 1:** Aksi **Pulangkan Pasien** tersedia pada `IN_PROGRESS` di tab Sedang Dilayani untuk role berwenang.
-- **AC 2:** Konfirmasi sukses mencatat `COMPLETED`, `completed_at` dari server, `completed_by`, completion note, audit event, dan memindahkan row ke tab Sudah Dilayani.
-- **AC 3:** Pada tab Sudah Dilayani, status ditampilkan sebagai **Selesai**. Tidak ada status Menunggu Dipulangkan dan tidak ada action untuk memulangkan pasien.
-- **AC 4:** Action launcher klinis tidak lagi tersedia setelah `COMPLETED`; request ulang bersifat idempotent dan tidak mengubah `completed_at` pertama.
-- **AC 5:** Aksi ini menyelesaikan worklist layanan VK dan tidak memanggil E11 maupun E13 dari Dashboard VK.
+- **AC 1:** Aksi **Selesai** tersedia pada `IN_PROGRESS`/**Dalam Proses** di tab Sedang Dilayani untuk role berwenang.
+- **AC 2:** Setelah user klik **Selesai**, sistem menampilkan overlay konfirmasi dengan pertanyaan apakah pasien **juga dipulangkan atau tidak**. Pilihan minimal: **Tidak** dan **Dipulangkan**.
+- **AC 3:** Jika user memilih **Tidak**, sistem mencatat `COMPLETED`/**Selesai**, `completed_at` dari server, `completed_by`, completion note bila ada, audit event, dan memindahkan row ke tab Sudah Dilayani.
+- **AC 4:** Jika user memilih **Dipulangkan**, sistem mencatat `DISCHARGED`/**Dipulangkan**, `completed_at`, `completed_by`, `discharged_at` dari server, `discharged_by`, completion/discharge note bila ada, audit event, dan memindahkan row ke tab Sudah Dilayani.
+- **AC 5:** Pada tab Sudah Dilayani, status ditampilkan sebagai **Selesai** atau **Dipulangkan** sesuai pilihan overlay. Tidak ada status Menunggu Dipulangkan dan tidak ada action untuk memulangkan pasien pada tab ini.
+- **AC 6:** Action launcher klinis tidak lagi tersedia setelah `COMPLETED`/**Selesai** maupun `DISCHARGED`/**Dipulangkan**; request ulang bersifat idempotent dan tidak mengubah timestamp pertama.
+- **AC 7:** Aksi ini menyelesaikan worklist layanan VK dan tidak memanggil E11 dari Dashboard VK. Detail discharge administratif lanjutan mengikuti owner discharge rumah sakit bila dibutuhkan.
 
 #### FR-E7A-05 — Biaya Administrasi dan Charge Billing VK
 **User Story:** US-E7A-05. **Prioritas:** P0. **Fase:** Phase 1.
@@ -188,7 +192,7 @@ Setiap pasien yang masuk dan dilayani di VK dikenakan **Biaya Administrasi VK**.
 - **AC 1:** Setiap state transition menyimpan state lama/baru, actor, server timestamp, correlation/idempotency key, dan alasan/catatan bila tersedia.
 - **AC 2:** Timeline audit tidak dapat diedit atau dihapus dari Dashboard VK.
 - **AC 3:** RBAC dan row-level scope divalidasi pada API list/detail/transition, bukan hanya dengan menyembunyikan tombol UI.
-- **AC 4:** Role matrix untuk lihat, terima, tolak, pulangkan, dan masing-masing action launcher ditetapkan konfigurasi RS [PERLU KONFIRMASI].
+- **AC 4:** Role matrix untuk lihat, terima, tolak, selesai, memilih dipulangkan, dan masing-masing action launcher ditetapkan konfigurasi RS [PERLU KONFIRMASI].
 
 ## 7. Data & Business Rules
 
@@ -204,17 +208,19 @@ Setiap pasien yang masuk dan dilayani di VK dikenakan **Biaya Administrasi VK**.
 | `medical_record_no_snapshot` | No. RM | VARCHAR(50) | Ya | Master pasien | Tidak kosong | No. RM pada tabel. |
 | `registration_at` | Tanggal Daftar | TIMESTAMPTZ | Ya | Modul Pendaftaran/encounter | Read-only | Ditampilkan sebagai Tanggal Daftar. |
 | `ordered_at` | Tanggal Order VK | TIMESTAMPTZ | Ya | E7 server timestamp | Read-only | Ditampilkan sebagai Tanggal Order VK. |
-| `completed_at` | Tanggal Selesai Dilayani | TIMESTAMPTZ | Tidak | Aksi Pulangkan Pasien sebagai penyelesaian layanan | Hanya `COMPLETED` | Ditampilkan sebagai Tanggal Selesai pada Tab Sudah Dilayani. |
+| `completed_at` | Tanggal Selesai Dilayani | TIMESTAMPTZ | Tidak | Aksi Selesai sebagai penyelesaian layanan | Hanya `COMPLETED`/`DISCHARGED` | Ditampilkan sebagai Tanggal Selesai pada Tab Sudah Dilayani. |
 | `source_unit_id`, `source_unit_name_snapshot` | Unit Asal | UUID, VARCHAR(150) | Ya | E7 | FK/snapshot | Unit Asal pengorder. |
 | `spri_id` | ID SPRI | UUID | Tidak | Unit Asal / Modul SPRI | FK valid bila tersedia | Referensi Surat Perintah Rawat Inap yang menentukan tujuan bangsal. |
 | `ward_destination_id`, `ward_destination_name_snapshot` | Unit Dirawat | UUID, VARCHAR(150) | Ya | SPRI dari Unit Asal | Jika tidak ada SPRI/tujuan, tampilkan `-` | Tujuan bangsal pasien bila akan dirawat-inapkan setelah layanan VK. Read-only pada semua tab. |
 | `dpjp_id`, `dpjp_name_snapshot` | Nama Dokter DPJP | UUID, VARCHAR(200) | Ya | E7/Master Praktisi | Praktisi aktif saat order | Nama Dokter DPJP pada tabel. |
-| `service_status` | Status Pelayanan VK | ENUM | Ya | State machine | Enum yang diizinkan | `ORDER_CREATED`, `IN_PROGRESS`, `COMPLETED`, `DISCHARGED`, `REJECTED`, `CANCELED`; `RECEIVED` dicatat sebagai event, bukan status UI aktif. |
+| `service_status` | Status Teknis Pelayanan VK | ENUM | Ya | State machine | Enum yang diizinkan | `ORDER_CREATED`, `IN_PROGRESS`, `COMPLETED`, `DISCHARGED`, `REJECTED`, `CANCELED`; `RECEIVED` dicatat sebagai event, bukan status UI aktif. |
+| `service_status_label` | Status Pelayanan VK | ENUM/Teks tampilan | Ya | Mapping state machine E7a | Harus sesuai `service_status` | Label tampilan: **Menunggu Konfirmasi**, **Ditolak**, **Cancel**, **Dalam Proses**, **Selesai**, **Dipulangkan**. |
 | `received_at`, `received_by` | Waktu/User Penerima | TIMESTAMPTZ, UUID | Kondisional | Aksi Terima | Wajib setelah terima | Bukti event penerimaan sebelum langsung `IN_PROGRESS`. |
 | `rejected_at`, `rejected_by`, `rejection_reason` | Waktu/User/Alasan Penolakan | TIMESTAMPTZ, UUID, TEXT | Kondisional | Aksi Tolak | Alasan wajib bila `REJECTED` | Tidak boleh hard delete. |
-| `completed_by`, `completion_note` | User/Catatan Selesai Dilayani | UUID, TEXT | Kondisional | Aksi Pulangkan Pasien | `completed_by` wajib saat `COMPLETED` | Catatan penyelesaian pelayanan VK. |
-| `e13_discharge_id` | ID Discharge E13 | UUID | Kondisional | E13 Discharge Pasien | Wajib saat E13 sukses | Referensi discharge sebagai source of truth E13. |
-| `discharged_at`, `discharged_by` | Waktu/User Discharge | TIMESTAMPTZ, UUID | Kondisional | Callback/event E13 | Wajib saat `DISCHARGED` | Timestamp dan actor hasil discharge E13. |
+| `completed_by`, `completion_note` | User/Catatan Selesai Dilayani | UUID, TEXT | Kondisional | Aksi Selesai | `completed_by` wajib saat `COMPLETED`/`DISCHARGED` | Catatan penyelesaian pelayanan VK. |
+| `discharge_choice` | Pilihan Pulang | ENUM | Kondisional | Overlay Selesai | `NO` atau `YES` wajib saat aksi Selesai | `NO` menghasilkan **Selesai**; `YES` menghasilkan **Dipulangkan**. |
+| `e13_discharge_id` | ID Discharge E13 | UUID | Opsional | Owner discharge rumah sakit bila terintegrasi | Diisi bila ada event/rujukan E13 | Referensi discharge bila proses administratif memakai E13; tidak wajib untuk mencatat status worklist **Dipulangkan**. |
+| `discharged_at`, `discharged_by` | Waktu/User Dipulangkan | TIMESTAMPTZ, UUID | Kondisional | Overlay Selesai pilihan Dipulangkan / event discharge | Wajib saat `DISCHARGED` | Timestamp dan actor saat pasien ditandai **Dipulangkan**. |
 | `status_approval`, `role_approver` | Status/Role Approver | VARCHAR(20), VARCHAR(50) | Ya | Default `NOT_REQUIRED` | Reserved Phase 2 | Siap approval/escalation, belum menghambat Phase 1. |
 | `coa_id`, `akun_debit`, `akun_kredit` | Referensi COA | UUID, VARCHAR(50), VARCHAR(50) | Tidak | Referensi downstream | Tidak dipopulasi E7a | [Phase 3] Milik domain tindakan/billing bila relevan. |
 | `admin_fee_tariff_id`, `admin_fee_amount` | Biaya Administrasi VK | UUID, DECIMAL | Kondisional | Pengaturan → Tarif Pendaftaran | Tarif aktif; nominal tidak boleh negatif | Charge administrasi VK yang dikirim ke Billing G2. |
@@ -224,7 +230,9 @@ Setiap pasien yang masuk dan dilayani di VK dikenakan **Biaya Administrasi VK**.
 
 ### 7.1.1 Data Requirement — Tab Konfirmasi Permintaan
 
-Tab ini hanya menampilkan worklist dengan status `ORDER_CREATED`. `RECEIVED` tidak ditampilkan sebagai status/tab karena hanya event audit saat user menekan Terima.
+Tab ini hanya menampilkan worklist dengan status teknis `ORDER_CREATED` dan label tampilan **Menunggu Konfirmasi**. `RECEIVED` tidak ditampilkan sebagai status/tab karena hanya event audit saat user menekan Terima.
+
+Default filter Status pada tab ini adalah **Menunggu Konfirmasi**. User berwenang dapat mengubah filter status bila sistem menyediakan opsi audit seperti **Ditolak** atau **Cancel**, tetapi tampilan awal wajib memprioritaskan permintaan yang masih perlu dikonfirmasi.
 
 | Kolom Tampilan | Keterangan | Field / Derived Data | Sumber Data | Aturan Tampil / Aksi |
 |---|---|---|---|---|
@@ -236,13 +244,13 @@ Tab ini hanya menampilkan worklist dengan status `ORDER_CREATED`. `RECEIVED` tid
 | Unit Asal | Unit Asal | `source_unit_name_snapshot` | E7 / modul asal IGD, Poli RJ, atau Ranap | Read-only; tampilkan unit saat order dibuat. |
 | Unit Dirawat | Tujuan Bangsal | `ward_destination_name_snapshot` | SPRI dari Unit Asal | Tampilkan nama bangsal tujuan; jika `spri_id`/tujuan tidak tersedia, tampilkan `-`. |
 | Nama Dokter DPJP | Nama Dokter DPJP | `dpjp_name_snapshot` | E7 + Master Data Praktisi | Read-only; snapshot DPJP saat order. |
-| Status | Status Pelayanan VK | `service_status = ORDER_CREATED` | State machine E7a | Badge **Konfirmasi Permintaan** / **Menunggu Dikonfirmasi**. |
+| Status | Status Pelayanan VK | `service_status = ORDER_CREATED`; `service_status_label = Menunggu Konfirmasi` | State machine E7a | Badge **Menunggu Konfirmasi**. |
 | Waktu Menunggu | Durasi menunggu | `now - ordered_at` | Kalkulasi E7a dari server timestamp | Diperbarui saat refresh; timezone Asia/Jakarta. |
 | Aksi | Aksi Konfirmasi | `accept`, `reject` | RBAC + state machine E7a | Role berwenang dapat memilih **Terima** atau **Tolak**. Tolak wajib alasan. |
 
 ### 7.1.2 Data Requirement — Tab Sedang Dilayani
 
-Tab ini hanya menampilkan pasien yang telah diterima dan langsung berstatus `IN_PROGRESS`. Seluruh action launcher klinis/administratif pada Phase 1 hanya boleh digunakan dari tab ini.
+Tab ini hanya menampilkan pasien yang telah diterima dan langsung berstatus teknis `IN_PROGRESS` dengan label tampilan **Dalam Proses**. Seluruh action launcher klinis/administratif pada Phase 1 hanya boleh digunakan dari tab ini.
 
 | Kolom Tampilan | Keterangan | Field / Derived Data | Sumber Data | Aturan Tampil / Aksi |
 |---|---|---|---|---|
@@ -254,15 +262,16 @@ Tab ini hanya menampilkan pasien yang telah diterima dan langsung berstatus `IN_
 | Unit Asal | Unit Asal | `source_unit_name_snapshot` | E7 / modul asal IGD, Poli RJ, atau Ranap | Read-only. |
 | Unit Dirawat | Tujuan Bangsal | `ward_destination_name_snapshot` | SPRI dari Unit Asal | Tampilkan nama bangsal tujuan; jika `spri_id`/tujuan tidak tersedia, tampilkan `-`. |
 | Nama Dokter DPJP | Nama Dokter DPJP | `dpjp_name_snapshot` | E7 + Master Data Praktisi | Read-only. |
-| Status | Status Pelayanan VK | `service_status = IN_PROGRESS` | State machine E7a | Badge **Sedang Dilayani**. |
 | Waktu Mulai Dilayani | Waktu Mulai Dilayani | `received_at` | Event Terima E7a | Waktu mulai operasional setelah pasien diterima; tampil Asia/Jakarta. |
 | Durasi Pelayanan | Durasi berjalan | `now - received_at` | Kalkulasi E7a | Diperbarui saat refresh; bukan nilai yang diinput user. |
 | Aksi Pelayanan | Action Launcher | `patient_id`, `encounter_id`, `vk_order_id`, `service_context=VK` | RBAC + konfigurasi target | Tersedia hanya pada `IN_PROGRESS`: D8, E8, E1, E2, E12, E3, E4, E22, F38, D3, E6, E9, dan D10. |
-| Aksi Pulangkan Pasien | Penyelesaian Layanan VK | `complete_service` | RBAC + state machine E7a | Mengubah `IN_PROGRESS` menjadi `COMPLETED`/**Selesai** dan memindahkan item ke Sudah Dilayani. Tidak memanggil E11/E13. |
+| Aksi Selesai | Penyelesaian Layanan VK | `complete_service` + `discharge_choice` | RBAC + state machine E7a | Klik **Selesai** membuka overlay pilihan pulang. **Tidak** → `COMPLETED`/**Selesai**; **Dipulangkan** → `DISCHARGED`/**Dipulangkan**. |
+
+> Kolom **Status** tidak ditampilkan pada Tab Sedang Dilayani. Status `IN_PROGRESS`/**Dalam Proses** tetap tersimpan dan menjadi filter server-side, tetapi tidak perlu dirender sebagai kolom data karena seluruh isi tab memiliki status operasional yang sama.
 
 ### 7.1.3 Data Requirement — Tab Sudah Dilayani
 
-Tab ini hanya menampilkan pasien dengan status `COMPLETED`, yang ditampilkan sebagai **Selesai**. Tidak ada status **Menunggu Dipulangkan** dan tidak ada aksi pemulangan pada tab ini.
+Tab ini menampilkan pasien dengan status teknis `COMPLETED`/**Selesai** atau `DISCHARGED`/**Dipulangkan**. Tidak ada status **Menunggu Dipulangkan** dan tidak ada aksi pemulangan lanjutan pada tab ini.
 
 | Kolom Tampilan | Keterangan | Field / Derived Data | Sumber Data | Aturan Tampil / Aksi |
 |---|---|---|---|---|
@@ -271,15 +280,15 @@ Tab ini hanya menampilkan pasien dengan status `COMPLETED`, yang ditampilkan seb
 | Tanggal Daftar | Tanggal Daftar | `registration_at` | Modul Pendaftaran / encounter aktif | Format tanggal dan waktu Asia/Jakarta. |
 | No. RM | No. RM | `medical_record_no_snapshot` | Master Data Pasien / E7 | Read-only; dapat digunakan untuk pencarian. |
 | Tanggal Order VK | Tanggal Order VK | `ordered_at` | E7 server timestamp | Format tanggal dan waktu Asia/Jakarta. |
-| Tanggal Selesai | Tanggal Selesai Dilayani | `completed_at` | Aksi Pulangkan Pasien sebagai penyelesaian layanan | Wajib; format tanggal dan waktu Asia/Jakarta. |
+| Tanggal Selesai | Tanggal Selesai Dilayani | `completed_at` | Aksi Selesai sebagai penyelesaian layanan | Wajib; format tanggal dan waktu Asia/Jakarta. |
 | Unit Asal | Unit Asal | `source_unit_name_snapshot` | E7 / modul asal IGD, Poli RJ, atau Ranap | Read-only. |
 | Unit Dirawat | Tujuan Bangsal | `ward_destination_name_snapshot` | SPRI dari Unit Asal | Tampilkan nama bangsal tujuan; jika `spri_id`/tujuan tidak tersedia, tampilkan `-`. |
 | Nama Dokter DPJP | Nama Dokter DPJP | `dpjp_name_snapshot` | E7 + Master Data Praktisi | Read-only. |
-| Status | Status Pelayanan VK | `service_status = COMPLETED` | State machine E7a | Badge **Selesai**. |
+| Status | Status Pelayanan VK | `service_status = COMPLETED/DISCHARGED`; `service_status_label = Selesai/Dipulangkan` | State machine E7a | Badge **Selesai** atau **Dipulangkan** sesuai pilihan overlay. |
 | Durasi Pelayanan | Durasi Pelayanan | `completed_at - received_at` | Kalkulasi E7a | Durasi final dari penerimaan sampai selesai dilayani. |
 | Aksi | Tidak ada | `null` | State machine E7a | Tidak ada aksi pemulangan lanjutan. |
 
-**Aturan bersama seluruh tab:** Tab Konfirmasi dan Sedang Dilayani menggunakan waktu order/aktivasi sesuai kebutuhan operasional. Tab Sudah Dilayani menggunakan `completed_at` sebagai basis filter **Waktu**, default tanggal berjalan `00:00:00–23:59:59` Asia/Jakarta, dan menyediakan filter **Nama Dokter DPJP**. User dapat mengatur rentang tanggal. Pencarian menggunakan Nama Pasien, No. RM, dan No. Order VK; `REJECTED`, `CANCELED`, dan `DISCHARGED` tidak memiliki tab operasional khusus.
+**Aturan bersama seluruh tab:** Tab Konfirmasi dan Sedang Dilayani menggunakan waktu order/aktivasi sesuai kebutuhan operasional. Tab Konfirmasi Permintaan memiliki default filter Status = **Menunggu Konfirmasi**. Tab Sudah Dilayani menggunakan `completed_at` sebagai basis filter **Waktu**, default tanggal berjalan `00:00:00–23:59:59` Asia/Jakarta, dan menyediakan filter **Nama Dokter DPJP**. User dapat mengatur rentang tanggal. Pencarian menggunakan Nama Pasien, No. RM, dan No. Order VK; `REJECTED`/**Ditolak** dan `CANCELED`/**Cancel** tidak memiliki tab operasional khusus, sedangkan `DISCHARGED`/**Dipulangkan** tampil di Tab Sudah Dilayani.
 
 ### 7.2 Audit Event Minimum
 
@@ -287,7 +296,7 @@ Tab ini hanya menampilkan pasien dengan status `COMPLETED`, yang ditampilkan seb
 |---|---|---|
 | `audit_id` | UUID | Identitas event. |
 | `vk_worklist_id` | UUID | Relasi ke worklist. |
-| `event_type` | ENUM | `CREATED`, `RECEIVED`, `REJECTED`, `IN_PROGRESS`, `COMPLETED`, `DISCHARGE_REQUESTED`, `DISCHARGED`, `ACTION_OPENED` [PERLU KONFIRMASI untuk logging launcher]. |
+| `event_type` | ENUM | `CREATED`, `RECEIVED`, `REJECTED`, `IN_PROGRESS`, `COMPLETED`, `DISCHARGED`, `ACTION_OPENED` [PERLU KONFIRMASI untuk logging launcher]. |
 | `from_status`, `to_status` | ENUM | State sebelum/sesudah event. |
 | `actor_id`, `actor_role`, `occurred_at` | UUID, VARCHAR, TIMESTAMPTZ | Pelaku dan waktu server. |
 | `reason`, `metadata_json` | TEXT, JSONB | Alasan keputusan dan metadata non-klinis yang aman. |
@@ -297,16 +306,16 @@ Tab ini hanya menampilkan pasien dengan status `COMPLETED`, yang ditampilkan seb
 
 - **BR-E7A-01:** Keanggotaan tab mengikuti state machine secara eksklusif; filter tidak boleh mengubah state.
 - **BR-E7A-02:** Hanya E7/order producer yang boleh membuat state awal `ORDER_CREATED`; E7a tidak membuat order VK baru.
-- **BR-E7A-03:** Terima/Tolak/Pulangkan Pasien dijalankan dengan validasi state terkini, scope, RBAC, version, dan idempotency key. Terima menyimpan event `RECEIVED` dan langsung mengaktifkan `IN_PROGRESS` dalam satu transaksi.
+- **BR-E7A-03:** Terima/Tolak/Selesai dijalankan dengan validasi state terkini, scope, RBAC, version, dan idempotency key. Terima menyimpan event `RECEIVED` dan langsung mengaktifkan `IN_PROGRESS` dalam satu transaksi. Selesai wajib membawa pilihan `discharge_choice`.
 - **BR-E7A-04:** Penolakan wajib menyimpan alasan; reject/cancel/completed adalah soft-status dengan audit, bukan `DELETE`. Pernyataan BPMN “menghapus order pelayanan VK” ditafsirkan sebagai penutupan status yang teraudit sampai kebijakan owner menegaskan lain.
 - **BR-E7A-05:** Satu `vk_order_id` aktif hanya mempunyai satu worklist item aktif. Unique constraint dan transaksi producer/consumer mencegah duplikasi.
 - **BR-E7A-06:** Semua action launcher hanya meneruskan konteks; modul tujuan adalah source of truth atas data klinis, validasi, persetujuan, stok, billing, dan audit detailnya.
-- **BR-E7A-07:** Aksi **Pulangkan Pasien** pada Sedang Dilayani menyelesaikan **pelayanan worklist VK** dengan transisi `IN_PROGRESS → COMPLETED`, lalu menampilkan status **Selesai** di Sudah Dilayani. E7a tidak memanggil E11/E13 melalui aksi ini dan tidak mengubah active unit Rawat Inap secara langsung.
+- **BR-E7A-07:** Aksi **Selesai** pada Sedang Dilayani menyelesaikan **pelayanan worklist VK** dan wajib menampilkan overlay pilihan apakah pasien juga dipulangkan. Jika pilihan **Tidak**, transisi `IN_PROGRESS`/**Dalam Proses** → `COMPLETED`/**Selesai**. Jika pilihan **Dipulangkan**, transisi `IN_PROGRESS`/**Dalam Proses** → `DISCHARGED`/**Dipulangkan**. Keduanya masuk ke Tab Sudah Dilayani. E7a tidak memanggil E11 dan tidak mengubah active unit Rawat Inap secara langsung.
 - **BR-E7A-08:** Snapshot Nama/No. RM/Unit Asal/Unit Dirawat/DPJP menjaga keterbacaan riwayat. Unit Dirawat berasal dari tujuan SPRI Unit Asal; tanpa SPRI/tujuan nilainya `-`.
 - **BR-E7A-09:** Data pasien hanya dapat terlihat pada scope unit/role yang berwenang; daftar, detail, export masa depan, dan deep link harus menerapkan RBAC server-side.
-- **BR-E7A-10:** Action E8 Gizi, E6 Ambulans, E9 IBS, F38 Surat Keterangan Lahir, dan D3 Data Sosial hanya tersedia saat pasien berstatus `IN_PROGRESS` di tab Sedang Dilayani, setelah event penerimaan berhasil.
-- **BR-E7A-11:** Default filter pada Tab Sudah Dilayani adalah harian berdasarkan `completed_at` untuk tanggal berjalan `00:00:00–23:59:59` Asia/Jakarta. User dapat mengubah rentang tanggal dan filter Nama Dokter DPJP tanpa mengubah state worklist.
-- **BR-E7A-12:** `REJECTED` dan `CANCELED` tidak memiliki tab atau history operasional khusus; keduanya cukup direpresentasikan sebagai status dan audit event pada detail/filter yang berwenang.
+- **BR-E7A-10:** Action E8 Gizi, E6 Ambulans, E9 IBS, F38 Surat Keterangan Lahir, dan D3 Data Sosial hanya tersedia saat pasien berstatus `IN_PROGRESS`/**Dalam Proses** di tab Sedang Dilayani, setelah event penerimaan berhasil.
+- **BR-E7A-11:** Default filter pada Tab Konfirmasi Permintaan adalah Status = **Menunggu Konfirmasi**. Default filter pada Tab Sudah Dilayani adalah harian berdasarkan `completed_at` untuk tanggal berjalan `00:00:00–23:59:59` Asia/Jakarta. User dapat mengubah rentang tanggal dan filter Nama Dokter DPJP tanpa mengubah state worklist.
+- **BR-E7A-12:** `REJECTED`/**Ditolak** dan `CANCELED`/**Cancel** tidak memiliki tab atau history operasional khusus; keduanya cukup direpresentasikan sebagai status dan audit event pada detail/filter yang berwenang. `DISCHARGED`/**Dipulangkan** tampil pada Tab Sudah Dilayani.
 - **BR-E7A-13:** Setiap pasien VK yang masuk layanan dikenakan Biaya Administrasi VK satu kali per episode/order aktif. Tarif diambil dari Pengaturan → Tarif Pendaftaran dan charge dikirim ke Billing G2 secara idempotent.
 - **BR-E7A-14:** Charge layanan dari D8, E8, E1, E2, E12, E3, E4, E22, F38, D3, E6, E9, dan D10 masuk ke Billing → Tagihan Pasien (G2). Referensi nominal tindakan menggunakan A10, nominal obat menggunakan A59, dan biaya administrasi menggunakan Tarif Pendaftaran.
 - **BR-E7A-15:** E7a hanya meneruskan referensi sumber charge dan konteks pasien/encounter/order; Billing G2 menjadi source of truth untuk nominal, status charge, idempotency, reversal, dan audit finansial.
@@ -315,18 +324,18 @@ Tab ini hanya menampilkan pasien dengan status `COMPLETED`, yang ditampilkan seb
 
 Interpretasi ini berlandaskan `bpmn/g-support-vk.json` pada container **F36 F37 F38 F39 - VK** dan dilengkapi kontrak E7.
 
-1. Dari IGD, Poli Kebidanan/Obgyn, atau Rawat Inap, E7 menyimpan Order Tindakan VK dan mengirim handoff yang menjadi `ORDER_CREATED`.
+1. Dari IGD, Poli Kebidanan/Obgyn, atau Rawat Inap, E7 menyimpan Order Tindakan VK dan mengirim handoff yang menjadi `ORDER_CREATED`/**Menunggu Konfirmasi**.
 2. Saat user membuka **Buka menu unit VK**, Dashboard VK memuat daftar Konfirmasi Permintaan sesuai scope petugas. *(Trace: `menerima rujukan/order VK dari IGD/VK/Rawat Inap`.)*
-3. Petugas memilih item. Gateway BPMN diterjemahkan sebagai **Terima** atau **Tolak**. Terima adalah satu aksi: sistem mencatat event `RECEIVED` lalu langsung menempatkan pasien dengan status `IN_PROGRESS` di Sedang Dilayani; tidak ada langkah UI RECEIVED terpisah. Tolak meminta alasan dan menutup permintaan sebagai soft-status. *(Trace: garis `terima` dan `tolak`.)*
+3. Petugas memilih item. Gateway BPMN diterjemahkan sebagai **Terima** atau **Tolak**. Terima adalah satu aksi: sistem mencatat event `RECEIVED` lalu langsung menempatkan pasien dengan status `IN_PROGRESS`/**Dalam Proses** di Sedang Dilayani; tidak ada langkah UI RECEIVED terpisah. Tolak meminta alasan dan menutup permintaan sebagai `REJECTED`/**Ditolak**. *(Trace: garis `terima` dan `tolak`.)*
 4. Untuk pasien Sedang Dilayani, user memilih aksi sesuai kebutuhan: **Input EMR** melalui D8, **Input tindakan** melalui E1, Order Penunjang melalui E3/E4/E22, Order Operasi melalui E9, serta action launcher lain yang tercantum pada FR-E7A-03. Charge dari aksi tersebut diteruskan ke Billing G2.
-5. Setelah layanan selesai, user menjalankan **Pulangkan Pasien** pada tab Sedang Dilayani. Dalam E7a, aksi ini adalah penyelesaian layanan VK: Dashboard merekam `COMPLETED` dan timestamp, lalu memindahkan pasien ke Sudah Dilayani dengan status **Selesai**.
-6. Tab Sudah Dilayani menggunakan filter Waktu berbasis `completed_at` dengan default harian dan filter Nama Dokter DPJP. Tidak ada aksi pemulangan lanjutan. Biaya administrasi VK dibuat berdasarkan Tarif Pendaftaran dan dikirim bersama referensi charge layanan ke Billing G2.
-7. BPMN juga memuat teks `Sistem menghapus order pelayanan VK`; pada desain ini tidak diterapkan sebagai hapus fisik demi audit dan keselamatan. `REJECTED`/`CANCELED` cukup disimpan sebagai status dan audit event tanpa tab/history operasional khusus.
+5. Setelah layanan selesai, user klik **Selesai** pada tab Sedang Dilayani. Dashboard menampilkan overlay pilihan apakah pasien juga dipulangkan. Pilih **Tidak** → Dashboard merekam `COMPLETED`/**Selesai** dan timestamp. Pilih **Dipulangkan** → Dashboard merekam `DISCHARGED`/**Dipulangkan** dan timestamp.
+6. Tab Sudah Dilayani menggunakan filter Waktu berbasis `completed_at` dengan default harian dan filter Nama Dokter DPJP. Status yang tampil adalah **Selesai** atau **Dipulangkan**. Tidak ada aksi pemulangan lanjutan. Biaya administrasi VK dibuat berdasarkan Tarif Pendaftaran dan dikirim bersama referensi charge layanan ke Billing G2.
+7. BPMN juga memuat teks `Sistem menghapus order pelayanan VK`; pada desain ini tidak diterapkan sebagai hapus fisik demi audit dan keselamatan. `REJECTED`/**Ditolak** dan `CANCELED`/**Cancel** cukup disimpan sebagai status dan audit event tanpa tab/history operasional khusus.
 
 ### Kontrak Integrasi Minimum
 
 - **Inbound E7 → E7a:** `vk_order_id`, `encounter_id`, `patient_id`, nomor order, `ordered_at`, unit asal snapshot, `spri_id`, unit dirawat snapshot, DPJP snapshot, status awal, dan correlation/idempotency key.
-- **E7a command:** `accept`, `reject`, `complete_service`, dan `publish_billing_reference`, semuanya memvalidasi status, version, scope, role, dan idempotency key di server. `accept` menyimpan event `RECEIVED` lalu langsung menetapkan `IN_PROGRESS`; `complete_service` dipicu oleh aksi UI **Pulangkan Pasien**.
+- **E7a command:** `accept`, `reject`, `complete_service`, dan `publish_billing_reference`, semuanya memvalidasi status, version, scope, role, dan idempotency key di server. `accept` menyimpan event `RECEIVED` lalu langsung menetapkan `IN_PROGRESS`; `complete_service` dipicu oleh aksi UI **Selesai** dan wajib menerima `discharge_choice=NO/YES`.
 - **Billing G2 event:** E7a mengirim referensi biaya administrasi VK dan charge layanan beserta `patient_id`, `encounter_id`, `vk_order_id`, `service_context`, `charge_source`, dan `tariff_reference`; Billing mengembalikan `billing_reference_id` dan status penerimaan secara idempotent.
 - **Outbound action launcher:** konteks pasien/encounter/order VK, tanpa membuat copy data klinis.
 - **Event/audit:** event state disimpan immutable dan tersedia untuk detail/history sesuai hak akses.
@@ -337,10 +346,11 @@ Interpretasi ini berlandaskan `bpmn/g-support-vk.json` pada container **F36 F37 
 - D8 adalah entry point asesmen VK sesuai keputusan stakeholder; F40 tidak dipakai karena master saat ini menunjuk asesmen MCU.
 - Dashboard VK tidak menghitung nominal charge, stok, klaim, jurnal, atau mapping COA secara langsung; Dashboard mengirim referensi charge dan biaya administrasi ke Billing G2.
 - Semua waktu disimpan sebagai TIMESTAMPTZ server dan ditampilkan dalam timezone **Asia/Jakarta**.
+- Filter Tab Konfirmasi Permintaan default menggunakan Status = **Menunggu Konfirmasi**.
 - Filter Tab Sudah Dilayani default menggunakan tanggal berjalan, pukul `00:00:00–23:59:59` Asia/Jakarta, berdasarkan `completed_at`; filter dokter DPJP tersedia dan rentang waktu dapat diubah user.
 
 ## Pertanyaan Terbuka
-- Role matrix final untuk lihat, Terima, Tolak, Pulangkan Pasien sebagai penyelesaian layanan, dan masing-masing action launcher per profesi/unit.
+- Role matrix final untuk lihat, Terima, Tolak, Selesai, pilihan Dipulangkan, dan masing-masing action launcher per profesi/unit.
 - Template/jenis asesmen VK mana pada D8 yang wajib dimuat atau dapat diedit.
 - SLA penerimaan dan kebijakan retensi audit yang berlaku di RS.
 
@@ -348,8 +358,8 @@ Interpretasi ini berlandaskan `bpmn/g-support-vk.json` pada container **F36 F37 
 
 Contoh data bersama E7 dan E7a tersedia pada [`example-data.json`](example-data.json). Alur terintegrasi dan konteks antar-modul tersedia pada [`integrated-flow.md`](integrated-flow.md):
 
-`E7 Order Tindakan VK` → `E7a Konfirmasi Permintaan` → `RECEIVED` event → `IN_PROGRESS / Sedang Dilayani` → aksi `Pulangkan Pasien` → `COMPLETED / Selesai / Sudah Dilayani`.
+`E7 Order Tindakan VK` → `E7a Konfirmasi Permintaan / Menunggu Konfirmasi` → `RECEIVED` event → `IN_PROGRESS / Dalam Proses / Sedang Dilayani` → aksi `Selesai` + overlay pilihan pulang → `COMPLETED / Selesai / Sudah Dilayani` atau `DISCHARGED / Dipulangkan / Sudah Dilayani`.
 
-UI Preview interaktif Dashboard VK tersedia pada [`preview.html`](preview.html). Preview mendukung simulasi Terima, Tolak, filter Waktu/Dokter, action launcher E8/E6/E9/F38/D3, dan aksi Pulangkan Pasien sebagai penyelesaian layanan VK.
+UI Preview interaktif Dashboard VK tersedia pada [`preview.html`](preview.html). Preview mendukung simulasi Terima, Tolak, filter Waktu/Dokter, default filter Status Menunggu Konfirmasi pada Tab Konfirmasi Permintaan, action launcher E8/E6/E9/F38/D3, serta aksi Selesai dengan overlay pilihan pasien juga dipulangkan atau tidak.
 
 Preview entry point Order Tindakan VK tersedia pada [Preview E7](../E7__pelayanan-utama-order-tindakan-vk/preview.html).

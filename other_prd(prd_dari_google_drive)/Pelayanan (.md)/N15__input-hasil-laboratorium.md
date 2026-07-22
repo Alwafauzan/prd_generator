@@ -1,6 +1,6 @@
 # Product Requirement Document (PRD) — N15 Input Hasil Laboratorium
 
-> **Status:** Draft v0.1  
+> **Status:** Baseline Product Decision v0.2  
 > **Tanggal:** 2026-07-21  
 > **Prinsip utama:** hasil berstatus `VALID` merupakan hasil resmi; hasil kritis tidak dapat divalidasi tanpa catatan hasil kritis; hasil tervalidasi bersifat immutable dan hanya dapat dikoreksi melalui unvalidasi/revisi yang diaudit.
 
@@ -9,8 +9,8 @@
 | Atribut | Nilai |
 |---|---|
 | Approval | [PERLU KONFIRMASI] Kepala Instalasi Laboratorium, Dokter Penanggung Jawab Laboratorium, Manajemen RS |
-| Related Documents | `template.md`; Master Item Laboratorium; SOP validasi dan pelaporan nilai kritis RS [PERLU KONFIRMASI] |
-| Document Version | 2026-07-21 — v0.1 — Draft awal N15 Input Hasil Laboratorium |
+| Related Documents | `template.md`; Master Item Laboratorium A14 v1.4; PRD Order Pemeriksaan Laboratorium v2.3; SOP validasi dan pelaporan nilai kritis masing-masing RS |
+| Document Version | 2026-07-21 — v0.2 — Baseline keputusan lifecycle, validasi, Critical, reference, RBAC, dan integrasi event |
 
 ## 2. Overview & Background
 
@@ -59,7 +59,7 @@ Alur V1 tetap digunakan: dokter membuat order, petugas laboratorium mengonfirmas
 | Hasil manual | Numeric, Text, Option, Narrative, Formula/read-only, catatan, autosave/draft | Dual entry, verifikasi berjenjang per kelompok |
 | Hasil LIS | Menampilkan hasil yang telah diterima, source badge, lock/override RBAC | Rekonsiliasi dan orkestrasi retry integrasi |
 | Interpretasi | Normal/Abnormal/Critical realtime dari snapshot rule | Rule kompleks multi-analyte dan delta check |
-| Nilai kritis | Badge kuat, catatan wajib, tindak lanjut opsional/configurable | Notifikasi/escalation berjenjang dan acknowledgement DPJP/unit |
+| Nilai kritis | Badge kuat, catatan pelaporan/tindakan wajib, terbitkan domain event Critical | Notifikasi/escalation berjenjang dan acknowledgement DPJP/unit |
 | Validasi | Submit, validasi dokter, unvalidasi/revisi berizin | Co-sign/approval berjenjang sesuai kebijakan RS |
 | Cetak | Preview/cetak hasil valid dan watermark non-final | TTE/QR verification penuh dan distribusi otomatis |
 | Audit | Append-only audit trail aktivitas utama | Audit analytics dan anomaly alert |
@@ -71,7 +71,7 @@ Alur V1 tetap digunakan: dokter membuat order, petugas laboratorium mengonfirmas
 - Pengaturan Master Laboratorium, mapping master, normal range, critical range, metode, atau instrumen.
 - Kalibrasi alat dan Quality Control alat laboratorium.
 - Pengulangan pemeriksaan dan SOP operasional instrumen di luar pencatatan warning/konfirmasi.
-- Notifikasi otomatis nilai kritis pada Phase 1; disiapkan sebagai event untuk konfigurasi Phase 2.
+- Pengiriman notifikasi otomatis nilai kritis pada Phase 1; Phase 1 hanya menerbitkan domain event, sedangkan delivery, acknowledgement, dan escalation diterapkan pada Phase 2.
 
 ## 5. Related Features
 
@@ -100,6 +100,13 @@ Alur V1 tetap digunakan: dokter membuat order, petugas laboratorium mengonfirmas
 | `CANCELLED` | Pemeriksaan/order dibatalkan oleh proses hulu dengan alasan | N/A | Terminal; tidak menghapus histori | Sama |
 
 Status `Normal`, `Abnormal`, dan `Critical` adalah **interpretasi per item**, bukan status workflow order.
+
+Lifecycle order dan lifecycle hasil merupakan dua state machine terpisah:
+
+| Lifecycle | Urutan | Keputusan Sinkronisasi |
+|---|---|---|
+| Order laboratorium | `ORDERED → CONFIRMED → IN_PROGRESS → COMPLETED/CANCELLED` | Input hasil pertama mengubah order menjadi `IN_PROGRESS`. Order menjadi `COMPLETED` ketika proses pemeriksaan selesai dan seluruh hasil wajib telah tersedia, tanpa menunggu validasi hasil. |
+| Hasil laboratorium | `DRAFT/PARTIAL → WAITING_VALIDATION → VALID/REVISION` | Hanya publication `VALID` yang menjadi hasil resmi. Status `COMPLETED` pada order tidak otomatis berarti hasil sudah valid. |
 
 ### User Stories Utama
 
@@ -144,10 +151,11 @@ Status `Normal`, `Abnormal`, dan `Critical` adalah **interpretasi per item**, bu
 - **Fase:** Phase 1
 - **Acceptance Criteria:**
   - **AC 1:** `NUMERIC` hanya menerima angka, tanda minus bila diizinkan, dan presisi sesuai master; separator desimal dinormalisasi sebelum simpan.
-  - **AC 2:** `TEXT` dan `NARRATIVE` menerapkan required/max length; `OPTION` hanya menerima value aktif dalam option snapshot; `FORMULA` dihitung sistem dan read-only.
-  - **AC 3:** Simpan hanya mengubah item yang dikirim dan tidak menimpa item lain, termasuk item LIS/pending.
-  - **AC 4:** Input invalid tidak disimpan; field ditandai dan pesan spesifik ditampilkan.
-  - **AC 5:** Save menggunakan optimistic concurrency/version; stale update ditolak dengan 409 dan nilai terbaru dikembalikan.
+  - **AC 2:** Tipe canonical mengikuti A14: `NUMERIC`, `DISCRETE`, dan `NARRATIVE`. Input kebutuhan `TEXT` dipetakan ke `NARRATIVE`, sedangkan `OPTION` dipetakan ke `DISCRETE`; value `DISCRETE` hanya menerima pilihan dalam option snapshot.
+  - **AC 3:** `FORMULA` merupakan mekanisme perhitungan, bukan tipe hasil canonical. Formula dihitung sistem, read-only, versioned, dan output-nya harus bertipe `NUMERIC`, `DISCRETE`, atau `NARRATIVE`.
+  - **AC 4:** Simpan hanya mengubah item yang dikirim dan tidak menimpa item lain, termasuk item LIS/pending.
+  - **AC 5:** Input invalid tidak disimpan; field ditandai dan pesan spesifik ditampilkan.
+  - **AC 6:** Save menggunakan optimistic concurrency/version; stale update ditolak dengan 409 dan nilai terbaru dikembalikan.
 
 **Fitur FR-N15-04 — Penanganan Hasil dari LIS**
 
@@ -172,7 +180,8 @@ Status `Normal`, `Abnormal`, dan `Critical` adalah **interpretasi per item**, bu
   - **AC 3:** Setelah input valid, UI menampilkan interpretasi realtime ≤ 300 ms [ASUMSI], dan hasil final selalu dihitung ulang di server saat simpan/validasi.
   - **AC 4:** Abnormal menggunakan badge/icon oranye; Critical menggunakan badge/icon merah dan label `CRITICAL`; status tidak bergantung hanya pada warna.
   - **AC 5:** Tooltip/badge menjelaskan rule yang terpicu tanpa mengekspos data master yang tidak relevan.
-  - **AC 6:** Jika tidak ada rule yang cocok, sistem menampilkan `REFERENCE_NOT_AVAILABLE`, tidak mengasumsikan Normal, dan menerapkan guard validasi sesuai konfigurasi RS [PERLU KONFIRMASI].
+  - **AC 6:** Jika tidak ada rule yang cocok, sistem menampilkan `REFERENCE_NOT_AVAILABLE` dan tidak mengasumsikan Normal. Hasil tetap dapat divalidasi hanya oleh validator berwenang setelah memberikan konfirmasi eksplisit; konfirmasi tersebut disimpan pada audit dan publication snapshot.
+  - **AC 7:** Phase 1 menjalankan reference rule yang tersedia dari A14, minimal berdasarkan jenis kelamin. Struktur snapshot mendukung usia, metode, dan instrumen, tetapi dimensi tersebut hanya dievaluasi setelah tersedia pada master.
 
 **Fitur FR-N15-06 — Catatan Pemeriksaan dan Hasil Kritis**
 
@@ -182,7 +191,7 @@ Status `Normal`, `Abnormal`, dan `Critical` adalah **interpretasi per item**, bu
 - **Acceptance Criteria:**
   - **AC 1:** Sistem menyediakan catatan pemeriksaan, komentar laboratorium, interpretasi hasil, dan alasan kondisi khusus pada level order atau item sesuai konfigurasi.
   - **AC 2:** Ketika item menjadi Critical, field catatan hasil kritis otomatis tampil dan wajib diisi sebelum submit/validate.
-  - **AC 3:** Tindak lanjut bersifat wajib atau opsional mengikuti konfigurasi RS; bila wajib dan kosong, validasi ditolak.
+  - **AC 3:** Untuk setiap hasil Critical, satu catatan pelaporan/tindakan wajib diisi. Rincian terstruktur seperti penerima informasi, waktu pelaporan, read-back, dan tindak lanjut tambahan dapat dikonfigurasi sesuai SOP RS; field yang dikonfigurasi wajib menjadi guard validasi.
   - **AC 4:** Perubahan nilai dari Critical menjadi non-Critical tidak menghapus catatan yang sudah ada; catatan tetap di histori dan dapat ditandai tidak lagi aktif.
 
 **Fitur FR-N15-07 — Submit dan Validasi Dokter Laboratorium**
@@ -192,10 +201,12 @@ Status `Normal`, `Abnormal`, dan `Critical` adalah **interpretasi per item**, bu
 - **Fase:** Phase 1
 - **Acceptance Criteria:**
   - **AC 1:** Submit ke `WAITING_VALIDATION` hanya berhasil bila seluruh item wajib memiliki hasil valid atau status pengecualian yang diizinkan dan beralasan.
-  - **AC 2:** Validasi hanya tersedia bagi permission `lab_result.validate`; validator dan waktu validasi berasal dari session/server clock.
+  - **AC 2:** Validasi hanya tersedia bagi user dengan permission `lab_result.validate`; implementasi tidak meng-hardcode nama role. Secara default permission diberikan kepada dokter laboratorium, dan RS dapat memberikannya kepada role klinis lain melalui konfigurasi RBAC. Validator dan waktu validasi berasal dari session/server clock.
   - **AC 3:** Validasi ditolak secara atomik bila ada item Critical tanpa catatan wajib, item invalid, item pending wajib, atau versi berubah sejak halaman dibuka.
   - **AC 4:** Validasi membuat immutable publication version berisi snapshot hasil, satuan, metode, normal/critical reference, interpretasi, catatan, validator, dan timestamp.
   - **AC 5:** Setelah validasi, field input read-only dan hasil tersedia bagi consumer EMR/unit sesuai kebijakan publikasi RS.
+  - **AC 6:** Phase 1 memvalidasi satu agregat order/result set sekaligus. Validasi parsial per kelompok atau item tidak disediakan.
+  - **AC 7:** Setelah publication `VALID` terbentuk, sistem menerbitkan `LaboratoryResultValidated`. Integration service mengonsumsi event tersebut untuk pengiriman SATUSEHAT ketika mapping LOINC tersedia; N15 tidak mengirim langsung ke SATUSEHAT.
 
 **Fitur FR-N15-08 — Unvalidasi dan Revisi**
 
@@ -207,6 +218,7 @@ Status `Normal`, `Abnormal`, dan `Critical` adalah **interpretasi per item**, bu
   - **AC 2:** Unvalidasi/revisi memerlukan permission khusus dan alasan minimal 10 karakter [ASUMSI].
   - **AC 3:** Sistem mempertahankan versi resmi sebelumnya, membuat working version baru berstatus `REVISION`, dan mencatat actor, waktu, alasan, before/after.
   - **AC 4:** Hasil revisi harus divalidasi kembali dan nomor versi hasil bertambah; cetakan versi lama tetap dapat ditelusuri tetapi ditandai superseded.
+  - **AC 5:** Unvalidasi/revisi tidak memerlukan approval kedua pada Phase 1 maupun baseline Phase 2; kontrol dilakukan melalui permission khusus, alasan wajib, dan audit trail. Approval tambahan hanya dapat ditambahkan sebagai konfigurasi kebijakan di masa depan.
 
 **Fitur FR-N15-09 — Cetak Hasil Laboratorium**
 
@@ -216,7 +228,7 @@ Status `Normal`, `Abnormal`, dan `Critical` adalah **interpretasi per item**, bu
 - **Acceptance Criteria:**
   - **AC 1:** Cetak resmi memuat identitas pasien, nomor order, kelompok/item, hasil, satuan, nilai normal, indikator abnormal/kritis non-color-only, catatan yang dikonfigurasi tampil, dokter laboratorium, dan tanggal validasi.
   - **AC 2:** QR Code/TTE hanya ditampilkan bila provider dikonfigurasi dan token verifikasi valid; jika tidak, sistem tidak membuat QR palsu.
-  - **AC 3:** Preview/cetak hasil belum valid memiliki watermark `BELUM VALID` dan tidak diberi label sebagai hasil resmi.
+  - **AC 3:** User laboratorium berwenang dapat melakukan preview/cetak hasil belum valid dengan watermark `BELUM VALID`. DPJP dan unit pelayanan hanya menerima publication `VALID` sebagai hasil resmi; akses non-final bagi consumer klinis dinonaktifkan secara default.
   - **AC 4:** Cetak selalu merujuk publication version tertentu dan mencatat actor, waktu, versi, serta jenis output pada audit trail.
 
 **Fitur FR-N15-10 — Audit Trail dan RBAC**
@@ -267,7 +279,8 @@ Status `Normal`, `Abnormal`, dan `Critical` adalah **interpretasi per item**, bu
 - `master_item_id`, `master_item_version`: identifier snapshot source.
 - `group_code`, `group_name`, `group_sort_order`: snapshot.
 - `item_code`, `item_name`, `item_sort_order`: snapshot.
-- `data_type`: enum `NUMERIC|TEXT|OPTION|NARRATIVE|FORMULA`.
+- `result_value_type`: enum canonical `NUMERIC|DISCRETE|NARRATIVE` mengikuti A14.
+- `input_control_type`: enum `NUMBER|TEXT|TEXTAREA|SELECT|RADIO|CALCULATED`; `CALCULATED` menyimpan `formula_id` dan `formula_version`, tetapi output tetap menggunakan `result_value_type` canonical.
 - `result_numeric`: decimal nullable; `result_text`: text nullable; `result_option_code`: varchar nullable; `result_raw`: text nullable.
 - `unit_code`, `unit_display`, `method_code`, `method_display`, `instrument_id`: snapshot.
 - `source_type`: enum `MANUAL|LIS|FORMULA`; `source_message_id`, `source_received_at`.
@@ -302,7 +315,7 @@ Status `Normal`, `Abnormal`, dan `Critical` adalah **interpretasi per item**, bu
 - `id`: UUID; `result_set_id`, `result_item_id` nullable.
 - `event_type`, `actor_id`, `actor_role`, `occurred_at`, `reason`.
 - `before_payload`, `after_payload`: JSONB; `correlation_id`, `ip_address`, `user_agent` sesuai kebijakan.
-- Append-only; retention mengikuti kebijakan rekam medis RS [PERLU KONFIRMASI].
+- Append-only; retention mengikuti kebijakan rekam medis dan keamanan data yang berlaku pada masing-masing RS.
 
 **Table `laboratory_lis_receipts`**
 
@@ -333,6 +346,8 @@ Indeks minimum: `order_number`, `(patient_id, examination_at)`, `(workflow_statu
 | GET | `/api/v1/laboratory/result-sets/{id}/audit-events` | Audit trail sesuai permission. |
 | POST | `/internal/v1/laboratory/lis-results` | Contract consumer internal; implementasi konektor LIS di luar scope N15. |
 
+Domain event minimum Phase 1: `LaboratoryResultCriticalDetected`, `LaboratoryResultValidated`, `LaboratoryResultRevised`, dan `LaboratoryResultUnvalidated`. Event memakai outbox/idempotency key agar kegagalan consumer tidak membatalkan transaksi validasi dan tidak menghasilkan pengiriman ganda.
+
 Semua mutation menerima `Idempotency-Key` yang relevan, correlation ID, dan row/version precondition. Error menggunakan struktur konsisten: `code`, `message`, `field_errors`, `correlation_id`.
 
 ### 8.3 Data & Business Rules
@@ -349,7 +364,7 @@ Semua mutation menerima `Idempotency-Key` yang relevan, correlation ID, dan row/
 | `lab_comment` | Komentar Laboratorium | Textarea | Tidak | Max configurable | Manual | Level order/item. |
 | `result_interpretation_note` | Interpretasi Hasil | Textarea | Tidak | Max configurable | Manual | Bukan pengganti klasifikasi sistem. |
 | `critical_note` | Catatan Hasil Kritis | Textarea | Jika Critical | Required, non-whitespace | Manual | Guard submit/validate. |
-| `critical_follow_up` | Tindak Lanjut | Textarea/Select | Configurable | Sesuai policy snapshot | Manual | Phase 1 merekam; notifikasi Phase 2. |
+| `critical_follow_up` | Catatan Pelaporan/Tindakan | Textarea + field terstruktur | Ya jika Critical | Non-whitespace; field tambahan mengikuti policy snapshot | Manual | Guard validasi; delivery notifikasi Phase 2. |
 | `override_reason` | Alasan Override LIS | Textarea | Saat override | Permission + min length | Manual | Provenance LIS dipertahankan. |
 | `revision_reason` | Alasan Revisi | Textarea | Saat unvalidate/revise | Permission + min length | Manual | Disimpan pada event. |
 | `row_version` | Versi Data | Hidden | Ya | Harus sama dengan server | Sistem | Optimistic locking. |
@@ -381,16 +396,21 @@ Semua mutation menerima `Idempotency-Key` yang relevan, correlation ID, dan row/
 - **BR-N15-02:** Kelompok, item, tipe data, unit, metode, option, formula, serta rule normal/critical yang digunakan harus disnapshot agar perubahan master tidak mengubah histori.
 - **BR-N15-03:** Klasifikasi server adalah authoritative. Preview client hanya untuk feedback realtime.
 - **BR-N15-04:** Priority klasifikasi adalah `CRITICAL` > `ABNORMAL` > `NORMAL`; ketiadaan referensi menghasilkan `REFERENCE_NOT_AVAILABLE`.
-- **BR-N15-05:** Hasil di luar instrument limit memerlukan warning dan konfirmasi sesuai SOP; keputusan blok/nonblok [PERLU KONFIRMASI].
+- **BR-N15-05:** Hasil di luar instrument limit memunculkan blocking confirmation. Nilai hanya dapat disimpan setelah petugas mengonfirmasi pemeriksaan/penanganan sesuai SOP dan mengisi catatan; sistem tidak menentukan keputusan klinis pengulangan alat.
 - **BR-N15-06:** Item LIS read-only kecuali user memiliki permission override dan hasil belum `VALID`.
 - **BR-N15-07:** Hasil `VALID` tidak dapat dimutasi. Koreksi membuat versi baru melalui unvalidate/revision.
 - **BR-N15-08:** Critical note wajib sebelum submit/validate; follow-up wajib hanya bila policy RS mengaktifkannya.
 - **BR-N15-09:** Perubahan master/mapping berlaku untuk order baru dan tidak melakukan retroactive recalculation pada publication lama.
 - **BR-N15-10:** Hasil LIS duplikat dideduplikasi menggunakan idempotency key/message version; update parsial tidak menimpa item yang tidak dikirim.
 - **BR-N15-11:** Formula dihitung dari dependency pada versi hasil yang sama; perubahan dependency memicu hitung ulang dan klasifikasi ulang sebelum validasi.
-- **BR-N15-12:** Publish ke consumer klinis hanya memakai publication `VALID`, kecuali kebijakan mengizinkan view non-final dengan badge/watermark eksplisit.
+- **BR-N15-12:** Publish ke DPJP, unit pelayanan, EMR, dan consumer klinis hanya memakai publication `VALID`. Hasil non-final hanya dapat dilihat user laboratorium berwenang dengan badge/watermark eksplisit.
 - **BR-N15-13:** Semua timestamp menggunakan server clock, disimpan UTC, dan ditampilkan sesuai zona waktu rumah sakit.
-- **BR-N15-14:** Akses data, masking audit, dan retention mengikuti kebijakan keamanan serta rekam medis RS [PERLU KONFIRMASI].
+- **BR-N15-14:** Akses data, masking audit, dan retention mengikuti kebijakan keamanan serta rekam medis yang berlaku pada masing-masing RS.
+- **BR-N15-15:** Phase 1 melakukan validasi satu result set/order secara atomik; tidak ada validasi parsial per kelompok/item.
+- **BR-N15-16:** Permission menentukan kewenangan, bukan nama role. Default validator adalah dokter laboratorium; assignment tambahan dikelola melalui RBAC rumah sakit.
+- **BR-N15-17:** Critical selalu memerlukan catatan pelaporan/tindakan. Sistem menerbitkan event Critical pada Phase 1; delivery, acknowledgement, dan escalation notifikasi berada di Phase 2.
+- **BR-N15-18:** Publication valid dengan LOINC menerbitkan event untuk integration service SATUSEHAT. Kegagalan pengiriman eksternal tidak mengubah publication kembali menjadi non-valid dan ditangani melalui retry idempoten.
+- **BR-N15-19:** Kemampuan reference Phase 1 mengikuti master A14 yang tersedia. Dukungan usia, metode, dan instrumen bersifat forward-compatible dan aktif hanya bila rule master untuk dimensi tersebut tersedia.
 
 ### Matrix Hak Akses Minimum
 
@@ -446,21 +466,11 @@ Dokter membuat order
 
 ## Pertanyaan Terbuka
 
-- Apakah `REFERENCE_NOT_AVAILABLE` memblokir validasi atau cukup membutuhkan konfirmasi dokter laboratorium?
-- Apakah tindak lanjut Critical wajib untuk semua RS atau configurable per rumah sakit/item?
-- Apa batas minimum/maksimum catatan dan alasan yang disetujui SOP?
-- Apakah satu order dapat divalidasi parsial per kelompok/item, atau validasi selalu satu agregat order?
-- Siapa yang boleh melakukan unvalidasi, dan apakah perlu persetujuan kedua pada Phase 2?
-- Apakah hasil non-final boleh dilihat DPJP/unit, atau hanya user laboratorium?
-- Berapa jumlah maksimum item per order untuk target performance test?
-- Format cetak, identitas TTE/QR provider, masa berlaku token, dan kebijakan cetak ulang seperti apa?
-- Apa kebijakan ketika usia/jenis kelamin/metode/instrumen tidak memperoleh reference rule yang unik?
-- Apakah notifikasi Critical memerlukan acknowledgement dan escalation timer pada Phase 2?
+N/A — keputusan produk dan sistem untuk scope N15 telah dibakukan dalam PRD ini. Parameter operasional rumah sakit seperti template cetak, provider TTE/QR, retention, batas panjang catatan, penerima notifikasi, dan SLA escalation diperlakukan sebagai konfigurasi implementasi, bukan pertanyaan alur bisnis N15.
 
 ## Asumsi
 
 - Integration service menyediakan hasil LIS yang sudah memiliki nomor order, kode item, message ID/idempotency key, dan timestamp; pembangunan konektornya bukan scope N15.
-- Master Item Laboratorium menyediakan version/snapshot data yang cukup untuk menjaga histori.
-- Validasi utama dilakukan per order/result set; validasi parsial per kelompok belum diasumsikan.
+- Master Item Laboratorium menyediakan version/snapshot data yang cukup untuk menjaga histori; bila belum, layanan N15 wajib membuat snapshot saat order diproses dan saat publication diterbitkan.
+- Validasi dilakukan satu kali per agregat order/result set; validasi parsial tidak termasuk scope.
 - Sistem RBAC mampu mendefinisikan permission granular yang direkomendasikan dalam PRD ini.
-

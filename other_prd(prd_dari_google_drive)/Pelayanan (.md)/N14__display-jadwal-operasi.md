@@ -90,13 +90,14 @@ Informasi yang ditampilkan meliputi ruang operasi, jam operasi, nomor registrasi
 
 | Status | Deskripsi pada Display | Efek Data | Transisi Relevan |
 |---|---|---|---|
-| `WAITING` | Menunggu Dioperasi | Jadwal tetap tampil | → `IN_PROGRESS`, `POSTPONED`, atau `CANCELLED` |
+| `CONFIRMED` | Menunggu Dioperasi | Status sumber `Terkonfirmasi`; jadwal tetap tampil | → `IN_PROGRESS`, `POSTPONED`, atau `CANCELLED` |
 | `IN_PROGRESS` | Sedang Berlangsung | Jadwal tetap tampil dan status diperbarui | → `COMPLETED`, `POSTPONED`, atau `CANCELLED` sesuai aturan modul sumber |
 | `POSTPONED` | Ditunda | Jadwal tetap tampil; posisi berubah bila jam diubah | → status terbaru dari Jadwal Operasi |
 | `COMPLETED` | Selesai | Tetap tampil sampai tanggal aktif berganti | Terminal untuk tanggal tersebut |
 | `CANCELLED` | Dibatalkan | Tetap tampil selama tanggal operasi sesuai tanggal aktif | Terminal untuk tanggal tersebut |
 
 > N14 hanya membaca status. Validitas transisi dimiliki modul Jadwal Operasi/IBS.
+> Status sumber `Belum Terkonfirmasi` tidak ditampilkan pada N14. Status sumber `Terkonfirmasi` dipetakan menjadi label display **Menunggu Dioperasi**; status lainnya mengikuti label display yang bersesuaian.
 
 **User Stories Utama**
 
@@ -133,6 +134,7 @@ Informasi yang ditampilkan meliputi ruang operasi, jam operasi, nomor registrasi
   - **AC 3:** Jadwal tanpa ruang operasi atau tanpa jam operasi dikeluarkan oleh backend dan tidak muncul di payload.
   - **AC 4:** Jadwal dibatalkan dan selesai tetap ditampilkan sepanjang masih termasuk tanggal aktif.
   - **AC 5:** Bila hasil valid berjumlah nol, halaman menampilkan tepat: **“Belum terdapat jadwal operasi.”**
+  - **AC 6:** Jadwal berstatus sumber `Belum Terkonfirmasi` tidak dikirim ke display; jadwal mulai dapat tampil setelah berstatus `Terkonfirmasi` dan memenuhi seluruh validasi data.
 
 **Fitur: FR-N14-03 — Pengurutan dan Perubahan Jadwal**
 
@@ -152,9 +154,9 @@ Informasi yang ditampilkan meliputi ruang operasi, jam operasi, nomor registrasi
 - **Fase:** Phase 1
 - **Acceptance Criteria:**
   - **AC 1:** Masking dilakukan di backend sebelum serialisasi response; payload endpoint display tidak memuat nama lengkap pasien.
-  - **AC 2:** Implementasi minimum harus menghasilkan contoh aturan bisnis secara tepat: `Amelia Ramadhani` menjadi `A** R*********`.
-  - **AC 3:** Algoritma masking untuk setiap jumlah kata dan panjang kata harus ditetapkan sebagai satu fungsi canonical serta diuji dengan unit test; detail selain contoh di atas mengikuti kebijakan privasi rumah sakit. [PERLU KONFIRMASI]
-  - **AC 4:** Spasi antarkata, gelar, tanda baca, nama satu/dua karakter, dan karakter non-Latin mengikuti kebijakan normalisasi nama pasien. [PERLU KONFIRMASI]
+  - **AC 2:** Setiap kata dipisahkan berdasarkan spasi; hanya karakter pertama yang ditampilkan dalam huruf kapital, sedangkan setiap karakter berikutnya diganti satu bintang (`*`). Contoh: `Amelia Ramadhani` menjadi `A***** R********`.
+  - **AC 3:** Kata yang hanya terdiri dari satu karakter ditampilkan sebagai karakter tersebut dalam huruf kapital. Contoh: `A Budi` menjadi `A B***`.
+  - **AC 4:** Jumlah kata, spasi antarkata, dan panjang setiap kata dipertahankan; karakter selain karakter pertama pada setiap kata—termasuk gelar atau tanda baca—diganti dengan bintang.
   - **AC 5:** Nomor registrasi ditampilkan lengkap; nomor rekam medis tidak dikirim ke endpoint display.
   - **AC 6:** Nama masked dan dokter yang melebihi lebar kolom dipotong dengan ellipsis tanpa memperlebar layout.
 
@@ -253,7 +255,7 @@ N14 tidak membutuhkan tabel transaksi baru dan harus membaca source of truth Jad
       "operating_room": "OK 1",
       "operation_time": "10:30",
       "registration_number": "REG-20260721-001",
-      "patient_name_masked": "A** R*********",
+      "patient_name_masked": "A***** R********",
       "primary_operator_name": "dr. Budi Santoso, Sp.B",
       "operation_status": "IN_PROGRESS",
       "operation_status_label": "Sedang Berlangsung",
@@ -295,7 +297,7 @@ Tidak ada form create/edit pada halaman N14. Satu-satunya input konteks adalah t
 - **BR-N14-04:** Nama pasien wajib dimasking di backend; nama lengkap tidak boleh tersedia pada source HTML, state client, log frontend, analytics, atau response display.
 - **BR-N14-05:** Nomor registrasi ditampilkan lengkap sebagai identitas operasional.
 - **BR-N14-06:** Dokter yang ditampilkan adalah operator utama pada jadwal, bukan seluruh tim operasi.
-- **BR-N14-07:** Status yang diizinkan hanya `WAITING`, `IN_PROGRESS`, `POSTPONED`, `COMPLETED`, dan `CANCELLED`, dengan label bisnis yang telah ditentukan.
+- **BR-N14-07:** Status sumber `UNCONFIRMED`/Belum Terkonfirmasi tidak ditampilkan. Status sumber `CONFIRMED`/Terkonfirmasi dipetakan menjadi **Menunggu Dioperasi**; `IN_PROGRESS`, `POSTPONED`, `COMPLETED`, dan `CANCELLED` masing-masing ditampilkan sebagai **Sedang Berlangsung**, **Ditunda**, **Selesai**, dan **Dibatalkan**.
 - **BR-N14-08:** Jadwal berstatus selesai atau dibatalkan tetap tampil selama tanggal operasinya sesuai tanggal aktif.
 - **BR-N14-09:** N14 bersifat read-only dan tidak memiliki endpoint mutasi.
 - **BR-N14-10:** Refresh gagal tidak boleh mengosongkan snapshot terakhir yang sudah berhasil dimuat.
@@ -338,7 +340,6 @@ BPMN khusus N14 belum tersedia. Interpretasi alur berdasarkan kebutuhan adalah:
 - [ASUMSI] Tanggal aktif mengikuti tanggal pada menu sumber; jika tidak tersedia, menggunakan tanggal hari ini.
 - [ASUMSI] Banyak jadwal ditangani dengan pagination dan rotasi otomatis setiap 10 detik.
 - [ASUMSI] Resolusi minimum yang didukung 1366×768 dan target utama Full HD.
-- [ASUMSI] Mapping status canonical dapat dilakukan oleh service Jadwal Operasi.
 
 ## Pertanyaan Terbuka
 
@@ -347,7 +348,6 @@ BPMN khusus N14 belum tersedia. Interpretasi alur berdasarkan kebutuhan adalah:
 - Berapa resolusi, ukuran monitor, jarak baca, dan jumlah baris maksimum yang harus diuji?
 - Apakah tanggal yang dipilih eksplisit harus tetap terkunci setelah lewat tengah malam atau otomatis pindah ke hari baru?
 - Berapa interval dan pola rotasi halaman yang disetujui: pagination 10 detik atau auto-scroll?
-- Bagaimana aturan masking final untuk gelar, nama satu/dua karakter, tanda baca, dan karakter non-Latin?
 - Apakah dokter operator boleh kosong; bila kosong, apakah jadwal tetap ditampilkan dengan tanda “—”?
 - Apakah status internal sumber sudah identik dengan lima status display atau memerlukan mapping tambahan?
 - Apakah snapshot masked boleh disimpan di local storage untuk bertahan setelah browser reload ketika offline?

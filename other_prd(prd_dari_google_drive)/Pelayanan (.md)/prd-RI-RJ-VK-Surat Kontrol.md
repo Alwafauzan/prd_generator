@@ -1,4 +1,4 @@
-# Product Requirement Document — E19 Surat Kontrol V2 & PRB
+# Product Requirement Document — E19 Surat Kontrol V1/V2 & PRB
 
 ## 1. Metadata Dokumen
 
@@ -14,9 +14,8 @@
 
 | PRD Approved By | Nama/Jabatan | Signature, Date |
 |---|---|---|
-| Product Owner | [PERLU KONFIRMASI] | |
-| PIC Pelayanan/Medis | [PERLU KONFIRMASI] | |
-| PIC Integrasi BPJS | [PERLU KONFIRMASI] | |
+| PIC Fitur | Arif Aminudin | |
+| PIC Integrasi BPJS | Andini / Wildan | |
 
 ### Document Version
 
@@ -26,18 +25,21 @@
 | 21 Juli 2026 | 1.1 | Service Integrasi, retry 3 jam, status berdasarkan nomor BPJS, Monitoring BPJS, dan penyesuaian UI. |
 | 21 Juli 2026 | 1.2 | VK ditetapkan dalam scope dan Informasi Potensi PRB dipindahkan ke bagian atas form. |
 | 21 Juli 2026 | 2.0 | Restrukturisasi dokumen mengikuti `template-new.md` tanpa mengubah keputusan bisnis yang belum dikonfirmasi. |
+| 22 Juli 2026 | 2.1 | Menambahkan konfigurasi domain Surat Kontrol V1/V2, Form V1 tanpa Informasi Potensi PRB dan Program PRB, serta Notes Untuk Developer. |
 
 ## 2. Overview & Background
 
 ### Overview / Brief Summary
 
-E19 menyediakan pembuatan, perubahan, pencetakan, dan pemantauan **Surat Kontrol V2** untuk pelayanan Rawat Jalan, Rawat Inap, IGD, dan VK. Fitur mendukung informasi Potensi PRB, pilihan manual sembilan Program Rujuk Balik (PRB), serta form TTV/pemeriksaan yang berubah dinamis berdasarkan program yang dipilih.
+E19 menyediakan pembuatan, perubahan, pencetakan, dan pemantauan **Surat Kontrol V1 atau V2** untuk pelayanan Rawat Jalan, Rawat Inap, IGD, dan VK. Versi yang aktif ditentukan oleh konfigurasi domain E19. V1 menggunakan seluruh isian umum Surat Kontrol tanpa Informasi Potensi PRB dan tanpa bagian Program PRB. V2 merupakan form yang telah dibuat sebelumnya dan mendukung Informasi Potensi PRB, pilihan manual sembilan Program Rujuk Balik (PRB), serta form TTV/pemeriksaan dinamis.
 
 Arsitektur integrasi yang berlaku:
 
+- Domain E19 memiliki konfigurasi versi Surat Kontrol dengan nilai terbatas `V1` atau `V2`; penempatan resolver konfigurasi pada FE atau BE dikembalikan kepada developer, dengan BE tetap memvalidasi kontrak versi sebelum dispatch.
 - SIMRS E19 tidak memanggil BPJS VClaim secara langsung.
-- SIMRS menyimpan Surat Kontrol internal dan mengirim command Get Potensi PRB/Insert/Update kepada Service Integrasi.
-- Service Integrasi bertanggung jawab atas credential, Trustmark, transformasi payload BPJS V2, komunikasi BPJS, dan log bridging teknis.
+- Pada V1, SIMRS tidak meminta Potensi PRB dan tidak mengirim data Program PRB. Pada V2, SIMRS mengirim command Get Potensi PRB serta data Program PRB sesuai pilihan pengguna.
+- SIMRS menyimpan Surat Kontrol internal dan mengirim command Insert/Update sesuai versi yang aktif kepada Service Integrasi.
+- Service Integrasi bertanggung jawab atas credential, Trustmark, transformasi payload BPJS sesuai versi, komunikasi BPJS, dan log bridging teknis. Fitur/kontrak PRB berasal dari pihak ketiga BPJS, bukan fitur yang ditentukan oleh tim integrasi.
 - Tidak ada flag boolean integrasi. `bpjs_control_number` terisi berarti **Terintegrasi**; kosong berarti **Belum Terintegrasi**.
 - Kegagalan Service Integrasi/BPJS tidak membatalkan Surat Kontrol internal. Cron setiap 3 jam dan tombol Retry pada Monitoring BPJS mengirim ulang command melalui Service Integrasi.
 
@@ -54,14 +56,16 @@ Arsitektur integrasi yang berlaku:
 #### To-Be
 
 1. Pengguna membuka form dari episode Rawat Jalan, Rawat Inap, IGD, atau VK.
-2. Data internal langsung tampil; Informasi Potensi PRB berada di bagian paling atas form dan dimuat melalui Service Integrasi.
-3. Potensi PRB hanya rekomendasi. Program PRB default `Tidak Ada` dan dapat dipilih manual.
-4. Pemilihan Program PRB menampilkan hanya field TTV/pemeriksaan yang relevan secara real-time.
-5. Simpan membuat Surat Kontrol internal dan integration job secara atomik.
-6. Dispatcher mengirim command Insert/Update kepada Service Integrasi tanpa direct hit ke BPJS.
-7. Jika berhasil, nomor Surat Kontrol BPJS disimpan. Jika gagal/timeout, nomor BPJS tetap kosong dan surat internal tetap aktif.
-8. Monitoring Tindak Lanjut Kontrol BPJS menampilkan status berdasarkan nomor BPJS dan tombol Retry bila nomor belum tersedia.
-9. Cron setiap 3 jam memproses Surat Kontrol aktif yang nomor BPJS-nya masih kosong.
+2. Sistem membaca konfigurasi versi domain E19 (`V1` atau `V2`) sebelum membentuk form dan command integrasi.
+3. Pada V1, data internal langsung tampil dengan seluruh isian umum; Informasi Potensi PRB dan bagian Program PRB tidak dirender.
+4. Pada V2, data internal langsung tampil; Informasi Potensi PRB berada di bagian paling atas form dan dimuat melalui Service Integrasi.
+5. Pada V2, Potensi PRB hanya rekomendasi. Program PRB default `Tidak Ada` dan dapat dipilih manual.
+6. Pada V2, pemilihan Program PRB menampilkan hanya field TTV/pemeriksaan yang relevan secara real-time.
+7. Simpan membuat Surat Kontrol internal dan integration job secara atomik serta menyimpan versi kontrak yang digunakan.
+8. Dispatcher mengirim command Insert/Update sesuai versi kepada Service Integrasi tanpa direct hit ke BPJS.
+9. Jika berhasil, nomor Surat Kontrol BPJS disimpan. Jika gagal/timeout, nomor BPJS tetap kosong dan surat internal tetap aktif.
+10. Monitoring Tindak Lanjut Kontrol BPJS menampilkan status berdasarkan nomor BPJS dan tombol Retry bila nomor belum tersedia.
+11. Cron setiap 3 jam memproses Surat Kontrol aktif yang nomor BPJS-nya masih kosong.
 
 ## 3. Goals & Metrics
 
@@ -84,9 +88,10 @@ Target volume, batch cron, dan SLA final Service Integrasi masih [PERLU KONFIRMA
 
 | Fitur/Modul | Phase 1 — MVP | Phase 2 — Advanced / Escalation |
 |---|---|---|
-| Form Surat Kontrol | Create/Edit/Print dari Rawat Jalan, Rawat Inap, IGD, dan VK; data pasien; Status Kontrol; diagnosis; terapi; anjuran. | Penyempurnaan UX lintas-unit dan konfigurasi field lanjutan. |
-| Potensi PRB | Get Potensi PRB melalui Service Integrasi saat form dibuka; tampil di bagian atas form; tidak mengunci pilihan. | Cache/reconciliation dan alert bila sumber sering tidak tersedia. |
-| Program PRB | Default `Tidak Ada`; pilihan manual 9 Program PRB; dynamic TTV; reset nilai ketika program berubah. | Autofill TTV/pemeriksaan dari asesmen klinis [PERLU KONFIRMASI]. |
+| Form Surat Kontrol | Create/Edit/Print V1 atau V2 dari Rawat Jalan, Rawat Inap, IGD, dan VK; field umum sama pada kedua versi. | Penyempurnaan UX lintas-unit dan konfigurasi field lanjutan. |
+| Konfigurasi Versi | Konfigurasi domain `V1`/`V2`; V2 mempertahankan implementasi sebelumnya; versi disimpan pada snapshot/job. | Pengelolaan konfigurasi terpusat dan rollout per fasilitas [PERLU KONFIRMASI]. |
+| Potensi PRB | Khusus V2: Get Potensi PRB melalui Service Integrasi saat form dibuka; tampil di bagian atas form; tidak mengunci pilihan. V1 tidak merender atau memanggil fitur ini. | Cache/reconciliation dan alert bila sumber sering tidak tersedia. |
+| Program PRB | Khusus V2: default `Tidak Ada`; pilihan manual 9 Program PRB; dynamic TTV; reset nilai ketika program berubah. V1 tidak memiliki bagian ini. | Autofill TTV/pemeriksaan dari asesmen klinis [PERLU KONFIRMASI]. |
 | Penyimpanan | Local-first save, full snapshot, record version, audit trail. | Retensi/version history lanjutan dan rekonsiliasi data. |
 | Integrasi BPJS | Command Insert/Update V2 ke Service Integrasi; nomor BPJS menjadi indikator keberhasilan. | Dead-letter, aging alert, dan eskalasi operasional. |
 | Retry | Cron setiap 3 jam dan Retry manual pada Monitoring BPJS. | Kebijakan max attempts dan escalation rule [PERLU KONFIRMASI]. |
@@ -95,14 +100,15 @@ Target volume, batch cron, dan SLA final Service Integrasi masih [PERLU KONFIRMA
 
 ### In Scope Phase 1
 
-1. Create, Edit, dan Print Surat Kontrol V2 dari Rawat Jalan, Rawat Inap, IGD, dan VK.
-2. Form mengikuti `surkon-form`: Nomor Surat RS, identitas pasien, asal unit, booking, poli, dokter, tipe pembayaran, Obat Kronis BPJS, Status Kontrol, tanggal kontrol, tanggal habis rujukan, jam praktik, diagnosis, terapi, dan anjuran.
+1. Create, Edit, dan Print Surat Kontrol V1 atau V2 dari Rawat Jalan, Rawat Inap, IGD, dan VK sesuai konfigurasi domain.
+2. Form V1 dan V2 mengikuti `surkon-form`: Nomor Surat RS, identitas pasien, asal unit, booking, poli, dokter, tipe pembayaran, Obat Kronis BPJS, Status Kontrol, tanggal kontrol, tanggal habis rujukan, jam praktik, diagnosis, terapi, dan anjuran.
 3. Status Kontrol: `Non Kronis`, `30 Hari`, dan `Kurang dari 30 Hari`.
-4. Informasi Potensi PRB di bagian paling atas form.
-5. Sembilan Program PRB: Diabetes Mellitus, Hipertensi, Asma, Penyakit Jantung, PPOK, Skizofrenia, Stroke, Epilepsi, dan SLE.
-6. Dynamic form, validasi range/mandatory, reset nilai saat program berubah, dan full snapshot Update.
-7. Local-first persistence, integration job, retry cron 3 jam, Retry manual, dan audit trail.
-8. Print menampilkan Program PRB di bawah informasi jam praktik dokter.
+4. Form V1 tidak menampilkan Informasi Potensi PRB dan tidak memiliki poin 2 Program PRB/Pemeriksaan Dinamis.
+5. Form V2 menampilkan Informasi Potensi PRB di bagian paling atas form.
+6. Form V2 menyediakan sembilan Program PRB: Diabetes Mellitus, Hipertensi, Asma, Penyakit Jantung, PPOK, Skizofrenia, Stroke, Epilepsi, dan SLE.
+7. Khusus V2: dynamic form, validasi range/mandatory, reset nilai saat program berubah, dan full snapshot Update.
+8. Local-first persistence, integration job sesuai versi, retry cron 3 jam, Retry manual, dan audit trail.
+9. Print V2 menampilkan Program PRB di bawah informasi jam praktik dokter; Print V1 tidak menampilkan Program PRB.
 
 ### Out of Scope
 
@@ -170,11 +176,12 @@ Status tidak disediakan sebagai input pada form Create. `internal_status=ACTIVE`
 - **Fase:** Phase 1.
 - **Acceptance Criteria:**
   - **AC-001.1:** Form dan data internal tampil kurang dari 2 detik pada kondisi normal walaupun Service Integrasi lambat/tidak tersedia.
-  - **AC-001.2:** Saat form dibuka, SIMRS otomatis meminta Potensi PRB melalui Service Integrasi.
-  - **AC-001.3:** Informasi Potensi PRB berada di bagian paling atas dan menyatu dengan form input sebelum field pasien/kontrol.
+  - **AC-001.2:** Pada V2, saat form dibuka, SIMRS otomatis meminta Potensi PRB melalui Service Integrasi.
+  - **AC-001.3:** Pada V2, Informasi Potensi PRB berada di bagian paling atas dan menyatu dengan form input sebelum field pasien/kontrol.
   - **AC-001.4:** Hasil Potensi PRB tidak otomatis mengubah Program PRB.
   - **AC-001.5:** Jika hasil gagal, form tetap dapat digunakan dan UI menampilkan informasi belum tersedia.
   - **AC-001.6:** Network trace membuktikan E19 hanya memanggil Service Integrasi, bukan host BPJS.
+  - **AC-001.7:** Pada V1, UI tidak merender Informasi Potensi PRB dan tidak mengirim request Get Potensi PRB.
 
 #### Fitur FR-002 — Form Create/Edit Surat Kontrol
 
@@ -187,12 +194,14 @@ Status tidak disediakan sebagai input pada form Create. `internal_status=ACTIVE`
   - **AC-002.3:** Poli dan dokter berasal dari master aktif; kode dokter BPJS tidak diketik manual.
   - **AC-002.4:** Diagnosis minimal satu baris; diagnosis, terapi, dan anjuran mendukung tambah/hapus baris.
   - **AC-002.5:** Internal status ditetapkan ACTIVE oleh sistem dan tidak tampil sebagai input.
+  - **AC-002.6:** Seluruh field umum memiliki isi, validasi, dan perilaku yang sama pada V1 dan V2.
 
 #### Fitur FR-003 — Program PRB dan Dynamic Form
 
 - **User Story:** US-003, US-004.
 - **Prioritas:** P0.
 - **Fase:** Phase 1.
+- **Berlaku untuk:** V2 saja.
 - **Acceptance Criteria:**
   - **AC-003.1:** Default Program PRB adalah `Tidak Ada`; blok pemeriksaan disembunyikan.
   - **AC-003.2:** Sembilan Program PRB tersedia dengan kode `01`–`09`.
@@ -200,12 +209,14 @@ Status tidak disediakan sebagai input pada form Create. `internal_status=ACTIVE`
   - **AC-003.4:** Manual override terhadap rekomendasi Potensi PRB diizinkan.
   - **AC-003.5:** Pergantian program langsung menghapus nilai program lama dan menampilkan field program baru.
   - **AC-003.6:** Memilih kembali `Tidak Ada` menyembunyikan seluruh field PRB dan command tidak memuat `formPRB`.
+  - **AC-003.7:** Pada V1, seluruh poin 2 Program PRB dan Pemeriksaan Dinamis tidak dirender dan field PRB tidak dikirim pada snapshot/command.
 
 #### Fitur FR-004 — Validasi TTV/Pemeriksaan PRB
 
 - **User Story:** Sebagai dokter, saya ingin validasi spesifik per program, agar payload tidak ditolak.
 - **Prioritas:** P0.
 - **Fase:** Phase 1.
+- **Berlaku untuk:** V2 saja.
 - **Acceptance Criteria:**
   - **AC-004.1:** Nilai di luar range ditolak dengan pesan yang menyebut label dan range.
   - **AC-004.2:** Field boolean hanya menerima Ya/Tidak dan dipetakan menjadi `1/0` pada command.
@@ -277,9 +288,10 @@ Status tidak disediakan sebagai input pada form Create. `internal_status=ACTIVE`
 - **Prioritas:** P1.
 - **Fase:** Phase 1.
 - **Acceptance Criteria:**
-  - **AC-010.1:** Program PRB tampil di bagian bawah setelah jam praktik dokter.
+  - **AC-010.1:** Pada V2, Program PRB tampil di bagian bawah setelah jam praktik dokter.
   - **AC-010.2:** Nomor BPJS ditampilkan bila tersedia; dokumen tanpa nomor BPJS tidak boleh menampilkan nomor palsu.
   - **AC-010.3:** Preview/dokumen siap kurang dari 1 detik pada kondisi normal.
+  - **AC-010.4:** Pada V1, preview/print tidak menampilkan label maupun nilai Program PRB.
 
 #### Fitur FR-011 — Audit Trail
 
@@ -290,6 +302,19 @@ Status tidak disediakan sebagai input pada form Create. `internal_status=ACTIVE`
   - **AC-011.1:** Create/Update mencatat actor, timestamp, version, dan before/after atau change-set.
   - **AC-011.2:** Attempt mencatat command ID, correlation ID, idempotency key, action, result, response code aman, dan durasi.
   - **AC-011.3:** Token, signature, dan credential tidak masuk log.
+
+#### Fitur FR-012 — Konfigurasi Versi Surat Kontrol
+
+- **User Story:** Sebagai administrator/developer, saya ingin memilih kontrak Surat Kontrol V1 atau V2 melalui konfigurasi domain, agar sistem dapat mengikuti ketersediaan fitur pihak ketiga BPJS tanpa membuat alur pelayanan terpisah.
+- **Prioritas:** P0.
+- **Fase:** Phase 1.
+- **Acceptance Criteria:**
+  - **AC-012.1:** Konfigurasi hanya menerima nilai `V1` atau `V2`; nilai kosong/tidak valid ditolak dan dicatat tanpa memulai dispatch.
+  - **AC-012.2:** Konfigurasi `V1` menampilkan hanya Form Surat Kontrol umum serta memakai command Insert/Update V1 tanpa `prb_potential`, `prb_program_code`, atau `prbData/formPRB`.
+  - **AC-012.3:** Konfigurasi `V2` mempertahankan form yang telah dibuat sebelumnya, termasuk Informasi Potensi PRB dan poin 2 Program PRB/Pemeriksaan Dinamis.
+  - **AC-012.4:** Versi yang digunakan disimpan pada Surat Kontrol dan integration job sehingga retry memakai versi snapshot awal, bukan konfigurasi terbaru secara otomatis.
+  - **AC-012.5:** Perubahan konfigurasi tidak mengubah versi record existing tanpa aksi migrasi eksplisit.
+  - **AC-012.6:** FE boleh menentukan komposisi tampilan dan BE boleh menjadi resolver konfigurasi, namun BE wajib memvalidasi versi serta menghapus/menolak field yang tidak berlaku sebelum dispatch.
 
 ### 7.2 Validasi — Wording Frontend
 
@@ -302,9 +327,9 @@ Status tidak disediakan sebagai input pada form Create. `internal_status=ACTIVE`
 | Status Kontrol | Dropdown | Required, enum | “Status Kontrol wajib dipilih.” | “Pilih Non Kronis, 30 Hari, atau Kurang dari 30 Hari.” |
 | Tanggal Kontrol Kembali | Date | Required, format valid | “Tanggal Kontrol Kembali wajib diisi dan harus valid.” | “Pilih tanggal rencana pasien kembali kontrol.” |
 | Diagnosis | Repeater lookup | Required, minimal 1 | “Minimal satu Diagnosis wajib dipilih.” | “Gunakan diagnosis dari EMR/ICD-10.” |
-| Program PRB | Dropdown | Optional, `NONE/01–09` | “Program PRB tidak valid.” | “Informasi Potensi PRB hanya rekomendasi.” |
-| TTV numeric | Number | Range sesuai mapping | “{Label} harus berada pada rentang {min}–{max} {unit}.” | “Isi sesuai hasil pemeriksaan pasien.” |
-| TTV mandatory | Number/Radio | Required per program | “{Label} wajib diisi untuk Program PRB {program}.” | “Field wajib mengikuti konfigurasi BPJS.” |
+| Program PRB (V2) | Dropdown | Optional, `NONE/01–09` | “Program PRB tidak valid.” | “Informasi Potensi PRB hanya rekomendasi.” |
+| TTV numeric (V2) | Number | Range sesuai mapping | “{Label} harus berada pada rentang {min}–{max} {unit}.” | “Isi sesuai hasil pemeriksaan pasien.” |
+| TTV mandatory (V2) | Number/Radio | Required per program | “{Label} wajib diisi untuk Program PRB {program}.” | “Field wajib mengikuti konfigurasi BPJS.” |
 | Unsaved changes | Form state | Dirty check | “Perubahan belum disimpan. Apakah Anda yakin ingin keluar?” | “Pilih Tidak untuk melanjutkan pengisian.” |
 | Integrasi gagal | System result | Nomor BPJS kosong | “Surat Kontrol internal berhasil disimpan. Integrasi BPJS belum berhasil dan akan dicoba kembali.” | “Pantau atau lakukan Retry melalui Monitoring BPJS.” |
 
@@ -319,6 +344,7 @@ Status tidak disediakan sebagai input pada form Create. `internal_status=ACTIVE`
 | Field | Label | Tipe | Wajib | Validasi | Sumber | Catatan |
 |---|---|---|---|---|---|---|
 | `control_letter_id` | ID Surat Internal | UUID | Ya | Unik, immutable | Auto-generate | Tidak tampil sebagai input. |
+| `integration_version` | Versi Surat Kontrol | Enum/system | Ya | `V1`, `V2` | Konfigurasi domain E19 | Disimpan pada record dan job; bukan pilihan user operasional. |
 | `internal_control_number` | Nomor Surat RS | Text/read-only | Ya | Unik | Auto-generate | Berbeda dari nomor BPJS. |
 | `registration_id` | ID Registrasi | Lookup/UUID | Ya | Episode aktif/valid | Registrasi | |
 | `service_type` | Jenis Pelayanan | Enum/read-only | Ya | `OUTPATIENT`, `INPATIENT`, `EMERGENCY`, `MATERNITY/VK` | Episode | Scope RJ/RI/IGD/VK. |
@@ -330,7 +356,7 @@ Status tidak disediakan sebagai input pada form Create. `internal_status=ACTIVE`
 | `bpjs_card_number` | No. Kartu BPJS | Text/read-only | Kondisional | 13 digit [PERLU KONFIRMASI] | Penjamin/SEP | Wajib bridging BPJS. |
 | `sep_number` | No. SEP | Text/read-only | Kondisional | Format SEP | Modul SEP | Wajib Insert V2. |
 | `sep_date` | Tanggal SEP | Date/read-only | Kondisional | `YYYY-MM-DD` | Modul SEP | Query Potensi PRB. |
-| `prb_potential` | Informasi Potensi PRB | Object/read-only | Tidak | Status, kategori, source time | Service Integrasi | Tampil paling atas; rekomendasi. |
+| `prb_potential` | Informasi Potensi PRB | Object/read-only | Tidak | Status, kategori, source time | Service Integrasi | Khusus V2; tampil paling atas; rekomendasi. Tidak dimuat pada V1. |
 
 ##### B. Data Kontrol
 
@@ -349,12 +375,14 @@ Status tidak disediakan sebagai input pada form Create. `internal_status=ACTIVE`
 | `diagnoses` | Diagnosis | Repeater lookup | Ya | Minimal 1 | EMR/manual | Full snapshot. |
 | `therapies` | Terapi | Repeater text/lookup | Tidak | Tambah/hapus baris | EMR/manual | |
 | `suggestions` | Anjuran | Repeater lookup/text | Tidak | Master atau Tambah Baru | Master anjuran/manual | |
-| `prb_program_code` | Program PRB | Enum | Tidak | `NONE`, `01–09` | Default `NONE` | Manual override diizinkan. |
+| `prb_program_code` | Program PRB | Enum | Tidak | `NONE`, `01–09` | Default `NONE` | Khusus V2; manual override diizinkan. Tidak ada pada V1. |
 | `internal_status` | Status Internal | Enum/system | Ya | Default `ACTIVE` | Sistem | Bukan input user. |
 | `record_version` | Versi Data | Integer/system | Ya | Mulai 1, increment Update | Sistem | Optimistic locking. |
 | `created_by` | Dibuat Oleh | Lookup/system | Ya | User aktif | Session login | |
 
 ##### C. Dynamic TTV/Pemeriksaan PRB
+
+Seluruh subsection ini hanya berlaku untuk Surat Kontrol V2. Surat Kontrol V1 tidak merender dan tidak menyimpan field PRB.
 
 Mandatory yang belum final tetap `[PERLU KONFIRMASI]`; dokumen referensi memiliki perbedaan pada beberapa field.
 
@@ -462,39 +490,12 @@ Mandatory yang belum final tetap `[PERLU KONFIRMASI]`; dokumen referensi memilik
 | BR-018 | Nomor Surat RS dan nomor BPJS berbeda; nomor BPJS menjadi indikator integrasi. |
 | BR-019 | Dokumen tanpa nomor BPJS tidak boleh menampilkan nomor BPJS palsu. |
 | BR-020 | Credential/token/signature tidak boleh masuk application log. |
+| BR-021 | Konfigurasi domain E19 hanya `V1` atau `V2`; versi yang digunakan wajib tersimpan pada record dan integration job. |
+| BR-022 | V1 tidak memanggil Potensi PRB, tidak merender poin 2 Program PRB, dan tidak mengirim field/payload PRB. |
+| BR-023 | V2 mempertahankan implementasi Surat Kontrol dan PRB yang telah dibuat sebelumnya. |
+| BR-024 | Retry wajib memakai versi pada snapshot job; perubahan konfigurasi tidak mengubah record/job existing secara implisit. |
 
-### 8.2 Recommended Database Structure — English
-
-#### `control_letters`
-
-`id`, `registration_id`, `service_type`, `internal_control_number`, `bpjs_control_number`, `sep_number`, `payment_type_id`, `bpjs_chronic_drug`, `control_status`, `booking_registration`, `unit_id`, `referral_unit_id`, `doctor_id`, `control_date`, `referral_expiry_date`, `control_times_json`, `diagnoses_json`, `therapies_json`, `suggestions_json`, `prb_program_code`, `internal_status`, `record_version`, `created_by`, `created_at`, `updated_by`, `updated_at`.
-
-- Unique: `internal_control_number`.
-- Unique nullable: `bpjs_control_number` per tenant [PERLU KONFIRMASI scope uniqueness].
-- Tidak memiliki kolom boolean integrasi.
-
-#### `control_letter_prb_values`
-
-`id`, `control_letter_id`, `record_version`, `prb_program_code`, `field_code`, `numeric_value`, `boolean_value`, `unit`, `created_at`.
-
-- Unique: `(control_letter_id, record_version, field_code)`.
-
-#### `control_letter_integration_jobs`
-
-`id`, `control_letter_id`, `record_version`, `action`, `command_id`, `correlation_id`, `idempotency_key`, `payload_snapshot_json`, `job_status`, `attempt_count`, `last_attempt_at`, `next_retry_at`, `last_error_code`, `last_error_message`, `locked_by`, `locked_until`, `completed_at`, `created_at`, `updated_at`.
-
-- Unique: `(control_letter_id, record_version, action)` dan `idempotency_key`.
-- Index: `(job_status, next_retry_at)` dan `locked_until`.
-
-#### `control_letter_integration_attempts`
-
-`id`, `job_id`, `attempt_no`, `started_at`, `finished_at`, `request_hash`, `service_request_id`, `http_status`, `result_status`, `error_code`, `error_message`, `duration_ms`, `response_reference`, `created_at`.
-
-#### `control_letter_audit_logs`
-
-`id`, `control_letter_id`, `record_version`, `action`, `actor_id`, `actor_type`, `before_json`, `after_json`, `reason`, `created_at`.
-
-### 8.3 Recommended API Endpoints — English
+### 8.2 Recommended API Endpoints — English
 
 | Method | Endpoint | Function |
 |---|---|---|
@@ -507,53 +508,17 @@ Mandatory yang belum final tetap `[PERLU KONFIRMASI]`; dokumen referensi memilik
 | GET | `/api/v1/control-letters/{controlLetterId}/print` | Generate print preview/document. |
 | POST | `/api/v1/integration-events/bpjs/control-letter` | Authenticated, idempotent result callback [ASUMSI]. |
 
-### 8.4 Command Contract — Integration Service
+### 8.3 Command Contract — Integration Service
 
-```json
-{
-  "commandId": "uuid",
-  "correlationId": "uuid",
-  "idempotencyKey": "CONTROL_LETTER:{id}:{version}:{action}",
-  "commandType": "BPJS_CONTROL_LETTER_INSERT_V2",
-  "entityId": "control-letter-uuid",
-  "entityVersion": 1,
-  "requestedAt": "2026-07-21T10:00:00+07:00",
-  "requestedBy": "user-id",
-  "payload": {
-    "sepNumber": "...",
-    "doctorBpjsCode": "...",
-    "controlPolyCode": "...",
-    "controlDate": "2026-07-30",
-    "prbProgramCode": "03",
-    "prbData": {}
-  }
-}
-```
+`commandType` wajib mengikuti `integration_version`: `BPJS_CONTROL_LETTER_INSERT_V1`/`UPDATE_V1` atau `BPJS_CONTROL_LETTER_INSERT_V2`/`UPDATE_V2`. Contoh berikut adalah V2. Command V1 menggunakan field umum yang sama tetapi tidak memuat `prbProgramCode` dan `prbData/formPRB`.
 
-Service Integrasi membentuk payload BPJS `request`, `kdStatusPRB`, dan `formPRB.data`. Untuk non-PRB, `prbProgramCode/prbData` tidak dikirim atau null sesuai kontrak.
-
-Hasil final minimum:
-
-```json
-{
-  "commandId": "uuid",
-  "correlationId": "uuid",
-  "entityId": "control-letter-uuid",
-  "entityVersion": 1,
-  "action": "INSERT",
-  "final": true,
-  "success": true,
-  "bpjsControlNumber": "0301R0110520K000013",
-  "bpjsResponseCode": "200",
-  "completedAt": "2026-07-21T10:00:03+07:00"
-}
-```
+Untuk V2, Service Integrasi membentuk payload BPJS `request`, `kdStatusPRB`, dan `formPRB.data`. Untuk V2 non-PRB, `prbProgramCode/prbData` tidak dikirim atau null sesuai kontrak. Untuk V1, elemen PRB tidak boleh dibentuk atau dikirim.
 
 Tanpa `bpjsControlNumber`, status tampilan tetap Belum Terintegrasi. Callback stale wajib dicatat tetapi tidak boleh menimpa version terbaru.
 
-### 8.5 Cron Retry
+### 8.4 Cron Retry
 
-- Schedule: setiap 3 jam, timezone `Asia/Jakarta`.
+- Schedule: setiap 3 jam, timezone `Asia/Jakarta`. (Dikembalikan ke DEV, karena ada max hit ke BPJS)
 - Selection: `control_letters.bpjs_control_number IS NULL`, internal status ACTIVE, `next_retry_at <= now`, lock kosong/kedaluwarsa.
 - Processing: atomic lock/`SKIP LOCKED`, kirim snapshot version aktif ke Service Integrasi, simpan attempt.
 - Success: simpan nomor BPJS setelah hasil final/version match.
@@ -562,7 +527,7 @@ Tanpa `bpjsControlNumber`, status tampilan tetap Belum Terintegrasi. Callback st
 - Timeout/unknown: tetap nomor BPJS kosong dan rekonsiliasi dengan idempotency key sebelum Insert baru.
 - Max attempts: [PERLU KONFIRMASI].
 
-### 8.6 Non-Functional Requirements
+### 8.5 Non-Functional Requirements
 
 | ID | Requirement |
 |---|---|
@@ -578,7 +543,7 @@ Tanpa `bpjsControlNumber`, status tampilan tetap Belum Terintegrasi. Callback st
 | NFR-010 | Status tidak dibedakan hanya dengan warna. |
 | NFR-011 | Mapping Program PRB/range/mandatory dikonfigurasi dan versioned. |
 
-### 8.7 Integrasi Eksternal dan Internal
+### 8.6 Integrasi Eksternal dan Internal
 
 | Sistem | Arah | Data/Tujuan | Aturan |
 |---|---|---|---|
@@ -610,6 +575,7 @@ Tanpa `bpjsControlNumber`, status tampilan tetap Belum Terintegrasi. Callback st
 - RBAC pelayanan mengatur pengguna Create/Edit/Print/Retry.
 - Nomor Surat RS boleh terbit sebelum nomor BPJS.
 - Program PRB dipilih manual, bukan mapping otomatis ICD-10.
+- V2 adalah perilaku existing sebelum konfigurasi versi ditambahkan.
 
 #### Open Questions
 
@@ -627,6 +593,7 @@ Tanpa `bpjsControlNumber`, status tampilan tetap Belum Terintegrasi. Callback st
 12. Scope uniqueness nomor BPJS lintas tenant?
 13. Relasi C6 External Platform?
 14. PRB stabil/tidak stabil dan monitoring pasien PRB masih menunggu keputusan audit sebelumnya.
+15. Lokasi dan media konfigurasi versi (FE environment, BE configuration service, atau konfigurasi tenant/fasilitas) diputuskan developer sesuai arsitektur aplikasi.
 
 #### Definition of Done
 
@@ -639,6 +606,22 @@ Tanpa `bpjsControlNumber`, status tampilan tetap Belum Terintegrasi. Callback st
 7. Audit trail, Monitoring BPJS, Retry, dan observability tersedia.
 8. Kontrak Service Integrasi dan runbook review disetujui.
 
+### 8.9 Notes Untuk Developer
+
+1. Fitur dan kontrak PRB disediakan oleh pihak ketiga **BPJS**, bukan oleh tim integrasi. Tim integrasi berperan sebagai gateway/adapter dan tidak menjadi sumber keputusan bisnis PRB.
+2. Tambahkan konfigurasi pada domain E19 untuk memilih versi Surat Kontrol: `V1` atau `V2`. Nama key yang direkomendasikan adalah `control_letter.integration_version`.
+3. Penggunaan konfigurasi di FE atau BE dikembalikan kepada developer. Walaupun FE dapat memakai konfigurasi untuk composition/rendering, BE tetap harus menjadi enforcement point atas schema command yang dikirim.
+4. Nilai konfigurasi harus eksplisit. Untuk menjaga kompatibilitas implementasi yang sudah ada, environment existing dapat dimigrasikan dengan nilai awal `V2`; nilai kosong atau selain `V1`/`V2` tidak boleh fallback diam-diam.
+5. **Form Surat Kontrol V1** berisi field umum yang sama dengan form existing, tetapi tidak memiliki:
+   - bagian **Informasi Potensi PRB**; dan
+   - poin **2. Program PRB dan Pemeriksaan Dinamis**, termasuk seluruh field TTV/pemeriksaan PRB.
+6. **Form Surat Kontrol V2** adalah form yang telah dibuat sebelumnya dan tetap memiliki Informasi Potensi PRB serta poin 2 Program PRB/Pemeriksaan Dinamis.
+7. Simpan `integration_version` pada record Surat Kontrol dan `payload_snapshot_json`/integration job. Retry harus memakai versi snapshot tersebut agar perubahan konfigurasi tidak mengirim record lama menggunakan kontrak baru.
+8. Pada V1, jangan memanggil Get Potensi PRB dan jangan mengirim `prb_potential`, `prb_program_code`, `prbData`, `kdStatusPRB`, atau `formPRB`. BE harus menghapus atau menolak field PRB yang masuk pada mode V1.
+9. Pisahkan mapper/validator/command type per versi (`*_V1` dan `*_V2`) dengan shared model untuk field umum; hindari conditional yang tersebar di setiap field.
+10. Perubahan konfigurasi hanya berlaku untuk pembuatan record baru. Migrasi record existing ke versi lain harus berupa aksi eksplisit, tervalidasi, dan diaudit.
+11. **Pastikan Fitur tetap bisa berjalan meskipun ada trouble dari BPJS**
+
 ## 9. Workflow / BPMN Interpretation
 
 E19 tidak memiliki BPMN khusus pada repository. Workflow diturunkan dari ticket, dokumen SRS/PRB Enhancement, referensi UI, dan arsitektur Service Integrasi yang disepakati. [ASUMSI]
@@ -648,25 +631,29 @@ E19 tidak memiliki BPMN khusus pada repository. Workflow diturunkan dari ticket,
 ```text
 [Buka Surat Kontrol dari episode RJ/RI/IGD/VK]
   → Muat data registrasi, pasien, SEP, dokter, poli, dan surat tersimpan
+  → Resolve integration_version dari record existing atau konfigurasi domain
   → Tampilkan form < 2 detik
-  → Tampilkan badge Potensi PRB di bagian paling atas dalam keadaan loading
-  → SIMRS → Service Integrasi: GET_PRB_POTENTIAL
-  → Service Integrasi → BPJS
-  → Hasil tersedia?
-       Ya    → tampilkan Potensi/Tidak Potensi sebagai rekomendasi
-       Tidak → tampilkan informasi belum tersedia; form tetap aktif
-  → Program PRB default Tidak Ada atau nilai terakhir tersimpan
+  → integration_version = V1?
+       Ya    → tampilkan field umum tanpa Informasi Potensi PRB dan tanpa poin 2 Program PRB
+       Tidak → mode V2:
+               → Tampilkan badge Potensi PRB di bagian paling atas dalam keadaan loading
+               → SIMRS → Service Integrasi: GET_PRB_POTENTIAL
+               → Service Integrasi → BPJS
+               → Hasil tersedia?
+                    Ya    → tampilkan Potensi/Tidak Potensi sebagai rekomendasi
+                    Tidak → tampilkan informasi belum tersedia; form tetap aktif
+               → Program PRB default Tidak Ada atau nilai terakhir tersimpan
 ```
 
 ### 9.2 Create dan Integrasi Berhasil
 
 ```text
 [User isi form → Simpan]
-  → Validasi field umum + dynamic PRB
-  → Simpan Surat internal + record_version + outbox secara atomik
+  → Validasi field umum + dynamic PRB khusus V2
+  → Simpan Surat internal + integration_version + record_version + outbox secara atomik
   → internal_status = ACTIVE; nomor BPJS kosong
-  → Kirim command INSERT ke Service Integrasi
-  → Service Integrasi hit BPJS V2
+  → Kirim command INSERT_V1 atau INSERT_V2 sesuai snapshot ke Service Integrasi
+  → Service Integrasi hit BPJS sesuai versi
   → Hasil final sukses + nomor BPJS
   → Cocokkan entity/version/correlation
   → Simpan bpjs_control_number
