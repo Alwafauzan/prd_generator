@@ -1,0 +1,30 @@
+Main Goals
+
+Meningkatkan pengalaman pengguna pada fitur Asesmen Awal Keperawatan Rawat Inap Dewasa dengan menyederhanakan dan memadatkan tampilan formulir agar proses pengisian asesmen lebih cepat, nyaman, konsisten, dan efisien tanpa mengubah proses bisnis, keputusan klinis, maupun struktur data existing.
+
+Feature Capabilities
+
+- Menampilkan sembilan kelompok asesmen sebagai continuous form dalam satu halaman dan urutan yang sama dengan V1.
+- Mengurangi margin, padding, dan white space tanpa mengurangi keterbacaan.
+- Menambahkan Section Navigation dengan active state, status lengkap/belum lengkap/error, shortcut scroll, dan scroll offset untuk sticky header.
+- Mempertahankan seluruh field, label, pilihan klinis, nilai awal, autofill, conditional field, score/perhitungan, role restriction, state, payload, API, dan integrasi EMR V1.
+- Menstandardisasi pesan error serta mengaudit keselarasan required dan conditional validation frontend-backend berdasarkan keputusan Product/stakeholder klinis.
+
+Performance Expectation
+
+- Navigasi section merespons tanpa reload atau render ulang seluruh form yang tidak diperlukan.
+- State input tidak hilang ketika scrolling, memakai Section Navigation, validasi gagal, atau penyimpanan gagal.
+- Continuous form tidak menimbulkan input lag yang mengganggu.
+- Tidak ada penurunan berarti pada load, GET, input, dan POST dibanding V1; baseline diukur sebelum target angka ditetapkan.
+
+Scope
+
+- Redesign sembilan tab menjadi continuous form.
+- Compact dan responsive layout untuk desktop/laptop rumah sakit serta layar lebih kecil.
+- Section Navigation, active section, status kelengkapan, indikator error, dan navigasi ke field error.
+- Preservasi seluruh mode dan behavior existing.
+- Audit validasi frontend-backend dan standardisasi pesan nonteknis tanpa menambah aturan klinis baru.
+
+Out of Scope
+
+- Perubahan proses bisnis, klasifikasi usia, routing form, field, pilihan/terminologi klinis, hak akses, struktur data, payload, API, database, controller/model/collection, integrasi EMR, atau redesign form neonatus dan anak.

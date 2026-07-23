@@ -1,0 +1,30 @@
+Main Goals
+
+Meningkatkan pengalaman pengguna pada fitur Asesmen Awal Keperawatan Rawat Inap Anak dengan menyederhanakan tampilan formulir sehingga proses pengisian asesmen menjadi lebih cepat, nyaman, dan efisien tanpa mengubah alur bisnis maupun struktur data yang sudah ada.
+
+Feature Capabilities
+
+- Menampilkan seluruh formulir asesmen dalam continuous form (single page).
+- Mengurangi white space tanpa mengurangi keterbacaan.
+- Menambahkan Section Navigation sebagai shortcut menuju setiap bagian asesmen.
+- Mempertahankan seluruh field, validasi klinis yang telah dikonfirmasi, conditional field, struktur data, dan mekanisme penyimpanan V1.
+- Tetap kompatibel dengan tampilan data EMR.
+
+Performance Expectation
+
+- Navigasi melakukan scroll ke section tanpa reload.
+- State input tidak hilang ketika berpindah section atau penyimpanan gagal.
+- Tidak ada penurunan berarti pada load, pengambilan data, input, dan penyimpanan dibanding V1.
+- Baseline performa diukur sebelum menetapkan target angka.
+
+Scope
+
+- Redesign layout enam section menjadi satu halaman.
+- Pengurangan margin, padding, dan white space.
+- Section Navigation, active section, status kelengkapan, dan indikator error.
+- Responsive layout dan scroll offset yang memperhitungkan sticky header.
+- Audit keselarasan validasi frontend-backend tanpa menambah aturan klinis baru.
+
+Out of Scope
+
+- Perubahan proses bisnis, klasifikasi usia, field, terminologi klinis, hak akses, struktur data, payload, API, database, integrasi EMR, serta form neonatus/dewasa.

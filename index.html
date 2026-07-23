@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Konsep Redesign Asesmen Rawat Inap</title>
+  <style>
+    :root {
+      --blue: #1976d2;
+      --blue-700: #135ca6;
+      --blue-50: #edf6ff;
+      --ink: #172333;
+      --muted: #607083;
+      --line: #dce4ec;
+      --bg: #f4f7fa;
+      --surface: #fff;
+      --success: #23855a;
+      --success-bg: #eaf7f0;
+      --danger: #cc3d3d;
+      --danger-bg: #fff0f0;
+      --warning: #9a6500;
+      --warning-bg: #fff7df;
+      --shadow: 0 8px 24px rgba(26, 52, 77, .08);
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font: 14px/1.45 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-height: 64px;
+      padding: 10px 24px;
+      color: #fff;
+      background: linear-gradient(110deg, #135ca6, #1976d2 60%, #2b8ce8);
+      box-shadow: 0 3px 16px rgba(22, 67, 110, .2);
+    }
+    .brand { display: flex; align-items: center; gap: 11px; min-width: 270px; }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      color: var(--blue);
+      background: white;
+      font-size: 22px;
+      font-weight: 900;
+    }
+    .brand strong { display: block; font-size: 15px; }
+    .brand small { color: #dceeff; }
+    .view-switcher { display: flex; align-items: center; gap: 8px; margin-left: auto; padding: 4px 5px 4px 12px; border-radius: 10px; background: rgba(0,0,0,.13); }
+    .view-switcher label { min-height: 0; margin: 0; color: #dceeff; font-size: 11px; }
+    .view-select { width: min(390px, 42vw); min-height: 38px; border: 0; color: var(--blue-700); background: #fff; font-weight: 750; }
+    .view-switcher button {
+      border: 0;
+      border-radius: 7px;
+      padding: 8px 14px;
+      color: #eaf5ff;
+      background: transparent;
+      font-weight: 700;
+    }
+    .view-switcher button.active { color: var(--blue-700); background: #fff; box-shadow: 0 2px 7px rgba(0,0,0,.12); }
+
+    .patient-bar {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 13px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+    .patient-primary { display: flex; align-items: center; gap: 12px; min-width: 270px; }
+    .avatar { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; color: #fff; background: #5f7f9e; font-weight: 800; }
+    .patient-primary strong { font-size: 15px; }
+    .patient-primary small { display: block; color: var(--muted); }
+    .patient-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--muted); }
+    .meta-item { white-space: nowrap; }
+    .meta-item b { color: var(--ink); font-weight: 650; }
+    .draft-state { margin-left: auto; padding: 6px 10px; border-radius: 7px; color: var(--warning); background: var(--warning-bg); font-size: 12px; font-weight: 700; }
+
+    .workspace { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 18px; max-width: 1500px; margin: 0 auto; padding: 18px 24px 96px; }
+    .section-nav {
+      position: sticky;
+      top: 82px;
+      align-self: start;
+      max-height: calc(100vh - 104px);
+      overflow: auto;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .nav-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .nav-heading strong { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; }
+    .progress-text { color: var(--muted); font-size: 11px; }
+    .progress-track { height: 5px; margin-bottom: 12px; overflow: hidden; border-radius: 6px; background: #e8eef4; }
+    .progress-bar { height: 100%; width: 38%; border-radius: 6px; background: var(--blue); transition: width .25s; }
+    .nav-list { display: grid; gap: 3px; }
+    .nav-link {
+      display: grid;
+      grid-template-columns: 24px 1fr 18px;
+      align-items: center;
+      gap: 7px;
+      width: 100%;
+      padding: 9px 8px;
+      border: 0;
+      border-radius: 8px;
+      text-align: left;
+      color: #48596a;
+      background: transparent;
+    }
+    .nav-link:hover { background: #f1f6fb; }
+    .nav-link.active { color: var(--blue-700); background: var(--blue-50); font-weight: 750; }
+    .nav-number { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 6px; color: #64778a; background: #edf1f5; font-size: 11px; font-weight: 800; }
+    .nav-link.active .nav-number { color: #fff; background: var(--blue); }
+    .status-dot { width: 8px; height: 8px; justify-self: center; border-radius: 50%; background: #b8c3ce; }
+    .status-dot.done { background: var(--success); }
+    .status-dot.error { background: var(--danger); box-shadow: 0 0 0 3px var(--danger-bg); }
+    .legend { display: flex; gap: 10px; padding: 13px 5px 2px; color: var(--muted); font-size: 10px; border-top: 1px solid var(--line); margin-top: 10px; }
+    .legend span::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 4px; border-radius: 50%; background: #b8c3ce; }
+    .legend .l-done::before { background: var(--success); }
+    .legend .l-error::before { background: var(--danger); }
+
+    .form-column { min-width: 0; }
+    .form-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin: 1px 0 14px; }
+    .form-heading h1 { margin: 0 0 3px; font-size: 22px; line-height: 1.2; }
+    .form-heading p { margin: 0; color: var(--muted); }
+    .concept-badge { flex: none; padding: 6px 9px; border: 1px solid #bcd8f2; border-radius: 7px; color: var(--blue-700); background: var(--blue-50); font-size: 11px; font-weight: 700; }
+
+    .assessment-section {
+      scroll-margin-top: 84px;
+      margin-bottom: 13px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 3px 12px rgba(24, 54, 82, .045);
+    }
+    .section-header { display: flex; align-items: center; gap: 11px; min-height: 50px; padding: 10px 16px; border-bottom: 1px solid var(--line); }
+    .section-index { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; color: var(--blue-700); background: var(--blue-50); font-size: 12px; font-weight: 850; }
+    .section-title { min-width: 0; }
+    .section-title h2 { margin: 0; font-size: 15px; }
+    .section-title p { margin: 1px 0 0; color: var(--muted); font-size: 11px; }
+    .section-state { margin-left: auto; padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; }
+    .section-state.done { color: var(--success); background: var(--success-bg); }
+    .section-state.error { color: var(--danger); background: var(--danger-bg); }
+    .section-body { padding: 14px 16px 16px; }
+    .subheading { margin: 4px 0 10px; padding-bottom: 6px; color: #41566c; border-bottom: 1px dashed #dce4ec; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .035em; }
+    .field-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 11px 12px; }
+    .field { grid-column: span 4; min-width: 0; }
+    .field.wide { grid-column: span 8; }
+    .field.full { grid-column: 1 / -1; }
+    .field.half { grid-column: span 6; }
+    .field.quarter { grid-column: span 3; }
+    label { display: flex; gap: 5px; min-height: 18px; margin-bottom: 4px; color: #425466; font-size: 12px; font-weight: 650; }
+    .required { color: var(--danger); }
+    input, select, textarea {
+      width: 100%;
+      min-height: 36px;
+      padding: 7px 10px;
+      border: 1px solid #cdd8e2;
+      border-radius: 7px;
+      outline: none;
+      color: var(--ink);
+      background: #fff;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(25,118,210,.1); }
+    input[readonly] { color: #596a7a; background: #f6f8fa; }
+    textarea { min-height: 68px; resize: vertical; }
+    .input-error { border-color: var(--danger); background: #fffafa; }
+    .error-text { margin-top: 4px; color: var(--danger); font-size: 11px; }
+    .helper { margin-top: 4px; color: var(--muted); font-size: 10px; }
+    .choice-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .choice { display: flex; align-items: center; min-height: 34px; padding: 6px 10px; border: 1px solid #d2dce5; border-radius: 7px; color: #435466; background: #fff; font-size: 12px; }
+    .choice.selected { color: var(--blue-700); border-color: #84b7e7; background: var(--blue-50); font-weight: 700; }
+    .choice input { width: auto; min-height: auto; margin: 0 6px 0 0; }
+    .score-box { display: flex; align-items: center; gap: 12px; min-height: 50px; padding: 8px 12px; border-radius: 8px; background: #f6f9fc; border: 1px solid #dfe7ee; }
+    .score-number { font-size: 25px; font-weight: 850; color: var(--blue-700); }
+    .score-box small { display: block; color: var(--muted); }
+
+    .save-bar {
+      position: fixed;
+      z-index: 25;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 62px;
+      padding: 9px 24px;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,.96);
+      box-shadow: 0 -5px 18px rgba(25, 47, 69, .08);
+      backdrop-filter: blur(8px);
+    }
+    .save-summary { margin-left: max(0px, calc((100vw - 1500px) / 2 + 268px)); color: var(--muted); font-size: 12px; }
+    .save-summary strong { color: var(--ink); }
+    .save-actions { display: flex; gap: 8px; margin-left: auto; }
+    .btn { min-height: 38px; padding: 8px 16px; border: 1px solid #cbd6e0; border-radius: 8px; color: #405365; background: #fff; font-weight: 750; }
+    .btn.primary { color: #fff; border-color: var(--blue); background: var(--blue); }
+    .btn.primary:hover { background: var(--blue-700); }
+
+    .assessment-view { display: none; }
+    .assessment-view.active { display: block; }
+    .record-tabs { display:flex; gap:4px; margin-bottom:14px; padding:4px; border:1px solid var(--line); border-radius:10px; background:var(--surface); }
+    .record-tab { flex:1; padding:10px 14px; border:0; border-radius:7px; color:var(--muted); background:transparent; font-weight:750; cursor:pointer; }
+    .record-tab.active { color:var(--blue-700); background:var(--blue-50); }
+    .history-picker { display:none; margin-bottom:14px; padding:16px; border:1px solid #bfd8ef; border-radius:10px; background:var(--blue-50); }
+    .history-picker.active { display:block; }
+    .history-picker .helper { margin-top:6px; }
+    .mobile-nav { display: none; }
+
+    @media (max-width: 1000px) {
+      .brand { min-width: auto; }
+      .brand-copy { display: none; }
+      .patient-meta .meta-item:nth-child(n+4) { display: none; }
+      .workspace { grid-template-columns: 210px minmax(0,1fr); padding-inline: 14px; }
+      .field, .field.quarter { grid-column: span 6; }
+      .field.wide { grid-column: 1 / -1; }
+    }
+    @media (max-width: 760px) {
+      .app-header { padding: 9px 12px; gap: 8px; }
+      .view-switcher { width: 100%; padding-left: 8px; }
+      .view-switcher label { display: none; }
+      .view-select { width: 100%; }
+      .patient-bar { padding: 10px 12px; }
+      .patient-meta, .draft-state { display: none; }
+      .workspace { display: block; padding: 12px 10px 90px; }
+      .section-nav { display: none; }
+      .mobile-nav { display: block; position: sticky; top: 64px; z-index: 20; margin: -1px 0 12px; padding: 8px; border: 1px solid var(--line); border-radius: 9px; background: #fff; box-shadow: var(--shadow); }
+      .mobile-nav select { min-height: 38px; }
+      .form-heading h1 { font-size: 18px; }
+      .concept-badge { display: none; }
+      .field, .field.half, .field.wide, .field.quarter { grid-column: 1 / -1; }
+      .section-body { padding: 12px; }
+      .save-summary { margin-left: 0; }
+      .save-summary span { display: none; }
+      .save-bar { padding: 9px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-mark">+</div>
+      <div class="brand-copy"><strong>Neurovi Hospital</strong><small>Electronic Medical Record</small></div>
+    </div>
+    <div class="view-switcher">
+      <label for="assessment-selector">Pilih menu asesmen</label>
+      <select id="assessment-selector" class="view-select" aria-label="Pilih jenis asesmen">
+        <optgroup label="Asesmen Keperawatan">
+          <option value="anak">Keperawatan Anak</option>
+          <option value="neonatus">Keperawatan Neonatus</option>
+          <option value="dewasa">Keperawatan Dewasa</option>
+        </optgroup>
+        <optgroup label="Asesmen Medis">
+          <option value="medis-non-bedah">Medis Non Bedah</option>
+          <option value="medis-bedah-non-trauma">Medis Bedah Non Trauma</option>
+          <option value="medis-bedah-trauma">Medis Bedah Trauma</option>
+          <option value="medis-anak">Medis Anak</option>
+          <option value="medis-neonatus">Medis Neonatus</option>
+        </optgroup>
+        <optgroup label="Asesmen Penunjang">
+          <option value="bina-rohani">Bina Rohani</option>
+          <option value="screening-gizi">Skrining Gizi Lanjutan (SGA)</option>
+        </optgroup>
+      </select>
+    </div>
+  </header>
+
+  <div class="patient-bar">
+    <div class="patient-primary">
+      <div class="avatar">NA</div>
+      <div><strong id="patient-name">Nadia Aulia</strong><small>RM 00872134</small></div>
+    </div>
+    <div class="patient-meta">
+      <span class="meta-item">Jenis kelamin <b>Perempuan</b></span>
+      <span class="meta-item">Umur <b id="patient-age">8 tahun 4 bulan</b></span>
+      <span class="meta-item">Tgl. lahir <b id="patient-dob">14 Feb 2018</b></span>
+      <span class="meta-item">Kamar <b>Anggrek 203-B</b></span>
+      <span class="meta-item">DPJP <b>dr. Amanda, Sp.A</b></span>
+    </div>
+    <div class="draft-state">Draft tersimpan 10:42</div>
+  </div>
+
+  <main class="workspace">
+    <aside class="section-nav">
+      <div class="nav-heading"><strong>Navigasi Section</strong><span class="progress-text">3 dari 6 lengkap</span></div>
+      <div class="progress-track"><div class="progress-bar"></div></div>
+      <nav class="nav-list"></nav>
+      <div class="legend"><span class="l-done">Lengkap</span><span class="l-error">Perlu dicek</span></div>
+    </aside>
+
+    <div class="form-column">
+      <div class="mobile-nav"><select aria-label="Navigasi section"></select></div>
+
+      <div class="assessment-view active" data-view="anak">
+        <div class="form-heading"><div><h1>Asesmen Awal Keperawatan Rawat Inap Anak</h1><p>Isi seluruh asesmen dalam satu halaman. Data tersimpan selama form belum ditutup.</p></div><span class="concept-badge">Konsep UI/UX</span></div>
+
+        <section class="assessment-section" id="anak-data-pasien" data-title="Data Pasien Masuk" data-status="done">
+          <div class="section-header"><span class="section-index">01</span><div class="section-title"><h2>Data Pasien Masuk</h2><p>Petugas, waktu pengisian, dan asal pasien</p></div><span class="section-state done">Lengkap</span></div>
+          <div class="section-body"><div class="field-grid">
+            <div class="field"><label>Nama petugas <span class="required">*</span></label><select><option selected>Siti Rahmawati, A.Md.Kep</option></select><div class="helper">Terisi otomatis dari pengguna login</div></div>
+            <div class="field"><label>Tanggal pengisian <span class="required">*</span></label><input value="22/07/2026"></div>
+            <div class="field"><label>Waktu pengisian <span class="required">*</span></label><input value="10:42"></div>
+            <div class="field"><label>Cara tiba <span class="required">*</span></label><select><option>Berjalan</option><option selected>Kursi roda</option><option>Brankar</option></select></div>
+            <div class="field"><label>Asal pasien <span class="required">*</span></label><select><option selected>IGD</option><option>Poliklinik</option><option>Kamar operasi</option></select></div>
+            <div class="field"><label>Keterangan lain</label><input placeholder="Opsional"></div>
+          </div></div>
+        </section>
+
+        <section class="assessment-section" id="anak-keadaan-umum" data-title="Keadaan Umum Pasien" data-status="error">
+          <div class="section-header"><span class="section-index">02</span><div class="section-title"><h2>Keadaan Umum Pasien</h2><p>Riwayat kesehatan, kesadaran, GCS, dan tanda vital</p></div><span class="section-state error">1 field perlu dicek</span></div>
+          <div class="section-body">
+            <div class="subheading">Riwayat kesehatan</div><div class="field-grid">
+              <div class="field wide"><label>Keluhan utama <span class="required">*</span></label><textarea>Demam sejak tiga hari, disertai batuk dan nafsu makan berkurang.</textarea><div class="helper">Ditarik dari asesmen IGD</div></div>
+              <div class="field"><label>Riwayat alergi <span class="required">*</span></label><select><option>Ada</option><option selected>Tidak ada</option><option>Tidak diketahui</option></select></div>
+            </div>
+            <div class="subheading" style="margin-top:14px">Kesadaran dan tanda vital</div><div class="field-grid">
+              <div class="field quarter"><label>Kesadaran <span class="required">*</span></label><select><option selected>Baik</option><option>Sedang</option><option>Lemah</option></select></div>
+              <div class="field quarter"><label>GCS Eye</label><input value="4"></div><div class="field quarter"><label>GCS Motorik</label><input value="6"></div><div class="field quarter"><label>GCS Verbal</label><input value="5"></div>
+              <div class="field quarter"><label>Tekanan darah</label><input value="110/70" placeholder="mmHg"></div><div class="field quarter"><label>Nadi <span class="required">*</span></label><input value="88" placeholder="x/menit"></div><div class="field quarter"><label>Suhu <span class="required">*</span></label><input class="input-error" placeholder="°C"><div class="error-text">Suhu belum diisi. Masukkan suhu tubuh pasien.</div></div><div class="field quarter"><label>Respirasi <span class="required">*</span></label><input value="22" placeholder="x/menit"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="assessment-section" id="anak-fisik" data-title="Fisik & Psikologis" data-status="done">
+          <div class="section-header"><span class="section-index">03</span><div class="section-title"><h2>Penilaian Fisik dan Pengkajian Psikologis</h2><p>Fungsi tubuh, aktivitas, keluarga, spiritual, dan emosional</p></div><span class="section-state done">Lengkap</span></div>
+          <div class="section-body"><div class="field-grid">
+            <div class="field"><label>Pernapasan</label><select><option selected>Normal</option><option>Batuk</option><option>Sesak</option></select></div><div class="field"><label>Penglihatan</label><select><option selected>Baik</option><option>Terganggu</option><option>Alat bantu</option></select></div><div class="field"><label>Pendengaran</label><select><option selected>Baik</option><option>Terganggu</option><option>Alat bantu</option></select></div>
+            <div class="field"><label>Tinggal bersama</label><select><option selected>Orang tua</option><option>Keluarga lain</option><option>Lainnya</option></select></div><div class="field"><label>Hubungan keluarga terdekat</label><input value="Ibu"></div><div class="field"><label>Nomor telepon keluarga</label><input value="0812 3456 7890"></div>
+            <div class="field"><label>Agama</label><select><option selected>Islam</option><option>Kristen</option><option>Katolik</option><option>Hindu</option></select></div><div class="field wide"><label>Status emosional</label><div class="choice-row"><span class="choice selected">Normal</span><span class="choice">Cemas</span><span class="choice">Takut</span><span class="choice">Menangis</span></div></div>
+          </div></div>
+        </section>
+
+        <section class="assessment-section" id="anak-gizi" data-title="Skrining Gizi" data-status="pending">
+          <div class="section-header"><span class="section-index">04</span><div class="section-title"><h2>Skrining Gizi</h2><p>Identifikasi risiko malnutrisi pasien anak</p></div><span class="section-state">Belum lengkap</span></div>
+          <div class="section-body"><div class="field-grid"><div class="field wide"><label>Indikator skrining</label><div class="choice-row"><label class="choice"><input type="checkbox">Tampak kurus</label><label class="choice selected"><input type="checkbox" checked>Penurunan berat badan</label><label class="choice"><input type="checkbox">Kondisi khusus</label><label class="choice"><input type="checkbox">Risiko malnutrisi</label></div></div><div class="field"><label>Hasil</label><div class="score-box"><span class="score-number">2</span><div><strong>Risiko sedang</strong><small>Lanjutkan pengkajian gizi</small></div></div></div></div></div>
+        </section>
+
+        <section class="assessment-section" id="anak-nyeri" data-title="Nyeri & Imunisasi" data-status="pending">
+          <div class="section-header"><span class="section-index">05</span><div class="section-title"><h2>Asesmen Nyeri dan Imunisasi</h2><p>Skala nyeri serta riwayat imunisasi anak</p></div><span class="section-state">Belum lengkap</span></div>
+          <div class="section-body"><div class="field-grid"><div class="field"><label>Skala nyeri</label><input type="range" min="0" max="10" value="3"><div class="helper">Nilai saat ini: 3 - nyeri ringan</div></div><div class="field wide"><label>Riwayat imunisasi</label><div class="choice-row"><label class="choice selected"><input type="checkbox" checked>BCG</label><label class="choice selected"><input type="checkbox" checked>DPT</label><label class="choice selected"><input type="checkbox" checked>Polio</label><label class="choice"><input type="checkbox">MMR</label><label class="choice"><input type="checkbox">Hib</label><label class="choice"><input type="checkbox">Hepatitis B</label></div></div></div></div>
+        </section>
+
+        <section class="assessment-section" id="anak-penatalaksanaan" data-title="Penatalaksanaan" data-status="pending">
+          <div class="section-header"><span class="section-index">06</span><div class="section-title"><h2>Kebutuhan Edukasi dan Penatalaksanaan Pasien</h2><p>Masalah, diagnosis, rencana, dan kebutuhan rehabilitasi</p></div><span class="section-state">Belum lengkap</span></div>
+          <div class="section-body"><div class="field-grid"><div class="field half"><label>Masalah keperawatan</label><select><option>Pilih masalah keperawatan</option></select></div><div class="field half"><label>Diagnosis keperawatan</label><select><option>Pilih diagnosis</option></select></div><div class="field full"><label>Rencana/intervensi</label><textarea placeholder="Pilih atau tuliskan rencana yang sesuai"></textarea></div></div></div>
+        </section>
+      </div>
+
+      <div class="assessment-view" data-view="neonatus">
+        <div class="form-heading"><div><h1>Asesmen Awal Keperawatan Rawat Inap Neonatus</h1><p>Data ibu, kondisi bayi, resusitasi, dan perencanaan dalam satu alur.</p></div><span class="concept-badge">Konsep UI/UX</span></div>
+        <section class="assessment-section" id="neo-ibu" data-title="Status Ibu" data-status="error"><div class="section-header"><span class="section-index">01</span><div class="section-title"><h2>Status Ibu</h2><p>Identitas ibu, riwayat kehamilan, dan persalinan</p></div><span class="section-state error">1 field perlu dicek</span></div><div class="section-body"><div class="field-grid">
+          <div class="field"><label>Nama petugas <span class="required">*</span></label><select class="input-error"><option selected>Pilih petugas</option></select><div class="error-text">Pilih petugas yang melakukan pengkajian.</div></div><div class="field"><label>Tanggal pengisian</label><input value="22/07/2026"></div><div class="field"><label>Waktu</label><input value="10:42"></div>
+          <div class="field"><label>Nama ibu</label><input value="Rina Kusuma"></div><div class="field"><label>No. RM ibu</label><input value="RM 00678912"></div><div class="field"><label>Tanggal lahir ibu</label><input value="02/04/1994"></div>
+          <div class="field quarter"><label>Kehamilan ke-</label><input value="2"></div><div class="field quarter"><label>Jumlah anak</label><input value="1"></div><div class="field quarter"><label>Jumlah abortus</label><input value="0"></div><div class="field quarter"><label>HPL</label><input value="25/07/2026"></div>
+          <div class="field"><label>Jenis persalinan</label><select><option>Normal</option><option selected>SC</option><option>Induksi</option><option>Vakum</option></select></div><div class="field wide"><label>Indikasi SC <span class="required">*</span></label><input value="Riwayat SC sebelumnya"><div class="helper">Wajib hanya ketika jenis persalinan adalah SC</div></div>
+        </div></div></section>
+        <section class="assessment-section" id="neo-resusitasi" data-title="Asuhan & Resusitasi" data-status="pending"><div class="section-header"><span class="section-index">02</span><div class="section-title"><h2>Asuhan dan Resusitasi</h2><p>Tindakan awal bayi dan pencatatan APGAR</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field full"><label>Tindakan awal</label><div class="choice-row"><label class="choice selected"><input type="checkbox" checked>Penghisapan orofaring</label><label class="choice"><input type="checkbox">Ganti kain</label><label class="choice selected"><input type="checkbox" checked>Pemeriksaan napas</label><label class="choice"><input type="checkbox">VTP</label></div></div><div class="field full"><div class="subheading">APGAR Score</div></div><div class="field quarter"><label>Menit</label><select><option selected>Menit pertama</option><option>Menit kelima</option></select></div><div class="field quarter"><label>Nadi</label><input value="2"></div><div class="field quarter"><label>Pernapasan</label><input value="2"></div><div class="field quarter"><label>Warna kulit</label><input value="1"></div><div class="field"><label>Total</label><div class="score-box"><span class="score-number">8</span><div><strong>Kondisi baik</strong><small>Dihitung otomatis</small></div></div></div></div></div></section>
+        <section class="assessment-section" id="neo-fisik" data-title="Pengkajian Fisik" data-status="done"><div class="section-header"><span class="section-index">03</span><div class="section-title"><h2>Pengkajian Fisik</h2><p>Tanda vital dan pemeriksaan head-to-toe neonatus</p></div><span class="section-state done">Lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field quarter"><label>Suhu</label><input value="36.7"></div><div class="field quarter"><label>Nadi</label><input value="132"></div><div class="field quarter"><label>Respirasi</label><input value="42"></div><div class="field quarter"><label>Saturasi</label><input value="98"></div><div class="field quarter"><label>Berat badan</label><input value="3200"></div><div class="field quarter"><label>Panjang badan</label><input value="49"></div><div class="field quarter"><label>Lingkar kepala</label><input value="34"></div><div class="field quarter"><label>Lingkar lengan</label><input value="11"></div><div class="field"><label>Genitalia</label><select><option selected>Normal</option><option>Kelainan</option></select></div><div class="field"><label>Labia mayora</label><select><option selected>Normal</option><option>Belum menutupi labia minora</option></select><div class="helper">Tampil dan divalidasi sesuai jenis kelamin pasien</div></div></div></div></section>
+        <section class="assessment-section" id="neo-cap" data-title="Cap Ibu & Bayi" data-status="pending"><div class="section-header"><span class="section-index">04</span><div class="section-title"><h2>Cap Ibu dan Bayi</h2><p>Dokumentasi identifikasi ibu dan bayi</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field half"><label>Cap kaki bayi</label><input type="file"><div class="helper">Format gambar, tampilkan preview setelah dipilih</div></div><div class="field half"><label>Cap ibu</label><input type="file"></div></div></div></section>
+        <section class="assessment-section" id="neo-nyeri" data-title="Nyeri (NIPS)" data-status="pending"><div class="section-header"><span class="section-index">05</span><div class="section-title"><h2>Pengkajian Nyeri (NIPS)</h2><p>Observasi ekspresi, tangisan, napas, gerak, dan kesadaran</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Ekspresi wajah</label><select><option selected>Rileks</option><option>Meringis</option></select></div><div class="field"><label>Tangisan</label><select><option selected>Tidak menangis</option><option>Merengek</option><option>Menangis kuat</option></select></div><div class="field"><label>Pola napas</label><select><option selected>Rileks</option><option>Berubah</option></select></div><div class="field"><label>Hasil NIPS</label><div class="score-box"><span class="score-number">1</span><div><strong>Tidak nyeri</strong><small>Dihitung otomatis</small></div></div></div></div></div></section>
+        <section class="assessment-section" id="neo-discharge" data-title="Discharge Planning" data-status="pending"><div class="section-header"><span class="section-index">06</span><div class="section-title"><h2>Penilaian dan Discharge Planning</h2><p>Evaluasi dan rencana pemulangan bayi</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field half"><label>Evaluasi</label><select><option>Pilih hasil evaluasi</option></select></div><div class="field half"><label>Rencana pemulangan</label><select><option>Pilih rencana pemulangan</option></select></div></div></div></section>
+        <section class="assessment-section" id="neo-diagnosis" data-title="Diagnosis Keperawatan" data-status="pending"><div class="section-header"><span class="section-index">07</span><div class="section-title"><h2>Diagnosis Keperawatan</h2><p>Masalah, diagnosis, dan rencana keperawatan neonatus</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field half"><label>Masalah keperawatan</label><select><option>Pilih masalah</option></select></div><div class="field half"><label>Diagnosis keperawatan</label><select><option>Pilih diagnosis</option></select></div><div class="field full"><label>Rencana/intervensi</label><textarea></textarea></div></div></div></section>
+      </div>
+
+      <div class="assessment-view" data-view="dewasa">
+        <div class="form-heading"><div><h1>Asesmen Awal Keperawatan Rawat Inap Dewasa</h1><p>Seluruh pengkajian dewasa tersusun padat dalam satu halaman.</p></div><span class="concept-badge">Konsep UI/UX</span></div>
+        <section class="assessment-section" id="adult-awal" data-title="Pengkajian Awal" data-status="done"><div class="section-header"><span class="section-index">01</span><div class="section-title"><h2>Pengkajian Awal dan Informasi Umum</h2><p>Petugas, waktu, kedatangan, dan narasumber</p></div><span class="section-state done">Lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Nama petugas</label><select><option selected>Siti Rahmawati, A.Md.Kep</option></select></div><div class="field"><label>Waktu pengisian</label><input value="22/07/2026 10:42"></div><div class="field"><label>Tiba di ruangan</label><input value="22/07/2026 10:15"></div><div class="field"><label>Cara tiba</label><select><option selected>Tanpa bantuan</option><option>Kursi roda</option><option>Brankar</option></select></div><div class="field"><label>Asal masuk</label><select><option selected>IGD</option><option>Poliklinik</option></select></div><div class="field"><label>Narasumber</label><input value="Pasien"></div></div></div></section>
+        <section class="assessment-section" id="adult-anamnesis" data-title="Anamnesis & Riwayat" data-status="error"><div class="section-header"><span class="section-index">02</span><div class="section-title"><h2>Anamnesis dan Riwayat</h2><p>Keluhan, riwayat kesehatan, alergi, dan terapi sebelumnya</p></div><span class="section-state error">1 field perlu dicek</span></div><div class="section-body"><div class="field-grid"><div class="field wide"><label>Alasan masuk/dirawat</label><textarea>Nyeri dada sejak dua jam sebelum masuk rumah sakit.</textarea></div><div class="field"><label>Riwayat alergi</label><select><option selected>Ada</option><option>Tidak ada</option></select></div><div class="field"><label>Alergen</label><input value="Penisilin"></div><div class="field wide"><label>Reaksi alergi <span class="required">*</span></label><input class="input-error"><div class="error-text">Jelaskan reaksi alergi yang pernah dialami pasien.</div></div></div></div></section>
+        <section class="assessment-section" id="adult-fisik" data-title="Keadaan Umum & Fisik" data-status="done"><div class="section-header"><span class="section-index">03</span><div class="section-title"><h2>Keadaan Umum dan Pemeriksaan Fisik</h2><p>Kesadaran, tanda vital, dan pemeriksaan sistem tubuh</p></div><span class="section-state done">Lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field quarter"><label>Kesadaran</label><select><option selected>Compos mentis</option></select></div><div class="field quarter"><label>Tekanan darah</label><input value="138/86"></div><div class="field quarter"><label>Nadi</label><input value="92"></div><div class="field quarter"><label>Respirasi</label><input value="20"></div><div class="field quarter"><label>Suhu</label><input value="36.8"></div><div class="field quarter"><label>Berat badan</label><input value="68"></div><div class="field quarter"><label>Tinggi badan</label><input value="170"></div><div class="field quarter"><label>IMT</label><input readonly value="23.5 - Normal"></div><div class="field full"><label>Pemeriksaan fisik</label><div class="choice-row"><span class="choice selected">Kardiovaskular normal</span><span class="choice selected">Respirasi normal</span><span class="choice selected">Gastrointestinal normal</span><span class="choice selected">Neurologi normal</span></div></div></div></div></section>
+        <section class="assessment-section" id="adult-nyeri" data-title="Asesmen Nyeri" data-status="pending"><div class="section-header"><span class="section-index">04</span><div class="section-title"><h2>Asesmen Nyeri</h2><p>Skala dan karakteristik nyeri</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Skala nyeri</label><input type="range" min="0" max="10" value="5"><div class="helper">Nilai saat ini: 5 - nyeri sedang</div></div><div class="field"><label>Provokasi</label><select><option>Aktivitas</option></select></div><div class="field"><label>Kualitas</label><select><option>Tertekan</option></select></div></div></div></section>
+        <section class="assessment-section" id="adult-sosial" data-title="Sosial & Psikologis" data-status="pending"><div class="section-header"><span class="section-index">05</span><div class="section-title"><h2>Sosial dan Psikologis</h2><p>Pekerjaan, tempat tinggal, kebiasaan, serta kondisi mental</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Pekerjaan</label><select><option>Karyawan swasta</option></select></div><div class="field"><label>Tinggal bersama</label><select><option>Keluarga</option></select></div><div class="field"><label>Status psikologis</label><select><option>Tenang</option></select></div></div></div></section>
+        <section class="assessment-section" id="adult-fungsi" data-title="Fungsi & Eliminasi" data-status="pending"><div class="section-header"><span class="section-index">06</span><div class="section-title"><h2>Fungsi, Risiko Jatuh, dan Eliminasi</h2><p>Aktivitas harian, mobilitas, Morse Fall, BAB, dan BAK</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Aktivitas harian</label><select><option>Mandiri</option></select></div><div class="field"><label>Berjalan</label><select><option>Tanpa kesulitan</option></select></div><div class="field"><label>Risiko jatuh</label><div class="score-box"><span class="score-number">20</span><div><strong>Risiko rendah</strong><small>Morse Fall Scale</small></div></div></div><div class="field half"><label>Eliminasi</label><div class="choice-row"><span class="choice selected">BAB normal</span><span class="choice selected">BAK normal</span></div></div></div></div></section>
+        <section class="assessment-section" id="adult-nutrisi" data-title="Dekubitus & Nutrisi" data-status="pending"><div class="section-header"><span class="section-index">07</span><div class="section-title"><h2>Dekubitus dan Skrining Nutrisi</h2><p>Kondisi kulit serta risiko malnutrisi</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Penurunan berat badan</label><select><option>Tidak</option><option>Ya</option></select></div><div class="field"><label>Nafsu makan berkurang</label><select><option>Tidak</option><option>Ya</option></select></div><div class="field"><label>Kondisi kulit</label><select><option>Normal</option></select></div></div></div></section>
+        <section class="assessment-section" id="adult-komunikasi" data-title="Komunikasi & Spiritual" data-status="pending"><div class="section-header"><span class="section-index">08</span><div class="section-title"><h2>Komunikasi dan Spiritual</h2><p>Bahasa, pendidikan, hambatan belajar, dan kebutuhan spiritual</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Bahasa utama</label><select><option>Bahasa Indonesia</option></select></div><div class="field"><label>Pendidikan</label><select><option>SMA</option></select></div><div class="field"><label>Agama</label><select><option>Islam</option></select></div></div></div></section>
+        <section class="assessment-section" id="adult-penatalaksanaan" data-title="Penatalaksanaan" data-status="pending"><div class="section-header"><span class="section-index">09</span><div class="section-title"><h2>Penatalaksanaan Pasien</h2><p>Masalah, diagnosis, dan rencana keperawatan</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field half"><label>Masalah keperawatan</label><select><option>Pilih masalah</option></select></div><div class="field half"><label>Diagnosis keperawatan</label><select><option>Pilih diagnosis</option></select></div><div class="field full"><label>Intervensi</label><textarea></textarea></div></div></div></section>
+      </div>
+
+      <div class="assessment-view" data-view="medis-non-bedah">
+        <div class="form-heading"><div><h1>Asesmen Awal Medis Rawat Inap Non Bedah</h1><p>Field dan alur V1 dipertahankan, disusun sebagai continuous form yang lebih ringkas.</p></div><span class="concept-badge">Dokter · V1 dipertahankan</span></div>
+        <section class="assessment-section" id="mnb-pasien" data-title="Data Pasien Masuk" data-status="done"><div class="section-header"><span class="section-index">01</span><div class="section-title"><h2>Data Pasien Masuk</h2><p>Dokter pemeriksa, waktu, ruang, DPJP, dan asal rujukan</p></div><span class="section-state done">Lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Dokter yang memeriksa <span class="required">*</span></label><select><option selected>dr. Amanda Putri</option></select></div><div class="field"><label>Waktu pengisian <span class="required">*</span></label><input value="23/07/2026 09:15"></div><div class="field"><label>Waktu kunjungan <span class="required">*</span></label><input value="23/07/2026 09:00"></div><div class="field"><label>Ruang / kamar / bed</label><input readonly value="Anggrek · 203 · B"></div><div class="field"><label>DPJP <span class="required">*</span></label><select><option selected>dr. Budi, Sp.PD</option></select></div><div class="field"><label>Asal rujukan <span class="required">*</span></label><select><option selected>IGD</option><option>Poliklinik</option></select></div></div></div></section>
+        <section class="assessment-section" id="mnb-anamnesis" data-title="Anamnesis & Nyeri" data-status="error"><div class="section-header"><span class="section-index">02</span><div class="section-title"><h2>Anamnesis dan Penilaian Nyeri</h2><p>Keluhan utama, riwayat penyakit, obat, keluarga, dan karakteristik nyeri</p></div><span class="section-state error">1 field perlu dicek</span></div><div class="section-body"><div class="field-grid"><div class="field full"><label>Keluhan utama <span class="required">*</span></label><textarea>Sesak napas memberat sejak semalam.</textarea><div class="helper">Autofill dari asesmen IGD/poli bila tersedia</div></div><div class="field half"><label>Riwayat penyakit sekarang</label><textarea></textarea></div><div class="field half"><label>Riwayat penyakit dahulu</label><textarea></textarea></div><div class="field"><label>Riwayat pengobatan</label><input placeholder="Nama obat"></div><div class="field"><label>Riwayat penyakit keluarga</label><select><option>Hipertensi</option><option>DM</option><option>Jantung</option><option>Asma</option></select></div><div class="field"><label>Skala nyeri</label><input type="range" min="0" max="10" value="4"><div class="helper">Nilai saat ini: 4</div></div><div class="field"><label>Provocation</label><select><option selected>Aktivitas</option><option>Lainnya</option></select></div><div class="field"><label>Quality</label><select><option selected>Tertusuk</option><option>Lainnya</option></select></div><div class="field"><label>Severity <span class="required">*</span></label><input class="input-error"><div class="error-text">Pilih tingkat keparahan nyeri.</div></div></div></div></section>
+        <section class="assessment-section" id="mnb-vital" data-title="Tanda Vital & Fisik" data-status="done"><div class="section-header"><span class="section-index">03</span><div class="section-title"><h2>Tanda Vital dan Pemeriksaan Fisik</h2><p>Keadaan umum, gizi, GCS, TTV, dan pemeriksaan sistem tubuh</p></div><span class="section-state done">Lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Keadaan umum</label><select><option selected>Baik</option><option>Sedang</option><option>Lemah</option></select></div><div class="field"><label>Gizi</label><select><option selected>Baik</option></select></div><div class="field quarter"><label>GCS Eye</label><input value="4"></div><div class="field quarter"><label>GCS Motorik</label><input value="6"></div><div class="field quarter"><label>GCS Verbal</label><input value="5"></div><div class="field quarter"><label>Total GCS</label><input readonly value="15"></div><div class="field quarter"><label>Sistolik</label><input value="130"></div><div class="field quarter"><label>Diastolik</label><input value="82"></div><div class="field quarter"><label>Nadi</label><input value="88"></div><div class="field quarter"><label>Respirasi</label><input value="22"></div><div class="field quarter"><label>Suhu aksila</label><input value="36.8"></div><div class="field quarter"><label>Berat badan</label><input value="65"></div><div class="field quarter"><label>Tinggi badan</label><input value="168"></div><div class="field full"><label>Pemeriksaan fisik</label><div class="choice-row"><span class="choice selected">Kepala normal</span><span class="choice selected">Thoraks normal</span><span class="choice selected">Abdomen normal</span><span class="choice selected">Ekstremitas normal</span></div></div></div></div></section>
+        <section class="assessment-section" id="mnb-penunjang" data-title="Pemeriksaan Penunjang" data-status="pending"><div class="section-header"><span class="section-index">04</span><div class="section-title"><h2>Pemeriksaan Penunjang</h2><p>Laboratorium, radiologi, patologi anatomi, dan pemeriksaan lain</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field half"><label>Hasil laboratorium</label><textarea></textarea></div><div class="field half"><label>Hasil radiologi</label><textarea></textarea></div><div class="field half"><label>Hasil patologi anatomi</label><textarea></textarea></div><div class="field half"><label>Pemeriksaan lain</label><textarea></textarea></div></div></div></section>
+        <section class="assessment-section" id="mnb-diagnosis" data-title="Diagnosis & Terapi" data-status="pending"><div class="section-header"><span class="section-index">05</span><div class="section-title"><h2>Diagnosis dan Terapi</h2><p>Diagnosis kerja, diagnosis banding, terapi, dan rencana tindak lanjut</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field half"><label>Diagnosis</label><select><option>Pilih diagnosis</option></select></div><div class="field half"><label>Diagnosis banding</label><select><option>Pilih diagnosis banding</option></select></div><div class="field full"><label>Terapi</label><textarea></textarea></div><div class="field full"><label>Rencana / tindak lanjut</label><textarea></textarea></div></div></div></section>
+      </div>
+
+      <div class="assessment-view" data-view="medis-bedah-non-trauma">
+        <div class="form-heading"><div><h1>Asesmen Awal Medis Bedah Non Trauma</h1><p>Struktur V1 tetap lima bagian; lokalis dan pemeriksaan bedah dibuat mudah dipindai.</p></div><span class="concept-badge">Dokter · Bedah Non Trauma/Obgyn</span></div>
+        <section class="assessment-section" id="mbnt-pasien" data-title="Data Pasien Masuk" data-status="done"><div class="section-header"><span class="section-index">01</span><div class="section-title"><h2>Data Pasien Masuk</h2><p>Dokter, waktu, ruang, DPJP, dan asal rujukan</p></div><span class="section-state done">Lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Dokter yang memeriksa</label><select><option selected>dr. Surya, Sp.B</option></select></div><div class="field"><label>Waktu pengisian</label><input value="23/07/2026 09:15"></div><div class="field"><label>Waktu kunjungan</label><input value="23/07/2026 09:00"></div><div class="field"><label>Ruang / kamar / bed</label><input readonly value="Mawar · 102 · A"></div><div class="field"><label>DPJP</label><select><option selected>dr. Surya, Sp.B</option></select></div><div class="field"><label>Asal rujukan</label><select><option selected>Poliklinik Bedah</option></select></div></div></div></section>
+        <section class="assessment-section" id="mbnt-anamnesis" data-title="Anamnesis & Nyeri" data-status="done"><div class="section-header"><span class="section-index">02</span><div class="section-title"><h2>Anamnesis dan Penilaian Nyeri</h2><p>Keluhan, riwayat, pengobatan, serta lokasi dan sifat nyeri</p></div><span class="section-state done">Lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field full"><label>Keluhan utama</label><textarea>Benjolan pada perut kanan bawah disertai nyeri.</textarea></div><div class="field half"><label>Riwayat penyakit sekarang</label><textarea></textarea></div><div class="field half"><label>Riwayat penyakit dahulu</label><textarea></textarea></div><div class="field"><label>Lokasi nyeri</label><input value="Perut kanan bawah"></div><div class="field"><label>Tipe nyeri</label><select><option selected>Akut</option><option>Kronis</option></select></div><div class="field"><label>Skala nyeri</label><input type="range" min="0" max="10" value="5"></div></div></div></section>
+        <section class="assessment-section" id="mbnt-fisik" data-title="Tanda Vital & Fisik" data-status="error"><div class="section-header"><span class="section-index">03</span><div class="section-title"><h2>Tanda Vital dan Pemeriksaan Fisik</h2><p>Keadaan umum, GCS, TTV, head-to-toe, dan status lokalis</p></div><span class="section-state error">Lokalis belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Keadaan umum</label><select><option selected>Baik</option></select></div><div class="field quarter"><label>Sistolik</label><input value="125"></div><div class="field quarter"><label>Diastolik</label><input value="80"></div><div class="field quarter"><label>Nadi</label><input value="86"></div><div class="field quarter"><label>Respirasi</label><input value="20"></div><div class="field full"><div class="subheading">Status lokalis</div></div><div class="field"><label>Lokasi</label><input value="Abdomen kanan bawah"></div><div class="field"><label>Inspeksi</label><input value="Tampak benjolan"></div><div class="field"><label>Palpasi <span class="required">*</span></label><input class="input-error"><div class="error-text">Lengkapi hasil palpasi.</div></div><div class="field"><label>Perkusi</label><input></div><div class="field"><label>Auskultasi</label><input></div></div></div></section>
+        <section class="assessment-section" id="mbnt-penunjang" data-title="Pemeriksaan Penunjang" data-status="pending"><div class="section-header"><span class="section-index">04</span><div class="section-title"><h2>Pemeriksaan Penunjang</h2><p>Hasil laboratorium, radiologi, patologi, dan pemeriksaan lainnya</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field half"><label>Hasil laboratorium</label><textarea></textarea></div><div class="field half"><label>Hasil radiologi</label><textarea></textarea></div><div class="field half"><label>Hasil patologi anatomi</label><textarea></textarea></div><div class="field half"><label>Pemeriksaan lain</label><textarea></textarea></div></div></div></section>
+        <section class="assessment-section" id="mbnt-diagnosis" data-title="Diagnosis & Terapi" data-status="pending"><div class="section-header"><span class="section-index">05</span><div class="section-title"><h2>Diagnosis dan Terapi</h2><p>Diagnosis, tindakan, terapi, dan rencana operasi/tindak lanjut</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field half"><label>Diagnosis</label><select><option>Pilih diagnosis</option></select></div><div class="field half"><label>Tindakan</label><select><option>Pilih tindakan</option></select></div><div class="field full"><label>Terapi</label><textarea></textarea></div><div class="field full"><label>Rencana tindak lanjut</label><textarea></textarea></div></div></div></section>
+      </div>
+
+      <div class="assessment-view" data-view="medis-bedah-trauma">
+        <div class="form-heading"><div><h1>Asesmen Awal Medis Bedah Trauma</h1><p>Urutan survei V1 dipertahankan agar pengisian klinis tetap mengikuti alur trauma.</p></div><span class="concept-badge">Dokter · Bedah Trauma</span></div>
+        <section class="assessment-section" id="mbt-pasien" data-title="Data Pasien Masuk" data-status="done"><div class="section-header"><span class="section-index">01</span><div class="section-title"><h2>Data Pasien Masuk</h2><p>Dokter, waktu asesmen, ruang, DPJP, dan asal pasien</p></div><span class="section-state done">Lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Dokter yang memeriksa</label><select><option selected>dr. Surya, Sp.B</option></select></div><div class="field"><label>Waktu pengisian</label><input value="23/07/2026 09:15"></div><div class="field"><label>Waktu kunjungan</label><input value="23/07/2026 09:00"></div><div class="field"><label>Ruang / kamar / bed</label><input readonly value="HCU · 01 · A"></div><div class="field"><label>DPJP</label><select><option selected>dr. Surya, Sp.B</option></select></div><div class="field"><label>Asal rujukan</label><select><option selected>IGD</option></select></div></div></div></section>
+        <section class="assessment-section" id="mbt-anamnesis" data-title="Anamnesa & Nyeri" data-status="done"><div class="section-header"><span class="section-index">02</span><div class="section-title"><h2>Anamnesa dan Penilaian Nyeri</h2><p>Mekanisme trauma, keluhan, riwayat, serta karakteristik nyeri</p></div><span class="section-state done">Lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field full"><label>Keluhan utama</label><textarea>Nyeri dada setelah kecelakaan lalu lintas.</textarea></div><div class="field half"><label>Riwayat penyakit sekarang</label><textarea></textarea></div><div class="field"><label>Lokasi nyeri</label><input value="Hemitoraks kanan"></div><div class="field"><label>Skala nyeri</label><input type="range" min="0" max="10" value="7"></div></div></div></section>
+        <section class="assessment-section" id="mbt-primary" data-title="Primary Survey" data-status="error"><div class="section-header"><span class="section-index">03</span><div class="section-title"><h2>Primary Survey</h2><p>Airway, breathing, circulation, disability, dan exposure</p></div><span class="section-state error">1 field perlu dicek</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Airway</label><select><option selected>Paten</option><option>Obstruksi</option></select></div><div class="field"><label>Breathing</label><select><option selected>Spontan</option></select></div><div class="field"><label>Circulation</label><select><option selected>Stabil</option></select></div><div class="field quarter"><label>GCS Eye</label><input value="4"></div><div class="field quarter"><label>GCS Motorik</label><input value="6"></div><div class="field quarter"><label>GCS Verbal</label><input value="5"></div><div class="field quarter"><label>Total</label><input readonly value="15"></div><div class="field full"><label>Exposure / temuan lain <span class="required">*</span></label><textarea class="input-error"></textarea><div class="error-text">Catat hasil exposure atau pilih tidak ada kelainan.</div></div></div></div></section>
+        <section class="assessment-section" id="mbt-score" data-title="Trauma Score" data-status="pending"><div class="section-header"><span class="section-index">04</span><div class="section-title"><h2>Trauma Score</h2><p>Parameter fisiologis dan skor trauma sesuai perhitungan V1</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Respiratory rate</label><input value="24"></div><div class="field"><label>Sistolik</label><input value="110"></div><div class="field"><label>GCS</label><input value="15"></div><div class="field"><label>Total Trauma Score</label><div class="score-box"><span class="score-number">12</span><div><strong>Stabil</strong><small>Dihitung otomatis sesuai V1</small></div></div></div></div></div></section>
+        <section class="assessment-section" id="mbt-secondary" data-title="Secondary Survey" data-status="pending"><div class="section-header"><span class="section-index">05</span><div class="section-title"><h2>Secondary Survey</h2><p>Pemeriksaan head-to-toe dan dokumentasi luka</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Kepala dan wajah</label><select><option>Tidak ada kelainan</option></select></div><div class="field"><label>Leher</label><select><option>Tidak ada kelainan</option></select></div><div class="field"><label>Thoraks</label><select><option>Ada kelainan</option></select></div><div class="field"><label>Abdomen</label><select><option>Tidak ada kelainan</option></select></div><div class="field full"><label>Deskripsi luka</label><textarea></textarea></div></div></div></section>
+        <section class="assessment-section" id="mbt-penunjang" data-title="Pemeriksaan Penunjang" data-status="pending"><div class="section-header"><span class="section-index">06</span><div class="section-title"><h2>Pemeriksaan Penunjang</h2><p>Laboratorium, radiologi, dan patologi anatomi</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Laboratorium</label><textarea></textarea></div><div class="field"><label>Radiologi</label><textarea></textarea></div><div class="field"><label>Patologi anatomi</label><textarea></textarea></div></div></div></section>
+        <section class="assessment-section" id="mbt-diagnosis" data-title="Diagnosis & Terapi" data-status="pending"><div class="section-header"><span class="section-index">07</span><div class="section-title"><h2>Diagnosis dan Terapi</h2><p>Diagnosis trauma, tindakan, terapi, dan rencana lanjutan</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field half"><label>Diagnosis</label><select><option>Pilih diagnosis</option></select></div><div class="field half"><label>Tindakan</label><select><option>Pilih tindakan</option></select></div><div class="field full"><label>Terapi dan rencana</label><textarea></textarea></div></div></div></section>
+      </div>
+
+      <div class="assessment-view" data-view="medis-anak">
+        <div class="form-heading"><div><h1>Asesmen Awal Medis Rawat Inap Anak</h1><p>Enam tab V1 menjadi satu alur tanpa mengubah field, payload, atau perhitungan.</p></div><span class="concept-badge">Dokter · Anak</span></div>
+        <section class="assessment-section" id="ma-pasien" data-title="Data Pasien Masuk" data-status="done"><div class="section-header"><span class="section-index">01</span><div class="section-title"><h2>Data Pasien Masuk</h2><p>Dokter, waktu, ruang, DPJP, dan asal pasien</p></div><span class="section-state done">Lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Dokter yang memeriksa</label><select><option selected>dr. Amanda, Sp.A</option></select></div><div class="field"><label>Waktu pengisian</label><input value="23/07/2026 09:15"></div><div class="field"><label>Waktu kunjungan</label><input value="23/07/2026 09:00"></div><div class="field"><label>Ruang / kamar / bed</label><input readonly value="Anggrek · 203 · B"></div><div class="field"><label>DPJP</label><select><option selected>dr. Amanda, Sp.A</option></select></div><div class="field"><label>Asal rujukan</label><select><option selected>IGD</option></select></div></div></div></section>
+        <section class="assessment-section" id="ma-anamnesis" data-title="Anamnesis" data-status="done"><div class="section-header"><span class="section-index">02</span><div class="section-title"><h2>Anamnesis</h2><p>Keluhan, riwayat penyakit, kelahiran, nutrisi, imunisasi, dan tumbuh kembang</p></div><span class="section-state done">Lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field full"><label>Keluhan utama</label><textarea>Demam tiga hari disertai batuk.</textarea></div><div class="field half"><label>Riwayat penyakit sekarang</label><textarea></textarea></div><div class="field half"><label>Riwayat penyakit dahulu</label><textarea></textarea></div><div class="field"><label>Riwayat kelahiran</label><select><option selected>Cukup bulan</option></select></div><div class="field"><label>Riwayat nutrisi</label><select><option selected>Baik</option></select></div><div class="field"><label>Riwayat imunisasi</label><select><option selected>Lengkap sesuai usia</option></select></div></div></div></section>
+        <section class="assessment-section" id="ma-nyeri" data-title="Asesmen Nyeri" data-status="pending"><div class="section-header"><span class="section-index">03</span><div class="section-title"><h2>Asesmen Nyeri</h2><p>Skala yang sesuai usia serta karakteristik nyeri</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Metode penilaian</label><select><option selected>Wong-Baker Faces</option></select></div><div class="field"><label>Skala nyeri</label><input type="range" min="0" max="10" value="2"></div><div class="field"><label>Lokasi nyeri</label><input></div></div></div></section>
+        <section class="assessment-section" id="ma-fisik" data-title="Pemeriksaan Fisik" data-status="error"><div class="section-header"><span class="section-index">04</span><div class="section-title"><h2>Pemeriksaan Fisik</h2><p>Keadaan umum, antropometri, GCS, TTV, dan pemeriksaan head-to-toe</p></div><span class="section-state error">1 field perlu dicek</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Keadaan umum</label><select><option selected>Baik</option></select></div><div class="field quarter"><label>Berat badan</label><input value="26"></div><div class="field quarter"><label>Tinggi badan</label><input value="128"></div><div class="field quarter"><label>Suhu</label><input value="38.1"></div><div class="field quarter"><label>Nadi</label><input value="104"></div><div class="field quarter"><label>Respirasi</label><input value="24"></div><div class="field quarter"><label>Saturasi <span class="required">*</span></label><input class="input-error"><div class="error-text">Masukkan saturasi oksigen pasien.</div></div><div class="field full"><label>Pemeriksaan fisik</label><div class="choice-row"><span class="choice selected">Kepala normal</span><span class="choice">Thoraks</span><span class="choice">Abdomen</span><span class="choice">Ekstremitas</span></div></div></div></div></section>
+        <section class="assessment-section" id="ma-penunjang" data-title="Pemeriksaan Penunjang" data-status="pending"><div class="section-header"><span class="section-index">05</span><div class="section-title"><h2>Pemeriksaan Penunjang</h2><p>Laboratorium, radiologi, patologi, dan pemeriksaan lain</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Laboratorium</label><textarea></textarea></div><div class="field"><label>Radiologi</label><textarea></textarea></div><div class="field"><label>Patologi anatomi</label><textarea></textarea></div></div></div></section>
+        <section class="assessment-section" id="ma-diagnosis" data-title="Diagnosis & Tindakan" data-status="pending"><div class="section-header"><span class="section-index">06</span><div class="section-title"><h2>Diagnosis dan Tindakan</h2><p>Diagnosis, terapi, tindakan, edukasi, dan tindak lanjut</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field half"><label>Diagnosis</label><select><option>Pilih diagnosis</option></select></div><div class="field half"><label>Tindakan</label><select><option>Pilih tindakan</option></select></div><div class="field full"><label>Terapi dan rencana</label><textarea></textarea></div></div></div></section>
+      </div>
+
+      <div class="assessment-view" data-view="medis-neonatus">
+        <div class="form-heading"><div><h1>Asesmen Awal Medis Rawat Inap Neonatus</h1><p>Empat bagian V1 disajikan berurutan; autofill dari asesmen perawat tetap terlihat dan dapat diverifikasi.</p></div><span class="concept-badge">Dokter · Neonatus</span></div>
+        <section class="assessment-section" id="mn-obstetri" data-title="Status Obstetri" data-status="error"><div class="section-header"><span class="section-index">01</span><div class="section-title"><h2>Status Obstetri</h2><p>Dokter pemeriksa, orang tua, kehamilan, persalinan, dan faktor risiko</p></div><span class="section-state error">1 field perlu dicek</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Dokter yang memeriksa</label><select><option selected>dr. Amanda, Sp.A</option></select></div><div class="field"><label>Waktu pengisian</label><input value="23/07/2026 09:15"></div><div class="field"><label>DPJP</label><select><option selected>dr. Amanda, Sp.A</option></select></div><div class="field"><label>No. RM ibu</label><input value="RM 00678912"></div><div class="field"><label>Nama ibu</label><input value="Rina Kusuma"></div><div class="field"><label>Umur ibu</label><input value="32"></div><div class="field quarter"><label>Kehamilan ke-</label><input value="2"></div><div class="field quarter"><label>Jumlah anak</label><input value="1"></div><div class="field quarter"><label>Abortus</label><input value="0"></div><div class="field quarter"><label>Usia kehamilan <span class="required">*</span></label><input class="input-error"><div class="error-text">Masukkan usia kehamilan saat persalinan.</div></div><div class="field"><label>Golongan darah ibu</label><select><option selected>A Rh+</option></select></div><div class="field"><label>Golongan darah ayah</label><select><option selected>O Rh+</option></select></div></div></div></section>
+        <section class="assessment-section" id="mn-status" data-title="Status Neonatus" data-status="done"><div class="section-header"><span class="section-index">02</span><div class="section-title"><h2>Status Neonatus</h2><p>Kelahiran, jenis kelamin, antropometri, dan APGAR</p></div><span class="section-state done">Lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Tanggal dan jam lahir</label><input value="20/07/2026 07:32"></div><div class="field"><label>Jenis kelamin</label><input readonly value="Perempuan"></div><div class="field quarter"><label>Berat lahir</label><input value="3200"></div><div class="field quarter"><label>Panjang badan</label><input value="49"></div><div class="field quarter"><label>Lingkar kepala</label><input value="34"></div><div class="field quarter"><label>Lingkar lengan</label><input value="11"></div><div class="field"><label>APGAR menit 1</label><input value="8"></div><div class="field"><label>APGAR menit 5</label><input value="9"></div><div class="field"><label>Kondisi saat lahir</label><select><option selected>Menangis spontan</option></select></div></div></div></section>
+        <section class="assessment-section" id="mn-fisik" data-title="Keadaan Umum & Fisik" data-status="done"><div class="section-header"><span class="section-index">03</span><div class="section-title"><h2>Keadaan Umum dan Pemeriksaan Fisik</h2><p>TTV, kondisi umum, dan pemeriksaan sistem tubuh neonatus</p></div><span class="section-state done">Lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field quarter"><label>Sistolik</label><input value="70"></div><div class="field quarter"><label>Diastolik</label><input value="42"></div><div class="field quarter"><label>Suhu</label><input value="36.7"></div><div class="field quarter"><label>Nadi</label><input value="132"></div><div class="field quarter"><label>Respirasi</label><input value="42"></div><div class="field quarter"><label>Saturasi</label><input value="98"></div><div class="field full"><label>Pemeriksaan fisik</label><div class="choice-row"><span class="choice selected">Kepala normal</span><span class="choice selected">Thoraks normal</span><span class="choice selected">Abdomen normal</span><span class="choice selected">Genitalia sesuai jenis kelamin</span><span class="choice selected">Anus/rectum normal</span></div></div></div></div></section>
+        <section class="assessment-section" id="mn-diagnosis" data-title="Diagnosis & Terapi" data-status="pending"><div class="section-header"><span class="section-index">04</span><div class="section-title"><h2>Diagnosis dan Terapi</h2><p>Diagnosis, prosedur/tindakan, catatan penting, dan tindak lanjut</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field half"><label>Diagnosis</label><select><option>Pilih diagnosis</option></select></div><div class="field half"><label>Tindakan / prosedur</label><select><option>Pilih tindakan</option></select></div><div class="field full"><label>Catatan penting</label><textarea></textarea></div><div class="field full"><label>Rencana tindak lanjut</label><textarea></textarea></div></div></div></section>
+      </div>
+
+      <div class="assessment-view" data-view="bina-rohani">
+        <div class="record-tabs" aria-label="Mode asesmen Bina Rohani"><button class="record-tab active" type="button" data-binroh-mode="form">Formulir Asesmen Bina Rohani</button><button class="record-tab" type="button" data-binroh-mode="history">Riwayat Asesmen Bina Rohani</button></div>
+        <div class="history-picker" data-binroh-history><div class="field full"><label for="br-history-select">Cari riwayat</label><select id="br-history-select"><option value="latest">23 Juli 2026, 10:42 — Ahmad Fauzi (terbaru)</option><option value="older">21 Juli 2026, 15:18 — Siti Rahmawati</option></select><div class="helper">Riwayat terbaru otomatis dipilih. Pilih entri lain untuk melihat atau memperbarui asesmen sebelumnya.</div></div></div>
+        <div class="form-heading"><div><h1>Asesmen Bina Rohani</h1><p>Seluruh anamnesa, pemeriksaan, rencana terapi, dan tindakan spiritual dalam satu halaman.</p></div><span class="concept-badge">Petugas Bina Rohani · V1 dipertahankan</span></div>
+        <section class="assessment-section" id="br-data" data-title="Data Pengisian" data-status="error"><div class="section-header"><span class="section-index">01</span><div class="section-title"><h2>Data Pengisian</h2><p>Petugas, waktu pengisian, dan sumber data</p></div><span class="section-state error">1 field perlu dicek</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Petugas yang mengisi <span class="required">*</span></label><select class="input-error"><option selected>Pilih nama petugas</option><option>Ahmad Fauzi</option></select><div class="error-text">Pilih petugas Bina Rohani yang melakukan asesmen.</div><div class="helper">Daftar petugas dimuat otomatis; petugas tetap dipilih pengguna</div></div><div class="field"><label>Tanggal pengisian</label><input value="23/07/2026"><div class="helper">Terisi otomatis saat form dibuka</div></div><div class="field"><label>Jam pengisian</label><input value="10:42"></div><div class="field full"><label>Sumber data <span class="required">*</span></label><div class="choice-row"><label class="choice selected"><input type="checkbox" checked>Pasien</label><label class="choice"><input type="checkbox">Keluarga</label></div></div></div></div></section>
+        <section class="assessment-section" id="br-penerimaan" data-title="Penerimaan Kondisi Sakit" data-status="done"><div class="section-header"><span class="section-index">02</span><div class="section-title"><h2>Penerimaan Kondisi Sakit</h2><p>Pernyataan pasien, keluarga, ekspresi, penilaian, dan kesimpulan</p></div><span class="section-state done">Lengkap</span></div><div class="section-body"><div class="subheading">Pernyataan pasien</div><div class="choice-row"><label class="choice selected"><input type="checkbox" checked>Menerima</label><label class="choice selected"><input type="checkbox" checked>Tabah</label><label class="choice"><input type="checkbox">Sabar</label><label class="choice"><input type="checkbox">Tidak Menerima</label><label class="choice"><input type="checkbox">Sedih</label><label class="choice"><input type="checkbox">Mengeluh</label></div><div class="subheading" style="margin-top:14px">Pernyataan keluarga</div><div class="choice-row"><label class="choice selected"><input type="checkbox" checked>Menerima</label><label class="choice"><input type="checkbox">Tabah</label><label class="choice selected"><input type="checkbox" checked>Sabar</label><label class="choice"><input type="checkbox">Sedih</label><label class="choice"><input type="checkbox">Mengeluh</label></div><div class="subheading" style="margin-top:14px">Ekspresi</div><div class="choice-row"><label class="choice selected"><input type="checkbox" checked>Senyum</label><label class="choice selected"><input type="checkbox" checked>Mengikuti Nasihat</label><label class="choice"><input type="checkbox">Pasrah</label><label class="choice selected"><input type="checkbox" checked>Semangat</label><label class="choice"><input type="checkbox">Sedih</label><label class="choice"><input type="checkbox">Mengeluh</label></div><div class="field-grid" style="margin-top:14px"><div class="field"><label>Penilaian</label><select><option selected>Positif</option><option>Negatif</option></select></div><div class="field wide"><label>Kesimpulan</label><textarea>Pasien dan keluarga menerima kondisi sakit serta kooperatif.</textarea></div></div></div></section>
+        <section class="assessment-section" id="br-sholat" data-title="Ibadah Sholat" data-status="done"><div class="section-header"><span class="section-index">03</span><div class="section-title"><h2>Ibadah Sholat</h2><p>Kebiasaan sholat, hafalan, media bersuci, dan penilaian</p></div><span class="section-state done">Lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field half"><div class="subheading">Pernyataan pasien</div><label>Sebelum sakit</label><select><option selected>Disiplin</option><option>Kadang-kadang</option><option>Tidak</option></select><label style="margin-top:10px">Selama sakit</label><select><option>Disiplin</option><option selected>Kadang-kadang</option><option>Tidak</option></select></div><div class="field half"><div class="subheading">Pernyataan keluarga</div><label>Sebelum sakit</label><select><option selected>Disiplin</option><option>Kadang-kadang</option><option>Tidak</option></select><label style="margin-top:10px">Selama sakit</label><select><option selected>Disiplin</option><option>Kadang-kadang</option><option>Tidak</option></select></div><div class="field half"><label>Hafalan</label><div class="choice-row"><label class="choice selected"><input type="checkbox" checked>Al Fatihah</label><label class="choice selected"><input type="checkbox" checked>Rukuk</label><label class="choice selected"><input type="checkbox" checked>Sujud</label><label class="choice"><input type="checkbox">Tasyahud</label></div></div><div class="field half"><label>Media Bersuci</label><div class="choice-row"><label class="choice selected"><input type="checkbox" checked>Wudhu</label><label class="choice"><input type="checkbox">Tayamum</label></div></div><div class="field"><label>Penilaian</label><select><option selected>Positif</option><option>Negatif</option></select></div><div class="field wide"><label>Kesimpulan</label><textarea>Pasien membutuhkan pendampingan tata cara sholat selama sakit.</textarea></div></div></div></section>
+        <section class="assessment-section" id="br-terapi" data-title="Rencana Terapi" data-status="pending"><div class="section-header"><span class="section-index">04</span><div class="section-title"><h2>Rencana Terapi</h2><p>Motivasi, edukasi ibadah, hafalan, dan dukungan keluarga</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="choice-row"><label class="choice selected"><input type="checkbox" checked>Motivasi untuk tawakal dan menerima takdir</label><label class="choice selected"><input type="checkbox" checked>Motivasi untuk sholat</label><label class="choice"><input type="checkbox">Ajarkan wudhu/sholat ketika sakit/sehat</label><label class="choice"><input type="checkbox">Motivasi terapi istiqomah</label><label class="choice"><input type="checkbox">Menambah hafalan doa/Al-Qur'an</label><label class="choice"><input type="checkbox">Motivasi keluarga pasien</label><label class="choice"><input type="checkbox">Lainnya</label></div><div class="field-grid" style="margin-top:12px"><div class="field full"><label>Rencana terapi lainnya</label><input placeholder="Tampil ketika Lainnya dipilih"></div></div></div></section>
+        <section class="assessment-section" id="br-tindakan" data-title="Tindakan" data-status="pending"><div class="section-header"><span class="section-index">05</span><div class="section-title"><h2>Tindakan</h2><p>Tindakan Bina Rohani yang telah diberikan</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="choice-row"><label class="choice"><input type="checkbox">Talqin</label><label class="choice selected"><input type="checkbox" checked>Ruqyah</label><label class="choice"><input type="checkbox">Lainnya</label></div><div class="field-grid" style="margin-top:12px"><div class="field full"><label>Tindakan lainnya</label><input placeholder="Tampil ketika Lainnya dipilih"></div></div></div></section>
+        <section class="assessment-section" id="br-intensif" data-title="Intensif Spiritual Care" data-status="pending"><div class="section-header"><span class="section-index">06</span><div class="section-title"><h2>Intensif Spiritual Care</h2><p>Pendampingan intensif dan durasi tindakan spiritual</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Jenis pendampingan</label><div class="choice-row"><label class="choice"><input type="checkbox">Pendampingan 24 Jam</label><label class="choice"><input type="checkbox">Talqin</label><label class="choice selected"><input type="checkbox" checked>Ruqyah</label></div></div><div class="field"><label>Durasi ruqyah</label><div style="display:flex;gap:8px"><input value="30"><select><option selected>Menit</option></select></div></div><div class="field"><label>Lainnya</label><input placeholder="Jenis pendampingan lain"></div></div></div></section>
+      </div>
+
+      <div class="assessment-view" data-view="screening-gizi">
+        <div class="record-tabs" aria-label="Mode Skrining Gizi Lanjutan"><button class="record-tab active" type="button" data-gizi-mode="form">Formulir Skrining Gizi Lanjut</button><button class="record-tab" type="button" data-gizi-mode="history">Riwayat Skrining Gizi Lanjut</button></div>
+        <div class="history-picker" data-gizi-history><div class="field full"><label for="gizi-history-select">Pilih Riwayat Skrining</label><select id="gizi-history-select"><option value="latest">Skrining Gizi Lanjut ke 2 — Anggrek - B12, 23/07/2026 10:42 WIB</option><option value="older">Skrining Gizi Lanjut ke 1 — Anggrek - B12, 21/07/2026 15:18 WIB</option></select><div class="helper">Terakhir diubah 23 Jul 2026 pukul 10:42 oleh Siti Rahmawati. Memilih riwayat memuat seluruh field dan mengaktifkan mode update.</div></div></div>
+        <div class="form-heading"><div><h1>Skrining Gizi Lanjut (SGA)</h1><p>Subjective Global Assessment dalam satu alur dari data awal hingga kesimpulan status gizi.</p></div><span class="concept-badge">Ahli Gizi · V1 dipertahankan</span></div>
+        <section class="assessment-section" id="gizi-informasi" data-title="Informasi Awal" data-status="error"><div class="section-header"><span class="section-index">01</span><div class="section-title"><h2>Informasi Awal</h2><p>Ruang, tanggal, antropometri, dietisien, dan diagnosis</p></div><span class="section-state error">1 field perlu dicek</span></div><div class="section-body"><div class="card-info blue-light" style="margin-bottom:14px"><strong>Kriteria Inklusi</strong><div class="helper">Pasien masuk RS &lt;48 jam, komunikatif, ada pendamping, compos mentis, dan tidak mengalami luka bakar dada/lengan atas.</div></div><div class="field-grid"><div class="field"><label>Ruang Rawat <span class="required">*</span></label><input readonly value="Anggrek - B12"><div class="helper">Terisi otomatis dari registrasi pasien.</div></div><div class="field"><label>Tanggal Masuk RS</label><input type="date" value="2026-07-23"></div><div class="field"><label>BB biasanya (kg)</label><input type="number" value="68"></div><div class="field"><label>Preskripsi Diet</label><input placeholder="Preskripsi diet"></div><div class="field"><label>Tanggal Wawancara</label><input type="date" value="2026-07-23"><div class="helper">Default tanggal hari ini.</div></div><div class="field"><label>BB masuk RS/saat ini (kg)</label><input type="number" value="64"></div><div class="field"><label>Nama Dietisien</label><select><option selected>Pilih Dietisien</option><option>Siti Rahmawati, S.Gz</option></select><div class="helper">Opsi dimuat dari staf dengan role ahli gizi; tidak otomatis dipilih.</div></div><div class="field"><label>Diagnosis Medis</label><input placeholder="Diagnosis"></div><div class="field"><label>TB (cm)</label><input type="number" value="170"></div></div></div></section>
+        <section class="assessment-section" id="gizi-berat" data-title="Berat Badan" data-status="done"><div class="section-header"><span class="section-index">02</span><div class="section-title"><h2>Berat Badan</h2><p>Kehilangan enam bulan dan perubahan dua minggu terakhir</p></div><span class="section-state done">Lengkap</span></div><div class="section-body"><div class="subheading">Kehilangan BB selama 6 bulan terakhir <span class="required">*</span></div><div class="choice-row"><label class="choice"><input type="radio" name="gizi-bb6">Tidak ada (A)</label><label class="choice selected"><input type="radio" name="gizi-bb6" checked>Penurunan 5–10% (B)</label><label class="choice"><input type="radio" name="gizi-bb6">Tidak tahu</label><label class="choice"><input type="radio" name="gizi-bb6">Penurunan ≥10% (C)</label></div><div class="subheading" style="margin-top:14px">Perubahan BB selama 2 minggu terakhir <span class="required">*</span></div><div class="choice-row"><label class="choice"><input type="radio" name="gizi-bb2">Tidak ada (A)</label><label class="choice selected"><input type="radio" name="gizi-bb2" checked>Ada kenaikan tetapi belum normal (B)</label><label class="choice"><input type="radio" name="gizi-bb2">BB turun (C)</label></div></div></section>
+        <section class="assessment-section" id="gizi-asupan" data-title="Asupan Makanan" data-status="done"><div class="section-header"><span class="section-index">03</span><div class="section-title"><h2>Asupan Makanan</h2><p>Jumlah, durasi, dan derajat perubahan asupan</p></div><span class="section-state done">Lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field half"><label>Perubahan jumlah asupan <span class="required">*</span></label><select><option>Asupan cukup/tidak berubah (A)</option><option selected>Asupan rendah tetapi meningkat (B)</option><option>Asupan sangat tidak cukup (C)</option></select></div><div class="field half"><label>Lamanya dan derajat perubahan <span class="required">*</span></label><select><option>&lt;2 minggu, sedikit/tanpa perubahan (A)</option><option selected>&gt;2 minggu, perubahan sedang (B)</option><option>Tidak bisa makan, perubahan drastis (C)</option></select></div></div></div></section>
+        <section class="assessment-section" id="gizi-gastro" data-title="Gejala Gastrointestinal" data-status="pending"><div class="section-header"><span class="section-index">04</span><div class="section-title"><h2>Gejala Gastrointestinal</h2><p>Anoreksia, mual, muntah, diare, frekuensi, dan durasi</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Anoreksia</label><select><option>Tidak</option><option selected>Ya</option></select></div><div class="field"><label>Frekuensi Anoreksia</label><select><option>Tiap hari</option><option selected>2–3 kali/minggu</option></select></div><div class="field"><label>Mual</label><select><option selected>Tidak</option><option>Ya</option></select></div><div class="field"><label>Muntah</label><select><option selected>Tidak</option><option>Ya</option></select></div><div class="field"><label>Diare</label><select><option selected>Tidak</option><option>Ya</option></select></div><div class="field"><label>Kesimpulan Gastrointestinal <span class="required">*</span></label><select><option>Beberapa/tidak ada gejala (A)</option><option selected>Beberapa gejala &gt;2 minggu (B)</option><option>&gt;1 gejala teratur &gt;2 minggu (C)</option></select></div></div></div></section>
+        <section class="assessment-section" id="gizi-fungsi" data-title="Fungsi & Metabolik" data-status="pending"><div class="section-header"><span class="section-index">05</span><div class="section-title"><h2>Kapasitas Fungsional dan Metabolik</h2><p>Aktivitas pasien serta gangguan metabolik</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Kapasitas Fungsional <span class="required">*</span></label><select><option>Aktivitas normal (A)</option><option selected>Aktivitas ringan/penurunan ringan (B)</option><option>Tanpa aktivitas/di tempat tidur (C)</option></select></div><div class="field"><label>Gangguan Metabolik</label><select><option>Tidak</option><option selected>Ya</option></select></div><div class="field"><label>Kategori Stres Metabolik</label><select><option>Rendah (B)</option><option selected>Sedang (B)</option><option>Tinggi (C)</option></select></div></div></div></section>
+        <section class="assessment-section" id="gizi-fisik" data-title="Pemeriksaan Fisik" data-status="pending"><div class="section-header"><span class="section-index">06</span><div class="section-title"><h2>Pemeriksaan Fisik</h2><p>Lemak subkutan, massa otot, edema, dan asites</p></div><span class="section-state">Belum lengkap</span></div><div class="section-body"><div class="field-grid"><div class="field"><label>Kehilangan Lemak Subkutan <span class="required">*</span></label><select><option>Tidak ada (A)</option><option selected>Salah satu tempat (B)</option><option>Kedua tempat (C)</option></select></div><div class="field"><label>Kehilangan Massa Otot <span class="required">*</span></label><select><option>Tidak ada (A)</option><option selected>Beberapa tempat (B)</option><option>Kedua tempat (C)</option></select></div><div class="field"><label>Edema <span class="required">*</span></label><select><option selected>Tidak ada (A)</option><option>Sedang/tungkai (B)</option><option>Berat/anasarka (C)</option></select></div><div class="field"><label>Asites <span class="required">*</span></label><select><option selected>Tidak ada (A)</option><option>Sedang (B)</option><option>Berat (C)</option></select></div></div></div></section>
+        <section class="assessment-section" id="gizi-hasil" data-title="Hasil Skrining" data-status="done"><div class="section-header"><span class="section-index">07</span><div class="section-title"><h2>Hasil Skrining</h2><p>Rekap skor dan kesimpulan otomatis</p></div><span class="section-state done">Terhitung otomatis</span></div><div class="section-body"><div class="field-grid"><div class="field quarter"><label>A (jumlah)</label><div class="score-box"><span class="score-number">2</span><div><strong>Gizi Baik</strong><small>Dihitung otomatis</small></div></div></div><div class="field quarter"><label>B (jumlah)</label><div class="score-box"><span class="score-number">8</span><div><strong>Gizi Kurang</strong><small>Dihitung otomatis</small></div></div></div><div class="field quarter"><label>C (jumlah)</label><div class="score-box"><span class="score-number">0</span><div><strong>Gizi Buruk</strong><small>Dihitung otomatis</small></div></div></div><div class="field"><label>Kesimpulan</label><input readonly value="B. Pasien Gizi Kurang"><div class="helper">Mengikuti aturan dominasi dan tie-break skor V1.</div></div></div></div></section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="save-bar"><div class="save-summary"><strong>Perubahan belum disimpan</strong> <span>• Data tetap tersimpan saat berpindah section</span></div><div class="save-actions"><button class="btn">Batal</button><button class="btn primary" id="save-button">Simpan Asesmen</button></div></footer>
+
+  <script>
+    const assessmentSelector = document.getElementById('assessment-selector');
+    const views = [...document.querySelectorAll('.assessment-view')];
+    const navList = document.querySelector('.nav-list');
+    const mobileSelect = document.querySelector('.mobile-nav select');
+    const progressText = document.querySelector('.progress-text');
+    const progressBar = document.querySelector('.progress-bar');
+    let observer;
+
+    const profiles = {
+      anak: ['Nadia Aulia', '8 tahun 4 bulan', '14 Feb 2018'],
+      neonatus: ['Bayi Ny. Rina', '2 hari', '20 Jul 2026'],
+      dewasa: ['Andi Pratama', '42 tahun', '09 Mei 1984'],
+      'medis-non-bedah': ['Andi Pratama', '42 tahun', '09 Mei 1984'],
+      'medis-bedah-non-trauma': ['Dewi Lestari', '36 tahun', '17 Mar 1990'],
+      'medis-bedah-trauma': ['Rizky Hidayat', '29 tahun', '02 Jan 1997'],
+      'medis-anak': ['Nadia Aulia', '8 tahun 4 bulan', '14 Feb 2018'],
+      'medis-neonatus': ['Bayi Ny. Rina', '2 hari', '20 Jul 2026'],
+      'bina-rohani': ['Andi Pratama', '42 tahun', '09 Mei 1984'],
+      'screening-gizi': ['Andi Pratama', '42 tahun', '09 Mei 1984']
+    };
+
+    function currentSections() {
+      const active = document.querySelector('.assessment-view.active');
+      return [...active.querySelectorAll('.assessment-section')];
+    }
+
+    function buildNavigation() {
+      if (observer) observer.disconnect();
+      navList.innerHTML = '';
+      mobileSelect.innerHTML = '';
+      const sections = currentSections();
+      const done = sections.filter(s => s.dataset.status === 'done').length;
+      progressText.textContent = `${done} dari ${sections.length} lengkap`;
+      progressBar.style.width = `${Math.max(8, done / sections.length * 100)}%`;
+
+      sections.forEach((section, i) => {
+        const btn = document.createElement('button');
+        btn.className = `nav-link${i === 0 ? ' active' : ''}`;
+        btn.dataset.target = section.id;
+        btn.innerHTML = `<span class="nav-number">${String(i + 1).padStart(2, '0')}</span><span>${section.dataset.title}</span><span class="status-dot ${section.dataset.status === 'done' ? 'done' : section.dataset.status === 'error' ? 'error' : ''}"></span>`;
+        btn.addEventListener('click', () => section.scrollIntoView({behavior:'smooth', block:'start'}));
+        navList.appendChild(btn);
+        const option = document.createElement('option');
+        option.value = section.id;
+        option.textContent = `${i + 1}. ${section.dataset.title}`;
+        mobileSelect.appendChild(option);
+      });
+
+      observer = new IntersectionObserver(entries => {
+        const visible = entries.filter(e => e.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        document.querySelectorAll('.nav-link').forEach(n => n.classList.toggle('active', n.dataset.target === visible.target.id));
+        mobileSelect.value = visible.target.id;
+      }, {rootMargin: '-20% 0px -64% 0px', threshold: [0, .1, .3, .6]});
+      sections.forEach(s => observer.observe(s));
+    }
+
+    function switchView(name) {
+      assessmentSelector.value = name;
+      views.forEach(v => v.classList.toggle('active', v.dataset.view === name));
+      const profile = profiles[name];
+      document.getElementById('patient-name').textContent = profile[0];
+      document.getElementById('patient-age').textContent = profile[1];
+      document.getElementById('patient-dob').textContent = profile[2];
+      buildNavigation();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    assessmentSelector.addEventListener('change', event => switchView(event.target.value));
+    document.querySelectorAll('[data-binroh-mode]').forEach(button => {
+      button.addEventListener('click', () => {
+        const isHistory = button.dataset.binrohMode === 'history';
+        document.querySelectorAll('[data-binroh-mode]').forEach(item => item.classList.toggle('active', item === button));
+        document.querySelector('[data-binroh-history]').classList.toggle('active', isHistory);
+        document.getElementById('save-button').textContent = isHistory ? 'Simpan Perubahan' : 'Simpan Asesmen';
+      });
+    });
+    document.querySelectorAll('[data-gizi-mode]').forEach(button => {
+      button.addEventListener('click', () => {
+        const isHistory = button.dataset.giziMode === 'history';
+        document.querySelectorAll('[data-gizi-mode]').forEach(item => item.classList.toggle('active', item === button));
+        document.querySelector('[data-gizi-history]').classList.toggle('active', isHistory);
+        document.getElementById('save-button').textContent = isHistory ? 'Update Skrining' : 'Simpan Asesmen';
+      });
+    });
+    mobileSelect.addEventListener('change', e => document.getElementById(e.target.value).scrollIntoView({behavior:'smooth'}));
+    document.getElementById('save-button').addEventListener('click', () => alert('Mockup: asesmen akan divalidasi dan disimpan menggunakan mekanisme V1.'));
+    buildNavigation();
+  </script>
+</body>
+</html>
