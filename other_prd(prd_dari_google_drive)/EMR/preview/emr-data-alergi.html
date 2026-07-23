@@ -1,0 +1,1287 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>D4 — Detail Alergi Pasien</title>
+  <style>
+    :root {
+      --nav: #153f49;
+      --primary: #168ed0;
+      --primary-dark: #0876b4;
+      --bg: #f3f6f8;
+      --ink: #26333a;
+      --muted: #74828a;
+      --line: #dbe3e7;
+      --blue-bg: #eaf5fb;
+      --green-bg: #eaf7ef;
+      --orange-bg: #fff5e8;
+      --red-bg: #fff0ef;
+      --shadow: 0 3px 12px #17313c12;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 13px Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .hidden { display: none !important; }
+
+    .topbar {
+      height: 56px;
+      padding: 0 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--nav);
+      color: #fff;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; }
+    .mark {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border: 2px solid #fff;
+      border-radius: 7px;
+      font-size: 19px;
+    }
+    .user { font-size: 12px; }
+    .layout {
+      min-height: calc(100vh - 56px);
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+    }
+    aside {
+      padding: 18px 12px;
+      border-right: 1px solid var(--line);
+      background: #fff;
+    }
+    .side-title {
+      padding: 0 10px 8px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+    .side {
+      width: 100%;
+      padding: 10px 11px;
+      border: 0;
+      border-radius: 7px;
+      background: none;
+      color: #43515a;
+      text-align: left;
+    }
+    .side.on { background: #e6f4f7; color: #0d6674; font-weight: 800; }
+    .side.dim { color: #9da8ae; }
+    main { min-width: 0; padding: 18px 22px 40px; }
+    .crumb { margin-bottom: 11px; color: var(--muted); font-size: 11px; }
+    .page-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .page-head h1 { margin: 0 0 4px; font-size: 22px; }
+    .subtitle { color: var(--muted); line-height: 1.45; }
+    .head-actions { display: flex; gap: 8px; }
+    .primary, .secondary, .link-button {
+      min-height: 38px;
+      padding: 8px 13px;
+      border-radius: 6px;
+      font-weight: 800;
+    }
+    .primary {
+      border: 0;
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 2px 5px #16699630;
+    }
+    .primary:hover { background: var(--primary-dark); }
+    .secondary {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: #42515a;
+    }
+    .link-button {
+      min-height: auto;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: var(--primary-dark);
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    /* Ringkasan EMR */
+    .emr-strip {
+      display: grid;
+      grid-template-columns: 1.65fr 1fr .85fr .85fr;
+      min-height: 164px;
+      overflow: hidden;
+    }
+    .emr-section {
+      position: relative;
+      padding: 17px 18px;
+      border-right: 1px solid var(--line);
+    }
+    .emr-section:last-child { border-right: 0; }
+    .emr-patient { background: #edf8ff; }
+    .emr-history { background: #effcf4; }
+    .emr-allergy { background: #fff2f1; }
+    .emr-social { background: #fff9e9; }
+    .section-label {
+      margin-bottom: 11px;
+      color: #16719d;
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .emr-history .section-label { color: #168148; }
+    .emr-allergy .section-label { color: #c2382d; }
+    .emr-social .section-label { color: #c47c00; }
+    .patient-main { font-size: 17px; font-weight: 900; }
+    .patient-line { margin-top: 9px; color: #40515b; font-size: 11px; }
+    .rm {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 3px 7px;
+      border: 1px solid #edaaa5;
+      border-radius: 4px;
+      background: #fff;
+      color: #b42318;
+      font-size: 10px;
+    }
+    .last-visit {
+      position: absolute;
+      right: 18px;
+      bottom: 15px;
+      left: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: #53636c;
+      font-size: 10px;
+    }
+    .history-empty, .social-empty {
+      display: grid;
+      min-height: 80px;
+      place-items: center;
+      color: #4f5f67;
+      font-weight: 700;
+      text-align: center;
+    }
+    .allergy-count {
+      margin: 6px 0 4px;
+      color: #9c281f;
+      font-size: 32px;
+      font-weight: 900;
+    }
+    .allergy-copy { color: #74413d; font-size: 11px; line-height: 1.5; }
+    .detail-link {
+      position: absolute;
+      right: 18px;
+      bottom: 15px;
+      border: 0;
+      background: none;
+      color: #a52c23;
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .reference-note {
+      margin-top: 12px;
+      padding: 11px 13px;
+      border: 1px dashed #cbd7dc;
+      border-radius: 7px;
+      background: #f9fbfc;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* Asesmen perawat */
+    .assessment-card { overflow: hidden; }
+    .assessment-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .assessment-tab {
+      padding: 13px;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      background: none;
+      color: #66757d;
+      font-size: 11px;
+    }
+    .assessment-tab.active {
+      border-bottom-color: var(--primary);
+      color: var(--ink);
+      font-weight: 850;
+    }
+    .assessment-body { padding: 22px 26px 28px; }
+    .assessment-case {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 17px;
+      margin-bottom: 22px;
+      color: #536169;
+      font-size: 10px;
+    }
+    .assessment-case label { display: flex; align-items: center; gap: 5px; }
+    .assessment-section-title {
+      margin: 0 0 14px;
+      color: #3aa4db;
+      font-size: 15px;
+    }
+    .subjective-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .anamnesis label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 10px;
+      font-weight: 750;
+    }
+    .anamnesis textarea {
+      width: 100%;
+      min-height: 122px;
+      padding: 10px;
+      border: 1px solid #aeb9bf;
+      border-radius: 4px;
+      resize: vertical;
+    }
+    .allergy-assessment {
+      padding: 16px;
+      border: 2px solid #e43d35;
+      border-radius: 12px;
+      background: #fffdfd;
+    }
+    .allergy-assessment-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 13px;
+    }
+    .allergy-assessment-head b { font-size: 11px; }
+    .toggle-group { display: flex; gap: 7px; }
+    .toggle-btn {
+      min-width: 74px;
+      padding: 8px 12px;
+      border: 1px solid var(--primary);
+      border-radius: 3px;
+      background: #fff;
+      color: var(--primary);
+      font-size: 10px;
+      font-weight: 850;
+    }
+    .toggle-btn.active { background: var(--primary); color: #fff; }
+    .assessment-allergy-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 35px;
+      gap: 9px;
+      align-items: end;
+      margin-top: 10px;
+    }
+    .assessment-allergy-row label {
+      display: block;
+      margin-bottom: 5px;
+      color: #506069;
+      font-size: 9px;
+      font-weight: 800;
+    }
+    .assessment-allergy-row input {
+      width: 100%;
+      height: 37px;
+      padding: 7px 9px;
+      border: 1px solid #aebcc3;
+      border-radius: 4px;
+    }
+    .remove-row, .add-row {
+      width: 35px;
+      height: 35px;
+      border: 0;
+      border-radius: 3px;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 900;
+      box-shadow: 0 2px 5px #17313c28;
+    }
+    .remove-row { background: #ee4036; }
+    .add-row { margin-top: 12px; background: var(--primary); }
+    .assessment-meta {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 9px;
+      line-height: 1.45;
+    }
+    .assessment-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    /* Detail alergi */
+    .patient-card {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, minmax(130px, .7fr));
+      gap: 18px;
+      margin-bottom: 12px;
+      padding: 16px 18px;
+    }
+    .patient-name { display: flex; align-items: center; gap: 12px; }
+    .avatar {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      flex: 0 0 42px;
+      place-items: center;
+      border-radius: 50%;
+      background: #dff1f5;
+      color: #176675;
+      font-weight: 900;
+    }
+    .label {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .value { margin-top: 4px; font-weight: 800; }
+    .patient-name .value { font-size: 15px; }
+    .code { margin-top: 3px; color: var(--muted); font-size: 9px; }
+    .main-card { overflow: hidden; }
+    .tabs {
+      display: flex;
+      padding: 0 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .tab {
+      position: relative;
+      padding: 14px 13px;
+      border: 0;
+      background: none;
+      color: #68757d;
+      font-weight: 800;
+    }
+    .tab.active { color: var(--primary-dark); }
+    .tab.active::after {
+      position: absolute;
+      right: 10px;
+      bottom: -1px;
+      left: 10px;
+      height: 3px;
+      border-radius: 3px 3px 0 0;
+      background: var(--primary);
+      content: "";
+    }
+    .tab-count {
+      display: inline-block;
+      margin-left: 5px;
+      padding: 1px 6px;
+      border-radius: 99px;
+      background: #edf2f4;
+      font-size: 9px;
+    }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .tools {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+    }
+    .search { position: relative; }
+    .search span {
+      position: absolute;
+      top: 9px;
+      left: 10px;
+      color: #8a969c;
+    }
+    .search input {
+      width: 320px;
+      height: 36px;
+      padding: 7px 10px 7px 30px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+    }
+    .result-count { color: var(--muted); font-size: 11px; }
+    .table-wrap { overflow: auto; border-top: 1px solid var(--line); }
+    table { width: 100%; min-width: 920px; border-collapse: collapse; }
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: middle;
+    }
+    th {
+      background: #fafbfc;
+      color: #69757c;
+      font-size: 9px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    td { font-size: 11px; }
+    .allergy-name { font-size: 12px; font-weight: 850; }
+    .snomed-code { margin-top: 4px; color: var(--muted); font-size: 9px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 8px;
+      border-radius: 99px;
+      font-size: 9px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+    .medication { background: var(--blue-bg); color: #176789; }
+    .food { background: var(--orange-bg); color: #a34d05; }
+    .environment { background: #eef2f4; color: #5e6d75; }
+    .biologic { background: var(--green-bg); color: #167647; }
+    .unmapped { background: #f2f3f4; color: #6c757b; }
+    .metadata { line-height: 1.5; }
+    .metadata .meta-date { font-weight: 800; }
+    .metadata span { color: var(--muted); font-size: 9px; }
+    .edit-btn {
+      min-height: 31px;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: #fff;
+      color: #42606f;
+      font-weight: 800;
+    }
+    .edit-btn:hover { background: #f1f5f7; }
+    .empty {
+      display: none;
+      padding: 32px;
+      color: var(--muted);
+      text-align: center;
+    }
+    .history { padding: 8px 20px 22px; }
+    .history-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+    }
+    .history-head h3 { margin: 0; font-size: 14px; }
+    .history-head span { color: var(--muted); font-size: 10px; }
+    .event {
+      display: grid;
+      grid-template-columns: 145px 25px 1fr;
+      gap: 8px;
+      min-height: 80px;
+    }
+    .event-time {
+      padding-top: 5px;
+      color: var(--muted);
+      font-size: 10px;
+      text-align: right;
+    }
+    .rail { position: relative; }
+    .rail::before {
+      position: absolute;
+      top: 17px;
+      bottom: -4px;
+      left: 12px;
+      width: 1px;
+      background: #dce3e6;
+      content: "";
+    }
+    .event:last-child .rail::before { display: none; }
+    .dot {
+      position: relative;
+      z-index: 2;
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #e8f4f8;
+      color: #167087;
+      font-size: 10px;
+    }
+    .dot.deleted { background: #fde8e6; color: #a52c23; }
+    .event-body { padding: 4px 0 16px; }
+    .event-title {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 4px;
+    }
+    .event-body p { margin: 0; color: #5f6c74; line-height: 1.5; }
+    .change {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 5px 7px;
+      border-radius: 5px;
+      background: #f3f6f7;
+      color: #56636b;
+      font-size: 10px;
+    }
+    .deleted-badge {
+      display: inline-flex;
+      padding: 3px 7px;
+      border-radius: 99px;
+      background: #fde8e6;
+      color: #a52c23;
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    /* Modal */
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: #102029a6;
+    }
+    .modal-bg.open { display: flex; }
+    .dialog {
+      width: min(540px, 100%);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 20px 60px #10202955;
+    }
+    .dialog-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .dialog-head h3 { margin: 0 0 3px; font-size: 17px; }
+    .dialog-head p { margin: 0; color: var(--muted); font-size: 11px; }
+    .close {
+      width: 31px;
+      height: 31px;
+      border: 0;
+      border-radius: 50%;
+      background: #edf2f4;
+      color: #59666d;
+      font-size: 18px;
+    }
+    .dialog-body { padding: 18px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field + .field { margin-top: 14px; }
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .req { color: #b42318; }
+    .field input {
+      width: 100%;
+      min-height: 39px;
+      padding: 8px 10px;
+      border: 1px solid #cfd8dd;
+      border-radius: 6px;
+      background: #fff;
+    }
+    .field small {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 9px;
+      line-height: 1.45;
+    }
+    .form-error {
+      display: none;
+      margin-top: 13px;
+      padding: 10px 11px;
+      border-radius: 6px;
+      background: var(--red-bg);
+      color: #a72c23;
+      font-size: 11px;
+    }
+    .form-error.show { display: block; }
+    .dialog-foot {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      padding: 12px 18px;
+      border-top: 1px solid var(--line);
+    }
+    .toast {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 200;
+      display: none;
+      max-width: 430px;
+      padding: 12px 15px;
+      border-radius: 7px;
+      background: var(--nav);
+      color: #fff;
+      box-shadow: 0 12px 30px #172b3545;
+    }
+    .toast.show { display: block; }
+
+    @media (max-width: 1000px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { display: none; }
+      .emr-strip { grid-template-columns: 1fr 1fr; }
+      .emr-section { min-height: 155px; border-bottom: 1px solid var(--line); }
+      .patient-card { grid-template-columns: 1.5fr repeat(2, 1fr); }
+      .patient-card > div:last-child { grid-column: 2 / 4; }
+    }
+    @media (max-width: 700px) {
+      main { padding: 12px; }
+      .topbar { padding: 0 13px; }
+      .user { display: none; }
+      .page-head { flex-direction: column; }
+      .emr-strip { grid-template-columns: 1fr; }
+      .patient-card { grid-template-columns: 1fr 1fr; }
+      .patient-name { grid-column: 1 / -1; }
+      .patient-card > div:last-child { grid-column: auto; }
+      .tools { align-items: flex-start; flex-direction: column; }
+      .search, .search input { width: 100%; }
+      .subjective-grid { grid-template-columns: 1fr; }
+      .assessment-allergy-row { grid-template-columns: 1fr; }
+      .remove-row { justify-self: end; }
+      .form-grid { grid-template-columns: 1fr; }
+      .event { grid-template-columns: 82px 22px 1fr; }
+      .toast { right: 12px; left: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="mark">+</span><span>SIMRS · Electronic Medical Record</span></div>
+    <div class="user">dr. Nadia Putri · Penyakit Dalam &nbsp;|&nbsp; 23 Juli 2026 · 10:32 WIB</div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <div class="side-title">Data Pasien</div>
+      <button class="side on" id="sideSummary">▣ Ringkasan Data Pasien</button>
+      <button class="side">□ Data Sosial Pasien</button>
+      <button class="side" id="sideAllergy">⚕ Data Alergi</button>
+      <div class="side-title" style="margin-top:20px">Dokumen Klinis</div>
+      <button class="side" id="sideAssessment">✚ Asesmen Perawat</button>
+      <button class="side">▤ List Dokumen EMR</button>
+      <button class="side">✎ CPPT</button>
+      <button class="side dim">↗ Integrasi SATUSEHAT</button>
+    </aside>
+
+    <main>
+      <section id="summaryView">
+        <div class="crumb">EMR / <b>Ringkasan Data Pasien</b></div>
+        <div class="page-head">
+          <div>
+            <h1>Ringkasan Data Pasien</h1>
+            <div class="subtitle">Informasi utama pasien dan riwayat klinis.</div>
+          </div>
+        </div>
+
+        <section class="card emr-strip">
+          <div class="emr-section emr-patient">
+            <div class="section-label">Ringkasan Data Pasien</div>
+            <div class="patient-main">DJOKO SUSILO, TN. <span class="rm">180851</span></div>
+            <div class="patient-line">Laki-laki &nbsp;·&nbsp; 61 tahun &nbsp;·&nbsp; 25 Januari 1965</div>
+            <div class="patient-line">Bangon RT 01 RW 06 Sojokerto, Leksono</div>
+            <div class="last-visit"><span>Kunjungan terakhir: 24 Juli 2026 01:00 WIB</span><span>Data Sosial →</span></div>
+          </div>
+          <div class="emr-section emr-history">
+            <div class="section-label">Riwayat Penyakit Sebelumnya</div>
+            <div class="history-empty">Belum ada riwayat penyakit</div>
+          </div>
+          <div class="emr-section emr-allergy">
+            <div class="section-label">Riwayat Alergi</div>
+            <div class="allergy-count">4</div>
+            <div class="allergy-copy">data alergi tercatat</div>
+            <button class="detail-link" id="openDetail">Lihat Selengkapnya →</button>
+          </div>
+          <div class="emr-section emr-social">
+            <div class="section-label">Social History</div>
+            <div class="social-empty">Tidak Ada Social History</div>
+          </div>
+        </section>
+
+        <div class="reference-note">
+          Perubahan D4 pada halaman ini hanya menambahkan aksi <b>Lihat Selengkapnya</b> di section Riwayat Alergi.
+        </div>
+      </section>
+
+      <section id="detailView" class="hidden">
+        <div class="crumb">EMR / Ringkasan Data Pasien / <b>Data Alergi</b></div>
+        <div class="page-head">
+          <div>
+            <h1>Data Alergi Pasien</h1>
+            <div class="subtitle">Daftar alergi yang tercatat pada pasien.</div>
+          </div>
+          <div class="head-actions">
+            <button class="secondary" id="backBtn">← Kembali</button>
+          </div>
+        </div>
+
+        <section class="card patient-card">
+          <div class="patient-name">
+            <div class="avatar">DS</div>
+            <div>
+              <div class="label">Pasien</div>
+              <div class="value">Djoko Susilo</div>
+              <div class="code">No. RM 180851</div>
+            </div>
+          </div>
+          <div>
+            <div class="label">Tanggal Lahir / Umur</div>
+            <div class="value">25 Jan 1965 · 61 th</div>
+          </div>
+          <div>
+            <div class="label">Jenis Kelamin</div>
+            <div class="value">Laki-laki</div>
+          </div>
+          <div>
+            <div class="label">Kunjungan Saat Ini</div>
+            <div class="value">Rawat Jalan · Penyakit Dalam</div>
+            <div class="code">RJ-20260724-0187</div>
+          </div>
+        </section>
+
+        <!-- Blok peringatan dan kartu statistik dari reff/alergi - delete.png sengaja tidak ditampilkan. -->
+        <section class="card main-card">
+          <div class="tabs">
+            <button class="tab active" data-panel="listPanel">Daftar Alergi <span class="tab-count" id="listCount">4</span></button>
+            <button class="tab" data-panel="historyPanel">Riwayat <span class="tab-count" id="historyCount">4</span></button>
+          </div>
+          <div class="panel active" id="listPanel">
+            <div class="tools">
+              <label class="search">
+                <span>⌕</span>
+                <input id="searchInput" autocomplete="off" placeholder="Cari nama alergi">
+              </label>
+              <div class="result-count" id="resultCount">4 data alergi</div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Nama</th>
+                    <th>Kategori Alergi</th>
+                    <th>Tanggal Dibuat</th>
+                    <th>Perubahan Terakhir</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="allergyRows">
+                  <tr data-id="pa-001" data-master-id="m-001" data-name="amoksisilin">
+                    <td><div class="allergy-name">Amoksisilin</div><div class="snomed-code">SNOMED CT 27658006</div></td>
+                    <td><span class="badge medication">Obat</span></td>
+                    <td class="metadata"><div class="meta-date">12 Jan 2021 · 08:50 WIB</div><span>Rawat Inap · dr. Indra K.</span></td>
+                    <td class="metadata last-change"><div class="meta-date">22 Jul 2026 · 13:48 WIB</div><span>Poli Penyakit Dalam · Ns. Rina W.</span></td>
+                    <td><button class="edit-btn">✎ Edit</button></td>
+                  </tr>
+                  <tr data-id="pa-002" data-master-id="m-002" data-name="udang">
+                    <td><div class="allergy-name">Udang</div><div class="snomed-code">SNOMED CT 278840001</div></td>
+                    <td><span class="badge food">Makanan</span></td>
+                    <td class="metadata"><div class="meta-date">03 Mar 2024 · 10:04 WIB</div><span>IGD · Ns. Maya S.</span></td>
+                    <td class="metadata last-change"><div class="meta-date">22 Jul 2026 · 11:20 WIB</div><span>Poli Penyakit Dalam · dr. Nadia Putri</span></td>
+                    <td><button class="edit-btn">✎ Edit</button></td>
+                  </tr>
+                  <tr data-id="pa-003" data-master-id="m-003" data-name="alergi karet">
+                    <td><div class="allergy-name">Alergi karet</div><div class="snomed-code">SNOMED CT 111088007</div></td>
+                    <td><span class="badge environment">Lingkungan</span></td>
+                    <td class="metadata"><div class="meta-date">18 Okt 2018 · 09:14 WIB</div><span>Poli Paru · Ns. Nita</span></td>
+                    <td class="metadata last-change"><div class="meta-date">04 Feb 2025 · 09:12 WIB</div><span>Poli Paru · dr. Ratih K.</span></td>
+                    <td><button class="edit-btn">✎ Edit</button></td>
+                  </tr>
+                  <tr data-id="pa-004" data-master-id="" data-name="obat racikan dari luar">
+                    <td><div class="allergy-name">Obat racikan dari luar</div><div class="snomed-code">-</div></td>
+                    <td><span class="badge unmapped">Belum Dipetakan</span></td>
+                    <td class="metadata"><div class="meta-date">11 Mei 2026 · 14:05 WIB</div><span>IGD · dr. Nadia Putri</span></td>
+                    <td class="metadata last-change"><div class="meta-date">11 Mei 2026 · 14:05 WIB</div><span>IGD · dr. Nadia Putri</span></td>
+                    <td><button class="edit-btn">✎ Edit</button></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="empty" id="emptyState">Tidak ada alergi dengan nama tersebut.</div>
+            </div>
+          </div>
+          <div class="panel" id="historyPanel">
+            <div class="history">
+              <div class="history-head">
+                <h3>Riwayat perubahan alergi pasien</h3>
+                <span>Urutan dari perubahan terbaru</span>
+              </div>
+              <div id="historyEvents">
+                <div class="event">
+                  <div class="event-time">23 Jul 2026<br>09:40 WIB</div>
+                  <div class="rail"><div class="dot deleted">×</div></div>
+                  <div class="event-body">
+                    <div class="event-title"><b>Debu rumah</b><span class="deleted-badge">Dihapus</span></div>
+                    <p>dr. Nadia Putri · Poli Penyakit Dalam</p>
+                    <span class="change">Pasien menyatakan sudah tidak mengalami alergi sejak evaluasi terakhir.</span>
+                  </div>
+                </div>
+                <div class="event">
+                  <div class="event-time">22 Jul 2026<br>13:48 WIB</div>
+                  <div class="rail"><div class="dot">✎</div></div>
+                  <div class="event-body">
+                    <div class="event-title"><b>Amoksisilin diperbarui</b></div>
+                    <p>Ns. Rina W. · Poli Penyakit Dalam</p>
+                    <span class="change">Nama resmi: Amoxicillin · SNOMED CT 27658006</span>
+                  </div>
+                </div>
+                <div class="event">
+                  <div class="event-time">22 Jul 2026<br>11:20 WIB</div>
+                  <div class="rail"><div class="dot">✎</div></div>
+                  <div class="event-body">
+                    <div class="event-title"><b>Udang diperbarui</b></div>
+                    <p>dr. Nadia Putri · Poli Penyakit Dalam</p>
+                    <span class="change">Nama resmi: Shrimp · SNOMED CT 278840001</span>
+                  </div>
+                </div>
+                <div class="event">
+                  <div class="event-time">11 Mei 2026<br>14:05 WIB</div>
+                  <div class="rail"><div class="dot">✎</div></div>
+                  <div class="event-body">
+                    <div class="event-title"><b>Obat racikan dari luar diperbarui</b></div>
+                    <p>dr. Nadia Putri · IGD</p>
+                    <span class="change">Nama resmi: Belum dipetakan · Kode SNOMED CT: -</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section id="assessmentView" class="hidden">
+        <div class="crumb">EMR / Asesmen / <b>Asesmen Perawat</b></div>
+        <div class="page-head">
+          <div>
+            <h1>Asesmen Perawat</h1>
+            <div class="subtitle">Form asesmen menggunakan repository Data Alergi Pasien.</div>
+          </div>
+          <div class="head-actions">
+            <button class="secondary" id="assessmentBackBtn">← Kembali</button>
+          </div>
+        </div>
+
+        <section class="card patient-card">
+          <div class="patient-name">
+            <div class="avatar">DS</div>
+            <div>
+              <div class="label">Pasien</div>
+              <div class="value">Djoko Susilo</div>
+              <div class="code">No. RM 180851</div>
+            </div>
+          </div>
+          <div>
+            <div class="label">Tanggal Asesmen</div>
+            <div class="value">23 Jul 2026 · 10:32 WIB</div>
+          </div>
+          <div>
+            <div class="label">Unit</div>
+            <div class="value">Poli Penyakit Dalam</div>
+          </div>
+          <div>
+            <div class="label">Petugas</div>
+            <div class="value">Ns. Rina W.</div>
+          </div>
+        </section>
+
+        <section class="card assessment-card">
+          <div class="assessment-tabs">
+            <button class="assessment-tab">Asesmen Dokter</button>
+            <button class="assessment-tab active">Asesmen Perawat</button>
+            <button class="assessment-tab">Observasi Pasien</button>
+          </div>
+          <div class="assessment-body">
+            <div class="assessment-case">
+              <b>Jenis Kasus:</b>
+              <label><input type="checkbox"> Bedah</label>
+              <label><input type="checkbox"> Trauma</label>
+              <label><input type="checkbox"> Non-Trauma</label>
+              <label><input type="checkbox"> Obgyn</label>
+              <label><input type="checkbox"> Interna</label>
+              <label><input type="checkbox"> Anak</label>
+              <label><input type="checkbox"> Jantung</label>
+            </div>
+
+            <h2 class="assessment-section-title">Data Subjektif</h2>
+            <div class="subjective-grid">
+              <div class="anamnesis">
+                <label>Anamnesis</label>
+                <textarea>Pasien datang dengan keluhan nyeri dada kiri sejak pukul 20.00, nyeri terasa panas dan menjalar ke lengan kiri.</textarea>
+              </div>
+
+              <div class="allergy-assessment">
+                <div class="allergy-assessment-head">
+                  <b>Riwayat Alergi</b>
+                  <div class="toggle-group">
+                    <button class="toggle-btn active" id="hasAllergyBtn">ADA</button>
+                    <button class="toggle-btn" id="noAllergyBtn">TIDAK ADA</button>
+                  </div>
+                </div>
+                <div id="assessmentAllergyInputs">
+                  <div class="assessment-allergy-row">
+                    <div>
+                      <label>Nama Alergi <span class="req">*</span></label>
+                      <input class="assessment-user-name" value="Amoksisilin" placeholder="Masukkan nama alergi">
+                    </div>
+                    <div>
+                      <label>Nama Resmi Alergi <span class="code">(opsional)</span></label>
+                      <input class="assessment-official-name" list="masterAllergyOptions" value="Amoxicillin" placeholder="Pilih nama resmi">
+                    </div>
+                    <button class="remove-row" title="Hapus baris draft">×</button>
+                  </div>
+                </div>
+                <button class="add-row" id="addAssessmentAllergy" title="Tambah baris alergi">+</button>
+                <div class="assessment-meta">
+                  Nama Resmi Alergi opsional. Jika kosong, kode menjadi `-` dan kategori Belum Dipetakan. Saat asesmen disimpan, data masuk ke repository Data Alergi Pasien.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-error" id="assessmentError">Lengkapi minimal satu Nama Alergi. Jika Nama Resmi Alergi diisi, pilih nilai yang tersedia pada master.</div>
+            <div class="assessment-actions">
+              <button class="secondary">Simpan Draft</button>
+              <button class="primary" id="saveAssessmentBtn">Simpan Asesmen</button>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-bg" id="allergyModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="dialog">
+      <div class="dialog-head">
+        <div>
+          <h3 id="modalTitle">Edit Alergi</h3>
+          <p>Perbarui nama dari pengguna dan pemetaan ke nama resmi alergi.</p>
+        </div>
+        <button class="close" id="closeModal" aria-label="Tutup">×</button>
+      </div>
+      <div class="dialog-body">
+        <div class="form-grid">
+          <div class="field">
+            <label>Nama Alergi <span class="req">*</span></label>
+            <input id="userAllergyName" autocomplete="off" maxlength="255" placeholder="Masukkan nama dari pengguna">
+            <small>Nama yang disampaikan atau dikenal oleh pengguna.</small>
+          </div>
+          <div class="field">
+            <label>Nama Resmi Alergi <span class="code">(opsional)</span></label>
+            <input id="officialAllergyName" list="masterAllergyOptions" autocomplete="off" placeholder="Pilih dari Master Data Alergi">
+            <datalist id="masterAllergyOptions"></datalist>
+            <small>Boleh dikosongkan. Jika dipilih, kode dan kategori dimapping otomatis dari master.</small>
+          </div>
+        </div>
+        <div class="form-error" id="formError">Nama Alergi wajib diisi. Jika Nama Resmi Alergi diisi, pilih nilai yang tersedia pada master.</div>
+      </div>
+      <div class="dialog-foot">
+        <button class="secondary" id="cancelModal">Batal</button>
+        <button class="primary" id="saveBtn">Simpan Perubahan</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const $ = selector => document.querySelector(selector);
+    const $$ = selector => [...document.querySelectorAll(selector)];
+
+    // Simulasi response endpoint Master Data Alergi (backend-only, tanpa UI master).
+    const masterAllergies = [
+      { id: 'm-001', name: 'Amoxicillin', code: '27658006', category: 'medication' },
+      { id: 'm-002', name: 'Shrimp', code: '278840001', category: 'food' },
+      { id: 'm-003', name: 'Latex', code: '111088007', category: 'environment' },
+      { id: 'm-004', name: 'Gluten', code: '89811004', category: 'food' },
+      { id: 'm-005', name: 'Bee venom', code: '288328004', category: 'biologic' },
+      { id: 'm-006', name: 'Obat racikan tertentu', code: null, category: 'medication' }
+    ];
+
+    const categoryLabels = {
+      medication: 'Obat',
+      food: 'Makanan',
+      environment: 'Lingkungan',
+      biologic: 'Biologis'
+    };
+
+    let editingRow = null;
+
+    masterAllergies.forEach(item => {
+      const option = document.createElement('option');
+      option.value = item.name;
+      $('#masterAllergyOptions').appendChild(option);
+    });
+
+    function setView(view) {
+      const summary = view === 'summary';
+      const detail = view === 'detail';
+      const assessment = view === 'assessment';
+      $('#summaryView').classList.toggle('hidden', !summary);
+      $('#detailView').classList.toggle('hidden', !detail);
+      $('#assessmentView').classList.toggle('hidden', !assessment);
+      $('#sideSummary').classList.toggle('on', summary);
+      $('#sideAllergy').classList.toggle('on', detail);
+      $('#sideAssessment').classList.toggle('on', assessment);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toast(message) {
+      const element = $('#toast');
+      element.textContent = message;
+      element.classList.add('show');
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => element.classList.remove('show'), 3000);
+    }
+
+    function openModal(row) {
+      editingRow = row;
+      $('#formError').classList.remove('show');
+      $('#userAllergyName').value = row.querySelector('.allergy-name').textContent;
+      const master = masterAllergies.find(item => item.id === row.dataset.masterId);
+      $('#officialAllergyName').value = master ? master.name : '';
+      $('#allergyModal').classList.add('open');
+      setTimeout(() => $('#userAllergyName').focus(), 0);
+    }
+
+    function closeModal() {
+      $('#allergyModal').classList.remove('open');
+      editingRow = null;
+    }
+
+    function selectedMaster() {
+      const value = $('#officialAllergyName').value.trim().toLowerCase();
+      return masterAllergies.find(item => item.name.toLowerCase() === value);
+    }
+
+    function attachEditHandler(button) {
+      button.addEventListener('click', () => openModal(button.closest('tr')));
+    }
+
+    function filterRows() {
+      const query = $('#searchInput').value.trim().toLowerCase();
+      let visible = 0;
+      $$('#allergyRows tr').forEach(row => {
+        const matches = !query || row.dataset.name.includes(query);
+        row.classList.toggle('hidden', !matches);
+        if (matches) visible += 1;
+      });
+      $('#emptyState').style.display = visible ? 'none' : 'block';
+      $('#resultCount').textContent = `${visible} data alergi`;
+    }
+
+    function addHistoryEvent(userName, master) {
+      const officialName = master ? master.name : 'Belum dipetakan';
+      const officialCode = master?.code || '-';
+      const event = document.createElement('div');
+      event.className = 'event';
+      event.innerHTML = `
+        <div class="event-time">23 Jul 2026<br>10:32 WIB</div>
+        <div class="rail"><div class="dot">✎</div></div>
+        <div class="event-body">
+          <div class="event-title"><b>${userName} diperbarui</b></div>
+          <p>dr. Nadia Putri · Poli Penyakit Dalam</p>
+          <span class="change">Nama resmi: ${officialName} · SNOMED CT ${officialCode}</span>
+        </div>
+      `;
+      $('#historyEvents').prepend(event);
+      const count = $$('#historyEvents .event').length;
+      $('#historyCount').textContent = count;
+    }
+
+    function masterFromValue(value) {
+      const normalized = value.trim().toLowerCase();
+      return masterAllergies.find(item => item.name.toLowerCase() === normalized);
+    }
+
+    function bindAssessmentRemove(button) {
+      button.addEventListener('click', () => {
+        button.closest('.assessment-allergy-row').remove();
+      });
+    }
+
+    function createAssessmentRow() {
+      const row = document.createElement('div');
+      row.className = 'assessment-allergy-row';
+      row.innerHTML = `
+        <div>
+          <label>Nama Alergi <span class="req">*</span></label>
+          <input class="assessment-user-name" placeholder="Masukkan nama alergi">
+        </div>
+        <div>
+          <label>Nama Resmi Alergi <span class="code">(opsional)</span></label>
+          <input class="assessment-official-name" list="masterAllergyOptions" placeholder="Pilih nama resmi">
+        </div>
+        <button class="remove-row" title="Hapus baris draft">×</button>
+      `;
+      bindAssessmentRemove(row.querySelector('.remove-row'));
+      return row;
+    }
+
+    function syncAssessmentAllergy(userName, master) {
+      let row = $$('#allergyRows tr').find(item =>
+        master
+          ? item.dataset.masterId === master.id
+          : !item.dataset.masterId && item.dataset.name === userName.toLowerCase()
+      );
+      if (row) {
+        row.dataset.masterId = master?.id || '';
+        row.dataset.name = userName.toLowerCase();
+        row.querySelector('.allergy-name').textContent = userName;
+        row.querySelector('.snomed-code').textContent =
+          master?.code ? `SNOMED CT ${master.code}` : '-';
+        const badge = row.querySelector('.badge');
+        badge.className = `badge ${master?.category || 'unmapped'}`;
+        badge.textContent = master ? categoryLabels[master.category] : 'Belum Dipetakan';
+        row.querySelector('.last-change').innerHTML =
+          '<div class="meta-date">23 Jul 2026 · 10:32 WIB</div><span>Poli Penyakit Dalam · Ns. Rina W.</span>';
+        addHistoryEvent(userName, master);
+        return;
+      }
+
+      row = document.createElement('tr');
+      row.dataset.id = `pa-${Date.now()}`;
+      row.dataset.masterId = master?.id || '';
+      row.dataset.name = userName.toLowerCase();
+      row.innerHTML = `
+        <td><div class="allergy-name">${userName}</div><div class="snomed-code">${master?.code ? `SNOMED CT ${master.code}` : '-'}</div></td>
+        <td><span class="badge ${master?.category || 'unmapped'}">${master ? categoryLabels[master.category] : 'Belum Dipetakan'}</span></td>
+        <td class="metadata"><div class="meta-date">23 Jul 2026 · 10:32 WIB</div><span>Poli Penyakit Dalam · Ns. Rina W.</span></td>
+        <td class="metadata last-change"><div class="meta-date">23 Jul 2026 · 10:32 WIB</div><span>Poli Penyakit Dalam · Ns. Rina W.</span></td>
+        <td><button class="edit-btn">✎ Edit</button></td>
+      `;
+      $('#allergyRows').prepend(row);
+      attachEditHandler(row.querySelector('.edit-btn'));
+      addHistoryEvent(userName, master);
+    }
+
+    function setAssessmentHasAllergy(hasAllergy) {
+      $('#hasAllergyBtn').classList.toggle('active', hasAllergy);
+      $('#noAllergyBtn').classList.toggle('active', !hasAllergy);
+      $('#assessmentAllergyInputs').classList.toggle('hidden', !hasAllergy);
+      $('#addAssessmentAllergy').classList.toggle('hidden', !hasAllergy);
+      $('#assessmentError').classList.remove('show');
+    }
+
+    $('#openDetail').addEventListener('click', () => setView('detail'));
+    $('#sideAllergy').addEventListener('click', () => setView('detail'));
+    $('#sideAssessment').addEventListener('click', () => setView('assessment'));
+    $('#backBtn').addEventListener('click', () => setView('summary'));
+    $('#assessmentBackBtn').addEventListener('click', () => setView('summary'));
+    $('#sideSummary').addEventListener('click', () => setView('summary'));
+    $('#closeModal').addEventListener('click', closeModal);
+    $('#cancelModal').addEventListener('click', closeModal);
+    $('#allergyModal').addEventListener('click', event => {
+      if (event.target === $('#allergyModal')) closeModal();
+    });
+    $('#searchInput').addEventListener('input', filterRows);
+    $$('.edit-btn').forEach(attachEditHandler);
+    $$('.remove-row').forEach(bindAssessmentRemove);
+    $('#hasAllergyBtn').addEventListener('click', () => setAssessmentHasAllergy(true));
+    $('#noAllergyBtn').addEventListener('click', () => setAssessmentHasAllergy(false));
+    $('#addAssessmentAllergy').addEventListener('click', () => {
+      const row = createAssessmentRow();
+      $('#assessmentAllergyInputs').appendChild(row);
+      row.querySelector('.assessment-user-name').focus();
+    });
+    $$('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        $$('.tab').forEach(item => item.classList.remove('active'));
+        $$('.panel').forEach(panel => panel.classList.remove('active'));
+        tab.classList.add('active');
+        $(`#${tab.dataset.panel}`).classList.add('active');
+      });
+    });
+
+    $('#saveBtn').addEventListener('click', () => {
+      const userName = $('#userAllergyName').value.trim();
+      const officialValue = $('#officialAllergyName').value.trim();
+      const master = officialValue ? selectedMaster() : null;
+      if (!userName || (officialValue && !master)) {
+        $('#formError').classList.add('show');
+        return;
+      }
+
+      editingRow.dataset.masterId = master?.id || '';
+      editingRow.dataset.name = userName.toLowerCase();
+      editingRow.querySelector('.allergy-name').textContent = userName;
+      editingRow.querySelector('.snomed-code').textContent =
+        master?.code ? `SNOMED CT ${master.code}` : '-';
+      const badge = editingRow.querySelector('.badge');
+      badge.className = `badge ${master?.category || 'unmapped'}`;
+      badge.textContent = master ? categoryLabels[master.category] : 'Belum Dipetakan';
+      editingRow.querySelector('.last-change').innerHTML =
+        '<div class="meta-date">23 Jul 2026 · 10:32 WIB</div><span>Poli Penyakit Dalam · dr. Nadia Putri</span>';
+      addHistoryEvent(userName, master);
+      closeModal();
+      filterRows();
+      toast('Data alergi berhasil diperbarui.');
+    });
+
+    $('#saveAssessmentBtn').addEventListener('click', () => {
+      if (!$('#hasAllergyBtn').classList.contains('active')) {
+        toast('Asesmen tersimpan dengan status tidak ada riwayat alergi.');
+        return;
+      }
+
+      const rows = $$('#assessmentAllergyInputs .assessment-allergy-row');
+      const values = rows.map(row => {
+        const officialValue = row.querySelector('.assessment-official-name').value.trim();
+        return {
+          userName: row.querySelector('.assessment-user-name').value.trim(),
+          officialValue,
+          master: officialValue ? masterFromValue(officialValue) : null
+        };
+      });
+      if (!values.length || values.some(item =>
+        !item.userName || (item.officialValue && !item.master)
+      )) {
+        $('#assessmentError').classList.add('show');
+        return;
+      }
+
+      values.forEach(item => syncAssessmentAllergy(item.userName, item.master));
+      $('#assessmentError').classList.remove('show');
+      const count = $$('#allergyRows tr').length;
+      $('#listCount').textContent = count;
+      document.querySelector('.allergy-count').textContent = count;
+      filterRows();
+      toast('Asesmen tersimpan dan merujuk repository Data Alergi Pasien.');
+    });
+
+    const previewParams = new URLSearchParams(window.location.search);
+    if (previewParams.get('view') === 'detail') setView('detail');
+    if (previewParams.get('view') === 'assessment') setView('assessment');
+    if (previewParams.get('tab') === 'history') {
+      document.querySelector('[data-panel="historyPanel"]').click();
+    }
+    if (previewParams.get('modal') === 'edit') {
+      openModal(document.querySelector('#allergyRows tr'));
+    }
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeModal();
+    });
+  </script>
+</body>
+</html>
